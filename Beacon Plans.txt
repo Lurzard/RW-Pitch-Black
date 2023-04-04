@@ -1,0 +1,69 @@
+[Not everything in this needs to be fulfilled]
+
+The Beacon
+In the abrupt wake of night, an agile slugcat with strange luminosity makes their prescence known.
+Take your lights and journey across this forgotten landscape for answers.
+
+Body: #2a04dc
+Eyes: #ffffff
+
+Slugcat Perks
+- Insectivore + "Dark" creatures.
+- Rivulet-like stats.
+- Nocturnal, waking up during nighttime exclusively, or rather any time nowadays.
+- Can put flashbangs around their neck to store them.
+- Has Artificer's pyro abilities but taking on a flare bomb theme.
+	- pyrojump with purple visuals
+	- parry a literal flashbang explosion,
+	- swallowing rubbish turns it into a flarebomb on regurgitation (1 pip)
+	- turns spears into electric spears (1 pip)
+
+Black Centipede (Scaleless Red Centipede)
+- Attempts to stay away when at max flashbangs stored.
+- In pursuit when you have no flashbangs stored.
+
+World Changes
+- The Void Sea has abruptly vanished, leaving the iterators without a fuel source after their creators dissapearance.
+- Uses Spearmaster's worldstate for LTTM & FP to be still standing.
+- LTTM & FP's can's are lifeless, and their puppets rest at the floor of their chamber.
+- "Nighttime" will be simulated by shading the world. (Dark World)
+- Flashangs and "Dark" creatures can be found in more regions. (modifying spawns and dev tools objects)
+     - Most will be placed in SU, HI, SH, SB before Depths, UW & SS, LM & DM, CC, and LF. [already started]
+(maybe) - Creature recolors similar to HR's gold variants; Grey/White highlights.
+
+- Region/Subregion renames to fit with this dark world:
+SU -> Alleyways
+HI -> Lightless Complex
+CC -> Solitary Towers
+DS -> Empty Ducts
+GW -> Dimlit Wasteland
+SH -> Silent Citadel
+VS -> Solemn Drillsite
+LM -> Defunct District
+SI -> Skyhigh Spires
+LF -> Barren Plains
+UW -> Quiet Exterior
+SS -> Five Pebbles
+SB -> Silenced Subterranean
+     - Depths -> Pitch Black
+     - Filtration System -> 
+DM -> Looks To The Moon
+	 - Memory Conflux -> Silent Chambers
+	 - Luna -> The Peak
+	 - Neural Terminus -> Comatic Conduits
+
+Depths (Pitch Black)
+- Completely dark, you would need external light sources to see.
+- While in the final part of Depths, it gets colder the closer you get to SB_L01.
+    - If you jump into the chasm you just fall forever, then the campaign ends.
+- the subregion would have no distortion effect because the void sea is gone.
+
+
+Scope Creep Ending Sequence
+A new connection in SB_D01 is present, leading into two new rooms, a caved in access shaft, and a severely damaged puppet chamber.
+entering the chamber prompts the campaign to end as you've returned to your creator, now finding home inside of Pitch Black's abandoned
+puppet chamber with a good amount of flare bombs planted inside (cause they're so cool).
+
+Ending art is similar to spearmaster's, with The Beacon resting alongside Pitch Black's puppet in the chamber, this is actually a memory of the past.
+- Pitch Black housing the remains of a long collapsed iterator doesn't need to happen, another ending can be thought up!
+- SB_D01 would have an alt for beacon that has that connection to Pitch Black's access shaft and puppet chamber instead of being a new connection to the original room

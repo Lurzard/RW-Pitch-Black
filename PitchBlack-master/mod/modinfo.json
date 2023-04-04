@@ -1,0 +1,9 @@
+﻿{
+	"id": "lurzard.pitchblack",
+	"name": "Pitch Black",
+	"version": "0.1.0",
+	"authors": "Lurzard",
+	"description": "Fanmade expansion in the works.",
+	"requirements": [ "slime-cubed.slugbase", "darkworld", "bry.customizableslugcatglow", "moreslugcats" ],
+	"requirements_names": [ "SlugBase", "Dark World", "Customizable Slugcat Glow", "More Slugcats Expansion" ]
+}

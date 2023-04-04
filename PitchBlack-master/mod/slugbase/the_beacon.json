@@ -1,0 +1,54 @@
+{
+	"id": "Beacon",
+	"name": "The Beacon",
+	"description": "An agile slugcat who's strange luminosity makes their prescence known in the wake of night. <LINE>You will be faced with a constant threat stalking you, stay in the light to keep them at bay.",
+	"features": {
+		"color": "2a04dc",
+		"custom_colors": [
+			{
+				"name": "Body",
+				"story": "2a04dc"
+			},
+			{
+				"name": "Eyes",
+				"story": "FFFFFF"
+			}
+		],
+		"beacon/super_jump": 0.2,
+		"beacon/explode_on_death": true,
+		"auto_grab_batflies": true,
+		"weight": [ 0.9, 0.7 ],
+		"tunnel_speed": 1.5,
+		"climb_speed": 1.5,
+		"walk_speed": 1.65,
+		"crouch_stealth": [ 1.4, 1.0 ],
+		"throw_skill": 1,
+		"lung_capacity": [ 0.30, 1.1 ],
+		"loudness": [ 0.5, 1.0 ],
+		"diet": {
+			"base": "White",
+			"plants": 0.5,
+			"overrides": {
+				"BigSpider": 1.5,
+				"SpitterSpider": 1.5,
+				"DropBug": 1,
+				"MirosBird": 1.25,
+				"BlackLizard": 1.5,
+				"MirosVulture": 3,
+				"MotherSpider": 2
+			}
+		},
+
+		"karma": 4,
+		"karma_cap": 4,
+		"start_room": "SS_AI",
+		"guide_overseer": 5,
+		"has_dreams": false,
+		"perma_unlock_gates": true,
+		"food_min": 6,
+		"food_max": 6,
+		"world_state": [ "Spearmaster", "Red" ],
+		"select_menu_scene": "Slugcat_Beacon",
+		"select_menu_scene_ascended": "Ghost_Beacon"
+	}
+}
