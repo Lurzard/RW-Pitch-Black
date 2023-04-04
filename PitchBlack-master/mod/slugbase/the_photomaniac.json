@@ -1,0 +1,30 @@
+{
+	"id": "Photomaniac",
+	"name": "The Photomaniac",
+	"description": "An anomalous creature with a fascination for light<LINE>Although frail, this creature can create some deadly weaponry",
+	"features": {
+		"custom_colors": [
+		{ "name": "Body", "story": "010038" },
+		{ "name": "Eyes", "story": "94c8ff", "arena": [ "FFFFFF", "FF8080", "80FF80", "8080FF" ] }
+		],
+		"world_state": "Spear",
+		"throw_skill": 0,
+		"food_min": 5,
+		"food_max": 5,
+		"auto_grab_batflies": false,
+		"back_spear": false,
+		"can_maul": false,
+		"has_dreams": false,
+		"start_room": "SH_S09",
+		"karma": 1,
+		"diet": {
+			"corpses": 1,
+			"meat": 1,
+			"plants": 0.5
+		},
+
+		"select_menu_scene": "Slugcat_Photomaniac",
+		"select_menu_scene_ascended": "Ghost_Photomaniac",
+		"sleep_scene": "MySlugcatSleep"
+	}
+}
