@@ -12,6 +12,10 @@
 			{
 				"name": "Eyes",
 				"story": "FFFFFF"
+			},
+			{
+				"name": "Gills",
+				"story": "2a04dc"
 			}
 		],
 		"beacon/super_jump": 0.2,

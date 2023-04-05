@@ -3,8 +3,6 @@ using BepInEx;
 using UnityEngine;
 using SlugBase.Features;
 using static SlugBase.Features.FeatureTypes;
-using Random = UnityEngine.Random;
-using IL.MoreSlugcats;
 
 namespace SlugTemplate
 {
@@ -31,8 +29,60 @@ namespace SlugTemplate
             On.Player.GraspsCanBeCrafted += Player_GraspsCanBeCrafted;
             On.Player.SpitUpCraftedObject += Player_SpitUpCraftedObject;
             On.Player.CraftingResults += Player_CraftingResults;
+            On.PlayerGraphics.AxolotlGills.ctor += AxolotlGills_ctor;
         }
 
+        //2 Gills instead of 3
+        private void AxolotlGills_ctor(On.PlayerGraphics.AxolotlGills.orig_ctor orig, PlayerGraphics.AxolotlGills self, PlayerGraphics pGraphics, int startSprite)
+        {
+            orig(self, pGraphics, startSprite);
+            self.pGraphics = pGraphics;
+			self.startSprite = startSprite;
+			self.rigor = 0.5873646f;
+			float num = 1.310689f;
+			self.colored = true;
+			self.graphic = 3;
+			self.graphicHeight = Futile.atlasManager.GetElementWithName("LizardScaleA" + self.graphic.ToString()).sourcePixelSize.y;
+			int num2 = 3;
+			self.scalesPositions = new Vector2[num2 * 2];
+			self.scaleObjects = new PlayerGraphics.AxolotlScale[self.scalesPositions.Length];
+			self.backwardsFactors = new float[self.scalesPositions.Length];
+			float num3 = 0.1542603f;
+			float num4 = 0.1759363f;
+			for (int i = 0; i < num2; i++)
+			{
+				float y = 0.03570603f;
+				float num5 = 0.659981f;
+				float num6 = 0.9722961f;
+				float num7 = 0.3644831f;
+				if (i == 1)
+				{
+					y = 0.02899241f;
+					num5 = 0.76459f;
+					num6 = 0.6056554f;
+					num7 = 0.9129724f;
+				}
+				if (i == 2)
+				{
+					y = 0.02639332f;
+					num5 = 0.7482835f;
+					num6 = 0.7223744f;
+					num7 = 0.4567381f;
+				}
+				for (int j = 0; j < 2; j++)
+				{
+					self.scalesPositions[i * 2 + j] = new Vector2((j != 0) ? num5 : (-num5), y);
+					self.scaleObjects[i * 2 + j] = new PlayerGraphics.AxolotlScale(pGraphics);
+					self.scaleObjects[i * 2 + j].length = Mathf.Lerp(2.5f, 15f, num * num6);
+					self.scaleObjects[i * 2 + j].width = Mathf.Lerp(0.65f, 1.2f, num3 * num);
+					self.backwardsFactors[i * 2 + j] = num4 * num7;
+				}
+			}
+			self.numberOfSprites = ((!self.colored) ? self.scalesPositions.Length : (self.scalesPositions.Length * 2));
+			self.spritesOverlap = PlayerGraphics.AxolotlGills.SpritesOverlap.InFront;
+        }
+
+        //Crafting
         private AbstractPhysicalObject.AbstractObjectType Player_CraftingResults(On.Player.orig_CraftingResults orig, Player self)
         {
             if (self.slugcatStats.name == Plugin.BeaconName)
@@ -55,6 +105,7 @@ namespace SlugTemplate
            return orig(self);
         }
 
+        //Arti Crafting
         private void Player_SpitUpCraftedObject(On.Player.orig_SpitUpCraftedObject orig, Player player)
         {
             if (player.slugcatStats.name == Plugin.BeaconName)
@@ -105,6 +156,7 @@ namespace SlugTemplate
             }
         }
 
+        //Extracted method for crafting electric spears
         private static AbstractSpear ElectricSpearCrafting(Player player, int i, AbstractPhysicalObject hands1)
         {
             player.ReleaseGrasp(i);

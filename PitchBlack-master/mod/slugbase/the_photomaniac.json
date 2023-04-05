@@ -4,8 +4,19 @@
 	"description": "An anomalous creature with a fascination for light<LINE>Although frail, this creature can create some deadly weaponry",
 	"features": {
 		"custom_colors": [
-		{ "name": "Body", "story": "010038" },
-		{ "name": "Eyes", "story": "94c8ff", "arena": [ "FFFFFF", "FF8080", "80FF80", "8080FF" ] }
+			{
+				"name": "Body",
+				"story": "010038"
+			},
+			{
+				"name": "Eyes",
+				"story": "94c8ff",
+				"arena": [ "FFFFFF", "FF8080", "80FF80", "8080FF" ]
+			},
+			{
+				"name": "Gills",
+				"story": "010038"
+			}
 		],
 		"world_state": "Spear",
 		"throw_skill": 0,
