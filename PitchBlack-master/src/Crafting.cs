@@ -58,7 +58,7 @@ namespace SlugTemplate
         //Arti Crafting
         private void Player_SpitUpCraftedObject(On.Player.orig_SpitUpCraftedObject orig, Player player)
         {
-            if (player.slugcatStats.name == Plugin.BeaconName || self.slugcatStats.name == Plugin.PhotoName)
+            if (player.slugcatStats.name == Plugin.BeaconName || player.slugcatStats.name == Plugin.PhotoName)
             {
                 for (int i = 0; i < player.grasps.Length; i++)
                 {
