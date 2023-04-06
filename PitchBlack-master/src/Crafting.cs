@@ -15,6 +15,7 @@ namespace SlugTemplate
         public static readonly PlayerFeature<bool> ExplodeOnDeath = PlayerBool("beacon/explode_on_death");
         public static readonly GameFeature<float> MeanLizards = GameFloat("beacon/mean_lizards");
         public static readonly SlugcatStats.Name BeaconName = new SlugcatStats.Name("Beacon", false);
+        public static readonly SlugcatStats.Name PhotoName = new SlugcatStats.Name("Photomaniac", false);
 
 
         // Add hooks
@@ -29,57 +30,6 @@ namespace SlugTemplate
             On.Player.GraspsCanBeCrafted += Player_GraspsCanBeCrafted;
             On.Player.SpitUpCraftedObject += Player_SpitUpCraftedObject;
             On.Player.CraftingResults += Player_CraftingResults;
-            On.PlayerGraphics.AxolotlGills.ctor += AxolotlGills_ctor;
-        }
-
-        //2 Gills instead of 3
-        private void AxolotlGills_ctor(On.PlayerGraphics.AxolotlGills.orig_ctor orig, PlayerGraphics.AxolotlGills self, PlayerGraphics pGraphics, int startSprite)
-        {
-            orig(self, pGraphics, startSprite);
-            self.pGraphics = pGraphics;
-			self.startSprite = startSprite;
-			self.rigor = 0.5873646f;
-			float num = 1.310689f;
-			self.colored = true;
-			self.graphic = 3;
-			self.graphicHeight = Futile.atlasManager.GetElementWithName("LizardScaleA" + self.graphic.ToString()).sourcePixelSize.y;
-			int num2 = 3;
-			self.scalesPositions = new Vector2[num2 * 2];
-			self.scaleObjects = new PlayerGraphics.AxolotlScale[self.scalesPositions.Length];
-			self.backwardsFactors = new float[self.scalesPositions.Length];
-			float num3 = 0.1542603f;
-			float num4 = 0.1759363f;
-			for (int i = 0; i < num2; i++)
-			{
-				float y = 0.03570603f;
-				float num5 = 0.659981f;
-				float num6 = 0.9722961f;
-				float num7 = 0.3644831f;
-				if (i == 1)
-				{
-					y = 0.02899241f;
-					num5 = 0.76459f;
-					num6 = 0.6056554f;
-					num7 = 0.9129724f;
-				}
-				if (i == 2)
-				{
-					y = 0.02639332f;
-					num5 = 0.7482835f;
-					num6 = 0.7223744f;
-					num7 = 0.4567381f;
-				}
-				for (int j = 0; j < 2; j++)
-				{
-					self.scalesPositions[i * 2 + j] = new Vector2((j != 0) ? num5 : (-num5), y);
-					self.scaleObjects[i * 2 + j] = new PlayerGraphics.AxolotlScale(pGraphics);
-					self.scaleObjects[i * 2 + j].length = Mathf.Lerp(2.5f, 15f, num * num6);
-					self.scaleObjects[i * 2 + j].width = Mathf.Lerp(0.65f, 1.2f, num3 * num);
-					self.backwardsFactors[i * 2 + j] = num4 * num7;
-				}
-			}
-			self.numberOfSprites = ((!self.colored) ? self.scalesPositions.Length : (self.scalesPositions.Length * 2));
-			self.spritesOverlap = PlayerGraphics.AxolotlGills.SpritesOverlap.InFront;
         }
 
         //Crafting
@@ -108,7 +58,7 @@ namespace SlugTemplate
         //Arti Crafting
         private void Player_SpitUpCraftedObject(On.Player.orig_SpitUpCraftedObject orig, Player player)
         {
-            if (player.slugcatStats.name == Plugin.BeaconName)
+            if (player.slugcatStats.name == Plugin.BeaconName || player.slugcatStats.name == Plugin.BeaconName)
             {
                 for (int i = 0; i < player.grasps.Length; i++)
                 {
@@ -173,7 +123,7 @@ namespace SlugTemplate
 
         private bool Player_GraspsCanBeCrafted(On.Player.orig_GraspsCanBeCrafted orig, Player self)
         {
-            if (self.slugcatStats.name == Plugin.BeaconName && self.input[0].y > 0) return true;
+            if (self.slugcatStats.name == Plugin.BeaconName || self.slugcatStats.name == Plugin.BeaconName && self.input[0].y > 0) return true;
             return orig(self);
         } // Allow crafts
 
@@ -209,8 +159,8 @@ namespace SlugTemplate
         private void Player_Die(On.Player.orig_Die orig, Player self)
         {
             bool wasDead = self.dead;
-
-            orig(self);
+            if (self.slugcatStats.name == Plugin.BeaconName || self.slugcatStats.name == Plugin.PhotoName)
+                orig(self);
 
             var room = self.room;
             var pos = self.mainBodyChunk.pos;
@@ -224,10 +174,9 @@ namespace SlugTemplate
             room.ScreenMovement(pos, default, 1.3f);
             room.PlaySound(SoundID.Flare_Bomb_Burn, pos);
             room.InGameNoise(new Noise.InGameNoise(pos, 9000f, self, 1f));
-
-            AbstractPhysicalObject bomb = new AbstractPhysicalObject(self.room.world, AbstractPhysicalObject.AbstractObjectType.FlareBomb, null, self.coord, self.room.world.game.GetNewID());
-            bomb.RealizeInRoom();
-            self.room.AddObject(bomb.realizedObject);
+            //AstractConsumable bomb = new AbstractConsumable(self.room.world, AbstractConsumable.AbstractObjectType.FlareBomb, null, self.coord, self, self.room.world.game.GetNewID(), -1);
+            //bomb.RealizeInRoom();
+            //self.room.AddObject(bomb.realizedConsumable);
         }
     }
 }
