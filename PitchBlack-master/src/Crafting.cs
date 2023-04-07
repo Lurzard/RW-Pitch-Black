@@ -37,20 +37,6 @@ namespace SlugTemplate
             On.PlayerGraphics.DrawSprites += PlayerGraphics_DrawSprites;
             On.RainWorld.OnModsInit += RainWorld_OnModsInit;
             On.Player.ctor += Player_ctor;
-            On.Player.Grabability += Player_Grabability;
-        }
-
-        private Player.ObjectGrabability Player_Grabability(On.Player.orig_Grabability orig, Player self, PhysicalObject obj)
-        {
-            if (self.slugcatStats.name == Plugin.PhotoName)
-            {
-                return Player.ObjectGrabability.OneHand;
-            }
-            if (!(obj is Spear))
-            {
-                return Player.ObjectGrabability.OneHand;
-            }
-            return Player.ObjectGrabability.BigOneHand;
         }
 
         private void Player_ctor(On.Player.orig_ctor orig, Player self, AbstractCreature abstractCreature, World world)
