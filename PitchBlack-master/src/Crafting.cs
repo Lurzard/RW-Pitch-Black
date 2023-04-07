@@ -36,6 +36,16 @@ namespace SlugTemplate
             On.Player.CraftingResults += Player_CraftingResults;
             On.PlayerGraphics.DrawSprites += PlayerGraphics_DrawSprites;
             On.RainWorld.OnModsInit += RainWorld_OnModsInit;
+            On.Player.ctor += Player_ctor;
+        }
+
+        private void Player_ctor(On.Player.orig_ctor orig, Player self, AbstractCreature abstractCreature, World world)
+        {
+            orig(self, abstractCreature, world);
+            if (self.slugcatStats.name == Plugin.PhotoName)
+            {
+                self.playerState.isPup = true;
+            }
         }
 
         private void RainWorld_OnModsInit(On.RainWorld.orig_OnModsInit orig, RainWorld self)
@@ -47,15 +57,18 @@ namespace SlugTemplate
         private void PlayerGraphics_DrawSprites(On.PlayerGraphics.orig_DrawSprites orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
         {
             orig(self, sLeaser, rCam, timeStacker, camPos);
-            var fsprite = sLeaser.sprites[3];
-            if (fsprite?.element?.name is string text && text.StartsWith("Head"))
+            if (self.player.slugcatStats.name == Plugin.BeaconName || self.player.slugcatStats.name == Plugin.PhotoName)
             {
-                foreach (var atlas in Futile.atlasManager._atlases)
+                var fsprite = sLeaser.sprites[3];
+                if (fsprite?.element?.name is string text && text.StartsWith("Head"))
                 {
-                    if (atlas._elementsByName.TryGetValue("Beacon" + text, out var element))
+                    foreach (var atlas in Futile.atlasManager._atlases)
                     {
-                        fsprite.element = element;
-                        break;
+                        if (atlas._elementsByName.TryGetValue("Beacon" + text, out var element))
+                        {
+                            fsprite.element = element;
+                            break;
+                        }
                     }
                 }
             }
