@@ -1,0 +1,756 @@
+{
+  "frames": {
+    "BeaconHeadA0.png": {
+      "frame": {
+        "x": 26,
+        "y": 219,
+        "w": 26,
+        "h": 26
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "BeaconHeadA1.png": {
+      "frame": {
+        "x": 0,
+        "y": 11,
+        "w": 26,
+        "h": 26
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "BeaconHeadA10.png": {
+      "frame": {
+        "x": 26,
+        "y": 11,
+        "w": 26,
+        "h": 26
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "BeaconHeadA11.png": {
+      "frame": {
+        "x": 0,
+        "y": 37,
+        "w": 26,
+        "h": 26
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "BeaconHeadA12.png": {
+      "frame": {
+        "x": 26,
+        "y": 37,
+        "w": 26,
+        "h": 26
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "BeaconHeadA13.png": {
+      "frame": {
+        "x": 0,
+        "y": 63,
+        "w": 26,
+        "h": 26
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "BeaconHeadA14.png": {
+      "frame": {
+        "x": 26,
+        "y": 63,
+        "w": 26,
+        "h": 26
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "BeaconHeadA15.png": {
+      "frame": {
+        "x": 0,
+        "y": 89,
+        "w": 26,
+        "h": 26
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "BeaconHeadA16.png": {
+      "frame": {
+        "x": 26,
+        "y": 89,
+        "w": 26,
+        "h": 26
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "BeaconHeadA17.png": {
+      "frame": {
+        "x": 0,
+        "y": 115,
+        "w": 26,
+        "h": 26
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "BeaconHeadA2.png": {
+      "frame": {
+        "x": 26,
+        "y": 115,
+        "w": 26,
+        "h": 26
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "BeaconHeadA3.png": {
+      "frame": {
+        "x": 0,
+        "y": 141,
+        "w": 26,
+        "h": 26
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "BeaconHeadA4.png": {
+      "frame": {
+        "x": 26,
+        "y": 141,
+        "w": 26,
+        "h": 26
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "BeaconHeadA5.png": {
+      "frame": {
+        "x": 0,
+        "y": 167,
+        "w": 26,
+        "h": 26
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "BeaconHeadA6.png": {
+      "frame": {
+        "x": 26,
+        "y": 167,
+        "w": 26,
+        "h": 26
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "BeaconHeadA7.png": {
+      "frame": {
+        "x": 0,
+        "y": 193,
+        "w": 26,
+        "h": 26
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "BeaconHeadA8.png": {
+      "frame": {
+        "x": 26,
+        "y": 193,
+        "w": 26,
+        "h": 26
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "BeaconHeadA9.png": {
+      "frame": {
+        "x": 0,
+        "y": 219,
+        "w": 26,
+        "h": 26
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "BeaconHeadC0.png": {
+      "frame": {
+        "x": 26,
+        "y": 437,
+        "w": 26,
+        "h": 24
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 24
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 24
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "BeaconHeadC1.png": {
+      "frame": {
+        "x": 0,
+        "y": 245,
+        "w": 26,
+        "h": 24
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 24
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 24
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "BeaconHeadC10.png": {
+      "frame": {
+        "x": 26,
+        "y": 245,
+        "w": 26,
+        "h": 24
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 24
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 24
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "BeaconHeadC11.png": {
+      "frame": {
+        "x": 0,
+        "y": 269,
+        "w": 26,
+        "h": 24
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 24
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 24
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "BeaconHeadC12.png": {
+      "frame": {
+        "x": 26,
+        "y": 269,
+        "w": 26,
+        "h": 24
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 24
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 24
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "BeaconHeadC13.png": {
+      "frame": {
+        "x": 0,
+        "y": 293,
+        "w": 26,
+        "h": 24
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 24
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 24
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "BeaconHeadC14.png": {
+      "frame": {
+        "x": 26,
+        "y": 293,
+        "w": 26,
+        "h": 24
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 24
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 24
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "BeaconHeadC15.png": {
+      "frame": {
+        "x": 0,
+        "y": 317,
+        "w": 26,
+        "h": 24
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 24
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 24
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "BeaconHeadC16.png": {
+      "frame": {
+        "x": 26,
+        "y": 317,
+        "w": 26,
+        "h": 24
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 24
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 24
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "BeaconHeadC17.png": {
+      "frame": {
+        "x": 0,
+        "y": 341,
+        "w": 26,
+        "h": 24
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 24
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 24
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "BeaconHeadC2.png": {
+      "frame": {
+        "x": 26,
+        "y": 341,
+        "w": 26,
+        "h": 24
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 24
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 24
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "BeaconHeadC3.png": {
+      "frame": {
+        "x": 0,
+        "y": 365,
+        "w": 26,
+        "h": 24
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 24
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 24
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "BeaconHeadC4.png": {
+      "frame": {
+        "x": 26,
+        "y": 365,
+        "w": 26,
+        "h": 24
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 24
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 24
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "BeaconHeadC5.png": {
+      "frame": {
+        "x": 0,
+        "y": 389,
+        "w": 26,
+        "h": 24
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 24
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 24
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "BeaconHeadC6.png": {
+      "frame": {
+        "x": 26,
+        "y": 389,
+        "w": 26,
+        "h": 24
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 24
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 24
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "BeaconHeadC7.png": {
+      "frame": {
+        "x": 0,
+        "y": 413,
+        "w": 26,
+        "h": 24
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 24
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 24
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "BeaconHeadC8.png": {
+      "frame": {
+        "x": 26,
+        "y": 413,
+        "w": 26,
+        "h": 24
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 24
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 24
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "BeaconHeadC9.png": {
+      "frame": {
+        "x": 0,
+        "y": 437,
+        "w": 26,
+        "h": 24
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 24
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 24
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "logo.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 28,
+        "h": 11
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 28,
+        "h": 11
+      },
+      "sourceSize": {
+        "w": 28,
+        "h": 11
+      },
+      "rotated": false,
+      "trimmed": false
+    }
+  },
+  "meta": {
+    "app": "https://www.codeandweb.com/texturepacker",
+    "version": "1.0",
+    "image": "beaconatlas.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 461,
+      "h": 52
+    }
+  },
+  "scale": "1",
+  "smartupdate": "$TexturePacker:SmartUpdate:5761ec5a61376a8f106fae181e882501:a5d49ecc34da58e175b8e26d5f313dd6:8123f47b64fa2dc7b5a3a9ef956bf51e$"
+}

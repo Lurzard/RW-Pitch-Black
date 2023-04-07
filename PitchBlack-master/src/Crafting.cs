@@ -3,6 +3,10 @@ using BepInEx;
 using UnityEngine;
 using SlugBase.Features;
 using static SlugBase.Features.FeatureTypes;
+using System.Security.Permissions;
+
+#pragma warning disable CS0618 // Do not remove the following line.
+[assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
 
 namespace SlugTemplate
 {
@@ -30,6 +34,31 @@ namespace SlugTemplate
             On.Player.GraspsCanBeCrafted += Player_GraspsCanBeCrafted;
             On.Player.SpitUpCraftedObject += Player_SpitUpCraftedObject;
             On.Player.CraftingResults += Player_CraftingResults;
+            On.PlayerGraphics.DrawSprites += PlayerGraphics_DrawSprites;
+            On.RainWorld.OnModsInit += RainWorld_OnModsInit;
+        }
+
+        private void RainWorld_OnModsInit(On.RainWorld.orig_OnModsInit orig, RainWorld self)
+        {
+            orig(self);
+            Futile.atlasManager.LoadAtlas("atlases/beaconatlas");
+        }
+
+        private void PlayerGraphics_DrawSprites(On.PlayerGraphics.orig_DrawSprites orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
+        {
+            orig(self, sLeaser, rCam, timeStacker, camPos);
+            var fsprite = sLeaser.sprites[3];
+            if (fsprite?.element?.name is string text && text.StartsWith("Head"))
+            {
+                foreach (var atlas in Futile.atlasManager._atlases)
+                {
+                    if (atlas._elementsByName.TryGetValue("Beacon" + text, out var element))
+                    {
+                        fsprite.element = element;
+                        break;
+                    }
+                }
+            }
         }
 
         //Crafting
