@@ -222,7 +222,7 @@ namespace SlugTemplate
             room.AddObject(new ShockWave(pos, 330f, 0.045f, 5, false));
 
             room.ScreenMovement(pos, default, 1.3f);
-            room.PlaySound(SoundID.Zapper_Zap, pos);
+            room.PlaySound(SoundID.Flare_Bomb_Burn, pos);
             room.InGameNoise(new Noise.InGameNoise(pos, 9000f, self, 1f));
             //AstractConsumable bomb = new AbstractConsumable(self.room.world, AbstractConsumable.AbstractObjectType.FlareBomb, null, self.coord, self, self.room.world.game.GetNewID(), -1);
             //bomb.RealizeInRoom();
