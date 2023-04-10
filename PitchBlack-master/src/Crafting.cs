@@ -28,7 +28,6 @@ namespace SlugTemplate
 
             // Put your custom hooks here!
             On.Player.Jump += Player_Jump;
-            On.Player.Die += Player_Die;
             On.Lizard.ctor += Lizard_ctor;
             On.Player.GraspsCanBeCrafted += Player_GraspsCanBeCrafted;
             On.Player.SpitUpCraftedObject += Player_SpitUpCraftedObject;
@@ -203,30 +202,6 @@ namespace SlugTemplate
             {
                 self.jumpBoost *= 1f + power;
             }
-        }
-
-        // Implement ExlodeOnDeath
-        private void Player_Die(On.Player.orig_Die orig, Player self)
-        {
-            if (self.slugcatStats.name == Plugin.PhotoName)
-                orig(self);
-
-            bool wasDead = self.dead;
-            var room = self.room;
-            var pos = self.mainBodyChunk.pos;
-            var color = self.ShortCutColor();
-            room.AddObject(new Explosion(room, self, pos, 7, 250f, 6.2f, 2f, 280f, 0.25f, self, 0.7f, 160f, 1f));
-            room.AddObject(new Explosion.ExplosionLight(pos, 280f, 1f, 7, color));
-            room.AddObject(new Explosion.ExplosionLight(pos, 230f, 1f, 3, new Color(1f, 1f, 1f)));
-            room.AddObject(new ExplosionSpikes(room, pos, 14, 30f, 9f, 7f, 170f, color));
-            room.AddObject(new ShockWave(pos, 330f, 0.045f, 5, false));
-
-            room.ScreenMovement(pos, default, 1.3f);
-            room.PlaySound(SoundID.Flare_Bomb_Burn, pos);
-            room.InGameNoise(new Noise.InGameNoise(pos, 9000f, self, 1f));
-            //AstractConsumable bomb = new AbstractConsumable(self.room.world, AbstractConsumable.AbstractObjectType.FlareBomb, null, self.coord, self, self.room.world.game.GetNewID(), -1);
-            //bomb.RealizeInRoom();
-            //self.room.AddObject(bomb.realizedConsumable);
         }
     }
 }
