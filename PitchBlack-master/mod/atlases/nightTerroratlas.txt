@@ -1,0 +1,36 @@
+{
+  "frames": {
+    "Night_Terror.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 31,
+        "h": 23
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 31,
+        "h": 23
+      },
+      "sourceSize": {
+        "w": 31,
+        "h": 23
+      },
+      "rotated": false,
+      "trimmed": false
+    }
+  },
+  "meta": {
+    "app": "https://www.codeandweb.com/texturepacker",
+    "version": "1.0",
+    "image": "nightTerroratlas.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 23,
+      "h": 31
+    }
+  },
+  "scale": "1",
+  "smartupdate": "$TexturePacker:SmartUpdate:5761ec5a61376a8f106fae181e882501:a5d49ecc34da58e175b8e26d5f313dd6:8123f47b64fa2dc7b5a3a9ef956bf51e$"
+}

@@ -25,7 +25,6 @@ namespace SlugTemplate
         // Add hooks
         public void OnEnable()
         {
-            On.RainWorld.OnModsInit += Extras.WrapInit(LoadResources);
 
             // Put your custom hooks here!
             On.Player.Jump += Player_Jump;
@@ -37,6 +36,20 @@ namespace SlugTemplate
             On.PlayerGraphics.DrawSprites += PlayerGraphics_DrawSprites;
             On.RainWorld.OnModsInit += RainWorld_OnModsInit;
             On.Player.ctor += Player_ctor;
+            On.Player.Grabability += Player_Grabability;
+        }
+
+        private Player.ObjectGrabability Player_Grabability(On.Player.orig_Grabability orig, Player self, PhysicalObject obj)
+        {
+            var result = orig(self, obj);
+            if (self.slugcatStats.name == Plugin.PhotoName)
+            {
+                if (obj is Weapon)
+                {
+                    return Player.ObjectGrabability.OneHand;
+                }
+            }
+            return result;
         }
 
         private void Player_ctor(On.Player.orig_ctor orig, Player self, AbstractCreature abstractCreature, World world)
@@ -165,14 +178,9 @@ namespace SlugTemplate
 
         private bool Player_GraspsCanBeCrafted(On.Player.orig_GraspsCanBeCrafted orig, Player self)
         {
-            if (self.slugcatStats.name == Plugin.BeaconName || self.slugcatStats.name == Plugin.BeaconName && self.input[0].y > 0) return true;
+            if (self.slugcatStats.name == Plugin.BeaconName || self.slugcatStats.name == Plugin.PhotoName && self.input[0].y > 0) return true;
             return orig(self);
         } // Allow crafts
-
-        // Load any resources, such as sprites or sounds
-        private void LoadResources(RainWorld rainWorld)
-        {
-        }
 
         // Implement MeanLizards
         private void Lizard_ctor(On.Lizard.orig_ctor orig, Lizard self, AbstractCreature abstractCreature, World world)
@@ -200,10 +208,10 @@ namespace SlugTemplate
         // Implement ExlodeOnDeath
         private void Player_Die(On.Player.orig_Die orig, Player self)
         {
-            bool wasDead = self.dead;
-            if (self.slugcatStats.name == Plugin.BeaconName || self.slugcatStats.name == Plugin.PhotoName)
+            if (self.slugcatStats.name == Plugin.PhotoName)
                 orig(self);
 
+            bool wasDead = self.dead;
             var room = self.room;
             var pos = self.mainBodyChunk.pos;
             var color = self.ShortCutColor();
@@ -214,7 +222,7 @@ namespace SlugTemplate
             room.AddObject(new ShockWave(pos, 330f, 0.045f, 5, false));
 
             room.ScreenMovement(pos, default, 1.3f);
-            room.PlaySound(SoundID.Flare_Bomb_Burn, pos);
+            room.PlaySound(SoundID.Zapper_Zap, pos);
             room.InGameNoise(new Noise.InGameNoise(pos, 9000f, self, 1f));
             //AstractConsumable bomb = new AbstractConsumable(self.room.world, AbstractConsumable.AbstractObjectType.FlareBomb, null, self.coord, self, self.room.world.game.GetNewID(), -1);
             //bomb.RealizeInRoom();
