@@ -9,7 +9,7 @@ using System.Security.Permissions;
 [module: UnverifiableCode]
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
 
-namespace NightTerror
+namespace PitchBlack
 {
     [BepInPlugin(_ID, nameof(NightTerror), "1.0.0")]
     sealed class NightTerrorPlugin : BaseUnityPlugin

@@ -4,6 +4,9 @@ using UnityEngine;
 using SlugBase.Features;
 using static SlugBase.Features.FeatureTypes;
 using System.Security.Permissions;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
+using PitchBlack;
 
 #pragma warning disable CS0618 // Do not remove the following line.
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -20,6 +23,7 @@ namespace SlugTemplate
         public static readonly GameFeature<float> MeanLizards = GameFloat("beacon/mean_lizards");
         public static readonly SlugcatStats.Name BeaconName = new SlugcatStats.Name("Beacon", false);
         public static readonly SlugcatStats.Name PhotoName = new SlugcatStats.Name("Photomaniac", false);
+        public static ConditionalWeakTable<Player, Beacon> bCon = new();
 
 
         // Add hooks
@@ -31,11 +35,72 @@ namespace SlugTemplate
             On.Lizard.ctor += Lizard_ctor;
             On.Player.GraspsCanBeCrafted += Player_GraspsCanBeCrafted;
             On.Player.SpitUpCraftedObject += Player_SpitUpCraftedObject;
-            On.Player.CraftingResults += Player_CraftingResults;
             On.PlayerGraphics.DrawSprites += PlayerGraphics_DrawSprites;
             On.RainWorld.OnModsInit += RainWorld_OnModsInit;
             On.Player.ctor += Player_ctor;
             On.Player.Grabability += Player_Grabability;
+            On.Player.SwallowObject += Player_SwallowObject;
+            On.Player.GrabUpdate += Player_GrabUpdate;
+            On.Player.ctor += Player_ctor1;
+            On.Player.GraphicsModuleUpdated += Player_GraphicsModuleUpdated;
+        }
+
+        private void Player_GraphicsModuleUpdated(On.Player.orig_GraphicsModuleUpdated orig, Player self, bool actuallyViewed, bool eu)
+        {
+            if (self.slugcatStats.name == Plugin.BeaconName)
+            {
+                if (bCon.TryGetValue(self, out Beacon b))
+                {
+                    if (b.storage != null)
+                    {
+                        b.storage.GraphicsModuleUpdated(actuallyViewed, eu);
+                    }
+                }
+            }
+            orig(self, actuallyViewed, eu);
+        }
+
+        private void Player_GrabUpdate(On.Player.orig_GrabUpdate orig, Player self, bool eu)
+        {
+            orig(self, eu);
+            if (self.slugcatStats.name == Plugin.BeaconName)
+            {
+                if (bCon.TryGetValue(self, out Beacon b))
+                {
+                    if (b.storage != null)
+                    {
+                        b.storage.increment = self.input[0].pckp;
+                        b.storage.Update(eu);
+                    }
+                }
+            }
+        }
+
+        private void Player_ctor1(On.Player.orig_ctor orig, Player self, AbstractCreature abstractCreature, World world)
+        {
+            orig(self,abstractCreature,world);
+            if (self.slugcatStats.name == Plugin.BeaconName)
+            {
+                bCon.Add(self, new Beacon (self));
+                
+            }
+            if(!bCon.TryGetValue(self, out Beacon b))
+            {
+
+            }
+        }
+
+        private void Player_SwallowObject(On.Player.orig_SwallowObject orig, Player self, int grasp)
+        {
+            orig(self, grasp);
+            if (self.slugcatStats.name == Plugin.BeaconName || self.slugcatStats.name == PhotoName)
+            {
+                if (self.objectInStomach.type == AbstractPhysicalObject.AbstractObjectType.Rock)
+                {
+                    self.objectInStomach = new AbstractConsumable(self.room.world, AbstractPhysicalObject.AbstractObjectType.FlareBomb, null, self.room.GetWorldCoordinate(self.firstChunk.pos), self.room.game.GetNewID(), -1, -1, null);
+                    self.SubtractFood(1);
+                }
+            }
         }
 
         private Player.ObjectGrabability Player_Grabability(On.Player.orig_Grabability orig, Player self, PhysicalObject obj)
@@ -43,6 +108,19 @@ namespace SlugTemplate
             var result = orig(self, obj);
             if (self.slugcatStats.name == Plugin.PhotoName)
             {
+                if (bCon.TryGetValue(self, out Beacon b))
+                {
+                    if (b.storage != null && obj is FlareBomb flare)
+                    {
+                        foreach (FlareBomb storedFlare in b.storage.storedFlares)
+                        {
+                            if (storedFlare == flare)
+                            {
+                                return Player.ObjectGrabability.CantGrab;
+                            }
+                        }
+                    }
+                }
                 if (obj is Weapon)
                 {
                     return Player.ObjectGrabability.OneHand;
@@ -86,29 +164,6 @@ namespace SlugTemplate
             }
         }
 
-        //Crafting
-        private AbstractPhysicalObject.AbstractObjectType Player_CraftingResults(On.Player.orig_CraftingResults orig, Player self)
-        {
-            if (self.slugcatStats.name == Plugin.BeaconName || self.slugcatStats.name == Plugin.PhotoName)
-            {
-                if (self.FoodInStomach > 0)
-                {
-                    Creature.Grasp[] array = self.grasps;
-                    for (int i = 0; i < array.Length; i++)
-                    {
-                        if (array[0].grabbed is IPlayerEdible && (array[0].grabbed as IPlayerEdible).Edible &&
-                   array[1].grabbed is IPlayerEdible && (array[1].grabbed as IPlayerEdible).Edible) return null;
-                    }
-                    if (array[0].grabbed is Rock) return AbstractPhysicalObject.AbstractObjectType.FlareBomb;
-                    if (array[1].grabbed is Rock) return AbstractPhysicalObject.AbstractObjectType.FlareBomb;
-                    if (array[0].grabbed is Spear && !(array[0].grabbed as Spear).bugSpear && !(array[0].grabbed as Spear).abstractSpear.electric && !(array[0].grabbed as Spear).abstractSpear.explosive) return AbstractPhysicalObject.AbstractObjectType.Spear;
-                    if (array[1].grabbed is Spear && !(array[1].grabbed as Spear).bugSpear && !(array[1].grabbed as Spear).abstractSpear.electric && !(array[1].grabbed as Spear).abstractSpear.explosive) return AbstractPhysicalObject.AbstractObjectType.Spear;
-                    return null;
-                }
-            }
-           return orig(self);
-        }
-
         //Arti Crafting
         private void Player_SpitUpCraftedObject(On.Player.orig_SpitUpCraftedObject orig, Player player)
         {
@@ -116,63 +171,31 @@ namespace SlugTemplate
             {
                 for (int i = 0; i < player.grasps.Length; i++)
                 {
-                    if (player.grasps[i] != null)
-                    {
-                        AbstractPhysicalObject hands = player.grasps[i].grabbed.abstractPhysicalObject;
-                        AbstractPhysicalObject hands1 = player.grasps[0].grabbed.abstractPhysicalObject;
-                        AbstractPhysicalObject hands2 = player.grasps[1].grabbed.abstractPhysicalObject;
-                        if (hands1.type== AbstractPhysicalObject.AbstractObjectType.Spear && !(hands1 as AbstractSpear).explosive)
-                        {
-                            AbstractSpear abstractSpear = ElectricSpearCrafting(player, i, hands1);
-                            if (player.FreeHand() != -1)
-                            {
-                                player.SlugcatGrab(abstractSpear.realizedObject, player.FreeHand());
-                            }
-                            return;
-                        }
-                        else if (hands2.type == AbstractPhysicalObject.AbstractObjectType.Spear && !(hands2 as AbstractSpear).explosive)
-                        {
-                            AbstractSpear abstractSpear = ElectricSpearCrafting(player, i, hands2);
-                            if (player.FreeHand() != -1)
-                            {
-                                player.SlugcatGrab(abstractSpear.realizedObject, player.FreeHand());
-                            }
-                            return;
-                        }
-                        if (hands1.type == AbstractPhysicalObject.AbstractObjectType.Rock)
-                        {
-                            player.ReleaseGrasp(i);
-                            hands1.realizedObject.RemoveFromRoom();
-                            player.room.abstractRoom.RemoveEntity(hands1);
-                            player.SubtractFood(1);
-                            AbstractPhysicalObject abstractObject = new AbstractPhysicalObject(player.room.world, AbstractPhysicalObject.AbstractObjectType.FlareBomb, null, player.abstractCreature.pos, player.room.game.GetNewID());
-                            player.room.abstractRoom.AddEntity(abstractObject);
-                            abstractObject.RealizeInRoom();
-                            if (player.FreeHand() != -1)
-                            {
-                                player.SlugcatGrab(abstractObject.realizedObject, player.FreeHand());
-                            }
-                            return;
-                        }
+                    AbstractPhysicalObject hands = player.grasps[i].grabbed.abstractPhysicalObject;
 
+                    if (hands is AbstractSpear spear && !spear.explosive)
+                    {
+                        if (player.room.game.session is StoryGameSession story)
+                            story.RemovePersistentTracker(hands);
+
+                        player.ReleaseGrasp(i);
+
+                        hands.LoseAllStuckObjects();
+                        hands.realizedObject.RemoveFromRoom();
+                        player.room.abstractRoom.RemoveEntity(hands);
+
+                        AbstractPhysicalObject abstractSpear = new AbstractSpear(player.room.world, null, player.abstractPhysicalObject.pos, player.room.game.GetNewID(), false, true);
+
+                        player.room.abstractRoom.AddEntity(abstractSpear);
+                        abstractSpear.RealizeInRoom();
+
+                        if (-1 != player.FreeHand())
+                            player.SlugcatGrab(abstractSpear.realizedObject, player.FreeHand());
                     }
                 }
+                return;
             }
-        }
-
-        //Extracted method for crafting electric spears
-        private static AbstractSpear ElectricSpearCrafting(Player player, int i, AbstractPhysicalObject hands1)
-        {
-            player.ReleaseGrasp(i);
-            hands1.realizedObject.RemoveFromRoom();
-            player.room.abstractRoom.RemoveEntity(hands1);
-            player.SubtractFood(1);
-            AbstractSpear abstractSpear = new AbstractSpear(player.room.world, null, player.abstractCreature.pos, player.room.game.GetNewID(), false, true);
-           // abstractSpear.explosive = false;
-           // abstractSpear.electric = true;
-            player.room.abstractRoom.AddEntity(abstractSpear);
-            abstractSpear.RealizeInRoom();
-            return abstractSpear;
+            orig(player);
         }
 
         private bool Player_GraspsCanBeCrafted(On.Player.orig_GraspsCanBeCrafted orig, Player self)
