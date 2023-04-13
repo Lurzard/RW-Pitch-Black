@@ -11,7 +11,7 @@ using System.Security.Permissions;
 
 namespace PitchBlack
 {
-    [BepInPlugin(_ID, nameof(NightTerror), "1.0.0")]
+    [BepInPlugin(_ID, nameof(PitchBlack), "1.0.0")]
     sealed class NightTerrorPlugin : BaseUnityPlugin
     {
         [AllowNull] internal static ManualLogSource logger;

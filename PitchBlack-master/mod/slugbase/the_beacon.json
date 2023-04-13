@@ -45,7 +45,7 @@
 
 		"karma": 4,
 		"karma_cap": 4,
-		"start_room": "SS_AI",
+		"start_room": "LM_D06",
 		"guide_overseer": 5,
 		"has_dreams": false,
 		"perma_unlock_gates": true,
@@ -53,6 +53,7 @@
 		"food_max": 6,
 		"world_state": [ "Spearmaster", "Red" ],
 		"select_menu_scene": "Slugcat_Beacon",
-		"select_menu_scene_ascended": "Ghost_Beacon"
+		"select_menu_scene_ascended": "Ghost_Beacon",
+		"sleep_scene": "Sleep_Beacon"
 	}
 }

@@ -15,7 +15,7 @@ public class ChillTheFUCKOut
     public int timesZapped = 0;
 }
 
-namespace NightTerror
+namespace PitchBlack
 {
     static class Hooks
     {

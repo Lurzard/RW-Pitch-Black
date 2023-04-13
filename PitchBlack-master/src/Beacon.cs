@@ -44,7 +44,7 @@ namespace PitchBlack
             public int counter;
 
             // Change this to increase the number of flares stored
-            public int capacity = 5;
+            public int capacity = 4;
             public bool interactionLocked;
             public Stack<AbstractStoredFlare> abstractFlare;
 

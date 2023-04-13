@@ -43,6 +43,31 @@ namespace SlugTemplate
             On.Player.GrabUpdate += Player_GrabUpdate;
             On.Player.ctor += Player_ctor1;
             On.Player.GraphicsModuleUpdated += Player_GraphicsModuleUpdated;
+            On.Player.GrabUpdate += Player_GrabUpdate1;
+        }
+
+        private void Player_GrabUpdate1(On.Player.orig_GrabUpdate orig, Player self, bool eu)
+        {
+            orig(self, eu);
+            if (self.slugcatStats.name == Plugin.BeaconName)
+            {
+                if (bCon.TryGetValue(self, out Beacon b))
+                {
+                    for (int i = 0; i < 2; i++)
+                    {
+                        if (self.grasps[i] != null && self.grasps[i].grabbed is IPlayerEdible)
+                        {
+                            b.storage.interactionLocked = true;
+                            b.storage.counter = 0;
+                        }
+                    }
+                    if (b.storage != null)
+                    {
+                        b.storage.increment = self.input[0].pckp;
+                        b.storage.Update(eu);
+                    }
+                }
+            }
         }
 
         private void Player_GraphicsModuleUpdated(On.Player.orig_GraphicsModuleUpdated orig, Player self, bool actuallyViewed, bool eu)
@@ -93,7 +118,7 @@ namespace SlugTemplate
         private void Player_SwallowObject(On.Player.orig_SwallowObject orig, Player self, int grasp)
         {
             orig(self, grasp);
-            if (self.slugcatStats.name == Plugin.BeaconName || self.slugcatStats.name == PhotoName)
+            if (self.slugcatStats.name == Plugin.BeaconName)
             {
                 if (self.objectInStomach.type == AbstractPhysicalObject.AbstractObjectType.Rock)
                 {
@@ -106,7 +131,7 @@ namespace SlugTemplate
         private Player.ObjectGrabability Player_Grabability(On.Player.orig_Grabability orig, Player self, PhysicalObject obj)
         {
             var result = orig(self, obj);
-            if (self.slugcatStats.name == Plugin.PhotoName)
+            if (self.slugcatStats.name == Plugin.BeaconName)
             {
                 if (bCon.TryGetValue(self, out Beacon b))
                 {
@@ -121,6 +146,9 @@ namespace SlugTemplate
                         }
                     }
                 }
+            }
+            if (self.slugcatStats.name == Plugin.PhotoName)
+            {
                 if (obj is Weapon)
                 {
                     return Player.ObjectGrabability.OneHand;
@@ -167,7 +195,7 @@ namespace SlugTemplate
         //Arti Crafting
         private void Player_SpitUpCraftedObject(On.Player.orig_SpitUpCraftedObject orig, Player player)
         {
-            if (player.slugcatStats.name == Plugin.BeaconName || player.slugcatStats.name == Plugin.PhotoName)
+            if (player.slugcatStats.name == Plugin.PhotoName)
             {
                 for (int i = 0; i < player.grasps.Length; i++)
                 {
