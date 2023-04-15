@@ -27,7 +27,7 @@
 		"walk_speed": 1.65,
 		"crouch_stealth": [ 1.4, 1.0 ],
 		"throw_skill": 1,
-		"lung_capacity": [ 0.30, 1.1 ],
+		"lung_capacity": [ 3.335 ],
 		"loudness": [ 0.5, 1.0 ],
 		"diet": {
 			"base": "White",

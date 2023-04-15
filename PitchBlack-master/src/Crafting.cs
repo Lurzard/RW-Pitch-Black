@@ -120,6 +120,10 @@ namespace SlugTemplate
             orig(self, grasp);
             if (self.slugcatStats.name == Plugin.BeaconName)
             {
+                if (self.playerState.foodInStomach <= 0) 
+                { 
+                    return; 
+                }
                 if (self.objectInStomach.type == AbstractPhysicalObject.AbstractObjectType.Rock)
                 {
                     self.objectInStomach = new AbstractConsumable(self.room.world, AbstractPhysicalObject.AbstractObjectType.FlareBomb, null, self.room.GetWorldCoordinate(self.firstChunk.pos), self.room.game.GetNewID(), -1, -1, null);
@@ -200,7 +204,8 @@ namespace SlugTemplate
                 for (int i = 0; i < player.grasps.Length; i++)
                 {
                     AbstractPhysicalObject hands = player.grasps[i].grabbed.abstractPhysicalObject;
-
+                    if (player.playerState.foodInStomach <= 0) { return; }
+                    
                     if (hands is AbstractSpear spear && !spear.explosive)
                     {
                         if (player.room.game.session is StoryGameSession story)
