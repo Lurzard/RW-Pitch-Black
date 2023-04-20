@@ -24,6 +24,7 @@ namespace SlugTemplate
         public static readonly SlugcatStats.Name BeaconName = new SlugcatStats.Name("Beacon", false);
         public static readonly SlugcatStats.Name PhotoName = new SlugcatStats.Name("Photomaniac", false);
         public static ConditionalWeakTable<Player, Beacon> bCon = new();
+        public static ConditionalWeakTable<Player, Photo> pCon = new();
 
 
         // Add hooks
@@ -44,6 +45,27 @@ namespace SlugTemplate
             On.Player.ctor += Player_ctor1;
             On.Player.GraphicsModuleUpdated += Player_GraphicsModuleUpdated;
             On.Player.GrabUpdate += Player_GrabUpdate1;
+            On.Player.Update += Player_Update;
+        }
+
+        private void Player_Update(On.Player.orig_Update orig, Player self, bool eu)
+        {
+            if (!pCon.TryGetValue(self, out Photo e))
+            {
+                return;
+            }
+            // Parry
+            e.UpdateParryCD(self);
+            if (self.Consious && (self.canJump > 0 || self.wantToJump > 0) && self.input[0].pckp && (self.input[0].y < 0 || self.bodyMode == Player.BodyModeIndex.Crawl))
+            {
+                e.ThundahParry(self);
+            }
+
+            // Sparking when close to death VFX
+            if (self.room != null && e.parryNum > e.parryMax - 5)
+            {
+                self.room.AddObject(new Spark(self.mainBodyChunk.pos, RWCustom.Custom.RNV(), Color.white, null, 4, 8));
+            }
         }
 
         private void Player_GrabUpdate1(On.Player.orig_GrabUpdate orig, Player self, bool eu)
