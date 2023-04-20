@@ -50,8 +50,10 @@ namespace SlugTemplate
 
         private void Player_Update(On.Player.orig_Update orig, Player self, bool eu)
         {
+            orig(self, eu);
             if (!pCon.TryGetValue(self, out Photo e))
             {
+                Logger.LogDebug("dduheudfhfhueufihfuiefufefh");
                 return;
             }
             // Parry
@@ -132,6 +134,14 @@ namespace SlugTemplate
                 
             }
             if(!bCon.TryGetValue(self, out Beacon b))
+            {
+
+            }
+            if (self.slugcatStats.name == Plugin.PhotoName)
+            {
+                pCon.Add(self, new Photo());
+            }
+            if(!pCon.TryGetValue(self, out Photo p))
             {
 
             }

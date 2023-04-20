@@ -6,12 +6,17 @@ namespace PitchBlack
 {
     internal class Photo
     {
+        public Photo()
+        {
+
+        }
+
         public int parryCD = 0;
         public int parryNum = 0;
         public int parryMax = 10;
         public int parryClock = 240;
 
-        public void UpdateParryCD(Player self)
+        internal void UpdateParryCD(Player self)
         {
             if (this.parryCD > 0)
             {
