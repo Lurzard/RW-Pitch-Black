@@ -32,6 +32,7 @@
 			"meat": 1,
 			"plants": 0.5
 		},
+		"guide_overseer": 86,
 
 		"select_menu_scene": "Slugcat_Photo",
 		"select_menu_scene_ascended": "Ghost_Photo",

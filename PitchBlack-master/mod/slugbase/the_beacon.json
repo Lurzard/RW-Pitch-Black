@@ -46,7 +46,7 @@
 		"karma": 4,
 		"karma_cap": 4,
 		"start_room": "LM_D06",
-		"guide_overseer": 5,
+		"guide_overseer": 86,
 		"has_dreams": false,
 		"perma_unlock_gates": true,
 		"food_min": 6,

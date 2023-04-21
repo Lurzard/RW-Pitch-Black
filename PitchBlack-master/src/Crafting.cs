@@ -9,6 +9,8 @@ using System.Runtime.CompilerServices;
 using PitchBlack;
 using AbstractObjectType = AbstractPhysicalObject.AbstractObjectType;
 using MSC_AbstractObjectType = MoreSlugcats.MoreSlugcatsEnums.AbstractObjectType;
+using MonoMod.RuntimeDetour;
+using System.Reflection;
 
 #pragma warning disable CS0618 // Do not remove the following line.
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -54,6 +56,18 @@ namespace SlugTemplate
             On.Player.Update += Player_Update;
             On.Player.CanBeSwallowed += Player_CanBeSwallowed;
             On.Player.SwallowObject += Player_SwallowObject1;
+            Hook overseercolorhook = new Hook(typeof(OverseerGraphics).GetProperty("MainColor", BindingFlags.Instance | BindingFlags.Public).GetGetMethod(), typeof(Plugin).GetMethod("OverseerGraphics_MainColor_get", BindingFlags.Static | BindingFlags.Public));
+        }
+
+        public delegate Color orig_OverseerMainColor(OverseerGraphics self);
+        public static Color OverseerGraphics_MainColor_get(orig_OverseerMainColor orig, OverseerGraphics self)
+        {
+            Color res = orig(self);
+            if ((self.overseer.abstractCreature.abstractAI as OverseerAbstractAI).ownerIterator == 86)
+            {
+                res = new Color(0.19607843137f, 0.13725490196f, 0.43921568627f);
+            }
+            return res;
         }
 
         private void Player_SwallowObject1(On.Player.orig_SwallowObject orig, Player self, int grasp)
