@@ -48,13 +48,13 @@ namespace PitchBlack
             if (this.parryCD == 0)
             {
                 // Set cooldown
-                this.parryCD = 40;
+                this.parryCD = 160;
                 this.parryNum++;
 
                 // Ranges (for easy value change without needing to look through the code ;) )
                 float weaponRange = 300f;  // Artificer default
-                float creatureRange = 200f;  // Artificer default
-                float maxStunDuration = 280f;  // Each second is 40 ticks
+                float creatureRange = 300f;  // Artificer default
+                float maxStunDuration = 360f;  // Each second is 40 ticks
 
                 // Colors
                 Color explosionColor = new Color(0.7f, 1f, 1f);

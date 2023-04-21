@@ -51,7 +51,6 @@
 		"perma_unlock_gates": true,
 		"food_min": 6,
 		"food_max": 6,
-		"world_state": [ "Spearmaster", "Red" ],
 		"select_menu_scene": "Slugcat_Beacon",
 		"select_menu_scene_ascended": "Ghost_Beacon",
 		"sleep_scene": "Sleep_Beacon"

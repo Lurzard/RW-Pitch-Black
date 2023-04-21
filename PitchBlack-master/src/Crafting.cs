@@ -7,6 +7,8 @@ using System.Security.Permissions;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using PitchBlack;
+using AbstractObjectType = AbstractPhysicalObject.AbstractObjectType;
+using MSC_AbstractObjectType = MoreSlugcats.MoreSlugcatsEnums.AbstractObjectType;
 
 #pragma warning disable CS0618 // Do not remove the following line.
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -25,6 +27,10 @@ namespace SlugTemplate
         public static readonly SlugcatStats.Name PhotoName = new SlugcatStats.Name("Photomaniac", false);
         public static ConditionalWeakTable<Player, Beacon> bCon = new();
         public static ConditionalWeakTable<Player, Photo> pCon = new();
+        bool GraspIsNonElectricSpear(AbstractSpear spear)
+        {
+            return !(spear.explosive || spear.hue > 0 || spear.electric && spear.electricCharge >= 3);
+        }
 
 
         // Add hooks
@@ -34,8 +40,8 @@ namespace SlugTemplate
             // Put your custom hooks here!
             On.Player.Jump += Player_Jump;
             On.Lizard.ctor += Lizard_ctor;
-            On.Player.GraspsCanBeCrafted += Player_GraspsCanBeCrafted;
-            On.Player.SpitUpCraftedObject += Player_SpitUpCraftedObject;
+            //On.Player.GraspsCanBeCrafted += Player_GraspsCanBeCrafted;
+           //On.Player.SpitUpCraftedObject += Player_SpitUpCraftedObject;
             On.PlayerGraphics.DrawSprites += PlayerGraphics_DrawSprites;
             On.RainWorld.OnModsInit += RainWorld_OnModsInit;
             On.Player.ctor += Player_ctor;
@@ -46,6 +52,47 @@ namespace SlugTemplate
             On.Player.GraphicsModuleUpdated += Player_GraphicsModuleUpdated;
             On.Player.GrabUpdate += Player_GrabUpdate1;
             On.Player.Update += Player_Update;
+            On.Player.CanBeSwallowed += Player_CanBeSwallowed;
+            On.Player.SwallowObject += Player_SwallowObject1;
+        }
+
+        private void Player_SwallowObject1(On.Player.orig_SwallowObject orig, Player self, int grasp)
+        {
+            orig(self, grasp);
+
+            if (Plugin.PhotoName == self.slugcatStats.name && AbstractObjectType.Spear == self.objectInStomach.type && self.FoodInStomach > 0 && GraspIsNonElectricSpear(self.objectInStomach as AbstractSpear))
+            {
+                AddNewSpear(self, self.objectInStomach.ID);
+                self.objectInStomach = null;
+
+                if (self.grasps[1]?.grabbed.abstractPhysicalObject is AbstractSpear slugGrasp && GraspIsNonElectricSpear(slugGrasp))
+                {
+                    if (self.room.game.session is StoryGameSession story)
+                        story.RemovePersistentTracker(slugGrasp);
+
+                    self.ReleaseGrasp(1);
+
+                    slugGrasp.LoseAllStuckObjects();
+                    slugGrasp.realizedObject.RemoveFromRoom();
+                    self.room.abstractRoom.RemoveEntity(slugGrasp);
+                    AddNewSpear(self, slugGrasp.ID);
+                }
+            }
+        }
+        public static void AddNewSpear(Player player, EntityID entityID)
+        {
+            AbstractPhysicalObject item = new AbstractSpear(player.room.world, null, player.abstractPhysicalObject.pos, player.room.game.GetNewID(), false, true);
+
+            player.room.abstractRoom.AddEntity(item);
+            item.RealizeInRoom();
+            player.SubtractFood(1);
+            if (-1 != player.FreeHand())
+                player.SlugcatGrab(item.realizedObject, player.FreeHand());
+        }
+
+        private bool Player_CanBeSwallowed(On.Player.orig_CanBeSwallowed orig, Player self, PhysicalObject testObj)
+        {
+            return orig(self, testObj) || Plugin.PhotoName == self.slugcatStats.name && testObj is Spear spear && self.FoodInStomach > 0 && GraspIsNonElectricSpear(spear.abstractSpear);
         }
 
         private void Player_Update(On.Player.orig_Update orig, Player self, bool eu)
@@ -183,14 +230,7 @@ namespace SlugTemplate
                     }
                 }
             }
-            if (self.slugcatStats.name == Plugin.PhotoName)
-            {
-                if (obj is Weapon)
-                {
-                    return Player.ObjectGrabability.OneHand;
-                }
-            }
-            return result;
+            return self.slugcatStats.name == Plugin.PhotoName && obj is Weapon ? Player.ObjectGrabability.OneHand : orig(self, obj);
         }
 
         private void Player_ctor(On.Player.orig_ctor orig, Player self, AbstractCreature abstractCreature, World world)
