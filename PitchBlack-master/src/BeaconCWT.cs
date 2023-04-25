@@ -9,7 +9,7 @@ using JetBrains.Annotations;
 
 namespace PitchBlack
 {
-    public class Beacon
+    public class BeaconCWT
     {
         public FlareStore storage;
 
@@ -176,7 +176,7 @@ namespace PitchBlack
         }
 
 
-        public Beacon(Player player)
+        public BeaconCWT(Player player)
         {
             this.storage = new FlareStore(player);
         }

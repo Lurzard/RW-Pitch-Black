@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace PitchBlack
 {
-    internal class Photo
+    internal class PhotoCWT
     {
-        public Photo()
+        public PhotoCWT()
         {
 
         }

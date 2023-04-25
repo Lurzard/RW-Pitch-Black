@@ -1,0 +1,223 @@
+[FIND]X-
+[ADDAFTER]Beacon,Photo,
+[MERGE]
+CONDITIONAL LINKS
+Beacon,Photo : EXCLUSIVEROOM : GW_TOWER01
+Beacon,Photo : EXCLUSIVEROOM : GW_TOWER02
+Beacon,Photo : EXCLUSIVEROOM : GW_TOWER03
+Beacon,Photo : EXCLUSIVEROOM : GW_TOWER04
+Beacon,Photo : EXCLUSIVEROOM : GW_TOWER05
+Beacon,Photo : EXCLUSIVEROOM : GW_TOWER06
+Beacon,Photo : EXCLUSIVEROOM : GW_TOWER07
+Beacon,Photo : EXCLUSIVEROOM : GW_TOWER08
+Beacon,Photo : EXCLUSIVEROOM : GW_TOWER09
+Beacon,Photo : EXCLUSIVEROOM : GW_TOWER10
+Beacon,Photo : EXCLUSIVEROOM : GW_TOWER11
+Beacon,Photo : EXCLUSIVEROOM : GW_TOWER12
+Beacon,Photo : EXCLUSIVEROOM : GW_TOWER13
+Beacon,Photo : EXCLUSIVEROOM : GW_TOWER14
+Beacon,Photo : EXCLUSIVEROOM : GW_TOWER15
+Beacon,Photo : EXCLUSIVEROOM : GW_PIPE01
+Beacon,Photo : EXCLUSIVEROOM : GW_PIPE02
+Beacon,Photo : EXCLUSIVEROOM : GW_PIPE03
+Beacon,Photo : EXCLUSIVEROOM : GW_PIPE04
+Beacon,Photo : EXCLUSIVEROOM : GW_PIPE05
+Beacon,Photo : EXCLUSIVEROOM : GW_PIPE06
+Beacon,Photo : EXCLUSIVEROOM : GW_PIPE07
+Beacon,Photo : EXCLUSIVEROOM : GW_PIPE08
+Beacon,Photo : EXCLUSIVEROOM : GW_PIPE09
+Beacon,Photo : EXCLUSIVEROOM : GW_PIPE10
+Beacon,Photo : EXCLUSIVEROOM : GW_PIPE11
+Beacon,Photo : EXCLUSIVEROOM : GW_PIPE12
+Beacon,Photo : EXCLUSIVEROOM : GW_PIPE13
+Beacon,Photo : EXCLUSIVEROOM : GW_B01_PAST
+Beacon,Photo : EXCLUSIVEROOM : GW_A10_PAST
+Beacon,Photo : EXCLUSIVEROOM : GW_C10_PAST
+Beacon,Photo : EXCLUSIVEROOM : GW_C04_PAST
+Beacon,Photo : EXCLUSIVEROOM : GW_B06_PAST
+Beacon,Photo : EXCLUSIVEROOM : GW_C01_PAST
+Beacon,Photo : EXCLUSIVEROOM : GW_A11_PAST
+Beacon,Photo : EXCLUSIVEROOM : GW_A13_PAST
+Beacon,Photo : EXCLUSIVEROOM : GW_C02_PAST
+Beacon,Photo : EXCLUSIVEROOM : GW_D01_PAST
+Beacon,Photo : EXCLUSIVEROOM : GW_C06_PAST
+Beacon,Photo : EXCLUSIVEROOM : GW_C06_PAST
+Beacon,Photo : EXCLUSIVEROOM : GW_E02_PAST
+Beacon,Photo : EXCLUSIVEROOM : GW_B09_PAST
+Beacon,Photo : HIDEROOM : GW_B01
+Beacon,Photo : HIDEROOM : GW_A01
+Beacon,Photo : HIDEROOM : GW_A05
+Beacon,Photo : HIDEROOM : GW_A08
+Beacon,Photo : HIDEROOM : GW_A06
+Beacon,Photo : HIDEROOM : GW_D02
+Beacon,Photo : HIDEROOM : GW_C07
+Beacon,Photo : HIDEROOM : GW_C10
+Beacon,Photo : HIDEROOM : GW_A10
+Beacon,Photo : HIDEROOM : GW_A07
+Beacon,Photo : HIDEROOM : GW_B06
+Beacon,Photo : HIDEROOM : GW_B07
+Beacon,Photo : HIDEROOM : GW_C04
+Beacon,Photo : HIDEROOM : GW_A14
+Beacon,Photo : HIDEROOM : GW_C01
+Beacon,Photo : HIDEROOM : GW_B04
+Beacon,Photo : HIDEROOM : GW_A12
+Beacon,Photo : HIDEROOM : GW_A11
+Beacon,Photo : HIDEROOM : GW_A13
+Beacon,Photo : HIDEROOM : GW_C02
+Beacon,Photo : HIDEROOM : GW_B03
+Beacon,Photo : HIDEROOM : GW_D01
+Beacon,Photo : HIDEROOM : GW_C06
+Beacon,Photo : HIDEROOM : GW_E02
+Beacon,Photo : HIDEROOM : GW_B09
+
+Beacon,Photo : GW_B01 : GW_A01 : DISCONNECTED
+Beacon,Photo : GW_B01 : GATE_HI_GW : DISCONNECTED
+Beacon,Photo : GW_A01 : GW_B01 : DISCONNECTED
+Beacon,Photo : GATE_HI_GW : GW_B01 : GW_B01_PAST
+Beacon,Photo : GW_B01_PAST : 1 : GATE_HI_GW
+
+Beacon,Photo : GW_B06 : GW_A22 : DISCONNECTED
+Beacon,Photo : GW_B06 : GW_C08 : DISCONNECTED
+Beacon,Photo : GW_A22 : GW_B06 : GW_B06_PAST
+Beacon,Photo : GW_C08 : GW_B06 : GW_B06_PAST
+Beacon,Photo : GW_B06_PAST : 1 : GW_A22
+Beacon,Photo : GW_B06_PAST : 2 : GW_C08
+
+Beacon,Photo : GW_C10 : GW_E01 : DISCONNECTED
+Beacon,Photo : GW_E01 : GW_C10 : GW_C10_PAST
+Beacon,Photo : GW_C10_PAST : 1 : GW_E01
+
+Beacon,Photo : GW_C06 : GW_S02 : DISCONNECTED
+Beacon,Photo : GW_C06_PAST : 1 : GW_S02
+Beacon,Photo : GW_S02 : GW_C06 : GW_C06_PAST
+
+Beacon,Photo : GW_B02 : GW_E02 : GW_E02_PAST
+Beacon,Photo : GW_E02_PAST : 1 : GW_B02
+Beacon,Photo : GW_E02 : GW_B02 : DISCONNECTED
+
+Beacon,Photo : GW_A06 : GW_S01 : DISCONNECTED
+Beacon,Photo : GW_PIPE04 : 1 : GW_S01
+Beacon,Photo : GW_S01 : GW_A06 : GW_PIPE04
+
+Beacon,Photo : GW_C04 : GW_B08 : DISCONNECTED
+Beacon,Photo : GW_C04_PAST : 1 : GW_B08
+Beacon,Photo : GW_B08 : GW_C04 : GW_C04_PAST
+
+Beacon,Photo : GW_C04 : GW_C11 : DISCONNECTED
+Beacon,Photo : GW_C11 : GW_C04 : GW_TOWER04
+Beacon,Photo : GW_TOWER04 : 1 : GW_C11
+
+Beacon,Photo : GW_B07 : GW_A04 : DISCONNECTED
+Beacon,Photo : GW_A04 : GW_B07 : GW_PIPE12
+Beacon,Photo : GW_PIPE12 : 1 : GW_A04
+
+Beacon,Photo : GW_A11 : GW_S08 : DISCONNECTED
+Beacon,Photo : GW_S08 : GW_A11 : GW_A11_PAST
+Beacon,Photo : GW_A11_PAST : 2 : GW_S08
+
+Beacon,Photo : GW_A11 : GW_A19 : DISCONNECTED
+Beacon,Photo : GW_A19 : GW_A11 : GW_A11_PAST
+Beacon,Photo : GW_A11_PAST : 1 : GW_A19
+
+Beacon,Photo : GW_B09 : GATE_DS_GW : DISCONNECTED
+Beacon,Photo : GW_B09_PAST : 1 : GATE_DS_GW
+Beacon,Photo : GATE_DS_GW : GW_B09 : GW_B09_PAST
+END CONDITIONAL LINKS
+
+
+CREATURES
+
+(Beacon)OFFSCREEN : 0-Vulture-2, 0-KingVulture-2, 0-MirosVulture, 0-Scavenger-30, 0-Elite-1
+(Photo)OFFSCREEN : 0-Vulture-3, 0-KingVulture-2, 0-MirosVulture, 0-Scavenger-32, 0-Elite-2
+
+(Beacon)GW_A04 : 3-Small Centipede-3, 3-Centipede
+(Beacon)GW_A11_PAST : 4-Centipede-2, 5-Mimic-{12}
+(Beacon)GW_A25 : 3-Mouse-5, 5-BigSpider
+(Beacon)GW_B01_PAST : 7-Leech-10, 10-Garbage Worm-2, 4-CicadaB-2, 4-CicadaA
+(Beacon)GW_B02 : 4-White-2, 4-Eel-{PreCycle}
+(Beacon)GW_B06_PAST : 2-SpitterSpider
+(Beacon)GW_B08 : 2-CicadaB-2, 3-CicadaA, 6-BigSpider-2
+(Beacon)GW_B09_PAST : 2-Leech-10, 4-Snail-2, 7-Garbage Worm-2
+(Beacon)GW_C01_PAST : 5-Leech-7, 7-Leech-7, 2-CicadaB-3, 3-CicadaA-2
+(Beacon)GW_C02_PAST : 13-Garbage Worm-4, 2-CicadaB-3, 3-Cyan, 9-Leech-7, 6-TentaclePlant-{PreCycle}, 6-Scavenger-{PreCycle,Seed:2837}
+(Beacon)GW_C03 : 3-BigSpider
+(Beacon)GW_C04_PAST : 15-Garbage Worm-2, 7-Leech-3, 9-Leech-3, 11-Salamander-2-{PreCycle}
+(Beacon)GW_C05 : 2-Mouse-5, 3-Mouse-5
+(Beacon)GW_C06_PAST : 3-Cyan-2, 4-BigSpider, 8-Dropbug
+(Beacon)GW_C08 : 3-Leech-10, 5-Snail-4, 3-Eel-{PreCycle}
+(Beacon)GW_C09 : 4-Leech-15, 5-Leech-10
+(Beacon)GW_D01_PAST : 7-Leech-8, 16-Garbage Worm-5, 5-Cyan-2, 8-Leech-7
+(Beacon)GW_E01 : 2-MotherSpider, 3-BigSpider, 4-SpitterSpider, 7-Snail
+(Beacon)GW_E02_PAST : 7-Yellow-3, 8-Black, 5-Mimic-{14}, 3-CicadaB-3, 4-CicadaA-2, 18-Garbage Worm-3
+(Beacon)GW_EDGE02 : 3-BigSpider, 4-MotherSpider, 5-Leech-12, 8-Leech-6
+(Beacon)GW_EDGE03 : 17-Leech-9, 18-Leech-12, 5-DropBug-2, 7-CicadaB-3, 8-Mouse-5, 17-Salamander-{PreCycle}, 18-Salamander-{PreCycle}
+(Beacon)GW_EDGE04 : 3-BigSpider-2, 6-Mouse-2
+(Beacon)GW_EDGE05 : 2-White
+(Beacon)GW_PIPE02 : 3-Leech-6, 4-Snail-2
+(Beacon)GW_PIPE03 : 2-White
+(Beacon)GW_PIPE05 : 5-Centipede, 6-Small Centipede-3
+(Beacon)GW_PIPE07 : 4-Big Spider-2, 4-SpitterSpider
+(Beacon)GW_PIPE09 : 2-Centipede, 2-Small Centipede-3
+(Beacon)GW_PIPE12 : 5-Leech-12
+(Beacon)GW_PIPE13 : 2-CicadaA-3, 3-CicadaB-6, 5-Leech-5, 4-Leech-8
+(Beacon)GW_TOWER01 : 3-Mouse-5
+(Beacon)GW_TOWER03 : 3-Leech-7, 2-Leech-5
+(Beacon)GW_TOWER04 : 3-MotherSpider
+(Beacon)GW_TOWER05 : 5-White
+(Beacon)GW_TOWER07 : 3-Dropwig, 7-White
+(Beacon)GW_TOWER08 : 3-Cyan-2
+(Beacon)GW_TOWER10 : 5-nightterror, 3-Blue
+(Beacon)GW_TOWER11 : 3-SpitterSpider-2
+(Beacon)GW_TOWER15 : 3-CicadaA-2, 4-CicadaB-3
+(Beacon)LINEAGE : GW_A11_PAST : 4 : Centipede-{0.4}-0.5, Centipede-{0.7}-0.5, RedCentipede-0
+(Beacon)LINEAGE : GW_C03 : 5 : Black-0.2, Green-0.2, Yellow-0.5, Red-0
+(Beacon)LINEAGE : GW_C04_PAST : 2 : EggBug-1.0, Cyan-0
+(Beacon)LINEAGE : GW_E02_PAST : 6 : NONE-0.05, Mimic-{17}-0.5, Mimic-{21}-0.5, TentaclePlant-0
+(Beacon)LINEAGE : GW_TOWER02 : 4 : Blue-1, None-0
+
+(Photo)GW_A04 : 3-Small Centipede-2, 3-Centipede-2
+(Photo)GW_A11_PAST : 4-Centipede-2, 5-Mimic-{12}
+(Photo)GW_A25 : 3-Mouse-5, 5-BigSpider
+(Photo)GW_B01_PAST : 7-Leech-10, 10-Garbage Worm-2, 4-CicadaB-2, 4-CicadaA
+(Photo)GW_B02 : 4-White-2, 4-RedCenti, 4-Eel-{PreCycle}
+(Photo)GW_B06_PAST : 2-SpitterSpider
+(Photo)GW_B08 : 2-CicadaB-2, 3-CicadaA, 6-BigSpider-2
+(Photo)GW_B09_PAST : 2-Leech-10, 4-Snail-2, 7-Garbage Worm-2
+(Photo)GW_C01_PAST : 5-Leech-7, 7-Leech-7, 2-CicadaB-3, 3-CicadaA-2
+(Photo)GW_C02_PAST : 13-Garbage Worm-4, 2-CicadaB-3, 3-Cyan, 9-Leech-7, 6-TentaclePlant-{PreCycle}, 6-Scavenger-{PreCycle,Seed:2837}
+(Photo)GW_C03 : 3-BigSpider-3
+(Photo)GW_C04_PAST : 15-Garbage Worm-2, 7-Leech-3, 9-Leech-3, 11-Salamander-2-{PreCycle}
+(Photo)GW_C05 : 2-Mouse-5, 2-White, 3-Mouse-5, 3-White
+(Photo)GW_C06_PAST : 3-Cyan-2, 4-BigSpider-2, 8-Dropbug
+(Photo)GW_C08 : 3-Leech-10, 5-Snail-4, 3-Eel-{PreCycle}
+(Photo)GW_C09 : 4-Leech-15, 5-Leech-10
+(Photo)GW_D01_PAST : 7-Leech-8, 16-Garbage Worm-5, 5-Cyan-2, 8-Leech-7
+(Photo)GW_E01 : 2-MotherSpider, 3-BigSpider-2, 4-SpitterSpider, 7-Snail
+(Photo)GW_E02_PAST : 7-Yellow-3, 8-Black, 5-Mimic-{14}, 3-CicadaB-3, 4-CicadaA-2, 18-Garbage Worm-3
+(Photo)GW_EDGE02 : 3-BigSpider, 4-MotherSpider, 5-Leech-12, 8-Leech-6
+(PHoto)GW_EDGE03 : 17-Leech-9, 18-Leech-12, 5-DropBug-2, 7-CicadaB-3, 8-Mouse-5, 17-Salamander-{PreCycle}, 18-Salamander-{PreCycle}
+(Photo)GW_EDGE04 : 3-BigSpider-2, 6-Mouse-2
+(Photo)GW_EDGE05 : 2-Cyan
+(Photo)GW_PIPE02 : 3-Leech-6, 4-Snail-2
+(Photo)GW_PIPE03 : 2-White
+(Photo)GW_PIPE05 : 5-Centipede, 6-Small Centipede-3
+(Photo)GW_PIPE07 : 4-Big Spider-2, 4-SpitterSpider
+(Photo)GW_PIPE09 : 2-Centipede, 2-Small Centipede-3
+(Photo)GW_PIPE12 : 5-Leech-12
+(Photo)GW_PIPE13 : 2-CicadaA-3, 3-CicadaB-6, 5-Leech-5, 4-Leech-8
+(Photo)GW_TOWER01 : 3-Mouse-5
+(Photo)GW_TOWER03 : 3-Leech-7, 2-Leech-5
+(Photo)GW_TOWER04 : 3-MotherSpider
+(Photo)GW_TOWER05 : 2-Cyan, 5-White
+(Photo)GW_TOWER07 : 3-Dropwig, 7-White
+(Photo)GW_TOWER08 : 3-Cyan-2
+(Photo)GW_TOWER10 : 5-SpitterSpider, 3-Blue
+(Photo)GW_TOWER11 : 3-SpitterSpider-2
+(Photo)GW_TOWER15 : 3-CicadaA-2, 4-CicadaB-3
+(Photo)LINEAGE : GW_A11_PAST : 4 : Centipede-{0.4}-0.5, Centipede-{0.7}-0.5, RedCentipede-0
+(Photo)LINEAGE : GW_C03 : 5 : Black-0.2, Green-0.2, Yellow-0.5, Red-0
+(Photo)LINEAGE : GW_C04_PAST : 2 : EggBug-1.0, Cyan-0
+(Photo)LINEAGE : GW_E02_PAST : 6 : NONE-0.05, Mimic-{17}-0.5, Mimic-{21}-0.5, TentaclePlant-0
+(Photo)LINEAGE : GW_TOWER02 : 4 : Blue-1, None-0
+END CREATUERS
+[ENDMERGE]

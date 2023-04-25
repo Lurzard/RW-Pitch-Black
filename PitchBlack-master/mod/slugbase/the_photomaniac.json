@@ -14,7 +14,7 @@
 				"arena": [ "FFFFFF", "FF8080", "80FF80", "8080FF" ]
 			},
 			{
-				"name": "Gills",
+				"name": "Whiskers",
 				"story": "010038"
 			}
 		],
@@ -32,7 +32,7 @@
 			"meat": 1,
 			"plants": 0.5
 		},
-		"guide_overseer": 86,
+		"guide_overseer": 87,
 
 		"select_menu_scene": "Slugcat_Photo",
 		"select_menu_scene_ascended": "Ghost_Photo",

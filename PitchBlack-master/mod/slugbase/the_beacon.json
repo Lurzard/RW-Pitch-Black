@@ -14,7 +14,7 @@
 				"story": "FFFFFF"
 			},
 			{
-				"name": "Gills",
+				"name": "Whiskers",
 				"story": "2a04dc"
 			}
 		],
@@ -45,8 +45,8 @@
 
 		"karma": 4,
 		"karma_cap": 4,
-		"start_room": "LM_D06",
-		"guide_overseer": 86,
+		"start_room": "SH_S09",
+		"guide_overseer": 87,
 		"has_dreams": false,
 		"perma_unlock_gates": true,
 		"food_min": 6,
