@@ -91,7 +91,7 @@ namespace PitchBlack
                 {
                     data.headScales[i] = new Whiskerdata.Scale(self);
                     data.headpositions[i] = new Vector2((i < data.headScales.Length / 2 ? 0.7f : -0.7f), i == 1 ? 0.035f : 0.026f);
-                    Debug.Log("THIS FUCKER AIN'T WORKING4");
+                    
                 }
 
 
@@ -121,7 +121,7 @@ namespace PitchBlack
                 }
                 thedata.ready = true; //say that we're ready to add these to the container!
                 self.AddToContainer(sLeaser, rCam, null); //then add em!
-                Debug.Log("THIS FUCKER AIN'T WORKING3");
+                
             }
         }
 
@@ -142,7 +142,7 @@ namespace PitchBlack
                     }
                 }
                 data.ready = false; //set ready to false for next time.
-                Debug.Log("THIS FUCKER AIN'T WORKING2");
+                
             }
 
         }
@@ -177,10 +177,17 @@ namespace PitchBlack
                         sLeaser.sprites[data.facewhiskersprite(i, j)].x = vector.x - camPos.x;
                         sLeaser.sprites[data.facewhiskersprite(i, j)].y = vector.y - camPos.y;
                         sLeaser.sprites[data.facewhiskersprite(i, j)].rotation = Custom.AimFromOneVectorToAnother(vector, Vector2.Lerp(data.headScales[index].lastPos, data.headScales[index].pos, timeStacker)) + num;
-                        sLeaser.sprites[data.facewhiskersprite(i, j)].scaleX = 0.6f * Mathf.Sign(f);
+                        if (i == 1)
+                        {
+                            sLeaser.sprites[data.facewhiskersprite(i, j)].scaleX = -0.4f;
+                        }
+                        else
+                        {
+                            sLeaser.sprites[data.facewhiskersprite(i, j)].scaleX = 0.4f * Mathf.Sign(f);
+                        }
                         sLeaser.sprites[data.facewhiskersprite(i, j)].color = sLeaser.sprites[1].color;
                         index++;
-                        Debug.Log("THIS FUCKER AIN'T WORKING1");
+                        
                     }
                 }
 
@@ -235,7 +242,7 @@ namespace PitchBlack
                         data.headScales[index].ConnectToPoint(pos, data.headScales[index].length, true, 0f, new Vector2(0f, 0f), 0f, 0f);
                         data.headScales[index].Update();
                         index++;
-                        Debug.Log("THIS FUCKER AIN'T WORKING");
+                        
 
                     }
                 }
