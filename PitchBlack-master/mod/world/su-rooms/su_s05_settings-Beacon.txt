@@ -1,0 +1,4 @@
+Template: SU_SettingsTemplate_Inside
+Palette: 33
+EffectColorB: 5
+FadePalette: 10, 0.3152174

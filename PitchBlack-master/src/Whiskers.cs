@@ -179,11 +179,11 @@ namespace PitchBlack
                         sLeaser.sprites[data.facewhiskersprite(i, j)].rotation = Custom.AimFromOneVectorToAnother(vector, Vector2.Lerp(data.headScales[index].lastPos, data.headScales[index].pos, timeStacker)) + num;
                         if (i == 1)
                         {
-                            sLeaser.sprites[data.facewhiskersprite(i, j)].scaleX = -0.4f;
+                            sLeaser.sprites[data.facewhiskersprite(i, j)].scaleX = 0.4f;
                         }
                         else
                         {
-                            sLeaser.sprites[data.facewhiskersprite(i, j)].scaleX = 0.4f * Mathf.Sign(f);
+                            sLeaser.sprites[data.facewhiskersprite(i, j)].scaleX = -0.4f * Mathf.Sign(f);
                         }
                         sLeaser.sprites[data.facewhiskersprite(i, j)].color = sLeaser.sprites[1].color;
                         index++;

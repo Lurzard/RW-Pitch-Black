@@ -127,7 +127,7 @@ namespace SlugTemplate
             Color res = orig(self);
             if ((self.overseer.abstractCreature.abstractAI as OverseerAbstractAI).ownerIterator == 87)
             {
-                res = new Color(0.19607843137f, 0.13725490196f, 0.43921568627f);
+                res = new Color(0.24705882352f, 0.13725490196f, 0.96862745098f);
             }
             return res;
         }

@@ -1,7 +1,7 @@
 {
 	"id": "Beacon",
 	"name": "The Beacon",
-	"description": "An agile slugcat who's strange luminosity makes their prescence known in the wake of night. <LINE>You will be faced with a constant threat stalking you, stay in the light to keep them at bay.",
+	"description": "In the wake of night, an agile slugcat with strange luminosity makes their prescence known. Take your lights and journey across this forgotten landscape for answers.",
 	"features": {
 		"color": "2a04dc",
 		"custom_colors": [
@@ -18,12 +18,12 @@
 				"story": "2a04dc"
 			}
 		],
-		"beacon/super_jump": 0.2,
+		"beacon/super_jump": 0.25,
 		"beacon/explode_on_death": true,
 		"auto_grab_batflies": true,
 		"weight": [ 0.9, 0.7 ],
-		"tunnel_speed": 1.5,
-		"climb_speed": 1.5,
+		"tunnel_speed": 1.3,
+		"climb_speed": 1.4,
 		"walk_speed": 1.65,
 		"crouch_stealth": [ 1.4, 1.0 ],
 		"throw_skill": 1,
