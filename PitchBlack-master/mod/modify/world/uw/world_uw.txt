@@ -4,31 +4,39 @@
 [ADDBEFORE](X-Beacon,Photo)
 [MERGE]
 CREATURES
-
 (Beacon)OFFSCREEN : 0-KingVulture-1, 0-Vulture-2, 0-MirosVulture-2, 0-Scavenger-8, 0-EliteScavenger-3-{Night}
 (Photo)OFFSCREEN : 0-KingVulture-1, 0-Vulture-3, 0-MirosVulture-3, 0-Scavenger-10, 0-Elite-{IgnoreCycle}, 0-Elite-3-{Night}
 
-(Beacon,Photo)UW_A01 : 3-Dropwig
+(Beacon)UW_J02 : 16-Yellow, 19-Yellow, 17-Yellow-2, 13-Tube, 14-Tube, 7-Daddy, 10-Tube-2, 8-Centiwng-2, 15-BigSpider, 20-MotherSpider, 18-BigSpider, 11-Mouse-6, 3-nightterror
+(Beacon)UW_E03 : 7-White-{Mean:1.0}, 3-SpitterSpider-3, 5-BigSpider-4, 6-Mouse-4, 9-nightterror, 9-Centiwing-2, 4-Daddy, 8-Daddy
+(Beacon)UW_E01 : 3-Blue-{Night}, 2-White, 3-Cyan, 4-nightterror, 5-Mouse-6, 6-Centiwing-2
+(Photo)UW_J02 : 16-Yellow, 19-Yellow, 17-Yellow-2, 13-Tube, 14-Tube, 7-Daddy, 10-Tube-2, 8-Centiwng-2, 15-BigSpider, 20-MotherSpider, 18-BigSpider, 11-Mouse-6
+(Photo)UW_E03 : 7-White-{Mean:1.0}, 3-SpitterSpider-3, 5-BigSpider-4, 6-Mouse-4, 9-Centiwing-2, 4-Daddy, 8-Daddy
+(Photo)UW_E01 : 3-Blue-{Night}, 2-White, 3-Cyan, 5-Mouse-6, 6-Centiwing-2
+
+(Beacon,Photo)UW_A01 : 2-Centiwing-2, 3-Dropwig
 (Beacon,Photo)UW_A02 : 2-White, 2-SpitterSpider-{Night}
-(Beacon,Photo)UW_A07 : 3-Tube, 4-Tube, 5-Tube
+(Beacon,Photo)UW_A07 : 3-Tube, 4-Tube, 5-Tube, 6-Mouse-4	
 (Beacon,Photo)UW_A09 : 4-White-{Mean:0.7}, 5-Tube, 3-Tube
-(Beacon,Photo)UW_C01 : 2-Tube-2, 3-BigSpider, 4-Cyan, 3-Daddy
-(Beacon,Photo)UW_C02 : 4-Yellow, 5-Yellow, 2-Tube, 3-Tube
-(Beacon,Photo)UW_C04 : 3-White-{Mean:0.7}, 5-Tube-2
+(Beacon,Photo)UW_B01 : 2-Small Centipede-{AlternateForm}-3, 2-Centiwng
+(Beacon,Photo)UW_C01 : 2-Tube-2, 2-BigSpider, 4-Cyan, 3-Daddy
+(Beacon,Photo)UW_C02 : 4-Yellow, 5-Yellow, 2-Tube, 3-Tube, 6-MotherSpider, 6-BigSpider-2
+(Beacon,Photo)UW_C03 : 3-Centiwing-2, 2-Mouse-4
+(Beacon,Photo)UW_C04 : 3-White-{Mean:0.7}, 5-Tube-2, 4-Centiwing-2, 2-BigSpider
 (Beacon,Photo)UW_D01 : 2-Dropbug, 2-Eggbug-{PreCycle}
-(Beacon,Photo)UW_D02 : 3-White-{Mean:1.0}, 4-SpitterSpider, 3-Daddy
-(Beacon,Photo)UW_D03 : 2-Cyan-2, 3-White-{Mean:-0.05}, 3-Daddy
-(Beacon,Photo)UW_D04 : 3-Dropbug, 4-Cyan, 5-SpitterSpider, 6-Tube, 7-Tube, 4-Daddy, 5-Tube
+(Beacon,Photo)UW_D02 : 3-White-{Mean:1.0}, 5-SpitterSpider, 4-Daddy
+(Beacon,Photo)UW_D03 : 2-Cyan-2, 2-White-{Mean:-0.05}, 3-Daddy
+(Beacon,Photo)UW_D04 : 3-Dropbug, 3-Centiwing, 5-MotherSpider, 5-SpitterSpider, 6-Tube, 6-Cyan, 7-Tube, 4-Daddy, 5-Tube, 5-Mouse-5
+(Beacon,Photo)UW_D05 : 2-SpitterSpider
 (Beacon,Photo)UW_D06 : 3-Tube-2
 (Beacon,Photo)UW_D07 : 4-Tube
-(Beacon,Photo)UW_E01 : 3-Blue, 2-White, 3-Cyan-{Night}, 4-Mimic-{18}, 5-Mimic-{16}
-(Beacon,Photo)UW_E02 : 4-SpitterSpider, 3-White, 6-Mimic
-(Beacon,Photo)UW_E03 : 8-White-{Mean:1.0}, 3-SpitterSpider, 4-BigSpider-2, 5-BigSpider, 6-BigSpider, 7-SpitterSpider, 9-SpitterSpider, 4-Daddy, 8-Daddy
-(Beacon,Photo)UW_E04 : 3-White, 5-Blue, 6-Tube, 7-Tube, 3-Daddy, 5-Tube
+(Beacon,Photo)UW_E02 : 4-SpitterSpider, 4-Mouse-5, 3-White, 6-Mimic, 5-Centiwing-3, 5-MotherSpider
+(Beacon,Photo)UW_E03 : 7-White-{Mean:1.0}, 3-SpitterSpider-3, 5-BigSpider-4, 6-Mouse-4, 9-Centiwing-2, 4-Daddy, 8-Daddy
+(Beacon,Photo)UW_E04 : 3-White, 4-Daddy, 5-Cyan, 6-Tube-2, 6-Centiwing, 7-Mouse-4
 (Beacon,Photo)UW_F01 : 3-Mimic-{12}, 4-White, 5-White, 2-BigSpider-{Night}, 4-CicadaB-2-{PreCycle}, 3-CicadaA-5-{PreCycle}
-(Beacon,Photo)UW_I01 : 5-Cyan, 6-SpitterSpider, 5-Daddy
+(Beacon,Photo)UW_I01 : 5-SpitterSpider, 5-BigSpider, 6-Mouse-5
 (Beacon,Photo)UW_J01 : 3-Yellow-2-{IgnoreCycle}, 4-Yellow-2-{IgnoreCycle}, 5-Cyan-{IgnoreCycle}, 6-Cyan-{IgnoreCycle}
-(Beacon,Photo)UW_J02 : 16-Yellow, 19-Yellow, 17-Yellow-2, 13-Tube, 14-Tube, 5-Daddy, 8-Tube-2
+(Beacon,Photo)UW_PREGATE : 3-Scavenger-4
 (Beacon,Photo)LINEAGE : UW_D02 : 4 : Dropbug-0.5, White-{Mean:1.0}-0
 (Beacon,Photo)LINEAGE : UW_D07 : 4 : NONE-0.4, Dropbug-0
 (Beacon,Photo)LINEAGE : UW_J02 : 11 : White-0.5, White-{Mean:1.0}-0.5, NONE-0.3, Red-0

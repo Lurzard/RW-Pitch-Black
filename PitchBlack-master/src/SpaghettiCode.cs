@@ -13,6 +13,7 @@ using MonoMod.RuntimeDetour;
 using System.Reflection;
 using System.IO;
 using System.Linq;
+using RWCustom;
 
 #pragma warning disable CS0618 // Do not remove the following line.
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -60,8 +61,23 @@ namespace SlugTemplate
             On.Player.SwallowObject += Player_SwallowObject1;
             Hook overseercolorhook = new Hook(typeof(OverseerGraphics).GetProperty("MainColor", BindingFlags.Instance | BindingFlags.Public).GetGetMethod(), typeof(Plugin).GetMethod("OverseerGraphics_MainColor_get", BindingFlags.Static | BindingFlags.Public));
             On.Region.GetProperRegionAcronym += Region_GetProperRegionAcronym;
+            On.OverseerGraphics.ColorOfSegment += OverseerGraphics_ColorOfSegment;
             Whiskers.Hooks();
         }
+
+        //Fixes funny coloring
+        private Color OverseerGraphics_ColorOfSegment(On.OverseerGraphics.orig_ColorOfSegment orig, OverseerGraphics self, float f, float timeStacker)
+        {
+            if ((self.overseer.abstractCreature.abstractAI as OverseerAbstractAI).ownerIterator == 87)
+            {
+                return Color.Lerp(Color.Lerp(Custom.RGB2RGBA((self.MainColor + new Color(0f, 0f, 1f) + self.earthColor * 8f) / 10f, 0.5f), Color.Lerp(self.MainColor, Color.Lerp(self.NeutralColor, self.earthColor, Mathf.Pow(f, 2f)), self.overseer.SandboxOverseer ? 0.15f : 0.5f), self.ExtensionOfSegment(f, timeStacker)), Custom.RGB2RGBA(self.MainColor, 0f), Mathf.Lerp(self.overseer.lastDying, self.overseer.dying, timeStacker));
+            }
+            else
+            {
+                return orig(self, f, timeStacker);
+            }
+        }
+
         private string Region_GetProperRegionAcronym(On.Region.orig_GetProperRegionAcronym orig, SlugcatStats.Name character, string baseAcronym)
         {
             string text = baseAcronym;
@@ -127,7 +143,7 @@ namespace SlugTemplate
             Color res = orig(self);
             if ((self.overseer.abstractCreature.abstractAI as OverseerAbstractAI).ownerIterator == 87)
             {
-                res = new Color(0.24705882352f, 0.13725490196f, 0.96862745098f);
+                res = new Color(0.05098039215f, 0.01176470588f, 0.09019607843f);
             }
             return res;
         }
