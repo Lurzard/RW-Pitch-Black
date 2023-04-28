@@ -1,8 +1,10 @@
 Template: SU_SettingsTemplate_Inside
 DangerType: FloodAndRain
+RainIntensity: 0.7065217
+RumbleIntensity: 0.7065217
 Palette: 33
 EffectColorA: 18
 EffectColorB: 5
-Effects: Darkness-0.2065217-16-74, 
-PlacedObjects: DangleFruit><833.9724><332.3019><0~0~2~3, DangleFruit><863.9297><296.3128><0~0~2~3, 
+Effects: Darkness-0.2065217-23-70, DayNight-1-278-20, FireFlies-0.5217391-293-83, 
+PlacedObjects: DangleFruit><833.9724><332.3019><0~0~2~3, DangleFruit><863.9297><296.3128><0~0~2~3, DayNightSettings><217.2968><263.5556><-89~77.66025~1~0, 
 FadePalette: 8, 0.06521739
