@@ -19,7 +19,7 @@
 			}
 		],
 		"throw_skill": 0,
-		"food_min": 5,
+		"food_min": 4,
 		"food_max": 5,
 		"auto_grab_batflies": false,
 		"back_spear": false,
@@ -29,8 +29,33 @@
 		"karma": 1,
 		"diet": {
 			"corpses": 1,
-			"meat": 1,
-			"plants": 0.5
+			"meat": 0.5,
+			"plants": 0.5,
+			"overrides": {
+				"DropBug": 0.5,
+				"BigSpider": 1,
+				"SpitterSpider": 1,
+				"MotherSpider": 1.25,
+				"MirosBird": 0.5,
+				"Vulture": 1.5,
+				"MirosVulture": 1.5,
+				"BlackLizard": 1,
+				"LanternMouse": 0.5,
+				"JetFish": 0.5,
+				"DaddyLongLegs": 0.75,
+				"BrotherLongLegs": 0.5,
+				"TerrorLongLegs": 0.25,
+				"SmallCentipede": 0.5,
+				"Centipede": 1,
+				"RedCentipede": 1.5,
+				"EggBug": 2,
+				"SlimeMold": 0.5,
+				"EggBugEgg": 0,
+				"GooieDuck": 0.5,
+				"LillyPuck": 0.75,
+				"GlowWeed": 1,
+				"DandelionPeach": 1
+			}
 		},
 		"guide_overseer": 87,
 

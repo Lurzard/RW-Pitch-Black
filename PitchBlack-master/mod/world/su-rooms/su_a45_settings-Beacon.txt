@@ -1,6 +1,12 @@
 Template: SU_SettingsTemplate_Inside
+DangerType: Rain
 RainIntensity: 0.7065217
 RumbleIntensity: 0.7065217
+WaveSpeed: 0.4840832
+WaveLength: 0.9920416
+WaveAmplitude: 0.0334647
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
 Grime: 0.3913043
 Palette: 33
 Effects: FireFlies-0.3804348-34-92, DayNight-1-287-74, 

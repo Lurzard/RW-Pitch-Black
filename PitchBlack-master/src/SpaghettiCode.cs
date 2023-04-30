@@ -14,9 +14,14 @@ using System.Reflection;
 using System.IO;
 using System.Linq;
 using RWCustom;
+using System.Collections.Generic;
+using Random = UnityEngine.Random;
+using System.Security;
 
-#pragma warning disable CS0618 // Do not remove the following line.
+#pragma warning disable CS0618 // Type or member is obsolete
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
+[module: UnverifiableCode]
+#pragma warning restore CS0618 // Type or member is obsolete
 
 namespace SlugTemplate
 {
@@ -63,6 +68,57 @@ namespace SlugTemplate
             On.Region.GetProperRegionAcronym += Region_GetProperRegionAcronym;
             On.OverseerGraphics.ColorOfSegment += OverseerGraphics_ColorOfSegment;
             Whiskers.Hooks();
+            //On.Player.Update += PringleUpdate;
+        }
+
+        public List<string> currentDialog = new List<string>();
+        public bool Speaking = false;
+        AbstractCreature PBOverseer;
+
+        int pbcooldown = 0;
+        private void PringleUpdate(On.Player.orig_Update orig, Player self, bool eu)
+        {
+            orig(self, eu);
+            if (Input.GetKey(KeyCode.F ) && pbcooldown == 0 && self.room != null)
+            {
+                pbcooldown = 400;
+                self.room.AddObject(new NeuronSpark(new Vector2(self.bodyChunks[0].pos.x, self.bodyChunks[0].pos.y + 40f)));
+
+                if (Speaking == false)
+                {
+                    WorldCoordinate worldC = new WorldCoordinate(self.room.world.offScreenDen.index, -1, -1, 0);
+                    PBOverseer = new AbstractCreature(self.room.game.world, StaticWorld.GetCreatureTemplate(CreatureTemplate.Type.Overseer), null, worldC, new EntityID(-1, 5));
+                    self.room.world.GetAbstractRoom(worldC).entitiesInDens.Add(PBOverseer);
+                    PBOverseer.ignoreCycle = true;
+                    (PBOverseer.abstractAI as OverseerAbstractAI).spearmasterLockedOverseer = true;
+                    (PBOverseer.abstractAI as OverseerAbstractAI).SetAsPlayerGuide(87);
+                    (PBOverseer.abstractAI as OverseerAbstractAI).BringToRoomAndGuidePlayer(self.room.abstractRoom.index);
+                    Logger.LogInfo("sflost Called overseer. now trying to converse!");
+                    self.room.game.cameras[0].hud.InitDialogBox();
+                    Logger.LogDebug("sflost init'd dialog box");
+                    int rng = Random.Range(0, 3);
+                    switch (rng)
+                    {
+                        case 0:
+                            currentDialog.Add("");
+                            break;
+                        case 1:
+                            currentDialog.Add("");
+                            break;
+                        case 2:
+                            currentDialog.Add("");
+                            break;
+                        default:
+                            currentDialog.Add("");
+                            break;
+                    }
+
+                    if (self.grasps[0] != null)
+                    {
+
+                    }
+                }
+            }
         }
 
         //Fixes funny coloring
@@ -157,7 +213,7 @@ namespace SlugTemplate
                 AddNewSpear(self, self.objectInStomach.ID);
                 self.objectInStomach = null;
 
-                if (self.grasps[1]?.grabbed.abstractPhysicalObject is AbstractSpear slugGrasp && GraspIsNonElectricSpear(slugGrasp))
+                if (self.FoodInStomach >= 2 && self.grasps[1]?.grabbed.abstractPhysicalObject is AbstractSpear slugGrasp && GraspIsNonElectricSpear(slugGrasp))
                 {
                     if (self.room.game.session is StoryGameSession story)
                         story.RemovePersistentTracker(slugGrasp);
@@ -192,13 +248,38 @@ namespace SlugTemplate
             orig(self, eu);
             if (!pCon.TryGetValue(self, out PhotoCWT e))
             {
-                Logger.LogDebug("dduheudfhfhueufihfuiefufefh");
+                Logger.LogDebug("access GRANTED");
                 return;
             }
             // Parry
             e.UpdateParryCD(self);
-            if (self.Consious && (self.wantToJump > 0) && self.input[0].pckp && (self.input[0].y < 0 || self.bodyMode == Player.BodyModeIndex.Crawl))
+
+            // Air input
+            bool airParry = (self.input[0].pckp && !self.input[1].pckp) && self.wantToJump > 0;
+
+            // Ground input
+            int tolerance = 3;
+            bool gParryLeanPckp = false, gParryLeanJmp = false;
+            if (!airParry)
             {
+                for (int i = 0; i <= tolerance; i++)
+                {
+                    if (self.input[i].pckp)
+                    {
+                        gParryLeanPckp = i < tolerance;
+                    }
+                    if (self.input[i].jmp)
+                    {
+                        gParryLeanJmp = i < tolerance;
+                    }
+                }
+            }
+            bool groundParry = self.input[0].y < 0 && self.bodyChunks[1].contactPoint.y < 0 && gParryLeanJmp && gParryLeanPckp;
+
+            if (self.Consious && (airParry || groundParry))
+            {
+                Logger.LogDebug("Input - Air: " + airParry);
+                Logger.LogDebug("Input - Ground: " + groundParry);
                 e.ThundahParry(self);
             }
 

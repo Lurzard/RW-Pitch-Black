@@ -1,0 +1,15 @@
+Template: HI_SettingsTemplate_Inside
+DangerType: Rain
+RainIntensity: 0.7065217
+RumbleIntensity: 0.7065217
+WaveSpeed: 0.4847645
+WaveLength: 0.919375
+WaveAmplitude: 0.03250825
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+BkgDroneVolume: 0
+RandomItemDensity: 0.1956522
+Effects: Darkness-0.2934783-20-20, DayNight-0.06521739-22-80, 
+PlacedObjects: DangleFruit><202.6119><301.3553><0~0~2~3, DangleFruit><386.9081><328.6225><0~0~2~3, DangleFruit><427.6046><278.6373><0~0~2~3, DayNightSettings><21.9234><210.9348><5~8.660254~5~9, 
+AmbientSounds: OMNI><AM_ENV-SubTerr.ogg><732.6912><607.4412><0.3369565><1, OMNI><AM_IND-Utility02.ogg><737.8163><457.5613><0.1521739><1, 
+FadePalette: 5, 0.2391304

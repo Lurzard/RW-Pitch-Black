@@ -1,7 +1,12 @@
 Template: SU_SettingsTemplate_Inside
-DangerType: FloodAndRain
+DangerType: Rain
 RainIntensity: 0.7065217
 RumbleIntensity: 0.7065217
+WaveSpeed: 0.4847645
+WaveLength: 0.919375
+WaveAmplitude: 0.03382858
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
 Clouds: 0.09782609
 Palette: 33
 EffectColorB: 5

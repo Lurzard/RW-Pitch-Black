@@ -1,12 +1,18 @@
 [FIND](X-
-[ADDAFTER]Beacon,Photo,
+[ADDAFTER]Beacon,Photomaniac,
 [FINDREGEX]^(?:\W+ : \d+-\w+.+|LINEAGE : \w+ : \d+ : .+)$
-[ADDBEFORE](X-Beacon,Photo)
+[ADDBEFORE](X-Beacon,Photomaniac)
 [MERGE]
+ROOMS
+
+GATE_DS_SB : DISCONNECTED, DISCONNECTED, DS_S03 : GATE
+DS_D02 : DS_C02, DISCONNECTED
+
+END ROOMS
 CREATURES
 
 (Beacon)OFFSCREEN : 0-Scavenger-7
-(Photo)OFFSCREEN : 0-Scavenger-9
+(Photomaniac)OFFSCREEN : 0-Scavenger-9
 
 (Beacon)DS_A02 : 3-Centipede-4, 4-Centipede-5, 4-Spider-30, 3-Eel-{PreCycle}
 (Beacon)DS_A06 : 3-Spider-15
@@ -32,28 +38,28 @@ CREATURES
 (Beacon)LINEAGE : DS_A09 : 2 : Salamander-0.2, Cyan-0.1, Red-0
 (Beacon)LINEAGE : DS_A22 : 3 : Black-0.5, Salamander-1, White-0.5, Cyan-0
 
-(Photo)DS_A02 : 3-Centipede-4, 4-Centipede-5, 4-Spider-30, 3-Eel-{PreCycle}
-(Photo)DS_A06 : 3-Spider-20
-(Photo)DS_A08 : 3-TentaclePlant, 4-Snail-2, 5-Snail-2
-(Photo)DS_A09 : 2-Mouse-4, 2-Dropwig-2
-(Photo)DS_A13 : 2-Leech-5, 3-TentaclePlant-{PreCycle}
-(Photo)DS_A16 : 3-Snail, 4-Snail-2, 5-Leech-8
-(Photo)DS_A21 : 2-Mimic-{14}, 3-Snail-2, 4-Snail-2
-(Photo)DS_A22 : 4-Spider-15
-(Photo)DS_A25 : 4-Leech-5, 3-TentaclePlant-{PreCycle}, 4-TentaclePlant-{PreCycle}
-(Photo)DS_A27 : 2-TentaclePlant
-(Photo)DS_B01 : 5-TentaclePlant-{PreCycle}
-(Photo)DS_B07 : 3-Dropwig-3, 4-Cyan-3, 4-White, 5-Snail, 6-Snail, 7-Snail
-(Photo)DS_C01 : 6-Leech-15, 7-Leech-10, 6-Eel-{PreCycle}
-(Photo)DS_C04 : 3-RedCenti
-(Photo)DS_D02 : 2-TentaclePlant
-(Photo)DS_GUTTER01 : 2-Snail-3, 3-White, 4-Leech-12
-(Photo)DS_GUTTER02 : 2-SpitterSpider
-(Photo)DS_GUTTER03 : 5-Snail-3, 6-Snail-3, 7-Dropwig-2, 8-Mouse-4, 9-BigSpider-2, 9-Spider-25, 9-Eel-{PreCycle}
-(Photo)DS_GUTTER04 : 4-Snail-3
-(Photo)LINEAGE : DS_A02 : 4 : Centipede-0.6, Centipede-{1.0}-1.0, RedCentipede-0 
-(Photo)LINEAGE : DS_A06 : 3 : Salamander-1.0, Cyan-0.1, Black-0
-(Photo)LINEAGE : DS_A09 : 2 : Salamander-0.2, Cyan-0.1, Red-0
-(Photo)LINEAGE : DS_A22 : 3 : Black-0.5, Salamander-1, White-1, Cyan-0
+(Photomaniac)DS_A02 : 3-Centipede-4, 4-Centipede-5, 4-Spider-30, 3-Eel-{PreCycle}
+(Photomaniac)DS_A06 : 3-Spider-20
+(Photomaniac)DS_A08 : 3-TentaclePlant, 4-Snail-2, 5-Snail-2
+(Photomaniac)DS_A09 : 2-Mouse-4, 2-Dropwig-2
+(Photomaniac)DS_A13 : 2-Leech-5, 3-TentaclePlant-{PreCycle}
+(Photomaniac)DS_A16 : 3-Snail, 4-Snail-2, 5-Leech-8
+(Photomaniac)DS_A21 : 2-Mimic-{14}, 3-Snail-2, 4-Snail-2
+(Photomaniac)DS_A22 : 4-Spider-15
+(Photomaniac)DS_A25 : 4-Leech-5, 3-TentaclePlant-{PreCycle}, 4-TentaclePlant-{PreCycle}
+(Photomaniac)DS_A27 : 2-TentaclePlant
+(Photomaniac)DS_B01 : 5-TentaclePlant-{PreCycle}
+(Photomaniac)DS_B07 : 3-Dropwig-3, 4-Cyan-3, 4-White, 5-Snail, 6-Snail, 7-Snail
+(Photomaniac)DS_C01 : 6-Leech-15, 7-Leech-10, 6-Eel-{PreCycle}
+(Photomaniac)DS_C04 : 3-RedCenti
+(Photomaniac)DS_D02 : 2-TentaclePlant
+(Photomaniac)DS_GUTTER01 : 2-Snail-3, 3-White, 4-Leech-12
+(Photomaniac)DS_GUTTER02 : 2-SpitterSpider
+(Photomaniac)DS_GUTTER03 : 5-Snail-3, 6-Snail-3, 7-Dropwig-2, 8-Mouse-4, 9-BigSpider-2, 9-Spider-25, 9-Eel-{PreCycle}
+(Photomaniac)DS_GUTTER04 : 4-Snail-3
+(Photomaniac)LINEAGE : DS_A02 : 4 : Centipede-0.6, Centipede-{1.0}-1.0, RedCentipede-0 
+(Photomaniac)LINEAGE : DS_A06 : 3 : Salamander-1.0, Cyan-0.1, Black-0
+(Photomaniac)LINEAGE : DS_A09 : 2 : Salamander-0.2, Cyan-0.1, Red-0
+(Photomaniac)LINEAGE : DS_A22 : 3 : Black-0.5, Salamander-1, White-1, Cyan-0
 END CREATURES
 [ENDMERGE]

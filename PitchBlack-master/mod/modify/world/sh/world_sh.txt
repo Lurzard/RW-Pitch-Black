@@ -1,0 +1,141 @@
+[FIND](X-
+[ADDAFTER]Beacon,Photomaniac,
+[FINDREGEX]^(W+  d+-w+.+LINEAGE  w+  d+  .+)$
+[ADDBEFORE](X-Beacon,Photomaniac)
+[MERGE]
+CREATURES
+
+(Beacon)OFFSCREEN : 0-Miros-10, 0-MirosVulture-2, 0-Scavenger-12
+(Photomaniac)OFFSCREEN : 0-Miros-12, 0-MirosVulture-2, 0-Scavenger-16, 0-Elite
+
+(Beacon)SH_A04 : 3-Mouse-2, 4-Mouse-2
+(Beacon)SH_A05 : 3-Mouse-2
+(Beacon)SH_A06 : 2-Black, 3-Mouse-4
+(Beacon)SH_A07 : 6-Spider-10
+(Beacon)SH_A09 : 4-Mouse-2, 5-Mouse-2
+(Beacon)SH_A11 : 4-Yellow-2, 5-Yellow, 4-Mouse-2
+(Beacon)SH_A12 : 3-Mouse-2
+(Beacon)SH_A14 : 3-Mouse-2, 4-Dropwig
+(Beacon)SH_A15 : 3-Mouse-2, 4-Dropwig
+(Beacon)SH_A16 : 2-Spider-10, 3-Spider-5, 4-MotherSpider
+(Beacon)SH_A17 : 3-Spider-10, 4-Spider-10, 5-BigSpider
+(Beacon)SH_A19 : 2-Spider-30, 3-SpitterSpider
+(Beacon)SH_A21 : 2-Mouse, 3-Mouse, 4-Mouse, 3-TentaclePlant-{PreCycle}
+(Beacon)SH_A22 : 2-Spider-10
+(Beacon)SH_A23 : 4-Spider-10, 6-BigSpider
+(Beacon)SH_A25 : 2-White, 2-White-{PreCycle}
+(Beacon)SH_B01 : 3-Mouse-2, 4-Mouse, 6-BigSpider
+(Beacon)SH_B02 : 3-Mouse-2, 4-Spider-15, 5-Black, 8-Mouse, 4-TentaclePlant-{PreCycle}
+(Beacon)SH_B03 : 2-Cyan, 3-Mouse-2
+(Beacon)SH_B04 : 3-Mouse-2, 4-Mouse-2
+(Beacon)SH_B05 : 6-Yellow-2
+(Beacon)SH_B06 : 3-Spider-10, 4-Spider-10, 5-Spider-20, 4-BigSpider, 5-BigSpider
+(Beacon)SH_B07 : 2-MotherSpider, 3-Spider-15, 4-Spider-5
+(Beacon)SH_B10 : 4-TentaclePlant
+(Beacon)SH_B11 : 4-Spider-10, 5-Spider-10
+(Beacon)SH_B13 : 3-White, 3-Spider-10
+(Beacon)SH_B17 : 3-Spider-10, 4-Spider-12, 4-BigSpider-2
+(Beacon)SH_C01 : 3-SpitterSpider, 4-Mouse-2, 5-Mouse-2, 6-Black, 6-TentaclePlant-{PreCycle}
+(Beacon)SH_C02 : 3-Cyan, 4-TentaclePlant-{PreCycle}
+(Beacon)SH_C03 : 4-Spider-10, 5-SpitterSpider, 7-Spider-30
+(Beacon)SH_C04 : 5-Mouse-2, 6-Dropwig, 7-Spider-20, 8-Mouse-2
+(Beacon)SH_C05 : 2-Mouse, 3-Mouse, 4-Spider-20, 5-Mouse, 6-Black
+(Beacon)SH_C07 : 4-Spider-20, 6-Spider-20
+(Beacon)SH_C08 : 2-Yellow-2, 5-Black
+(Beacon)SH_C09 : 2-Spider-5, 3-Spider-10, 3-BigSpider, 4-Spider-15, 5-Spider-15
+(Beacon)SH_C10 : 3-Black, 4-Mouse-2, 5-Mouse, 6-Mouse, 7-Mouse
+(Beacon)SH_C12 : 2-White, 2-White-{PreCycle}
+(Beacon)SH_D01 : 3-Cyan
+(Beacon)SH_E02 : 3-nightterror, 4-TentaclePlant, 6-TentaclePlant
+(Beacon)SH_E05 : 5-Cyan
+(Beacon)SH_H01 : 3-Small Centipede-2, 4-Small Centipede-2, 5-Small Centipede-3, 5-Centipede-2
+(Beacon)SH_CURVE : 2-Spider-8, 3-Mouse-5
+(Beacon)SH_HALL : 3-EggBug, 4-Black, 7-BigSpider, 8-BigSpider, 9-MotherSpider
+(Beacon)SH_HELPOUT : 3-Spider-15
+(Beacon)SH_KELP : 4-TentaclePlant, 6-Spider-10
+(Beacon)SH_LEDGE : 6-BigSpider
+(Beacon)SH_OVERHEAD : 5-Cyan
+(Beacon)LINEAGE : SH_A10 : 1 : Cyan-0.1, CicadaA-0.2, Centiwing-0.5, CicadaB-0.2, White-0.01, Blue-1, Cyan-0	
+(Beacon)LINEAGE : SH_B01 : 5 : BigSpider-0.2, BigSpider-0.2, None-0.5, SpitterSpider-0
+(Beacon)LINEAGE : SH_B02 : 4 : BigSpider-0.3, BigSpider-0.3, MotherSpider-1, SpitterSpider-0
+(Beacon)LINEAGE : SH_B04 : 5 : EggBug-1, BigSpider-0.5, SpitterSpider-0.2, White-0.1, Cyan-0
+(Beacon)LINEAGE : SH_B05 : 5 : Yellow-0.2, BigSpider-1, White-0.2, Yellow-0.5, White-0.5, SpitterSpider-0
+(Beacon)LINEAGE : SH_B05 : 7 : BigSpider-0.5, SpitterSpider-0.5, Black-0
+(Beacon)LINEAGE : SH_B05 : 8 : BigSpider-0.5, SpitterSpider-0.3, White-0.3, Black-0
+(Beacon)LINEAGE : SH_B08 : 2 : White-0.2, Dropwig-0.3, BigSpider-0.4, SpitterSpider-0.5, MotherSpider-0.6, Cyan-0.7, White-0
+(Beacon)LINEAGE : SH_B17 : 5 : SpitterSpider-0.2, BigSpider-1, Dropwig-0.5, White-0.99, SpitterSpider-0
+(Beacon)LINEAGE : SH_C01 : 3 : BigSpider-0.5, Dropwig-0.5, White-0.2, Cyan-0.2, SpitterSpider-0
+(Beacon)LINEAGE : SH_C02 : 4 : NONE-1, Green-0.99, Pink-1, Black-0
+(Beacon)LINEAGE : SH_C03 : 4 : BigSpider-0.5, Dropwig-0.2, MotherSpider-0.2, White-0.7, SpitterSpider-0
+(Beacon)LINEAGE : SH_C03 : 7 : BigSpider-0.4, Dropwig-0.5, White-0.2, MotherSpider-0.7, SpitterSpider-0
+(Beacon)LINEAGE : SH_C05 : 6 : BigSpider-1, Dropwig-1, SpitterSpider-0
+(Beacon)LINEAGE : SH_C05 : 7 : NONE-0.05, TentaclePlant-0
+(Beacon)LINEAGE : SH_C08 : 3 : Yellow-0.2, BigSpider-0.5, SpitterSpider-0.5, White-1, Red-0
+(Beacon)LINEAGE : SH_C08 : 4 : Yellow-0.2, Black-0.5, SpitterSpider-0.5, White-1, Red-0
+
+(Photomaniac)SH_A04 : 3-Mouse-2, 4-Mouse-2
+(Photomaniac)SH_A05 : 3-Mouse-2
+(Photomaniac)SH_A06 : 2-Black, 3-Mouse-4
+(Photomaniac)SH_A07 : 6-Spider-10
+(Photomaniac)SH_A09 : 4-Mouse-2, 5-Mouse-2
+(Photomaniac)SH_A11 : 4-Yellow-2, 5-Yellow, 4-Mouse-2
+(Photomaniac)SH_A12 : 3-Mouse-2
+(Photomaniac)SH_A14 : 3-Mouse-2, 4-Dropwig
+(Photomaniac)SH_A15 : 3-Mouse-2, 4-Dropwig
+(Photomaniac)SH_A16 : 2-Spider-10, 3-Spider-5, 4-MotherSpider
+(Photomaniac)SH_A17 : 3-Spider-10, 4-Spider-10, 5-BigSpider
+(Photomaniac)SH_A19 : 2-Spider-30, 3-SpitterSpider
+(Photomaniac)SH_A21 : 2-Mouse, 3-Mouse, 4-Mouse, 3-TentaclePlant-{PreCycle}
+(Photomaniac)SH_A22 : 2-Spider-10
+(Photomaniac)SH_A23 : 4-Spider-10, 6-BigSpider
+(Photomaniac)SH_A25 : 2-White, 2-White-{PreCycle}
+(Photomaniac)SH_B01 : 3-Mouse-2, 4-Mouse, 6-BigSpider
+(Photomaniac)SH_B02 : 3-Mouse-2, 4-Spider-15, 5-Black, 8-Mouse, 4-TentaclePlant-{PreCycle}
+(Photomaniac)SH_B03 : 2-Cyan, 3-Mouse-2
+(Photomaniac)SH_B04 : 3-Mouse-2, 4-Mouse-2
+(Photomaniac)SH_B05 : 6-Yellow-2
+(Photomaniac)SH_B06 : 3-Spider-10, 4-Spider-10, 5-Spider-20, 4-BigSpider, 5-BigSpider
+(Photomaniac)SH_B07 : 2-MotherSpider, 3-Spider-15, 4-Spider-5
+(Photomaniac)SH_B10 : 4-TentaclePlant
+(Photomaniac)SH_B11 : 4-Spider-10, 5-Spider-10
+(Photomaniac)SH_B13 : 3-White, 3-Spider-10
+(Photomaniac)SH_B17 : 3-Spider-10, 4-Spider-12, 4-BigSpider-2
+(Photomaniac)SH_C01 : 3-SpitterSpider, 4-Mouse-2, 5-Mouse-2, 6-Black, 6-TentaclePlant-{PreCycle}
+(Photomaniac)SH_C02 : 3-Cyan, 4-TentaclePlant-{PreCycle}
+(Photomaniac)SH_C03 : 4-Spider-10, 5-SpitterSpider, 7-Spider-30
+(Photomaniac)SH_C04 : 5-Mouse-2, 6-Dropwig, 7-Spider-20, 8-Mouse-2
+(Photomaniac)SH_C05 : 2-Mouse, 3-Mouse, 4-Spider-20, 5-Mouse, 6-Black
+(Photomaniac)SH_C07 : 4-Spider-20, 6-Spider-20
+(Photomaniac)SH_C08 : 2-Yellow-2, 5-Black
+(Photomaniac)SH_C09 : 2-Spider-5, 3-Spider-10, 3-BigSpider, 4-Spider-15, 5-Spider-15
+(Photomaniac)SH_C10 : 3-Black, 4-Mouse-2, 5-Mouse, 6-Mouse, 7-Mouse
+(Photomaniac)SH_C12 : 2-White, 2-White-{PreCycle}
+(Photomaniac)SH_D01 : 3-Cyan
+(Photomaniac)SH_E02 : 3-Centipede-4, 4-TentaclePlant, 6-TentaclePlant
+(Photomaniac)SH_E05 : 5-Cyan
+(Photomaniac)SH_H01 : 3-Small Centipede-2, 4-Small Centipede-2, 5-Small Centipede-3, 5-Centipede-2
+(Photomaniac)SH_CURVE : 2-Spider-8, 3-Mouse-5
+(Photomaniac)SH_HALL : 3-EggBug, 4-Black, 7-BigSpider, 8-BigSpider, 9-MotherSpider
+(Photomaniac)SH_HELPOUT : 3-Spider-15
+(Photomaniac)SH_KELP : 4-TentaclePlant, 6-Spider-10
+(Photomaniac)SH_LEDGE : 6-BigSpider
+(Photomaniac)SH_OVERHEAD : 5-Cyan
+(Photomaniac)LINEAGE : SH_A10 : 1 : Cyan-0.1, CicadaA-0.2, Centiwing-0.5, CicadaB-0.2, White-0.01, Blue-1, Cyan-0	
+(Photomaniac)LINEAGE : SH_B01 : 5 : BigSpider-0.2, BigSpider-0.2, None-0.5, SpitterSpider-0
+(Photomaniac)LINEAGE : SH_B02 : 4 : BigSpider-0.3, BigSpider-0.3, MotherSpider-1, SpitterSpider-0
+(Photomaniac)LINEAGE : SH_B04 : 5 : EggBug-1, BigSpider-0.5, SpitterSpider-0.2, White-0.1, Cyan-0
+(Photomaniac)LINEAGE : SH_B05 : 5 : Yellow-0.2, BigSpider-1, White-0.2, Yellow-0.5, White-0.5, SpitterSpider-0
+(Photomaniac)LINEAGE : SH_B05 : 7 : BigSpider-0.5, SpitterSpider-0.5, Black-0
+(Photomaniac)LINEAGE : SH_B05 : 8 : BigSpider-0.5, SpitterSpider-0.3, White-0.3, Black-0
+(Photomaniac)LINEAGE : SH_B08 : 2 : White-0.2, Dropwig-0.3, BigSpider-0.4, SpitterSpider-0.5, MotherSpider-0.6, Cyan-0.7, White-0
+(Photomaniac)LINEAGE : SH_B17 : 5 : SpitterSpider-0.2, BigSpider-1, Dropwig-0.5, White-0.99, SpitterSpider-0
+(Photomaniac)LINEAGE : SH_C01 : 3 : BigSpider-0.5, Dropwig-0.5, White-0.2, Cyan-0.2, SpitterSpider-0
+(Photomaniac)LINEAGE : SH_C02 : 4 : NONE-1, Green-0.99, Pink-1, Black-0
+(Photomaniac)LINEAGE : SH_C03 : 4 : BigSpider-0.5, Dropwig-0.2, MotherSpider-0.2, White-0.7, SpitterSpider-0
+(Photomaniac)LINEAGE : SH_C03 : 7 : BigSpider-0.4, Dropwig-0.5, White-0.2, MotherSpider-0.7, SpitterSpider-0
+(Photomaniac)LINEAGE : SH_C05 : 6 : BigSpider-1, Dropwig-1, SpitterSpider-0
+(Photomaniac)LINEAGE : SH_C05 : 7 : NONE-0.05, TentaclePlant-0
+(Photomaniac)LINEAGE : SH_C08 : 3 : Yellow-0.2, BigSpider-0.5, SpitterSpider-0.5, White-1, Red-0
+(Photomaniac)LINEAGE : SH_C08 : 4 : Yellow-0.2, Black-0.5, SpitterSpider-0.5, White-1, Red-0
+END CREATURES
+[ENDMERGE]

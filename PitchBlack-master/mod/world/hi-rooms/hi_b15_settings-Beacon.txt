@@ -1,0 +1,16 @@
+Template: NONE
+RainIntensity: 0.7173913
+RumbleIntensity: 0.7065217
+WaveSpeed: 0.4795202
+WaveLength: 0.9897601
+WaveAmplitude: 0.01476866
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Grime: 0.4021739
+BkgDroneVolume: 0.2469565
+Palette: 5
+EffectColorA: 10
+Effects: DayNight-0.25-20-20, FireFlies-0.4130435-31-125, 
+PlacedObjects: CentipedeAttractor><1132.621><353.341><-381~151, InsectGroup><486.6992><144.7679><-98~23~-659~-96~Ant~1, DayNightSettings><328.3185><380.584><5~8.660254~5~20, 
+AmbientSounds: OMNI><AM_IND-Warehouse02.ogg><775.884><396.837><0.5434783><0.5891304, SPOT><SO_IND-HeatDuct.ogg><770.3654><276.6634><0.4347826><1><342.3654><214.6634><-75.35535><-36.35535><0><0.4260871, 
+FadePalette: 33, 0.7608696, 0.7934783

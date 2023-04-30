@@ -1,6 +1,11 @@
-DangerType: FloodAndRain
+DangerType: Rain
 RainIntensity: 0.7282609
 RumbleIntensity: 0.7282609
+WaveSpeed: 0.4840896
+WaveLength: 0.9089017
+WaveAmplitude: 0.03469795
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
 Palette: 33
 EffectColorB: 5
 Effects: DayNight-1-30-30, FireFlies-0.2608696-40-40, 
