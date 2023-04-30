@@ -248,32 +248,27 @@ namespace SlugTemplate
             orig(self, eu);
             if (!pCon.TryGetValue(self, out PhotoCWT e))
             {
-                Logger.LogDebug("access GRANTED");
+                Logger.LogDebug("dduheudfhfhueufihfuiefufefh");
                 return;
             }
             // Parry
             e.UpdateParryCD(self);
 
-            // Air input
-            bool airParry = (self.input[0].pckp && !self.input[1].pckp) && self.wantToJump > 0;
-
-            // Ground input
+            // Parry Input tolerance
             int tolerance = 3;
             bool gParryLeanPckp = false, gParryLeanJmp = false;
-            if (!airParry)
+            for (int i = 0; i <= tolerance; i++)
             {
-                for (int i = 0; i <= tolerance; i++)
+                if (self.input[i].pckp)
                 {
-                    if (self.input[i].pckp)
-                    {
-                        gParryLeanPckp = i < tolerance;
-                    }
-                    if (self.input[i].jmp)
-                    {
-                        gParryLeanJmp = i < tolerance;
-                    }
+                    gParryLeanPckp = i < tolerance;
+                }
+                if (self.input[i].jmp)
+                {
+                    gParryLeanJmp = i < tolerance;
                 }
             }
+            bool airParry = gParryLeanPckp && self.wantToJump > 0;
             bool groundParry = self.input[0].y < 0 && self.bodyChunks[1].contactPoint.y < 0 && gParryLeanJmp && gParryLeanPckp;
 
             if (self.Consious && (airParry || groundParry))
