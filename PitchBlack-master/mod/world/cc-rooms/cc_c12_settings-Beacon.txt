@@ -1,0 +1,10 @@
+RainIntensity: 0.06521739
+RumbleIntensity: 0.06521739
+Clouds: 0.1956522
+Grime: 0.3804348
+BkgDroneVolume: 0.2869565
+Palette: 6
+Effects: Fog-0.326087-20-20, DayNight-0.5978261-22-81, FireFlies-0.2608696-293-50, 
+PlacedObjects: GhostSpot><571.6066><2268.581><, Rainbow><392.3093><2055.675><-189~-144~-451.9951~23.04907~0.4673993,0,0,0.4456276,0.7718161,0.3999999, DayNightSettings><549.4301><1375.087><5~8.660254~6~15, 
+AmbientSounds: OMNI><AM_WIN-HowlingWnd.ogg><745.0768><264.9001><0.2173913><0.6282609, 
+FadePalette: 33, 0.8043478, 0.8369565, 0.8695652

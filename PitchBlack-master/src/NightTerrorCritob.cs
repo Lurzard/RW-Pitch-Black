@@ -7,13 +7,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using static PathCost.Legality;
 
-namespace PitchBlack
+namespace NightTerror
 {
     sealed class RedCentipedeCritob : Critob
     {
         internal RedCentipedeCritob() : base(CreatureTemplateType.NightTerror)
         {
-            Icon = new SimpleIcon("Kill_Daddy", Color.yellow);
+            Icon = new SimpleIcon("Night_Terror", Color.clear);
             RegisterUnlock(KillScore.Configurable(25), SandboxUnlockID.NightTerror);
             SandboxPerformanceCost = new(3f, 1.5f);
             LoadedPerformanceCost = 200f;
@@ -39,7 +39,7 @@ namespace PitchBlack
             }
         }
 
-        public override void TileIsAllowed(AImap map, IntVector2 tilePos, ref bool? allow) => allow = map.getAItile(tilePos).terrainProximity > 1;
+        //public override void TileIsAllowed(AImap map, IntVector2 tilePos, ref bool? allow) => allow = ((map.getAItile(tilePos).terrainProximity > 1f && map.getAItile(tilePos).terrainProximity < 3f) || (map.getAItile(tilePos).narrowSpace) || map.getAItile(tilePos).walkable) && map.getAItile(tilePos).terrainProximity != 0;
 
         public override int ExpeditionScore() => 25;
 
@@ -57,17 +57,21 @@ namespace PitchBlack
             {
                 TileResistances = new()
                 {
-                    Air = new(1f, Allowed)
+                    OffScreen = new(1f, Allowed),
+                    Climb = new(1f, Allowed),
+                    Floor = new(1f, Allowed),
+                    Wall = new(0.5f, Allowed),
+                    Ceiling = new(1f, Unwanted)
+                    //Air = new(0.9f, Unwanted)
                 },
                 ConnectionResistances = new()
                 {
                     Standard = new(1f, Allowed),
                     ShortCut = new(1f, Allowed),
-                    BigCreatureShortCutSqueeze = new(10f, Allowed),
-                    OffScreenMovement = new(1f, Allowed),
-                    BetweenRooms = new(10f, Allowed)
+                    BigCreatureShortCutSqueeze = new(1f, Allowed),
+                    BetweenRooms = new(1f, Allowed)
                 },
-                DefaultRelationship = new(CreatureTemplate.Relationship.Type.AgressiveRival, 1f),
+                DefaultRelationship = new(CreatureTemplate.Relationship.Type.Ignores, 1f),
                 DamageResistances = new() { Base = 200f, Explosion = .03f },
                 StunResistances = new() { Base = 200f },
                 HasAI = true,
@@ -78,8 +82,8 @@ namespace PitchBlack
 
         public override void EstablishRelationships()
         {
-            /*var daddy = new Relationships(Type);
-            daddy.Ignores(Type);*/
+            var daddy = new Relationships(Type);
+            daddy.Attacks(CreatureTemplate.Type.Slugcat, 9999f);
         }
 
         public override ArtificialIntelligence CreateRealizedAI(AbstractCreature acrit) => new CentipedeAI(acrit, acrit.world);

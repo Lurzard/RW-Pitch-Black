@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace PitchBlack
+namespace NightTerror
 {
     public static class CreatureTemplateType
     {

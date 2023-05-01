@@ -1,0 +1,11 @@
+Template: NONE
+DangerType: Rain
+RainIntensity: 0.2065217
+RumbleIntensity: 0.2065217
+Clouds: 0.3586957
+Grime: 0.1956522
+BkgDroneVolume: 0
+Palette: 29
+Effects: DayNight-0.2173913-23-92, FireFlies-0.2717391-117-21, 
+PlacedObjects: NoSpearStickZone><479.6824><242.1882><-259~110, DayNightSettings><-53.06012><461.4407><5~8.660254~6~29, 
+FadePalette: 33, 0.8043478

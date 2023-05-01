@@ -15,7 +15,7 @@ public class ChillTheFUCKOut
     public int timesZapped = 0;
 }
 
-namespace PitchBlack
+namespace NightTerror
 {
     static class Hooks
     {
@@ -32,16 +32,36 @@ namespace PitchBlack
             On.FlareBomb.Update += FlareBomb_Update;
             On.CentipedeAI.DoIWantToShockCreature += CentipedeAI_DoIWantToShockCreature;
             On.Centipede.Shock += Centipede_Shock;
+            On.RainWorld.OnModsInit += RainWorld_OnModsInit;
+            On.Centipede.ShortCutColor += Centipede_ShortCutColor;
+        }
+
+        private static Color Centipede_ShortCutColor(On.Centipede.orig_ShortCutColor orig, Centipede self)
+        {
+            if (self.abstractCreature.creatureTemplate.type == CreatureTemplateType.NightTerror)
+            {
+                return new Color(0.286f, 0.286f, 0.952f);
+            }
+            return orig(self);
+        }
+
+        private static void RainWorld_OnModsInit(On.RainWorld.orig_OnModsInit orig, RainWorld self)
+        {
+            orig(self);
+            Futile.atlasManager.LoadAtlas("atlases/nightTerroratlas");
         }
 
         private static void Centipede_Shock(On.Centipede.orig_Shock orig, Centipede self, PhysicalObject shockObj)
         {
             orig(self, shockObj);
-            if (shockObj != null && shockObj.abstractPhysicalObject != null && shockObj.abstractPhysicalObject is AbstractCreature)
+            if (self.abstractCreature.creatureTemplate.type == CreatureTemplateType.NightTerror)
             {
-                if (!KILLIT.TryGetValue(shockObj.abstractPhysicalObject as AbstractCreature, out var victim))
-                { KILLIT.Add(shockObj.abstractPhysicalObject as AbstractCreature, victim = new ChillTheFUCKOut()); }
-                victim.timesZapped++;
+                if (shockObj != null && shockObj.abstractPhysicalObject != null && shockObj.abstractPhysicalObject is AbstractCreature)
+                {
+                    if (!KILLIT.TryGetValue(shockObj.abstractPhysicalObject as AbstractCreature, out var victim))
+                    { KILLIT.Add(shockObj.abstractPhysicalObject as AbstractCreature, victim = new ChillTheFUCKOut()); }
+                    victim.timesZapped++;
+                }
             }
         }
 
@@ -104,6 +124,9 @@ namespace PitchBlack
             orig(self);
             if (self.centipede.abstractCreature.creatureTemplate.type == CreatureTemplateType.NightTerror)
             {
+                self.run = 500;
+                //self.centipede.bodyDirection = true;
+
                 if (NightTerrorInfo.TryGetValue(self.centipede, out var NTInfo))
                 {
                     if (NTInfo.fleeing == 0)
@@ -113,7 +136,12 @@ namespace PitchBlack
                             if (!(self.centipede.room.game.Players[i].realizedCreature as Player).dead)
                             {
                                 self.tracker.SeeCreature(self.centipede.room.game.Players[i]);
-                                self.SetDestination(self.centipede.room.game.Players[i].pos);
+                                self.creature.abstractAI.RealAI.SetDestination(self.centipede.room.game.Players[i].pos);
+                                self.creature.abstractAI.destination = self.centipede.room.game.Players[i].pos;
+                                self.creature.abstractAI.migrationDestination = new WorldCoordinate?(self.centipede.room.game.Players[i].pos);
+                                self.creature.abstractAI.InternalSetDestination(self.centipede.room.game.Players[i].pos);
+                                self.behavior = CentipedeAI.Behavior.Hunt;
+                                self.run = 1000;
                             }
                         }
                     }
@@ -132,6 +160,7 @@ namespace PitchBlack
             orig(self, abstractCreature, world);
             if (self.abstractCreature.creatureTemplate.type == CreatureTemplateType.NightTerror)
             {
+
                 if (!NightTerrorInfo.TryGetValue(self, out var _))
                 { NightTerrorInfo.Add(self, _ = new NightTerrorData()); }
 

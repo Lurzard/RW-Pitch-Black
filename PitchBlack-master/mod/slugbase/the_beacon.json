@@ -18,7 +18,7 @@
 				"story": "2a04dc"
 			}
 		],
-		"beacon/super_jump": 0.25,
+		"beacon/super_jump": 0.01,
 		"beacon/explode_on_death": true,
 		"auto_grab_batflies": true,
 		"weight": [ 0.9, 0.7 ],
