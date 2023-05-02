@@ -1,0 +1,194 @@
+[FINDLINESTART]CC_A07 :
+[REPLACE_2]
+[FINDLINESTART]CC_C03 :
+[REPLACE_2]
+[FINDLINESTART]CC_B14 :
+[REPLACE_2]
+[FINDLINESTART]LINEAGE : CC_C07 : 2 :
+[REPLACE]
+[FINDLINESTART]LINEAGE : CC_C07 : 3 :
+[REPLACE]
+[FINDLINESTART]LINEAGE : CC_A15 : 3 :
+[REPLACE]
+[FINDLINESTART](White)LINEAGE : CC_B11 : 2 :
+[REPLACE]
+[MERGE]
+CONDITIONAL LINKS
+//Requires swaps on both sides!
+Saint : CC_A06 : CC_H01 : CC_H01SAINT
+Saint : CC_H01 : CC_A06 : DISCONNECTED
+Saint : CC_H01SAINT : 1 : CC_A06
+//Only show on saint
+Saint : EXCLUSIVEROOM : CC_H01SAINT
+//Hidden on saint
+Saint : HIDEROOM : CC_H01
+Saint : HIDEROOM : GATE_CC_UW
+END CONDITIONAL LINKS
+
+ROOMS
+GATE_DS_CC : CC_OUTPUT : GATE
+CC_H01SAINT : DISCONNECTED
+CC_B10 : CC_C05, CC_B14, CC_SHAFT02
+CC_B11 : CC_C11, CC_C03, CC_SHAFT01x
+CC_SHAFT01x : CC_B11, CC_SUMP03
+CC_SHAFT02 : CC_B10, CC_SUMP01
+CC_SUMP01 : CC_SHAFT02, CC_SUMP02, CC_SUMP05
+CC_SUMP02 : CC_STRAINER01, CC_SUMP01, CC_OUTPUT
+CC_STRAINER01 : CC_SUMP02, CC_SUMP03
+CC_SUMP03 : CC_SHAFT01x, CC_CLOG, CC_STRAINER01, CC_STRAINER02
+CC_CLOG : CC_S06, CC_SUMP03
+CC_S06 : CC_CLOG : SHELTER
+CC_STRAINER02 : CC_SUMP03, CC_SUMP04
+CC_SUMP04 : CC_STRAINER02, CC_STRAINER03
+CC_STRAINER03 : CC_OUTPUT, CC_SUMP04
+CC_OUTPUT : CC_SUMP02, CC_SUMP05, CC_STRAINER03, CC_S07, GATE_DS_CC
+CC_S07 : CC_OUTPUT : SHELTER
+CC_SUMP05 : CC_SUMP01, CC_OUTPUT
+END ROOMS
+
+CREATURES
+(X-White,Yellow,Gourmand,Rivulet,Red,Artificer,Spear,Saint,Inv)OFFSCREEN : 0-Vulture-4, 0-Scavenger-6
+(Gourmand)OFFSCREEN : 0-Vulture-3, 0-KingVulture-1, 0-Scavenger-4
+(Rivulet)OFFSCREEN : 0-Vulture-5, 0-Scavenger-3
+(Red)OFFSCREEN : 0-Vulture-4, 0-KingVulture-3, 0-Scavenger-7, 0-Elite-1
+(Artificer)OFFSCREEN : 0-Vulture-3, 0-KingVulture-4, 0-Scavenger-15, 0-Elite-2
+(Spear)OFFSCREEN : 0-Vulture-3, 0-KingVulture-4, 0-Scavenger-11, 0-Elite-2
+(Saint)OFFSCREEN : 0-MirosVulture-{Night}-4, 0-Vulture-2, 0-Scavenger-6
+(Inv)OFFSCREEN : 0-MirosVulture-4-{Night}, 0-Scavenger-7
+(Gourmand)LINEAGE : OFFSCREEN : 0 : Vulture-0.2, KingVulture-0
+(White,Gourmand)LINEAGE : OFFSCREEN : 0 : NONE-0.5, Scavenger-0.1, NONE-0.1, Elite-0
+CC_C05 : 3-Snail-2-{PreCycle}
+
+(X-Rivulet,Red,Artificer,Spear,Saint,Inv)CC_A07 : 3-Mimic-{18}
+(Red,Artificer,Spear)CC_A07 : 2-DropBug, 3-Mimic-{18}
+(Saint)CC_A07 : 3-Red
+(Inv)CC_A07 : 2-DropBug
+(X-Red,Artificer,Spear,Inv,Saint)CC_C03 : 7-Garbage Worm-3
+(Red,Artificer,Spear)CC_C03 : 7-Garbage Worm-3, 5-BigSpider
+(Inv)CC_C03 : 7-Garbage Worm-3, 5-SpitterSpider
+(X-Rivulet,Red,Artificer,Spear,Saint,Inv)CC_B14 : 3-Tube Worm, 4-Tube Worm
+(Rivulet)CC_B14 : 3-Tube Worm, 4-Tube Worm, 2-Cyan-2, 3-Centiwing
+(Red,Artificer,Spear)CC_B14 : 3-Tube Worm, 4-Tube Worm, 2-BigNeedleWorm, 2-SmallNeedleWorm-4
+(Saint)CC_B14 : 2-Cyan-2, 3-Centiwing
+(Inv)CC_B14 : 2-BigNeedleWorm, 2-SmallNeedleWorm-4
+
+(X-Yellow,Rivulet,Red,Artificer,Spear,Saint,Inv)CC_B04 : 3-White, 3-Snail-2-{PreCycle}
+(Yellow)CC_B04 : 3-Blue, 3-Snail-2-{PreCycle}
+(Rivulet)CC_B04 : 3-Blue, 3-Centiwing, 4-Centiwing, 3-Snail-2-{PreCycle}
+(Red,Artificer,Spear)CC_B04 : 3-White, 4-BigNeedleWorm, 4-SmallNeedleWorm-2, 3-Snail-2-{PreCycle}
+(Saint)CC_B04 : 3-Centiwing, 4-Centiwing, 3-Snail-2-{PreCycle}
+(Inv)CC_B04 : 3-Red, 4-BigNeedleWorm, 4-SmallNeedleWorm-2, 3-Snail-2-{PreCycle}
+(X-Yellow,Saint,Rivulet,Red,Artificer,Spear,Inv)CC_B05 : 2-Pink, 3-White, 4-TentaclePlant-{PreCycle}
+(Yellow,Saint)CC_B05 : 3-White, 4-TentaclePlant-{PreCycle}
+(Rivulet)CC_B05 : 3-Yellow-2, 4-TentaclePlant-{PreCycle}
+(Red,Artificer,Spear)CC_B05 : 2-DropBug, 3-White, 4-BigNeedleWorm, 4-SmallNeedleWorm-2, 4-TentaclePlant-{PreCycle}
+(Inv)CC_B05 : 2-DropBug, 3-Red, 4-BigNeedleWorm, 4-SmallNeedleWorm-2, 4-TentaclePlant-{PreCycle}
+(X-Red,Artificer,Spear,Saint,Inv)CC_B11 : 3-Caramel
+(Red,Artificer,Spear,Saint)CC_B11 : 3-BigSpider-2
+(Inv)CC_B11 : 3-SpitterSpider-2
+
+(X-Inv,Yellow,Rivulet,Saint)CC_B01 : 2-Blue, 3-White, 3-Snail-3-{PreCycle}
+(X-Inv,Yellow,Rivulet,Saint)CC_F01 : 4-Pink-2, 4-Snail-3-{PreCycle}
+(X-Inv,Yellow,Rivulet,Saint)CC_B08 : 3-White, 2-Pink, 3-Cyan-2-{PreCycle}
+(Inv)CC_B01 : 2-Red, 3-White, 3-Snail-3-{PreCycle}
+(Inv)CC_F01 : 4-Red-2, 4-Snail-3-{PreCycle}
+(Inv)CC_B08 : 3-White, 2-Red, 3-Cyan-2-{PreCycle}
+(Yellow)CC_B01 : 2-Blue, 3-Snail-3-{PreCycle}
+(Yellow)CC_F01 : 4-Pink, 4-Snail-3-{PreCycle}
+(Yellow,Rivulet)CC_B08 : 3-Blue, 3-Cyan-2-{PreCycle}
+(Rivulet)CC_F01 : 3-Centiwing, 4-Caramel, 4-Snail-3-{PreCycle}
+(Rivulet,Saint)CC_B01 : 2-Cyan-2, 3-Centiwing, 3-Snail-3-{PreCycle}
+(Saint)CC_F01 : 3-Centiwing, 4-White, 4-Snail-3-{PreCycle}
+(Saint)CC_B08 : 3-Strawberry, 3-Cyan-2-{PreCycle}
+
+(Artificer,Spear)CC_A15 : 4-Cyan-2
+(Rivulet,Saint)CC_A15 : 3-Centiwing
+(Inv)CC_A15 : 4-Red-2
+(Red)CC_C11 : 4-Caramel
+(Artificer,Spear)CC_C11 : 4-SpitterSpider
+(Saint)CC_C11 : 4-Strawberry
+(Inv)CC_C11 : 4-Red
+(Rivulet,Saint)CC_C04 : 3-Centiwing-2, 3-TentaclePlant-{PreCycle}
+(Red,Artificer,Spear,Inv)CC_C04 : 3-BigNeedleWorm, 3-SmallNeedleWorm-3, 3-TentaclePlant-{PreCycle}
+(Rivulet)CC_C08 : 3-Yellow-1, 4-Yellow-2, 5-Centiwing-2
+(Artificer,Spear)CC_C08 : 3-Cyan
+(Saint)CC_C08 : 3-Yellow-3, 4-Yellow-2, 5-Centiwing-2
+(Inv)CC_C08 : 3-Red
+(X-Saint)CC_C07 : 2-Snail-3-{PreCycle}
+(Saint)CC_C07 : 2-White, 3-Centiwing, 2-Snail-3-{PreCycle}
+
+(X-Saint)LINEAGE : CC_C07 : 2 : White-0.5, Blue-0.5, CicadaB-0
+(White,Gourmand,Yellow,Rivulet)LINEAGE : CC_C07 : 3 : Blue-0.3, CicadaA-0
+(Red,Artificer,Spear)LINEAGE : CC_C07 : 3 : Blue-0.3, CicadaA-0.01, Strawberry-0
+(Inv)LINEAGE : CC_C07 : 3 : Red-0
+(X-Saint)LINEAGE : CC_A15 : 3 : Mimic-{13}-0.5, Mimic-{16}-0.5, Mimic-{21}-0.5, TentaclePlant-0
+(X-Yellow,Rivulet,Red,Artificer,Spear,Saint,Inv)LINEAGE : CC_F01 : 3 : White-{Mean:0.3}-0.5, Blue-0.2, Cyan-0.2, Red-0
+(Rivulet)LINEAGE : CC_F01 : 3 : White-0.5-{Mean:-0.1}, Blue-0
+(Artificer,Spear)LINEAGE : CC_F01 : 3 : White-{Mean:0.3}-0.5, Blue-0.2, Cyan-0
+(Inv)LINEAGE : CC_F01 : 3 : Red-0
+(Red,Artificer,Spear,Inv)LINEAGE : CC_SHAFT02 : 3 : NONE-0.3, SpitterSpider-0
+(X-Red,Artificer,Spear,Inv)LINEAGE : CC_SUMP01 : 4 : BigSpider-0.1, White-0.2, TentaclePlant-0
+(Red,Artificer,Spear,Inv)LINEAGE : CC_SUMP01 : 4 : MotherSpider-0.1, White-0.2, TentaclePlant-0
+(X-Yellow,Rivulet,Red,Artificer,Spear,Saint,Inv)LINEAGE : CC_A07 : 2 : Pink-0.2, Blue-0.5, White-0.2, Cyan-0.2, Red-0
+(Yellow)LINEAGE : CC_A07 : 2 : EggBug-0.2, Blue-0.5, White-0
+(Rivulet)LINEAGE : CC_A07 : 2 : EggBug-0.2, Blue-0.5, Strawberry-0
+(Artificer,Spear)LINEAGE : CC_A07 : 2 : Pink-0.2, Blue-0.5, White-0.2, Cyan-0
+(Inv)LINEAGE : CC_A07 : 2 : Red-0
+(X-Yellow,Rivulet,Red,Artificer,Spear,Saint,Inv)LINEAGE : CC_C11 : 3 : Blue-0.2, White-0.2, NONE-0.2, Red-0
+(Artificer,Spear)LINEAGE : CC_C11 : 3 : BigSpider-0.2, SpitterSpider-0.2, NONE-0.2, Cyan-0
+(Inv)LINEAGE : CC_C11 : 3 : SpitterSpider-0
+(X-Yellow,Rivulet,Red,Artificer,Spear,Saint,Inv)LINEAGE : CC_B08 : 2 : Pink-0.2, White-0.2, Strawberry-0.1, Red-0
+(Rivulet)LINEAGE : CC_B08 : 2 : NONE-0.3, Pink-0.2, White-0
+(Artificer,Spear)LINEAGE : CC_B08 : 2 : Blue-0.2, White-0.2, Cyan-0
+(Inv)LINEAGE : CC_B08 : 2 : Red-0
+(Artificer,Spear)LINEAGE : CC_B08 : 4 : EggBug-0.2, DropBug-0
+(Inv)LINEAGE : CC_B08 : 4 : DropBug-0
+(Gourmand)LINEAGE : CC_B11 : 3 : DropBug-0.1, SpitterSpider-0
+(X-Rivulet,Red,Artificer,Spear,Saint,Inv)LINEAGE : CC_B01 : 2 : Pink-0.2, White-0.2, Strawberry-0.1, Red-0
+(X-Rivulet,Red,Artificer,Spear,Saint,Inv)LINEAGE : CC_C08 : 3 : Pink-0.2, Blue-0.3, NONE-0.3, Cyan-0
+(X-Rivulet,Red,Artificer,Spear,Saint,Inv)LINEAGE : CC_C08 : 4 : Pink-0.2, Blue-0.3, NONE-0.3, Cyan-0
+(Rivulet)LINEAGE : CC_B01 : 2 : Yellow-0.2, Strawberry-0.2, Red-0
+(Rivulet)LINEAGE : CC_C08 : 3 : Yellow-0.2, White-0.3, NONE-0.3, Cyan-0
+(Rivulet)LINEAGE : CC_C08 : 4 : Yellow-0.2, Strawberry-0.4, NONE-0.3, Cyan-0
+(Artificer,Spear)LINEAGE : CC_B01 : 2 : Cyan-0.2, Red-0
+(Artificer,Spear)LINEAGE : CC_C08 : 4 : Cyan-0.2, Red-0
+(Inv)LINEAGE : CC_B01 : 2 : Red-0
+(Inv)LINEAGE : CC_C08 : 4 : Red-0
+(X-Red,Artificer,Spear,Saint,Inv)LINEAGE : CC_C05 : 3 : Blue-0.2, NONE-0.5, White-0.2, Red-0
+(Artificer,Spear)LINEAGE : CC_C05 : 3 : Cyan-0.2, NONE-0.5, White-0.2, Red-0
+(Inv)LINEAGE : CC_C05 : 3 : Red-0
+
+(X-Yellow,Rivulet,Saint)CC_SHAFT01x : 9-Garbage Worm-3, 2-Eel-{PreCycle}
+(X-Yellow,Rivulet,Saint,Inv)CC_SHAFT02 : 5-BigSpider-2
+(Inv)CC_SHAFT02 : 5-SpitterSpider-2
+(X-Yellow,Rivulet,Saint,Inv)CC_SUMP01 : 5-MotherSpider, 6-TentaclePlant, 7-Eel
+(Inv)CC_SUMP01 : 5-SpitterSpider, 6-TentaclePlant, 7-Eel
+(X-Yellow,Rivulet,Saint,Inv)CC_STRAINER01 : 2-Small Centipede-5, 3-Centipede-2
+(Inv)CC_STRAINER01 : 2-Small Centipede-5, 3-RedCentipede-2
+(X-Yellow,Rivulet,Saint)CC_STRAINER02 : 3-Mimic-{12}
+(X-Yellow,Rivulet,Saint)CC_STRAINER03 : 2-Snail-3
+(X-Yellow,Rivulet,Saint,Red,Artificer,Spear,Inv)CC_SUMP03 : 4-Mimic-{18}, 7-MotherSpider-1, 8-Mimic-{14}, 12-Snail-5, 13-Eel
+(X-Yellow,Rivulet,Saint,Red,Artificer,Spear,Inv)CC_SUMP04 : 3-Eel, 4-Snail-2
+(X-Yellow,Rivulet,Saint,Red,Artificer,Spear,Inv)CC_SUMP05 : 2-Mimic-{19}, 3-Mimic-{21}, 5-Centipede-3, 11-Small Centipede-2, 11-Centipede-2
+(X-Yellow,Rivulet,Saint,Inv)CC_OUTPUT : 10-Small Centipede-7, 11-Snail-2
+(Red,Artificer,Spear)CC_SUMP03 : 4-Mimic-{18}, 7-MotherSpider-2, 8-Mimic-{14}, 12-Snail-5, 13-Eel
+(Inv)CC_SUMP03 : 4-Mimic-{18}, 7-SpitterSpider-2, 8-Mimic-{14}, 12-Snail-5, 13-Eel
+(Red,Artificer,Spear,Inv)CC_SUMP04 : 3-Eel, 4-Snail-6
+(Red,Artificer,Spear)CC_SUMP05 : 2-Mimic-{19}, 3-Mimic-{21}, 4-DropBug-2, 5-Centipede-3, 11-Small Centipede-2, 11-Centipede-2
+(Inv)CC_SUMP05 : 2-Mimic-{19}, 3-Mimic-{21}, 4-DropBug-2, 5-RedCentipede-3, 11-Small Centipede-2, 11-RedCentipede-2
+(Yellow,Rivulet)CC_SHAFT01x : 9-Garbage Worm-2, 2-Eel-{PreCycle}
+(Yellow,Rivulet,Saint)CC_SHAFT02 : 5-BigSpider-1
+(Yellow,Rivulet)CC_SUMP01 : 5-BigSpider, 6-TentaclePlant, 7-Eel
+(Yellow,Rivulet,Saint)CC_STRAINER01 : 2-Small Centipede-3, 3-Centipede-3
+(Yellow,Rivulet,Saint)CC_STRAINER02 : 3-Mimic-{12}
+(Yellow,Rivulet)CC_STRAINER03 : 2-Snail-3
+(Yellow,Rivulet)CC_SUMP03 : 4-Mimic-{18}, 7-MotherSpider-1, 8-Mimic-{14}, 12-Snail-5, 13-Eel
+(Yellow,Rivulet)CC_SUMP04 : 3-Eel-2
+(Yellow,Rivulet,Saint)CC_SUMP05 : 2-Mimic-{19}, 3-Mimic-{21}, 5-Centipede-3, 11-Small Centipede-2, 11-Centipede-2
+(Yellow,Rivulet,Saint)CC_OUTPUT : 10-Small Centipede-3, 11-Snail-2
+(Saint)CC_SHAFT01x : 4-BigSpider-2, 2-Eel-{PreCycle}
+(Saint)CC_SUMP01 : 5-BigSpider, 6-TentaclePlant
+(Saint)CC_SUMP03 : 4-Mimic-{18}, 7-BigSpider-1, 8-Mimic-{14}, 12-Snail-2
+(Saint)CC_SUMP04 : 3-Eel-1
+END CREATURES
+[ENDMERGE]

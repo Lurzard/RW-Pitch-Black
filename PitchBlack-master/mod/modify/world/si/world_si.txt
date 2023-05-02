@@ -1,0 +1,85 @@
+[FIND](X-
+[ADDAFTER]Beacon,Photomaniac,
+[FINDREGEX]^(W+  d+-w+.+LINEAGE  w+  d+  .+)$
+[ADDBEFORE](X-Beacon,Photomaniac)
+[MERGE]
+CREATURES
+
+(Beacon)OFFSCREEN : 0-Vulture-2, 0-KingVulture-3, 0-MirosVulture, 0-Scavenger-16, 0-Elite
+(Photomaniac)OFFSCREEN : 0-Vulture-3, 0-KingVulture-3, 0-MirosVulture, 0-Scavenger-20, 0-Elite
+
+(Beacon)SI_A02 : 2-Cyan, 2-Cyan-{PreCycle}
+(Beacon)SI_A03x : 2-Yellow-2, 3-Yellow-3
+(Beacon)SI_A17 : 3-White, 4-Mouse-4
+(Beacon)SI_A18 : 3-EggBug
+(Beacon)SI_A23 : 2-Blue
+(Beacon)SI_A27 : 3-CicadaA, 4-BigSpider-2
+(Beacon)SI_A30 : 3-TentaclePlant-{PreCycle}
+(Beacon)SI_A31 : 3-Cyan
+(Beacon)SI_B01 : 5-BigNeedleWorm, 5-SmallNeedleWorm, 6-Blue
+(Beacon)SI_B02x : 2-Cyan, 5-Mouse-6
+(Beacon)SI_B03 : 3-Centiwing-4, 4-Cyan
+(Beacon)SI_B04 : 2-Blue
+(Beacon)SI_B09 : 4-CicadaB-2, 4-CicadaA-3, 5-Cyan-2, 6-Centiwing-2, 7-White
+(Beacon)SI_B11 : 2-CicadaA, 2-CicadaB
+(Beacon)SI_B12 : 1-Small Centipede-{AlternateForm}-11, 2-Centiwing-4
+(Beacon)SI_B16 : 4-BigSpider, 5-SpitterSpider, 6-BigSpider, 7-White, 8-Cyan-{PreCycle}
+(Beacon)SI_C01 : 3-Cyan-2, 4-Yellow-3, 2-Snail-2-{PreCycle}, 5-Snail-2-{PreCycle}
+(Beacon)SI_C01x : 3-Snail-2-{PreCycle}
+(Beacon)SI_C02 : 5-BigNeedleWorm, 5-SmallNeedleWorm-3, 6-EggBug, 7-Cyan, 9-Mouse-3
+(Beacon)SI_C06 : 2-Dropwig, 3-Small Centipede-{AlternateForm}-4, 3-Centiwing
+(Beacon)SI_C06x : 4-BigSpider, 6-SpitterSpider
+(Beacon)SI_C08 : 4-Centiwing-2, 6-Centiwing, 7-Black, 8-CicadaB-4
+(Beacon)SI_C07 : 1-Centiwing-2, 2-Cyan, 3-Cyan, 3-Snail-4-{PreCycle}
+(Beacon)SI_C09 : 2-Centiwing-2, 2-Snail-2-{PreCycle}, 3-Snail-{PreCycle}, 3-Cyan-{PreCycle}
+(Beacon)SI_D01 : 5-White-2, 6-EggBug, 6-Mouse-3, 7-CicadaA-3, 8-CicadaB-2, 9-CicadaB-2, 10-CicadaB
+(Beacon)SI_D05 : 3-Small Centipede-3-{AlternateForm}, 4-EggBug, 5-CicadaA, 6-CicadaA
+(Beacon)SI_D06 : 5-Yellow-3, 6-Yellow-3, 7-BigSpider-2, 8-nightterror
+(Beacon)SI_D08 : 2-Centiwing, 3-Centiwing, 4-Centiwing, 5-Centiwing
+(Beacon)SI_D09 : 3-Mouse-4
+(Beacon)SI_F01 : 3-CicadaA-3, 2-CicadaB-2, 11-Cyan, 12-White, 3-Snail-4-{PreCycle}, 7-Snail-2-{PreCycle}, 11-Snail-2-{PreCycle}
+(Beacon)LINEAGE : SI_B01 : 4 : Pink-0.4, White-0.2, Cyan-0
+(Beacon)LINEAGE : SI_C06 : 3 : Centiwing-0.1, RedCenti-0
+
+(Photomaniac)SI_A02 : 2-Cyan, 2-Cyan-{PreCycle}
+(Photomaniac)SI_A03x : 2-Yellow-2, 3-Yellow-3
+(Photomaniac)SI_A17 : 3-White, 4-Mouse-4
+(Photomaniac)SI_A18 : 3-EggBug
+(Photomaniac)SI_A23 : 2-Blue
+(Photomaniac)SI_A27 : 3-CicadaA, 4-BigSpider-2
+(Photomaniac)SI_A30 : 3-TentaclePlant-{PreCycle}
+(Photomaniac)SI_A31 : 3-Cyan-2
+(Photomaniac)SI_B01 : 5-BigNeedleWorm, 5-SmallNeedleWorm, 6-Blue
+(Photomaniac)SI_B02x : 2-Cyan, 5-Mouse-6
+(Photomaniac)SI_B03 : 3-Centiwing-4, 4-Cyan
+(Photomaniac)SI_B04 : 2-Blue
+(Photomaniac)SI_B09 : 4-CicadaB-2, 4-CicadaA-3, 5-Cyan-2, 6-Centiwing-2, 7-White
+(Photomaniac)SI_B11 : 2-CicadaA, 2-CicadaB
+(Photomaniac)SI_B12 : 1-Small Centipede-{AlternateForm}-11, 2-Centiwing-4
+(Photomaniac)SI_B16 : 4-BigSpider-2, 5-SpitterSpider-2, 6-BigSpider, 7-White, 8-Cyan-{PreCycle}
+(Photomaniac)SI_C01 : 3-Cyan-2, 4-Yellow-3, 2-Snail-2-{PreCycle}, 5-Snail-2-{PreCycle}
+(Photomaniac)SI_C01x : 3-Cyan, 3-Snail-2-{PreCycle}
+(Photomaniac)SI_C02 : 5-BigNeedleWorm, 5-SmallNeedleWorm-3, 6-EggBug, 7-Cyan, 9-Mouse-3
+(Photomaniac)SI_C06 : 2-Dropwig, 3-Small Centipede-{AlternateForm}-4, 3-Centiwing
+(Photomaniac)SI_C06x : 4-BigSpider-2, 6-SpitterSpider
+(Photomaniac)SI_C08 : 4-Centiwing-2, 6-Centiwing, 7-Black, 8-Cyan
+(Photomaniac)SI_C07 : 1-Centiwing-2, 2-Cyan, 3-Cyan, 3-Snail-4-{PreCycle}
+(Photomaniac)SI_C09 : 2-Centiwing-2, 2-Snail-2-{PreCycle}, 3-Snail-{PreCycle}, 3-Cyan-{PreCycle}
+(Photomaniac)SI_D01 : 5-White-2, 6-EggBug, 6-Mouse-3, 7-CicadaA-3, 8-CicadaB-2, 9-CicadaB-2, 10-CicadaB
+(Photomaniac)SI_D05 : 3-Small Centipede-3-{AlternateForm}, 4-EggBug, 5-CicadaA, 6-CicadaA
+(Photomaniac)SI_D06 : 5-Yellow-3, 6-Yellow-3, 7-BigSpider-2, 8-MotherSpider, 8-SpitterSpider
+(Photomaniac)SI_D08 : 2-Centiwing, 3-Centiwing, 4-Centiwing, 5-Centiwing
+(Photomaniac)SI_D09 : 2-SpitterSpider, 3-Mouse-4
+(Photomaniac)SI_F01 : 3-CicadaA-3, 2-CicadaB-2, 11-Cyan, 12-White, 3-Snail-4-{PreCycle}, 7-Snail-2-{PreCycle}, 11-Snail-2-{PreCycle}
+(Photomaniac)LINEAGE : SI_B01 : 4 : Pink-0.4, White-0.2, Cyan-0
+(Photomaniac)LINEAGE : SI_C06 : 3 : Centiwing-0.1, RedCenti-0
+
+
+(Beacon,Photomaniac)LINEAGE : SI_SAINTINTRO : 2 : NONE-0.01, Red-{Voidspawn}-0
+(Beacon,Photomaniac)LINEAGE : SI_SAINTINTRO : 2 : NONE-0.01, Cyan-{Voidspawn}-0
+(Beacon,Photomaniac)LINEAGE : SI_SAINTINTRO : 2 : NONE-0.01, RedCenti-{Voidspawn}-0
+(Beacon,Photomaniac)LINEAGE : SI_SAINTINTRO : 2 : NONE-0.01, Daddy-{Voidspawn}-0
+(Beacon,Photomaniac)LINEAGE : SI_SAINTINTRO : 2 : NONE-0.01, FireBug-{Voidspawn}-0
+
+END CREATURES
+[ENDMERGE]

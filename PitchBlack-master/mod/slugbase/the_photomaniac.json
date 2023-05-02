@@ -19,8 +19,8 @@
 			}
 		],
 		"throw_skill": 0,
-		"food_min": 4,
-		"food_max": 5,
+		"food_min": 3,
+		"food_max": 4,
 		"auto_grab_batflies": false,
 		"back_spear": false,
 		"can_maul": false,
