@@ -1,0 +1,12 @@
+Template: NONE
+DangerType: None
+CeilingDrips: 0
+RainIntensity: 0
+RumbleIntensity: 0
+Clouds: 0.0326087
+Grime: 0.2934783
+Palette: 10
+Effects: PixelShift-0.5-25-69, AboveCloudsView-1-292-198, DayNight-0-25-123, FireFlies-0.3478261-293-128, 
+PlacedObjects: GhostSpot><593.5597><552.3114><, NoSpearStickZone><-80.58911><346.3811><-110~155, NoSpearStickZone><819.8092><209.5601><-6~130, DayNightSettings><134.2339><435.4493><5~8.660254~30~42, 
+FadePalette: 33, 0.6630435
+WetTerrain: OFF

@@ -1,0 +1,7 @@
+Template: UW_SettingsTemplate_Wall
+RainIntensity: 0.2065217
+RumbleIntensity: 0.2065217
+Palette: 29
+Effects: DayNight-0.1413043-283-74, FireFlies-0.2717391-284-134, 
+PlacedObjects: DayNightSettings><102.8958><466.4208><5~8.660254~29~42, 
+FadePalette: 33, 0.8043478

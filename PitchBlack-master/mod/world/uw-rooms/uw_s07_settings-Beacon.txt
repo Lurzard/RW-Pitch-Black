@@ -1,0 +1,6 @@
+RainIntensity: 0.2065217
+RumbleIntensity: 0.2065217
+Clouds: 0.1304348
+Effects: DayNight-0.5543478-24-80, FireFlies-0.2608696-27-134, 
+PlacedObjects: SuperStructureFuses><469.3578><78.63783><185~67, DayNightSettings><63.44669><403.7141><5~8.660254~16~17, 
+FadePalette: 33, 0.7282609

@@ -1,0 +1,6 @@
+RainIntensity: 0.7065217
+RumbleIntensity: 0.7065217
+EffectColorA: 2
+Effects: ElectricDeath-0.0326087-46-85, DayNight-0.3695652-336-44, FireFlies-0.2826087-336-107, 
+PlacedObjects: DayNightSettings><138.7791><374.4532><5~8.660254~16~17, 
+FadePalette: 33, 0.6956522

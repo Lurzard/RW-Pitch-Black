@@ -1,0 +1,9 @@
+Template: NONE
+DangerType: None
+RainIntensity: 0
+RumbleIntensity: 0
+Grime: 0
+Palette: 28
+Effects: DayNight-0.8804348-29-123, FireFlies-0.2717391-20-20, 
+PlacedObjects: DayNightSettings><63.59399><399.1248><5~8.660254~3~28, 
+FadePalette: 33, 0.7173913
