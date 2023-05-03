@@ -18,7 +18,6 @@
 				"story": "2a04dc"
 			}
 		],
-		"beacon/explode_on_death": true,
 		"auto_grab_batflies": true,
 		"weight": [ 0.9, 0.7 ],
 		"tunnel_speed": 1.2,

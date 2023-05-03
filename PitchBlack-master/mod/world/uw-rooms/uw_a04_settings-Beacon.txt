@@ -8,6 +8,6 @@ BkgDroneVolume: 0
 Palette: 16
 EffectColorB: 5
 Effects: Lightning-0.2608696-20-20, GreenSparks-0.3695652-25-163, ExtraLoudThunder-0.3152174-25-107, ElectricDeath-0.3913043-271-21, DayNight-0.2934783-285-84, 
-PlacedObjects: LightSource><581.0674><603.5815><0.3586957~Environment~0~100~50~86.60254~1~0~None~0~0, LightSource><154.432><606.917><0.4782609~Environment~0~100~-218~-188.3975~1~0~None~0~0, DayNightSettings><280.2026><426.4424><5~8.660254~16~17, 
+PlacedObjects: LightSource><581.0674><603.5815><0.3586957~Environment~0~100~50~86.60254~1~0~None~0~0, LightSource><154.432><606.917><0.4782609~Environment~0~100~-218~-188.3975~1~0~None~0~0, DayNightSettings><280.2026><426.4424><5~8.660254~16~17, Corruption><145.1859><511.8237><29~44, Corruption><250.4386><497.5665><0~100, Corruption><199.9795><358.9489><35~65, Corruption><112.9197><209.6441><10~62, 
 AmbientSounds: OMNI><AM_WIN-HowlingWnd.ogg><664.8245><569.6542><0.3913043><0.7652174, 
 FadePalette: 33, 0.7173913

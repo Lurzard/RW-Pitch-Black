@@ -68,7 +68,7 @@ namespace SlugTemplate
             On.Region.GetProperRegionAcronym += Region_GetProperRegionAcronym;
             On.OverseerGraphics.ColorOfSegment += OverseerGraphics_ColorOfSegment;
             Whiskers.Hooks();
-            //On.Player.Update += PringleUpdate;
+            On.Player.Update += PringleUpdate;
         }
 
         public List<string> currentDialog = new List<string>();
@@ -79,7 +79,7 @@ namespace SlugTemplate
         private void PringleUpdate(On.Player.orig_Update orig, Player self, bool eu)
         {
             orig(self, eu);
-            if (Input.GetKey(KeyCode.F ) && pbcooldown == 0 && self.room != null)
+            if (Input.GetKey(KeyCode.P) && pbcooldown == 0 && self.room != null && self.slugcatStats.name == PhotoName)
             {
                 pbcooldown = 400;
                 self.room.AddObject(new NeuronSpark(new Vector2(self.bodyChunks[0].pos.x, self.bodyChunks[0].pos.y + 40f)));
@@ -93,31 +93,52 @@ namespace SlugTemplate
                     (PBOverseer.abstractAI as OverseerAbstractAI).spearmasterLockedOverseer = true;
                     (PBOverseer.abstractAI as OverseerAbstractAI).SetAsPlayerGuide(87);
                     (PBOverseer.abstractAI as OverseerAbstractAI).BringToRoomAndGuidePlayer(self.room.abstractRoom.index);
-                    Logger.LogInfo("sflost Called overseer. now trying to converse!");
+                    Logger.LogDebug("sflost Called overseer. now trying to converse!");
                     self.room.game.cameras[0].hud.InitDialogBox();
                     Logger.LogDebug("sflost init'd dialog box");
                     int rng = Random.Range(0, 3);
                     switch (rng)
                     {
                         case 0:
-                            currentDialog.Add("");
+                            currentDialog.Add("Ov-87 Returned : No further instructions.");
                             break;
                         case 1:
-                            currentDialog.Add("");
+                            currentDialog.Add("Ov-87 Returned : No further instructions. Continuing FreeRoam.");
                             break;
                         case 2:
-                            currentDialog.Add("");
+                            currentDialog.Add("Ov-87 Returned : No further instructions. Scanning Possible Threats.");
+                            break;
+                        case 3:
+                            currentDialog.Add("Ov-87 Returned : No further instructions. Broadcasting location to HOST.");
                             break;
                         default:
-                            currentDialog.Add("");
+                            currentDialog.Add("Ov-87 Returned : No further instructions. Locating Sources of Food.");
                             break;
                     }
-
-                    if (self.grasps[0] != null)
-                    {
-
-                    }
+                    Speaking = true;
                 }
+            }
+            if (Speaking == true)
+            {
+                if (currentDialog.Count == 0)
+                {
+                    Speaking = false;
+                }
+                else
+                {
+                    HUD.DialogBox dialogbox = self.room.game.cameras[0].hud.dialogBox;
+                    dialogbox.NewMessage(currentDialog[0], 10);
+                    currentDialog.Remove(currentDialog[0]);
+                }
+            }
+            if (pbcooldown > 0)
+            {
+                if (pbcooldown > 350)
+                {
+                    (self.graphicsModule as PlayerGraphics).head.vel += Custom.RNV() * (-0.01f);
+                    self.room.AddObject(new NeuronSpark(new Vector2(self.bodyChunks[0].pos.x, self.bodyChunks[0].pos.y + 40f)));
+                }
+                pbcooldown--;
             }
         }
 
@@ -248,7 +269,7 @@ namespace SlugTemplate
             orig(self, eu);
             if (!pCon.TryGetValue(self, out PhotoCWT e))
             {
-                Logger.LogDebug("dduheudfhfhueufihfuiefufefh");
+                
                 return;
             }
             // Parry
