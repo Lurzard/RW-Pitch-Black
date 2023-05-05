@@ -58,6 +58,7 @@
 			}
 		},
 		"guide_overseer": 87,
+		"the_glow": true,
 
 		"select_menu_scene": "Slugcat_Photo",
 		"select_menu_scene_ascended": "Ghost_Photo",
