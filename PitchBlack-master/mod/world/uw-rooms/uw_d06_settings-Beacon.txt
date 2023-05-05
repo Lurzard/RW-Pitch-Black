@@ -1,5 +1,5 @@
 CeilingDrips: 0.0326087
-RainIntensity: 0.08695652
+RainIntensity: 0.05434782
 RumbleIntensity: 0.1521739
 Clouds: 0.3043478
 Grime: 0.09782609

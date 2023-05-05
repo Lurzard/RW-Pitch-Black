@@ -5,7 +5,7 @@ RainIntensity: 0
 RumbleIntensity: 0
 Clouds: 0.1521739
 Grime: 0.1086956
-Palette: 12
+Palette: 10
 EffectColorA: 13
 Effects: DayNight-0.4347826-30-109, FireFlies-0.3152174-102-42, 
 PlacedObjects: NoSpearStickZone><474.3><252.4997><-232~132, DayNightSettings><-58.06201><446.0598><5~8.660254~12~8, 
