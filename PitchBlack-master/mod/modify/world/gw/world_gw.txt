@@ -1,5 +1,7 @@
-[FIND]X-
+[FIND](X-
 [ADDAFTER]Beacon,Photomaniac,
+[FINDREGEX]^(?:\W+ : \d+-\w+.+|LINEAGE : \w+ : \d+ : .+)$
+[ADDBEFORE](X-Beacon,Photomaniac)
 [MERGE]
 CONDITIONAL LINKS
 Beacon,Photomaniac : EXCLUSIVEROOM : GW_TOWER01
