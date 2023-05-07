@@ -4,6 +4,6 @@
 	"version": "0.1.0",
 	"authors": "Lurzard for the original mod, Millisec for The Photomaniac and more to come, Niko for Night Terror, URUFUDOGGO for flashbang storage, electric detonation, and slugcat glow.",
 	"description": "Fanmade expansion in the works. super ambitious hahahaha!!",
-	"requirements": [ "slime-cubed.slugbase", "moreslugcats", "fisobs" ],
-	"requirements_names": [ "SlugBase", "More Slugcats Expansion", "Fisobs" ]
+	"requirements": [ "slime-cubed.slugbase", "moreslugcats", "fisobs", "regionkit" ],
+	"requirements_names": [ "SlugBase", "More Slugcats Expansion", "Fisobs", "RegionKit" ]
 }
