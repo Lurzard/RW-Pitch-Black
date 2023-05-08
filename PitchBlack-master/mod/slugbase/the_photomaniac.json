@@ -12,10 +12,6 @@
 				"name": "Eyes",
 				"story": "FFFFFF",
 				"arena": [ "FFFFFF", "FF8080", "80FF80", "8080FF" ]
-			},
-			{
-				"name": "Whiskers",
-				"story": "010038"
 			}
 		],
 		"throw_skill": 0,

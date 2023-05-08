@@ -12,10 +12,6 @@
 			{
 				"name": "Eyes",
 				"story": "FFFFFF"
-			},
-			{
-				"name": "Whiskers",
-				"story": "2a04dc"
 			}
 		],
 		"auto_grab_batflies": true,
