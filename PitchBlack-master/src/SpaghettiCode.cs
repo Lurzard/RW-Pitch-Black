@@ -79,7 +79,7 @@ namespace SlugTemplate
         private void PringleUpdate(On.Player.orig_Update orig, Player self, bool eu)
         {
             orig(self, eu);
-            if (Input.GetKey(KeyCode.P) && pbcooldown == 0 && self.room != null && self.slugcatStats.name == PhotoName)
+            if (Input.GetKey(KeyCode.C) && pbcooldown == 0 && self.room != null && self.slugcatStats.name == PhotoName)
             {
                 pbcooldown = 400;
                 self.room.AddObject(new NeuronSpark(new Vector2(self.bodyChunks[0].pos.x, self.bodyChunks[0].pos.y + 40f)));
@@ -100,19 +100,19 @@ namespace SlugTemplate
                     switch (rng)
                     {
                         case 0:
-                            currentDialog.Add("Ov-87 Returned : No further instructions.");
+                            currentDialog.Add("PB-Ov87 Returned : No further instructions.");
                             break;
                         case 1:
-                            currentDialog.Add("Ov-87 Returned : No further instructions. Continuing FreeRoam.");
+                            currentDialog.Add("PB-Ov87 Returned : No further instructions. Continuing FreeRoam.");
                             break;
                         case 2:
-                            currentDialog.Add("Ov-87 Returned : No further instructions. Scanning Possible Threats.");
+                            currentDialog.Add("PB-Ov87 Returned : No further instructions. Scanning Possible Threats.");
                             break;
                         case 3:
-                            currentDialog.Add("Ov-87 Returned : No further instructions. Broadcasting location to HOST.");
+                            currentDialog.Add("PB-Ov87 Returned : No further instructions. Broadcasting location to HOST.");
                             break;
                         default:
-                            currentDialog.Add("Ov-87 Returned : No further instructions. Locating Sources of Food.");
+                            currentDialog.Add("PB-Ov87 Returned : No further instructions. Locating Sources of Food.");
                             break;
                     }
                     Speaking = true;
