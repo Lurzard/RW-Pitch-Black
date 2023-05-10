@@ -22,8 +22,8 @@ namespace PitchBlack
         /// <summary>
         /// If you're not using this, I'm stealing it
         /// </summary>
-        private void LoadResources(RainWorld rainWorld){
-            Futile f = Futile.atlasManager.LoadAtlas("atlases/photosplt");
+        private static void LoadResources(RainWorld rainWorld){
+            FAtlas f = Futile.atlasManager.LoadAtlas("atlases/photosplt");
             if (f == null){
                 Debug.Log("OH NO NO SPRITES?!");
             }
