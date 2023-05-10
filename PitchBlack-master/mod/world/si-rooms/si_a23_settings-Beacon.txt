@@ -1,0 +1,12 @@
+RainIntensity: 0.3043478
+RumbleIntensity: 0.3043478
+Clouds: 0.2717391
+Grime: 0.4021739
+BkgDroneVolume: 0.2608696
+Palette: 33
+EffectColorA: 10
+EffectColorB: 10
+Effects: SkyDandelions-0.6956522-20-20, DayNight-0.9239131-28-78, 
+PlacedObjects: DataPearl><848.6318><635.6005><0~0~0~0~Misc~0, DandelionPeach><767.3086><179.6919><0~0~2~3, DandelionPeach><789.4774><192.9487><0~0~2~3, DandelionPeach><51.61719><405.9121><0~0~2~3, DayNightSettings><-25.69617><261.7892><5~8.660254~18~2, 
+AmbientSounds: OMNI><AM_ENV-LightWind.ogg><748.3058><516.058><0.2065217><0.7847826, 
+FadePalette: 12, 0.09782609
