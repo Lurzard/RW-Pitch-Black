@@ -69,6 +69,7 @@ namespace SlugTemplate
             On.OverseerGraphics.ColorOfSegment += OverseerGraphics_ColorOfSegment;
             Whiskers.Hooks();
             On.Player.Update += PringleUpdate;
+            PhotoSprite.Hooker();
         }
 
         public List<string> currentDialog = new List<string>();
