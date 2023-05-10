@@ -6,7 +6,8 @@
 		"custom_colors": [
 			{
 				"name": "Body",
-				"story": "010038"
+				"story": "010038",
+				"arena": [ "010038", "010038", "010038", "010038" ]
 			},
 			{
 				"name": "Eyes",
@@ -15,7 +16,8 @@
 			},
 			{
 				"name": "Splatter",
-				"story": "FFFFFF"
+				"story": "FFFFFF",
+				"arena": [ "FFFFFF", "FFFFFF", "FFFFFF", "FFFFFF" ]
 			}
 		],
 		"throw_skill": 0,
