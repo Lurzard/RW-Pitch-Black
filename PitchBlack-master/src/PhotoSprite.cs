@@ -39,11 +39,20 @@ namespace PitchBlack
             orig(self, s, r);
             try{
                 // Null check
-                if (!(self != null && self.player != null)) return;
+                if (!(self != null && self.player != null)) {
+                    Debug.LogWarning(">>> PhotoSprite_GetStyle: Null Pass");
+                    return;
+                }
                 // Character check
-                if (self.player.slugcatStats.name != Plugin.PhotoName) return;
+                if (self.player.slugcatStats.name != Plugin.PhotoName) {
+                    Debug.LogWarning(">>> PhotoSprite_GetStyle: Photo Pass");
+                    return;
+                }
                 // CWT Existencial Crisis check
-                if (!Plugin.pCon.TryGetValue(self.player, out PhotoCWT pho)) return;
+                if (!Plugin.pCon.TryGetValue(self.player, out PhotoCWT pho)) {
+                    Debug.LogWarning(">>> PhotoSprite_GetStyle: CWT Access Fail Pass");
+                    return;
+                }
 
                 // Set index
                 pho.PhotoSetSpriteIndex(s.sprites.Length);
@@ -56,14 +65,14 @@ namespace PitchBlack
 
                 // Quick null check to see if sprites have been successfully loaded
                 if (s.sprites[pho.photoSpriteIndex] == null){
-                    Debug.Log("OH FECK SPRITE RAN AWAY! GO GET EM");
+                    Debug.LogWarning(">>> PhotoSprite_GetStyle: OH FECK SPRITE RAN AWAY! GO GET EM");
                 }
 
                 // Send them to container
                 self.AddToContainer(s, r, null);
             } catch (Exception genericException){
-                Debug.Log("OH NO AN ERROR AH");
-                Debug.LogError("Photo could not get a fancy style from the barber shop");
+                Debug.LogWarning(">>> PhotoSprite_GetStyle: OH NO AN ERROR AH");
+                Debug.LogError(">>> PhotoSprite_GetStyle: Photo could not get a fancy style from the barber shop");
                 Debug.LogException(genericException);
             }
         }
@@ -75,32 +84,48 @@ namespace PitchBlack
             orig(self, s, r, p);
             try{
                 // Null check
-                if (!(self != null && self.player != null)) return;
+                if (!(self != null && self.player != null)) {
+                    Debug.LogWarning(">>> PhotoSprite_Crayons: Null Pass");
+                    return;
+                }
                 // Character check
-                if (self.player.slugcatStats.name != Plugin.PhotoName) return;
+                if (self.player.slugcatStats.name != Plugin.PhotoName) {
+                    Debug.LogWarning(">>> PhotoSprite_Crayons: Photo Pass");
+                    return;
+                }
                 // CWT Existencial Crisis check
-                if (!Plugin.pCon.TryGetValue(self.player, out PhotoCWT pho)) return;
+                if (!Plugin.pCon.TryGetValue(self.player, out PhotoCWT pho)) {
+                    Debug.LogWarning(">>> PhotoSprite_Crayons: CWT Access Fail Pass");
+                    return;
+                }
                 // Sprite existence check
-                if (pho.photoSpriteIndex == -1 || pho.photoSpriteIndex <= s.sprites.Length) return;
-                if (pho.photoSpriteIndex + 1 == s.sprites.Length && s.sprites[pho.photoSpriteIndex] == null) return;
-
-                // Jolly Coop Colors!
-                if (ModManager.CoopAvailable && self.useJollyColor){
-                    s.sprites[pho.photoSpriteIndex].color = PlayerGraphics.JollyColor(self.player.playerState.playerNumber, 2);
+                if (pho.photoSpriteIndex == -1) {
+                    Debug.LogWarning(">>> PhotoSprite_Crayons: PreInit Pass");
+                    return;
                 }
-
-                // Custom color (not jolly!)
-                else if (PlayerGraphics.CustomColorsEnabled()){
-                    s.sprites[pho.photoSpriteIndex].color = PlayerGraphics.CustomColorSafety(2);
+                if (pho.photoSpriteIndex + 1 == s.sprites.Length && s.sprites[pho.photoSpriteIndex] == null) {
+                    Debug.LogWarning(">>> PhotoSprite_Crayons: Bad Init Pass");
+                    return;
                 }
+                if (pho.photoSpriteIndex < s.sprites.Length){
+                    // Jolly Coop Colors!
+                    if (ModManager.CoopAvailable && self.useJollyColor){
+                        s.sprites[pho.photoSpriteIndex].color = PlayerGraphics.JollyColor(self.player.playerState.playerNumber, 2);
+                    }
 
-                // Arena/no-custom color
-                else {
-                    s.sprites[pho.photoSpriteIndex].color = Color.white;
+                    // Custom color (not jolly!)
+                    else if (PlayerGraphics.CustomColorsEnabled()){
+                        s.sprites[pho.photoSpriteIndex].color = PlayerGraphics.CustomColorSafety(2);
+                    }
+
+                    // Arena/no-custom color
+                    else {
+                        s.sprites[pho.photoSpriteIndex].color = Color.white;
+                    }
                 }
             } catch (Exception genericException){
-                Debug.Log("OH NO AN ERROR AAH");
-                Debug.LogError("Photo rejected crayons and is now drinking paint");
+                Debug.LogWarning(">>> PhotoSprite_Crayons: OH NO AN ERROR AAH");
+                Debug.LogError(">>> PhotoSprite_Crayons: Photo rejected crayons and is now drinking paint");
                 Debug.LogException(genericException);
             }
         }
@@ -112,21 +137,40 @@ namespace PitchBlack
             orig(self, s, r, f);
             try{
                 // Null check
-                if (!(self != null && self.player != null)) return;
+                if (!(self != null && self.player != null)) {
+                    Debug.LogWarning(">>> PhotoSprite_Lasagna: Null Pass");
+                    return;
+                }
                 // Character check
-                if (self.player.slugcatStats.name != Plugin.PhotoName) return;
+                if (self.player.slugcatStats.name != Plugin.PhotoName) {
+                    Debug.LogWarning(">>> PhotoSprite_Lasagna: Photo Pass");
+                    return;
+                }
                 // CWT Existencial Crisis check
-                if (!Plugin.pCon.TryGetValue(self.player, out PhotoCWT pho)) return;
+                if (!Plugin.pCon.TryGetValue(self.player, out PhotoCWT pho)) {
+                    Debug.LogWarning(">>> PhotoSprite_Lasagna: CWT Access Fail Pass");
+                    return;
+                }
                 // Sprite existence check
-                if (pho.photoSpriteIndex == -1 || pho.photoSpriteIndex <= s.sprites.Length) return;
-                if (pho.photoSpriteIndex + 1 == s.sprites.Length && s.sprites[pho.photoSpriteIndex] == null) return;
+                if (pho.photoSpriteIndex == -1) {
+                    Debug.LogWarning(">>> PhotoSprite_Lasagna: PreInit Pass");
+                    return;
+                }
+                if (pho.photoSpriteIndex + 1 == s.sprites.Length && s.sprites[pho.photoSpriteIndex] == null) {
+                    Debug.LogWarning(">>> PhotoSprite_Lasagna: Bad Init Pass");
+                    return;
+                }
 
-                r.ReturnFContainer("Foreground").RemoveChild(s.sprites[pho.photoSpriteIndex]);
-                r.ReturnFContainer("Midground").AddChild(s.sprites[pho.photoSpriteIndex]);
-                s.sprites[pho.photoSpriteIndex].MoveBehindOtherNode(s.sprites[3]);
+                if (pho.photoSpriteIndex < s.sprites.Length){
+                    r.ReturnFContainer("Foreground").RemoveChild(s.sprites[pho.photoSpriteIndex]);
+                    //Debug.Log(">>> PhotoSprite_Lasagna: Removed the child");
+                    r.ReturnFContainer("Midground").AddChild(s.sprites[pho.photoSpriteIndex]);
+                    //Debug.Log(">>> PhotoSprite_Lasagna: Re-added the child");
+                    s.sprites[pho.photoSpriteIndex].MoveBehindOtherNode(s.sprites[3]);
+                }
             } catch (Exception genericException){
-                Debug.Log("OH NO AN ERROR AAAH");
-                Debug.LogError("Photo rejects the one and only lasagna");
+                Debug.LogWarning(">>> PhotoSprite_Lasagna: OH NO AN ERROR AAAH");
+                Debug.LogError(">>> PhotoSprite_Lasagna: Photo rejects the one and only lasagna");
                 Debug.LogException(genericException);
             }
         }
@@ -139,25 +183,30 @@ namespace PitchBlack
             try{
                 // Null check
                 if (!(self != null && self.player != null)) {
+                    Debug.LogWarning(">>> PhotoSprite_MoveIt: Null Pass");
                     orig(self, s, r, t, p);
                     return;
                 }
                 // Character check
                 if (self.player.slugcatStats.name != Plugin.PhotoName) {
+                    Debug.LogWarning(">>> PhotoSprite_MoveIt: Photo Pass");
                     orig(self, s, r, t, p);
                     return;
                 }
                 // CWT Existencial Crisis check
                 if (!Plugin.pCon.TryGetValue(self.player, out PhotoCWT pho)) {
+                    Debug.LogWarning(">>> PhotoSprite_MoveIt: CWT Access Fail Pass");
                     orig(self, s, r, t, p);
                     return;
                 }
                 // Sprite existence check
-                if (pho.photoSpriteIndex == -1 || pho.photoSpriteIndex <= s.sprites.Length) {
+                if (pho.photoSpriteIndex == -1) {
+                    Debug.LogWarning(">>> PhotoSprite_MoveIt: PreInit Pass");
                     orig(self, s, r, t, p);
                     return;
                 }
                 if (pho.photoSpriteIndex + 1 == s.sprites.Length && s.sprites[pho.photoSpriteIndex] == null) {
+                    Debug.LogWarning(">>> PhotoSprite_MoveIt: Bad Init Pass");
                     orig(self, s, r, t, p);
                     return;
                 }
@@ -173,15 +222,17 @@ namespace PitchBlack
                 }
                 orig(self, s, r, t, p); // Do DrawSprites (resets the sprite's X and Y scale)
 
-                // Draw custom sprite!
-                s.sprites[pho.photoSpriteIndex].scaleX = pho.photoSpriteScale[0];
-                s.sprites[pho.photoSpriteIndex].scaleY = pho.photoSpriteScale[1];
-                s.sprites[pho.photoSpriteIndex].rotation = s.sprites[1].rotation;
-                s.sprites[pho.photoSpriteIndex].x = s.sprites[1].x;
-                s.sprites[pho.photoSpriteIndex].y = s.sprites[1].y;
+                if (pho.photoSpriteIndex < s.sprites.Length){
+                    // Draw custom sprite!
+                    s.sprites[pho.photoSpriteIndex].scaleX = pho.photoSpriteScale[0];
+                    s.sprites[pho.photoSpriteIndex].scaleY = pho.photoSpriteScale[1];
+                    s.sprites[pho.photoSpriteIndex].rotation = s.sprites[1].rotation;
+                    s.sprites[pho.photoSpriteIndex].x = s.sprites[1].x;
+                    s.sprites[pho.photoSpriteIndex].y = s.sprites[1].y;
+                }
             } catch (Exception genericException){
-                Debug.Log("OH NO AN ERROR AAAAH");
-                Debug.LogError("Photo will not Move it Move it, Photo will not Move it Move it, Photo will not Move it Move it, Photo will not: MOVE IT!");
+                Debug.LogWarning(">>> PhotoSprite_MoveIt: OH NO AN ERROR AAAAH");
+                Debug.LogError(">>> PhotoSprite_MoveIt: Photo will not Move it Move it, Photo will not Move it Move it, Photo will not Move it Move it, Photo will not: MOVE IT!");
                 Debug.LogException(genericException);
             }
         }
