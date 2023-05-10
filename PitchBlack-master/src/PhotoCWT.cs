@@ -6,9 +6,12 @@ namespace PitchBlack
 {
     internal class PhotoCWT
     {
+        public int photoSpriteIndex{ get; private set; }
+        public float[] photoSpriteScale;
         public PhotoCWT()
         {
-
+            this.photoSpriteIndex = -1;
+            this.photoSpriteScale = new float[2];
         }
 
         public int parryCD = 0;
@@ -180,5 +183,16 @@ namespace PitchBlack
             self.Die();
         }
 
+        /// <summary>
+        /// Sets the sprite cue once. If the characer is initiated but the cue has already been set, ignore the cue set()
+        /// </summary>
+        public void PhotoSetSpriteIndex(int cue){
+            if (this.photoSpriteIndex == -1){
+                this.photoSpriteIndex = cue;
+            }
+            else {
+                Debug.Log("Photo sprite index is already set!");
+            }
+        }
     }
 }
