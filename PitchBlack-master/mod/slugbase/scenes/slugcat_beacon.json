@@ -9,21 +9,21 @@
 			"shader": "Basic"
 		},
 		{
-			"name": "Slugcat",
-			"pos": [ 605, 427 ],
-			"depth": 2.8,
-			"shader": "Basic"
-		},
-		{
-			"name": "Grass 3",
+			"name": "Grass 2",
 			"pos": [ 602, 264 ],
 			"depth": 2.2,
 			"shader": "Basic"
 		},
 		{
-			"name": "Grass 2",
+			"name": "Grass 3",
 			"pos": [ 446, 283 ],
 			"depth": 2.0,
+			"shader": "Basic"
+		},
+		{
+			"name": "Slugcat",
+			"pos": [ 605, 427 ],
+			"depth": 2.8,
 			"shader": "Basic"
 		},
 		{

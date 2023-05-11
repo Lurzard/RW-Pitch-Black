@@ -15,15 +15,21 @@
 			"shader": "Basic"
 		},
 		{
+			"name": "Grass front",
+			"pos": [ 515, 265 ],
+			"depth": 1.8,
+			"shader": "Basic"
+		},
+		{
 			"name": "Slugcat",
 			"pos": [ 446, 283 ],
 			"depth": 2.0,
 			"shader": "Basic"
 		},
 		{
-			"name": "Grass front",
-			"pos": [ 515, 265 ],
-			"depth": 1.8,
+			"name": "Grass ground",
+			"pos": [ 446, 283 ],
+			"depth": 2.0,
 			"shader": "Basic"
 		}
 	],
