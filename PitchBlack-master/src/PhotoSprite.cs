@@ -45,7 +45,7 @@ namespace PitchBlack
                 }
                 // Character check
                 if (self.player.slugcatStats.name != Plugin.PhotoName) {
-                    Debug.LogWarning(">>> PhotoSprite_GetStyle: Photo Pass");
+                    //Debug.LogWarning(">>> PhotoSprite_GetStyle: Photo Pass");
                     return;
                 }
                 // CWT Existencial Crisis check
@@ -90,7 +90,7 @@ namespace PitchBlack
                 }
                 // Character check
                 if (self.player.slugcatStats.name != Plugin.PhotoName) {
-                    Debug.LogWarning(">>> PhotoSprite_Crayons: Photo Pass");
+                    //Debug.LogWarning(">>> PhotoSprite_Crayons: Photo Pass");
                     return;
                 }
                 // CWT Existencial Crisis check
@@ -143,7 +143,7 @@ namespace PitchBlack
                 }
                 // Character check
                 if (self.player.slugcatStats.name != Plugin.PhotoName) {
-                    Debug.LogWarning(">>> PhotoSprite_Lasagna: Photo Pass");
+                    //Debug.LogWarning(">>> PhotoSprite_Lasagna: Photo Pass");
                     return;
                 }
                 // CWT Existencial Crisis check
@@ -189,7 +189,7 @@ namespace PitchBlack
                 }
                 // Character check
                 if (self.player.slugcatStats.name != Plugin.PhotoName) {
-                    Debug.LogWarning(">>> PhotoSprite_MoveIt: Photo Pass");
+                    //Debug.LogWarning(">>> PhotoSprite_MoveIt: Photo Pass");
                     orig(self, s, r, t, p);
                     return;
                 }
