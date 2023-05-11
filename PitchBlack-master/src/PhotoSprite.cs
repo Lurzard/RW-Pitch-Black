@@ -45,7 +45,7 @@ namespace PitchBlack
                 }
                 // Character check
                 if (self.player.slugcatStats.name != Plugin.PhotoName) {
-                    Debug.LogWarning(">>> PhotoSprite_GetStyle: Photo Pass");
+                    //Debug.LogWarning(">>> PhotoSprite_GetStyle: Photo Pass");
                     return;
                 }
                 // CWT Existencial Crisis check
@@ -90,7 +90,7 @@ namespace PitchBlack
                 }
                 // Character check
                 if (self.player.slugcatStats.name != Plugin.PhotoName) {
-                    Debug.LogWarning(">>> PhotoSprite_Crayons: Photo Pass");
+                    //Debug.LogWarning(">>> PhotoSprite_Crayons: Photo Pass");
                     return;
                 }
                 // CWT Existencial Crisis check
@@ -143,7 +143,7 @@ namespace PitchBlack
                 }
                 // Character check
                 if (self.player.slugcatStats.name != Plugin.PhotoName) {
-                    Debug.LogWarning(">>> PhotoSprite_Lasagna: Photo Pass");
+                    //Debug.LogWarning(">>> PhotoSprite_Lasagna: Photo Pass");
                     return;
                 }
                 // CWT Existencial Crisis check
@@ -166,7 +166,7 @@ namespace PitchBlack
                     //Debug.Log(">>> PhotoSprite_Lasagna: Removed the child");
                     r.ReturnFContainer("Midground").AddChild(s.sprites[pho.photoSpriteIndex]);
                     //Debug.Log(">>> PhotoSprite_Lasagna: Re-added the child");
-                    s.sprites[pho.photoSpriteIndex].MoveBehindOtherNode(s.sprites[3]);
+                    s.sprites[pho.photoSpriteIndex].MoveBehindOtherNode(s.sprites[5]);
                 }
             } catch (Exception genericException){
                 Debug.LogWarning(">>> PhotoSprite_Lasagna: OH NO AN ERROR AAAH");
@@ -189,7 +189,7 @@ namespace PitchBlack
                 }
                 // Character check
                 if (self.player.slugcatStats.name != Plugin.PhotoName) {
-                    Debug.LogWarning(">>> PhotoSprite_MoveIt: Photo Pass");
+                    //Debug.LogWarning(">>> PhotoSprite_MoveIt: Photo Pass");
                     orig(self, s, r, t, p);
                     return;
                 }
