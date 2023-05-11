@@ -84,11 +84,12 @@ namespace SlugTemplate
             }
             cursor.EmitDelegate((string[] strArray) =>
             {
-                Array.Resize<string>(ref strArray, strArray.Length + 2);
-                strArray[strArray.Length - 2] = "beacon";
-                strArray[strArray.Length - 1] = "photo";
-                string[] newArray = new string[2] { "beacon", "photo" };
-                return newArray;
+                Array.Resize<string>(ref strArray, strArray.Length + 3);
+                strArray[strArray.Length - 3] = "beacon";
+                strArray[strArray.Length - 2] = "photo";
+                strArray[strArray.Length - 1] = "mother";
+
+                return strArray;
             });
         }
 
