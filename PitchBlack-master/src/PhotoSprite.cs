@@ -166,7 +166,7 @@ namespace PitchBlack
                     //Debug.Log(">>> PhotoSprite_Lasagna: Removed the child");
                     r.ReturnFContainer("Midground").AddChild(s.sprites[pho.photoSpriteIndex]);
                     //Debug.Log(">>> PhotoSprite_Lasagna: Re-added the child");
-                    s.sprites[pho.photoSpriteIndex].MoveBehindOtherNode(s.sprites[3]);
+                    s.sprites[pho.photoSpriteIndex].MoveBehindOtherNode(s.sprites[5]);
                 }
             } catch (Exception genericException){
                 Debug.LogWarning(">>> PhotoSprite_Lasagna: OH NO AN ERROR AAAH");
