@@ -17,6 +17,8 @@ using RWCustom;
 using System.Collections.Generic;
 using Random = UnityEngine.Random;
 using System.Security;
+using IL;
+using MonoMod.Cil;
 
 #pragma warning disable CS0618 // Type or member is obsolete
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -70,6 +72,24 @@ namespace SlugTemplate
             Whiskers.Hooks();
             On.Player.Update += PringleUpdate;
             PhotoSprite.Hooker();
+            IL.Menu.IntroRoll.ctor += AddIntroRollImage;
+        }
+
+        private static void AddIntroRollImage(MonoMod.Cil.ILContext il)
+        {
+            var cursor = new ILCursor(il);
+            if (!cursor.TryGotoNext(MoveType.Before, i => i.MatchStloc(3)))
+            {
+                return;
+            }
+            cursor.EmitDelegate((string[] strArray) =>
+            {
+                Array.Resize<string>(ref strArray, strArray.Length + 2);
+                strArray[strArray.Length - 2] = "beacon";
+                strArray[strArray.Length - 1] = "photo";
+                string[] newArray = new string[2] { "beacon", "photo" };
+                return newArray;
+            });
         }
 
         public List<string> currentDialog = new List<string>();
