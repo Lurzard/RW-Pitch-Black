@@ -1,0 +1,12 @@
+Template: SI_SettingsTemplate_Inside
+DangerType: Rain
+RainIntensity: 0.4456522
+RumbleIntensity: 0.5
+Clouds: 0.1086956
+Grime: 0.2282609
+Palette: 33
+EffectColorA: 10
+EffectColorB: 13
+Effects: SkyAndLightBloom-0.08695652-20-20, DayNight-0.7391304-36-101, 
+PlacedObjects: DataPearl><679.5629><1359.747><0~0~0~0~Misc~0, UniqueDataPearl><576.9341><337.172><0~0~0~0~SI_chat5~0, DayNightSettings><205.6832><1212.581><5~8.660254~2~3, 
+FadePalette: 12, 0.1521739, 0.1521739

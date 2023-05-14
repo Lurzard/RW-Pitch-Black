@@ -1,0 +1,7 @@
+RainIntensity: 0.5108696
+RumbleIntensity: 0.5652174
+Palette: 33
+Effects: SkyDandelions-0.5869565-20-20, DayNight-0.8260869-32-87, 
+PlacedObjects: DandelionPatch><259.95><394.7468><0~100, DandelionPatch><810.8475><315.5754><0~100, LightBeam><723.3468><-55.62146><-29~128~173~129~145~1~-347~127~0.4543477~0.5869565~0~1~None~0~0, LightBeam><118.4208><-52.56638><-15~121~170~124~147~-2~-249~483~0.4326086~0.5869565~0~1~None~0~0, DayNightSettings><488.533><451.3027><5~8.660254~18~2, 
+AmbientSounds: OMNI><AM_ENV-LightWind.ogg><677.6206><583.9025><0.2934783><1, 
+FadePalette: 12, 0.2282609

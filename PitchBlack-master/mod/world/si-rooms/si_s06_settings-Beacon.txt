@@ -1,0 +1,5 @@
+Template: SI_SettingsTemplate_Inside
+Palette: 33
+Effects: DayNight-0.423913-22-130, 
+PlacedObjects: DayNightSettings><82.6871><488.6793><5~8.660254~3~2, 
+FadePalette: 2, 0.1304348

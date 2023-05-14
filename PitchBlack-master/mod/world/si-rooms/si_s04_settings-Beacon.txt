@@ -1,0 +1,6 @@
+Template: SI_SettingsTemplate_Inside
+Palette: 33
+Effects: DayNight-0.4673913-31-111, 
+PlacedObjects: BrokenShelterWaterLevel><568.3526><472.6149><, DayNightSettings><172.5755><397.6852><5~8.660254~2~3, 
+AmbientSounds: SPOT><AM_IND-Utility02.ogg><692.8223><459.0635><0.423913><1><573.8223><377.0635><-64.35535><-58.35535><0><0.1760871, 
+FadePalette: 8, 0.1847826
