@@ -19,6 +19,7 @@ using Random = UnityEngine.Random;
 using System.Security;
 using IL;
 using MonoMod.Cil;
+using static Player;
 
 #pragma warning disable CS0618 // Type or member is obsolete
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -73,9 +74,23 @@ namespace SlugTemplate
             On.Player.Update += PringleUpdate;
             PhotoSprite.Hooker();
             IL.Menu.IntroRoll.ctor += AddIntroRollImage;
+            On.Player.Grabability += GrabCoalescipedes;
         }
 
-        private static void AddIntroRollImage(MonoMod.Cil.ILContext il)
+        private Player.ObjectGrabability GrabCoalescipedes(On.Player.orig_Grabability orig, Player self, PhysicalObject obj)
+        {
+            orig(self, obj);
+            if (obj is Spider)
+            {
+                 return ObjectGrabability.OneHand;
+            }
+            else
+            {
+                return orig(self, obj);
+            }
+        }
+
+            private static void AddIntroRollImage(MonoMod.Cil.ILContext il)
         {
             var cursor = new ILCursor(il);
             if (!cursor.TryGotoNext(MoveType.Before, i => i.MatchStloc(3)))
