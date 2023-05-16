@@ -4,11 +4,19 @@
 [ADDBEFORE](X-Beacon,Photomaniac)
 [MERGE]
 CONDITIONAL LINKS
-
 Beacon,Photomaniac : GATE_LF_SB : LF_C03 : DISCONNECTED
-Beacon,Photomanaic : LF_C03 : GATE_LF_SB : DISCONNECTED
+Beacon,Photomaniac : GATE_LF_SB : LF_S04 : DISCONNECTED
+Beacon,Photomanaic : LF_C03 : GATE_LF_SB : LF_DEADGATE
+Beacon,Photomaniac : LF_S04 : GATE_LF_SB : LF_DEADGATE
 
+Beacon,Photomaniac : LF_DEADGATE : 0 : LF_C03
+Beacon,Photomaniac : LF_DEADGATE : 1 : LF_S04
 END CONDITIONAL LINKS
+ROOMS
+
+LF_DEADGATE : DISCONNECTED, DISCONNECTED, DISCONNECTED
+
+END ROOMS
 CREATURES
 
 (Beacon)OFFSCREEN : 0-MirosVulture-2, 0-Deer-6, 0-Scavenger-17, 0-Elite
