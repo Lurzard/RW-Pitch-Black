@@ -12,12 +12,12 @@ overseersMin: 0
 overseersMax: 4
 earlyCycleChance: 0.0
 earlyCycleFloodChance: 0.0
-Subregion: The Rot
-Subregion: Five Pebbles (Primary Cortex)
-Subregion: Five Pebbles (Recursive Transform Array)
-Subregion: The Rot (Depths)
-Subregion: The Rot (Cystic Conduit)
-Subregion: Five Pebbles (Linear Systems Rail)
+Subregion: Carcass
+Subregion: Cerebellum
+Subregion: Remnants
+Subregion: Guts
+Subregion: Arteries
+Subregion: Ventricles
 playerGuideOverseerSpawnChance: 0.0
 Room Setting Templates: Corrupt, Lympathic, Linear, Dead
 Room_Attr: GATE_SS_UW: Overseer-Forbidden,

@@ -1,0 +1,17 @@
+Template: NONE
+DangerType: Flood
+WaveSpeed: 0.4902828
+WaveLength: 0.7451414
+WaveAmplitude: 0.00384112
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Clouds: 0.1956522
+Grime: 0.2391304
+BkgDroneVolume: 0
+Palette: 39
+EffectColorA: 2
+EffectColorB: 8
+Effects: HeatWave-1-20-20, FairyParticles-0.5-25-81, VoidMelt-0.5978261-293-29, LavaSurface-1-30-30, LethalWater-1-291-83, 
+PlacedObjects: ExitSymbolShelter><733.4489><116.5567><, NoSpearStickZone><482.2978><247.5558><-241~108, ResizeablePopupTrigger><823.5134><243.8005><-126~218~Do not meddle with Random Gods.~1.304348~6.641317~-1~1~True~True~1~-170^89, CustomDecal><-91.40662><263.1256><-56~331~331~344~369~-43~840~-206~0~1~0~hoko can~0.4673913~0~0.1847826~0~0~0~0~0, TempleGuard><-151.0892><-118.881><, ShortcutColor><518.8021><219.7793><100~50~0~0~0.3043478~563^-32, CentipedeAttractor><104.4007><220.0764><0~91, ExitSymbolHidden><41.36566><187.6019><, ExitSymbolHidden><904.4077><225.623><, PlayerPushback><99.43292><191.3116><263~25, FairyParticleSettings><76.68955><70.80935><5~8.660254~0~1~1~0~7.775505~15.71749~60~180~40~100~5~30~0~360~0~0~0~0~0~0~0.5~0.75~4~Glyph~SIN_IO~SIN_IO~80~0.5~0, 
+AmbientSounds: SPOT><AM_IND-DeepHum.ogg><752.6184><306.4006><0.2826087><1><471.6184><-41.59937><-162.3553><23.64466><0><0.2630436, OMNI><AM_ENV-LightWind.ogg><834.0676><644.168><0.3152174><0.6086956, SPOT><AM_IND-Utility02.ogg><108.6984><502.2755><0.4782609><1><980.6984><293.2755><-123.3553><-201.3553><0><0.3717393, SPOT><AM_IND-Utility02.ogg><108.3018><386.7769><0.4347826><1><-71.69818><302.7769><153.6447><-186.3553><0><0.328261, 
+FadePalette: 36, 0.07608695
