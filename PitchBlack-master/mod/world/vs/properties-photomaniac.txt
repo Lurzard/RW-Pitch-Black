@@ -10,7 +10,7 @@ overseersMin: 1
 overseersMax: 4
 pupSpawnChance: 0.5
 Subregion: Solemn Drillsite
-Subregion: Sump Tunnel
+Subregion: Septics
 Subregion: WHAT THE FUCK
 Broken Shelters: Artificer: VS_S02
 Broken Shelters: Spear: VS_S02
