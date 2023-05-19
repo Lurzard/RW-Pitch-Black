@@ -1,6 +1,6 @@
 DangerType: Flood
 Grime: 0.2065217
-Palette: 10
+Palette: 0
 Effects: FireFlies-0.2934783-28-93, DayNight-0.7608696-307-78, 
 PlacedObjects: DayNightSettings><234.593><270.6771><-131~80.66025~1~0, 
-FadePalette: 33, 0.3478261
+FadePalette: 33, 0.7934783
