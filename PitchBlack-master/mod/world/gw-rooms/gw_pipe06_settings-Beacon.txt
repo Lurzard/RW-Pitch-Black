@@ -1,0 +1,17 @@
+Template: GW_SettingsTemplate_Inside
+DangerType: Rain
+RainIntensity: 1
+WaveSpeed: 0.5202019
+WaveLength: 0.989899
+WaveAmplitude: 1.422306E-14
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Clouds: 1
+BkgDroneVolume: 0.2769565
+Palette: 11
+EffectColorA: 8
+EffectColorB: 12
+Effects: WaterViscosity-0.1060348-20-76, SilenceWater-0-287-18, Darkness-0.326087-20-20, LethalWater-0-286-78, HeatWave-0-280-140, WaterDepth-0.08695652-23-129, FireFlies-0.3093298-274.0302-193.5556, RockFlea-0-559.325-12.22222, Flies-0-207.1927-305.2444, DayNight-0.4253288-268.4177-246.2667, DirtyWater-1-468.2583-322.9778, 
+PlacedObjects: DangleFruit><374.1281><445.5964><-304~26.00003~2~3, DangleFruit><350.0585><416.5587><-297~28~2~3, DevToken><532.7047><420.3052><-10~110.2667~126~-12~0~~~0~0~0~1, DayNightSettings><171.4474><318.3288><5~8.660254~34~11, ClimbablePoleH><625.6829><424.8663><-3^0, 
+AmbientSounds: OMNI><waterGurgleLOOP1.wav><849.6308><645.4013><0.4347826><0.5891304, OMNI><SO_NAT-Burning.ogg><668.0651><648.5761><0><0.6478261, SPOT><AM_IND-Utility02.ogg><666.6594><528.8708><0.3804348><1><-163.3406><713.8708><-158.3553><-74.35535><0><0.6326088, SPOT><AM_IND-Utility04.ogg><853.212><526.0536><0.3478261><1><496.212><-42.94641><-112.3553><-77.35535><0><0.5673915, SPOT><SO_WAT-RunningWater.ogg><849.8647><417.0862><0.3586957><0.6282609><548.8647><247.0862><-248.0542><-32.24423><0><0.2304349, SPOT><SO_WAT-OpenFlow.ogg><491.4632><529.8034><0.4021739><0.5108696><550.4632><411.8034><-62.35535><-91.35535><0><0.2956523, 
+FadePalette: 33, 0.8034872

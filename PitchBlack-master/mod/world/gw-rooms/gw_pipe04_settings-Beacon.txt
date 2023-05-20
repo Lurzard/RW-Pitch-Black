@@ -1,0 +1,9 @@
+Template: GW_SettingsTemplate_Inside
+DangerType: Rain
+Palette: 11
+EffectColorA: 12
+EffectColorB: 12
+Effects: Darkness-0.1847826-20-20, DayNight-0.2934783-35-88, 
+PlacedObjects: DayNightSettings><222.4442><373.7019><5~8.660254~35~11, 
+AmbientSounds: SPOT><SO_WAT-OpenFlow.ogg><676.2632><589.8004><0.4456522><1><1074.263><-44.19955><-240.3553><-79.35535><0><0.654348, 
+FadePalette: 33, 1

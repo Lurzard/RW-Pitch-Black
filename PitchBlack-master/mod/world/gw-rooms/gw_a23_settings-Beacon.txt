@@ -1,0 +1,12 @@
+Template: GW_SettingsTemplate_Inside
+RainIntensity: 0.7061366
+RumbleIntensity: 0.7061366
+Clouds: 0.326087
+Grime: 0.25
+Palette: 11
+EffectColorA: 13
+EffectColorB: 7
+Effects: Flies-0-20-20, RockFlea-0-30-30, Darkness-0-22.21353-89.06667, DayNight-0.2551973-290.4333-92.62223, FireFlies-0.6984035-40-40, 
+PlacedObjects: InsectGroup><749.6346><214.3521><-105~122~-249~-231~RockFlea~0.5, CustomDecal><765.45><47.9996><-13~280~134~288~98~1~-637.4812~-40.84445~0.1630435~0.5978261~0~RustB3~1~0~1~0~0~0~0~0, DayNightSettings><290.4459><267.5756><51.95624~111.7714~35~11, LanternOnStick><313.588><493.3141><25.61252~-113.3333, LanternOnStick><766.8924><312.4304><19.20935~-139.6444, LanternOnStick><554.0837><541.7373><-25.61249~-110.4889, 
+AmbientSounds: OMNI><AM_ENV-LightWind.ogg><832.1823><651.6882><0.3695652><0.9217392, OMNI><SO_WAT-LilDrips.ogg><653.2384><650.3004><0.1847826><1, 
+FadePalette: 33, 0.9750792
