@@ -4,7 +4,7 @@ Clouds: 1
 Grime: 0.3586957
 BkgDroneVolume: 0.2769565
 Palette: 11
-EffectColorA: 18
+EffectColorA: 0
 EffectColorB: 6
 Effects: DayNight-0.255197-20-20, FireFlies-0.6031929-30-30, 
 PlacedObjects: DangleFruit><551.119><1087.808><-655~257.0001~2~3, DangleFruit><497.2453><1125.2><-584~158~2~3, DangleFruit><216.1581><908.572><-291~292~2~3, DangleFruit><264.1108><917.9167><-334~196~2~3, InsectGroup><438.5509><524.0186><1~74~24~-292~Ant~0.25, CustomDecal><111.3304><669.8561><0~682.1563~815.0186~685.1563~787.0186~0~-246~108~0.326087~1~0~zGWMarks - B05~1~0~0.1630435~0~1~0.1413043~0~0.2173913, CustomDecal><-43.94861><101.1933><0~678~854~659~707~-146~0~0~0.3152174~1~0~zGWMarks - B04~0~0~1~0~1~0~1~0.3586957, ReliableSpear><749.6079><591.3884><, ReliableSpear><680.5643><407.2008><, DayNightSettings><239.2393><1077.428><5~8.660254~35~11, 

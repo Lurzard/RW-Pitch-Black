@@ -74,7 +74,7 @@ namespace SlugTemplate
             On.Player.Update += PringleUpdate;
             PhotoSprite.Hooker();
             IL.Menu.IntroRoll.ctor += AddIntroRollImage;
-            On.Player.Grabability += GrabCoalescipedes;
+            //On.Player.Grabability += GrabCoalescipedes;
         }
 
         private Player.ObjectGrabability GrabCoalescipedes(On.Player.orig_Grabability orig, Player self, PhysicalObject obj)

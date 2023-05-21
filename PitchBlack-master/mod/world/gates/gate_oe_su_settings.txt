@@ -1,0 +1,8 @@
+Template: NONE
+DangerType: Flood
+RainIntensity: 0.02173913
+RumbleIntensity: 0.1086956
+Grime: 0.3152174
+PlacedObjects: LightFixture><300.0635><373.8222><RedLight~17.32051~-10~28, LightFixture><1014.329><277.9337><RedLight~17.32051~-10~10, NoSpearStickZone><470.6046><256.3296><178~194, 
+FadePalette: 8, 0.9782609
+RoomSpecificScriptActive: ON

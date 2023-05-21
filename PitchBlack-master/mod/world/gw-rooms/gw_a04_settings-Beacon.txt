@@ -4,7 +4,7 @@ Clouds: 0.1956522
 Grime: 0.423913
 BkgDroneVolume: 0.2769565
 Palette: 11
-EffectColorA: 12
+EffectColorA: 10
 EffectColorB: 12
 Effects: DayNight-0.255197-20-20, FireFlies-0.7269249-20.03958-90.44444, 
 PlacedObjects: CentipedeAttractor><391.6626><165.3665><-186~56, CustomDecal><73.58228><371.6411><0~201.89~874.1045~201.89~874.1045~0~-186~-358~0.2826087~1~0~zGWMarks - A04~1~0~0.8260869~0~0.7391304~0.4130435~0~0.2173913, DayNightSettings><214.9767><268.4327><5~8.660254~35~11, 

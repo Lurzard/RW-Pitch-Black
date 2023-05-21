@@ -4,4 +4,4 @@ Grime: 0.2608696
 Palette: 4
 EffectColorA: 13
 PlacedObjects: BrokenShelterWaterLevel><460.224><402.4483><, 
-FadePalette: 33, 1
+FadePalette: 33, 0.8695652
