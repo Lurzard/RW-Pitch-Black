@@ -1,0 +1,6 @@
+DangerType: Flood
+Grime: 0.2391304
+Palette: 33
+Effects: DayNight-0.2934783-236-56, FireFlies-0.5-30-30, 
+PlacedObjects: ExitSymbolShelter><913.1998><269.9436><, NoSpearStickZone><483.6084><243.3913><-147~221, DayNightSettings><232.4453><193.7933><5~8.660254~4~8, 
+FadePalette: 4, 0.1086956
