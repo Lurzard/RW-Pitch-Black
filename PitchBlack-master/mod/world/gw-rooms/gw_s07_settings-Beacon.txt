@@ -1,4 +1,6 @@
 DangerType: Flood
+RainIntensity: 0
+RumbleIntensity: 0
 Clouds: 0.2173913
 Palette: 33
 PlacedObjects: BrokenShelterWaterLevel><587.7><84.24944><, 

@@ -1,8 +1,10 @@
 Template: NONE
-DangerType: FloodAndRain
-WaveSpeed: 0.5635822
-WaveLength: 0.9682089
-WaveAmplitude: 6.706133E-09
+DangerType: Rain
+RainIntensity: 0.01086957
+RumbleIntensity: 0.04347826
+WaveSpeed: 0.5000007
+WaveLength: 0.9999996
+WaveAmplitude: 2.104456E-09
 SecondWaveLength: 0.1666667
 SecondWaveAmplitude: 0
 Clouds: 1

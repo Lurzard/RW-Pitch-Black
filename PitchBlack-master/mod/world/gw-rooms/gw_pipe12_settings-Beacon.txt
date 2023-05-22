@@ -1,5 +1,12 @@
 Template: NONE
-DangerType: Flood
+DangerType: Rain
+RainIntensity: 0.01086957
+RumbleIntensity: 0.1086956
+WaveSpeed: 0.5000015
+WaveLength: 0.9990013
+WaveAmplitude: 7.512754E-07
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
 Clouds: 0.1956522
 Grime: 0.423913
 BkgDroneVolume: 0.2769565

@@ -1,5 +1,7 @@
 Template: GW_SettingsTemplate_Inside
 DangerType: Flood
+RainIntensity: 0
+RumbleIntensity: 0
 Clouds: 0.4130435
 Effects: Darkness-1-20-20, 
 PlacedObjects: BrokenShelterWaterLevel><644.9269><476.6862><, 

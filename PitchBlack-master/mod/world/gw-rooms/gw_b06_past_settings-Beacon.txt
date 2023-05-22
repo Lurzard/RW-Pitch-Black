@@ -1,4 +1,12 @@
 Template: GW_SettingsTemplate_Inside
+DangerType: Rain
+RainIntensity: 0.01086957
+RumbleIntensity: 0.0326087
+WaveSpeed: 0.5000193
+WaveLength: 0.9973903
+WaveAmplitude: 5.043833E-06
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
 Clouds: 0.2065217
 Grime: 0.2608696
 BkgDroneVolume: 0.2769565

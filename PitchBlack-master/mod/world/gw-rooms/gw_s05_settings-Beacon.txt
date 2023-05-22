@@ -1,5 +1,7 @@
 Template: NONE
 DangerType: Flood
+RainIntensity: 0
+RumbleIntensity: 0
 Grime: 0.2608696
 Palette: 4
 EffectColorA: 13

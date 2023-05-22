@@ -1,4 +1,6 @@
 Template: NONE
+RainIntensity: 0.01086957
+RumbleIntensity: 0.1086956
 Clouds: 1
 Grime: 0.2717391
 BkgDroneVolume: 0.2769565

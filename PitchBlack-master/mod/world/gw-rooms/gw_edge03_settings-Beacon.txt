@@ -1,4 +1,6 @@
 DangerType: Rain
+RainIntensity: 0.01086957
+RumbleIntensity: 0.1086956
 Grime: 0.2065217
 BkgDroneVolume: 0
 WaterReflectionAlpha: 0.2608696
