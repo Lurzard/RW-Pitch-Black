@@ -1,8 +1,8 @@
 Template: NONE
 DangerType: Rain
 CeilingDrips: 0.6521739
-RainIntensity: 0.7065217
-RumbleIntensity: 0.7065217
+RainIntensity: 0
+RumbleIntensity: 0.1086956
 WaveSpeed: 0.5337547
 WaveLength: 0.9831226
 WaveAmplitude: 3.613866E-08

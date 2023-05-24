@@ -1,0 +1,5 @@
+DangerType: None
+RainIntensity: 0.6956522
+RumbleIntensity: 0.6847826
+PlacedObjects: BrokenShelterWaterLevel><473.7945><377.195><, 
+AmbientSounds: OMNI><AM_ENV-CityTone.ogg><832.3001><644.744><0.3804348><0.7847826, OMNI><AM_WIN-SubWnd.ogg><651.1884><647.5673><0.423913><1, 

@@ -1,6 +1,6 @@
 Template: NONE
 DangerType: Rain
-RainIntensity: 0
+RainIntensity: 0.06521739
 RumbleIntensity: 0
 WaveSpeed: 0.5
 WaveLength: 1

@@ -1,7 +1,7 @@
 Template: GW_SettingsTemplate_Inside
 DangerType: Rain
-RainIntensity: 0
-RumbleIntensity: 0
+RainIntensity: 0.7065217
+RumbleIntensity: 0.7065217
 Palette: 11
 EffectColorA: 12
 EffectColorB: 12

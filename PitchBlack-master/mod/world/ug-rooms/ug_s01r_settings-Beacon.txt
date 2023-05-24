@@ -1,0 +1,11 @@
+DangerType: Flood
+RainIntensity: 0
+RumbleIntensity: 0
+Clouds: 1
+Grime: 0.2717391
+Palette: 10
+EffectColorA: 10
+Effects: HeatWave-0.326087-294-19, DayNight-0.5760869-282-77, 
+PlacedObjects: BrokenShelterWaterLevel><437.801><337.7297><, DayNightSettings><33.888><413.8948><5~8.660254~8~11, LightSource><537.9053><295.126><0.2282609~EffectColor1~3~141~413.9999~248.6025~1~0~None~0~0, LightSource><689.3362><254.3195><0.3804348~EffectColor1~404~429~405~79.60254~1~0~None~0~0, LightSource><722.2095><256.6959><0.2608696~EffectColor1~4~395~397.9999~167.6025~1~0~None~0~0, 
+AmbientSounds: SPOT><AM_ENV-LushNight.ogg><822.8156><459.3274><0.3478261><1><835.8156><412.3274><-175.3553><-104.3553><0><0.3717393, 
+FadePalette: 11, 0.1195652

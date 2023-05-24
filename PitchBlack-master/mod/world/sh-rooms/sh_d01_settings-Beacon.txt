@@ -1,7 +1,7 @@
 DangerType: Rain
 CeilingDrips: 0.5
-RainIntensity: 0.01086957
-RumbleIntensity: 0.1086956
+RainIntensity: 0.6847826
+RumbleIntensity: 0.6739131
 Clouds: 0.3804348
 Grime: 0
 BkgDroneVolume: 0

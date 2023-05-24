@@ -1,7 +1,7 @@
 Template: GW_SettingsTemplate_Inside
 DangerType: Rain
-RainIntensity: 0.01086957
-RumbleIntensity: 0.1086956
+RainIntensity: 0.6521739
+RumbleIntensity: 0.6521739
 WaveSpeed: 0.5079727
 WaveLength: 0.9960136
 WaveAmplitude: 1.255469E-10

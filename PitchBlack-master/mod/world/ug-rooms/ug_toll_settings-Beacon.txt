@@ -1,0 +1,17 @@
+DangerType: FloodAndRain
+CeilingDrips: 0
+RainIntensity: 0.3913043
+RumbleIntensity: 0
+WaveSpeed: 0.4959858
+WaveLength: 0.9979929
+WaveAmplitude: 1.256289E-11
+SecondWaveLength: 1
+SecondWaveAmplitude: 0.0001
+Clouds: 0.8091305
+EffectColorA: 10
+EffectColorB: 5
+Effects: SilenceWater-0.5108696-20-135, WaterDepth-0.06521739-281-81, HeatWave-0-283-23, Fog-0-282-136, Flies-0-20-75, DayNight-0.3369565-283-262, 
+PlacedObjects: ExitSymbolHidden><973.5518><70.22395><, ScavengerOutpost><1862.7><83.0154><32~394~-119~-130~0.9353001~99~91, LanternOnStick><622.8917><190.1411><-52~-118, LanternOnStick><498.5671><209.9189><45~-159, LanternOnStick><2084.847><228.1749><-46~-205, LanternOnStick><1033.568><345.9172><49~-168, LanternOnStick><1840.581><221.1072><-26~-180, LanternOnStick><1292.715><298.1968><-38~-101, LanternOnStick><1724.948><230.0314><70~-195, ScavengerTreasury><1846.679><145.9368><50~124, LanternOnStick><2384.694><248.4507><-16~-137, LanternOnStick><2351.872><302.3415><20~-168, SteamPipe><194.301><524.3066><23~-20, SteamPipe><210.0786><603.3969><21~-27, SteamPipe><402.3661><587.6628><9~-32, SteamPipe><603.4158><587.6118><-19~-36, SteamPipe><607.3235><587.686><13~-17, DayNightSettings><1146.049><450.6939><5~8.660254~9~4, LightSource><977.1174><122.8382><0.0326087~EffectColor1~458~-4~50~86.60254~1~1~None~0~0, LightSource><965.8621><25.83435><0.3804348~EffectColor1~-6~194~50~86.60254~1~0~None~0~0, 
+AmbientSounds: OMNI><AM_ENV-NatWind.ogg><639.3325><564.1407><0.2282609><1, OMNI><AM_IND-Utility02.ogg><837.3013><645.9775><0><1, SPOT><AM_ENV-NatWind.ogg><801.9622><441.9464><0.4565217><1><1428.962><712.9464><53.64465><-518.3553><0><1, 
+FadePalette: 10, 0.9565217, 0.9565217, 0.9565217
+WetTerrain: OFF

@@ -1,3 +1,4 @@
+DangerType: None
 RainIntensity: 0
 RumbleIntensity: 0
 PlacedObjects: BrokenShelterWaterLevel><759.1477><347.1719><, 

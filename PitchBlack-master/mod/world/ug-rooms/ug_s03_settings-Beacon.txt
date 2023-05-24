@@ -1,0 +1,11 @@
+DangerType: Flood
+RainIntensity: 0
+RumbleIntensity: 0
+WaveSpeed: 0.5
+WaveLength: 1
+WaveAmplitude: 0
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Grime: 0
+PlacedObjects: BrokenShelterWaterLevel><530.8198><344.4134><, 
+FadePalette: 8, 0.8586956

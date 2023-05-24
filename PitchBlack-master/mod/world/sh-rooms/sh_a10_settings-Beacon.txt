@@ -1,6 +1,6 @@
 DangerType: Rain
-RainIntensity: 0.01086957
-RumbleIntensity: 0.1086956
+RainIntensity: 0.4891304
+RumbleIntensity: 0.5
 Clouds: 0
 Grime: 0
 Effects: FireFlies-0.1956522-20-20, 

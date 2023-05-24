@@ -1,6 +1,6 @@
 DangerType: Rain
-RainIntensity: 0
-RumbleIntensity: 0.01086957
+RainIntensity: 0.6086956
+RumbleIntensity: 0.5978261
 Clouds: 0.3586957
 Palette: 11
 EffectColorA: 12

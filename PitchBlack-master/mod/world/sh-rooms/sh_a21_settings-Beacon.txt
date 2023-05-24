@@ -1,6 +1,6 @@
 DangerType: Rain
-RainIntensity: 0
-RumbleIntensity: 0
+RainIntensity: 0.6521739
+RumbleIntensity: 0.6413044
 Grime: 0.08695652
 BkgDroneVolume: 0
 PlacedObjects: DevToken><576.2317><365.5508><-31~90~0~0~0~~~0~0~0~1, 

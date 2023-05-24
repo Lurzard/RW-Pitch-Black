@@ -1,4 +1,4 @@
-DangerType: Flood
+DangerType: None
 RainIntensity: 0
 RumbleIntensity: 0
 Palette: 11

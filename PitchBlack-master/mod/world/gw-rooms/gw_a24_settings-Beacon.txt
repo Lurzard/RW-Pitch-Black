@@ -1,6 +1,6 @@
 Template: GW_SettingsTemplate_Inside
 DangerType: Rain
-RainIntensity: 0.01086957
+RainIntensity: 0.1086956
 RumbleIntensity: 0.1086956
 Clouds: 1
 RandomItemDensity: 0

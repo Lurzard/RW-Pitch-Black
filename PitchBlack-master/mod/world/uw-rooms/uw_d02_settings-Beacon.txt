@@ -1,7 +1,7 @@
 Template: NONE
 CeilingDrips: 0.6956522
-RainIntensity: 0.7065217
-RumbleIntensity: 0.7065217
+RainIntensity: 0
+RumbleIntensity: 0
 Clouds: 0.5
 Grime: 0
 BkgDroneVolume: 0

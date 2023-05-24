@@ -1,6 +1,8 @@
 DangerType: Flood
+RainIntensity: 0.8152174
+RumbleIntensity: 0.8043478
 Grime: 0.2391304
-Palette: 33
-Effects: DayNight-0.2934783-236-56, FireFlies-0.5-30-30, 
+Palette: 11
+Effects: DayNight-0.2934783-296-82, FireFlies-0.5-30-30, Darkness-0.4130435-40-40, 
 PlacedObjects: ExitSymbolShelter><913.1998><269.9436><, NoSpearStickZone><483.6084><243.3913><-147~221, DayNightSettings><232.4453><193.7933><5~8.660254~4~8, 
-FadePalette: 4, 0.1086956
+FadePalette: 10, 0.6521739

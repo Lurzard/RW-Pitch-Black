@@ -15,7 +15,7 @@
 			}
 		],
 		"auto_grab_batflies": true,
-		"weight": [ 0.9, 0.7 ],
+		"weight": [ 0.7, 0.6 ],
 		"tunnel_speed": 1.2,
 		"climb_speed": 1.3,
 		"walk_speed": 1.45,
@@ -24,6 +24,7 @@
 		"lung_capacity": [ 3.335 ],
 		"loudness": [ 0.5, 1.0 ],
 		"diet": {
+			"base": "White",
 			"plants": 1,
 			"meat": 0.5,
 			"corpses": 0.25,

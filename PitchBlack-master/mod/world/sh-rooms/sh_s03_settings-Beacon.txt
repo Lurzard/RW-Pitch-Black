@@ -1,6 +1,6 @@
 Template: NONE
-RainIntensity: 0
-RumbleIntensity: 0
+RainIntensity: 0.7065217
+RumbleIntensity: 0.7065217
 BkgDroneVolume: 0
 Palette: 10
 PlacedObjects: BrokenShelterWaterLevel><265.0714><325.4368><, 

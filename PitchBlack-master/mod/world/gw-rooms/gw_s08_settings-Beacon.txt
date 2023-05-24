@@ -1,5 +1,5 @@
 Template: GW_SettingsTemplate_Inside
-DangerType: Flood
+DangerType: None
 RainIntensity: 0
 RumbleIntensity: 0
 Clouds: 0.4130435

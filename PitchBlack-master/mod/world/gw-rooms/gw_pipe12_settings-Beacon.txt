@@ -1,7 +1,7 @@
 Template: NONE
 DangerType: Rain
-RainIntensity: 0.01086957
-RumbleIntensity: 0.1086956
+RainIntensity: 0.7065217
+RumbleIntensity: 0.7065217
 WaveSpeed: 0.5000015
 WaveLength: 0.9990013
 WaveAmplitude: 7.512754E-07

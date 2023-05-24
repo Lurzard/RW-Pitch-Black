@@ -1,6 +1,6 @@
 DangerType: Rain
-RainIntensity: 0
-RumbleIntensity: 0
+RainIntensity: 0.3152174
+RumbleIntensity: 0.326087
 WaveSpeed: 0.5
 WaveLength: 1
 WaveAmplitude: 0

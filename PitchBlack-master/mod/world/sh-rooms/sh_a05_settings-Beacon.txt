@@ -1,6 +1,6 @@
 DangerType: Rain
-RainIntensity: 0
-RumbleIntensity: 0
+RainIntensity: 0.6195652
+RumbleIntensity: 0.6195652
 Grime: 0
 BkgDroneVolume: 0
 Effects: Fog-0.2282609-22-110, LightBurn-0.09782609-24-58, FireFlies-0.1413043-28-6, 

@@ -1,7 +1,12 @@
 Template: GW_SettingsTemplate_Inside
-DangerType: FloodAndRain
+DangerType: Rain
 RainIntensity: 0.01086957
 RumbleIntensity: 0.1086956
+WaveSpeed: 0.5000007
+WaveLength: 0.9999996
+WaveAmplitude: 2.180918E-18
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
 Clouds: 1
 BkgDroneVolume: 0
 WaterReflectionAlpha: 0.7065217
