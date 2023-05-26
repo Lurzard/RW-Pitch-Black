@@ -1,0 +1,7 @@
+DangerType: None
+Grime: 0.09782609
+Palette: 18
+Effects: ZeroG-0.2608696-22-26, BrokenZeroG-1-274-26, ReplaceEffectColorB-0-436-354-Color-0.2826087-0-1,
+PlacedObjects: LightSource><176.1324><189.6498><1~Environment~0~100~-295~361.6025~1~0~None~0~0, LightFixture><342.5608><501.1851><RedLight~17.32051~-10~27, CorruptionDarkness><451.8021><350.5286><62~-164, CorruptionDarkness><525.5562><515.9509><-81~117, CorruptionDarkness><401.0921><516.5725><22~-118, LightSource><495.698><485.4717><0.3695652~EffectColor2~8~-257~50~86.60254~1~0~None~0~0, 
+AmbientSounds: OMNI><AM_IND-SuperStructure.ogg><827.5577><633.4451><0.4021739><0.9217392, SPOT><SO_IND-Turbine.ogg><60.32385><491.1859><0.4347826><0.9021739><249.3239><235.1859><-186.3553><-79.35535><0><0.2086958, 
+FadePalette: 17, 0.9565217

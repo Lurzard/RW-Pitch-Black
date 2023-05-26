@@ -1,0 +1,10 @@
+DangerType: None
+Clouds: 1
+Grime: 0
+BkgDroneVolume: 0
+Palette: 23
+EffectColorB: 11
+Effects: ZeroG-0.2173913-20-20, ZeroGSpecks-0.2282609-17-79, LightBurn-0.2282609-13-143, BrokenZeroG-1-283-19, ReplaceEffectColorB-0-436-354-Color-0.2826087-0-1,
+PlacedObjects: LightSource><573.5958><1443.574><0.5434783~Environment~-101~-69~-323~-261.3975~1~0~None~0~0, LightSource><441.6678><607.3587><0.4130435~Environment~0~100~50~86.60254~1~0~None~0~0, LightSource><584.6986><552.4761><0.2717391~EffectColor2~-606~3~-308~86.60254~1~0~None~0~0, LightFixture><586.1526><446.1293><RedLight~69.3205~47~0, LightFixture><430.4377><1472.81><ZapCoilLight~-338.6795~-181~16, Corruption><615.9454><858.5428><-27~158, Corruption><571.0934><1019.979><20~94, Corruption><582.7542><512.6998><-3~121, Corruption><622.0501><657.0046><0~100, Corruption><603.2283><325.6805><-1~132, CorruptionDarkness><590.7076><1112.441><-2~187, CorruptionDarkness><560.3434><929.823><213~132, LightFixture><333.6831><1057.299><RedLight~-258.6795~49~39, LightFixture><369.6695><648.069><RedLight~17.32051~-10~60, 
+AmbientSounds: OMNI><AM_IND-SuperStructure.ogg><828.1155><650.0867><0.2826087><0.9021739, OMNI><SO_SFX-Drowning.ogg><649.878><649.5916><0.5><1, SPOT><SO_SFX-Data1.ogg><67.89044><497.1424><0.2608696><0.823913><492.8904><976.1423><-99.35535><-56.35535><0><0.1869567, SPOT><SO_SFX-Data4.ogg><709.2876><251.6964><0.2826087><1><497.2876><466.6964><-54.35535><-76.35535><0><0.1869567, 
+FadePalette: 10, 0.9021739, 0.9021739

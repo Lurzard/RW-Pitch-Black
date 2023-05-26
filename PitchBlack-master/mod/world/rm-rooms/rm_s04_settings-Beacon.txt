@@ -1,0 +1,11 @@
+Template: NONE
+DangerType: None
+CeilingDrips: 0
+Clouds: 0.7173913
+Grime: 0.1413043
+Palette: 10
+EffectColorA: 17
+Effects: DayNight-0.4456522-24-105, ReplaceEffectColorB-0-436-354-Color-0.2826087-0-1,
+PlacedObjects: SuperStructureFuses><792.1667><428.1396><133~70, DayNightSettings><122.4106><402.8808><5~8.660254~8~12, CorruptionDarkness><767.6917><413.5587><-37~113, MSArteryPush><313.3989><212.1335><0~100, 
+AmbientSounds: OMNI><AM_IND-SuperStructure.ogg><828.6621><647.1797><0.4021739><0.7456522, OMNI><AM_WIN-StrongWnd2.ogg><651.2012><647.556><0.3695652><1, SPOT><SO_SFX-Pi.ogg><63.18793><489.3185><0.3478261><1><709.1879><224.3185><-71.35535><-8.355347><0><0.1652175, SPOT><SO_SFX-DataTrans2.ogg><70.08087><366.8568><0.5><1><871.0808><460.8568><-69.35535><-61.35535><0><0.1652175, 
+FadePalette: 33, 0.5543478

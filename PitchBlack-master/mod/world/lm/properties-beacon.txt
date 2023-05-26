@@ -13,7 +13,7 @@ playerGuideOverseerSpawnChance: 0.5
 pupSpawnChance: 0.3
 Subregion: Misty Foundry
 Subregion: Looks to the Moon
-Subregion: Struts
+Subregion: Braces
 Subregion: The Shell
 Subregion: Clouded Walkway
 Room Setting Templates: Fog, Sewer, Itterator, Leg, Wall

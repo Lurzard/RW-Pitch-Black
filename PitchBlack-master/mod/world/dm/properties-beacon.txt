@@ -12,7 +12,7 @@ playerGuideOverseerSpawnChance: 0.0
 pupSpawnChance: 0.0
 Subregion: The Stargazer
 Subregion: Stygian Bowels
-Subregion: Struts
+Subregion: Braces
 Subregion: Looks to the Moon
 Subregion: The Peak
 Subregion: Muted CHambers
