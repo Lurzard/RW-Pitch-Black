@@ -3,6 +3,16 @@
 [FINDREGEX]^(?:\W+ : \d+-\w+.+|LINEAGE : \w+ : \d+ : .+)$
 [ADDBEFORE](X-Beacon,Photomaniac)
 [MERGE]
+CONDITIONAL LINKS
+
+Beacon,Photomaniac : SU_B14 : SU_C01 : DISCONNECTED
+Beacon,Photomaniac : SU_B14 : GATE_SU_DS : DISCONNECTED
+Beacon,Photomaniac : SU_C01 : SU_B14 : SU_B14SAINT
+Beacon,Photomaniac : GATE_SU_DS : SU_B14 : SU_B14SAINT
+Beacon,Photomaniac : SU_B14SAINT : 1 : SU_C01
+Beacon,Photomaniac : SU_B14SAINT : 2 : GATE_SU_DS
+
+END CONDITIONAL LINKS
 CREATURES
 
 (Beacon)OFFSCREEN : 0-Scavenger-9, 0-KingVulture, 0-MirosVulture
