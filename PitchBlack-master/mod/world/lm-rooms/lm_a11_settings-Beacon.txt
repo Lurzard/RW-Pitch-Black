@@ -1,0 +1,16 @@
+Template: LM_SettingsTemplate_Sewer
+DangerType: Rain
+RainIntensity: 0.7065217
+RumbleIntensity: 0.7065217
+WaveSpeed: 0.4981273
+WaveLength: 0.9990637
+WaveAmplitude: 0.05054453
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+BkgDroneVolume: 0.2769565
+Palette: 35
+EffectColorB: 21
+Effects: Fog-0.5869565-20-20, DayNight-0.2173913-30-30, 
+PlacedObjects: CustomDecal><556.9921><24.30017><-33~737.9239~189.7536~716.9239~142.7536~0~-411~-130~0.07608695~1~0~Rust1~1~1~1~1~0~1~0~1, DayNightSettings><222.6462><264.3635><5~8.660254~35~10, 
+AmbientSounds: OMNI><AM_WIN-SubWnd.ogg><737.877><485.6545><0.1630435><0.8826087, 
+FadePalette: 10, 0.7065217

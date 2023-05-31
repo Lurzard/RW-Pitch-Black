@@ -1,0 +1,14 @@
+Template: NONE
+DangerType: Thunder
+CeilingDrips: 0
+RainIntensity: 0
+RumbleIntensity: 0.1304348
+Clouds: 1
+Grime: 0.1086956
+BkgDroneVolume: 0
+Palette: 12
+EffectColorA: 10
+Effects: BrokenZeroG-0.5-20-20, WaterDepth-1-22-79, DayNight-0.6304348-55-134, 
+PlacedObjects: NoSpearStickZone><474.3><252.4997><-232~132, ExitSymbolShelter><229.5756><104.8148><, LightFixture><244.6796><377.9025><RedLight~17.32051~-10~96, DayNightSettings><19.8674><472.6619><5~8.660254~8~12, LightSource><489.0706><256.5884><0.1086956~EffectColor1~449~454~50~86.60254~1~0~None~0~0, 
+AmbientSounds: OMNI><AM_IND-SuperStructure.ogg><830.6804><648.8125><0.3913043><0.7456522, OMNI><AM_WIN-StrongWnd2.ogg><650.9935><645.8001><0.173913><1, OMNI><SO_WAT-LilDrips.ogg><470.3357><647.136><0.173913><1, 
+FadePalette: 8, 0.8586956

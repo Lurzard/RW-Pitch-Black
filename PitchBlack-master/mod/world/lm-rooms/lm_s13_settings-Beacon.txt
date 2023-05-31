@@ -1,0 +1,12 @@
+Template: NONE
+RainIntensity: 0
+RumbleIntensity: 0.1086956
+Clouds: 0
+Grime: 0.2391304
+BkgDroneVolume: 0
+Palette: 29
+EffectColorA: 20
+Effects: WaterDepth-0.25-20-20, DayNight-0.6086956-27-73, 
+PlacedObjects: BrokenShelterWaterLevel><490.4011><191.381><, DayNightSettings><81.68054><393.3361><5~8.660254~8~29, 
+AmbientSounds: SPOT><AM_IND-Utility02.ogg><770.7397><385.9497><0.423913><1><727.7397><177.9497><-138.3553><-69.35535><0><0.2847827, 
+FadePalette: 33, 0.75

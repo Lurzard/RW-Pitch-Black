@@ -1,0 +1,11 @@
+Template: NONE
+RainIntensity: 0.5652174
+Clouds: 0.2065217
+BkgDroneVolume: 0
+Palette: 35
+EffectColorA: 12
+EffectColorB: 5
+Effects: ElectricDeath-0.1521739-22-67, GreenSparks-0.1304348-25-121, Lightning-0.06521739-20-15, DayNight-0.5652174-30-30, 
+PlacedObjects: NoSpearStickZone><479.8395><251.1306><0~266, DayNightSettings><229.4453><269.4567><5~8.660254~35~16, 
+AmbientSounds: OMNI><SO_WAT-RainishDrips.ogg><837.3021><645.2792><0.3804348><1, OMNI><AM_ENV-WallHum.ogg><479.9312><645.6652><0.3695652><0.7456522, OMNI><AM_RAIN-QuietThunder.ogg><657.8256><646.6521><0.423913><0.8434783, OMNI><MSC-HeavyCreaking.ogg><440.8279><562.0658><0.1847823><0.4913039, OMNI><MSC-UnrelentingBreakage.ogg><804.9498><564.2405><0.2643478><0.3152174, OMNI><MSC-StructureStrain.ogg><625.3441><563.3235><0.6195652><0.1, 
+FadePalette: 17, 0.8804348

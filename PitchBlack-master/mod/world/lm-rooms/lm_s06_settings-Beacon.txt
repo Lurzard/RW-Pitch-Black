@@ -1,0 +1,8 @@
+Template: LM_SettingsTemplate_Sewer
+DangerType: Rain
+RainIntensity: 0.3043478
+RumbleIntensity: 0.3043478
+Palette: 35
+Effects: DayNight-0.3043478-20-20, 
+PlacedObjects: BrokenShelterWaterLevel><373.8264><366.1506><, DayNightSettings><207.4257><268.0643><5~8.660254~35~3, 
+FadePalette: 33, 0.6847826

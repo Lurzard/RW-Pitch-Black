@@ -1,0 +1,10 @@
+Template: LM_SettingsTemplate_Sewer
+DangerType: Rain
+RainIntensity: 0.7065217
+RumbleIntensity: 0.7065217
+BkgDroneVolume: 0.0921737
+Palette: 35
+Effects: DayNight-0.3804348-20-20, 
+PlacedObjects: DataPearl><147.911><565.3813><-253~-98~0~0~Misc~0, DangleFruit><678.7917><578.4456><-175~-253~2~3, DangleFruit><723.5715><593.1868><-253~-178~2~3, DayNightSettings><191.6279><266.9084><5~8.660254~35~8, 
+AmbientSounds: SPOT><AM_IND-Utility02.ogg><845.1892><403.5649><0.4891304><0.7847826><272.1892><444.5649><-131.3553><-19.35535><0><0.3826088, SPOT><Basic Mech.ogg><838.0535><260.2125><0><0.9021739><352.0535><384.2125><-80.35535><-33.35535><0><0.3173914, SPOT><AM_RAIN-Rumbles.ogg><510.8666><148.601><0.2608696><1><894.8667><647.601><-204.3553><-85.35535><0><1, 
+FadePalette: 8, 0.7934783

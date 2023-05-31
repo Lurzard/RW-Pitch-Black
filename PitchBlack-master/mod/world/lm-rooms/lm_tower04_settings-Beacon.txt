@@ -1,0 +1,9 @@
+RainIntensity: 0.3043478
+RumbleIntensity: 0.3043478
+Clouds: 0.4456522
+Grime: 0.1521739
+Palette: 35
+Effects: ElectricDeath-0.01086957-256-307, Fog-0.4782609-7-23, GreenSparks-0.2173913-256-245, DayNight-0.3913043-20-20, 
+PlacedObjects: DayNightSettings><190.6183><1078.13><5~8.660254~35~6, 
+AmbientSounds: OMNI><AM_WAT-Sea01.ogg><822.1245><562.5935><0.01086957><0.1, 
+FadePalette: 33, 0.7717391, 0.6739131, 0.3478261, 0.2717391

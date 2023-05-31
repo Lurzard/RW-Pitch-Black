@@ -1,0 +1,15 @@
+Template: LM_SettingsTemplate_Sewer
+DangerType: Rain
+CeilingDrips: 0.7173913
+RainIntensity: 0.7065217
+RumbleIntensity: 0.7065217
+WaveSpeed: 0.5
+WaveLength: 0.75
+WaveAmplitude: 0.05214901
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Palette: 35
+Effects: DayNight-0.4456522-20-20, 
+PlacedObjects: DayNightSettings><220.1815><269.9379><5~8.660254~35~8, 
+AmbientSounds: SPOT><AM_IND-Utility02.ogg><761.8668><460.9123><0.3586957><1.058696><447.8668><534.9124><-141.3553><-30.35535><0><0.3608697, OMNI><AM_ENV-NatWind.ogg><833.2981><615.1941><0.2173913><1, 
+FadePalette: 8, 0.7826087

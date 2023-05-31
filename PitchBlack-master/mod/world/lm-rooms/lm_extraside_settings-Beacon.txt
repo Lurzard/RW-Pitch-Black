@@ -1,0 +1,12 @@
+Template: LM_SettingsTemplate_Sewer
+DangerType: Rain
+RainIntensity: 0.7065217
+RumbleIntensity: 0.7065217
+Clouds: 0.6847826
+Grime: 0.1652175
+BkgDroneVolume: 0
+Palette: 35
+Effects: GreenSparks-0.1304348-9-61, ElectricDeath-0-273-129, DayNight-0.6304348-20-20, 
+PlacedObjects: DayNightSettings><180.4537><214.4446><5~8.660254~35~10, 
+AmbientSounds: OMNI><AM_RAIN-Rumbles.ogg><796.1744><471.6522><0.2282609><1, OMNI><AM_ENV-NatWind.ogg><794.7855><552.4468><0.5217391><1, SPOT><SO_WAT-Splashes.ogg><769.3138><140.9269><0.4130435><1><467.3138><272.9269><-324.3553><-274.3553><0><0.2086958, SPOT><SO_WAT-OpenFlow.ogg><771.3606><26.60657><0.3043478><1.234783><475.3606><293.6066><-218.3553><-184.3553><0><0.2413045, 
+FadePalette: 10, 0.8369565, 0.5869565

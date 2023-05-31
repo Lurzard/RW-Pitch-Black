@@ -1,0 +1,6 @@
+DangerType: Flood
+Grime: 0.1195652
+Palette: 34
+EffectColorA: 10
+PlacedObjects: LightSource><490.229><409.4489><0.01086957~EffectColor1~225~135~50~86.60254~1~1~None~0~0, 
+FadePalette: 8, 0.8695652

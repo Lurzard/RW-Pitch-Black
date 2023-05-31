@@ -1,0 +1,9 @@
+Template: LM_SettingsTemplate_Sewer
+DangerType: Rain
+RainIntensity: 0.5
+RumbleIntensity: 0.5
+Palette: 35
+Effects: Fog-0.4130435-20-20, ElectricDeath-0.01086957-30-30, DayNight-0.25-31-101, 
+PlacedObjects: DayNightSettings><59.92911><447.089><5~8.660254~35~3, 
+AmbientSounds: OMNI><AM_WIN-SubWnd.ogg><785.4872><463.3004><0.4347826><1, SPOT><AM_ENV-LightWind.ogg><753.3133><517.0717><0.5><1><578.3133><2263.072><-68.35535><-202.3553><0><0.5456523, 
+FadePalette: 33, 0.7608696, 0.7608696, 0.7608696

@@ -1,0 +1,15 @@
+Template: LM_SettingsTemplate_Sewer
+DangerType: Rain
+RainIntensity: 0.7065217
+RumbleIntensity: 0.7065217
+WaveSpeed: 0.5668054
+WaveLength: 0.9665973
+WaveAmplitude: 2.391528E-05
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Clouds: 0.1086956
+Palette: 35
+Effects: ElectricDeath-0-20-20, ZeroGSpecks-1-274-92, GreenSparks-0.08695652-4-128, WaterDepth-0.06521739-275-146, SilenceWater-0.3804348-270-27, DayNight-0.3369565-30-30, Fog-1-40-40, 
+PlacedObjects: JellyFish><-174.5707><1077.161><-65~77~2~4, JellyFish><1215.68><1003.662><0~0~2~3, VoidSpawnEgg><736.7754><1427.934><-395~-255.9677~2~3~0, JellyFish><876.429><1002.813><0~0~2~3, VoidSpawnEgg><1042.504><1380.55><0~0~2~3~0, VoidSpawnEgg><1493.579><1462.566><0~0~2~3~0, SteamPipe><1228.86><1493.583><-48~-25, SteamPipe><1319.623><1484.596><-3~-21, SteamPipe><1339.943><1483.803><29~-48, VoidSpawnEgg><1835.321><1439.661><40~-535~2~3~0, DeadTokenStalk><363.087><1347.57><-47~-25, DeadTokenStalk><254.1899><1361.688><21~-41, DeadTokenStalk><253.166><1375.861><-48~-55, GoldToken><317.879><1381.097><-9~-56~56~-119~0~LM~White|Yellow|Red|Rivulet|Saint|Gourmand~0~0~0~0, DayNightSettings><213.3158><1100.922><5~8.660254~35~11, 
+AmbientSounds: OMNI><AM_WAT-Sea01.ogg><654.291><642.3043><0.02173913><0.1, OMNI><AM_RAIN-RollingThunder.ogg><748.6428><448.36><0.25><1, OMNI><AM_RAIN-Rumbles.ogg><567.3017><444.9742><0.173913><1, SPOT><SO_IND-HeatDuct.ogg><622.0847><334.6125><0.3695652><1><1252.085><1551.613><131.6447><-197.3553><0><1, SPOT><Mech Basic.wav><774.6805><163.1876><0.3369565><1><-53.31946><1388.188><157.6447><-24.35535><0><0.5239132, 
+FadePalette: 33, 0.7282609, 0.7282609, 0.1630435, 0.1630435
