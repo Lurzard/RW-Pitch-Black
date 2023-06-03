@@ -40,10 +40,6 @@ namespace SlugTemplate
         public static readonly SlugcatStats.Name PhotoName = new SlugcatStats.Name("Photomaniac", false);
         public static ConditionalWeakTable<Player, BeaconCWT> bCon = new();
         public static ConditionalWeakTable<Player, PhotoCWT> pCon = new();
-        bool GraspIsNonElectricSpear(AbstractSpear spear)
-        {
-            return !(spear.explosive || spear.hue > 0 || spear.electric && spear.electricCharge >= 3);
-        }
 
 
         // Add hooks
@@ -65,8 +61,8 @@ namespace SlugTemplate
             On.Player.GraphicsModuleUpdated += Player_GraphicsModuleUpdated;
             On.Player.GrabUpdate += Player_GrabUpdate1;
             On.Player.Update += Player_Update;
-            On.Player.CanBeSwallowed += Player_CanBeSwallowed;
-            On.Player.SwallowObject += Player_SwallowObject1;
+            //On.Player.CanBeSwallowed += Player_CanBeSwallowed;
+            //On.Player.SwallowObject += Player_SwallowObject1;
             Hook overseercolorhook = new Hook(typeof(OverseerGraphics).GetProperty("MainColor", BindingFlags.Instance | BindingFlags.Public).GetGetMethod(), typeof(Plugin).GetMethod("OverseerGraphics_MainColor_get", BindingFlags.Static | BindingFlags.Public));
             On.Region.GetProperRegionAcronym += Region_GetProperRegionAcronym;
             On.OverseerGraphics.ColorOfSegment += OverseerGraphics_ColorOfSegment;
@@ -75,6 +71,7 @@ namespace SlugTemplate
             PhotoSprite.Hooker();
             IL.Menu.IntroRoll.ctor += AddIntroRollImage;
             //On.Player.Grabability += GrabCoalescipedes;
+            PitchBlackCrafting.Hook();
         }
 
         private Player.ObjectGrabability GrabCoalescipedes(On.Player.orig_Grabability orig, Player self, PhysicalObject obj)
@@ -262,7 +259,7 @@ namespace SlugTemplate
             return res;
         }
 
-        private void Player_SwallowObject1(On.Player.orig_SwallowObject orig, Player self, int grasp)
+        /*private void Player_SwallowObject1(On.Player.orig_SwallowObject orig, Player self, int grasp)
         {
             orig(self, grasp);
 
@@ -284,8 +281,8 @@ namespace SlugTemplate
                     AddNewSpear(self, slugGrasp.ID);
                 }
             }
-        }
-        public static void AddNewSpear(Player player, EntityID entityID)
+        }*/
+        /*public static void AddNewSpear(Player player, EntityID entityID)
         {
             AbstractPhysicalObject item = new AbstractSpear(player.room.world, null, player.abstractPhysicalObject.pos, player.room.game.GetNewID(), false, true);
 
@@ -294,12 +291,12 @@ namespace SlugTemplate
             player.SubtractFood(1);
             if (-1 != player.FreeHand())
                 player.SlugcatGrab(item.realizedObject, player.FreeHand());
-        }
+        }*/
 
-        private bool Player_CanBeSwallowed(On.Player.orig_CanBeSwallowed orig, Player self, PhysicalObject testObj)
+        /*private bool Player_CanBeSwallowed(On.Player.orig_CanBeSwallowed orig, Player self, PhysicalObject testObj)
         {
             return orig(self, testObj) || Plugin.PhotoName == self.slugcatStats.name && testObj is Spear spear && self.FoodInStomach > 0 && GraspIsNonElectricSpear(spear.abstractSpear);
-        }
+        }*/
 
         private void Player_Update(On.Player.orig_Update orig, Player self, bool eu)
         {
