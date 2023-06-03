@@ -1,9 +1,12 @@
 ﻿{
 	"id": "lurzard.pitchblack",
-	"name": "Pitch Black",
+	"name": "[BETA] Pitch Black",
 	"version": "0.1.0",
-	"authors": "Lurzard for the original mod, Millisec for The Photomaniac and more to come, Niko for Night Terror, URUFUDOGGO for flashbang storage, electric detonation, and slugcat glow.",
-	"description": "Fanmade expansion in the works. super ambitious hahahaha!!",
+	"authors": "Lurzard: The Beacon slugcat and mod artwork.\n\nMillisec: The Photomaniac slugcat, Lediting, and more to come.\n\nNiko: Night Terror Creature.\n\nURUFUDOGGO: The Beacon's Flashbang storage', The Photomaniac's Electric Detonation, and Photo's Chest Spots sprite.\n\nSpinch: The Photomaniac's Spear crafting.\n\nAnd a lot more people from #moding-dev in the Official Rain World Discord, YOU made this possible!",
+
+	"description": "Crawl around in the nighttime of a dying world as two new custom campaigns, The Beacon and The Photomaniac!\n\nMake it home safely before the dawn wakes.\nThen uncover the hidden secrets of this world and piece together the fractured story.",
+
 	"requirements": [ "slime-cubed.slugbase", "moreslugcats", "fisobs", "regionkit" ],
-	"requirements_names": [ "SlugBase", "More Slugcats Expansion", "Fisobs", "RegionKit" ]
+	"requirements_names": [ "SlugBase", "More Slugcats Expansion", "Fisobs", "RegionKit" ],
+	"tags": [ "Custom Slugcat", "Campaigns", "Game Modes", "Regions", "Game Mechanics" ]
 }
