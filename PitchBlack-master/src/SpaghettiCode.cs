@@ -20,6 +20,8 @@ using System.Security;
 using IL;
 using MonoMod.Cil;
 using static Player;
+using NightTerror;
+using System.Diagnostics.Eventing.Reader;
 
 #pragma warning disable CS0618 // Type or member is obsolete
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -72,6 +74,50 @@ namespace SlugTemplate
             IL.Menu.IntroRoll.ctor += AddIntroRollImage;
             //On.Player.Grabability += GrabCoalescipedes;
             PitchBlackCrafting.Hook();
+            //NightTerror relationship fix
+            //On.Creature.Update += (orig, self, eu) => {
+            //    orig(self, eu);
+            //    if (self != null && self.abstractCreature?.abstractAI.RealAI != null && self.room != null && self.abstractCreature.abstractAI.RealAI is IUseARelationshipTracker)
+            //    {
+            //        var relationships = self.abstractCreature.abstractAI.RealAI.relationshipTracker.relationships;
+            //        for (int j = 0; j < relationships.Count; j++)
+            //        {
+            //            if (relationships[j].trackerRep.representedCreature.creatureTemplate.type == CreatureTemplateType.NightTerror /*Or whatever the template name is idk*/)
+            //            {
+            //                relationships[j].currentRelationship.type = CreatureTemplate.Relationship.Type.Afraid;
+            //                relationships[j].currentRelationship.intensity = 1f;
+            //            }
+            //        }
+            //    }
+            //};
+            On.FlareBomb.Update += DieToFlareBomb;
+        }
+
+        //Spider, SpitterSpider, and MotherSpider die to FlareBombs with this mod enabled
+        private void DieToFlareBomb(On.FlareBomb.orig_Update orig, FlareBomb self, bool eu)
+        {
+            orig(self, eu);
+            for (int i = 0; i < self.room.abstractRoom.creatures.Count; i++)
+            {
+                if (self.room.abstractRoom.creatures[i].realizedCreature != null && (Custom.DistLess(self.firstChunk.pos, self.room.abstractRoom.creatures[i].realizedCreature.mainBodyChunk.pos, self.LightIntensity * 600f) || (Custom.DistLess(self.firstChunk.pos, self.room.abstractRoom.creatures[i].realizedCreature.mainBodyChunk.pos, self.LightIntensity * 1600f) && self.room.VisualContact(self.firstChunk.pos, self.room.abstractRoom.creatures[i].realizedCreature.mainBodyChunk.pos))))
+                {
+                    if (self.room.abstractRoom.creatures[i].creatureTemplate.type == CreatureTemplate.Type.BigSpider && !self.room.abstractRoom.creatures[i].realizedCreature.dead)
+                    {
+                        self.room.abstractRoom.creatures[i].realizedCreature.firstChunk.vel += Custom.DegToVec(Random.value * 360f) * Random.value * 7f;
+                        self.room.abstractRoom.creatures[i].realizedCreature.Die();
+                    }
+                    if (self.room.abstractRoom.creatures[i].creatureTemplate.type == CreatureTemplate.Type.SpitterSpider && !self.room.abstractRoom.creatures[i].realizedCreature.dead)
+                    {
+                        self.room.abstractRoom.creatures[i].realizedCreature.firstChunk.vel += Custom.DegToVec(Random.value * 360f) * Random.value * 7f;
+                        self.room.abstractRoom.creatures[i].realizedCreature.Die();
+                    }
+                    if (self.room.abstractRoom.creatures[i].creatureTemplate.type == MoreSlugcats.MoreSlugcatsEnums.CreatureTemplateType.MotherSpider && !self.room.abstractRoom.creatures[i].realizedCreature.dead)
+                    {
+                        self.room.abstractRoom.creatures[i].realizedCreature.firstChunk.vel += Custom.DegToVec(Random.value * 360f) * Random.value * 7f;
+                        self.room.abstractRoom.creatures[i].realizedCreature.Die();
+                    }
+                }
+            };
         }
 
         private Player.ObjectGrabability GrabCoalescipedes(On.Player.orig_Grabability orig, Player self, PhysicalObject obj)
