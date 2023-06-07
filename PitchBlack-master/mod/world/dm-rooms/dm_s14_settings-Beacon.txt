@@ -1,0 +1,6 @@
+Template: DM_SettingsTemplate_Wall
+DangerType: None
+Clouds: 1
+Effects: WaterDepth-0.2717391-276-78, 
+PlacedObjects: BrokenShelterWaterLevel><460.6095><304.9174><, 
+FadePalette: 17, 0.9456522

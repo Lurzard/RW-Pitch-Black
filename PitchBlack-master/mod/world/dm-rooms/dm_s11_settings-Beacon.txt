@@ -1,0 +1,13 @@
+Template: DM_SettingsTemplate_Leg
+RainIntensity: 0.3043478
+RumbleIntensity: 0.5
+WaveSpeed: 0.5
+WaveLength: 1
+WaveAmplitude: 1.873311E-34
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Clouds: 1
+EffectColorA: 10
+Effects: ZeroGSpecks-1-34-74, GreenSparks-0.2826087-34-120, ElectricDeath-0.6086956-273-21, DayNight-0.8043478-291-78, Darkness-0.7065217-273-199, 
+PlacedObjects: DayNightSettings><186.4219><362.8977><5~8.660254~17~13, 
+FadePalette: 33, 0.8043478
