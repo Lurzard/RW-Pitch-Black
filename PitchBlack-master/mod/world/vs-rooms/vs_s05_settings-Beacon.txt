@@ -1,0 +1,3 @@
+Effects: DayNight-0.6086956-41-130, Darkness-0.2065217-41-72, 
+PlacedObjects: BrokenShelterWaterLevel><639.9104><346.6195><, DayNightSettings><0.6654663><364.6812><5~8.660254~8~72, 
+FadePalette: 33, 0.8043478

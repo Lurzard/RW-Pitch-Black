@@ -1,0 +1,5 @@
+Template: VS_SettingsTemplate_Filter
+Palette: 33
+Effects: WaterDepth-0.1304348-20-20, DayNight-0.5543478-17-75, Darkness-0.7065217-17-128, 
+PlacedObjects: Stowaway><1312.699><504.3066><-6~-76, Filter><1326.433><527.4197><7~64~0~0~Yellow|Rivulet|Saint, DayNightSettings><211.801><310.2303><5~8.660254~17~21, 
+FadePalette: 22, 0.3478261, 0.3478261
