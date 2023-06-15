@@ -91,6 +91,7 @@ namespace SlugTemplate
             //    }
             //};
             On.FlareBomb.Update += DieToFlareBomb;
+            ScareEverything.Apply();
         }
 
         //Spider, SpitterSpider, and MotherSpider die to FlareBombs with this mod enabled
