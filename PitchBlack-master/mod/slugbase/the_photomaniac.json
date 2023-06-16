@@ -38,7 +38,7 @@
 		},
 		"guide_overseer": 87,
 		"the_glow": true,
-		"world_state": [ "Photomaniac" ,"Beacon" ],
+		"world_state": [ "Photomaniac" ,"Beacon", "White" ],
 
 		"select_menu_scene": "Slugcat_Photo",
 		"select_menu_scene_ascended": "Ghost_Photo",
