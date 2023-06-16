@@ -65,6 +65,7 @@
 		"start_room": "SH_S09",
 		"guide_overseer": 87,
 		"has_dreams": false,
+		"world_state":  "Beacon",
 		"perma_unlock_gates": true,
 		"food_min": 6,
 		"food_max": 7,
