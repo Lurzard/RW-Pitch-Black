@@ -1,5 +1,5 @@
 RainIntensity: 0.7065217
 RumbleIntensity: 0.7065217
-Effects: FireFlies-0.2934783-22-79, DayNight-0.3695652-24-134, 
+Effects: FireFlies-0.2934783-22-79, DayNight-0.3695652-24-134, Lightning-0.3043478-30-30, 
 PlacedObjects: DayNightSettings><219.6266><385.8451><5~8.660254~16~17, 
 FadePalette: 33, 0.7608696
