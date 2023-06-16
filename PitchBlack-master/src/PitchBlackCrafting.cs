@@ -36,13 +36,11 @@ namespace PitchBlack
                 ILCursor c = new(il);
                 ILLabel label = il.DefineLabel();
 
-                if (!c.TryGotoNext(MoveType.After, /*i => i.MatchLdarg(0),*/ i => i.MatchCallOrCallvirt<Player>("FreeHand"), i => i.MatchLdcI4(-1)))
+                if (!c.TryGotoNext(MoveType.After, i => i.MatchCallOrCallvirt<Player>("FreeHand"), i => i.MatchLdcI4(-1), i => i.Match(OpCodes.Beq_S)))
                 {
                     Debug.Log("Unable to find Player.FreeHand() == -1 in ILhook");
                     return;
                 }
-
-                c.Index++;
 
                 c.Emit(OpCodes.Ldarg_0);
                 c.EmitDelegate<Func<Player, bool>>(self =>
@@ -74,11 +72,16 @@ namespace PitchBlack
 
             for (int i = 0; i < 2; i++)
             {
+                if (grasp.grabbed is IPlayerEdible && self.FoodInStomach < self.MaxFoodInStomach) //if its food and youre NOT full, you CANT craft
+                    return false;
+
                 if (self.grasps[i]?.grabbed.abstractPhysicalObject is AbstractSpear spearInHand)
                 {
-                    if (spearInHand.hue > 0)
+                    if (spearInHand.hue > 0) //no fire spear crafting allowed
                         continue;
-                    if (self.FoodInStomach > 0)
+                    if (spearInHand.electric && spearInHand.electricCharge < 3) //ignore unfull elec spear
+                        continue;
+                    if (self.FoodInStomach > 0) //you have food, yippee you can craft
                         return true;
                 }
             }
@@ -109,7 +112,7 @@ namespace PitchBlack
                         else
                             spearsInGrasps[i] = WhatsThatSpear.Electric_NotFull;
                     }
-                    else
+                    else if (spear.hue <= 0) //NO fire spears allowed
                         spearsInGrasps[i] = WhatsThatSpear.Normal;
                 }
             }
@@ -150,20 +153,27 @@ namespace PitchBlack
             void HasNoneGrasp(int spearIndex)
             {
                 WhatsThatSpear otherGrasp = spearsInGrasps[spearIndex];
-                if (WhatsThatSpear.Normal == otherGrasp || WhatsThatSpear.Electric_NotFull == otherGrasp)
+                if (WhatsThatSpear.Normal == otherGrasp)
                     SpawnElectricSpear(spearIndex);
                 else if (WhatsThatSpear.Electric_Full == otherGrasp)
                     SmallZap();
                 else if (WhatsThatSpear.Explosive == otherGrasp)
                     SmallDetonate(spearIndex);
+                //nothing happens if (WhatsThatSpear.Electric_NotFull == otherGrasp)
             }
             void HasNormalSpear(int spearBeingChecked, int otherSpearIndex)
             {
                 WhatsThatSpear otherGrasp = spearsInGrasps[otherSpearIndex];
-                if (WhatsThatSpear.Normal == otherGrasp || WhatsThatSpear.Electric_NotFull == otherGrasp)
+                if (WhatsThatSpear.Normal == otherGrasp)
                 {
                     SpawnElectricSpear(0);
                     SpawnElectricSpear(1);
+                }
+                else if (WhatsThatSpear.Electric_NotFull == otherGrasp)
+                {
+                    //so 1 normal spear, 1 unfull elec spear
+                    //behaviour ignores the unfull elec spear and acts like its 1 normal spear and null grasp
+                    HasNoneGrasp(spearBeingChecked);
                 }
                 else if (WhatsThatSpear.Electric_Full == otherGrasp)
                 {
@@ -181,12 +191,12 @@ namespace PitchBlack
             void HasElectricSpear_NotFull(int spearBeingChecked, int otherSpearIndex)
             {
                 WhatsThatSpear otherGrasp = spearsInGrasps[otherSpearIndex];
-                if (WhatsThatSpear.Electric_NotFull == otherGrasp)
-                {
-                    SpawnElectricSpear(0);
-                    SpawnElectricSpear(1);
-                }
-                else if (WhatsThatSpear.Electric_Full == otherGrasp)
+                //if (WhatsThatSpear.Electric_NotFull == otherGrasp)
+                //{
+                //    SpawnElectricSpear(0);
+                //    SpawnElectricSpear(1);
+                //} //nothing happens here
+                if (WhatsThatSpear.Electric_Full == otherGrasp)
                 {
                     SpawnElectricSpear(spearBeingChecked);
                     if (CanCraftTwoSpears)
@@ -201,7 +211,7 @@ namespace PitchBlack
                         Stun();
                     }
                     else
-                        SpawnElectricSpear(Mathf.Abs(otherSpearIndex - 1));
+                        SpawnElectricSpear(spearBeingChecked);
                 }
             }
             void HasElectricSpear_Full(int otherSpearIndex)
@@ -357,8 +367,15 @@ namespace PitchBlack
             #region crafting
             void DeleteGrasp(int index)
             {
-                Debug.Log("Delete player grasp at index " + index);
                 AbstractPhysicalObject grasp = self.grasps[index].grabbed.abstractPhysicalObject;
+
+                if (grasp == null)
+                {
+                    Debug.Log($"Unable to delete null player grasp at index {index}");
+                    return;
+                }
+
+                Debug.Log($"Delete player grasp at index {index}");
 
                 if (self.room.game.session is StoryGameSession story)
                     story.RemovePersistentTracker(grasp);
@@ -373,6 +390,14 @@ namespace PitchBlack
             {
                 if (self.FoodInStomach <= 0)
                     return;
+
+                //for loop is an extra added cosmetic. its the same effect as electric spears occasionally sparking
+                //feel free to delete the for loop if you don't like it
+                for (int i = 0; i < 10; i++)
+                {
+                    Vector2 a = RWCustom.Custom.RNV();
+                    self.room.AddObject(new Spark(self.firstChunk.pos + a * Random.value * 20f, a * Mathf.Lerp(4f, 10f, Random.value), Colour.white, null, 4, 18));
+                }
 
                 self.SubtractFood(1);
                 self.room.PlaySound(SoundID.Zapper_Zap, self.firstChunk.pos, 1f, 1.5f + Random.value * 1.5f);
