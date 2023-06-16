@@ -72,10 +72,15 @@ namespace PitchBlack
 
             for (int i = 0; i < 2; i++)
             {
-                if (grasp.grabbed is IPlayerEdible && self.FoodInStomach < self.MaxFoodInStomach) //if its food and youre NOT full, you CANT craft
+                var grabbed = self.grasps[i]?.grabbed;
+
+                if (null == grabbed)
+                    continue;
+
+                if (grabbed is IPlayerEdible && self.FoodInStomach < self.MaxFoodInStomach) //if its food and youre NOT full, you CANT craft
                     return false;
 
-                if (self.grasps[i]?.grabbed.abstractPhysicalObject is AbstractSpear spearInHand)
+                if (grabbed.abstractPhysicalObject is AbstractSpear spearInHand)
                 {
                     if (spearInHand.hue > 0) //no fire spear crafting allowed
                         continue;
