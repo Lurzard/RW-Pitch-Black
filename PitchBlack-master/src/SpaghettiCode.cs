@@ -160,6 +160,7 @@ namespace SlugTemplate
         private void PringleUpdate(On.Player.orig_Update orig, Player self, bool eu)
         {
             orig(self, eu);
+#if false
             if (Input.GetKey(KeyCode.C) && pbcooldown == 0 && self.room != null && self.slugcatStats.name == PhotoName)
             {
                 pbcooldown = 400;
@@ -199,6 +200,7 @@ namespace SlugTemplate
                     Speaking = true;
                 }
             }
+#endif
             if (Speaking == true)
             {
                 if (currentDialog.Count == 0)

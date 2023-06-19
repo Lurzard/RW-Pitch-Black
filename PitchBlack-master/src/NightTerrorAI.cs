@@ -12,6 +12,7 @@ namespace PitchBlack
     {
         public AbstractCreature ac;
         public WorldCoordinate previousRoom;
+        public string currentRoom;
         public World world;
         public int slowTick;  // Used for when Centipede's AI is not realized
         public int fastTick;  // Used for when Centipede's AI is realized
@@ -78,11 +79,10 @@ namespace PitchBlack
             // Location update
             try
             {
-                if (ac.abstractAI is null) return;
-                if (ac.abstractAI.destination != previousRoom)
+                if (ac.Room != null && ac.Room?.name != currentRoom)
                 {
-                    Debug.Log(">>> Nightterror moves! From " + previousRoom.ResolveRoomName() + " to " + ac.abstractAI.destination.ResolveRoomName());
-                    previousRoom = ac.abstractAI.destination;
+                    Debug.Log(">>> Nightterror moves! From " + currentRoom + " to " + ac.Room.name);
+                    currentRoom = ac.Room.name;
                 }
             }
             catch (NullReferenceException nerr)
@@ -99,8 +99,8 @@ namespace PitchBlack
             // Non-same room update
             try
             {
-                if (firstPlayer is null) return;
-                if (ac.abstractAI.destination.room != firstPlayer.pos.room)
+                if (ac.abstractAI is null || firstPlayer is null) return;
+                if (ac.abstractAI.destination.room != previousRoom.room)
                 {
                     Debug.Log(">>> Nightterror shifts Destination! From " + ac.abstractAI.destination.ResolveRoomName() + " to " + firstPlayer.pos.ResolveRoomName());
 

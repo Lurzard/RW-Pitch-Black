@@ -174,12 +174,16 @@ namespace NightTerror
                             }
                         }
                     }*/
-                    if (false && NTInfo.fleeing > 0)  // turning off the fear code for now
+
+// turning off the fear code for now
+#if false
+                    if (NTInfo.fleeing > 0)  
                     {
                         NTInfo.fleeing--;
 
                         self.SetDestination(new WorldCoordinate(self.centipede.abstractCreature.pos.room, (int)NTInfo.fleeTo.x, (int)NTInfo.fleeTo.y, self.centipede.abstractCreature.pos.abstractNode));
                     }
+#endif
                 }
             }
         }
