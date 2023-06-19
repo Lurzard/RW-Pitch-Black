@@ -50,16 +50,15 @@ namespace NightTerror
             orig(self, creature, world);
             if (creature.creatureTemplate.type == CreatureTemplateType.NightTerror)
             {
-                self.pathFinder.stepsPerFrame = 15;
-                /*
+                self.pathFinder.stepsPerFrame = 20;
                 for (int i = 0; i < self.modules.Count; i++)
                 {
                     if (self.modules[i] is PreyTracker)
                     {
                         self.modules.RemoveAt(i);
-                        self.AddModule(new PreyTracker(self, 5, 1f, 120f, 150f, 0.05f));
+                        self.AddModule(new PreyTracker(self, 5, 2f, 100f, 150f, 0.05f));
                     }
-                }*/
+                }
             }
         }
 
@@ -193,7 +192,7 @@ namespace NightTerror
             orig(self, abstractCreature, world);
             if (self.abstractCreature.creatureTemplate.type == CreatureTemplateType.NightTerror)
             {
-
+                abstractCreature.ignoreCycle = true;
                 if (!NightTerrorInfo.TryGetValue(self, out var _))
                 { NightTerrorInfo.Add(self, _ = new NightTerrorData(new NightTerrorTrain(abstractCreature, world))); }
                 

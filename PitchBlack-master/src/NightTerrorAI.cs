@@ -21,7 +21,22 @@ namespace PitchBlack
         {
             this.ac = ac;
             this.world = world;
-            On.Centipede.Update += Centipede_Update;
+            //On.Centipede.Update += Centipede_Update;
+            On.RainWorldGame.Update += RainWorldGame_Update;
+            //On.CentipedeAI.Update += CentipedeAIUPDATER;
+
+        }
+
+        private void CentipedeAIUPDATER(On.CentipedeAI.orig_Update orig, CentipedeAI self)
+        {
+            orig(self);
+            if (ac is not null) Update();
+        }
+
+        private void RainWorldGame_Update(On.RainWorldGame.orig_Update orig, RainWorldGame self)
+        {
+            orig(self);
+            if (ac is not null) Update();
         }
 
         private void Centipede_Update(On.Centipede.orig_Update orig, Centipede self, bool eu)
@@ -75,7 +90,8 @@ namespace PitchBlack
                     }
                 }
             }
-            
+
+
             // Location update
             try
             {
@@ -100,12 +116,27 @@ namespace PitchBlack
             try
             {
                 if (ac.abstractAI is null || firstPlayer is null) return;
-                if (ac.abstractAI.destination.room != previousRoom.room)
+                if (ac.pos.room != firstPlayer.pos.room)
                 {
-                    Debug.Log(">>> Nightterror shifts Destination! From " + previousRoom + " to " + firstPlayer.pos.ResolveRoomName());
-                    previousRoom = firstPlayer.pos;
+                    //Debug.Log(">>> Nightterror shifts Destination! From " + previousRoom.ResolveRoomName() + " to " + firstPlayer.pos.ResolveRoomName());
+                    // previousRoom = firstPlayer.pos;
                     // Change destination
-                    ac.abstractAI.SetDestination(previousRoom);
+                    ac.abstractAI.SetDestination(firstPlayer.pos);
+                }
+                if ((ac.abstractAI.strandedInRoom != -1 || ac.realizedCreature is null || (ac.abstractAI.RealAI != null && ac.abstractAI.RealAI.stranded)) && ac.pos.room != firstPlayer.pos.room)
+                {
+                    //Debug.Log(">>> Migrate Nightterror!");
+                    if (firstPlayer.Room != null)
+                    {
+                        ac.Move(firstPlayer.Room.RandomNodeInRoom());
+                    }
+                }
+                if (ac.timeSpentHere > 3600 && ac.pos.room != firstPlayer.pos.room)
+                {
+                    if (firstPlayer.Room != null)
+                    {
+                        ac.abstractAI.MigrateTo(firstPlayer.Room.RandomNodeInRoom());
+                    }
                 }
             }
             catch (NullReferenceException nerr)
