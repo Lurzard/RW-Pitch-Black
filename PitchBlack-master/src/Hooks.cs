@@ -1,4 +1,5 @@
 ﻿using MonoMod.RuntimeDetour;
+using PitchBlack;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 //using System;
@@ -8,6 +9,12 @@ public class NightTerrorData
 {
     public int fleeing = 0;
     public Vector2 fleeTo = Vector2.zero;
+    public NightTerrorTrain choochoo;
+
+    public NightTerrorData(NightTerrorTrain ai = null)
+    {
+        choochoo = ai;
+    }
 }
 
 public class ChillTheFUCKOut
@@ -69,7 +76,7 @@ namespace NightTerror
         {
             if (self.centipede.abstractCreature.creatureTemplate.type == CreatureTemplateType.NightTerror)
             {
-                if (critter is Player)
+                if (critter.realizedCreature is Player)
                 {
                     if (!KILLIT.TryGetValue(critter, out var victim))
                     { KILLIT.Add(critter, victim = new ChillTheFUCKOut()); }
@@ -129,23 +136,25 @@ namespace NightTerror
 
                 if (NightTerrorInfo.TryGetValue(self.centipede, out var NTInfo))
                 {
+                    /*
                     if (NTInfo.fleeing == 0)
                     {
                         for (int i = 0; i < self.centipede.room.game.Players.Count; i++)
                         {
                             if (!(self.centipede.room.game.Players[i].realizedCreature as Player).dead)
                             {
-                                self.tracker.SeeCreature(self.centipede.room.game.Players[i]);
-                                self.creature.abstractAI.RealAI.SetDestination(self.centipede.room.game.Players[i].pos);
-                                self.creature.abstractAI.destination = self.centipede.room.game.Players[i].pos;
-                                self.creature.abstractAI.migrationDestination = new WorldCoordinate?(self.centipede.room.game.Players[i].pos);
-                                self.creature.abstractAI.InternalSetDestination(self.centipede.room.game.Players[i].pos);
+                                //self.tracker.SeeCreature(self.centipede.room.game.Players[i]);
+                                //self.creature.abstractAI.RealAI.SetDestination(self.centipede.room.game.Players[i].pos);
+                                //self.creature.abstractAI.destination = self.centipede.room.game.Players[i].pos;
+                                //self.creature.abstractAI.migrationDestination = new WorldCoordinate?(self.centipede.room.game.Players[i].pos);
+                                //self.creature.abstractAI.InternalSetDestination(self.centipede.room.game.Players[i].pos);
                                 self.behavior = CentipedeAI.Behavior.Hunt;
                                 self.run = 1000;
+                                break;
                             }
                         }
-                    }
-                    else
+                    }*/
+                    if (NTInfo.fleeing > 0)
                     {
                         NTInfo.fleeing--;
 
@@ -162,8 +171,7 @@ namespace NightTerror
             {
 
                 if (!NightTerrorInfo.TryGetValue(self, out var _))
-                { NightTerrorInfo.Add(self, _ = new NightTerrorData()); }
-
+                { NightTerrorInfo.Add(self, _ = new NightTerrorData(new NightTerrorTrain(abstractCreature, world))); }
                 self.bodyChunks = new BodyChunk[28];
                 for (int i = 0; i < self.bodyChunks.Length; i++)
                 {
