@@ -99,7 +99,7 @@ namespace PitchBlack
             // Non-same room update
             try
             {
-                if (firstPlayer is null || slowTick != 0) return;
+                if (firstPlayer is null) return;
                 if (ac.abstractAI.destination.room != firstPlayer.pos.room)
                 {
                     Debug.Log(">>> Nightterror shifts Destination! From " + ac.abstractAI.destination.ResolveRoomName() + " to " + firstPlayer.pos.ResolveRoomName());
@@ -128,7 +128,7 @@ namespace PitchBlack
                     // Focus on one player
                     foreach(Tracker.CreatureRepresentation tracked in ac.abstractAI.RealAI.tracker.creatures)
                     {
-                        Debug.Log("This tracked creature has: " + tracked is not null? "Tracker" : "" + tracked?.representedCreature is not null? "RepresentedCreature" : "");
+                        Debug.Log("This tracked creature has: " + (tracked is not null? "Tracker " : "") + (tracked?.representedCreature is not null? "RepresentedCreature" : ""));
                         if (tracked?.representedCreature is null)
                         {
                             Debug.Log(">>> Nightterror has an unrealized creature!");
@@ -136,7 +136,7 @@ namespace PitchBlack
                         }
                         if (tracked.representedCreature != sameRoomPlayer)
                         {
-                            Debug.Log(">>> Nightterror forgets creature!");
+                            Debug.Log(">>> Nightterror forgets creature: " + tracked.representedCreature.creatureTemplate.name);
                             ac.abstractAI.RealAI.tracker.ForgetCreature(tracked.representedCreature);
                             Debug.Log("    Nightterror forgor!");
                         }
