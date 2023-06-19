@@ -38,7 +38,7 @@ namespace PitchBlack
             }
             else
             {
-                slowTick = 200;  // Updates once per 5 seconds
+                slowTick = 40;  // Updates once per second
             }
 
             if (fastTick > 0)
@@ -61,9 +61,9 @@ namespace PitchBlack
             Tick();
             AbstractCreature firstPlayer = null;  // For tracking a player in different rooms
             AbstractCreature sameRoomPlayer = null;  // For tracking a player in same room
-            foreach(AbstractCreature c in world.game.session.Players)
+            foreach(AbstractCreature c in world.game.AlivePlayers)
             {
-                if (c.realizedCreature is Player player && !player.dead && player.room?.abstractRoom?.shelter is not null && !player.room.abstractRoom.shelter)
+                if (c.realizedCreature is Player player && player.room?.abstractRoom?.shelter is not null && !player.room.abstractRoom.shelter)
                 {
                     firstPlayer ??= c;
                     if (ac.abstractAI?.RealAI is not null && ac.pos.room == c.pos.room)
@@ -95,10 +95,34 @@ namespace PitchBlack
                 Debug.LogException(err);
             }
 
+            // Non-same room update
+            try
+            {
+                if (firstPlayer is null || slowTick != 0) return;
+                if (ac.abstractAI.destination.room != firstPlayer.pos.room)
+                {
+                    Debug.Log(">>> Nightterror shifts Destination! From " + ac.abstractAI.destination.ResolveRoomName() + " to " + firstPlayer.pos.ResolveRoomName());
+
+                    // Change destination
+                    ac.abstractAI.SetDestination(firstPlayer.pos);
+                }
+            }
+            catch (NullReferenceException nerr)
+            {
+                Debug.LogError(">>> Nightterror null error while attempting to update destination!");
+                Debug.LogException(nerr);
+            }
+            catch (Exception err)
+            {
+                Debug.LogError(">>> Nightterror generic error while attempting to update destination!");
+                Debug.LogException(err);
+            }
+
+
             // Same Room update
             try
             {
-                if (sameRoomPlayer is not null && fastTick == 0)
+                if (sameRoomPlayer is not null)
                 {
                     // Focus on one player
                     foreach(Tracker.CreatureRepresentation tracked in ac.abstractAI.RealAI.tracker.creatures)
@@ -141,28 +165,6 @@ namespace PitchBlack
             }
 
 
-            // Non-same room update
-            try
-            {
-                if (firstPlayer is null || slowTick != 0) return;
-                if (ac.abstractAI.destination.room != firstPlayer.pos.room)
-                {
-                    Debug.Log(">>> Nightterror shifts Destination! From " + ac.abstractAI.destination.ResolveRoomName() + " to " + firstPlayer.pos.ResolveRoomName());
-
-                    // Change destination
-                    ac.abstractAI.SetDestination(firstPlayer.pos);
-                }
-            }
-            catch (NullReferenceException nerr)
-            {
-                Debug.LogError(">>> Nightterror null error while attempting to update destination!");
-                Debug.LogException(nerr);
-            }
-            catch (Exception err)
-            {
-                Debug.LogError(">>> Nightterror generic error while attempting to update destination!");
-                Debug.LogException(err);
-            }
         }
     }
 }
