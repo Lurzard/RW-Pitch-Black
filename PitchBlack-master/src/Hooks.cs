@@ -152,7 +152,7 @@ namespace NightTerror
             {
                 self.run = 500;
                 //self.centipede.bodyDirection = true;
-
+                
                 if (NightTerrorInfo.TryGetValue(self.centipede, out var NTInfo))
                 {
                     /*
@@ -173,7 +173,7 @@ namespace NightTerror
                             }
                         }
                     }*/
-                    if (NTInfo.fleeing > 0)
+                    if (false && NTInfo.fleeing > 0)  // turning off the fear code for now
                     {
                         NTInfo.fleeing--;
 
