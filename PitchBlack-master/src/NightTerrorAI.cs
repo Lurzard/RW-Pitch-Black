@@ -13,16 +13,21 @@ namespace PitchBlack
         public AbstractCreature ac;
         public WorldCoordinate previousRoom;
         public World world;
-        public int slowTick;  // Used for when Centipede is not realized
-        public int fastTick;  // Used for when Centipede is realized
+        public int slowTick;  // Used for when Centipede's AI is not realized
+        public int fastTick;  // Used for when Centipede's AI is realized
 
         public NightTerrorTrain(AbstractCreature ac, World world)
         {
             this.ac = ac;
             this.world = world;
-            On.RainWorldGame.Update += Update;
+            On.Centipede.Update += Centipede_Update;
         }
 
+        private void Centipede_Update(On.Centipede.orig_Update orig, Centipede self, bool eu)
+        {
+            orig(self, eu);
+            if (ac is not null) Update();
+        }
 
         private void Tick()
         {
@@ -47,19 +52,18 @@ namespace PitchBlack
         }
 
 
-        public void Update(On.RainWorldGame.orig_Update orig, RainWorldGame self)
+        public void Update()
         {
-            orig(self);
-            Tick();
             if (ac?.abstractAI is null || world?.game?.session?.Players is null)
             {
                 return;
             }
+            Tick();
             AbstractCreature firstPlayer = null;  // For tracking a player in different rooms
             AbstractCreature sameRoomPlayer = null;  // For tracking a player in same room
             foreach(AbstractCreature c in world.game.session.Players)
             {
-                if (c.realizedCreature is Player player && !player.dead)
+                if (c.realizedCreature is Player player && !player.dead && player.room?.abstractRoom?.shelter is not null && !player.room.abstractRoom.shelter)
                 {
                     firstPlayer ??= c;
                     if (ac.abstractAI?.RealAI is not null && ac.pos.room == c.pos.room)
@@ -99,21 +103,29 @@ namespace PitchBlack
                     // Focus on one player
                     foreach(Tracker.CreatureRepresentation tracked in ac.abstractAI.RealAI.tracker.creatures)
                     {
+                        Debug.Log("This tracked creature has: " + tracked is not null? "Tracker" : "" + tracked?.representedCreature is not null? "RepresentedCreature" : "");
                         if (tracked?.representedCreature is null)
                         {
+                            Debug.Log(">>> Nightterror has an unrealized creature!");
                             continue;
                         }
                         if (tracked.representedCreature != sameRoomPlayer)
                         {
+                            Debug.Log(">>> Nightterror forgets creature!");
                             ac.abstractAI.RealAI.tracker.ForgetCreature(tracked.representedCreature);
+                            Debug.Log("    Nightterror forgor!");
                         }
                         else
                         {
-                            ac.abstractAI.RealAI.agressionTracker.SetAnger(tracked, 100f, 100f);
+                            Debug.Log(">>> Nightterror is angy at player!");
+                            ac.abstractAI.RealAI.agressionTracker.SetAnger(tracked, 10f, 10f);
+                            Debug.Log("    Nightterror angr!");
                         }
                     }
                     // Make centipede see creature
+                    Debug.Log(">>> Nightterror See YOU!");
                     ac.abstractAI.RealAI.tracker.SeeCreature(sameRoomPlayer);
+                    Debug.Log(">>> Nightterror WANT TO KILL YOU!");
                 }
             }
             catch (NullReferenceException nerr)
