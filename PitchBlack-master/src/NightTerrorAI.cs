@@ -68,6 +68,7 @@ namespace PitchBlack
                     firstPlayer ??= c;
                     if (ac.abstractAI?.RealAI is not null && ac.pos.room == c.pos.room)
                     {
+                        firstPlayer = c;
                         sameRoomPlayer = c;
                         break;
                     }
