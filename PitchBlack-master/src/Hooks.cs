@@ -1,5 +1,6 @@
 ﻿using MonoMod.RuntimeDetour;
 using PitchBlack;
+using System;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 //using System;
@@ -41,6 +42,24 @@ namespace NightTerror
             On.Centipede.Shock += Centipede_Shock;
             On.RainWorld.OnModsInit += RainWorld_OnModsInit;
             On.Centipede.ShortCutColor += Centipede_ShortCutColor;
+            On.CentipedeAI.ctor += CentipedeAICTOR;
+        }
+
+        private static void CentipedeAICTOR(On.CentipedeAI.orig_ctor orig, CentipedeAI self, AbstractCreature creature, World world)
+        {
+            orig(self, creature, world);
+            if (creature.creatureTemplate.type == CreatureTemplateType.NightTerror)
+            {
+                self.pathFinder.stepsPerFrame = 15;
+                for (int i = 0; i < self.modules.Count; i++)
+                {
+                    if (self.modules[i] is PreyTracker)
+                    {
+                        self.modules.RemoveAt(i);
+                        self.AddModule(new PreyTracker(self, 5, 1f, 120f, 150f, 0.05f));
+                    }
+                }
+            }
         }
 
         private static Color Centipede_ShortCutColor(On.Centipede.orig_ShortCutColor orig, Centipede self)
@@ -172,6 +191,7 @@ namespace NightTerror
 
                 if (!NightTerrorInfo.TryGetValue(self, out var _))
                 { NightTerrorInfo.Add(self, _ = new NightTerrorData(new NightTerrorTrain(abstractCreature, world))); }
+                
                 self.bodyChunks = new BodyChunk[28];
                 for (int i = 0; i < self.bodyChunks.Length; i++)
                 {
