@@ -115,12 +115,13 @@ namespace PitchBlack
                             ac.abstractAI.RealAI.tracker.ForgetCreature(tracked.representedCreature);
                             Debug.Log("    Nightterror forgor!");
                         }
+                        /*
                         else
                         {
                             Debug.Log(">>> Nightterror is angy at player!");
                             ac.abstractAI.RealAI.agressionTracker.SetAnger(tracked, 10f, 10f);
                             Debug.Log("    Nightterror angr!");
-                        }
+                        }*/
                     }
                     // Make centipede see creature
                     Debug.Log(">>> Nightterror See YOU!");
