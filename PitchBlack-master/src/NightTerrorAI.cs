@@ -39,7 +39,7 @@ namespace PitchBlack
             }
             else
             {
-                slowTick = 40;  // Updates once per second
+                slowTick = 400;  // Updates once per 10 seconds
             }
 
             if (fastTick > 0)
@@ -102,10 +102,10 @@ namespace PitchBlack
                 if (ac.abstractAI is null || firstPlayer is null) return;
                 if (ac.abstractAI.destination.room != previousRoom.room)
                 {
-                    Debug.Log(">>> Nightterror shifts Destination! From " + ac.abstractAI.destination.ResolveRoomName() + " to " + firstPlayer.pos.ResolveRoomName());
-
+                    Debug.Log(">>> Nightterror shifts Destination! From " + previousRoom + " to " + firstPlayer.pos.ResolveRoomName());
+                    previousRoom = firstPlayer.pos;
                     // Change destination
-                    ac.abstractAI.SetDestination(firstPlayer.pos);
+                    ac.abstractAI.SetDestination(previousRoom);
                 }
             }
             catch (NullReferenceException nerr)
