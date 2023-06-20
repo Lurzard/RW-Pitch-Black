@@ -165,7 +165,7 @@ namespace PitchBlack
                             Debug.Log(">>> Nightterror has an unrealized creature!");
                             continue;
                         }
-                        if (tracked.representedCreature != sameRoomPlayer)
+                        if (tracked.representedCreature.creatureTemplate.type != CreatureTemplate.Type.Slugcat)
                         {
                             Debug.Log(">>> Nightterror forgets creature: " + tracked.representedCreature.creatureTemplate.name);
                             ac.abstractAI.RealAI.tracker.ForgetCreature(tracked.representedCreature);
@@ -180,9 +180,9 @@ namespace PitchBlack
                         }*/
                     }
                     // Make centipede see creature
-                    Debug.Log(">>> Nightterror See YOU!");
+                    //Debug.Log(">>> Nightterror See YOU!");
                     ac.abstractAI.RealAI.tracker.SeeCreature(sameRoomPlayer);
-                    Debug.Log(">>> Nightterror WANT TO KILL YOU!");
+                    //Debug.Log(">>> Nightterror WANT TO KILL YOU!");
                 }
             }
             catch (NullReferenceException nerr)
