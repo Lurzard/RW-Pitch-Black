@@ -70,12 +70,17 @@ namespace PitchBlack
                 return orig(self);
             }
 
+            bool canCraftSpear = false;
+
             for (int i = 0; i < 2; i++)
             {
-                var grabbed = self.grasps[i]?.grabbed;
+                PhysicalObject grabbed = self.grasps[i]?.grabbed;
 
                 if (null == grabbed)
                     continue;
+
+                if (self.CanBeSwallowed(grabbed)) //if you can swallow an item, you cant craft
+                    return false;
 
                 if (grabbed is IPlayerEdible && self.FoodInStomach < self.MaxFoodInStomach) //if its food and youre NOT full, you CANT craft
                     return false;
@@ -87,10 +92,10 @@ namespace PitchBlack
                     if (spearInHand.electric && spearInHand.electricCharge < 3) //ignore unfull elec spear
                         continue;
                     if (self.FoodInStomach > 0) //you have food, yippee you can craft
-                        return true;
+                        canCraftSpear = true;
                 }
             }
-            return false;
+            return canCraftSpear;
         }
 
         public static void Player_SpitUpCraftedObject(On.Player.orig_SpitUpCraftedObject orig, Player self)
