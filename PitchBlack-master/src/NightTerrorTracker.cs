@@ -154,7 +154,13 @@ namespace PitchBlack
                                 doHax = 0;
                             }
                         }
-                        ac.abstractAI.SetDestinationNoPathing(firstPlayer.pos, true);
+#if (false)
+                        else
+                        {
+                            Debug.Log("Attempt at relocation");
+                            ac.abstractAI.SetDestinationNoPathing(firstPlayer.pos, true);
+                        }
+#endif
                     }
 #if (false)
                     // Migration
@@ -212,9 +218,9 @@ namespace PitchBlack
                         }
                         // Make centipede see creature
                         //Debug.Log(">>> Nightterror See YOU!");
-                        //ac.abstractAI.RealAI.SetDestination(sameRoomPlayer.pos);
                         if (fastTick == 0)
                         {
+                            ac.abstractAI.SetDestination(sameRoomPlayer.pos);    
 
                         }
                         //ac.abstractAI.RealAI.tracker.CreatureNoticed(sameRoomPlayer);
