@@ -145,15 +145,12 @@ namespace PitchBlack
                     // TELEPORT UWU
                     if ((doHax > 400 || ac.abstractAI.strandedInRoom != -1 || (ac.abstractAI.RealAI != null && ac.abstractAI.RealAI.stranded)) && ac.pos.room != firstPlayer.pos.room && fastTick == 0)
                     {
-                        //Debug.Log(">>> Migrate Nightterror!");
-                        if (firstPlayer.Room != null)
+                        Debug.Log(">>> Migrate Nightterror!");
+                        ac.realizedCreature?.Abstractize();
+                        if (firstPlayer.realizedCreature?.room is not null)
                         {
-                            ac.realizedCreature?.Abstractize();
-                            if (firstPlayer.realizedCreature?.room != null)
-                            {
-                                RWCustom.IntVector2 ar = firstPlayer.realizedCreature.room.exitAndDenIndex[UnityEngine.Random.Range(0, firstPlayer.realizedCreature.room.exitAndDenIndex.Length)];
-                                ac.Move(firstPlayer.realizedCreature.room.WhichRoomDoesThisExitLeadTo(ar).RandomNodeInRoom());
-                            }
+                            RWCustom.IntVector2 ar = firstPlayer.realizedCreature.room.exitAndDenIndex[UnityEngine.Random.Range(0, firstPlayer.realizedCreature.room.exitAndDenIndex.Length)];
+                            ac.Move(firstPlayer.realizedCreature.room.WhichRoomDoesThisExitLeadTo(ar).RandomNodeInRoom());
                             doHax = 0;
                         }
                     }
@@ -211,7 +208,7 @@ namespace PitchBlack
                         //Debug.Log(">>> Nightterror See YOU!");
                         if (fastTick == 0)
                         {
-                            ac.abstractAI.RealAI.SetDestination(sameRoomPlayer.pos);
+                            ac.abstractAI.SetDestination(sameRoomPlayer.pos);
                         }
                         ac.abstractAI.RealAI.tracker.SeeCreature(sameRoomPlayer);
                         //Debug.Log(">>> Nightterror WANT TO KILL YOU!");
