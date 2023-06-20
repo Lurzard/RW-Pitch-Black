@@ -45,6 +45,13 @@ namespace NightTerror
             On.AbstractCreatureAI.ctor += AbstractCreatureAI_ctor;
         }
 
+        /// <summary>
+        /// Adds a Nightterror tracker upon creation of its abstractcreatureAI
+        /// </summary>
+        /// <param name="orig"></param>
+        /// <param name="self"></param>
+        /// <param name="world"></param>
+        /// <param name="parent"></param>
         private static void AbstractCreatureAI_ctor(On.AbstractCreatureAI.orig_ctor orig, AbstractCreatureAI self, World world, AbstractCreature parent)
         {
             orig(self, world, parent);
@@ -54,6 +61,9 @@ namespace NightTerror
             }
         }
 
+        /// <summary>
+        /// Make the nightterror AI behave more like a red centipede
+        /// </summary>
         private static void CentipedeAICTOR(On.CentipedeAI.orig_ctor orig, CentipedeAI self, AbstractCreature creature, World world)
         {
             orig(self, creature, world);
@@ -167,6 +177,7 @@ namespace NightTerror
                 //self.centipede.bodyDirection = true;
                 
 #if false
+                // This seems to cause an index error when the Nightterror is in the same room as a player. Leave this off unless you know how to fix it.
                 if (NightTerrorInfo.TryGetValue(self.centipede, out var NTInfo))
                 {
                     /*

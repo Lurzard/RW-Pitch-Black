@@ -55,7 +55,8 @@ namespace NightTerror
         {
             var t = new CreatureFormula(CreatureTemplate.Type.RedCentipede, Type, "NightTerror")
             {
-#if (false)
+#if false
+Name =          // Turned this off to use red centipede's allows and disallows for optimum prebaked pathing stuff idk. Turn on if you want to mess with these values
                 TileResistances = new()
                 {
                     OffScreen = new(0f, Allowed),
