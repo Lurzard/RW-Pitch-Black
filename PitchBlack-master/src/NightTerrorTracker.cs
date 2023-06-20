@@ -147,10 +147,13 @@ namespace PitchBlack
                     {
                         Debug.Log(">>> Migrate Nightterror!");
                         ac.realizedCreature?.Abstractize();
-                        if (firstPlayer.realizedCreature?.room is not null)
+                        if (firstPlayer.realizedCreature?.room is not null && ac.realizedCreature is null)
                         {
                             RWCustom.IntVector2 ar = firstPlayer.realizedCreature.room.exitAndDenIndex[UnityEngine.Random.Range(0, firstPlayer.realizedCreature.room.exitAndDenIndex.Length)];
-                            ac.Move(firstPlayer.realizedCreature.room.WhichRoomDoesThisExitLeadTo(ar).RandomNodeInRoom());
+                            if (!(firstPlayer.realizedCreature.room.WhichRoomDoesThisExitLeadTo(ar).gate || firstPlayer.realizedCreature.room.WhichRoomDoesThisExitLeadTo(ar).shelter))
+                            {
+                                ac.Move(firstPlayer.realizedCreature.room.WhichRoomDoesThisExitLeadTo(ar).RandomNodeInRoom());
+                            }
                             doHax = 0;
                         }
                     }
