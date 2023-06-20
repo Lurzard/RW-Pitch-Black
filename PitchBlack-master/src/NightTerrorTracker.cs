@@ -153,8 +153,8 @@ namespace PitchBlack
                             if (!(firstPlayer.realizedCreature.room.WhichRoomDoesThisExitLeadTo(ar).gate || firstPlayer.realizedCreature.room.WhichRoomDoesThisExitLeadTo(ar).shelter))
                             {
                                 ac.Move(firstPlayer.realizedCreature.room.WhichRoomDoesThisExitLeadTo(ar).RandomNodeInRoom());
+                                doHax = 0;
                             }
-                            doHax = 0;
                         }
                     }
 
