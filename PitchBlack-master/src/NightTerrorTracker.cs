@@ -16,6 +16,7 @@ namespace PitchBlack
             public World world;
             public int slowTick;  // Used for when Centipede's AI is not realized
             public int fastTick;  // Used for when Centipede's AI is realized
+            public int doHax;
 
             public NightTerrorTracker(AbstractCreature ac, World world)
             {
@@ -54,7 +55,7 @@ namespace PitchBlack
                 }
                 else
                 {
-                    slowTick = 400;  // Updates once per 10 seconds
+                    slowTick = 600;  // Updates once per 15 seconds
                 }
 
                 if (fastTick > 0)
@@ -130,14 +131,34 @@ namespace PitchBlack
                             ac.abstractAI.SetDestination(firstPlayer.pos);
                         }
                     }
-                    if ((ac.abstractAI.strandedInRoom != -1 || (ac.abstractAI.RealAI != null && ac.abstractAI.RealAI.stranded)) && ac.pos.room != firstPlayer.pos.room && fastTick == 0)
+
+                    // Detect if ai is stuck
+                    if (ac.abstractAI.path == null || ac.abstractAI.path.Count == 0)
+                    {
+                        doHax++;
+                    }
+                    else if (doHax > 0)
+                    {
+                        doHax--;
+                    }
+
+                    // TELEPORT UWU
+                    if ((doHax > 400 || ac.abstractAI.strandedInRoom != -1 || (ac.abstractAI.RealAI != null && ac.abstractAI.RealAI.stranded)) && ac.pos.room != firstPlayer.pos.room && fastTick == 0)
                     {
                         //Debug.Log(">>> Migrate Nightterror!");
                         if (firstPlayer.Room != null)
                         {
-                            ac.Move(firstPlayer.Room.RandomNodeInRoom());
+                            ac.realizedCreature?.Abstractize();
+                            if (firstPlayer.realizedCreature?.room != null)
+                            {
+                                RWCustom.IntVector2 ar = firstPlayer.realizedCreature.room.exitAndDenIndex[UnityEngine.Random.Range(0, firstPlayer.realizedCreature.room.exitAndDenIndex.Length)];
+                                ac.Move(firstPlayer.realizedCreature.room.WhichRoomDoesThisExitLeadTo(ar).RandomNodeInRoom());
+                            }
+                            doHax = 0;
                         }
                     }
+
+                    // Migration
                     if (ac.timeSpentHere > 3600 && ac.pos.room != firstPlayer.pos.room && slowTick == 0)
                     {
                         if (firstPlayer.Room != null)
@@ -188,8 +209,11 @@ namespace PitchBlack
                         }
                         // Make centipede see creature
                         //Debug.Log(">>> Nightterror See YOU!");
+                        if (fastTick == 0)
+                        {
+                            ac.abstractAI.RealAI.SetDestination(sameRoomPlayer.pos);
+                        }
                         ac.abstractAI.RealAI.tracker.SeeCreature(sameRoomPlayer);
-                        ac.abstractAI.RealAI.SetDestination(sameRoomPlayer.pos);
                         //Debug.Log(">>> Nightterror WANT TO KILL YOU!");
                     }
                 }
