@@ -55,22 +55,24 @@ namespace NightTerror
         {
             var t = new CreatureFormula(CreatureTemplate.Type.RedCentipede, Type, "NightTerror")
             {
+#if (true)
                 TileResistances = new()
                 {
-                    OffScreen = new(1f, Allowed),
-                    Climb = new(1f, Allowed),
-                    Floor = new(1f, Allowed),
-                    Wall = new(0.5f, Allowed),
-                    Ceiling = new(1f, Unwanted)
+                    OffScreen = new(0f, Allowed),
+                    Climb = new(0f, Allowed),
+                    Floor = new(0f, Allowed),
+                    Wall = new(0.14f, Allowed),
+                    Ceiling = new(0.3f, Allowed)
                     //Air = new(0.9f, Unwanted)
                 },
                 ConnectionResistances = new()
                 {
-                    Standard = new(1f, Allowed),
-                    ShortCut = new(1f, Allowed),
-                    BigCreatureShortCutSqueeze = new(1f, Allowed),
-                    BetweenRooms = new(1f, Allowed)
+                    Standard = new(0f, Allowed),
+                    ShortCut = new(0f, Allowed),
+                    BigCreatureShortCutSqueeze = new(0f, Allowed),
+                    BetweenRooms = new(0f, Allowed)
                 },
+#endif
                 DefaultRelationship = new(CreatureTemplate.Relationship.Type.Ignores, 1f),
                 DamageResistances = new() { Base = 200f, Explosion = .03f },
                 StunResistances = new() { Base = 200f },

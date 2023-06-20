@@ -78,9 +78,9 @@ namespace PitchBlack
                 Tick();
                 AbstractCreature firstPlayer = null;  // For tracking a player in different rooms
                 AbstractCreature sameRoomPlayer = null;  // For tracking a player in same room
-                foreach (AbstractCreature c in world.game.AlivePlayers)
+                foreach (AbstractCreature c in world.game.Players)
                 {
-                    if (c.realizedCreature is Player player && player.room?.abstractRoom?.shelter is not null && !player.room.abstractRoom.shelter)
+                    if (c.realizedCreature is Player player && player.room?.abstractRoom?.shelter is not null && !player.room.abstractRoom.shelter && !player.dead)
                     {
                         firstPlayer ??= c;
                         if (ac.abstractAI?.RealAI is not null && ac.pos.room == c.pos.room)
@@ -91,7 +91,6 @@ namespace PitchBlack
                         }
                     }
                 }
-
 
                 // Location update
                 try
@@ -145,10 +144,9 @@ namespace PitchBlack
                     // TELEPORT UWU
                     if ((doHax > 400 || ac.abstractAI.strandedInRoom != -1 || (ac.abstractAI.RealAI != null && ac.abstractAI.RealAI.stranded)) && ac.pos.room != firstPlayer.pos.room && fastTick == 0)
                     {
-                        Debug.Log(">>> Migrate Nightterror!");
-                        ac.realizedCreature?.Abstractize();
                         if (firstPlayer.realizedCreature?.room is not null && ac.realizedCreature is null)
                         {
+                            Debug.Log(">>> Migrate Nightterror!");
                             RWCustom.IntVector2 ar = firstPlayer.realizedCreature.room.exitAndDenIndex[UnityEngine.Random.Range(0, firstPlayer.realizedCreature.room.exitAndDenIndex.Length)];
                             if (!(firstPlayer.realizedCreature.room.WhichRoomDoesThisExitLeadTo(ar).gate || firstPlayer.realizedCreature.room.WhichRoomDoesThisExitLeadTo(ar).shelter))
                             {
@@ -156,6 +154,7 @@ namespace PitchBlack
                                 doHax = 0;
                             }
                         }
+                        ac.abstractAI.SetDestinationNoPathing(firstPlayer.pos, true);
                     }
 
                     // Migration
@@ -182,37 +181,42 @@ namespace PitchBlack
                 // Same Room update
                 try
                 {
-                    if (sameRoomPlayer is not null)
+                    if (sameRoomPlayer is not null && ac.abstractAI.RealAI != null)
                     {
                         // Focus on one player
-                        foreach (Tracker.CreatureRepresentation tracked in ac.abstractAI.RealAI.tracker.creatures)
+                        if (fastTick == 0)
                         {
-                            //Debug.Log("This tracked creature has: " + (tracked is not null ? "Tracker " : "") + (tracked?.representedCreature is not null ? "RepresentedCreature" : ""));
-                            if (tracked?.representedCreature is null)
+                            foreach (Tracker.CreatureRepresentation tracked in ac.abstractAI.RealAI.tracker.creatures)
                             {
-                                Debug.Log(">>> Nightterror has an unrealized creature!");
-                                continue;
+                                //Debug.Log("This tracked creature has: " + (tracked is not null ? "Tracker " : "") + (tracked?.representedCreature is not null ? "RepresentedCreature" : ""));
+                                if (tracked?.representedCreature is null)
+                                {
+                                    Debug.Log(">>> Nightterror has an unrealized creature!");
+                                    continue;
+                                }
+                                if (tracked.representedCreature.creatureTemplate.type != CreatureTemplate.Type.Slugcat)
+                                {
+                                    Debug.Log(">>> Nightterror forgets creature: " + tracked.representedCreature.creatureTemplate.name);
+                                    ac.abstractAI.RealAI.tracker.ForgetCreature(tracked.representedCreature);
+                                    Debug.Log("    Nightterror forgor!");
+                                }
+                                /*
+                                else
+                                {
+                                    Debug.Log(">>> Nightterror is angy at player!");
+                                    ac.abstractAI.RealAI.agressionTracker.SetAnger(tracked, 10f, 10f);
+                                    Debug.Log("    Nightterror angr!");
+                                }*/
                             }
-                            if (tracked.representedCreature.creatureTemplate.type != CreatureTemplate.Type.Slugcat)
-                            {
-                                Debug.Log(">>> Nightterror forgets creature: " + tracked.representedCreature.creatureTemplate.name);
-                                ac.abstractAI.RealAI.tracker.ForgetCreature(tracked.representedCreature);
-                                Debug.Log("    Nightterror forgor!");
-                            }
-                            /*
-                            else
-                            {
-                                Debug.Log(">>> Nightterror is angy at player!");
-                                ac.abstractAI.RealAI.agressionTracker.SetAnger(tracked, 10f, 10f);
-                                Debug.Log("    Nightterror angr!");
-                            }*/
                         }
                         // Make centipede see creature
                         //Debug.Log(">>> Nightterror See YOU!");
+                        //ac.abstractAI.RealAI.SetDestination(sameRoomPlayer.pos);
                         if (fastTick == 0)
                         {
-                            ac.abstractAI.SetDestination(sameRoomPlayer.pos);
+
                         }
+                        ac.abstractAI.RealAI.tracker.CreatureNoticed(sameRoomPlayer);
                         ac.abstractAI.RealAI.tracker.SeeCreature(sameRoomPlayer);
                         //Debug.Log(">>> Nightterror WANT TO KILL YOU!");
                     }

@@ -60,6 +60,7 @@ namespace NightTerror
             if (creature.creatureTemplate.type == CreatureTemplateType.NightTerror)
             {
                 self.pathFinder.stepsPerFrame = 15;
+#if (false)
                 for (int i = 0; i < self.modules.Count; i++)
                 {
                     if (self.modules[i] is PreyTracker)
@@ -70,6 +71,7 @@ namespace NightTerror
                         self.utilityComparer.AddComparedModule(self.preyTracker, null, 0.9f, 1.1f);
                     }
                 }
+#endif
             }
         }
 
