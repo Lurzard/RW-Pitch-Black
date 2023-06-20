@@ -251,6 +251,9 @@ namespace SlugTemplate
                     case "SL":
                         text = "LM";
                         break;
+                    case "DS":
+                        text = "UG";
+                        break;
                 }
 
                 foreach (var path in AssetManager.ListDirectory("World", true, false)
@@ -277,6 +280,9 @@ namespace SlugTemplate
                         break;
                     case "SL":
                         text = "LM";
+                        break;
+                    case "DS":
+                        text = "UG";
                         break;
                 }
 
