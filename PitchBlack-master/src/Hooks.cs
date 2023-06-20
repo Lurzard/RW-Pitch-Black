@@ -8,13 +8,12 @@ using static System.Reflection.BindingFlags;
 
 public class NightTerrorData
 {
-    public int fleeing = 0;
-    public Vector2 fleeTo = Vector2.zero;
-    public NightTerrorTrain choochoo;
+    public int fleeing;
+    public Vector2 fleeTo;
 
-    public NightTerrorData(NightTerrorTrain ai = null)
+    public NightTerrorData()
     {
-        choochoo = ai;
+        fleeTo = Vector2.zero;
     }
 }
 
@@ -43,6 +42,16 @@ namespace NightTerror
             On.RainWorld.OnModsInit += RainWorld_OnModsInit;
             On.Centipede.ShortCutColor += Centipede_ShortCutColor;
             On.CentipedeAI.ctor += CentipedeAICTOR;
+            On.AbstractCreatureAI.ctor += AbstractCreatureAI_ctor;
+        }
+
+        private static void AbstractCreatureAI_ctor(On.AbstractCreatureAI.orig_ctor orig, AbstractCreatureAI self, World world, AbstractCreature parent)
+        {
+            orig(self, world, parent);
+            if (parent.creatureTemplate.type == CreatureTemplateType.NightTerror)
+            {
+                parent.NTT(world);
+            }
         }
 
         private static void CentipedeAICTOR(On.CentipedeAI.orig_ctor orig, CentipedeAI self, AbstractCreature creature, World world)
@@ -196,7 +205,7 @@ namespace NightTerror
             {
                 abstractCreature.ignoreCycle = true;
                 if (!NightTerrorInfo.TryGetValue(self, out var _))
-                { NightTerrorInfo.Add(self, _ = new NightTerrorData(new NightTerrorTrain(abstractCreature, world))); }
+                { NightTerrorInfo.Add(self, _ = new NightTerrorData()); }
                 
                 self.bodyChunks = new BodyChunk[28];
                 for (int i = 0; i < self.bodyChunks.Length; i++)
