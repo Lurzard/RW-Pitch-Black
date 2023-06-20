@@ -50,13 +50,15 @@ namespace NightTerror
             orig(self, creature, world);
             if (creature.creatureTemplate.type == CreatureTemplateType.NightTerror)
             {
-                self.pathFinder.stepsPerFrame = 20;
+                self.pathFinder.stepsPerFrame = 15;
                 for (int i = 0; i < self.modules.Count; i++)
                 {
                     if (self.modules[i] is PreyTracker)
                     {
                         self.modules.RemoveAt(i);
-                        self.AddModule(new PreyTracker(self, 5, 2f, 100f, 150f, 0.05f));
+                        self.AddModule(new PreyTracker(self, 5, 1f, 100f, 150f, 0.05f));
+                        self.utilityComparer.uTrackers.RemoveAt(1);
+                        self.utilityComparer.AddComparedModule(self.preyTracker, null, 0.9f, 1.1f);
                     }
                 }
             }

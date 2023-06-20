@@ -121,7 +121,14 @@ namespace PitchBlack
                     //Debug.Log(">>> Nightterror shifts Destination! From " + previousRoom.ResolveRoomName() + " to " + firstPlayer.pos.ResolveRoomName());
                     // previousRoom = firstPlayer.pos;
                     // Change destination
-                    ac.abstractAI.SetDestination(firstPlayer.pos);
+                    if (ac.abstractAI.RealAI is not null)
+                    {
+                        ac.abstractAI.RealAI.SetDestination(firstPlayer.pos);
+                    }
+                    else
+                    {
+                        ac.abstractAI.SetDestination(firstPlayer.pos);
+                    }
                 }
                 if ((ac.abstractAI.strandedInRoom != -1 || ac.realizedCreature is null || (ac.abstractAI.RealAI != null && ac.abstractAI.RealAI.stranded)) && ac.pos.room != firstPlayer.pos.room)
                 {
@@ -171,6 +178,9 @@ namespace PitchBlack
                             ac.abstractAI.RealAI.tracker.ForgetCreature(tracked.representedCreature);
                             Debug.Log("    Nightterror forgor!");
                         }
+                        if (tracked.representedCreature == sameRoomPlayer)
+                        {
+                        }
                         /*
                         else
                         {
@@ -182,6 +192,7 @@ namespace PitchBlack
                     // Make centipede see creature
                     //Debug.Log(">>> Nightterror See YOU!");
                     ac.abstractAI.RealAI.tracker.SeeCreature(sameRoomPlayer);
+                    ac.abstractAI.RealAI.SetDestination(sameRoomPlayer.pos);
                     //Debug.Log(">>> Nightterror WANT TO KILL YOU!");
                 }
             }
