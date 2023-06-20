@@ -60,7 +60,7 @@ namespace NightTerror
             if (creature.creatureTemplate.type == CreatureTemplateType.NightTerror)
             {
                 self.pathFinder.stepsPerFrame = 15;
-#if (false)
+#if (true)
                 for (int i = 0; i < self.modules.Count; i++)
                 {
                     if (self.modules[i] is PreyTracker)
@@ -166,6 +166,7 @@ namespace NightTerror
                 self.run = 500;
                 //self.centipede.bodyDirection = true;
                 
+#if false
                 if (NightTerrorInfo.TryGetValue(self.centipede, out var NTInfo))
                 {
                     /*
@@ -188,15 +189,14 @@ namespace NightTerror
                     }*/
 
 // turning off the fear code for now
-#if false
                     if (NTInfo.fleeing > 0)  
                     {
                         NTInfo.fleeing--;
 
                         self.SetDestination(new WorldCoordinate(self.centipede.abstractCreature.pos.room, (int)NTInfo.fleeTo.x, (int)NTInfo.fleeTo.y, self.centipede.abstractCreature.pos.abstractNode));
                     }
-#endif
                 }
+#endif
             }
         }
 

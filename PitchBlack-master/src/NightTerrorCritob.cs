@@ -55,7 +55,7 @@ namespace NightTerror
         {
             var t = new CreatureFormula(CreatureTemplate.Type.RedCentipede, Type, "NightTerror")
             {
-#if (true)
+#if (false)
                 TileResistances = new()
                 {
                     OffScreen = new(0f, Allowed),
@@ -85,7 +85,7 @@ namespace NightTerror
         public override void EstablishRelationships()
         {
             var daddy = new Relationships(Type);
-            daddy.Attacks(CreatureTemplate.Type.Slugcat, 9999f);
+            daddy.Attacks(CreatureTemplate.Type.Slugcat, 99f);
         }
 
         public override ArtificialIntelligence CreateRealizedAI(AbstractCreature acrit) => new CentipedeAI(acrit, acrit.world);
@@ -96,6 +96,6 @@ namespace NightTerror
 
         public override void LoadResources(RainWorld rainWorld) { }
 
-        public override CreatureTemplate.Type? ArenaFallback() => CreatureTemplate.Type.RedCentipede;
+        public override CreatureTemplate.Type ArenaFallback() => CreatureTemplate.Type.RedCentipede;
     }
 }
