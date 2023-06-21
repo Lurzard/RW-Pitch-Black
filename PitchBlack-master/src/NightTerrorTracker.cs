@@ -109,7 +109,13 @@ namespace PitchBlack
                 AbstractCreature sameRoomPlayer = null;  // For tracking a player in same room
                 foreach (AbstractCreature c in world.game.Players)
                 {
-                    if (c.realizedCreature is Player player && player.room?.abstractRoom?.shelter is not null && !player.room.abstractRoom.shelter && !player.dead)
+                    if (
+                        c.realizedCreature is Player player && 
+                        player.room?.abstractRoom is not null && // Null check before checking for shelters/gates
+                        !player.room.abstractRoom.shelter &&  // Forbid tracking players in shelters
+                        !player.room.abstractRoom.gate &&  // Forbid tracking players in gates
+                        && !player.dead
+                        )
                     {
                         firstPlayer ??= c;  // Only store the first usable player
 
