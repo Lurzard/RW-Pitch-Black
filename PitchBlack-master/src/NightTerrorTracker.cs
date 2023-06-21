@@ -113,8 +113,8 @@ namespace PitchBlack
                         c.realizedCreature is Player player && 
                         player.room?.abstractRoom is not null && // Null check before checking for shelters/gates
                         !player.room.abstractRoom.shelter &&  // Forbid tracking players in shelters
-                        !player.room.abstractRoom.gate &&  // Forbid tracking players in gates
-                        && !player.dead
+                        !player.room.abstractRoom.gate && // Forbid tracking players in gates
+                        !player.dead
                         )
                     {
                         firstPlayer ??= c;  // Only store the first usable player
