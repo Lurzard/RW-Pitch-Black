@@ -3,6 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net48</TargetFramework>
         <LangVersion>Latest</LangVersion>
+        <PathMap>$(MSBuildProjectDirectory)=/PitchBlackDevTeam</PathMap>
     </PropertyGroup>
     
     <ItemGroup>

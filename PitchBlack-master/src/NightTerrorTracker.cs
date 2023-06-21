@@ -154,7 +154,7 @@ namespace PitchBlack
                         //Debug.Log(">>> Nightterror shifts Destination! From " + previousRoom.ResolveRoomName() + " to " + firstPlayer.pos.ResolveRoomName());
                         // previousRoom = firstPlayer.pos;
                         // Change destination
-                        if (ac.abstractAI.RealAI is not null && false)  // I found this to not work so shrimply death to code.
+                        if (ac.abstractAI.RealAI is not null && true)  // I found this to not work so shrimply death to code.   //But it might?
                         {
                             ac.abstractAI.RealAI.SetDestination(firstPlayer.pos);
                         }
@@ -182,11 +182,13 @@ namespace PitchBlack
                             Debug.Log(">>> Migrate Nightterror!");
 
                             // Find a room that isn't a shelter or a gate and place the Nightterror there. No shelters because that makes no sense (no den for Nightterror to use the excuse "it shrimply used a den"). No gates because it tends to get stuck on the wrong side.
-                            RWCustom.IntVector2 ar = firstPlayer.realizedCreature.room.exitAndDenIndex[UnityEngine.Random.Range(0, firstPlayer.realizedCreature.room.exitAndDenIndex.Length)];
-                            if (!(firstPlayer.realizedCreature.room.WhichRoomDoesThisExitLeadTo(ar).gate || firstPlayer.realizedCreature.room.WhichRoomDoesThisExitLeadTo(ar).shelter))
-                            {
-                                ac.Move(firstPlayer.realizedCreature.room.WhichRoomDoesThisExitLeadTo(ar).RandomNodeInRoom());
-                                doHax = 0;
+                            if (firstPlayer != null && firstPlayer.realizedCreature != null && firstPlayer.realizedCreature.room != null) {
+                                RWCustom.IntVector2 ar = firstPlayer.realizedCreature.room.exitAndDenIndex[UnityEngine.Random.Range(0, firstPlayer.realizedCreature.room.exitAndDenIndex.Length)];
+                                if (!(firstPlayer.realizedCreature.room.WhichRoomDoesThisExitLeadTo(ar).gate || firstPlayer.realizedCreature.room.WhichRoomDoesThisExitLeadTo(ar).shelter))
+                                {
+                                    ac.Move(firstPlayer.realizedCreature.room.WhichRoomDoesThisExitLeadTo(ar).RandomNodeInRoom());
+                                    doHax = 0;
+                                }
                             }
                         }
 
@@ -232,7 +234,7 @@ namespace PitchBlack
                     if (sameRoomPlayer is not null && ac.abstractAI.RealAI != null)
                     {
                         // Focus on one player
-                        if (fastTick == 0 && false)
+                        if (fastTick == 0 && true)  // Why was this false?
                         {
                             foreach (Tracker.CreatureRepresentation tracked in ac.abstractAI.RealAI.tracker.creatures)
                             {
@@ -248,13 +250,15 @@ namespace PitchBlack
                                     ac.abstractAI.RealAI.tracker.ForgetCreature(tracked.representedCreature);
                                     Debug.Log("    Nightterror forgor!");
                                 }
-                                /*
                                 else
                                 {
                                     Debug.Log(">>> Nightterror is angy at player!");
-                                    ac.abstractAI.RealAI.agressionTracker.SetAnger(tracked, 10f, 10f);
+                                    ac.abstractAI.RealAI.tracker.SeeCreature(sameRoomPlayer);
+                                    (ac.realizedCreature as Centipede).bodyDirection = true;
+                                    ac.abstractAI.freezeDestination = false;
+                                    ac.abstractAI.RealAI.SetDestination(sameRoomPlayer.pos);
                                     Debug.Log("    Nightterror angr!");
-                                }*/
+                                }
                             }
                         }
 

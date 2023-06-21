@@ -60,13 +60,21 @@ public class ScareEverything {
         };
 
         On.CentipedeAI.IUseARelationshipTracker_UpdateDynamicRelationship += (orig, self, dRelation) => {
-            CreatureTemplate.Relationship relationship = orig(self, dRelation);
             Creature? trackedCreature = dRelation?.trackerRep?.representedCreature?.realizedCreature;
-            if (Condition(trackedCreature)) {
-                //Debug.Log("Made it to changing relationship");
+            if (trackedCreature != null && trackedCreature.Template.type == CreatureTemplateType.NightTerror && self.centipede.Template.type != CreatureTemplateType.NightTerror) {
+                // If the 'target' creature is a NightTerror and self is not, be afraid
                 return new CreatureTemplate.Relationship(newRelation, 10f);
             }
-            return relationship;
+            if (trackedCreature != null && trackedCreature.Template.type == CreatureTemplate.Type.Slugcat && self.centipede.Template.type == CreatureTemplateType.NightTerror) {
+                // If the 'target' creature is slugcat and it is a nightterror, eat it 100%
+                return new CreatureTemplate.Relationship(CreatureTemplate.Relationship.Type.Eats, 1f);
+            }
+            else if (trackedCreature != null && trackedCreature.Template.type == CreatureTemplateType.NightTerror && self.centipede.Template.type == CreatureTemplateType.NightTerror) {
+                // If the 'target' is a NightTerror, and self is a NightTerror, Ignore it
+                return new CreatureTemplate.Relationship(CreatureTemplate.Relationship.Type.Ignores, 1f);
+            }
+            // If somehow none of the above, return orig
+            return orig(self, dRelation);
         };
 
         On.CicadaAI.IUseARelationshipTracker_UpdateDynamicRelationship += (orig, self, dRelation) => {
