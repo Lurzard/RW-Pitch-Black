@@ -28,7 +28,7 @@ using System.Diagnostics.Eventing.Reader;
 [module: UnverifiableCode]
 #pragma warning restore CS0618 // Type or member is obsolete
 
-namespace SlugTemplate
+namespace PitchBlack
 {
     [BepInPlugin(MOD_ID, "Pitch Black", "0.1.0")]
     class Plugin : BaseUnityPlugin
@@ -40,8 +40,8 @@ namespace SlugTemplate
         public static readonly GameFeature<float> MeanLizards = GameFloat("beacon/mean_lizards");
         public static readonly SlugcatStats.Name BeaconName = new SlugcatStats.Name("Beacon", false);
         public static readonly SlugcatStats.Name PhotoName = new SlugcatStats.Name("Photomaniac", false);
-        public static ConditionalWeakTable<Player, BeaconCWT> bCon = new();
-        public static ConditionalWeakTable<Player, PhotoCWT> pCon = new();
+        public static ConditionalWeakTable<Player, BeaconCWT> bCon = new ConditionalWeakTable<Player, BeaconCWT>();
+        public static ConditionalWeakTable<Player, PhotoCWT> pCon = new ConditionalWeakTable<Player, PhotoCWT>();
 
 
         // Add hooks
@@ -71,10 +71,10 @@ namespace SlugTemplate
             Whiskers.Hooks();
             On.Player.Update += PringleUpdate;
             PhotoSprite.Hooker();
-            IL.Menu.IntroRoll.ctor += AddIntroRollImage;
+            //IL.Menu.IntroRoll.ctor += AddIntroRollImage;  //Thanks slugbased
             //On.Player.Grabability += GrabCoalescipedes;
             PitchBlackCrafting.Hook();
-            //NightTerror relationship fix
+            //NightTerror relationship fix  // No it doesn't lmao
             //On.Creature.Update += (orig, self, eu) => {
             //    orig(self, eu);
             //    if (self != null && self.abstractCreature?.abstractAI.RealAI != null && self.room != null && self.abstractCreature.abstractAI.RealAI is IUseARelationshipTracker)

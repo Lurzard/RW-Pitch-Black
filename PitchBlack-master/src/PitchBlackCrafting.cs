@@ -6,7 +6,7 @@ using Colour = UnityEngine.Color;
 using Random = UnityEngine.Random;
 using MoreSlugcats;
 using PitchBlack;
-using SlugTemplate;
+using PitchBlack;
 
 namespace PitchBlack
 {
