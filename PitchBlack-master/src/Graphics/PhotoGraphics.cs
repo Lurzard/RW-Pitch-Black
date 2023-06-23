@@ -12,7 +12,7 @@ namespace PitchBlack
         /// <summary>
         /// It's not what you think it is ;)
         /// </summary>
-        public static void Hooker(){
+        public static void Hooks(){
             On.RainWorld.OnModsInit += Extras.WrapInit(LoadResources);
             On.PlayerGraphics.InitiateSprites += PhotoSprite_GetStyle;
             On.PlayerGraphics.ApplyPalette += PhotoSprite_Crayons;
@@ -60,7 +60,7 @@ namespace PitchBlack
 #endregion
                 Plugin.pCon.TryGetValue(self.player, out PhotoCWT pho);
                 // Set index
-                pho.PhotoSetSpriteIndex(sLeaser.sprites.Length);
+                pho.PhotoSetUniqueSpriteIndex(sLeaser.sprites.Length);
                 Debug.Log($"Length is: {sLeaser.sprites.Length}");
                 Debug.Log($"Name is: {sLeaser.sprites[sLeaser.sprites.Length-1].element.name}");
 

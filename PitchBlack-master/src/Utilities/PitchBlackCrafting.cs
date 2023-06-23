@@ -5,8 +5,6 @@ using System;
 using Colour = UnityEngine.Color;
 using Random = UnityEngine.Random;
 using MoreSlugcats;
-using PitchBlack;
-using PitchBlack;
 
 namespace PitchBlack
 {
@@ -21,7 +19,7 @@ namespace PitchBlack
             Explosive
         }
 
-        public static void Hook()
+        public static void CraftingHook()
         {
             IL.Player.GrabUpdate += Player_GrabUpdate;
             On.Player.Grabability += Player_Grabability;

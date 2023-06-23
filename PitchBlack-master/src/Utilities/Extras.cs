@@ -13,9 +13,9 @@ using UnityEngine;
 #pragma warning restore CS0618
 
 
-internal static class Extras
+static class Extras
 {
-    private static bool _initialized;
+    static bool _initialized;
 
     // Ensure resources are only loaded once and that failing to load them will not break other mods
     public static On.RainWorld.hook_OnModsInit WrapInit(Action<RainWorld> loadResources)

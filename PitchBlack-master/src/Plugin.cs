@@ -20,8 +20,9 @@ using System.Security;
 using IL;
 using MonoMod.Cil;
 using static Player;
-using NightTerror;
+using PitchBlack;
 using System.Diagnostics.Eventing.Reader;
+using Fisobs.Core;
 
 #pragma warning disable CS0618 // Type or member is obsolete
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -47,8 +48,12 @@ namespace PitchBlack
         // Add hooks
         public void OnEnable()
         {
+            Hook overseercolorhook = new Hook(typeof(OverseerGraphics).GetProperty("MainColor", BindingFlags.Instance | BindingFlags.Public).GetGetMethod(), typeof(Plugin).GetMethod("OverseerGraphics_MainColor_get", BindingFlags.Static | BindingFlags.Public));
+            Whiskers.Hooks();
+            PhotoSprite.Hooks();
+            ScareEverything.Apply();
+            Content.Register(new NightTerrorCritob());
 
-            // Put your custom hooks here!
             On.Player.Jump += Player_Jump;
             On.Lizard.ctor += Lizard_ctor;
             //On.Player.GraspsCanBeCrafted += Player_GraspsCanBeCrafted;
@@ -65,33 +70,27 @@ namespace PitchBlack
             On.Player.Update += Player_Update;
             //On.Player.CanBeSwallowed += Player_CanBeSwallowed;
             //On.Player.SwallowObject += Player_SwallowObject1;
-            Hook overseercolorhook = new Hook(typeof(OverseerGraphics).GetProperty("MainColor", BindingFlags.Instance | BindingFlags.Public).GetGetMethod(), typeof(Plugin).GetMethod("OverseerGraphics_MainColor_get", BindingFlags.Static | BindingFlags.Public));
             On.Region.GetProperRegionAcronym += Region_GetProperRegionAcronym;
             On.OverseerGraphics.ColorOfSegment += OverseerGraphics_ColorOfSegment;
-            Whiskers.Hooks();
             On.Player.Update += PringleUpdate;
-            PhotoSprite.Hooker();
-            //IL.Menu.IntroRoll.ctor += AddIntroRollImage;  //Thanks slugbased
             //On.Player.Grabability += GrabCoalescipedes;
-            PitchBlackCrafting.Hook();
-            //NightTerror relationship fix  // No it doesn't lmao
-            //On.Creature.Update += (orig, self, eu) => {
-            //    orig(self, eu);
-            //    if (self != null && self.abstractCreature?.abstractAI.RealAI != null && self.room != null && self.abstractCreature.abstractAI.RealAI is IUseARelationshipTracker)
-            //    {
-            //        var relationships = self.abstractCreature.abstractAI.RealAI.relationshipTracker.relationships;
-            //        for (int j = 0; j < relationships.Count; j++)
-            //        {
-            //            if (relationships[j].trackerRep.representedCreature.creatureTemplate.type == CreatureTemplateType.NightTerror /*Or whatever the template name is idk*/)
-            //            {
-            //                relationships[j].currentRelationship.type = CreatureTemplate.Relationship.Type.Afraid;
-            //                relationships[j].currentRelationship.intensity = 1f;
-            //            }
-            //        }
-            //    }
-            //};
+            PitchBlackCrafting.CraftingHook();
+            On.RainWorld.OnModsDisabled += (orig, self, newlyDisabledMods) =>
+            {
+                orig(self, newlyDisabledMods);
+                for (var i = 0; i < newlyDisabledMods.Length; i++)
+                {
+                    if (newlyDisabledMods[i].id == MOD_ID)
+                    {
+                        if (MultiplayerUnlocks.CreatureUnlockList.Contains(SandboxUnlockID.NightTerror))
+                            MultiplayerUnlocks.CreatureUnlockList.Remove(SandboxUnlockID.NightTerror);
+                        CreatureTemplateType.UnregisterValues();
+                        SandboxUnlockID.UnregisterValues();
+                        break;
+                    }
+                }
+            };
             On.FlareBomb.Update += DieToFlareBomb;
-            ScareEverything.Apply();
         }
 
         //Spider, SpitterSpider, and MotherSpider die to FlareBombs with this mod enabled
@@ -385,7 +384,7 @@ namespace PitchBlack
             {
                 Logger.LogDebug("Input - Air: " + airParry);
                 Logger.LogDebug("Input - Ground: " + groundParry);
-                e.ThundahParry(self);
+                e.PhotoParry(self);
             }
 
             // Sparking when close to death VFX

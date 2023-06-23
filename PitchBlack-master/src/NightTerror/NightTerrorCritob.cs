@@ -2,23 +2,22 @@
 using Fisobs.Core;
 using Fisobs.Creatures;
 using Fisobs.Sandbox;
-using RWCustom;
 using System.Collections.Generic;
 using UnityEngine;
 using static PathCost.Legality;
 
-namespace NightTerror
+namespace PitchBlack
 {
-    sealed class RedCentipedeCritob : Critob
+    sealed class NightTerrorCritob : Critob
     {
-        internal RedCentipedeCritob() : base(CreatureTemplateType.NightTerror)
+        internal NightTerrorCritob() : base(CreatureTemplateType.NightTerror)
         {
-            Icon = new SimpleIcon("Night_Terror", Color.clear);
+            Icon = new SimpleIcon("Night_Terror", new Color(0.1f, 0.1f, 0.1f));
             RegisterUnlock(KillScore.Configurable(25), SandboxUnlockID.NightTerror);
             SandboxPerformanceCost = new(3f, 1.5f);
             LoadedPerformanceCost = 200f;
             ShelterDanger = ShelterDanger.Hostile;
-            Hooks.Apply();
+            NightTerrorHooks.Apply();
         }
 
         public override void ConnectionIsAllowed(AImap map, MovementConnection connection, ref bool? allow)

@@ -14,7 +14,7 @@
     
     <ItemGroup>
       <Reference Include="Fisobs">
-        <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\workshop\content\312520\2920541687\plugins\Fisobs.dll</HintPath>
+        <HintPath>D:\SteamLibrary\steamapps\workshop\content\312520\2920541687\plugins\Fisobs.dll</HintPath>
       </Reference>
       <Reference Include="UnityEngine.InputLegacyModule">
         <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Rain World\RainWorld_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>

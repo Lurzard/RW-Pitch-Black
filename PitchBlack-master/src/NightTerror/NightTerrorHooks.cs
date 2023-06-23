@@ -1,9 +1,7 @@
 ﻿using MonoMod.RuntimeDetour;
 using PitchBlack;
-using System;
 using System.Runtime.CompilerServices;
 using UnityEngine;
-//using System;
 using static System.Reflection.BindingFlags;
 
 public class NightTerrorData
@@ -22,9 +20,9 @@ public class ChillTheFUCKOut
     public int timesZapped = 0;
 }
 
-namespace NightTerror
+namespace PitchBlack
 {
-    static class Hooks
+    public static class NightTerrorHooks
     {
         public static ConditionalWeakTable<Centipede, NightTerrorData> NightTerrorInfo = new();
         public static ConditionalWeakTable<AbstractCreature, ChillTheFUCKOut> KILLIT = new();
