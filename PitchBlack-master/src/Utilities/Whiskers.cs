@@ -111,7 +111,7 @@ namespace PitchBlack
                     }
                 }
                 thedata.ready = true; //say that we're ready to add these to the container!
-                //self.AddToContainer(sLeaser, rCam, null); //then add em!  // do not enable this it is cursed!
+                self.AddToContainer(sLeaser, rCam, null); //then add em!  // do not enable this it is cursed!
             }
         }
 

@@ -7,12 +7,12 @@ using UnityEngine;
 
 namespace PitchBlack
 {
-    internal class PhotoSprite
+    internal class PhotoGraphics
     {
         /// <summary>
         /// It's not what you think it is ;)
         /// </summary>
-        public static void Hooks(){
+        public static void Apply(){
             On.RainWorld.OnModsInit += Extras.WrapInit(LoadResources);
             On.PlayerGraphics.InitiateSprites += PhotoSprite_GetStyle;
             On.PlayerGraphics.ApplyPalette += PhotoSprite_Crayons;
