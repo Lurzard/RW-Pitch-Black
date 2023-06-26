@@ -42,7 +42,7 @@ namespace PitchBlack
 
             Whiskers.Hooks();
             
-            OverseerGraphics1.Apply();
+            PBOverseerGraphics.Apply();
 
             WorldChanges.Apply();
 
