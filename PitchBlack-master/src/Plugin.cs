@@ -74,7 +74,7 @@ namespace PitchBlack
             //{
             //    Debug.Log("OH NO NO SPRITES?!");
             //}
-        }
+            }
 
         #region Unused Code
         //public static Player.ObjectGrabability GrabCoalescipedes(On.Player.orig_Grabability orig, Player self, PhysicalObject obj)
@@ -98,7 +98,7 @@ namespace PitchBlack
         //    }
         //    return res;
         //}
-        // GraspIsNotElectricSpear Method seems not to exist anywhere, so these methods remain commented out :3
+// GraspIsNotElectricSpear Method seems not to exist anywhere, so these methods remain commented out :3
         /*private void Player_SwallowObject1(On.Player.orig_SwallowObject orig, Player self, int grasp)
         {
             orig(self, grasp);
@@ -164,7 +164,7 @@ namespace PitchBlack
         //        {
         //            AbstractPhysicalObject hands = player.grasps[i].grabbed.abstractPhysicalObject;
         //            if (player.playerState.foodInStomach <= 0) { return; }
-
+                    
         //            if (hands is AbstractSpear spear && !spear.explosive)
         //            {
         //                if (player.room.game.session is StoryGameSession story)
@@ -194,6 +194,6 @@ namespace PitchBlack
         //    if (self.slugcatStats.name == Plugin.BeaconName || self.slugcatStats.name == Plugin.PhotoName && self.input[0].y > 0) return true;
         //    return orig(self);
         //} // Allow crafts
-        #endregion
+#endregion
     }
 }

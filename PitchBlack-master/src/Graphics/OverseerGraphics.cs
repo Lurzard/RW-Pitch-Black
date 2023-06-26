@@ -1,5 +1,14 @@
+using System;
+using BepInEx;
+using UnityEngine;
+using SlugBase.Features;
+using static SlugBase.Features.FeatureTypes;
+using System.Security.Permissions;
+using System.Runtime.CompilerServices;
 using MonoMod.RuntimeDetour;
 using System.Reflection;
+using System.IO;
+using System.Linq;
 using RWCustom;
 //using static PitchBlack.Plugin;
 using Colour = UnityEngine.Color;
@@ -28,7 +37,7 @@ namespace PitchBlack
                     Mathf.Lerp(self.overseer.lastDying, self.overseer.dying, timeStacker));
             }
             return val;
-        }
+            }
         public delegate Colour orig_OverseerMainColor(OverseerGraphics self);
         public static Colour OverseerGraphics_MainColor_get(orig_OverseerMainColor orig, OverseerGraphics self)
         {
