@@ -16,6 +16,8 @@ using System.Security;
 // using MonoMod.Cil;
 // using static Player;
 using Fisobs.Core;
+using RWCustom;
+using Random = UnityEngine.Random;
 
 #pragma warning disable CS0618 // Type or member is obsolete
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -45,13 +47,19 @@ namespace PitchBlack
             ScareEverything.Apply();
 
             BeaconHooks.Apply();
+            
             PhotoHooks.Apply();
             PhotoGraphics.Apply();
+            PhotoCrafting.CraftingHookApply();
+
             Whiskers.Hooks();
             
             OverseerGraphics1.Apply();
-            
-            Extras.Apply();
+
+            WorldChanges.Apply();
+
+            On.FlareBomb.Update += DieToFlareBomb;
+            On.RainWorld.OnModsDisabled += DisableMod;
 
             //On.Player.GraspsCanBeCrafted += Player_GraspsCanBeCrafted;
             //On.Player.SpitUpCraftedObject += Player_SpitUpCraftedObject;
@@ -74,7 +82,49 @@ namespace PitchBlack
             //{
             //    Debug.Log("OH NO NO SPRITES?!");
             //}
+        }
+
+        public static void DisableMod(On.RainWorld.orig_OnModsDisabled orig, RainWorld self, ModManager.Mod[] newlyDisabledMods)
+        {
+            orig(self, newlyDisabledMods);
+            for (var i = 0; i < newlyDisabledMods.Length; i++)
+            {
+                if (newlyDisabledMods[i].id == Plugin.MOD_ID)
+                {
+                    if (MultiplayerUnlocks.CreatureUnlockList.Contains(SandboxUnlockID.NightTerror))
+                        MultiplayerUnlocks.CreatureUnlockList.Remove(SandboxUnlockID.NightTerror);
+                    CreatureTemplateType.UnregisterValues();
+                    SandboxUnlockID.UnregisterValues();
+                    break;
+                }
             }
+        }
+        //Spider, SpitterSpider, and MotherSpider die to FlareBombs with this mod enabled
+        public static void DieToFlareBomb(On.FlareBomb.orig_Update orig, FlareBomb self, bool eu)
+        {
+            orig(self, eu);
+            for (int i = 0; i < self.room.abstractRoom.creatures.Count; i++)
+            {
+                if (self.room.abstractRoom.creatures[i].realizedCreature != null && (Custom.DistLess(self.firstChunk.pos, self.room.abstractRoom.creatures[i].realizedCreature.mainBodyChunk.pos, self.LightIntensity * 600f) || (Custom.DistLess(self.firstChunk.pos, self.room.abstractRoom.creatures[i].realizedCreature.mainBodyChunk.pos, self.LightIntensity * 1600f) && self.room.VisualContact(self.firstChunk.pos, self.room.abstractRoom.creatures[i].realizedCreature.mainBodyChunk.pos))))
+                {
+                    if (self.room.abstractRoom.creatures[i].creatureTemplate.type == CreatureTemplate.Type.BigSpider && !self.room.abstractRoom.creatures[i].realizedCreature.dead)
+                    {
+                        self.room.abstractRoom.creatures[i].realizedCreature.firstChunk.vel += Custom.DegToVec(Random.value * 360f) * Random.value * 7f;
+                        self.room.abstractRoom.creatures[i].realizedCreature.Die();
+                    }
+                    if (self.room.abstractRoom.creatures[i].creatureTemplate.type == CreatureTemplate.Type.SpitterSpider && !self.room.abstractRoom.creatures[i].realizedCreature.dead)
+                    {
+                        self.room.abstractRoom.creatures[i].realizedCreature.firstChunk.vel += Custom.DegToVec(Random.value * 360f) * Random.value * 7f;
+                        self.room.abstractRoom.creatures[i].realizedCreature.Die();
+                    }
+                    if (self.room.abstractRoom.creatures[i].creatureTemplate.type == MoreSlugcats.MoreSlugcatsEnums.CreatureTemplateType.MotherSpider && !self.room.abstractRoom.creatures[i].realizedCreature.dead)
+                    {
+                        self.room.abstractRoom.creatures[i].realizedCreature.firstChunk.vel += Custom.DegToVec(Random.value * 360f) * Random.value * 7f;
+                        self.room.abstractRoom.creatures[i].realizedCreature.Die();
+                    }
+                }
+            };
+        }
 
         #region Unused Code
         //public static Player.ObjectGrabability GrabCoalescipedes(On.Player.orig_Grabability orig, Player self, PhysicalObject obj)
@@ -98,7 +148,7 @@ namespace PitchBlack
         //    }
         //    return res;
         //}
-// GraspIsNotElectricSpear Method seems not to exist anywhere, so these methods remain commented out :3
+        // GraspIsNotElectricSpear Method seems not to exist anywhere, so these methods remain commented out :3
         /*private void Player_SwallowObject1(On.Player.orig_SwallowObject orig, Player self, int grasp)
         {
             orig(self, grasp);
@@ -164,7 +214,7 @@ namespace PitchBlack
         //        {
         //            AbstractPhysicalObject hands = player.grasps[i].grabbed.abstractPhysicalObject;
         //            if (player.playerState.foodInStomach <= 0) { return; }
-                    
+
         //            if (hands is AbstractSpear spear && !spear.explosive)
         //            {
         //                if (player.room.game.session is StoryGameSession story)
@@ -194,6 +244,6 @@ namespace PitchBlack
         //    if (self.slugcatStats.name == Plugin.BeaconName || self.slugcatStats.name == Plugin.PhotoName && self.input[0].y > 0) return true;
         //    return orig(self);
         //} // Allow crafts
-#endregion
+        #endregion
     }
 }
