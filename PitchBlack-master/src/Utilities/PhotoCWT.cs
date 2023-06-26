@@ -39,7 +39,7 @@ namespace PitchBlack
             }
         }
 
-        public void ThundahParry(Player self)
+        public void PhotoParry(Player self)
         {
             // Nullcheck
             if (!(self != null && self.room != null && self.room.physicalObjects != null))
@@ -141,7 +141,7 @@ namespace PitchBlack
                 // And stun yourself.
                 if (this.parryNum >= this.parryMax)
                 {
-                    DeathUponThee(self);
+                    PhotoExplosiveDie(self);
                 }
                 else
                 {
@@ -173,7 +173,7 @@ namespace PitchBlack
         }
 
 
-        public void DeathUponThee(Player self)
+        public void PhotoExplosiveDie(Player self)
         {
             Vector2 v = Vector2.Lerp(self.firstChunk.pos, self.firstChunk.lastPos, 0.35f);
             self.room.AddObject(new SootMark(self.room, v, 120f, bigSprite: true));
@@ -186,7 +186,7 @@ namespace PitchBlack
         /// <summary>
         /// Sets the sprite cue once. If the characer is initiated but the cue has already been set, ignore the cue set()
         /// </summary>
-        public void PhotoSetSpriteIndex(int cue){
+        public void PhotoSetUniqueSpriteIndex(int cue){
             if (this.photoSpriteIndex == -1){
                 this.photoSpriteIndex = cue;
             }

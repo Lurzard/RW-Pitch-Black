@@ -4,40 +4,29 @@ using System.Linq;
 using System.Threading.Tasks;
 using PitchBlack;
 using UnityEngine;
-using SlugTemplate;
 
 namespace PitchBlack
 {
-    internal class PhotoSprite
+    internal class PhotoGraphics
     {
         /// <summary>
         /// It's not what you think it is ;)
         /// </summary>
-        public static void Hooker(){
-            On.RainWorld.OnModsInit += Extras.WrapInit(LoadResources);
+        public static void Apply(){
             On.PlayerGraphics.InitiateSprites += PhotoSprite_GetStyle;
             On.PlayerGraphics.ApplyPalette += PhotoSprite_Crayons;
             On.PlayerGraphics.AddToContainer += PhotoSprite_Layering;
-            On.PlayerGraphics.DrawSprites += PhotoSprite_MoveIt;
-        }
-
-        /// <summary>
-        /// If you're not using this, I'm stealing it
-        /// </summary>
-        private static void LoadResources(RainWorld rainWorld){
-            FAtlas f = Futile.atlasManager.LoadAtlas("atlases/photosplt");
-            if (f == null){
-                Debug.Log("OH NO NO SPRITES?!");
-            }
+            On.PlayerGraphics.DrawSprites += PhotoSprite_MoveItMoveIt;
         }
         
-
         /// <summary>
         /// Initiates the Photo's sprite, setting the cue number to the end of the array, expanding the sprite array, and creating FSprites
         /// </summary>
-        private static void PhotoSprite_GetStyle(On.PlayerGraphics.orig_InitiateSprites orig, PlayerGraphics self, RoomCamera.SpriteLeaser s, RoomCamera r){
-            orig(self, s, r);
+        private static void PhotoSprite_GetStyle(On.PlayerGraphics.orig_InitiateSprites orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam){
+            orig(self, sLeaser, rCam);
             try{
+#region Null Checks
+#if false
                 // Null check
                 if (!(self != null && self.player != null)) {
                     Debug.LogWarning(">>> PhotoSprite_GetStyle: Null Pass");
@@ -45,7 +34,7 @@ namespace PitchBlack
                 }
                 // Character check
                 if (self.player.slugcatStats.name != Plugin.PhotoName) {
-                    //Debug.LogWarning(">>> PhotoSprite_GetStyle: Photo Pass");
+                    Debug.LogWarning(">>> PhotoSprite_GetStyle: Photo Pass");
                     return;
                 }
                 // CWT Existencial Crisis check
@@ -53,23 +42,29 @@ namespace PitchBlack
                     Debug.LogWarning(">>> PhotoSprite_GetStyle: CWT Access Fail Pass");
                     return;
                 }
-
+#endif
+#endregion
+                Plugin.pCon.TryGetValue(self.player, out PhotoCWT pho);
                 // Set index
-                pho.PhotoSetSpriteIndex(s.sprites.Length);
+                pho.PhotoSetUniqueSpriteIndex(sLeaser.sprites.Length);
+                Debug.Log($"Length is: {sLeaser.sprites.Length}");
+                Debug.Log($"Name is: {sLeaser.sprites[sLeaser.sprites.Length-1].element.name}");
 
                 // Resize sprite array
-                Array.Resize(ref s.sprites, s.sprites.Length + 1);
+                Array.Resize(ref sLeaser.sprites, sLeaser.sprites.Length + 1);
 
                 // Set the sprites
-                s.sprites[pho.photoSpriteIndex] = new FSprite("PhotoSplatter");
+                sLeaser.sprites[pho.photoSpriteIndex] = new FSprite("PhotoSplatter", false);
+                Debug.Log($"Length is: {sLeaser.sprites.Length}");
+                Debug.Log($"Name is: {sLeaser.sprites[pho.photoSpriteIndex].element.name}");
 
                 // Quick null check to see if sprites have been successfully loaded
-                if (s.sprites[pho.photoSpriteIndex] == null){
+                if (sLeaser.sprites[pho.photoSpriteIndex] == null){
                     Debug.LogWarning(">>> PhotoSprite_GetStyle: OH FECK SPRITE RAN AWAY! GO GET EM");
                 }
 
                 // Send them to container
-                self.AddToContainer(s, r, null);
+                self.AddToContainer(sLeaser, rCam, null);
             } catch (Exception genericException){
                 Debug.LogWarning(">>> PhotoSprite_GetStyle: OH NO AN ERROR AH");
                 Debug.LogError(">>> PhotoSprite_GetStyle: Photo could not get a fancy style from the barber shop");
@@ -80,11 +75,12 @@ namespace PitchBlack
         /// <summary>
         /// Colors the custom sprite according to each way of coloring in stuff.
         /// </summary>
-        private static void PhotoSprite_Crayons(On.PlayerGraphics.orig_ApplyPalette orig, PlayerGraphics self, RoomCamera.SpriteLeaser s, RoomCamera r, RoomPalette p){
-            orig(self, s, r, p);
+        private static void PhotoSprite_Crayons(On.PlayerGraphics.orig_ApplyPalette orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera r, RoomPalette p){
+            orig(self, sLeaser, r, p);
             try{
+#region Null Checks
                 // Null check
-                if (!(self != null && self.player != null)) {
+                if (self == null || self.player == null) {
                     Debug.LogWarning(">>> PhotoSprite_Crayons: Null Pass");
                     return;
                 }
@@ -103,24 +99,26 @@ namespace PitchBlack
                     Debug.LogWarning(">>> PhotoSprite_Crayons: PreInit Pass");
                     return;
                 }
-                if (pho.photoSpriteIndex + 1 == s.sprites.Length && s.sprites[pho.photoSpriteIndex] == null) {
+                if (pho.photoSpriteIndex + 1 == sLeaser.sprites.Length && sLeaser.sprites[pho.photoSpriteIndex] == null) {
                     Debug.LogWarning(">>> PhotoSprite_Crayons: Bad Init Pass");
                     return;
                 }
-                if (pho.photoSpriteIndex < s.sprites.Length){
+#endregion
+
+                if (pho.photoSpriteIndex < sLeaser.sprites.Length){
                     // Jolly Coop Colors!
                     if (ModManager.CoopAvailable && self.useJollyColor){
-                        s.sprites[pho.photoSpriteIndex].color = PlayerGraphics.JollyColor(self.player.playerState.playerNumber, 2);
+                        sLeaser.sprites[pho.photoSpriteIndex].color = PlayerGraphics.JollyColor(self.player.playerState.playerNumber, 2);
                     }
 
                     // Custom color (not jolly!)
                     else if (PlayerGraphics.CustomColorsEnabled()){
-                        s.sprites[pho.photoSpriteIndex].color = PlayerGraphics.CustomColorSafety(2);
+                        sLeaser.sprites[pho.photoSpriteIndex].color = PlayerGraphics.CustomColorSafety(2);
                     }
 
                     // Arena/no-custom color
                     else {
-                        s.sprites[pho.photoSpriteIndex].color = Color.white;
+                        sLeaser.sprites[pho.photoSpriteIndex].color = Color.white;
                     }
                 }
             } catch (Exception genericException){
@@ -133,9 +131,10 @@ namespace PitchBlack
         /// <summary>
         /// Swaps the layers around so the sprite doesn't end up on top of everything
         /// </summary>
-        private static void PhotoSprite_Layering(On.PlayerGraphics.orig_AddToContainer orig, PlayerGraphics self, RoomCamera.SpriteLeaser s, RoomCamera r, FContainer f){
-            orig(self, s, r, f);
+        private static void PhotoSprite_Layering(On.PlayerGraphics.orig_AddToContainer orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, FContainer fContainer){
+            orig(self, sLeaser, rCam, fContainer);
             try{
+                #region Null Checks
                 // Null check
                 if (!(self != null && self.player != null)) {
                     Debug.LogWarning(">>> PhotoSprite_Lasagna: Null Pass");
@@ -143,7 +142,7 @@ namespace PitchBlack
                 }
                 // Character check
                 if (self.player.slugcatStats.name != Plugin.PhotoName) {
-                    //Debug.LogWarning(">>> PhotoSprite_Lasagna: Photo Pass");
+                    Debug.LogWarning(">>> PhotoSprite_Lasagna: Photo Pass");
                     return;
                 }
                 // CWT Existencial Crisis check
@@ -152,21 +151,22 @@ namespace PitchBlack
                     return;
                 }
                 // Sprite existence check
-                if (pho.photoSpriteIndex == -1) {
+                /*if (pho.photoSpriteIndex == -1) {
                     Debug.LogWarning(">>> PhotoSprite_Lasagna: PreInit Pass");
                     return;
                 }
-                if (pho.photoSpriteIndex + 1 == s.sprites.Length && s.sprites[pho.photoSpriteIndex] == null) {
+                if (pho.photoSpriteIndex + 1 == sLeaser.sprites.Length && sLeaser.sprites[pho.photoSpriteIndex] == null) {
                     Debug.LogWarning(">>> PhotoSprite_Lasagna: Bad Init Pass");
                     return;
-                }
-
-                if (pho.photoSpriteIndex < s.sprites.Length){
-                    r.ReturnFContainer("Foreground").RemoveChild(s.sprites[pho.photoSpriteIndex]);
+                }*/
+                #endregion
+                Debug.Log($"Debuging ATC in Photo >>> spritesLength: {sLeaser.sprites.Length}");
+                if (sLeaser.sprites.Length > 13){
+                    rCam.ReturnFContainer("Foreground").RemoveChild(sLeaser.sprites[pho.photoSpriteIndex]);
                     //Debug.Log(">>> PhotoSprite_Lasagna: Removed the child");
-                    r.ReturnFContainer("Midground").AddChild(s.sprites[pho.photoSpriteIndex]);
+                    rCam.ReturnFContainer("Midground").AddChild(sLeaser.sprites[pho.photoSpriteIndex]);
                     //Debug.Log(">>> PhotoSprite_Lasagna: Re-added the child");
-                    s.sprites[pho.photoSpriteIndex].MoveBehindOtherNode(s.sprites[5]);
+                    sLeaser.sprites[pho.photoSpriteIndex].MoveBehindOtherNode(sLeaser.sprites[5]);
                 }
             } catch (Exception genericException){
                 Debug.LogWarning(">>> PhotoSprite_Lasagna: OH NO AN ERROR AAAH");
@@ -178,57 +178,70 @@ namespace PitchBlack
         /// <summary>
         /// Draws the sprite. Also makes sure the sprite stretches so that it's compatible with Rotund World (might as well.)
         /// </summary>
-        private static void PhotoSprite_MoveIt(On.PlayerGraphics.orig_DrawSprites orig, PlayerGraphics self, RoomCamera.SpriteLeaser s, RoomCamera r, float t, Vector2 p){
-            orig(self, s, r, t, p);
+        private static void PhotoSprite_MoveItMoveIt(On.PlayerGraphics.orig_DrawSprites orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos){
+            orig(self, sLeaser, rCam, timeStacker, camPos);
             try{
+                #region Null Checks
                 // Null check
                 if (!(self != null && self.player != null)) {
                     Debug.LogWarning(">>> PhotoSprite_MoveIt: Null Pass");
-                    orig(self, s, r, t, p);
+                    orig(self, sLeaser, rCam, timeStacker, camPos);
                     return;
                 }
                 // Character check
                 if (self.player.slugcatStats.name != Plugin.PhotoName) {
                     //Debug.LogWarning(">>> PhotoSprite_MoveIt: Photo Pass");
-                    orig(self, s, r, t, p);
+                    orig(self, sLeaser, rCam, timeStacker, camPos);
                     return;
                 }
                 // CWT Existencial Crisis check
                 if (!Plugin.pCon.TryGetValue(self.player, out PhotoCWT pho)) {
                     Debug.LogWarning(">>> PhotoSprite_MoveIt: CWT Access Fail Pass");
-                    orig(self, s, r, t, p);
+                    orig(self, sLeaser, rCam, timeStacker, camPos);
                     return;
                 }
                 // Sprite existence check
                 if (pho.photoSpriteIndex == -1) {
                     Debug.LogWarning(">>> PhotoSprite_MoveIt: PreInit Pass");
-                    orig(self, s, r, t, p);
+                    orig(self, sLeaser, rCam, timeStacker, camPos);
                     return;
                 }
-                if (pho.photoSpriteIndex + 1 == s.sprites.Length && s.sprites[pho.photoSpriteIndex] == null) {
+                if (pho.photoSpriteIndex + 1 == sLeaser.sprites.Length && sLeaser.sprites[pho.photoSpriteIndex] == null) {
                     Debug.LogWarning(">>> PhotoSprite_MoveIt: Bad Init Pass");
-                    orig(self, s, r, t, p);
+                    orig(self, sLeaser, rCam, timeStacker, camPos);
                     return;
                 }
+                #endregion
 
                 // Store the X, Y scales modified from the previous DrawSprites call
-                if (s.sprites.Length > 9 && s.sprites[1] != null){
-                    pho.photoSpriteScale[0] = s.sprites[1].scaleX;
-                    pho.photoSpriteScale[1] = s.sprites[1].scaleY;
+                if (sLeaser.sprites.Length > 9 && sLeaser.sprites[1] != null){
+                    pho.photoSpriteScale[0] = sLeaser.sprites[1].scaleX;
+                    pho.photoSpriteScale[1] = sLeaser.sprites[1].scaleY;
                 }
                 else {
                     pho.photoSpriteScale[0] = 1f;
                     pho.photoSpriteScale[1] = 1f;
                 }
-                orig(self, s, r, t, p); // Do DrawSprites (resets the sprite's X and Y scale)
+                orig(self, sLeaser, rCam, timeStacker, camPos); // Do DrawSprites (resets the sprite's X and Y scale)
 
-                if (pho.photoSpriteIndex < s.sprites.Length){
+                if (pho.photoSpriteIndex < sLeaser.sprites.Length){
+                    //maths will actually make photo's splatter sprite follow the body more accurately
+                    //trying to set it to another sprite's pos or rotation makes it lag behind
+                    //its more noticeable the faster photo moves, ie slamming photo around using devtools
+                    Vector2 vector = Vector2.Lerp(self.drawPositions[0, 1], self.drawPositions[0, 0], timeStacker);
+                    Vector2 vector2 = Vector2.Lerp(self.drawPositions[1, 1], self.drawPositions[1, 0], timeStacker);
+                    sLeaser.sprites[pho.photoSpriteIndex].x = (vector2.x * 2f + vector.x) / 3f - camPos.x;
+                    sLeaser.sprites[pho.photoSpriteIndex].y = (vector2.y * 2f + vector.y) / 3f - camPos.y - self.player.sleepCurlUp * 3f;
+
+                    sLeaser.sprites[pho.photoSpriteIndex].scaleX = pho.photoSpriteScale[0];
+                    sLeaser.sprites[pho.photoSpriteIndex].scaleY = pho.photoSpriteScale[1];
+
                     // Draw custom sprite!
-                    s.sprites[pho.photoSpriteIndex].scaleX = pho.photoSpriteScale[0];
-                    s.sprites[pho.photoSpriteIndex].scaleY = pho.photoSpriteScale[1];
-                    s.sprites[pho.photoSpriteIndex].rotation = s.sprites[1].rotation;
-                    s.sprites[pho.photoSpriteIndex].x = s.sprites[1].x;
-                    s.sprites[pho.photoSpriteIndex].y = s.sprites[1].y;
+                    //sLeaser.sprites[pho.photoSpriteIndex].scaleX = pho.photoSpriteScale[0];
+                    //sLeaser.sprites[pho.photoSpriteIndex].scaleY = pho.photoSpriteScale[1];
+                    //sLeaser.sprites[pho.photoSpriteIndex].rotation = sLeaser.sprites[1].rotation;
+                    //sLeaser.sprites[pho.photoSpriteIndex].x = sLeaser.sprites[1].x;
+                    //sLeaser.sprites[pho.photoSpriteIndex].y = sLeaser.sprites[1].y;
                 }
             } catch (Exception genericException){
                 Debug.LogWarning(">>> PhotoSprite_MoveIt: OH NO AN ERROR AAAAH");

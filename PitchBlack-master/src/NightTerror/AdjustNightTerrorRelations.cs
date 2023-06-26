@@ -1,5 +1,4 @@
-using NightTerror;
-
+namespace PitchBlack;
 public class ScareEverything {
     public static CreatureTemplate.Relationship.Type newRelation = CreatureTemplate.Relationship.Type.Afraid;
     public static bool Condition(Creature? crit) {

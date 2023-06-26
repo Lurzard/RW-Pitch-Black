@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using UnityEngine;
-using PitchBlack;
 
 namespace PitchBlack
 {
