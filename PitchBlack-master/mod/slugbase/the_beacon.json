@@ -63,6 +63,7 @@
 		"karma": 4,
 		"karma_cap": 4,
 		"start_room": "SH_S09",
+		"guide_overseer": 87,
 		"has_dreams": false,
 		"perma_unlock_gates": true,
 		"world_state": "Beacon",

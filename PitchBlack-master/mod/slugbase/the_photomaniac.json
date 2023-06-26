@@ -36,6 +36,7 @@
 			"overrides": {
 			}
 		},
+		"guide_overseer": 87,
 		"the_glow": true,
 		"world_state": [ "Photomaniac", "Beacon" ],
 		"select_menu_scene": "Slugcat_Photo",
