@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using RWCustom;
-using PitchBlack;
-using BepInEx;
 using SlugBase;
 
 namespace PitchBlack
@@ -149,11 +143,12 @@ namespace PitchBlack
                     for (int j = 0; j < 2; j++)
                     {
                         Vector2 vector = new Vector2(sLeaser.sprites[9].x + camPos.x, sLeaser.sprites[9].y + camPos.y);
-                        float rotationAngle /*= 0f*/;
+                        float rotationAngle = 0f;
                         if (i == 0)
                         {
                             //left whiskers
-                            rotationAngle = -45f;
+                            if (Plugin.PhotoName == self.player.slugcatStats.name)
+                                rotationAngle = -45f; //beacon's whisker rotation is fine
                             vector.x -= 5f;
                         }
                         else
@@ -162,16 +157,6 @@ namespace PitchBlack
                             rotationAngle = 180f;
                             vector.x += 5f;
                         }
-
-                        //if (data.facewhiskersprite(i, j) % 2 != 0)
-                        //{
-                        //    //the left whiskers
-                        //    rotationAngle -= 80f;
-                        //}
-                        //else
-                        //{
-                        //    rotationAngle += 80f;
-                        //}
 
                         sLeaser.sprites[data.facewhiskersprite(i, j)].x = vector.x - camPos.x;
                         sLeaser.sprites[data.facewhiskersprite(i, j)].y = vector.y - camPos.y;

@@ -1,18 +1,8 @@
-using System;
-using BepInEx;
-using UnityEngine;
-using SlugBase.Features;
-using static SlugBase.Features.FeatureTypes;
-using System.Security.Permissions;
-using System.Runtime.CompilerServices;
 using MonoMod.RuntimeDetour;
 using System.Reflection;
-using System.IO;
-using System.Linq;
 using RWCustom;
-//using static PitchBlack.Plugin;
 using Colour = UnityEngine.Color;
-using UnityEngine;
+using Mathf = UnityEngine.Mathf;
 
 namespace PitchBlack
 {
@@ -30,9 +20,9 @@ namespace PitchBlack
             if ((self.overseer.abstractCreature.abstractAI as OverseerAbstractAI).ownerIterator == 87)
             //if (self.overseer.room?.world.game.session is StoryGameSession story && MiscUtils.SlugIsInMod(story.game.StoryCharacter) && self.overseer.PlayerGuide)
             {
-                return Color.Lerp(
-                    Color.Lerp(Custom.RGB2RGBA((self.MainColor + new Color(0f, 0f, 1f) + self.earthColor * 8f) / 10f, 0.5f),
-                    Color.Lerp(self.MainColor, Color.Lerp(self.NeutralColor, self.earthColor, Mathf.Pow(f, 2f)), self.overseer.SandboxOverseer ? 0.15f : 0.5f),
+                return Colour.Lerp(
+                    Colour.Lerp(Custom.RGB2RGBA((self.MainColor + new Colour(0f, 0f, 1f) + self.earthColor * 8f) / 10f, 0.5f),
+                    Colour.Lerp(self.MainColor, Colour.Lerp(self.NeutralColor, self.earthColor, Mathf.Pow(f, 2f)), self.overseer.SandboxOverseer ? 0.15f : 0.5f),
                     self.ExtensionOfSegment(f, timeStacker)), Custom.RGB2RGBA(self.MainColor, 0f),
                     Mathf.Lerp(self.overseer.lastDying, self.overseer.dying, timeStacker));
             }

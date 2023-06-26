@@ -1,20 +1,8 @@
-﻿using System;
-using BepInEx;
-using UnityEngine;
-// using SlugBase.Features;
-// using static SlugBase.Features.FeatureTypes;
+﻿using BepInEx;
 using System.Security.Permissions;
 using System.Runtime.CompilerServices;
-// using MonoMod.RuntimeDetour;
-// using System.Reflection;
-// using System.IO;
-// using System.Linq;
-// using RWCustom;
 using System.Collections.Generic;
-// using Random = UnityEngine.Random;
 using System.Security;
-// using MonoMod.Cil;
-// using static Player;
 using Fisobs.Core;
 using RWCustom;
 using Random = UnityEngine.Random;
@@ -38,7 +26,7 @@ namespace PitchBlack
         public static bool Speaking = false;
         public static AbstractCreature PBOverseer;
         public static int pbcooldown = 0;
-        public delegate Color orig_OverseerMainColor(OverseerGraphics self);
+        //public delegate Color orig_OverseerMainColor(OverseerGraphics self);
         public void OnEnable()
         {
             On.RainWorld.OnModsInit += Extras.WrapInit(LoadResources);
