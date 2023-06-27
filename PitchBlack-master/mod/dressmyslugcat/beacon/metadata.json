@@ -20,6 +20,9 @@
         },
         "FACE": {
             "color": "#ffffff"
+        },
+        "HEAD": {
+            "color": "#ffffff"
         }
     }
 }
