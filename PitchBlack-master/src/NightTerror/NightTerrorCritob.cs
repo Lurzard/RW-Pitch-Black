@@ -65,7 +65,7 @@ namespace PitchBlack
                     Climb = new(0.3f, Allowed),
                     Wall = new(1f, Allowed),
                     Ceiling = new(1f, Unallowed),
-                    Air = new(0f, Unwanted),
+                    Air = new(1f, Unallowed),
                     Solid = new(1f, Unallowed)
                 },
                 ConnectionResistances = new()

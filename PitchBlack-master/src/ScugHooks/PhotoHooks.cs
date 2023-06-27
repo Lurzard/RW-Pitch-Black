@@ -1,21 +1,5 @@
-using System;
-using BepInEx;
 using UnityEngine;
-using SlugBase.Features;
-using static SlugBase.Features.FeatureTypes;
-using System.Security.Permissions;
-using System.Runtime.CompilerServices;
-using MonoMod.RuntimeDetour;
-using System.Reflection;
-using System.IO;
-using System.Linq;
 using RWCustom;
-using System.Collections.Generic;
-using Random = UnityEngine.Random;
-using System.Security;
-using MonoMod.Cil;
-using static Player;
-using Fisobs.Core;
 
 namespace PitchBlack
 {

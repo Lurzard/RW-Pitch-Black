@@ -1,7 +1,7 @@
 namespace PitchBlack;
 public class ScareEverything {
     public static CreatureTemplate.Relationship.Type newRelation = CreatureTemplate.Relationship.Type.Afraid;
-    public static bool Condition(Creature? crit) {
+    public static bool Condition(Creature crit) {
         if (crit != null && crit.Template.type == CreatureTemplateType.NightTerror) {
             return true;
         }
@@ -12,7 +12,7 @@ public class ScareEverything {
     public static void Apply() {
         On.ArtificialIntelligence.DynamicRelationship_CreatureRepresentation_AbstractCreature += (orig, self, rep, absCrit) => {
             //Debug.Log("Yippe updating");
-            Creature? trackedCreature = null;
+            Creature trackedCreature = null;
             if (rep != null) {
                 trackedCreature = rep.representedCreature?.realizedCreature;
             }
@@ -40,7 +40,7 @@ public class ScareEverything {
 
         On.BigNeedleWormAI.IUseARelationshipTracker_UpdateDynamicRelationship += (orig, self, dRelation) => {
             CreatureTemplate.Relationship relationship = orig(self, dRelation);
-            Creature? trackedCreature = dRelation?.trackerRep?.representedCreature?.realizedCreature;
+            Creature trackedCreature = dRelation?.trackerRep?.representedCreature?.realizedCreature;
             if (Condition(trackedCreature)) {
                 //Debug.Log("Made it to changing relationship");
                 return new CreatureTemplate.Relationship(newRelation, 10f);
@@ -50,7 +50,7 @@ public class ScareEverything {
 
         On.BigSpiderAI.IUseARelationshipTracker_UpdateDynamicRelationship += (orig, self, dRelation) => {
             CreatureTemplate.Relationship relationship = orig(self, dRelation);
-            Creature? trackedCreature = dRelation?.trackerRep?.representedCreature?.realizedCreature;
+            Creature trackedCreature = dRelation?.trackerRep?.representedCreature?.realizedCreature;
             if (Condition(trackedCreature)) {
                 //Debug.Log("Made it to changing relationship");
                 return new CreatureTemplate.Relationship(newRelation, 10f);
@@ -59,7 +59,7 @@ public class ScareEverything {
         };
 
         On.CentipedeAI.IUseARelationshipTracker_UpdateDynamicRelationship += (orig, self, dRelation) => {
-            Creature? trackedCreature = dRelation?.trackerRep?.representedCreature?.realizedCreature;
+            Creature trackedCreature = dRelation?.trackerRep?.representedCreature?.realizedCreature;
             if (trackedCreature != null && trackedCreature.Template.type == CreatureTemplateType.NightTerror && self.centipede.Template.type != CreatureTemplateType.NightTerror) {
                 // If the 'target' creature is a NightTerror and self is not, be afraid
                 return new CreatureTemplate.Relationship(newRelation, 10f);
@@ -78,7 +78,7 @@ public class ScareEverything {
 
         On.CicadaAI.IUseARelationshipTracker_UpdateDynamicRelationship += (orig, self, dRelation) => {
             CreatureTemplate.Relationship relationship = orig(self, dRelation);
-            Creature? trackedCreature = dRelation?.trackerRep?.representedCreature?.realizedCreature;
+            Creature trackedCreature = dRelation?.trackerRep?.representedCreature?.realizedCreature;
             if (Condition(trackedCreature)) {
                 //Debug.Log("Made it to changing relationship");
                 return new CreatureTemplate.Relationship(newRelation, 10f);
@@ -88,7 +88,7 @@ public class ScareEverything {
 
         On.DropBugAI.IUseARelationshipTracker_UpdateDynamicRelationship += (orig, self, dRelation) => {
             CreatureTemplate.Relationship relationship = orig(self, dRelation);
-            Creature? trackedCreature = dRelation?.trackerRep?.representedCreature?.realizedCreature;
+            Creature trackedCreature = dRelation?.trackerRep?.representedCreature?.realizedCreature;
             if (Condition(trackedCreature)) {
                 //Debug.Log("Made it to changing relationship");
                 return new CreatureTemplate.Relationship(newRelation, 10f);
@@ -98,7 +98,7 @@ public class ScareEverything {
 
         On.JetFishAI.IUseARelationshipTracker_UpdateDynamicRelationship += (orig, self, dRelation) => {
             CreatureTemplate.Relationship relationship = orig(self, dRelation);
-            Creature? trackedCreature = dRelation?.trackerRep?.representedCreature?.realizedCreature;
+            Creature trackedCreature = dRelation?.trackerRep?.representedCreature?.realizedCreature;
             if (Condition(trackedCreature)) {
                 //Debug.Log("Made it to changing relationship");
                 return new CreatureTemplate.Relationship(newRelation, 10f);
@@ -108,7 +108,7 @@ public class ScareEverything {
 
         On.LizardAI.IUseARelationshipTracker_UpdateDynamicRelationship += (orig, self, dRelation) => {
             CreatureTemplate.Relationship relationship = orig(self, dRelation);
-            Creature? trackedCreature = dRelation?.trackerRep?.representedCreature?.realizedCreature;
+            Creature trackedCreature = dRelation?.trackerRep?.representedCreature?.realizedCreature;
             if (Condition(trackedCreature)) {
                 //Debug.Log("Made it to changing relationship");
                 return new CreatureTemplate.Relationship(newRelation, 10f);
@@ -118,7 +118,7 @@ public class ScareEverything {
 
         On.MirosBirdAI.IUseARelationshipTracker_UpdateDynamicRelationship += (orig, self, dRelation) => {
             CreatureTemplate.Relationship relationship = orig(self, dRelation);
-            Creature? trackedCreature = dRelation?.trackerRep?.representedCreature?.realizedCreature;
+            Creature trackedCreature = dRelation?.trackerRep?.representedCreature?.realizedCreature;
             if (Condition(trackedCreature)) {
                 //Debug.Log("Made it to changing relationship");
                 return new CreatureTemplate.Relationship(newRelation, 10f);
@@ -128,7 +128,7 @@ public class ScareEverything {
 
         On.ScavengerAI.IUseARelationshipTracker_UpdateDynamicRelationship += (orig, self, dRelation) => {
             CreatureTemplate.Relationship relationship = orig(self, dRelation);
-            Creature? trackedCreature = dRelation?.trackerRep?.representedCreature?.realizedCreature;
+            Creature trackedCreature = dRelation?.trackerRep?.representedCreature?.realizedCreature;
             if (Condition(trackedCreature)) {
                 //Debug.Log("Made it to changing relationship");
                 return new CreatureTemplate.Relationship(newRelation, 10f);
@@ -138,7 +138,7 @@ public class ScareEverything {
 
         On.TempleGuardAI.IUseARelationshipTracker_UpdateDynamicRelationship += (orig, self, dRelation) => {
             CreatureTemplate.Relationship relationship = orig(self, dRelation);
-            Creature? trackedCreature = dRelation?.trackerRep?.representedCreature?.realizedCreature;
+            Creature trackedCreature = dRelation?.trackerRep?.representedCreature?.realizedCreature;
             if (Condition(trackedCreature)) {
                 //Debug.Log("Made it to changing relationship");
                 return new CreatureTemplate.Relationship(newRelation, 10f);
@@ -148,7 +148,7 @@ public class ScareEverything {
 
         On.VultureAI.IUseARelationshipTracker_UpdateDynamicRelationship += (orig, self, dRelation) => {
             CreatureTemplate.Relationship relationship = orig(self, dRelation);
-            Creature? trackedCreature = dRelation?.trackerRep?.representedCreature?.realizedCreature;
+            Creature trackedCreature = dRelation?.trackerRep?.representedCreature?.realizedCreature;
             if (Condition(trackedCreature)) {
                 //Debug.Log("Made it to changing relationship");
                 return new CreatureTemplate.Relationship(newRelation, 10f);
@@ -158,7 +158,7 @@ public class ScareEverything {
 
         On.MoreSlugcats.InspectorAI.IUseARelationshipTracker_UpdateDynamicRelationship += (orig, self, dRelation) => {
             CreatureTemplate.Relationship relationship = orig(self, dRelation);
-            Creature? trackedCreature = dRelation?.trackerRep?.representedCreature?.realizedCreature;
+            Creature trackedCreature = dRelation?.trackerRep?.representedCreature?.realizedCreature;
             if (Condition(trackedCreature)) {
                 //Debug.Log("Made it to changing relationship");
                 return new CreatureTemplate.Relationship(newRelation, 10f);
@@ -168,7 +168,7 @@ public class ScareEverything {
 
         On.MoreSlugcats.SlugNPCAI.IUseARelationshipTracker_UpdateDynamicRelationship += (orig, self, dRelation) => {
             CreatureTemplate.Relationship relationship = orig(self, dRelation);
-            Creature? trackedCreature = dRelation?.trackerRep?.representedCreature?.realizedCreature;
+            Creature trackedCreature = dRelation?.trackerRep?.representedCreature?.realizedCreature;
             if (Condition(trackedCreature)) {
                 //Debug.Log("Made it to changing relationship");
                 return new CreatureTemplate.Relationship(newRelation, 10f);
@@ -178,7 +178,7 @@ public class ScareEverything {
 
         On.MoreSlugcats.StowawayBugAI.IUseARelationshipTracker_UpdateDynamicRelationship += (orig, self, dRelation) => {
             CreatureTemplate.Relationship relationship = orig(self, dRelation);
-            Creature? trackedCreature = dRelation?.trackerRep?.representedCreature?.realizedCreature;
+            Creature trackedCreature = dRelation?.trackerRep?.representedCreature?.realizedCreature;
             if (Condition(trackedCreature)) {
                 //Debug.Log("Made it to changing relationship");
                 return new CreatureTemplate.Relationship(newRelation, 10f);
@@ -188,7 +188,7 @@ public class ScareEverything {
 
         On.MoreSlugcats.YeekAI.IUseARelationshipTracker_UpdateDynamicRelationship += (orig, self, dRelation) => {
             CreatureTemplate.Relationship relationship = orig(self, dRelation);
-            Creature? trackedCreature = dRelation?.trackerRep?.representedCreature?.realizedCreature;
+            Creature trackedCreature = dRelation?.trackerRep?.representedCreature?.realizedCreature;
             if (Condition(trackedCreature)) {
                 //Debug.Log("Made it to changing relationship");
                 return new CreatureTemplate.Relationship(newRelation, 10f);

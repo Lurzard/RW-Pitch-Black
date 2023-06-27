@@ -1,22 +1,3 @@
-using System;
-using BepInEx;
-using UnityEngine;
-using SlugBase.Features;
-using static SlugBase.Features.FeatureTypes;
-using System.Security.Permissions;
-using System.Runtime.CompilerServices;
-using MonoMod.RuntimeDetour;
-using System.Reflection;
-using System.IO;
-using System.Linq;
-using RWCustom;
-using System.Collections.Generic;
-using Random = UnityEngine.Random;
-using System.Security;
-using MonoMod.Cil;
-using static Player;
-using Fisobs.Core;
-
 namespace PitchBlack
 {
     public static class BeaconHooks
@@ -24,7 +5,7 @@ namespace PitchBlack
         public static void Apply() {
             On.Player.Grabability += BeaconDontWantToTouchCollar;
             On.Player.SwallowObject += BeaconTransmuteIntoFlashbang;
-            On.Player.GrabUpdate += BeaconCollarStorageUpdate;
+            //On.Player.GrabUpdate += BeaconCollarStorageUpdate;
             On.Player.GrabUpdate += Player_GrabUpdate1;
             On.Player.ctor += BeaconCtor;
             On.Player.GraphicsModuleUpdated += BeaconStorageGrafUpdate;
@@ -63,21 +44,6 @@ namespace PitchBlack
                 {
                     self.objectInStomach = new AbstractConsumable(self.room.world, AbstractPhysicalObject.AbstractObjectType.FlareBomb, null, self.room.GetWorldCoordinate(self.firstChunk.pos), self.room.game.GetNewID(), -1, -1, null);
                     self.SubtractFood(1);
-                }
-            }
-        }
-        public static void BeaconCollarStorageUpdate(On.Player.orig_GrabUpdate orig, Player self, bool eu)
-        {
-            orig(self, eu);
-            if (self.slugcatStats.name == Plugin.BeaconName)
-            {
-                if (Plugin.bCon.TryGetValue(self, out BeaconCWT b))
-                {
-                    if (b.storage != null)
-                    {
-                        b.storage.increment = self.input[0].pckp;
-                        b.storage.Update(eu);
-                    }
                 }
             }
         }
@@ -138,6 +104,24 @@ namespace PitchBlack
                 }
             }
             orig(self, actuallyViewed, eu);
+        }
+
+
+        // Here it is bois, go get it (๑•̀ㅂ•́)و
+        public static void BeaconCollarStorageUpdate(On.Player.orig_GrabUpdate orig, Player self, bool eu)
+        {
+            orig(self, eu);
+            if (self.slugcatStats.name == Plugin.BeaconName)
+            {
+                if (Plugin.bCon.TryGetValue(self, out BeaconCWT b))
+                {
+                    if (b.storage != null)
+                    {
+                        b.storage.increment = self.input[0].pckp;
+                        b.storage.Update(eu);
+                    }
+                }
+            }
         }
     }
 }
