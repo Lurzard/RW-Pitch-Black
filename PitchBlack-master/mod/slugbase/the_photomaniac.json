@@ -33,15 +33,16 @@
 		"diet": {
 			"plants": 0.25,
 			"meat": 0.25,
-			"corpses": 0.25,
-			"overrides": {
-			}
+			"corpses": 0.25
 		},
 		"guide_overseer": 87,
 		"the_glow": true,
 		"world_state": [ "Photomaniac", "Beacon" ],
 		"select_menu_scene": "Slugcat_Photo",
 		"select_menu_scene_ascended": "Ghost_Photo",
-		"sleep_scene": "Sleep_Photo"
+		"sleep_scene": "Sleep_Photo",
+
+		"expedition_enabled": true,
+		"expedition_description": "TBD"
 	}
 }
