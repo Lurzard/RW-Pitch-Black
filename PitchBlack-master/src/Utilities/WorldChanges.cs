@@ -23,12 +23,13 @@ namespace PitchBlack
     {
         public static void Apply()
         {
-            On.Region.GetProperRegionAcronym += WorldChanges.Region_GetProperRegionAcronym;
+            On.Region.GetProperRegionAcronym += Region_GetProperRegionAcronym;
         }
         public static string Region_GetProperRegionAcronym(On.Region.orig_GetProperRegionAcronym orig, SlugcatStats.Name character, string baseAcronym)
         {
             string text = baseAcronym;
-            if (character.ToString() == "Beacon") 
+            //if (character.ToString() == "Beacon") 
+            if (Plugin.BeaconName == character)
             {
                 switch (text)
                 {
@@ -58,7 +59,8 @@ namespace PitchBlack
                 return text;
             }
 
-            if (character.ToString() == "Photomaniac") //Ok so maybe this might've been a bad way to do this :(
+            //if (character.ToString() == "Photomaniac") //Ok so maybe this might've been a bad way to do this :(
+            if (Plugin.PhotoName == character)
             {
                 switch (text)
                 {

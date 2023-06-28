@@ -6,6 +6,7 @@ using System.Security;
 using Fisobs.Core;
 using RWCustom;
 using Random = UnityEngine.Random;
+using Vector2 = UnityEngine.Vector2;
 
 #pragma warning disable CS0618 // Type or member is obsolete
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -18,15 +19,17 @@ namespace PitchBlack
     class Plugin : BaseUnityPlugin
     {
         public const string MOD_ID = "lurzard.pitchblack";
-        public static readonly SlugcatStats.Name BeaconName = new SlugcatStats.Name("Beacon", false);
-        public static readonly SlugcatStats.Name PhotoName = new SlugcatStats.Name("Photomaniac", false);
-        public static ConditionalWeakTable<Player, BeaconCWT> bCon = new ConditionalWeakTable<Player, BeaconCWT>();
-        public static ConditionalWeakTable<Player, PhotoCWT> pCon = new ConditionalWeakTable<Player, PhotoCWT>();
-        public static List<string> currentDialog = new List<string>();
+        public static readonly SlugcatStats.Name BeaconName = new("Beacon", false);
+        public static readonly SlugcatStats.Name PhotoName = new("Photomaniac", false);
+
+        //public static ConditionalWeakTable<Player, BeaconCWT> bCon = new ConditionalWeakTable<Player, BeaconCWT>();
+        //public static ConditionalWeakTable<Player, PhotoCWT> pCon = new ConditionalWeakTable<Player, PhotoCWT>();
+        public static ConditionalWeakTable<Player, ScugCWT> scugCWT = new();
+
+        public static List<string> currentDialog = new();
         public static bool Speaking = false;
         public static AbstractCreature PBOverseer;
         public static int pbcooldown = 0;
-        //public delegate Color orig_OverseerMainColor(OverseerGraphics self);
         public void OnEnable()
         {
             On.RainWorld.OnModsInit += Extras.WrapInit(LoadResources);
@@ -34,13 +37,12 @@ namespace PitchBlack
             Content.Register(new NightTerrorCritob());
             ScareEverything.Apply();
 
-            BeaconHooks.Apply();
-            
-            PhotoHooks.Apply();
-            PhotoGraphics.Apply();
-            PhotoCrafting.CraftingHookApply();
+            ScugHooks.Apply();
+            ScugGraphics.Apply();
 
-            Whiskers.Hooks();
+            BeaconHooks.Apply();
+            PhotoHooks.Apply();
+            PhotoCrafting.Apply();
             
             PBOverseerGraphics.Apply();
 
@@ -63,21 +65,14 @@ namespace PitchBlack
         public void LoadResources(RainWorld rainWorld)
         {
             Futile.atlasManager.LoadAtlas("atlases/photosplt");
-            //string path = AssetManager.ResolveFilePath(/*"mods/PitchBlack/*/"atlases/photosplt");
-            //Debug.Log($"Your path is: {path}. Follow it until you see the light");
-            //FAtlas f = Futile.atlasManager.LoadAtlas(path);
-            //if (f == null)
-            //{
-            //    Debug.Log("OH NO NO SPRITES?!");
-            //}
         }
 
         public static void DisableMod(On.RainWorld.orig_OnModsDisabled orig, RainWorld self, ModManager.Mod[] newlyDisabledMods)
         {
             orig(self, newlyDisabledMods);
-            for (var i = 0; i < newlyDisabledMods.Length; i++)
+            foreach (ModManager.Mod mod in newlyDisabledMods)
             {
-                if (newlyDisabledMods[i].id == Plugin.MOD_ID)
+                if (mod.id == MOD_ID)
                 {
                     if (MultiplayerUnlocks.CreatureUnlockList.Contains(SandboxUnlockID.NightTerror))
                         MultiplayerUnlocks.CreatureUnlockList.Remove(SandboxUnlockID.NightTerror);
@@ -93,25 +88,26 @@ namespace PitchBlack
             orig(self, eu);
             for (int i = 0; i < self.room.abstractRoom.creatures.Count; i++)
             {
-                if (self.room.abstractRoom.creatures[i].realizedCreature != null && (Custom.DistLess(self.firstChunk.pos, self.room.abstractRoom.creatures[i].realizedCreature.mainBodyChunk.pos, self.LightIntensity * 600f) || (Custom.DistLess(self.firstChunk.pos, self.room.abstractRoom.creatures[i].realizedCreature.mainBodyChunk.pos, self.LightIntensity * 1600f) && self.room.VisualContact(self.firstChunk.pos, self.room.abstractRoom.creatures[i].realizedCreature.mainBodyChunk.pos))))
+                if (self.room.abstractRoom.creatures[i].realizedCreature != null
+                    && CreatureIsWithinFlareBombRange(self, self.room.abstractRoom.creatures[i].realizedCreature.mainBodyChunk.pos)
+                    && !self.room.abstractRoom.creatures[i].realizedCreature.dead
+                    && CreatureIsSpider(self.room.abstractRoom.creatures[i].creatureTemplate.type))
                 {
-                    if (self.room.abstractRoom.creatures[i].creatureTemplate.type == CreatureTemplate.Type.BigSpider && !self.room.abstractRoom.creatures[i].realizedCreature.dead)
-                    {
-                        self.room.abstractRoom.creatures[i].realizedCreature.firstChunk.vel += Custom.DegToVec(Random.value * 360f) * Random.value * 7f;
-                        self.room.abstractRoom.creatures[i].realizedCreature.Die();
-                    }
-                    if (self.room.abstractRoom.creatures[i].creatureTemplate.type == CreatureTemplate.Type.SpitterSpider && !self.room.abstractRoom.creatures[i].realizedCreature.dead)
-                    {
-                        self.room.abstractRoom.creatures[i].realizedCreature.firstChunk.vel += Custom.DegToVec(Random.value * 360f) * Random.value * 7f;
-                        self.room.abstractRoom.creatures[i].realizedCreature.Die();
-                    }
-                    if (self.room.abstractRoom.creatures[i].creatureTemplate.type == MoreSlugcats.MoreSlugcatsEnums.CreatureTemplateType.MotherSpider && !self.room.abstractRoom.creatures[i].realizedCreature.dead)
-                    {
-                        self.room.abstractRoom.creatures[i].realizedCreature.firstChunk.vel += Custom.DegToVec(Random.value * 360f) * Random.value * 7f;
-                        self.room.abstractRoom.creatures[i].realizedCreature.Die();
-                    }
+                    self.room.abstractRoom.creatures[i].realizedCreature.firstChunk.vel += Custom.DegToVec(Random.value * 360f) * Random.value * 7f;
+                    self.room.abstractRoom.creatures[i].realizedCreature.Die();
                 }
             };
+        }
+        public static bool CreatureIsWithinFlareBombRange(FlareBomb self, Vector2 creaturePos)
+        {
+            return Custom.DistLess(self.firstChunk.pos, creaturePos, self.LightIntensity * 600f)
+                || (Custom.DistLess(self.firstChunk.pos, creaturePos, self.LightIntensity * 1600f) && self.room.VisualContact(self.firstChunk.pos, creaturePos));
+        }
+        public static bool CreatureIsSpider(CreatureTemplate.Type creatureTemplateType)
+        {
+            return creatureTemplateType == CreatureTemplate.Type.BigSpider
+                || creatureTemplateType == CreatureTemplate.Type.SpitterSpider
+                || creatureTemplateType == MoreSlugcats.MoreSlugcatsEnums.CreatureTemplateType.MotherSpider;
         }
 
         #region Unused Code

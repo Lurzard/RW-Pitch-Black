@@ -4,14 +4,16 @@ using UnityEngine;
 
 namespace PitchBlack
 {
-    internal class PhotoCWT
+    public class PhotoCWT
     {
-        public int photoSpriteIndex{ get; private set; }
+        public ScugCWT scugCWTData; //for if you need to get any variables from ScugCWT while accessing PhotoCWT
+        public int photoSpriteIndex { get; private set; }
         public float[] photoSpriteScale;
-        public PhotoCWT()
+        public PhotoCWT(ScugCWT cwtData)
         {
-            this.photoSpriteIndex = -1;
-            this.photoSpriteScale = new float[2];
+            scugCWTData = cwtData;
+            photoSpriteIndex = -1;
+            photoSpriteScale = new float[2];
         }
 
         public int parryCD = 0;
@@ -19,22 +21,60 @@ namespace PitchBlack
         public int parryMax = 10;
         public int parryClock = 240;
 
+
+        public void Update()
+        {
+            scugCWTData.playerRef.TryGetTarget(out Player self);
+            //Parry
+            UpdateParryCD(self);
+
+            // Parry Input tolerance
+            int tolerance = 3;
+            bool gParryLeanPckp = false, gParryLeanJmp = false;
+            for (int i = 0; i <= tolerance; i++)
+            {
+                if (self.input[i].pckp)
+                {
+                    gParryLeanPckp = i < tolerance;
+                }
+                if (self.input[i].jmp)
+                {
+                    gParryLeanJmp = i < tolerance;
+                }
+            }
+            bool airParry = gParryLeanPckp && self.wantToJump > 0;
+            bool groundParry = self.input[0].y < 0 && self.bodyChunks[1].contactPoint.y < 0 && gParryLeanJmp && gParryLeanPckp;
+
+            if (self.Consious && (airParry || groundParry))
+            {
+                Debug.Log("Input - Air: " + airParry);
+                Debug.Log("Input - Ground: " + groundParry);
+                PhotoParry(self);
+            }
+
+            // Sparking when close to death VFX
+            if (self.room != null && parryNum > parryMax - 5)
+            {
+                self.room.AddObject(new Spark(self.mainBodyChunk.pos, RWCustom.Custom.RNV(), Color.white, null, 4, 8));
+            }
+        }
+
         internal void UpdateParryCD(Player self)
         {
-            if (this.parryCD > 0)
+            if (parryCD > 0)
             {
-                this.parryCD--;
+                parryCD--;
             }
-            if (!self.Stunned && this.parryNum > 0)
+            if (!self.Stunned && parryNum > 0)
             {
-                if (this.parryClock > 0)
+                if (parryClock > 0)
                 {
-                    this.parryClock--;
+                    parryClock--;
                 }
-                else if (this.parryClock == 0)
+                else if (parryClock == 0)
                 {
-                    this.parryNum--;
-                    this.parryClock = 240;
+                    parryNum--;
+                    parryClock = 240;
                 }
             }
         }
@@ -48,11 +88,11 @@ namespace PitchBlack
                 return;
             }
 
-            if (this.parryCD == 0)
+            if (parryCD == 0)
             {
                 // Set cooldown
-                this.parryCD = 160;
-                this.parryNum++;
+                parryCD = 160;
+                parryNum++;
 
                 // Ranges (for easy value change without needing to look through the code ;) )
                 float weaponRange = 300f;  // Artificer default
@@ -95,10 +135,10 @@ namespace PitchBlack
                         // Check if creature is too far from stun distance
                         if (
                             !(RWCustom.Custom.Dist(pos, c.firstChunk.pos) < creatureRange) ||
-                            (
+                            
                                 !(RWCustom.Custom.Dist(pos, c.firstChunk.pos) < 60f) &&
                                 !self.room.VisualContact(self.abstractCreature.pos, c.abstractCreature.pos)
-                            )
+                            
                         )
                         {
                             continue;
@@ -116,7 +156,7 @@ namespace PitchBlack
                             null,
                             Creature.DamageType.Electric,
                             0.1f,
-                            (maxStunDuration * (1 - (RWCustom.Custom.Dist(pos, c.firstChunk.pos) / creatureRange)) * Mathf.Lerp(c.Template.baseStunResistance, 1f, 0.5f))
+                            maxStunDuration * (1 - RWCustom.Custom.Dist(pos, c.firstChunk.pos) / creatureRange) * Mathf.Lerp(c.Template.baseStunResistance, 1f, 0.5f)
                         );
                         self.room.AddObject(new CreatureSpasmer(c, allowDead: false, c.stun));
 
@@ -139,7 +179,7 @@ namespace PitchBlack
                 }
 
                 // And stun yourself.
-                if (this.parryNum >= this.parryMax)
+                if (parryNum >= parryMax)
                 {
                     PhotoExplosiveDie(self);
                 }
@@ -178,7 +218,7 @@ namespace PitchBlack
             Vector2 v = Vector2.Lerp(self.firstChunk.pos, self.firstChunk.lastPos, 0.35f);
             self.room.AddObject(new SootMark(self.room, v, 120f, bigSprite: true));
             self.room.AddObject(new Explosion(self.room, self, v, 8, 500f, 60f, 1f, 360f, 0.4f, self, 0.05f, 120f, 0f));
-            self.room.ScreenMovement(v, default(Vector2), 1.5f);
+            self.room.ScreenMovement(v, default, 1.5f);
             self.room.PlaySound(SoundID.Bomb_Explode, self.mainBodyChunk);
             self.Die();
         }
@@ -186,11 +226,14 @@ namespace PitchBlack
         /// <summary>
         /// Sets the sprite cue once. If the characer is initiated but the cue has already been set, ignore the cue set()
         /// </summary>
-        public void PhotoSetUniqueSpriteIndex(int cue){
-            if (this.photoSpriteIndex == -1){
-                this.photoSpriteIndex = cue;
+        public void PhotoSetUniqueSpriteIndex(int cue)
+        {
+            if (photoSpriteIndex == -1)
+            {
+                photoSpriteIndex = cue;
             }
-            else {
+            else
+            {
                 Debug.Log("Photo sprite index is already set!");
             }
         }

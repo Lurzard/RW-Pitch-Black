@@ -4,7 +4,7 @@ namespace PitchBlack;
 
 public class MiscUtils
 {
-    public static bool SlugIsInMod(SlugcatStats.Name slugName)
+    public static bool IsBeaconOrPhoto(SlugcatStats.Name slugName)
     {
         return null != slugName && (slugName == BeaconName || slugName == PhotoName);
     }

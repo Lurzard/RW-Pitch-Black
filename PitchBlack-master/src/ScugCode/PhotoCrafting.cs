@@ -19,7 +19,7 @@ namespace PitchBlack
             Explosive
         }
 
-        public static void CraftingHookApply()
+        public static void Apply()
         {
             IL.Player.GrabUpdate += Player_GrabUpdate;
             On.Player.Grabability += Player_Grabability;

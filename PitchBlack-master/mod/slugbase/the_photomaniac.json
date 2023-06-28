@@ -1,8 +1,9 @@
 {
 	"id": "Photomaniac",
 	"name": "The Photomaniac",
-	"description": "A maniacal juvenile seeking its older sibling, possessing the same luminosity.<LINE>It's electrical abilities, though ill wielded, give it a tactical advantage",
+	"description": "A maniacal juvenile seeking its older sibling, possessing the same luminosity.<LINE>Its electrical abilities, though ill-wielded, give it a tactical advantage.",
 	"features": {
+		"color": "010038",
 		"custom_colors": [
 			{
 				"name": "Body",

@@ -1,0 +1,237 @@
+﻿using System;
+using UnityEngine;
+using RWCustom;
+using Colour = UnityEngine.Color;
+using SlugBase.DataTypes;
+using SlugBase.Features;
+using SlugBase;
+
+namespace PitchBlack;
+
+public class Whiskers
+{
+    //whisker data is put into Photo's pre-existing CWT instead of making a new one
+
+    public bool ready = false;
+    public WeakReference<Player> playerRef;
+    public string spriteName = "LizardScaleA0"; //just for changing out what sprite is used
+
+    public int initialWhiskerIndex;
+    public int endWhiskerIndex;
+    public int initialLowerWhiskerIndex; //its just initialWhiskerIndex + headScales.Length / 2
+
+    public Vector2[] headPositions = new Vector2[4];
+    public PlayerGraphics.AxolotlScale[] headScales = new PlayerGraphics.AxolotlScale[4];
+    public Colour whiskerColour;
+
+    public Whiskers(PlayerGraphics playerGraphics)
+    {
+        playerRef = new WeakReference<Player>(playerGraphics.player); //sets up a weak reference to the player
+
+        for (int i = 0; i < headScales.Length; i++)
+        {
+            headScales[i] = new PlayerGraphics.AxolotlScale(playerGraphics);
+            headPositions[i] = new Vector2(i < headScales.Length / 2 ? 0.7f : -0.7f, i == 1 ? 0.035f : 0.026f);
+        }
+
+        SetupWhiskerColour(playerGraphics.player);
+
+        //initialWhiskerIndex, endWhiskerIndex & initialLowerWhiskerIndex is done in PlayerGraphics.InitializeSprites;
+    }
+    //public int FaceWhiskerPos(int side, int pair)
+    //{
+    //    //it goes 14, 16, 15, 17, something like that
+    //    //this falls apart with a larger array and starts to get previously-accessed indices
+    //    return initialWhiskerIndex + side + pair + pair;
+    //}
+    public void SetupWhiskerColour(Player player)
+    {
+        //prevent arena colours being assinged to main player outside of arena
+        bool jollyDefaultColourMode = ModManager.CoopAvailable && Custom.rainWorld.options.jollyColorMode == Options.JollyColorMode.DEFAULT;
+        int playerNumber = player.room.game.session is not ArenaGameSession && (player.playerState.playerNumber == 0 || jollyDefaultColourMode) ? -1 : player.playerState.playerNumber;
+
+        if (SlugBaseCharacter.TryGet(player.slugcatStats.name, out SlugBaseCharacter charac)
+                && charac.Features.TryGet(PlayerFeatures.CustomColors, out ColorSlot[] customColours))
+        {
+            //loading default colours
+            if (customColours.Length > 0)
+                whiskerColour = customColours[0].GetColor(playerNumber);
+        }
+
+        if (PlayerGraphics.customColors != null && !player.IsJollyPlayer && !ModManager.JollyCoop)
+        {
+            if (PlayerGraphics.customColors.Count > 0)
+                whiskerColour = PlayerGraphics.CustomColorSafety(0);
+        }
+        else if (ModManager.CoopAvailable)
+        {
+            if (playerNumber > 0)
+            {
+                //p1 is null for some reason, so i have to check for player and colour mode
+                whiskerColour = PlayerGraphics.JollyColor(playerNumber, 0);
+            }
+            else if (Custom.rainWorld.options.jollyColorMode == Options.JollyColorMode.CUSTOM)
+            {
+                whiskerColour = Custom.rainWorld.options.jollyPlayerOptionsArray[0].GetBodyColor();
+            }
+        }
+
+        if (whiskerColour == null) //just in case
+            whiskerColour = Colour.white;
+    }
+
+    public void Update()
+    {
+        if (!playerRef.TryGetTarget(out Player player))
+            return;
+
+        PlayerGraphics playerGraphics = player.graphicsModule as PlayerGraphics;
+        Vector2 pos = player.bodyChunks[0].pos;
+        Vector2 pos2 = player.bodyChunks[1].pos;
+        //int whiskerIndexedToZero = initialLowerWhiskerIndex - initialWhiskerIndex;
+
+        for (int index = 0; index < headPositions.Length; index++)
+        {
+            float num = 0f;
+            float num2 = 90f;
+            int num3 = index % (headScales.Length / 2);
+            float num4 = num2 / (headScales.Length / 2);
+
+            //pos.x is the mf with a stronghold over whisker movement and rotation
+            if (Plugin.BeaconName == player.slugcatStats.name)
+            {
+                //beacon works the same if i didnt reverse it like this
+                //i just didnt want to mess with rotation math AGAIN just to have an identical end result
+                //since i originally thought beacon had to be reversed like this
+                if ((index + 2) % 2 != 0)
+                {
+                    pos.x -= 4f;
+                }
+                else
+                {
+                    pos.x += 2f;
+                    //if this Abs is lower than the above pos x's Abs
+                    //then the right whiskers will not get shaved when beacon jump-walks to the right
+                }
+            }
+            else
+            {
+                if ((index + 2) % 2 != 0) //dont divide by zero exception on me
+                {
+                    pos.x += 8f;
+                }
+                else
+                    pos.x -= 8f;
+            }
+
+            Vector2 a = Custom.rotateVectorDeg(Custom.DegToVec(0f), num3 * num4 - num2 / 2f + num + 90f);
+            float f = Custom.VecToDeg(playerGraphics.lookDirection);
+            Vector2 vector = Custom.rotateVectorDeg(Custom.DegToVec(0f), num3 * num4 - num2 / 2f + num);
+            Vector2 a2 = Vector2.Lerp(vector, Custom.DirVec(pos2, pos), Mathf.Abs(f));
+
+            if (headPositions[index].y < 0.2f)
+            {
+                a2 -= a * Mathf.Pow(Mathf.InverseLerp(0.2f, 0f, headPositions[index].y), 2f) * 2f;
+            }
+            a2 = Vector2.Lerp(a2, vector, Mathf.Pow(0.0875f, 1f)).normalized;
+            Vector2 vector2 = pos + a2 * headScales.Length;
+            if (!Custom.DistLess(headScales[index].pos, vector2, headScales[index].length / 2f))
+            {
+                Vector2 a3 = Custom.DirVec(headScales[index].pos, vector2);
+                float num5 = Vector2.Distance(headScales[index].pos, vector2);
+                float num6 = headScales[index].length / 2f;
+                headScales[index].pos += a3 * (num5 - num6);
+                headScales[index].vel += a3 * (num5 - num6);
+            }
+            headScales[index].vel += Vector2.ClampMagnitude(vector2 - headScales[index].pos, 10f) / Mathf.Lerp(5f, 1.5f, 0.5873646f);
+            headScales[index].vel *= Mathf.Lerp(1f, 0.8f, 0.5873646f);
+            headScales[index].ConnectToPoint(pos, headScales[index].length, true, 0f, Vector2.zero, 0f, 0f);
+            headScales[index].Update();
+        }
+    }
+    public void InitiateSprites(RoomCamera.SpriteLeaser sLeaser)
+    {
+        if (!playerRef.TryGetTarget(out Player player))
+            return;
+
+        float whiskerHeight = 10f / Futile.atlasManager.GetElementWithName(spriteName).sourcePixelSize.y;
+        if (Plugin.BeaconName == player.slugcatStats.name)
+            whiskerHeight *= 1.5f;
+
+        for (int i = initialWhiskerIndex; i < endWhiskerIndex; i++)
+        {
+            sLeaser.sprites[i] = new(spriteName)
+            {
+                scaleY = whiskerHeight,
+                anchorY = 0.1f
+            };
+        }
+    }
+    public void AddToContainer(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
+    {
+        FContainer foreground = rCam.ReturnFContainer("Foreground");
+        FContainer midground = rCam.ReturnFContainer("Midground");
+        for (int i = initialWhiskerIndex; i < endWhiskerIndex; i++)
+        {
+            foreground.RemoveChild(sLeaser.sprites[i]);
+            midground.AddChild(sLeaser.sprites[i]);
+            sLeaser.sprites[i].MoveInFrontOfOtherNode(sLeaser.sprites[3]);
+        }
+    }
+    public void DrawSprites(RoomCamera.SpriteLeaser sLeaser, float timeStacker, Vector2 camPos)
+    {
+        if (!playerRef.TryGetTarget(out Player player))
+            return;
+
+        for (int i = initialWhiskerIndex; i < endWhiskerIndex; i++)
+        {
+            int index = i - initialWhiskerIndex;
+            Vector2 vector = new(sLeaser.sprites[9].x + camPos.x, sLeaser.sprites[9].y + camPos.y);
+
+            float rotationAngle; //+ve goes down, -ve goes up (for left whiskers, opposite for right)
+
+            if (Plugin.BeaconName == player.slugcatStats.name)
+                rotationAngle = -135f; //+ve goes down, -ve goes up (for left whiskers, opposite for right)
+            else
+                rotationAngle = 180f;
+
+            if (i >= initialLowerWhiskerIndex)
+            {
+                //makes the lower whiskers go down so it wont overlap with the upper whiskers
+                //this might be the upper whiskers actually. i dont know
+                rotationAngle -= 40f;
+            }
+            else if (Plugin.BeaconName == player.slugcatStats.name && i % 2 != 0)
+            {
+                //put the top left whiskers a little more down
+                rotationAngle -= 10f;
+            }
+
+            if (i % 2 != 0)
+            {
+                //left whiskers
+                if (Plugin.PhotoName == player.slugcatStats.name)
+                    rotationAngle -= 4f;
+                else
+                    rotationAngle += 2f;
+                rotationAngle *= -1;
+                vector.x -= 5f;
+                sLeaser.sprites[i].scaleX = -0.4f;
+                //sLeaser.sprites[i].color = Colour.green;
+            }
+            else
+            {
+                //right whiskers
+                rotationAngle += 5f;
+                vector.x += 5f;
+                sLeaser.sprites[i].scaleX = 0.4f;
+                //sLeaser.sprites[i].color = Colour.red;
+            }
+
+            sLeaser.sprites[i].x = vector.x - camPos.x;
+            sLeaser.sprites[i].y = vector.y - camPos.y;
+            sLeaser.sprites[i].rotation = Custom.AimFromOneVectorToAnother(vector, Vector2.Lerp(headScales[index].lastPos, headScales[index].pos, timeStacker)) + rotationAngle;
+            sLeaser.sprites[i].color = whiskerColour;
+        }
+    }
+}

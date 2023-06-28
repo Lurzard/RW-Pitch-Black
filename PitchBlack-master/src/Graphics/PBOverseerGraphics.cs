@@ -19,7 +19,7 @@ public static class PBOverseerGraphics
     {
         Colour val = orig(self, f, timeStacker);
         //if ((self.overseer.abstractCreature.abstractAI as OverseerAbstractAI).ownerIterator == 87)
-        if (self.overseer.room?.world.game.session is StoryGameSession story && MiscUtils.SlugIsInMod(story.game.StoryCharacter) && self.overseer.PlayerGuide)
+        if (self.overseer.room?.world.game.session is StoryGameSession story && MiscUtils.IsBeaconOrPhoto(story.game.StoryCharacter) && self.overseer.PlayerGuide)
         {
             return Colour.Lerp(
                 Colour.Lerp(Custom.RGB2RGBA((self.MainColor + new Colour(0f, 0f, 1f) + self.earthColor * 8f) / 10f, 0.5f),
@@ -34,7 +34,7 @@ public static class PBOverseerGraphics
     {
         Colour val = orig(self);
         //if ((self.overseer.abstractCreature.abstractAI as OverseerAbstractAI).ownerIterator == 87)
-        if (self.overseer.room?.world.game.session is StoryGameSession story && MiscUtils.SlugIsInMod(story.game.StoryCharacter) && self.overseer.PlayerGuide)
+        if (self.overseer.room?.world.game.session is StoryGameSession story && MiscUtils.IsBeaconOrPhoto(story.game.StoryCharacter) && self.overseer.PlayerGuide)
         {
             return Custom.hexToColor("f02961");
         }

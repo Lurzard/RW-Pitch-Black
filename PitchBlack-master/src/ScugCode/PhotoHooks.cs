@@ -6,63 +6,21 @@ namespace PitchBlack
     public static class PhotoHooks
     {
         public static void Apply() {
-            On.Player.ctor += PhotoPlayerCtor;
             On.Player.Update += PhotoParry;
             On.Player.Update += PhotoCallOverseerToRoom;
-        }
-        public static void PhotoPlayerCtor(On.Player.orig_ctor orig, Player self, AbstractCreature abstractCreature, World world)
-        {
-            orig(self, abstractCreature, world);
-            if (self.slugcatStats.name == Plugin.PhotoName)
-            {
-                self.playerState.isPup = true;
-            }
         }
         public static void PhotoParry(On.Player.orig_Update orig, Player self, bool eu)
         {
             orig(self, eu);
-            if (!Plugin.pCon.TryGetValue(self, out PhotoCWT e))
+            if (Plugin.scugCWT.TryGetValue(self, out ScugCWT cwt) && cwt.IsPhoto)
             {
-                return;
-            }
-
-            // Parry
-            e.UpdateParryCD(self);
-
-            // Parry Input tolerance
-            int tolerance = 3;
-            bool gParryLeanPckp = false, gParryLeanJmp = false;
-            for (int i = 0; i <= tolerance; i++)
-            {
-                if (self.input[i].pckp)
-                {
-                    gParryLeanPckp = i < tolerance;
-                }
-                if (self.input[i].jmp)
-                {
-                    gParryLeanJmp = i < tolerance;
-                }
-            }
-            bool airParry = gParryLeanPckp && self.wantToJump > 0;
-            bool groundParry = self.input[0].y < 0 && self.bodyChunks[1].contactPoint.y < 0 && gParryLeanJmp && gParryLeanPckp;
-
-            if (self.Consious && (airParry || groundParry))
-            {
-                Debug.Log("Input - Air: " + airParry);
-                Debug.Log("Input - Ground: " + groundParry);
-                e.PhotoParry(self);
-            }
-
-            // Sparking when close to death VFX
-            if (self.room != null && e.parryNum > e.parryMax - 5)
-            {
-                self.room.AddObject(new Spark(self.mainBodyChunk.pos, RWCustom.Custom.RNV(), Color.white, null, 4, 8));
+                cwt.Photo.Update();
             }
         }
         public static void PhotoCallOverseerToRoom(On.Player.orig_Update orig, Player self, bool eu)
         {
             orig(self, eu);
-#if false
+            #if false
             if (Input.GetKey(KeyCode.C) && Plugin.pbcooldown == 0 && self.room != null && self.slugcatStats.name == Plugin.PhotoName)
             {
                 Plugin.pbcooldown = 400;
@@ -102,8 +60,8 @@ namespace PitchBlack
                     Plugin.Speaking = true;
                 }
             }
-#endif
-            if (Plugin.Speaking == true)
+            #endif
+            if (Plugin.Speaking)
             {
                 if (Plugin.currentDialog.Count == 0)
                 {
