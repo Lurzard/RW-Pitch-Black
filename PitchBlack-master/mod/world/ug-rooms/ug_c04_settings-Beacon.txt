@@ -9,7 +9,7 @@ SecondWaveLength: 1
 SecondWaveAmplitude: 0.0001
 Grime: 0.173913
 Palette: 11
-EffectColorA: 5
+EffectColorA: 21
 EffectColorB: 6
 Effects: RockFlea-0.3695652-297-273, Fog-0-294-222, WaterDepth-0.0326087-288-149, SilenceWater-0.5326087-33-119, DayNight-0.4782609-20-20, 
 PlacedObjects: UniqueDataPearl><460.1597><1766.12><266~-29~0~0~Misc~0, InsectGroup><452.2013><1808.194><1~115~0~0~RockFlea~1, InsectGroup><455.8656><1929.663><-3~125~0~0~RockFlea~1, DayNightSettings><54.89395><541.3612><5~8.660254~11~4, 
