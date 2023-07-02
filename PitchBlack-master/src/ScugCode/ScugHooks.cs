@@ -40,7 +40,7 @@ public class ScugHooks
                     return Player.ObjectGrabability.CantGrab;
             }
         }
-        else if (self.slugcatStats.name == Plugin.PhotoName && obj is Weapon)
+        else if (self.slugcatStats.name == Plugin.PhotoName && obj is Spear)
             return Player.ObjectGrabability.OneHand;
         return result;
     }

@@ -48,17 +48,17 @@ namespace PitchBlack
 
 
         // Here it is bois, go get it (๑•̀ㅂ•́)و
-        public static void BeaconCollarStorageUpdate(On.Player.orig_GrabUpdate orig, Player self, bool eu)
-        {
-            orig(self, eu);
-            if (Plugin.scugCWT.TryGetValue(self, out ScugCWT cwt) && cwt.IsBeacon)
-            {
-                if (cwt.Beacon.storage != null)
-                {
-                    cwt.Beacon.storage.increment = self.input[0].pckp;
-                    cwt.Beacon.storage.Update(eu);
-                }
-            }
-        }
+        //public static void BeaconCollarStorageUpdate(On.Player.orig_GrabUpdate orig, Player self, bool eu)
+        //{
+        //    orig(self, eu);
+        //    if (Plugin.scugCWT.TryGetValue(self, out ScugCWT cwt) && cwt.IsBeacon)
+        //    {
+        //        if (cwt.Beacon.storage != null)
+        //        {
+        //            cwt.Beacon.storage.increment = self.input[0].pckp;
+        //            cwt.Beacon.storage.Update(eu);
+        //        }
+        //    }
+        //}
     }
 }

@@ -86,6 +86,7 @@ public class ScugGraphics
                 {
                     rCam.ReturnFContainer("Foreground").RemoveChild(sLeaser.sprites[cwt.Photo.photoSpriteIndex]);
                     rCam.ReturnFContainer("Midground").AddChild(sLeaser.sprites[cwt.Photo.photoSpriteIndex]);
+                    sLeaser.sprites[cwt.Photo.photoSpriteIndex].MoveToBack(); //so sprites wont go in front of creatures, walls, etc
                     sLeaser.sprites[cwt.Photo.photoSpriteIndex].MoveBehindOtherNode(sLeaser.sprites[5]);
                 }
             }

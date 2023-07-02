@@ -22,7 +22,6 @@ namespace PitchBlack
         public static void Apply()
         {
             IL.Player.GrabUpdate += Player_GrabUpdate;
-            On.Player.Grabability += Player_Grabability;
             On.Player.GraspsCanBeCrafted += Player_GraspsCanBeCrafted;
             IL.Player.SpitUpCraftedObject += Player_SpitUpCraftedObject;
         }
@@ -54,14 +53,6 @@ namespace PitchBlack
             {
                 Debug.LogException(e);
             }
-        }
-        
-        public static Player.ObjectGrabability Player_Grabability(On.Player.orig_Grabability orig, Player self, PhysicalObject obj)
-        {
-            Player.ObjectGrabability val = orig(self, obj);
-            if (self.slugcatStats.name == Plugin.PhotoName && obj is Spear)
-                return Player.ObjectGrabability.OneHand;
-            return val;
         }
 
         public static bool Player_GraspsCanBeCrafted(On.Player.orig_GraspsCanBeCrafted orig, Player self)

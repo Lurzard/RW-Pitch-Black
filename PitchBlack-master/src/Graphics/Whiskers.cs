@@ -5,6 +5,7 @@ using Colour = UnityEngine.Color;
 using SlugBase.DataTypes;
 using SlugBase.Features;
 using SlugBase;
+using System.Reflection;
 
 namespace PitchBlack;
 
@@ -175,6 +176,7 @@ public class Whiskers
         {
             foreground.RemoveChild(sLeaser.sprites[i]);
             midground.AddChild(sLeaser.sprites[i]);
+            sLeaser.sprites[i].MoveToBack(); //so sprites wont go in front of creatures, walls, etc
             sLeaser.sprites[i].MoveInFrontOfOtherNode(sLeaser.sprites[3]);
         }
     }
