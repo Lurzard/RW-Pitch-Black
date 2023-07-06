@@ -1,0 +1,5 @@
+Template: NONE
+Clouds: 1
+Palette: 10
+Effects: FireFlies-0.6956522-20-20, 
+FadePalette: 9, 0.1029438, 0.1029439
