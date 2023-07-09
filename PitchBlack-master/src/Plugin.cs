@@ -7,6 +7,7 @@ using Fisobs.Core;
 using RWCustom;
 using Random = UnityEngine.Random;
 using Vector2 = UnityEngine.Vector2;
+using UnityEngine;
 
 #pragma warning disable CS0618 // Type or member is obsolete
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -42,7 +43,7 @@ namespace PitchBlack
 
             BeaconHooks.Apply();
             PhotoHooks.Apply();
-            PhotoCrafting.Apply();
+            Crafting.Apply();
             
             PBOverseerGraphics.Apply();
 
@@ -65,6 +66,7 @@ namespace PitchBlack
         public void LoadResources(RainWorld rainWorld)
         {
             Futile.atlasManager.LoadAtlas("atlases/photosplt");
+            Futile.atlasManager.LoadAtlas("atlases/nightTerroratlas");
         }
 
         public static void DisableMod(On.RainWorld.orig_OnModsDisabled orig, RainWorld self, ModManager.Mod[] newlyDisabledMods)
@@ -90,13 +92,17 @@ namespace PitchBlack
             {
                 if (self.room.abstractRoom.creatures[i].realizedCreature != null
                     && CreatureIsWithinFlareBombRange(self, self.room.abstractRoom.creatures[i].realizedCreature.mainBodyChunk.pos)
-                    && !self.room.abstractRoom.creatures[i].realizedCreature.dead
-                    && CreatureIsSpider(self.room.abstractRoom.creatures[i].creatureTemplate.type))
+                    && !self.room.abstractRoom.creatures[i].realizedCreature.dead)
                 {
-                    self.room.abstractRoom.creatures[i].realizedCreature.firstChunk.vel += Custom.DegToVec(Random.value * 360f) * Random.value * 7f;
-                    self.room.abstractRoom.creatures[i].realizedCreature.Die();
+                    if (CreatureIsSpider(self.room.abstractRoom.creatures[i].creatureTemplate.type))
+                    {
+                        self.room.abstractRoom.creatures[i].realizedCreature.firstChunk.vel += Custom.DegToVec(Random.value * 360f) * Random.value * 7f;
+                        if (self.thrownBy != null && self.thrownBy.abstractCreature != null)
+                            self.room.abstractRoom.creatures[i].realizedCreature.SetKillTag(self.thrownBy.abstractCreature);
+                        self.room.abstractRoom.creatures[i].realizedCreature.Die();
+                    }
                 }
-            };
+            }
         }
         public static bool CreatureIsWithinFlareBombRange(FlareBomb self, Vector2 creaturePos)
         {

@@ -81,7 +81,7 @@ namespace PitchBlack
                             {
                                 if (ownr.grasps[i] != null && ownr.grasps[i].grabbed is FlareBomb f)
                                 {
-                                    FtoStore(f);
+                                    FlarebombtoStorage(f);
                                     counter = 0;
                                     break;
                                 }
@@ -90,14 +90,14 @@ namespace PitchBlack
                         else if (ownr.grasps[0] != null && ownr.grasps[0].grabbed is FlareBomb f)
                         {
                             // Move flare from main paw to store
-                            FtoStore(f);
+                            FlarebombtoStorage(f);
                             counter = 0;
                         }
                     }
                     if (counter > 20 && storedFlares.Count > 0)
                     {
                         // Move flare from store to paw
-                        FtoPaw(eu);
+                        FlarebombFromStorageToPaw(eu);
                         counter = 0;
                     }
 
@@ -139,7 +139,7 @@ namespace PitchBlack
                 }
             }
 
-            public void FtoPaw(bool eu)
+            public void FlarebombFromStorageToPaw(bool eu)
             {
                 // See if it's possible to add weapon
                 for (int i = 0; i < 2; i++)
@@ -188,7 +188,7 @@ namespace PitchBlack
 
             }
 
-            public void FtoStore(FlareBomb f)
+            public void FlarebombtoStorage(FlareBomb f)
             {
                 // Take off the flare from hand
                 for (int i = 0; i < 2; i++)

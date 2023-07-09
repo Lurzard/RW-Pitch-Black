@@ -86,7 +86,6 @@ public class ScugGraphics
                 {
                     rCam.ReturnFContainer("Foreground").RemoveChild(sLeaser.sprites[cwt.Photo.photoSpriteIndex]);
                     rCam.ReturnFContainer("Midground").AddChild(sLeaser.sprites[cwt.Photo.photoSpriteIndex]);
-                    sLeaser.sprites[cwt.Photo.photoSpriteIndex].MoveToBack(); //so sprites wont go in front of creatures, walls, etc
                     sLeaser.sprites[cwt.Photo.photoSpriteIndex].MoveBehindOtherNode(sLeaser.sprites[5]);
                 }
             }
@@ -135,23 +134,29 @@ public class ScugGraphics
     private static void PlayerGraphics_ApplyPalette(On.PlayerGraphics.orig_ApplyPalette orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
     {
         orig(self, sLeaser, rCam, palette);
-        if (scugCWT.TryGetValue(self.player, out ScugCWT cwt) && cwt.IsPhoto && cwt.Photo.photoSpriteIndex < sLeaser.sprites.Length)
+        if (scugCWT.TryGetValue(self.player, out ScugCWT cwt))
         {
-            // Jolly Coop Colors!
-            if (ModManager.CoopAvailable && self.useJollyColor)
+            if (cwt.IsPhoto && cwt.Photo.photoSpriteIndex < sLeaser.sprites.Length)
             {
-                sLeaser.sprites[cwt.Photo.photoSpriteIndex].color = PlayerGraphics.JollyColor(self.player.playerState.playerNumber, 2);
+                // Jolly Coop Colors!
+                if (ModManager.CoopAvailable && self.useJollyColor)
+                {
+                    sLeaser.sprites[cwt.Photo.photoSpriteIndex].color = PlayerGraphics.JollyColor(self.player.playerState.playerNumber, 2);
+                }
+                // Custom color (not jolly!)
+                else if (PlayerGraphics.CustomColorsEnabled())
+                {
+                    sLeaser.sprites[cwt.Photo.photoSpriteIndex].color = PlayerGraphics.CustomColorSafety(2);
+                }
+                // Arena/no-custom color
+                else
+                {
+                    sLeaser.sprites[cwt.Photo.photoSpriteIndex].color = Colour.white;
+                }
             }
-            // Custom color (not jolly!)
-            else if (PlayerGraphics.CustomColorsEnabled())
-            {
-                sLeaser.sprites[cwt.Photo.photoSpriteIndex].color = PlayerGraphics.CustomColorSafety(2);
-            }
-            // Arena/no-custom color
-            else
-            {
-                sLeaser.sprites[cwt.Photo.photoSpriteIndex].color = Colour.white;
-            }
+
+            //apply whisker palette correctly
+            cwt.whiskers.ApplyPalette(sLeaser);
         }
     }
 }

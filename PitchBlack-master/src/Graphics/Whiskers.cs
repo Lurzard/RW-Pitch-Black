@@ -176,7 +176,6 @@ public class Whiskers
         {
             foreground.RemoveChild(sLeaser.sprites[i]);
             midground.AddChild(sLeaser.sprites[i]);
-            sLeaser.sprites[i].MoveToBack(); //so sprites wont go in front of creatures, walls, etc
             sLeaser.sprites[i].MoveInFrontOfOtherNode(sLeaser.sprites[3]);
         }
     }
@@ -234,6 +233,14 @@ public class Whiskers
             sLeaser.sprites[i].y = vector.y - camPos.y;
             sLeaser.sprites[i].rotation = Custom.AimFromOneVectorToAnother(vector, Vector2.Lerp(headScales[index].lastPos, headScales[index].pos, timeStacker)) + rotationAngle;
             sLeaser.sprites[i].color = whiskerColour;
+        }
+    }
+
+    public void ApplyPalette(RoomCamera.SpriteLeaser sLeaser)
+    {
+        for (int i = initialWhiskerIndex; i < endWhiskerIndex; i++)
+        {
+            sLeaser.sprites[i].color = sLeaser.sprites[0].color; //so whisker colour is same as head colour
         }
     }
 }

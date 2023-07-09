@@ -1,5 +1,6 @@
 ﻿using MonoMod.RuntimeDetour;
 using PitchBlack;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using static System.Reflection.BindingFlags;
@@ -30,6 +31,13 @@ namespace PitchBlack
         internal static void Apply()
         {
             new Hook(typeof(Centipede).GetMethod("get_Red", Public | NonPublic | Instance), (System.Func<Centipede, bool> orig, Centipede self) => self.Template.type == CreatureTemplateType.NightTerror || orig(self));
+
+            On.WormGrass.WormGrassPatch.InteractWithCreature += WormGrassPatch_InteractWithCreature;
+            On.WormGrass.WormGrassPatch.Update += WormGrassPatch_Update;
+            On.WormGrass.WormGrassPatch.AlreadyTrackingCreature += WormGrassPatch_AlreadyTrackingCreature;
+
+            On.Centipede.Die += Centipede_Die;
+            
             On.Centipede.ctor += Centipede_ctor;
             On.CentipedeGraphics.ctor += CentipedeGraphics_ctor;
             On.CentipedeAI.Update += CentipedeAI_Update;
@@ -37,10 +45,37 @@ namespace PitchBlack
             On.FlareBomb.Update += FlareBomb_Update;
             On.CentipedeAI.DoIWantToShockCreature += CentipedeAI_DoIWantToShockCreature;
             On.Centipede.Shock += Centipede_Shock;
-            On.RainWorld.OnModsInit += RainWorld_OnModsInit;
             On.Centipede.ShortCutColor += Centipede_ShortCutColor;
             On.CentipedeAI.ctor += CentipedeAICTOR;
             On.AbstractCreatureAI.ctor += AbstractCreatureAI_ctor;
+        }
+
+        #region wormgrass immunity (stop getting pulled)
+        private static void WormGrassPatch_InteractWithCreature(On.WormGrass.WormGrassPatch.orig_InteractWithCreature orig, WormGrass.WormGrassPatch self, WormGrass.WormGrassPatch.CreatureAndPull creatureAndPull)
+        {
+            if (creatureAndPull.creature.abstractCreature.creatureTemplate.type != CreatureTemplateType.NightTerror)
+                orig(self, creatureAndPull);
+        }
+
+        public static void WormGrassPatch_Update(On.WormGrass.WormGrassPatch.orig_Update orig, WormGrass.WormGrassPatch self)
+        {
+            orig(self);
+            self.trackedCreatures.RemoveAll(critAndPull => critAndPull.creature.abstractCreature.creatureTemplate.type == CreatureTemplateType.NightTerror);
+        }
+        public static bool WormGrassPatch_AlreadyTrackingCreature(On.WormGrass.WormGrassPatch.orig_AlreadyTrackingCreature orig, WormGrass.WormGrassPatch self, Creature creature)
+        {
+            bool val = orig(self, creature);
+            if (creature.abstractCreature.creatureTemplate.type == CreatureTemplateType.NightTerror && self.trackedCreatures.Any(creatureAndPull => creatureAndPull.creature == creature))
+                return true;
+            return val;
+        }
+        #endregion
+
+        private static void Centipede_Die(On.Centipede.orig_Die orig, Centipede self)
+        {
+            //stop dying lmao
+            if (self.abstractCreature.creatureTemplate.type != CreatureTemplateType.NightTerror)
+                orig(self);
         }
 
         /// <summary>
@@ -90,12 +125,6 @@ namespace PitchBlack
                 return new Color(0.286f, 0.286f, 0.952f);
             }
             return orig(self);
-        }
-
-        private static void RainWorld_OnModsInit(On.RainWorld.orig_OnModsInit orig, RainWorld self)
-        {
-            orig(self);
-            Futile.atlasManager.LoadAtlas("atlases/nightTerroratlas");
         }
 
         private static void Centipede_Shock(On.Centipede.orig_Shock orig, Centipede self, PhysicalObject shockObj)
@@ -151,6 +180,22 @@ namespace PitchBlack
                             {
                                 self.room.abstractRoom.creatures[i].realizedCreature.SetKillTag(self.thrownBy.abstractCreature);
                             }
+
+                            //50% chance of the night terror releasing you from its grasp
+                            Random.InitState(Time.time.GetHashCode());
+                            if (Random.value <= 0.5)
+                            {
+                                for (int j = 0; j < self.room.abstractRoom.creatures[i].realizedCreature.grasps.Length; j++)
+                                {
+                                    if (self.room.abstractRoom.creatures[i].realizedCreature.grasps[j]?.grabbed is Player)
+                                    {
+                                        self.room.abstractRoom.creatures[i].realizedCreature.ReleaseGrasp(j);
+                                    }
+                                }
+                            }
+
+                            //writhe in pain
+                            self.room.AddObject(new CreatureSpasmer(self.room.abstractRoom.creatures[i].realizedCreature, false, 40));
                         }
                     }
                 }
@@ -161,7 +206,9 @@ namespace PitchBlack
         {
             if (self.abstractCreature.creatureTemplate.type == CreatureTemplateType.NightTerror)
             {
-                orig(self, source, directionAndMomentum, hitChunk, hitAppendage, type, 0f, stunBonus);
+                //orig(self, source, directionAndMomentum, hitChunk, hitAppendage, type, 0f, stunBonus);
+                //spinch: why are we calling orig twice?
+                damage = 0f;
             }
             orig(self, source, directionAndMomentum, hitChunk, hitAppendage, type, damage, stunBonus);
         }
