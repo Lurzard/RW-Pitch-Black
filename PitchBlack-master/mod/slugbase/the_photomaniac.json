@@ -28,7 +28,7 @@
 		"back_spear": false,
 		"can_maul": false,
 		"has_dreams": false,
-		"start_room": "SH_S09",
+		"start_room": [ "SH_S09", "SH_CABINETS1" ],
 		"karma": 1,
 		"diet": {
 			"plants": 0.25,
