@@ -87,12 +87,19 @@ namespace PitchBlack
                                 }
                             }
                         }
-                        else if (ownr.grasps[0] != null && ownr.grasps[0].grabbed is FlareBomb f)
+                        else if (ownr.grasps[0]?.grabbed is FlareBomb f)
                         {
                             // Move flare from main paw to store
                             FlarebombtoStorage(f);
                             counter = 0;
                         }
+                        //else if (ownr.grasps[0] == null && ownr.grasps[1]?.grabbed is FlareBomb flarebombInOtherHand)
+                        //{
+                        //    //spinch: check the other hand too
+                        //    //spinch: dont do this, you can only grab 1 flarebomb from storage at a time
+                        //    FlarebombtoStorage(flarebombInOtherHand);
+                        //    counter = 0;
+                        //}
                     }
                     if (counter > 20 && storedFlares.Count > 0)
                     {
@@ -150,18 +157,19 @@ namespace PitchBlack
                     }
                 }
                 // Find empty hand
-                int toPaw = -1;
-                for (int j = 0; j < 2; j++)
-                {
-                    if (toPaw != -1)
-                    {
-                        break;
-                    }
-                    if (ownr.grasps[j] == null)
-                    {
-                        toPaw = j;
-                    }
-                }
+                //int toPaw = -1;
+                //for (int j = 0; j < 2; j++)
+                //{
+                //    if (toPaw != -1)
+                //    {
+                //        break;
+                //    }
+                //    if (ownr.grasps[j] == null)
+                //    {
+                //        toPaw = j;
+                //    }
+                //}
+                int toPaw = ownr.FreeHand(); //spinch: rw has an in-game method for finding an empty hand
                 // If empty hand has been detected
                 if (toPaw != -1)
                 {

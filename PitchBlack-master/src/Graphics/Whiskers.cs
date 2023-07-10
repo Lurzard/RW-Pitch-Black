@@ -111,7 +111,7 @@ public class Whiskers
                 else
                 {
                     pos.x += 2f;
-                    //if this Abs is lower than the above pos x's Abs
+                    //if this pos.x Abs value is lower than the above pos x's Abs (2f < 4f)
                     //then the right whiskers will not get shaved when beacon jump-walks to the right
                 }
             }
@@ -186,13 +186,12 @@ public class Whiskers
 
         for (int i = initialWhiskerIndex; i < endWhiskerIndex; i++)
         {
-            int index = i - initialWhiskerIndex;
             Vector2 vector = new(sLeaser.sprites[9].x + camPos.x, sLeaser.sprites[9].y + camPos.y);
 
             float rotationAngle; //+ve goes down, -ve goes up (for left whiskers, opposite for right)
 
             if (Plugin.BeaconName == player.slugcatStats.name)
-                rotationAngle = -135f; //+ve goes down, -ve goes up (for left whiskers, opposite for right)
+                rotationAngle = -135f;
             else
                 rotationAngle = 180f;
 
@@ -229,6 +228,8 @@ public class Whiskers
                 //sLeaser.sprites[i].color = Colour.red;
             }
 
+            int index = i - initialWhiskerIndex;
+
             sLeaser.sprites[i].x = vector.x - camPos.x;
             sLeaser.sprites[i].y = vector.y - camPos.y;
             sLeaser.sprites[i].rotation = Custom.AimFromOneVectorToAnother(vector, Vector2.Lerp(headScales[index].lastPos, headScales[index].pos, timeStacker)) + rotationAngle;
@@ -236,11 +237,18 @@ public class Whiskers
         }
     }
 
-    public void ApplyPalette(RoomCamera.SpriteLeaser sLeaser)
+    public void ApplyPalette(PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser)
     {
+        if (self.malnourished > 0f)
+        {
+            float num = self.player.Malnourished ? self.malnourished : Mathf.Max(0f, self.malnourished - 0.005f);
+            whiskerColour = Colour.Lerp(whiskerColour, Colour.gray, 0.4f * num);
+        }
+        whiskerColour = self.HypothermiaColorBlend(whiskerColour);
+
         for (int i = initialWhiskerIndex; i < endWhiskerIndex; i++)
         {
-            sLeaser.sprites[i].color = sLeaser.sprites[0].color; //so whisker colour is same as head colour
+            sLeaser.sprites[i].color = whiskerColour;
         }
     }
 }

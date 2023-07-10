@@ -94,12 +94,33 @@ namespace PitchBlack
                     && CreatureIsWithinFlareBombRange(self, self.room.abstractRoom.creatures[i].realizedCreature.mainBodyChunk.pos)
                     && !self.room.abstractRoom.creatures[i].realizedCreature.dead)
                 {
+                    if (self.thrownBy?.abstractCreature != null)
+                        self.room.abstractRoom.creatures[i].realizedCreature.SetKillTag(self.thrownBy.abstractCreature);
+
                     if (CreatureIsSpider(self.room.abstractRoom.creatures[i].creatureTemplate.type))
                     {
                         self.room.abstractRoom.creatures[i].realizedCreature.firstChunk.vel += Custom.DegToVec(Random.value * 360f) * Random.value * 7f;
-                        if (self.thrownBy != null && self.thrownBy.abstractCreature != null)
-                            self.room.abstractRoom.creatures[i].realizedCreature.SetKillTag(self.thrownBy.abstractCreature);
                         self.room.abstractRoom.creatures[i].realizedCreature.Die();
+                    }
+                    else if (self.room.abstractRoom.creatures[i].creatureTemplate.type == CreatureTemplateType.NightTerror)
+                    {
+                        if (NightTerrorHooks.NightTerrorInfo.TryGetValue(self.room.abstractRoom.creatures[i].realizedCreature as Centipede, out var NTInfo))
+                        {
+                            NTInfo.fleeing = 40 * 18;
+
+                            Vector2 displacement = self.room.abstractRoom.creatures[i].realizedCreature.mainBodyChunk.pos - self.firstChunk.pos;
+                            NTInfo.fleeTo = self.firstChunk.pos + 9999999 * displacement;
+                        }
+
+                        //50% chance of the night terror releasing you from its grasp
+                        Random.InitState(Time.time.GetHashCode());
+                        if (Random.value <= 0.5)
+                        {
+                            (self.room.abstractRoom.creatures[i].realizedCreature as Centipede).NightTerrorReleasePlayersInGrasp();
+                        }
+
+                        //writhe in pain
+                        self.room.AddObject(new CreatureSpasmer(self.room.abstractRoom.creatures[i].realizedCreature, false, 40));
                     }
                 }
             }

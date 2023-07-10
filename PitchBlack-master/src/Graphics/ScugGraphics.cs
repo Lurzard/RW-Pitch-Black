@@ -156,7 +156,7 @@ public class ScugGraphics
             }
 
             //apply whisker palette correctly
-            cwt.whiskers.ApplyPalette(sLeaser);
+            cwt.whiskers.ApplyPalette(self, sLeaser);
         }
     }
 }

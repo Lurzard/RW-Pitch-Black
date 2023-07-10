@@ -28,26 +28,96 @@ namespace PitchBlack
         public static ConditionalWeakTable<Centipede, NightTerrorData> NightTerrorInfo = new();
         public static ConditionalWeakTable<AbstractCreature, ChillTheFUCKOut> KILLIT = new();
 
+        public static void NightTerrorReleasePlayersInGrasp(this Centipede self)
+        {
+            if (self.abstractCreature.creatureTemplate.type != CreatureTemplateType.NightTerror)
+                return;
+
+            for (int i = 0; i < self.grasps.Length; i++)
+            {
+                if (self.grasps[i]?.grabbed is Player)
+                {
+                    self.ReleaseGrasp(i);
+                }
+            }
+        }
+
         internal static void Apply()
         {
             new Hook(typeof(Centipede).GetMethod("get_Red", Public | NonPublic | Instance), (System.Func<Centipede, bool> orig, Centipede self) => self.Template.type == CreatureTemplateType.NightTerror || orig(self));
+
+            On.Spear.HitSomething += Spear_HitSomething;
+            On.Rock.HitSomething += Rock_HitSomething;
+            On.FirecrackerPlant.HitSomething += FirecrackerPlant_HitSomething;
+
+            On.Centipede.Update += Centipede_Update;
 
             On.WormGrass.WormGrassPatch.InteractWithCreature += WormGrassPatch_InteractWithCreature;
             On.WormGrass.WormGrassPatch.Update += WormGrassPatch_Update;
             On.WormGrass.WormGrassPatch.AlreadyTrackingCreature += WormGrassPatch_AlreadyTrackingCreature;
 
             On.Centipede.Die += Centipede_Die;
+
+            //spinch: moved FlareBomb.Update hook to the one in Plugin.cs, so there's no longer a double hook
             
             On.Centipede.ctor += Centipede_ctor;
             On.CentipedeGraphics.ctor += CentipedeGraphics_ctor;
             On.CentipedeAI.Update += CentipedeAI_Update;
             On.Centipede.Violence += Centipede_Violence;
-            On.FlareBomb.Update += FlareBomb_Update;
             On.CentipedeAI.DoIWantToShockCreature += CentipedeAI_DoIWantToShockCreature;
             On.Centipede.Shock += Centipede_Shock;
             On.Centipede.ShortCutColor += Centipede_ShortCutColor;
             On.CentipedeAI.ctor += CentipedeAICTOR;
             On.AbstractCreatureAI.ctor += AbstractCreatureAI_ctor;
+        }
+
+        private static bool Spear_HitSomething(On.Spear.orig_HitSomething orig, Spear self, SharedPhysics.CollisionResult result, bool eu)
+        {
+            bool val = orig(self, result, eu);
+            if (result.obj is Centipede centi && centi.abstractCreature.creatureTemplate.type == CreatureTemplateType.NightTerror)
+            {
+                centi.NightTerrorReleasePlayersInGrasp();
+            }
+            return val;
+        }
+        private static bool Rock_HitSomething(On.Rock.orig_HitSomething orig, Rock self, SharedPhysics.CollisionResult result, bool eu)
+        {
+            bool val = orig(self, result, eu);
+            if (result.obj is Centipede centi && centi.abstractCreature.creatureTemplate.type == CreatureTemplateType.NightTerror)
+            {
+                centi.NightTerrorReleasePlayersInGrasp();
+            }
+            return val;
+        }
+        private static bool FirecrackerPlant_HitSomething(On.FirecrackerPlant.orig_HitSomething orig, FirecrackerPlant self, SharedPhysics.CollisionResult result, bool eu)
+        {
+            bool val = orig(self, result, eu);
+            if (result.obj is Centipede centi && centi.abstractCreature.creatureTemplate.type == CreatureTemplateType.NightTerror)
+            {
+                centi.NightTerrorReleasePlayersInGrasp();
+            }
+            return val;
+        }
+
+        private static void Centipede_Update(On.Centipede.orig_Update orig, Centipede self, bool eu)
+        {
+            orig(self, eu);
+            if (self.abstractCreature.creatureTemplate.type == CreatureTemplateType.NightTerror && self.grabbedBy != null && (!self.dead || self.stun <= 0))
+            {
+                //spinch: nothing can grab the night terror if its not dead or stunned
+                //spinch: thats right miros birds. suck it
+                foreach (var grabbedBy in self.grabbedBy)
+                {
+                    if (grabbedBy?.grabber?.grasps == null)
+                        continue;
+
+                    for (int i = 0; i < grabbedBy.grabber.grasps.Length; i ++)
+                    {
+                        if (grabbedBy.grabber.grasps[i]?.grabbed == self)
+                            grabbedBy.grabber.ReleaseGrasp(i);
+                    }
+                }
+            }
         }
 
         #region wormgrass immunity (stop getting pulled)
@@ -56,7 +126,6 @@ namespace PitchBlack
             if (creatureAndPull.creature.abstractCreature.creatureTemplate.type != CreatureTemplateType.NightTerror)
                 orig(self, creatureAndPull);
         }
-
         public static void WormGrassPatch_Update(On.WormGrass.WormGrassPatch.orig_Update orig, WormGrass.WormGrassPatch self)
         {
             orig(self);
@@ -73,7 +142,8 @@ namespace PitchBlack
 
         private static void Centipede_Die(On.Centipede.orig_Die orig, Centipede self)
         {
-            //stop dying lmao
+            //spinch: stop dying lmao
+            //spinch: on a related note, we put this thing in puffball purgatory (we need to IL to SporeCloud.Update)
             if (self.abstractCreature.creatureTemplate.type != CreatureTemplateType.NightTerror)
                 orig(self);
         }
@@ -156,50 +226,6 @@ namespace PitchBlack
                 }
             }
             return orig(self, critter);
-        }
-
-        private static void FlareBomb_Update(On.FlareBomb.orig_Update orig, FlareBomb self, bool eu)
-        {
-            orig(self, eu);
-            if (self.burning > 0f)
-            {
-                for (int i = 0; i < self.room.abstractRoom.creatures.Count; i++)
-                {
-                    if (self.room.abstractRoom.creatures[i].realizedCreature != null && (RWCustom.Custom.DistLess(self.firstChunk.pos, self.room.abstractRoom.creatures[i].realizedCreature.mainBodyChunk.pos, self.LightIntensity * 600f) || (RWCustom.Custom.DistLess(self.firstChunk.pos, self.room.abstractRoom.creatures[i].realizedCreature.mainBodyChunk.pos, self.LightIntensity * 1600f) && self.room.VisualContact(self.firstChunk.pos, self.room.abstractRoom.creatures[i].realizedCreature.mainBodyChunk.pos))))
-                    {
-                        if (self.room.abstractRoom.creatures[i].creatureTemplate.type == CreatureTemplateType.NightTerror)
-                        {
-                            if (NightTerrorInfo.TryGetValue(self.room.abstractRoom.creatures[i].realizedCreature as Centipede, out var NTInfo))
-                            {
-                                NTInfo.fleeing = 40 * 18;
-
-                                Vector2 displacement = self.room.abstractRoom.creatures[i].realizedCreature.mainBodyChunk.pos - self.firstChunk.pos;
-                                NTInfo.fleeTo = self.firstChunk.pos + 9999999 * displacement;
-                            }
-                            if (self.thrownBy != null)
-                            {
-                                self.room.abstractRoom.creatures[i].realizedCreature.SetKillTag(self.thrownBy.abstractCreature);
-                            }
-
-                            //50% chance of the night terror releasing you from its grasp
-                            Random.InitState(Time.time.GetHashCode());
-                            if (Random.value <= 0.5)
-                            {
-                                for (int j = 0; j < self.room.abstractRoom.creatures[i].realizedCreature.grasps.Length; j++)
-                                {
-                                    if (self.room.abstractRoom.creatures[i].realizedCreature.grasps[j]?.grabbed is Player)
-                                    {
-                                        self.room.abstractRoom.creatures[i].realizedCreature.ReleaseGrasp(j);
-                                    }
-                                }
-                            }
-
-                            //writhe in pain
-                            self.room.AddObject(new CreatureSpasmer(self.room.abstractRoom.creatures[i].realizedCreature, false, 40));
-                        }
-                    }
-                }
-            }
         }
 
         private static void Centipede_Violence(On.Centipede.orig_Violence orig, Centipede self, BodyChunk source, Vector2? directionAndMomentum, BodyChunk hitChunk, PhysicalObject.Appendage.Pos hitAppendage, Creature.DamageType type, float damage, float stunBonus)

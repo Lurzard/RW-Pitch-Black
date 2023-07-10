@@ -11,6 +11,7 @@ namespace PitchBlack;
 
 public static class Crafting
 {
+    //spinch: i am the lord of the crafting code
     enum WhatsThatSpear
     {
         None,
@@ -19,7 +20,7 @@ public static class Crafting
         Electric_Full,
         Explosive
     }
-
+    
     public static void Apply()
     {
         IL.Player.GrabUpdate += Player_GrabUpdate;
@@ -65,7 +66,7 @@ public static class Crafting
             if (self.FoodInStomach <= 0)
                 return false;
 
-            if (self.grasps[0] != null && self.grasps[0].grabbed is not Rock) //so you can swallow
+            if (self.grasps[0]?.grabbed != null && self.CanBeSwallowed(self.grasps[0].grabbed) && self.grasps[0].grabbed is not Rock) //so you can swallow
                 return false;
         }
 
@@ -83,8 +84,6 @@ public static class Crafting
                 if (self.CanBeSwallowed(grabbed))
                 {
                     //if you can swallow an item, you cant craft
-                    //if (Plugin.BeaconName == self.slugcatStats.name && (grabbed is Rock || i != 0))
-                    //    continue;
                     if (Plugin.PhotoName == self.slugcatStats.name)
                         return false;
                 }
@@ -450,7 +449,8 @@ public static class Crafting
     {
         if (!Plugin.scugCWT.TryGetValue(self, out ScugCWT cwt))
             return;
-        //craft rocks into flarebombs instead of swallowing
+
+        //craft rocks into flarebombs instead of swallowing to do that
         for (int i = 0; i < self.grasps.Length; i++)
         {
             if (self.FoodInStomach <= 0)
