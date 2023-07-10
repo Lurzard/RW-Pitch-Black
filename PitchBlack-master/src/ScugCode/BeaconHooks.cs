@@ -6,10 +6,41 @@ public static class BeaconHooks
 {
     public static void Apply()
     {
+        //On.Player.ThrowToGetFree += Player_ThrowToGetFree;
         On.Player.SwallowObject += BeaconTransmuteIntoFlashbang;
         On.Player.GrabUpdate += Player_GrabUpdate;
         On.Player.GraphicsModuleUpdated += BeaconStorageGrafUpdate;
     }
+
+    //private static void Player_ThrowToGetFree(On.Player.orig_ThrowToGetFree orig, Player self, bool eu)
+    //{
+    //    //spinch: doesnt work & i dont feel like coding anymore today
+    //    if (Plugin.scugCWT.TryGetValue(self, out ScugCWT cwt) && cwt.IsBeacon)
+    //    {
+    //        bool dontThrowFlarebomb = self.FreeHand() == -1;
+    //        if (Plugin.BeaconName == self.slugcatStats.name)
+    //        {
+    //            for (int i = 0; i < 2; i++)
+    //            {
+    //                if (self.grasps[i]?.grabbed is Weapon)
+    //                {
+    //                    dontThrowFlarebomb = true;
+    //                    break;
+    //                }
+    //            }
+    //        }
+
+    //        if (!dontThrowFlarebomb && cwt.Beacon.storage.storedFlares.Count > 0)
+    //        {
+    //            //auto throw flarebomb on an empty hand
+    //            int freeHand = self.FreeHand();
+    //            cwt.Beacon.storage.FlarebombFromStorageToPaw(eu);
+    //            self.ThrowObject(freeHand, eu);
+    //        }
+    //    }
+
+    //    orig(self, eu);
+    //}
 
     public static void BeaconTransmuteIntoFlashbang(On.Player.orig_SwallowObject orig, Player self, int grasp)
     {
@@ -41,15 +72,16 @@ public static class BeaconHooks
         {
             for (int i = 0; i < 2; i++)
             {
-                if (self.grasps[i]?.grabbed is IPlayerEdible)
+                if (self.grasps[i]?.grabbed is IPlayerEdible || self.eatMeat > 0)
                 {
+                    //dont take flarebomb from storage if holding food
                     cwt.Beacon.storage.interactionLocked = true;
                     cwt.Beacon.storage.counter = 0;
                 }
             }
             if (cwt.Beacon.storage != null && !self.craftingObject)
             {
-                //dont increment if trying to craft
+                //dont increment if crafting
                 cwt.Beacon.storage.increment = self.input[0].pckp;
                 cwt.Beacon.storage.Update(eu);
             }

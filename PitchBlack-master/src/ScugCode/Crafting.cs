@@ -471,6 +471,8 @@ public static class Crafting
                 {
                     cwt.Beacon.storage.FlarebombtoStorage(item.realizedObject as FlareBomb);
                 }
+                else if (self.FreeHand() != -1)
+                    self.SlugcatGrab(item.realizedObject, self.FreeHand());
             }
         }
     }
