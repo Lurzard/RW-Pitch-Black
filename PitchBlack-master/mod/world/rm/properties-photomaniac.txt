@@ -14,7 +14,7 @@ earlyCycleChance: 0.0
 earlyCycleFloodChance: 0.0
 Subregion: Carcass
 Subregion: Cerebellum
-Subregion: Remnants
+Subregion: Vestige
 Subregion: Guts
 Subregion: Arteries
 Subregion: Ventricles
