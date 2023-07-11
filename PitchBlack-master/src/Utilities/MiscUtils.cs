@@ -8,4 +8,8 @@ public class MiscUtils
     {
         return null != slugName && (slugName == BeaconName || slugName == PhotoName);
     }
+    public static bool IsBeaconOrPhoto(Creature crit)
+    {
+        return crit is Player player && IsBeaconOrPhoto(player.slugcatStats.name);
+    }
 }

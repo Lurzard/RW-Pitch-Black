@@ -60,8 +60,11 @@ public class FlarebombHooks
                 if (self.thrownBy?.abstractCreature != null)
                     self.room.abstractRoom.creatures[i].realizedCreature.SetKillTag(self.thrownBy.abstractCreature);
 
-                if (MiscUtils.IsBeaconOrPhoto(self.room.game.StoryCharacter) && CreatureIsSpider(self.room.abstractRoom.creatures[i].creatureTemplate.type))
+                if (CreatureIsSpider(self.room.abstractRoom.creatures[i].creatureTemplate.type)
+                    && (MiscUtils.IsBeaconOrPhoto(self.room.game.StoryCharacter) || MiscUtils.IsBeaconOrPhoto(self.thrownBy))
+                    )
                 {
+                    //die if the game slugcat or thrower is beacon or photo
                     self.room.abstractRoom.creatures[i].realizedCreature.firstChunk.vel += Custom.DegToVec(Random.value * 360f) * Random.value * 7f;
                     self.room.abstractRoom.creatures[i].realizedCreature.Die();
                 }
