@@ -7,10 +7,10 @@ CREATURES
 (Beacon)OFFSCREEN : 0-KingVulture-1, 0-Vulture-2, 0-MirosVulture-2, 0-Scavenger-8, 0-EliteScavenger-3-{Night}
 (Photomaniac)OFFSCREEN : 0-KingVulture-1, 0-Vulture-3, 0-MirosVulture-3, 0-Scavenger-10, 0-Elite-{IgnoreCycle}, 0-Elite-3-{Night}
 
-(Beacon)UW_J02 : 16-Yellow, 19-Yellow, 17-Yellow-2, 13-Tube, 14-Tube, 7-Daddy, 10-Tube-2, 8-Centiwng-2, 15-BigSpider, 20-MotherSpider, 18-BigSpider, 11-Mouse-6, 3-nightterror
+(Beacon)UW_J02 : 16-Yellow, 19-Yellow, 17-Yellow-2, 13-Tube, 14-Tube, 7-Daddy, 10-Tube-2, 3-nightterror
 (Beacon)UW_E03 : 7-White-{Mean:1.0}, 3-SpitterSpider-3, 5-BigSpider-4, 6-Mouse-4, 9-nightterror, 9-Centiwing-2, 4-Daddy, 8-Daddy
 (Beacon)UW_E01 : 3-Blue-{Night}, 2-White, 3-Cyan, 4-nightterror, 5-Mouse-6, 6-Centiwing-2
-(Photomaniac)UW_J02 : 16-Yellow, 19-Yellow, 17-Yellow-2, 13-Tube, 14-Tube, 7-Daddy, 10-Tube-2, 8-Centiwng-2, 15-BigSpider, 20-MotherSpider, 18-BigSpider, 11-Mouse-6
+(Photomaniac)UW_J02 : 16-Yellow, 19-Yellow, 17-Yellow-2, 13-Tube, 14-Tube, 7-Daddy, 10-Tube-2
 (Photomaniac)UW_E03 : 7-White-{Mean:1.0}, 3-SpitterSpider-3, 5-BigSpider-4, 6-Mouse-4, 9-Centiwing-2, 4-Daddy, 8-Daddy
 (Photomaniac)UW_E01 : 3-Blue-{Night}, 2-White, 3-Cyan, 5-Mouse-6, 6-Centiwing-2
 
