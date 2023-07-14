@@ -4,7 +4,7 @@
 	"version": "0.1.0",
 	"authors": "Lurzard: The Beacon slugcat and mod artwork.\n\nMillisec: The Photomaniac slugcat, Lediting, and LORE.\n\nNiko: Night Terror Creature.\n\nURUFUDOGGO: The Beacon's Flashbang storage', The Photomaniac's Electric Detonation, and Photo's Chest Spots sprite.\n\nSpinch: The Photomaniac's Spear crafting.\n\nMoon: Night Terror relationships.\n\nKoko: DMS Skins for both Photomaniac and Beacon\n\nAnd tons of help from #modding-dev in the Official Rain World Discord :3",
 
-	"description": "Crawl around in the nighttime of a dying world as two new custom campaigns, The Beacon and The Photomaniac!\n\nMake it home safely before the dawn wakes.\nThen uncover the hidden secrets of this world and piece together the fractured story.",
+	"description": "Crawl around in the nighttime of a dying world as two new custom campaigns, The Beacon and The Photomaniac.\n\nMake your way home safely before the rising dawn wakes, and uncover the hidden secrets of this world and piece together its fractured story.",
 
 	"requirements": [ "slime-cubed.slugbase", "moreslugcats", "fisobs", "regionkit" ],
 	"requirements_names": [ "SlugBase", "More Slugcats Expansion", "Fisobs", "RegionKit" ],

@@ -1,7 +1,7 @@
 {
 	"id": "Photomaniac",
 	"name": "The Photomaniac",
-	"description": "A maniacal juvenile seeking its older sibling, possessing the same luminosity.<LINE>Its electrical abilities, though ill-wielded, give it a tactical advantage.",
+	"description": "A maniacal juvenile lost in the night, posessing familiar luminosity.\nIts electrical abilities, though ill-wielded, give it a tactical advantage.",
 	"features": {
 		"color": "010038",
 		"custom_colors": [
@@ -25,6 +25,7 @@
 		"food_min": 2,
 		"food_max": 3,
 		"auto_grab_batflies": false,
+		"weight": [ 0.5, 0.4 ],
 		"back_spear": false,
 		"can_maul": false,
 		"has_dreams": false,

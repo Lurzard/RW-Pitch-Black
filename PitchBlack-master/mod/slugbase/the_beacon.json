@@ -1,7 +1,7 @@
 {
 	"id": "Beacon",
 	"name": "The Beacon",
-	"description": "In the wake of night, an agile slugcat with strange luminosity makes their prescence known.<LINE>Take your lights and journey across this forgotten landscape for answers.",
+	"description": "In the wake of night, a frail but agile slugcat with strange luminosity makes their prescence known.\nTake your lights and journey far away, time is of the essence when you are being pursued.",
 	"features": {
 		"color": "2a04dc",
 		"custom_colors": [
