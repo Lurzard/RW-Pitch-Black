@@ -18,7 +18,7 @@ CREATURES
 (Beacon)LM_A03 : 2-Snail-2, 3-Snail-3
 (Beacon)LM_A10 : 3-SeaLeech-6
 (Beacon)LM_B02 : 4-TentaclePlant
-(Beacon)LM_B04 : 3-Cyan
+(Beacon)LM_B04 : 3-Cyan, 4-CicadaB-3, 5-CicadaA-2
 (Beacon)LM_C02 : 4-SpitterSpider, 5-Salamander, 6-Salamander, 7-Snail-2
 (Beacon)LM_C05 : 3-Jetfish-{PreCycle}
 (Beacon)LM_C06 : 4-Jetfish
@@ -41,7 +41,7 @@ CREATURES
 (Beacon)LM_BRIDGEEND : 3-Bro
 (Beacon)LM_ECNIUS03 : 2-Snail, 3-Snail
 (Beacon)LM_EDGE02 : 1-Mouse-6, 2-MotherSpider, 3-Dropwig-2, 4-Cyan, 5-Yellow-2, 6-Yellow-2, 7-SpitterSpider, 9-BigSpider, 10-BigSpider
-(Beacon)LM_MIRRORSIDE : 4-Snail, 6-White
+(Beacon)LM_MIRRORSIDE : 4-Snail, 5-CicadaB-2, 5-CicadaA, 6-White
 (Beacon)LM_SIDESWAMP : 2-TentaclePlant, 6-Salamander
 (Beacon)LM_TOWER01 : 3-BigSpider, 4-MotherSpider, 6-Centiwing, 6-EggBug, 7-nightterror
 (Beacon)LM_TOWER02 : 2-Cyan, 4-Centiwing
@@ -67,7 +67,7 @@ CREATURES
 (Photomaniac)LM_A03 : 2-Snail-2, 3-Snail-3
 (Photomaniac)LM_A10 : 3-SeaLeech-6
 (Photomaniac)LM_B02 : 4-TentaclePlant
-(Photomaniac)LM_B04 : 3-Cyan
+(Photomaniac)LM_B04 : 3-Cyan, 4-CicadaB-3, 5-CicadaA-2
 (Photomaniac)LM_C02 : 4-SpitterSpider, 5-Salamander, 6-Salamander, 7-Snail-2
 (Photomaniac)LM_C05 : 3-Jetfish-{PreCycle}
 (Photomaniac)LM_C06 : 4-Jetfish
@@ -90,7 +90,7 @@ CREATURES
 (Photomaniac)LM_BRIDGEEND : 3-Bro
 (Photomaniac)LM_ECNIUS03 : 2-Snail, 3-Snail
 (Photomaniac)LM_EDGE02 : 1-Mouse-6, 2-MotherSpider, 3-Dropwig-2, 4-Cyan, 5-Yellow-2, 6-Yellow-2, 7-SpitterSpider, 9-BigSpider, 10-BigSpider
-(Photomaniac)LM_MIRRORSIDE : 4-Snail, 6-White
+(Photomaniac)LM_MIRRORSIDE : 4-Snail, 5-CicadaB-2, 5-CicadaA, 6-White
 (Photomaniac)LM_SIDESWAMP : 2-TentaclePlant, 6-Salamander
 (Photomaniac)LM_TOWER01 : 3-BigSpider, 4-MotherSpider, 6-Centiwing, 7-EggBug
 (Photomaniac)LM_TOWER02 : 2-Cyan, 4-Centiwing
