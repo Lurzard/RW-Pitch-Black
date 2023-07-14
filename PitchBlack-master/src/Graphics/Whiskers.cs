@@ -239,16 +239,17 @@ public class Whiskers
 
     public void ApplyPalette(PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser)
     {
+        Colour newColour = whiskerColour;
         if (self.malnourished > 0f)
         {
             float num = self.player.Malnourished ? self.malnourished : Mathf.Max(0f, self.malnourished - 0.005f);
-            whiskerColour = Colour.Lerp(whiskerColour, Colour.gray, 0.4f * num);
+            newColour = Colour.Lerp(newColour, Colour.gray, 0.4f * num);
         }
-        whiskerColour = self.HypothermiaColorBlend(whiskerColour);
+        newColour = self.HypothermiaColorBlend(newColour);
 
         for (int i = initialWhiskerIndex; i < endWhiskerIndex; i++)
         {
-            sLeaser.sprites[i].color = whiskerColour;
+            sLeaser.sprites[i].color = newColour;
         }
     }
 }

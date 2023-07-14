@@ -61,17 +61,19 @@ public static class Crafting
     {
         bool val = orig(self);
 
-        if (Plugin.BeaconName == self.slugcatStats.name)
-        {
-            if (self.FoodInStomach <= 0)
-                return false;
-
-            if (self.grasps[0]?.grabbed != null && self.CanBeSwallowed(self.grasps[0].grabbed) && self.grasps[0].grabbed is not Rock) //so you can swallow
-                return false;
-        }
-
         if (Plugin.PhotoName == self.slugcatStats.name || Plugin.BeaconName == self.slugcatStats.name)
         {
+            if (self.FoodInStomach <= 0) //cant craft on an empty stomach
+                return false;
+
+            if (Plugin.BeaconName == self.slugcatStats.name
+                && self.grasps[0]?.grabbed != null && self.CanBeSwallowed(self.grasps[0].grabbed)
+                && self.grasps[0].grabbed is not Rock)
+            {
+                //so you can swallow
+                return false;
+            }
+
             bool canCraft = false;
 
             for (int i = 0; i < 2; i++)
@@ -347,11 +349,11 @@ public static class Crafting
             if (self.grasps[index]?.grabbed is ExplosiveSpear spear)
             {
                 DetonateEffects();
-                Debug.Log("Big detonate grasp at index " + index);
+                Debug.Log($"Big detonate grasp at index {index}");
                 spear.Explode();
             }
             else
-                Debug.Log("Failed to detonate grasp! Player grasp at index " + index + " is not an explosive spear.");
+                Debug.Log($"Failed to detonate grasp! Player grasp at index {index} is not an explosive spear.");
             //dont even need to call self.Die() tbh
         }
         void BigDetonateBothGrasps()
@@ -374,7 +376,7 @@ public static class Crafting
         }
         #endregion
 
-        #region cosmetic effects (sort of for Stun())
+        #region cosmetic effects (sort of for Stun)
         void SmallDetonateEffects()
         {
             //yoinked from ExplosiveSpear.MiniExplode()

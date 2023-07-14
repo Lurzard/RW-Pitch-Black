@@ -106,15 +106,15 @@ namespace PitchBlack
             {
                 //spinch: nothing can grab the night terror if its not dead or stunned
                 //spinch: thats right miros birds. suck it
-                foreach (var grabbedBy in self.grabbedBy)
+                for (int j = 0; j < self.grabbedBy.Count; j++)
                 {
-                    if (grabbedBy?.grabber?.grasps == null)
+                    if (self.grabbedBy[j]?.grabber?.grasps == null)
                         continue;
 
-                    for (int i = 0; i < grabbedBy.grabber.grasps.Length; i ++)
+                    for (int i = 0; i < self.grabbedBy[j].grabber.grasps.Length; i ++)
                     {
-                        if (grabbedBy.grabber.grasps[i]?.grabbed == self)
-                            grabbedBy.grabber.ReleaseGrasp(i);
+                        if (self.grabbedBy[j].grabber.grasps[i]?.grabbed == self)
+                            self.grabbedBy[j].grabber.ReleaseGrasp(i);
                     }
                 }
             }

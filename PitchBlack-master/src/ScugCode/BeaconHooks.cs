@@ -7,6 +7,7 @@ public static class BeaconHooks
     public static void Apply()
     {
         //On.Player.ThrowToGetFree += Player_ThrowToGetFree;
+        On.Player.Jump += Player_Jump;
         On.Player.SwallowObject += BeaconTransmuteIntoFlashbang;
         On.Player.GrabUpdate += Player_GrabUpdate;
         On.Player.GraphicsModuleUpdated += BeaconStorageGrafUpdate;
@@ -41,6 +42,27 @@ public static class BeaconHooks
 
     //    orig(self, eu);
     //}
+
+    private static void Player_Jump(On.Player.orig_Jump orig, Player self)
+    {
+        orig(self);
+
+        if (Plugin.BeaconName == self.slugcatStats.name)
+        {
+            if (Player.AnimationIndex.Flip == self.animation)
+                self.jumpBoost *= 1.75f;
+            //else if (self.rollDirection != 0
+            //    && (Player.AnimationIndex.BellySlide == self.animation
+            //    || Player.AnimationIndex.RocketJump == self.animation
+            //    || Player.AnimationIndex.Roll == self.animation))
+            //{
+            //    foreach (var bodyChunk in self.bodyChunks)
+            //    {
+            //        bodyChunk.vel.x *= 2f;
+            //    }
+            //}
+        }
+    }
 
     public static void BeaconTransmuteIntoFlashbang(On.Player.orig_SwallowObject orig, Player self, int grasp)
     {

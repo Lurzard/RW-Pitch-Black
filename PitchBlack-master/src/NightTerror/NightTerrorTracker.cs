@@ -182,17 +182,28 @@ namespace PitchBlack
                     // TELEPORT UWU (stranded doesn't work as far as my testing goes, but just in case? Otherwise, wait 10 seconds equivalent of not being able to find a path.
                     if ((doHax > 400 || ac.abstractAI.strandedInRoom != -1 || (ac.abstractAI.RealAI != null && ac.abstractAI.RealAI.stranded)) && ac.pos.room != firstPlayer.pos.room && fastTick == 0)
                     {
-                        if (firstPlayer.realizedCreature?.room is not null && ac.realizedCreature is null)
+                        if (firstPlayer?.realizedCreature?.room != null && ac.realizedCreature is null)
                         {
+                            //spinch: apparently 2nd check is for if centipede isnt realized, allow it to tp
                             Debug.Log(">>> Migrate Nightterror!");
 
                             // Find a room that isn't a shelter or a gate and place the Nightterror there. No shelters because that makes no sense (no den for Nightterror to use the excuse "it shrimply used a den"). No gates because it tends to get stuck on the wrong side.
                             if (firstPlayer != null && firstPlayer.realizedCreature != null && firstPlayer.realizedCreature.room != null) {
                                 RWCustom.IntVector2 ar = firstPlayer.realizedCreature.room.exitAndDenIndex[UnityEngine.Random.Range(0, firstPlayer.realizedCreature.room.exitAndDenIndex.Length)];
-                                if (!(firstPlayer.realizedCreature.room.WhichRoomDoesThisExitLeadTo(ar).gate || firstPlayer.realizedCreature.room.WhichRoomDoesThisExitLeadTo(ar).shelter))
+                                //if (!(firstPlayer.realizedCreature.room.WhichRoomDoesThisExitLeadTo(ar).gate
+                                //    || firstPlayer.realizedCreature.room.WhichRoomDoesThisExitLeadTo(ar).shelter))
+
+                                var roomBeingChecked = firstPlayer.realizedCreature.room.WhichRoomDoesThisExitLeadTo(ar);
+                                if (roomBeingChecked != null && !(roomBeingChecked.gate || roomBeingChecked.shelter))
                                 {
-                                    ac.Move(firstPlayer.realizedCreature.room.WhichRoomDoesThisExitLeadTo(ar).RandomNodeInRoom());
-                                    doHax = 0;
+                                    //ac.Move(firstPlayer.realizedCreature.room.WhichRoomDoesThisExitLeadTo(ar).RandomNodeInRoom());
+                                    //doHax = 0;
+                                    var randomNodeInRoom = roomBeingChecked.RandomNodeInRoom();
+                                    if (randomNodeInRoom != null)
+                                    {
+                                        ac.Move(randomNodeInRoom);
+                                        doHax = 0;
+                                    }
                                 }
                             }
                         }
@@ -211,7 +222,7 @@ namespace PitchBlack
 #if false
                     // No need to migrate! We got migrate at home... the migrate at home: *is a goddamn teleport btn*
                     // Migration
-                    if (ac.timeSpentHere > 3600 && ac.pos.room != firstPlayer.pos.room && slowTick == 0)
+                    if (ac.timeSpentHere > 3600 && ac.pos.room != firstPlayer.pos.room && slowTick == 0)    
                     {
                         if (firstPlayer.Room != null)
                         {
