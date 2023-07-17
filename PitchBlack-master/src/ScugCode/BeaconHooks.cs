@@ -81,7 +81,7 @@ public static class BeaconHooks
         {
             for (int i = 0; i < 2; i++)
             {
-                if (self.grasps[i]?.grabbed != null && self.IsObjectThrowable(self.grasps[i].grabbed))
+                if (self.grasps[i]?.grabbed != null && (self.IsObjectThrowable(self.grasps[i].grabbed) || self.grasps[i].grabbed is Creature))
                 {
                     dontAutoThrowFlarebomb = true;
                     break;
@@ -102,19 +102,23 @@ public static class BeaconHooks
                     cwt.Beacon.storage.counter = 0;
                 }
             }
-            if (cwt.Beacon.storage != null && !self.craftingObject)
-            {
-                //dont increment if crafting
-                cwt.Beacon.storage.increment = self.input[0].pckp;
-                cwt.Beacon.storage.Update(eu);
-            }
 
-            if (!dontAutoThrowFlarebomb && self.input[0].thrw && !self.input[1].thrw && cwt.Beacon.storage.storedFlares.Count > 0)
+            if (cwt.Beacon.storage != null)
             {
-                //auto throw flarebomb on an empty hand
-                int freeHand = self.FreeHand();
-                cwt.Beacon.storage.FlarebombFromStorageToPaw(eu);
-                self.ThrowObject(freeHand, eu);
+                if (!self.craftingObject)
+                {
+                    //dont increment if crafting
+                    cwt.Beacon.storage.increment = self.input[0].pckp;
+                    cwt.Beacon.storage.Update(eu);
+                }
+                
+                if (!dontAutoThrowFlarebomb && self.input[0].thrw && !self.input[1].thrw && cwt.Beacon.storage.storedFlares.Count > 0)
+                {
+                    //auto throw flarebomb on an empty hand
+                    int freeHand = self.FreeHand();
+                    cwt.Beacon.storage.FlarebombFromStorageToPaw(eu);
+                    self.ThrowObject(freeHand, eu);
+                }
             }
         }
     }

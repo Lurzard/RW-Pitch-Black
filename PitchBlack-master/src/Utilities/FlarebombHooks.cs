@@ -60,6 +60,9 @@ public class FlarebombHooks
                 if (self.thrownBy?.abstractCreature != null)
                     self.room.abstractRoom.creatures[i].realizedCreature.SetKillTag(self.thrownBy.abstractCreature);
 
+                if (self.room.abstractRoom.creatures[i].creatureTemplate?.type == null)
+                    continue;
+
                 if (MiscUtils.IsBeaconOrPhoto(self.room.game.StoryCharacter) || MiscUtils.IsBeaconOrPhoto(self.thrownBy))
                 {
                     if (CreatureIsSpider(self.room.abstractRoom.creatures[i].creatureTemplate.type))
@@ -68,13 +71,14 @@ public class FlarebombHooks
                         self.room.abstractRoom.creatures[i].realizedCreature.firstChunk.vel += Custom.DegToVec(Random.value * 360f) * Random.value * 7f;
                         self.room.abstractRoom.creatures[i].realizedCreature.Die();
                     }
-                    else if (self.room.abstractRoom.creatures[i].realizedCreature is not Player)
+                    else if (self.room.abstractRoom.creatures[i].realizedCreature is not Player
+                        || self.room.abstractRoom.creatures[i].creatureTemplate.type != CreatureTemplate.Type.Slugcat)
                     {
+                        //u would think the first check works... well it does sometimes. apparently
                         //release all grasps and get stunned
                         for (int graspNum = 0; graspNum < self.room.abstractRoom.creatures[i].realizedCreature.grasps.Length; graspNum++)
                             self.room.abstractRoom.creatures[i].realizedCreature.ReleaseGrasp(graspNum);
-
-                        self.room.abstractRoom.creatures[i].realizedCreature.Stun(Random.Range(20, 40));
+                        self.room.abstractRoom.creatures[i].realizedCreature.Stun(Random.Range(60, 100));
                     }
                 }
 
