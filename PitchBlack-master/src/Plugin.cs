@@ -52,6 +52,8 @@ namespace PitchBlack
 
             FlarebombHooks.Apply();
 
+            //NightDay.Apply(); //unfinished
+
             //On.Player.GraspsCanBeCrafted += Player_GraspsCanBeCrafted;
             //On.Player.SpitUpCraftedObject += Player_SpitUpCraftedObject;
             //On.PlayerGraphics.DrawSprites += PlayerGraphics_DrawSprites;

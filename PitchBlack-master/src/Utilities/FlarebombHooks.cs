@@ -60,16 +60,27 @@ public class FlarebombHooks
                 if (self.thrownBy?.abstractCreature != null)
                     self.room.abstractRoom.creatures[i].realizedCreature.SetKillTag(self.thrownBy.abstractCreature);
 
-                if (CreatureIsSpider(self.room.abstractRoom.creatures[i].creatureTemplate.type)
-                    && (MiscUtils.IsBeaconOrPhoto(self.room.game.StoryCharacter) || MiscUtils.IsBeaconOrPhoto(self.thrownBy))
-                    )
+                if (MiscUtils.IsBeaconOrPhoto(self.room.game.StoryCharacter) || MiscUtils.IsBeaconOrPhoto(self.thrownBy))
                 {
-                    //die if the game slugcat or thrower is beacon or photo
-                    self.room.abstractRoom.creatures[i].realizedCreature.firstChunk.vel += Custom.DegToVec(Random.value * 360f) * Random.value * 7f;
-                    self.room.abstractRoom.creatures[i].realizedCreature.Die();
+                    if (CreatureIsSpider(self.room.abstractRoom.creatures[i].creatureTemplate.type))
+                    {
+                        //die if the game slugcat or thrower is beacon or photo
+                        self.room.abstractRoom.creatures[i].realizedCreature.firstChunk.vel += Custom.DegToVec(Random.value * 360f) * Random.value * 7f;
+                        self.room.abstractRoom.creatures[i].realizedCreature.Die();
+                    }
+                    else
+                    {
+                        //release all grasps and get stunned
+                        for (int graspNum = 0; graspNum < self.room.abstractRoom.creatures[i].realizedCreature.grasps.Length; graspNum++)
+                            self.room.abstractRoom.creatures[i].realizedCreature.ReleaseGrasp(graspNum);
+
+                        self.room.abstractRoom.creatures[i].realizedCreature.Stun(Random.Range(20, 40));
+                    }
                 }
-                else if (self.room.abstractRoom.creatures[i].creatureTemplate.type == CreatureTemplateType.NightTerror)
+
+                if (self.room.abstractRoom.creatures[i].creatureTemplate.type == CreatureTemplateType.NightTerror)
                 {
+                    //this will affect night terror, regardless of what slugcat the StoryCharacter or thrownBy is
                     if (NightTerrorHooks.NightTerrorInfo.TryGetValue(self.room.abstractRoom.creatures[i].realizedCreature as Centipede, out var NTInfo))
                     {
                         NTInfo.fleeing = 40 * 18;

@@ -12,12 +12,14 @@ public class ScugHooks
     public static void Player_ctor(On.Player.orig_ctor orig, Player self, AbstractCreature abstractCreature, World world)
     {
         orig(self, abstractCreature, world);
+
         if (MiscUtils.IsBeaconOrPhoto(self.slugcatStats.name))
         {
             if (self.slugcatStats.name == Plugin.PhotoName)
             {
                 self.playerState.isPup = true;
             }
+
             if (!Plugin.scugCWT.TryGetValue(self, out _))
                 Plugin.scugCWT.Add(self, new ScugCWT(self));
         }
@@ -25,23 +27,25 @@ public class ScugHooks
     public static Player.ObjectGrabability BeaconDontWantToTouchCollar(On.Player.orig_Grabability orig, Player self, PhysicalObject obj)
     {
         Player.ObjectGrabability result = orig(self, obj);
-        if (Plugin.scugCWT.TryGetValue(self, out ScugCWT cwt) && cwt.IsBeacon)
+
+        if (self.slugcatStats.name == Plugin.PhotoName && obj is Spear)
+            return Player.ObjectGrabability.OneHand;
+
+        if (obj is FlareBomb flarebomb && obj.room != null)
         {
-            if (cwt.Beacon.storage != null && obj is FlareBomb flare)
+            foreach (AbstractCreature abstrCrit in flarebomb.room.game.Players)
             {
-                //foreach (FlareBomb storedFlare in cwt.Beacon.storage.storedFlares)
-                //{
-                //    if (storedFlare == flare)
-                //    {
-                //        return Player.ObjectGrabability.CantGrab;
-                //    }
-                //}
-                if (cwt.Beacon.storage.storedFlares.Contains(flare))
-                    return Player.ObjectGrabability.CantGrab;
+                if (abstrCrit.realizedCreature == null)
+                    continue;
+
+                if (Plugin.scugCWT.TryGetValue(abstrCrit.realizedCreature as Player, out var cwt) && cwt.IsBeacon)
+                {
+                    if (cwt.Beacon.storage.storedFlares.Contains(flarebomb))
+                        return Player.ObjectGrabability.CantGrab;
+                }
             }
         }
-        else if (self.slugcatStats.name == Plugin.PhotoName && obj is Spear)
-            return Player.ObjectGrabability.OneHand;
+
         return result;
     }
 }
