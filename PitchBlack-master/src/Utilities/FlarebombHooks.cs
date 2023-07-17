@@ -68,7 +68,7 @@ public class FlarebombHooks
                         self.room.abstractRoom.creatures[i].realizedCreature.firstChunk.vel += Custom.DegToVec(Random.value * 360f) * Random.value * 7f;
                         self.room.abstractRoom.creatures[i].realizedCreature.Die();
                     }
-                    else
+                    else if (self.room.abstractRoom.creatures[i].realizedCreature is not Player)
                     {
                         //release all grasps and get stunned
                         for (int graspNum = 0; graspNum < self.room.abstractRoom.creatures[i].realizedCreature.grasps.Length; graspNum++)
