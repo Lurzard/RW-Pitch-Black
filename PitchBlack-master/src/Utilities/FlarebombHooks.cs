@@ -71,8 +71,9 @@ public class FlarebombHooks
                         self.room.abstractRoom.creatures[i].realizedCreature.firstChunk.vel += Custom.DegToVec(Random.value * 360f) * Random.value * 7f;
                         self.room.abstractRoom.creatures[i].realizedCreature.Die();
                     }
-                    else if (self.room.abstractRoom.creatures[i].realizedCreature is not Player
-                        || self.room.abstractRoom.creatures[i].creatureTemplate.type != CreatureTemplate.Type.Slugcat)
+                    else if (self.room.abstractRoom.creatures[i].realizedCreature.grasps != null
+                        && (self.room.abstractRoom.creatures[i].realizedCreature is not Player
+                        || self.room.abstractRoom.creatures[i].creatureTemplate.type != CreatureTemplate.Type.Slugcat))
                     {
                         //u would think the first check works... well it does sometimes. apparently
                         //release all grasps and get stunned
