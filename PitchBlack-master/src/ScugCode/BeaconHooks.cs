@@ -51,7 +51,8 @@ public static class BeaconHooks
         {
             if (Player.AnimationIndex.Flip == self.animation)
                 self.jumpBoost *= 1f + 0.75f;
-                //self.jumpBoost *= 1.75f;
+            else
+                self.jumpBoost *= 1f + 0.1f;
             //else if (self.rollDirection != 0
             //    && (Player.AnimationIndex.BellySlide == self.animation
             //    || Player.AnimationIndex.RocketJump == self.animation
