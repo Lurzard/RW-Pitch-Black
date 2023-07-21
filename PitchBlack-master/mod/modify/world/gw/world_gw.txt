@@ -85,9 +85,16 @@ Beacon,Photomaniac : GW_C08 : GW_B06 : GW_B06_PAST
 Beacon,Photomaniac : GW_B06_PAST : 1 : GW_A22
 Beacon,Photomaniac : GW_B06_PAST : 2 : GW_C08
 
-Beacon,Photomaniac : GW_C10 : GW_E01 : DISCONNECTED
-Beacon,Photomaniac : GW_E01 : GW_C10 : GW_C10_PAST
-Beacon,Photomaniac : GW_C10_PAST : 1 : GW_E01
+Beacon,Photomaniac : GW_C10_PAST : 1 : GW_E01_PB
+Beacon,Photomaniac : GW_E01_PB : 1 : GW_C10_PAST
+
+Beacon,Photomaniac : GW_C09 : GW_C08 : DISCONNECTED
+Beacon,Photomaniac : GW_C08 : GW_C09 : GW_C09_PB
+Beacon,Photomaniac : GW_C09_PB : 1 : GW_C08
+
+Beacon,Photomaniac : GW_C09 : GW_B05 : DISCONNECTED
+Beacon,Photomaniac : GW_B05 : GW_C09 : GW_C09_PB
+Beacon,Photomaniac : GW_C09_PB : 2 : GW_B05
 
 Beacon,Photomaniac : GW_C06 : GW_S02 : DISCONNECTED
 Beacon,Photomaniac : GW_C06_PAST : 1 : GW_S02
@@ -126,6 +133,12 @@ Beacon,Photomaniac : GW_B09_PAST : 1 : GATE_DS_GW
 Beacon,Photomaniac : GATE_DS_GW : GW_B09 : GW_B09_PAST
 END CONDITIONAL LINKS
 
+ROOMS
+
+GW_C09_PB : DISCONNECTED, DISCONNECTED, GW_E01_PB
+GW_E01_PB : GW_C09_PB, DISCONNECTED
+
+END ROOMS
 
 CREATURES
 
@@ -147,9 +160,8 @@ CREATURES
 (Beacon)GW_C05 : 2-Mouse-5, 3-Mouse-5
 (Beacon)GW_C06_PAST : 3-Cyan-2, 4-BigSpider, 8-Dropbug
 (Beacon)GW_C08 : 3-Leech-10, 5-Snail-4, 3-Eel-{PreCycle}
-(Beacon)GW_C09 : 4-Leech-15, 5-Leech-10
 (Beacon)GW_D01_PAST : 7-Leech-8, 16-Garbage Worm-5, 5-Cyan-2, 8-Leech-7
-(Beacon)GW_E01 : 2-MotherSpider, 3-BigSpider, 4-SpitterSpider, 7-Snail
+(Beacon)GW_E01_PB : 2-MotherSpider, 3-BigSpider, 4-SpitterSpider, 7-Snail
 (Beacon)GW_E02_PAST : 7-Yellow-3, 8-Black, 5-Mimic-{14}, 3-CicadaB-3, 4-CicadaA-2, 18-Garbage Worm-3
 (Beacon)GW_EDGE02 : 3-BigSpider, 4-MotherSpider, 5-Leech-12, 8-Leech-6
 (Beacon)GW_EDGE03 : 17-Leech-9, 18-Leech-12, 5-DropBug-2, 7-CicadaB-3, 8-Mouse-5, 17-Salamander-{PreCycle}, 18-Salamander-{PreCycle}
@@ -192,9 +204,8 @@ CREATURES
 (Photomaniac)GW_C05 : 2-Mouse-5, 2-White, 3-Mouse-5, 3-White
 (Photomaniac)GW_C06_PAST : 3-Cyan-2, 4-BigSpider-2, 8-Dropbug
 (Photomaniac)GW_C08 : 3-Leech-10, 5-Snail-4, 3-Eel-{PreCycle}
-(Photomaniac)GW_C09 : 4-Leech-15, 5-Leech-10
 (Photomaniac)GW_D01_PAST : 7-Leech-8, 16-Garbage Worm-5, 5-Cyan-2, 8-Leech-7
-(Photomaniac)GW_E01 : 2-MotherSpider, 3-BigSpider-2, 4-SpitterSpider, 7-Snail
+(Photomaniac)GW_E01_PB : 2-MotherSpider, 3-BigSpider-2, 4-SpitterSpider, 7-Snail
 (Photomaniac)GW_E02_PAST : 7-Yellow-3, 8-Black, 5-Mimic-{14}, 3-CicadaB-3, 4-CicadaA-2, 18-Garbage Worm-3
 (Photomaniac)GW_EDGE02 : 3-BigSpider, 4-MotherSpider, 5-Leech-12, 8-Leech-6
 (Photomaniac)GW_EDGE03 : 17-Leech-9, 18-Leech-12, 5-DropBug-2, 7-CicadaB-3, 8-Mouse-5, 17-Salamander-{PreCycle}, 18-Salamander-{PreCycle}
