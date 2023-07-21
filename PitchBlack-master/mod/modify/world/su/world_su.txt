@@ -15,79 +15,112 @@ Beacon,Photomaniac : SU_B14SAINT : 2 : GATE_SU_DS
 END CONDITIONAL LINKS
 CREATURES
 
-(Beacon)OFFSCREEN : 0-Scavenger-13, 0-Elite, 0-KingVulture, 0-Vulture-2, 0-MirosVulture-2
-(Photomaniac)OFFSCREEN : 0-Scavenger-14, 0-Elite, 0-KingVulture, 0-Vulture-3, 0-MirosVulture-2	
+(Beacon)OFFSCREEN : 0-Scavenger-22, 0-Elite-3, 0-KingVulture, 0-Vulture-3, 0-MirosVulture-2
+(Photomaniac)OFFSCREEN : 0-Scavenger-22, 0-Elite-3, 0-KingVulture, 0-Vulture-3, 0-MirosVulture-2	
 
-(Beacon)SU_A02 : 3-Black
-(Beacon)SU_A04 : 2-CicadaB-2, 3-CicadaB, 4-Black, 4-White, 4-Cyan
-(Beacon)SU_A06 : 3-BigSpider, 3-SpitterSpider, 4-Black
-(Beacon)SU_A07 : 2-CicadaA, 3-CicadaB-4, 4-Pink, 5-Black
-(Beacon)SU_A10 : 2-TentaclePlant, 3-Black
-(Beacon)SU_A13 : 2-BigSpider, 3-CicadaB, 4-Dropwig, 5-Mouse-5
-(Beacon)SU_A17 : 2-White, 2-Cyan
-(Beacon)SU_A20 : 4-BigSpider-2, 5-Small Centipede-2, 6-Centipede-5
+(Beacon)SU_A04 : 2-CicadaB-2, 3-CicadaB, 4-Black, 4-Pink
+(Beacon)SU_A06 : 3-SpitterSpider, 4-Caramel
+(Beacon)SU_A07 : 2-CicadaA, 3-CicadaB-4
+(Beacon)SU_A13 : 3-CicadaB, 4-Dropwig
+(Beacon)SU_A17 : 2-Cyan
+(Beacon)SU_A20 : 5-Centipede-3, 6-Centipede-2, 6-Small Centipede-2
 (Beacon)SU_A30 : 2-EggBug, 2-Dropwig
-(Beacon)SU_A31 : 3-Centipede-3, 3-Small Centipede-2
-(Beacon)SU_A32 : 2-Dropwig, 2-Black
-(Beacon)SU_A40 : 2-Black, 2-Cyan-3
+(Beacon)SU_A31 : 3-Small Centipede-2, 3-Centipede-2
+(Beacon)SU_A40 : 2-Green, 2-Cyan-2, 2-Strawberry
 (Photomaniac)SU_A02 : 3-Black
-(Photomaniac)SU_A04 : 2-CicadaB-2, 3-CicadaB, 4-Black, 4-White, 4-Cyan
-(Photomaniac)SU_A06 : 3-BigSpider-2, 3-SpitterSpider, 4-Black
-(Photomaniac)SU_A07 : 2-CicadaA, 3-CicadaB-4, 4-Pink, 5-Black
-(Photomaniac)SU_A10 : 2-TentaclePlant, 3-Black
-(Photomaniac)SU_A13 : 2-BigSpider, 3-CicadaB, 4-Dropwig, 5-Mouse-5
-(Photomaniac)SU_A17 : 2-White, 2-Cyan
-(Photomaniac)SU_A20 : 4-BigSpider-2, 5-Small Centipede-2, 6-Centipede-5
+(Photomaniac)SU_A04 : 2-CicadaB-2, 3-CicadaB, 4-Black, 4-Pink
+(Photomaniac)SU_A06 : 3-SpitterSpider, 4-Caramel
+(Photomaniac)SU_A07 : 2-CicadaA, 3-CicadaB-4
+(Photomaniac)SU_A13 : 3-CicadaB, 4-Dropwig
+(Photomaniac)SU_A17 : 2-Cyan
+(Photomaniac)SU_A20 : 5-Centipede-3, 6-Centipede-2, 6-Small Centipede-2
 (Photomaniac)SU_A30 : 2-EggBug, 2-Dropwig
-(Photomaniac)SU_A31 : 3-Centipede-3, 3-Small Centipede-2
-(Photomaniac)SU_A32 : 2-Dropwig, 2-Black
-(Photomaniac)SU_A40 : 2-Black, 2-Cyan-3
+(Photomaniac)SU_A31 : 3-Small Centipede-2, 3-Centipede-2
+(Photomaniac)SU_A40 : 2-Cyan-2, 2-Strawberry
 (Beacon)LINEAGE : SU_A02 : 2 : NONE-0.05, Mimic-{16}-0.4, Mimic-{18}-0.4, TentaclePlant-0
+(Beacon)LINEAGE : SU_A02 : 3 : Mimic-{16}-0.4, Caramel-0.4, Black-0.2, Strawberry-0
+(Beacon)LINEAGE : SU_A04 : 4 : White-0.2, Cyan-0.2, Pink-0.5, Blue-0.5, Green-0.5, Strawberry-0
 (Beacon)LINEAGE : SU_A04 : 5 : NONE-0.05, TentaclePlant-0
+(Beacon)LINEAGE : SU_A06 : 3 : Dropwig-0.5, BigSpider-0.5, SpitterSpider-0
+(Beacon)LINEAGE : SU_A06 : 4 : Red-0.9, Black-0.2, Pink-0.5, Green-0.5, Strawberry-0.5, Cyan-0.5, Yellow-0.5, Caramel-0
+(Beacon)LINEAGE : SU_A07 : 4 : Green-0.5, Caramel-0
+(Beacon)LINEAGE : SU_A07 : 5 : Black-0.2, Pink-0
+(Beacon)LINEAGE : SU_A10 : 2 : TentaclePlant-0.5, Mimic-{21}-0.5, TentaclePlant-0
+(Beacon)LINEAGE : SU_A10 : 3 : Green-0.5, Caramel-0
+(Beacon)LINEAGE : SU_A17 : 2 : White-0.4, Cyan-0
+(Beacon)LINEAGE : SU_A20 : 4 : Black-0.2, Pink-0.5, Blue-0.6, Red-0
+(Beacon)LINEAGE : SU_A31 : 3 : Small Centipede-1, Centipede-{0.4}-1, Centipede-{0.6}-1, Centipede-{0.8}-0
+(Beacon)LINEAGE : SU_A32 : 2 : Dropwig-0.05, Red-0
+(Beacon)LINEAGE : SU_A40 : 2 : Green-0.5, Black-0.2, Pink-0.5, Blue-0.5, Red-1, Cyan-0
 (Photomaniac)LINEAGE : SU_A02 : 2 : NONE-0.05, Mimic-{16}-0.4, Mimic-{18}-0.4, TentaclePlant-0
+(Photomaniac)LINEAGE : SU_A02 : 3 : Mimic-{16}-0.4, Caramel-0.4, Black-0.2, Strawberry-0
+(Photomaniac)LINEAGE : SU_A04 : 4 : White-0.2, Cyan-0.2, Pink-0.5, Blue-0.5, Green-0.5, Strawberry-0
 (Photomaniac)LINEAGE : SU_A04 : 5 : NONE-0.05, TentaclePlant-0
+(Photomaniac)LINEAGE : SU_A06 : 3 : Dropwig-0.5, BigSpider-0.5, SpitterSpider-0
+(Photomaniac)LINEAGE : SU_A06 : 4 : Red-0.9, Black-0.2, Pink-0.5, Green-0.5, Strawberry-0.5, Cyan-0.5, Yellow-0.5, Caramel-0
+(Photomaniac)LINEAGE : SU_A07 : 4 : Green-0.5, Caramel-0
+(Photomaniac)LINEAGE : SU_A07 : 5 : Black-0.2, Pink-0
+(Photomaniac)LINEAGE : SU_A10 : 2 : TentaclePlant-0.5, Mimic-{21}-0.5, TentaclePlant-0
+(Photomaniac)LINEAGE : SU_A10 : 3 : Green-0.5, Caramel-0
+(Photomaniac)LINEAGE : SU_A17 : 2 : White-0.4, Cyan-0
+(Photomaniac)LINEAGE : SU_A20 : 4 : Black-0.2, Pink-0.5, Blue-0.6, Red-0
+(Photomaniac)LINEAGE : SU_A31 : 3 : Small Centipede-1, Centipede-{0.4}-1, Centipede-{0.6}-1, Centipede-{0.8}-0
+(Photomaniac)LINEAGE : SU_A32 : 2 : Dropwig-0.05, Red-0
+(Photomaniac)LINEAGE : SU_A40 : 2 : Green-0.5, Black-0.2, Pink-0.5, Blue-0.5, Red-1, Cyan-0
 
-(Beacon)SU_B01 : 4-BigSpider, 5-SpitterSpider, 6-TentaclePlant
-(Beacon)SU_B02 : 4-CicadaB, 5-CicadaB, 6-Yellow-4, 7-Centipede, 8-Yellow-2
-(Beacon)SU_B04 : 3-Black, 3-Dropwig-2, 4-Pink, 5-Yellow-3
-(Beacon)SU_B05 : 3-Pink
-(Beacon)SU_B06 : 4-Mouse-4, 6-CicadaB-2, 7-SpitterSpider
-(Beacon)SU_B07 : 3-Yellow-3
-(Beacon)SU_B08 : 3-Red, 4-Mouse-6
-(Beacon)SU_B09 : 4-nightterror, 4-Centipede-5
-(Beacon)SU_B11 : 3-BigSpider, 4-CicadaB, 5-CicadaA, 8-Centiwing-4
-(Beacon)SU_B12 : 2-Black
-(Photomaniac)SU_B01 : 4-BigSpider, 5-SpitterSpider, 6-TentaclePlant
-(Photomaniac)SU_B02 : 4-CicadaB, 5-CicadaB, 6-Yellow-4, 7-Centipede, 8-Yellow-2
-(Photomaniac)SU_B04 : 3-Black, 3-Dropwig-2, 4-Pink, 5-Yellow-3
-(Photomaniac)SU_B05 : 3-Pink
-(Photomaniac)SU_B06 : 4-Mouse-4, 6-CicadaB-2, 7-SpitterSpider
-(Photomaniac)SU_B07 : 3-Yellow-3
-(Photomaniac)SU_B08 : 3-Red, 4-Mouse-6	
-(Photomaniac)SU_B09 : 4-Centipede-5
-(Photomaniac)SU_B11 : 3-BigSpider, 4-CicadaB, 5-CicadaA, 8-TentaclePlant-{PreCycle}
-(Photomaniac)SU_B12 : 2-Black
+(Beacon)SU_B02 : 4-CicadaB, 5-CicadaB, 6-Yellow-4, 7-Yellow, 8-Centipede-2
+(Beacon)SU_B04 : 3-Dropwig, 4-Yellow, 5-Yellow-3
+(Beacon)SU_B06 : 4-Mouse-4, 6-CicadaB, 7-CicadaB
+(Beacon)SU_B07 : 3-Yellow-2
+(Beacon)SU_B09 : 4-nightterror, 4-Dropwig, 4-Centipede-3
+(Beacon)SU_B11 : 4-CicadaB, 5-CicadaA, 8-Centiwing-4
+(Beacon)SU_B12 : 2-Green
+(Photomaniac)SU_B02 : 4-CicadaB, 5-CicadaB, 6-Yellow-4, 7-Yellow, 8-Centipede-2
+(Photomaniac)SU_B04 : 3-Dropwig, 5-Yellow-3
+(Photomaniac)SU_B06 : 4-Mouse-4, 6-CicadaB, 7-CicadaB
+(Photomaniac)SU_B07 : 3-Yellow-2
+(Photomaniac)SU_B09 : 4-Dropwig, 4-Centipede-3
+(Photomaniac)SU_B11 : 4-CicadaB, 5-CicadaA, 8-Centiwing-4
+(Photomaniac)SU_B12 : 2-Green
+(Beacon)LINEAGE : SU_B01 : 6 : TentaclePlant-0.5, Mimic-{24}-0.5, TentaclePlant-0
+(Beacon)LINEAGE : SU_B02 : 7 : Centipede-{0.3}-0.4, Yellow-0
+(Beacon)LINEAGE : SU_B04 : 3 : Dropwig-0.5, Black-0.2, Pink-0
+(Beacon)LINEAGE : SU_B04 : 4 : Dropwig-0.5, Green-0.5, Caramel-0.5, Yellow-0
+(Beacon)LINEAGE : SU_B05 : 3 : Black-0.2, Pink-0.5, Green-0.4, Caramel-0
 (Beacon)LINEAGE : SU_B05 : 4 : NONE-0.05, Mimic-{14}-0.4, TentaclePlant-0
-(Beacon)LINEAGE : SU_B06 : 3 : Blue-0.5, White-0.4, Strawberry-0.9, Cyan-0
-(Beacon)LINEAGE : SU_B06 : 5 : White-0.4, Strawberry-1, Cyan-0
-(Beacon)LINEAGE : SU_B07 : 2 : Green-0.5, Pink-0.5, Cyan-0.5, Strawberry-0.8, Black-0
-(Beacon)LINEAGE : SU_B08 : 2 : Black-0.5, Red-0.5, Green-0.5, Yellow-0.5, Strawberry-0
-(Beacon)LINEAGE : SU_B11 : 6 : White-0.2, Strawberry-0.7, Cyan-0
-(Beacon)LINEAGE : SU_B11 : 7 : Cyan-0.2, Strawberry-0.7, White-0
-(Beacon)LINEAGE : SU_B12 : 3 : Pink-0.5, Green-0.5, Blue-0.5, Strawberry-0.5, Red-0
+(Beacon)LINEAGE : SU_B06 : 3 : Blue-0.6, White-0.4, Cyan-0
+(Beacon)LINEAGE : SU_B06 : 5 : White-0.4, Blue-1, Strawberry-0
+(Beacon)LINEAGE : SU_B07 : 2 : Green-0.5, Cyan-0.5, Black-0.2, Pink-0.5, Caramel-0.5, Red-0, Yellow-0.5, Strawberry-0
+(Beacon)LINEAGE : SU_B07 : 3 : Green-0.6, Yellow-0
+(Beacon)LINEAGE : SU_B08 : 2 : Green-0.5, Red-1, Black-0.2, Strawberry-0.5, Yellow-0
+(Beacon)LINEAGE : SU_B08 : 3 : Red-0.9, Caramel-0
+(Beacon)LINEAGE : SU_B09 : 4 : Dropwig-0.5, Centipede-{0.3}-0.5, Centipede-{0.5}-0.7, Centipede-{0.7}-0
+(Beacon)LINEAGE : SU_B11 : 6 : White-0.2, Blue-1, Strawberry-0
+(Beacon)LINEAGE : SU_B11 : 7 : White-0.2, Blue-1, Cyan-0
+(Beacon)LINEAGE : SU_B12 : 3 : Black-0.2, Pink-0.5, Red-1, Strawberry-0.5, Green-0.5, Caramel-0.5, Blue-0
+(Photomaniac)LINEAGE : SU_B01 : 6 : TentaclePlant-0.5, Mimic-{24}-0.5, TentaclePlant-0
+(Photomaniac)LINEAGE : SU_B02 : 7 : Centipede-{0.3}-0.4, Yellow-0
+(Photomaniac)LINEAGE : SU_B04 : 3 : Dropwig-0.5, Black-0.2, Pink-0
+(Photomaniac)LINEAGE : SU_B04 : 4 : Dropwig-0.5, Green-0.5, Caramel-0.5, Yellow-0
+(Photomaniac)LINEAGE : SU_B05 : 3 : Black-0.2, Pink-0.5, Green-0.4, Caramel-0
 (Photomaniac)LINEAGE : SU_B05 : 4 : NONE-0.05, Mimic-{14}-0.4, TentaclePlant-0
-(Photomaniac)LINEAGE : SU_B06 : 3 : Blue-0.5, White-0.4, Strawberry-0.9, Cyan-0
-(Photomaniac)LINEAGE : SU_B06 : 5 : White-0.4, Strawberry-1, Cyan-0
-(Photomaniac)LINEAGE : SU_B07 : 2 : Green-0.5, Pink-0.5, Cyan-0.5, Strawberry-0.8, Black-0
-(Photomaniac)LINEAGE : SU_B08 : 2 : Black-0.5, Red-0.5, Green-0.5, Yellow-0.5, Strawberry-0
-(Photomaniac)LINEAGE : SU_B11 : 6 : White-0.2, Strawberry-0.7, Cyan-0
-(Photomanaic)LINEAGE : SU_B11 : 7 : Cyan-0.2, Strawberry-0.7, White-0
-(Photomaniac)LINEAGE : SU_B12 : 3 : Pink-0.5, Green-0.5, Blue-0.5, Strawberry-0.5, Red-0
+(Photomaniac)LINEAGE : SU_B06 : 3 : Blue-0.6, White-0.4, Cyan-0
+(Photomaniac)LINEAGE : SU_B06 : 5 : White-0.4, Blue-1, Strawberry-0
+(Photomaniac)LINEAGE : SU_B07 : 2 : Green-0.5, Cyan-0.5, Black-0.2, Pink-0.5, Caramel-0.5, Red-0, Yellow-0.5, Strawberry-0
+(Photomaniac)LINEAGE : SU_B07 : 3 : Green-0.6, Yellow-0
+(Photomaniac)LINEAGE : SU_B08 : 2 : Green-0.5, Red-1, Black-0.2, Strawberry-0.5, Yellow-0
+(Photomaniac)LINEAGE : SU_B08 : 3 : Red-0.9, Caramel-0
+(Photomaniac)LINEAGE : SU_B09 : 4 : Dropwig-0.5, Centipede-{0.3}-0.5, Centipede-{0.5}-0.7, Centipede-{0.7}-0
+(Photomaniac)LINEAGE : SU_B11 : 6 : White-0.2, Blue-1, Strawberry-0
+(Photomanaic)LINEAGE : SU_B11 : 7 : White-0.2, Blue-1, Cyan-0
+(Photomaniac)LINEAGE : SU_B12 : 3 : Black-0.2, Pink-0.5, Red-1, Strawberry-0.5, Green-0.5, Caramel-0.5, Blue-0
 
-(Beacon)SU_C02 : 2-BigNeedleWorm, 2-SmallNeedleWorm-3, 3-Centiwing-2, 5-Pink
-(Photomaniac)SU_C02 : 2-BigNeedleWorm, 2-SmallNeedleWorm-3, 3-Centiwing-2, 5-Pink
-(Beacon)LINEAGE : SU_C02 : 5 : Black-0.2, Pink-0.5, Yellow-0.5, Cyan-0.5, Red-0
-(Photomaniac)LINEAGE : SU_C02 : 5 : Black-0.2, Pink-0.5, Yellow-0.5, Cyan-0.5, Red-0
+(Beacon)SU_C02 : 2-BigNeedleWorm, 2-SmallNeedleWorm-3, 3-Centiwing-2
+(Photomaniac)SU_C02 : 2-BigNeedleWorm, 2-SmallNeedleWorm-3, 3-Centiwing-2
+(Beacon)LINEAGE : SU_C02 : 4 : Green-0.5, Cyan-0.5, Red-1, Yellow-0.5, Caramel-0.5, Black-0.2, Pink-0.5, Strawberry-0
+(Beacon)LINEAGE : SU_C05 : 5 : Black-0.2, Pink-0.5, Caramel-0
+(Photomaniac)LINEAGE : SU_C02 : 4 : Green-0.5, Cyan-0.5, Red-1, Yellow-0.5, Caramel-0.5, Black-0.2, Pink-0.5, Strawberry-0
+(Photomaniac)LINEAGE : SU_C05 : 5 : Black-0.2, Pink-0.5, Caramel-0
 
 (Beacon,Photomaniac)SU_CAVE01 : 4-Mouse-3
 (Beacon,Photomaniac)SU_CAVE02 : 4-Mouse-3, 6-Mouse-3, 11-Mouse-4
