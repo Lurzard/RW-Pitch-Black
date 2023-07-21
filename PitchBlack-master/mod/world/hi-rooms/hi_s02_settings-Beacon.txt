@@ -3,8 +3,8 @@ DangerType: Flood
 RainIntensity: 0.6956522
 RumbleIntensity: 0.7065217
 BkgDroneVolume: 0
-Palette: 5
-Effects: DayNight-1-20-20, FireFlies-0.2717391-21-83, 
+Palette: 10
+Effects: DayNight-1-20-20, FireFlies-0.2717391-21-83, Darkness-0.5000002-22-141, 
 PlacedObjects: BrokenShelterWaterLevel><468.0244><253.1985><, DayNightSettings><70.30258><408.2823><5~8.660254~8~5, 
 AmbientSounds: SPOT><Basic Mech.ogg><720.6788><158.4104><0.1956522><1><472.6788><460.4104><-41.35535><-46.35535><0><0.4478262, 
-FadePalette: 33, 0.7608696
+FadePalette: 33, 0.7934783
