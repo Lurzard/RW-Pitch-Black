@@ -102,6 +102,9 @@ public static class BeaconHooks
         bool dontAutoThrowFlarebomb = self.FreeHand() == -1;
         if (Plugin.BeaconName == self.slugcatStats.name)
         {
+            //spinch: check grasps to see if beacon is holding a throwable object or a creature
+            // if true, then don't auto throw the flarebombs from storage
+            // done before orig because things can get thrown during orig
             for (int i = 0; i < 2; i++)
             {
                 if (self.grasps[i]?.grabbed != null && (self.IsObjectThrowable(self.grasps[i].grabbed) || self.grasps[i].grabbed is Creature))
@@ -116,14 +119,24 @@ public static class BeaconHooks
 
         if (Plugin.scugCWT.TryGetValue(self, out ScugCWT cwt) && cwt.IsBeacon)
         {
-            for (int i = 0; i < 2; i++)
+            bool interactionLockStorage = self.eatMeat > 0;
+            if (!interactionLockStorage)
             {
-                if (self.grasps[i]?.grabbed is IPlayerEdible || self.eatMeat > 0)
+                //check grasps for food if not eating meat
+                for (int i = 0; i < 2; i++)
                 {
-                    //dont take flarebomb from storage if holding food
-                    cwt.Beacon.storage.interactionLocked = true;
-                    cwt.Beacon.storage.counter = 0;
+                    if (self.grasps[i]?.grabbed is IPlayerEdible)
+                    {
+                        interactionLockStorage = true;
+                        break;
+                    }
                 }
+            }
+            if (interactionLockStorage)
+            {
+                //dont take flarebomb from storage if holding food or eating
+                cwt.Beacon.storage.interactionLocked = true;
+                cwt.Beacon.storage.counter = 0;
             }
 
             if (cwt.Beacon.storage != null)
@@ -138,9 +151,8 @@ public static class BeaconHooks
                 if (!dontAutoThrowFlarebomb && self.input[0].thrw && !self.input[1].thrw && cwt.Beacon.storage.storedFlares.Count > 0)
                 {
                     //auto throw flarebomb on an empty hand
-                    int freeHand = self.FreeHand();
                     cwt.Beacon.storage.FlarebombFromStorageToPaw(eu);
-                    self.ThrowObject(freeHand, eu);
+                    self.ThrowObject(self.FreeHand(), eu);
                 }
             }
         }
