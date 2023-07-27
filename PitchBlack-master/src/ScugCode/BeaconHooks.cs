@@ -6,6 +6,7 @@ public static class BeaconHooks
 {
     public static void Apply()
     {
+        On.Player.Die += Player_Die;
         //On.Player.ThrowToGetFree += Player_ThrowToGetFree;
         On.Player.Jump += Player_Jump;
         On.Player.SwallowObject += BeaconTransmuteIntoFlashbang;
@@ -13,35 +14,56 @@ public static class BeaconHooks
         On.Player.GraphicsModuleUpdated += BeaconStorageGrafUpdate;
     }
 
-    //private static void Player_ThrowToGetFree(On.Player.orig_ThrowToGetFree orig, Player self, bool eu)
-    //{
-    //    //spinch: doesnt work & i dont feel like coding anymore today
-    //    if (Plugin.scugCWT.TryGetValue(self, out ScugCWT cwt) && cwt.IsBeacon)
-    //    {
-    //        bool dontThrowFlarebomb = self.FreeHand() == -1;
-    //        if (Plugin.BeaconName == self.slugcatStats.name)
-    //        {
-    //            for (int i = 0; i < 2; i++)
-    //            {
-    //                if (self.grasps[i]?.grabbed is Weapon)
-    //                {
-    //                    dontThrowFlarebomb = true;
-    //                    break;
-    //                }
-    //            }
-    //        }
+    private static void Player_Die(On.Player.orig_Die orig, Player self)
+    {
+        orig(self);
+        if (Plugin.scugCWT.TryGetValue(self, out var cwt) && cwt.Beacon?.storage != null)
+        {
+            //spinch: on death, all of beacon's stored flarebombs gets popped off
+            while (cwt.Beacon.storage.storedFlares.Count > 0)
+            {
+                FlareBomb fb = cwt.Beacon.storage.storedFlares.Pop();
+                BeaconCWT.AbstractStoredFlare af = cwt.Beacon.storage.abstractFlare.Pop();
 
-    //        if (!dontThrowFlarebomb && cwt.Beacon.storage.storedFlares.Count > 0)
-    //        {
-    //            //auto throw flarebomb on an empty hand
-    //            int freeHand = self.FreeHand();
-    //            cwt.Beacon.storage.FlarebombFromStorageToPaw(eu);
-    //            self.ThrowObject(freeHand, eu);
-    //        }
-    //    }
+                fb.firstChunk.vel = self.mainBodyChunk.vel + RWCustom.Custom.RNV() * 3f * UnityEngine.Random.value;
+                fb.ChangeMode(Weapon.Mode.Free);
 
-    //    orig(self, eu);
-    //}
+                af?.Deactivate();
+            }
+        }
+    }
+
+#if false
+    private static void Player_ThrowToGetFree(On.Player.orig_ThrowToGetFree orig, Player self, bool eu)
+    {
+        //spinch: doesnt work & i dont feel like coding anymore today
+        if (Plugin.scugCWT.TryGetValue(self, out ScugCWT cwt) && cwt.IsBeacon)
+        {
+            bool dontThrowFlarebomb = self.FreeHand() == -1;
+            if (Plugin.BeaconName == self.slugcatStats.name)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    if (self.grasps[i]?.grabbed is Weapon)
+                    {
+                        dontThrowFlarebomb = true;
+                        break;
+                    }
+                }
+            }
+
+            if (!dontThrowFlarebomb && cwt.Beacon.storage.storedFlares.Count > 0)
+            {
+                //auto throw flarebomb on an empty hand
+                int freeHand = self.FreeHand();
+                cwt.Beacon.storage.FlarebombFromStorageToPaw(eu);
+                self.ThrowObject(freeHand, eu);
+            }
+        }
+
+        orig(self, eu);
+    }
+#endif
 
     private static void Player_Jump(On.Player.orig_Jump orig, Player self)
     {
