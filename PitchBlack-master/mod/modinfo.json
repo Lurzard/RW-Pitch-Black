@@ -6,7 +6,7 @@
 
 	"description": "Crawl around in the nighttime of a dying world as two new custom campaigns, The Beacon and The Photomaniac.\n\nMake your way home safely before the rising dawn wakes, and uncover the hidden secrets of this world and piece together its fractured story.",
 
-	"requirements": [ "slime-cubed.slugbase", "moreslugcats", "fisobs", "regionkit" "vigaro.guardian"],
-	"requirements_names": [ "SlugBase", "More Slugcats Expansion", "Fisobs", "RegionKit", "Guardian" ],
+	"requirements": [ "slime-cubed.slugbase", "moreslugcats", "fisobs", "regionkit" ],
+	"requirements_names": [ "SlugBase", "More Slugcats Expansion", "Fisobs", "RegionKit" ],
 	"tags": [ "Custom Slugcat", "Campaigns", "Game Modes", "Regions", "Game Mechanics" ]
 }
