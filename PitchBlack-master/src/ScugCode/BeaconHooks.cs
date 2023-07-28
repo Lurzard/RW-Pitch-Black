@@ -23,7 +23,7 @@ public static class BeaconHooks
         //spinch: give priority to auto-throwing flarebombs from storage over throwing slug on back
         ILCursor c = new(il);
         ILLabel label = il.DefineLabel();
-            
+
         if (!c.TryGotoNext(MoveType.After,
             i => i.MatchCallOrCallvirt<Player.SlugOnBack>("get_HasASlug"),
             i => i.MatchBrfalse(out label)
@@ -32,39 +32,8 @@ public static class BeaconHooks
             return;
         }
 
-        //if (!c.TryGotoPrev(MoveType.Before,
-        //    i => i.MatchLdsfld<ModManager>(nameof(ModManager.MSC))
-        //    ))
-        //{
-        //    return;
-        //}
-
-        #region
-        //c.Emit(OpCodes.Ldarg_0);
-        //c.EmitDelegate((Player self) =>
-        //{
-        //    if (!Plugin.scugCWT.TryGetValue(self, out var cwt) || !cwt.IsBeacon)
-        //        return;
-
-        //    if (cwt.Beacon.storage.storedFlares.Count <= 0)
-        //        return;
-
-        //    if (self.slugOnBack == null || !self.slugOnBack.HasASlug)
-        //        return;
-
-        //    foreach (var item in self.grasps)
-        //    {
-        //        if (item != null && self.IsObjectThrowable(item.grabbed))
-        //        {
-        //            return;
-        //        }
-        //    }
-
-        //    self.wantToThrow = 0;
-        //});
-        #endregion
-
         c.Emit(OpCodes.Ldarg_0);
+
         c.EmitDelegate((Player self) =>
         {
             if (!Plugin.scugCWT.TryGetValue(self, out var cwt) || !cwt.IsBeacon)
@@ -84,9 +53,9 @@ public static class BeaconHooks
                 }
             }
 
-            //self.wantToThrow = 0;
             return true;
         });
+
         c.Emit(OpCodes.Brtrue, label);
     }
 
@@ -119,16 +88,6 @@ public static class BeaconHooks
                 self.jumpBoost *= 1f + 0.75f;
             else
                 self.jumpBoost *= 1f + 0.1f;
-            //else if (self.rollDirection != 0
-            //    && (Player.AnimationIndex.BellySlide == self.animation
-            //    || Player.AnimationIndex.RocketJump == self.animation
-            //    || Player.AnimationIndex.Roll == self.animation))
-            //{
-            //    foreach (var bodyChunk in self.bodyChunks)
-            //    {
-            //        bodyChunk.vel.x *= 2f;
-            //    }
-            //}
         }
     }
 
