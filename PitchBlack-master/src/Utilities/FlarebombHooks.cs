@@ -63,22 +63,40 @@ public class FlarebombHooks
                 if (self.room.abstractRoom.creatures[i].creatureTemplate?.type == null)
                     continue;
 
-                if (MiscUtils.IsBeaconOrPhoto(self.room.game.StoryCharacter) || MiscUtils.IsBeaconOrPhoto(self.thrownBy))
+                bool stunCreatures = MiscUtils.IsBeaconOrPhoto(self.room.game.StoryCharacter) || MiscUtils.IsBeaconOrPhoto(self.thrownBy);
+
+                if (!stunCreatures && ModManager.CoopAvailable)
+                {
+                    //loop through all co-op players
+                    foreach (var playersInGame in self.room.game.Players)
+                    {
+                        if (playersInGame.realizedCreature is Player player && MiscUtils.IsBeaconOrPhoto(player.SlugCatClass))
+                        {
+                            stunCreatures = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (stunCreatures)
                 {
                     if (CreatureIsSpider(self.room.abstractRoom.creatures[i].creatureTemplate.type))
                     {
-                        //die if the game slugcat or thrower is beacon or photo
+                        //die if the game slugcat or thrower or any co-op players is beacon or photo
                         self.room.abstractRoom.creatures[i].realizedCreature.firstChunk.vel += Custom.DegToVec(Random.value * 360f) * Random.value * 7f;
                         self.room.abstractRoom.creatures[i].realizedCreature.Die();
                     }
-                    else if (self.room.abstractRoom.creatures[i].realizedCreature.grasps != null
-                        && (self.room.abstractRoom.creatures[i].realizedCreature is not Player
-                        || self.room.abstractRoom.creatures[i].creatureTemplate.type != CreatureTemplate.Type.Slugcat))
+                    else if (self.room.abstractRoom.creatures[i].realizedCreature is not Player
+                        && self.room.abstractRoom.creatures[i].creatureTemplate.type != CreatureTemplate.Type.Slugcat
+                        && self.room.abstractRoom.creatures[i].creatureTemplate.type != MoreSlugcats.MoreSlugcatsEnums.CreatureTemplateType.SlugNPC)
                     {
-                        //u would think the first check works... well it does sometimes. apparently
-                        //release all grasps and get stunned
-                        for (int graspNum = 0; graspNum < self.room.abstractRoom.creatures[i].realizedCreature.grasps.Length; graspNum++)
-                            self.room.abstractRoom.creatures[i].realizedCreature.ReleaseGrasp(graspNum);
+                        //u would think the first check for player works... well it does sometimes. apparently
+                        //creature release all grasps and get stunned
+                        if (self.room.abstractRoom.creatures[i].realizedCreature.grasps != null)
+                        {
+                            for (int graspNum = 0; graspNum < self.room.abstractRoom.creatures[i].realizedCreature.grasps.Length; graspNum++)
+                                self.room.abstractRoom.creatures[i].realizedCreature.ReleaseGrasp(graspNum);
+                        }
                         self.room.abstractRoom.creatures[i].realizedCreature.Stun(Random.Range(60, 100));
                     }
                 }
