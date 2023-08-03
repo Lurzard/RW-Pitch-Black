@@ -1,0 +1,7 @@
+Template: NONE
+Clouds: 0.2717391
+Grime: 0
+Palette: 10
+Effects: BkgOnlyLightning-0.5326087-20-20, FireFlies-0.3043478-30-30, LightBurn-0.2717391-40-40, 
+PlacedObjects: NoSpearStickZone><271.6113><333.1441><8~127, NoSpearStickZone><2849.699><325.7305><0~100, NoSpearStickZone><2695.827><178.6007><0~100, LightSource><1619.206><727.0548><0.09782609~Environment~-791~-10~155~-287.3975~1~0~None~0~0, LightSource><294.7026><717.5557><0.1521739~Environment~483~-455~86~-211.3975~1~0~None~0~0, LightSource><2784.367><725.9122><0.2065217~Environment~-291~-279~50~86.60254~1~0~None~0~0, FlareBomb><755.1631><289.1343><0~0~2~3, FlareBomb><852.6029><239.5785><0~0~2~3, FlareBomb><2280.9><321.6179><0~0~2~3, FlareBomb><2466.375><250.9063><0~0~2~3, FlareBomb><2405.55><335.4943><0~0~2~3, 
+FadePalette: 9, 0.1304348, 0.1304348, 0.1413043
