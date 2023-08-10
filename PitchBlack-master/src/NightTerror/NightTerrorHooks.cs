@@ -46,6 +46,9 @@ namespace PitchBlack
         {
             new Hook(typeof(Centipede).GetMethod("get_Red", Public | NonPublic | Instance), (System.Func<Centipede, bool> orig, Centipede self) => self.Template.type == CreatureTemplateType.NightTerror || orig(self));
 
+            //On.AbstractRoom.AddEntity += AbstractRoom_AddEntity;
+            //On.AbstractCreature.RealizeInRoom += AbstractCreature_RealizeInRoom;
+
             On.Spear.HitSomething += Spear_HitSomething;
             On.Rock.HitSomething += Rock_HitSomething;
             On.FirecrackerPlant.HitSomething += FirecrackerPlant_HitSomething;
@@ -70,6 +73,35 @@ namespace PitchBlack
             On.CentipedeAI.ctor += CentipedeAICTOR;
             On.AbstractCreatureAI.ctor += AbstractCreatureAI_ctor;
         }
+
+        //private static void AbstractRoom_AddEntity(On.AbstractRoom.orig_AddEntity orig, AbstractRoom self, AbstractWorldEntity ent)
+        //{
+        //    if (ent is AbstractCreature abstrCrit
+        //        && abstrCrit.creatureTemplate.type == CreatureTemplateType.NightTerror
+        //        && self.world.game.session is StoryGameSession story
+        //        && story.game.StoryCharacter == Plugin.BeaconName
+        //        && story.saveState.cycleNumber == 0)
+        //    {
+        //        //dont spawn nightterror on cycle 0
+        //        return;
+        //    }
+
+        //    orig(self, ent);
+        //}
+
+        //private static void AbstractCreature_RealizeInRoom(On.AbstractCreature.orig_RealizeInRoom orig, AbstractCreature self)
+        //{
+        //    if (self.creatureTemplate.type == CreatureTemplateType.NightTerror
+        //        && self.world.game.session is StoryGameSession story
+        //        && story.game.StoryCharacter == Plugin.BeaconName
+        //        && story.saveState.cycleNumber == 0)
+        //    {
+        //        //dont spawn nightterror on cycle 0
+        //        return;
+        //    }
+
+        //    orig(self);
+        //}
 
         private static bool Spear_HitSomething(On.Spear.orig_HitSomething orig, Spear self, SharedPhysics.CollisionResult result, bool eu)
         {

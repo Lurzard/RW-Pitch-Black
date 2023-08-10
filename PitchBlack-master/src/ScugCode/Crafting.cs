@@ -37,7 +37,6 @@ public static class Crafting
 
             if (!c.TryGotoNext(MoveType.After, i => i.MatchCallOrCallvirt<Player>("FreeHand"), i => i.MatchLdcI4(-1), i => i.Match(OpCodes.Beq_S)))
             {
-                //Debug.Log("Unable to find Player.FreeHand() == -1 in ILhook");
                 return;
             }
 

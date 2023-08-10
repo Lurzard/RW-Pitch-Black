@@ -4,3 +4,4 @@ Clouds: 1
 Palette: 10
 PlacedObjects: InsectGroup><733.1791><457.8973><-686~367~0~0~FireFly~0.6956522, LillyPuck><404.1701><293.8167><0~0~2~3, LillyPuck><516.8207><296.5629><0~0~2~3, LillyPuck><1060.165><293.181><0~0~2~3, LillyPuck><812.45><294.7474><0~0~2~3, LillyPuck><916.5514><294.2267><0~0~2~3, 
 FadePalette: 9, 0.07608695, 0.07608695, 0.09782609
+RoomSpecificScriptActive: ON

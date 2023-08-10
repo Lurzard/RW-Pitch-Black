@@ -20,6 +20,7 @@ namespace PitchBlack
     class Plugin : BaseUnityPlugin
     {
         public const string MOD_ID = "lurzard.pitchblack";
+
         public static readonly SlugcatStats.Name BeaconName = new("Beacon", false);
         public static readonly SlugcatStats.Name PhotoName = new("Photomaniac", false);
 
@@ -48,9 +49,10 @@ namespace PitchBlack
             
             PBOverseerGraphics.Apply();
 
-            WorldChanges.Apply();
-
             FlarebombHooks.Apply();
+
+            RoomScripts.Apply();
+            WorldChanges.Apply();
 
             //NightDay.Apply(); //unfinished
 

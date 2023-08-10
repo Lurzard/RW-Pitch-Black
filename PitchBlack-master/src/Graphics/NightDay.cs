@@ -143,28 +143,28 @@ public class NightDay
     private static void RTVColorSwitch(On.RoofTopView.orig_Update orig, RoofTopView self, bool eu)
     {
         float num = 1320f;
-        float num2 = (float)self.room.world.rainCycle.dayNightCounter / num;
-        float num3 = ((float)self.room.world.rainCycle.dayNightCounter - num) / num;
-        float num4 = ((float)self.room.world.rainCycle.dayNightCounter - num) / (num * 1.25f);
-        UnityEngine.Color a = new UnityEngine.Color(0.16078432f, 0.23137255f, 0.31764707f);
-        UnityEngine.Color color = new UnityEngine.Color(0.5176471f, 0.3254902f, 0.40784314f);
-        UnityEngine.Color color2 = new UnityEngine.Color(0.04882353f, 0.0527451f, 0.06843138f);
-        UnityEngine.Color color3 = new UnityEngine.Color(1f, 0.79f, 0.47f);
-        UnityEngine.Color color4 = new UnityEngine.Color(0.078431375f, 0.14117648f, 0.21176471f);
+        float num2 = self.room.world.rainCycle.dayNightCounter / num;
+        float num3 = (self.room.world.rainCycle.dayNightCounter - num) / num;
+        float num4 = (self.room.world.rainCycle.dayNightCounter - num) / (num * 1.25f);
+        Colour a; //= new(0.16078432f, 0.23137255f, 0.31764707f);
+        Colour color; //= new(0.5176471f, 0.3254902f, 0.40784314f);
+        Colour color2; //= new(0.04882353f, 0.0527451f, 0.06843138f);
+        Colour color3; //= new(1f, 0.79f, 0.47f);
+        Colour color4 = new(0.078431375f, 0.14117648f, 0.21176471f);
 
         orig(self, eu);
 
         if (ModManager.MSC && self.room?.game.session is StoryGameSession story && MiscUtils.IsBeaconOrPhoto(story.saveStateNumber)) //campaign check
         {
             //Day (Functionally)
-            a = new UnityEngine.Color(0.04882353f, 0.0527451f, 0.06843138f); //now color2
+            a = new(0.04882353f, 0.0527451f, 0.06843138f); //now color2
 
             //Dusk
-            color = new UnityEngine.Color(1f, 0.79f, 0.47f); //riv's
-            color3 = new UnityEngine.Color(0.7564706f, 0.3756863f, 0.3756863f); //riv's
+            color = new(1f, 0.79f, 0.47f); //riv's
+            color3 = new(0.7564706f, 0.3756863f, 0.3756863f); //riv's
 
             //Night (Functionally)
-            color2 = new UnityEngine.Color(0.16078432f, 0.23137255f, 0.31764707f); //now a
+            color2 = new(0.16078432f, 0.23137255f, 0.31764707f); //now a
         }
     }
     #endregion
