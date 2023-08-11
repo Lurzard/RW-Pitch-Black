@@ -7,11 +7,13 @@
 		"custom_colors": [
 			{
 				"name": "Body",
-				"story": "2a04dc"
+				"story": "2a04dc",
+				"arena": [ "f9f8fc", "fde120", "f27fa0", "422d74" ]
 			},
 			{
 				"name": "Eyes",
-				"story": "FFFFFF"
+				"story": "FFFFFF",
+				"arena": [ "1c1b1d", "1c1b19", "181516", "FFFFFF" ]
 			}
 		],
 		"auto_grab_batflies": true,

@@ -8,6 +8,7 @@ using RWCustom;
 using Random = UnityEngine.Random;
 using Vector2 = UnityEngine.Vector2;
 using UnityEngine;
+using PitchBlack.Graphics;
 
 #pragma warning disable CS0618 // Type or member is obsolete
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -53,6 +54,8 @@ namespace PitchBlack
 
             RoomScripts.Apply();
             WorldChanges.Apply();
+
+            JollyMenuHooks.Apply();
 
             //NightDay.Apply(); //unfinished
 

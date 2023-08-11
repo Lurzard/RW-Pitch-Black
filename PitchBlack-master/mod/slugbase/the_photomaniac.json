@@ -8,17 +8,17 @@
 			{
 				"name": "Body",
 				"story": "010038",
-				"arena": [ "010038", "010038", "010038", "010038" ]
+				"arena": [ "f9f8fc", "fde120", "f27fa0", "422d74" ]
 			},
 			{
 				"name": "Eyes",
 				"story": "FFFFFF",
-				"arena": [ "FFFFFF", "FF8080", "80FF80", "8080FF" ]
+				"arena": [ "1c1b1d", "1c1b19", "181516", "FFFFFF" ]
 			},
 			{
 				"name": "Splatter",
 				"story": "FFFFFF",
-				"arena": [ "FFFFFF", "FFFFFF", "FFFFFF", "FFFFFF" ]
+				"arena": [ "1c1b1d", "1c1b19", "181516", "FFFFFF" ]
 			}
 		],
 		"throw_skill": 0,
