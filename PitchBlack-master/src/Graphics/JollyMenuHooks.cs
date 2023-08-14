@@ -10,10 +10,15 @@ using Mono.Cecil.Cil;
 using Exception = System.Exception;
 using Debug = UnityEngine.Debug;
 
-namespace PitchBlack.Graphics;
+namespace PitchBlack;
 
-public class JollyMenuHooks
+public static class JollyMenuHooks
 {
+    public static bool ContainsBeaconOrPhoto(string str)
+    {
+        return str.Contains(Plugin.PhotoName.value) || str.Contains(Plugin.PhotoName.value);
+    }
+
     public static void Apply()
     {
         //the 2 hooks below are for the very small icons right of the portraits in the jolly menu
@@ -67,7 +72,7 @@ public class JollyMenuHooks
 
     public static bool SymbolButtonTogglePupButton_HasUniqueSprite(On.JollyCoop.JollyMenu.SymbolButtonTogglePupButton.orig_HasUniqueSprite orig, SymbolButtonTogglePupButton self)
     {
-        return orig(self) || self.symbolNameOff.Contains(Plugin.PhotoName.value) || self.symbolNameOff.Contains(Plugin.BeaconName.value);
+        return orig(self) || ContainsBeaconOrPhoto(self.symbolNameOff);
     }
 
     private static string JollyPlayerSelector_GetPupButtonOffName(On.JollyCoop.JollyMenu.JollyPlayerSelector.orig_GetPupButtonOffName orig, JollyPlayerSelector self)
@@ -116,8 +121,7 @@ public class JollyMenuHooks
 
     private static void SymbolButtonToggle_LoadIcon(On.JollyCoop.JollyMenu.SymbolButtonToggle.orig_LoadIcon orig, SymbolButtonToggle self)
     {
-        if ((self.symbolNameOff.Contains(Plugin.BeaconName.value) || self.symbolNameOff.Contains(Plugin.PhotoName.value))
-            && self.isToggled) //isToggled meaning you have pup toggled on
+        if (ContainsBeaconOrPhoto(self.symbolNameOff) && self.isToggled) //isToggled meaning you have pup toggled on
         {
             try
             {

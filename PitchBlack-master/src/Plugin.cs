@@ -4,11 +4,11 @@ using System.Runtime.CompilerServices;
 using System.Collections.Generic;
 using System.Security;
 using Fisobs.Core;
-using RWCustom;
-using Random = UnityEngine.Random;
-using Vector2 = UnityEngine.Vector2;
-using UnityEngine;
-using PitchBlack.Graphics;
+using System.Linq;
+//using RWCustom;
+//using Random = UnityEngine.Random;
+//using Vector2 = UnityEngine.Vector2;
+//using UnityEngine;
 
 #pragma warning disable CS0618 // Type or member is obsolete
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -80,17 +80,13 @@ namespace PitchBlack
         {
             orig(self, newlyDisabledMods);
 
-            foreach (ModManager.Mod mod in newlyDisabledMods)
+            if (newlyDisabledMods.Any(mod => mod.id == MOD_ID))
             {
-                if (mod.id == MOD_ID)
-                {
-                    if (MultiplayerUnlocks.CreatureUnlockList.Contains(SandboxUnlockID.NightTerror))
-                        MultiplayerUnlocks.CreatureUnlockList.Remove(SandboxUnlockID.NightTerror);
+                if (MultiplayerUnlocks.CreatureUnlockList.Contains(SandboxUnlockID.NightTerror))
+                    MultiplayerUnlocks.CreatureUnlockList.Remove(SandboxUnlockID.NightTerror);
 
-                    CreatureTemplateType.UnregisterValues();
-                    SandboxUnlockID.UnregisterValues();
-                    break;
-                }
+                CreatureTemplateType.UnregisterValues();
+                SandboxUnlockID.UnregisterValues();
             }
         }
 
