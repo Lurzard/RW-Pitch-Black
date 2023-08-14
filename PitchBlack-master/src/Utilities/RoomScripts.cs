@@ -8,7 +8,14 @@ public class RoomScripts
 {
     public static void Apply()
     {
+        On.RainWorldGame.ctor += RainWorldGame_ctor;
         On.RoomSpecificScript.AddRoomSpecificScript += RoomSpecificScript_AddRoomSpecificScript;
+    }
+
+    private static void RainWorldGame_ctor(On.RainWorldGame.orig_ctor orig, RainWorldGame self, ProcessManager manager)
+    {
+        orig(self, manager);
+        SH_CABINETS1_IntroScript.alreadyRun = false;
     }
 
     private static void RoomSpecificScript_AddRoomSpecificScript(On.RoomSpecificScript.orig_AddRoomSpecificScript orig, Room room)
@@ -27,8 +34,9 @@ public class RoomScripts
 
 public class SH_CABINETS1_IntroScript : UpdatableAndDeletable
 {
+    internal static bool alreadyRun; //sighs. but hey it fixes the problem
     int counter;
-    const int COUNTER_MAX = 10 * 40; //when to force the script to stop and give players their controllers back
+    const int COUNTER_MAX = 3 * 40; //when to force the script to stop and give players their controllers back
     bool hitWater;
     bool alreadyTeleportedCoopPlayers;
     bool StayInAir => room.game.manager.FadeDelayInProgress || !room.fullyLoaded || !room.BeingViewed;
@@ -39,7 +47,7 @@ public class SH_CABINETS1_IntroScript : UpdatableAndDeletable
         this.room = room;
         counter = 0;
         alreadyTeleportedCoopPlayers = false;
-        Debug.Log($"Pitch Black: Created new {nameof(SH_CABINETS1_IntroScript)} room script in room {room.abstractRoom.name}");
+        Debug.Log($"Pitch Black: Created new {nameof(SH_CABINETS1_IntroScript)} in room {room.abstractRoom.name}");
     }
 
     public override void Update(bool eu)
@@ -48,6 +56,13 @@ public class SH_CABINETS1_IntroScript : UpdatableAndDeletable
 
         if (null == RealizedPlayer)
         {
+            return;
+        }
+
+        if (alreadyRun)
+        {
+            GiveAllPlayersControllersBack();
+            Destroy();
             return;
         }
 
@@ -74,6 +89,8 @@ public class SH_CABINETS1_IntroScript : UpdatableAndDeletable
             return;
         }
 
+        alreadyRun = true;
+
         if (RealizedPlayer.Submersion > 0f)
         {
             hitWater = true;
@@ -82,14 +99,17 @@ public class SH_CABINETS1_IntroScript : UpdatableAndDeletable
         if (hitWater || COUNTER_MAX == counter)
         {
             //has a counter check to forcibly give players back their controller, even if the script fucks up
-            foreach (var abstrCrit in room.game.session.Players)
-            {
-                if (abstrCrit == null || abstrCrit.realizedCreature == null)
-                    continue;
-
-                (abstrCrit.realizedCreature as Player).controller = null;
-            }
+            GiveAllPlayersControllersBack();
             return;
+        }
+    }
+
+    public void GiveAllPlayersControllersBack()
+    {
+        foreach (var abstrCrit in room.game.session.Players)
+        {
+            if (abstrCrit?.realizedCreature is Player player)
+                player.controller = null;
         }
     }
 }
