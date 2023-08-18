@@ -17,3 +17,6 @@ AmbientSounds: OMNI><AM_IND-Utility02.ogg><837.3013><645.9775><0><1, OMNI><SO_IN
 Triggers: RegionBump<tA>event<tB>MusicEvent<eA>songName<eB>RW_94 - Weathered Steps<eA>vol<eB>0.2347823<eA>prio<eB>0.5<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>-1<eA>rest<eB>5<eA>fadeIn<eB>0<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>773.8324<tB>405.6823<tA>fireChance<tB>1<tA>entrance<tB>4<tA>karma<tB>0<tA>slugcats<tB>, 
 FadePalette: 10, 0.8152174, 0.8043478, 0.9347826
 WetTerrain: OFF
+MorePalette0: 10, 0.3586957, 0.3586957, 0.3586957
+MorePalette1: 4, 0.01086957, 0.01086957, 0.01086957
+MorePalette2: 33, 0.07608695, 0.07608695, 0.1086956

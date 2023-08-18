@@ -1,3 +1,5 @@
 Effects: DayNight-0.2173913-296-79, FireFlies-0.25-299-143, 
-PlacedObjects: BrokenShelterWaterLevel><470.9095><354.3216><, DayNightSettings><114.4003><324.6734><5~8.660254~6~8, 
+PlacedObjects: BrokenShelterWaterLevel><470.9095><354.3216><, DayNightSettings><114.4003><324.6734><5~8.660254~6~8, LightBeam><435.3114><353.1835><27~142~43~143~64~2~365.9999~24~0.04130488~0~0~1~None~0~0, 
 FadePalette: 33, 0.8586956
+MorePalette0: 37, 0.0326087
+MorePalette1: 10, 0.3043478

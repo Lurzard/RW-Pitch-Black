@@ -3,6 +3,8 @@ RainIntensity: 0.7173913
 RumbleIntensity: 0.7173913
 Grime: 0.1521739
 Effects: DayNight-0-30-77, FireFlies-0.2391304-298-77, 
-PlacedObjects: BrokenShelterWaterLevel><433.0844><336.1379><, DayNightSettings><86.8714><347.8468><5~8.660254~6~8, 
+PlacedObjects: BrokenShelterWaterLevel><433.0844><336.1379><, DayNightSettings><86.8714><347.8468><5~8.660254~6~8, LightBeam><354.1514><417.826><228~-33~230~-60~1~-93~-283~70~0.3999999~1~0~1~Fade~0.5543475~0, 
 AmbientSounds: SPOT><SO_IND-Fridge.ogg><741.6847><367.0767><0.2391304><1><225.6847><368.0767><-67.35535><-13.35535><0><0.3717393, 
 FadePalette: 33, 0.8478261
+MorePalette0: 37, 0.05434782
+MorePalette1: 10, 0.7065217

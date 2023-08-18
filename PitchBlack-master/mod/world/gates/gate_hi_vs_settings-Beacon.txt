@@ -12,6 +12,7 @@ Palette: 5
 EffectColorA: 2
 EffectColorB: 1
 Effects: WaterDepth-0-20-20, SilenceWater-1-22-84, DayNight-0-281-21, FireFlies-0.326087-280-84, 
-PlacedObjects: NoSpearStickZone><476.7><239.0046><-5~269, DayNightSettings><-65.18427><408.0778><5~8.660254~5~8, 
+PlacedObjects: NoSpearStickZone><476.7><239.0046><-5~269, DayNightSettings><-65.18427><408.0778><5~8.660254~5~8, LightBeam><148.45><117.2488><58.99997~269~96.00006~269~151~2~-327~108~0.4543477~0~0~1~None~0~0, LightBeam><653.0692><127.3354><61.99994~248~97.99994~249~171.9999~-2~-810~-48~0.4108699~0~0~1~None~0~0, 
 AmbientSounds: OMNI><AM_ENV-SubTerr.ogg><855.4125><632.6335><0.3369565><1, OMNI><AM_IND-Warehouse01.ogg><857.6808><555.4377><0.4456522><0.8826087, SPOT><AM_WIN-HowlingWnd.ogg><682.0507><594.267><0.3043478><0.6282609><482.0507><-52.73303><-112.3553><207.6447><0><0.4695654, 
 FadePalette: 33, 0.7391304
+MorePalette0: 10, 0.7065217

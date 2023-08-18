@@ -8,3 +8,4 @@ PlacedObjects: KarmaFlower><524.4401><283.5592><262~-235~5~7, ProjectedImagePosi
 AmbientSounds: SPOT><Basic Mech.ogg><803.0524><163.557><0.1630435><1><447.0524><132.557><-70.35535><-68.35535><0><0.3608697, 
 Triggers: Spot<tA>event<tB>ShowProjectedImageEvent<eA>afterEncounter<eB>0<eA>fromCycle<eB>0<eA>onlyWhenShowingDirection<eB>1<tA>multiUse<tB>1<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>710.945<tB>217.0444<tA>fireChance<tB>1<tA>entrance<tB>1<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>449.945<tB>260.0444<tA>handlePos<tB>-55.35535<tB>-50.35535, 
 FadePalette: 33, 0.6739129
+MorePalette0: 10, 0.5869565

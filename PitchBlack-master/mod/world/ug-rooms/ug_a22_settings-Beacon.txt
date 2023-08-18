@@ -12,8 +12,9 @@ BkgDroneVolume: 0
 WaterReflectionAlpha: 0.5108696
 Palette: 11
 EffectColorA: 18
-EffectColorB: 21
+EffectColorB: 10
 Effects: SilenceWater-0.2826087-20-133, DayNight-0.4130435-279-78, 
-PlacedObjects: CustomDecal><24.84424><360.8754><26~195.6735~739.9052~214.6735~1032.905~-112~-56~-485~0.4021739~1~0~GreyBubbly~0.2934783~1~0.5~1~0.1413043~1~0.2065217~1, CustomDecal><107.7079><372.9455><13~136~345~144~364~27~609~-522~0.6413044~1~0~IRAF~1~0~0~0~0.6195652~0.5760869~0~0.5760869, SteamPipe><845.8494><521.8816><-14~-30, SteamPipe><737.1254><523.9058><31~-52, SteamPipe><735.847><527.8789><-15~-15, BlinkingFlower><498.5509><390.7693><, BlinkingFlower><550.9451><334.7939><, BlinkingFlower><393.6591><308.5718><, BlinkingFlower><316.9056><278.6244><, DayNightSettings><179.3079><595.194><5~8.660254~4~11, 
-FadePalette: 10, 0.9021739
+PlacedObjects: CustomDecal><24.84424><360.8754><26~195.6735~739.9052~214.6735~1032.905~-112~-56~-485~0.4021739~1~0~GreyBubbly~0.2934783~1~0.5~1~0.1413043~1~0.2065217~1, CustomDecal><107.7079><372.9455><13~136~345~144~364~27~609~-522~0.6413044~1~0~IRAF~1~0~0~0~0.6195652~0.5760869~0~0.5760869, SteamPipe><845.8494><521.8816><-14~-30, SteamPipe><737.1254><523.9058><31~-52, SteamPipe><735.847><527.8789><-15~-15, BlinkingFlower><498.5509><390.7693><, BlinkingFlower><550.9451><334.7939><, BlinkingFlower><393.6591><308.5718><, BlinkingFlower><316.9056><278.6244><, DayNightSettings><179.3079><595.194><5~8.660254~4~11, LightSource><439.7943><44.80496><0.3804354~EffectColor2~536.9999~228~50~86.60254~1~0~None~0~0, 
+FadePalette: 10, 1
 WetTerrain: OFF
+MorePalette0: 33, 0.173913

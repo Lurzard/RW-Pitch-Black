@@ -1,13 +1,5 @@
-DangerType: FloodAndRain
-RainIntensity: 0.4347826
-RumbleIntensity: 0.2391304
-WaveSpeed: 0.4944623
-WaveLength: 0.8885355
-WaveAmplitude: 0.02173912
-SecondWaveLength: 0.1666667
-SecondWaveAmplitude: 0
 EffectColorA: 10
-EffectColorB: 5
-Effects: DayNight-0.4891304-281-80, 
-PlacedObjects: LightSource><1444.908><11.32227><0.08695652~EffectColor1~624~723~50~86.60254~1~0~None~0~0, LightSource><1567.974><557.5518><0.07608695~EffectColor1~285~241~50~86.60254~1~1~None~0~0, DayNightSettings><2216.883><561.6624><5~8.660254~11~4, 
-FadePalette: 10, 0.9565217, 0.9565217, 0.9565217
+EffectColorB: 11
+PlacedObjects: LightSource><1444.908><11.32227><0.08695652~EffectColor1~624~723~50~86.60254~1~0~None~0~0, LightSource><1551.974><465.5518><0.07608695~EffectColor1~285~241~50~86.60254~1~0~None~0~0, LightSource><2670.125><415.0944><0.1195652~EffectColor1~-400.9999~270~50~86.60254~1~0~None~0~0, LightSource><2192.077><115.0995><0.1195652~EffectColor1~-30~556~50~86.60254~1~0~None~0~0, LightSource><430.8148><663.4244><0.3043482~EffectColor1~566.9999~78~-315~-171.3975~1~0~None~0~0, LightSource><485.3018><66.22308><0.05434782~EffectColor1~999.9999~642~50~86.60254~1~0~None~0~0, 
+FadePalette: 10, 0.9673913, 0.9565217, 0.9673913
+MorePalette0: 33, 0.05434782, 0.05434782, 0.05434782

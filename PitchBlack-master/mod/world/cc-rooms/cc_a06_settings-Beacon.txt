@@ -6,5 +6,6 @@ Palette: 33
 EffectColorA: 10
 EffectColorB: 3
 Effects: Fog-0.2391304-20-20, FastFloodPullDown-0.2-27-75, FastFloodDrain-0.1-28-131, DayNight-0.2717391-297-24, FireFlies-0.2934783-299-91, 
-PlacedObjects: CustomDecal><428.8882><525.3555><20~49~64~39~46~-8~-541~-286~0~1~0~ScavMark Ghost~1~0~1~0~1~0.3586957~1~0.4021739, DayNightSettings><558.6823><387.6882><5~8.660254~6~15, 
+PlacedObjects: CustomDecal><428.8882><525.3555><20~49~64~39~46~-8~-541~-286~0~1~0~ScavMark Ghost~1~0~1~0~1~0.3586957~1~0.4021739, DayNightSettings><558.6823><387.6882><5~8.660254~6~15, LightBeam><-143.2327><-40.55773><-4.802344~761.4188~1361.178~765.1539~1369.716~-8.5375~0~0~0.08680344~0~0~1~None~0~0, 
 FadePalette: 6, 0.1956522
+MorePalette0: 37, 0.2051458
