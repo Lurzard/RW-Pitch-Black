@@ -323,7 +323,7 @@ namespace PitchBlack
                 if (!NightTerrorInfo.TryGetValue(self, out var _))
                 { NightTerrorInfo.Add(self, _ = new NightTerrorData()); }
                 
-                self.bodyChunks = new BodyChunk[28];
+                self.bodyChunks = new BodyChunk[19];
                 for (int i = 0; i < self.bodyChunks.Length; i++)
                 {
                     float num = (float)i / (float)(self.bodyChunks.Length - 1);
