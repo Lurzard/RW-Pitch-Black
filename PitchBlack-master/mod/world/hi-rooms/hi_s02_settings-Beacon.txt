@@ -5,6 +5,6 @@ RumbleIntensity: 0.7065217
 BkgDroneVolume: 0
 Palette: 10
 Effects: DayNight-1-20-20, FireFlies-0.2717391-21-83, Darkness-0.5000002-22-141, 
-PlacedObjects: BrokenShelterWaterLevel><311.0244><260.1985><, DayNightSettings><70.30258><408.2823><5~8.660254~8~5, LightBeam><431.9143><217.3641><24~163~50~163~68~0~-495.0001~-30~0.3999999~1~0~1~Fade~0.5543478~0, 
-AmbientSounds: SPOT><Basic Mech.ogg><720.6788><158.4104><0.1956522><1><472.6788><460.4104><-41.35535><-46.35535><0><0.4478262, 
+PlacedObjects: BrokenShelterWaterLevel><311.0244><260.1985><, DayNightSettings><70.30258><408.2823><5~8.660254~8~5, LightSource><500.6951><248.7939><0.05434816~White~5~53~-392~-39.39746~1~0~None~0~0, LightSource><434.8254><248.9025><0.1086963~White~1~52~50~86.60254~1~0~None~0~0, 
+AmbientSounds: SPOT><Basic Mech.ogg><720.6788><158.4104><0.1956522><1><472.6788><460.4104><-41.35535><-46.35535><0><0.4478262, SPOT><AM_IND-50hz.ogg><718.8251><340.8469><0.3043478><0.5500012><471.8251><228.8469><-35.35534><-35.35534><0><0.1, 
 FadePalette: 33, 0.7934783
