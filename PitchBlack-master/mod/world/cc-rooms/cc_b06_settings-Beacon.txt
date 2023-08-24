@@ -13,3 +13,4 @@ AmbientSounds: SPOT><SO_IND-HVAC.ogg><789.5877><308.3203><0.2717391><1><463.5877
 Triggers: Spot<tA>event<tB>MusicEvent<eA>songName<eB>RW_48 - Wind Chimes<eA>vol<eB>0.2565215<eA>prio<eB>0.5<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>6<eA>rest<eB>5<eA>fadeIn<eB>163.0435<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>1069.306<tB>567.942<tA>fireChance<tB>1<tA>entrance<tB>-1<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>502.3058<tB>1220.942<tA>handlePos<tB>-153.3553<tB>-160.3553, 
 FadePalette: 33, 0.8260869, 0.8586956
 MorePalette0: 10, 0.3043478, 0.4021739
+MorePalette1: 43, 0.8043478, 0.8043478

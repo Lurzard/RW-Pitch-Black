@@ -5,3 +5,5 @@ Effects: DayNight-0.9021739-20-20,
 PlacedObjects: DandelionPatch><279.5109><1103.45><-3~160, DandelionPatch><347.1329><160.6511><1~101, DandelionPeach><332.733><1124.551><0~0~2~3, DandelionPeach><289.7158><1117.947><0~0~2~3, DayNightSettings><497.8239><2815.906><5~8.660254~18~2, 
 AmbientSounds: OMNI><AM_ENV-LightWind.ogg><686.054><587.2898><0.2934783><1, 
 FadePalette: 12, 0.2717391, 0.2065217, 0.1086956, 0.06521739
+MorePalette0: 43, 0.4347826, 0.3586957, 0.3043478, 0.2391304
+MorePalette1: 40, 0.25, 0.2934783, 0.3478261, 0.4021739

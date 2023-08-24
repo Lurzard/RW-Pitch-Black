@@ -7,6 +7,7 @@ Palette: 33
 EffectColorA: 10
 EffectColorB: 2
 Effects: DayNight-0.7934783-20-20, 
-PlacedObjects: DeadTokenStalk><2486.357><751.9191><-22~-31, DeadTokenStalk><2390.05><765.7427><26~-48, DeadTokenStalk><2381.413><678.8654><23~34, BlueToken><2433.724><761.3017><6~-37~-177~-282~1~DandelionPeach~Artificer|Saint|Spear~0~0~0~0, DayNightSettings><267.7><426.5019><5~8.660254~18~2, 
+PlacedObjects: DeadTokenStalk><2486.357><751.9191><-22~-31, DeadTokenStalk><2390.05><765.7427><26~-48, DeadTokenStalk><2381.413><678.8654><23~34, BlueToken><2433.724><761.3017><6~-37~-177~-282~1~DandelionPeach~Artificer|Saint|Spear~0~0~0~0~0~0~0~0, DayNightSettings><267.7><426.5019><5~8.660254~18~2, 
 AmbientSounds: SPOT><AM_ENV-LightWind.ogg><697.0783><633.1475><0.3152174><0.9217392><-2.921692><249.1475><-98.35535><213.6447><0><0.502174, SPOT><AM_WIN-StrongWnd2.ogg><697.6901><521.3123><0.3043478><1.117391><1497.69><287.3123><-327.3553><225.6447><0><0.3065219, SPOT><AM_ENV-LightWind.ogg><696.1364><400.8964><0.3804348><0.9413043><3171.136><308.8964><-309.3553><102.6447><0><0.6326088, OMNI><AM_ENV-LightWind.ogg><863.775><509.9484><0.3695652><1, 
 FadePalette: 12, 0.2391304, 0.2934783, 0.25
+MorePalette0: 43, 0.2391304, 0.326087, 0.25

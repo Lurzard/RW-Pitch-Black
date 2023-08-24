@@ -5,3 +5,5 @@ Effects: SkyDandelions-0.2826087-20-20, DayNight-0.75-25-109,
 PlacedObjects: DandelionPatch><2717.348><171.8256><0~100, DandelionPatch><1683.444><595.5502><0~100, SeedCob><1411.926><302.3141><0~0~7~10, DeadSeedCob><2006.837><321.4299><, DeadSeedCob><1383.645><325.0795><, DeadSeedCob><1461.936><234.3239><, DandelionPatch><424.0726><505.9364><23~153, DeadSeedCob><197.8718><351.4035><, DeadSeedCob><303.1803><269.3366><, DayNightSettings><1121.932><491.1669><5~8.660254~18~2, 
 AmbientSounds: OMNI><AM_ENV-LightWind.ogg><845.3395><507.8693><0.25><1, 
 FadePalette: 12, 0.2173913, 0.2391304, 0.2826087
+MorePalette0: 43, 0.3478261, 0.3478261, 0.3369565
+MorePalette1: 40, 0.2065217, 0.2934783, 0.2065217

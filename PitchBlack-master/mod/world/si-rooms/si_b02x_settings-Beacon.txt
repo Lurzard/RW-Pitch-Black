@@ -4,3 +4,5 @@ Palette: 33
 Effects: SkyDandelions-0.3695652-20-20, DayNight-0.7826087-31-102, 
 PlacedObjects: DandelionPatch><634.5502><192.259><0~100, DandelionPatch><1504.253><196.0504><0~100, DandelionPatch><1860.444><237.2991><0~100, DeadSeedCob><1810.146><350.8631><, DeadSeedCob><1834.828><323.8988><, DeadSeedCob><624.6057><351.3616><, SeedCob><687.0821><336.8587><0~0~7~10, DandelionPeach><1498.333><272.4318><0~0~2~3, DandelionPeach><1530.311><236.4404><0~0~2~3, DayNightSettings><219.8784><339.9033><5~8.660254~18~2, 
 FadePalette: 12, 0.1956522, 0.2282609
+MorePalette0: 43, 0.3369565, 0.3478261
+MorePalette1: 40, 0.2391304, 0.25

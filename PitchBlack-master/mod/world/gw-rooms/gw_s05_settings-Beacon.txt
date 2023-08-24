@@ -7,3 +7,4 @@ Palette: 4
 EffectColorA: 13
 PlacedObjects: BrokenShelterWaterLevel><460.224><402.4483><, 
 FadePalette: 33, 0.8695652
+MorePalette0: 10, 0.8043478

@@ -5,7 +5,8 @@ Clouds: 0.2391304
 BkgDroneVolume: 0.2469565
 Palette: 5
 Effects: Flies-0.07608695-20-20, FastFloodDrain-0.625-22-75, FireFlies-0.2717391-288-78, DayNight-0.1195652-297-143, 
-PlacedObjects: NoSpearStickZone><37.04559><252.4447><-77~88, NoSpearStickZone><243.5723><357.4083><0~100, DayNightSettings><438.3811><362.651><5~8.660254~5~15, LightBeam><-181.0558><82.30794><-35~686~955~662~853.0001~1~0~0~0.1608697~0~0~1~None~0~0, 
+PlacedObjects: NoSpearStickZone><37.04559><252.4447><-77~88, NoSpearStickZone><243.5723><357.4083><0~100, DayNightSettings><438.3811><362.651><5~8.660254~5~15, LightBeam><-181.0558><82.30794><-35~686~955~662~853.0001~1~0~0~0.1065219~0~0~1~None~0~0, 
 AmbientSounds: SPOT><AM_IND-Utility03.ogg><471.3587><253.6679><0.5><1><833.3586><656.6678><-26.35535><-67.35535><0><0.3500001, 
 FadePalette: 33, 0.7391304
 MorePalette0: 37, 0.0326087
+MorePalette1: 43, 0.8043478

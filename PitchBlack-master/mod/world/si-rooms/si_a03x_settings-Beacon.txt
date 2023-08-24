@@ -5,3 +5,4 @@ EffectColorB: 10
 Effects: FireFlies-0.1304348-20-20, DayNight-0.4021739-21-127, 
 PlacedObjects: DeadSeedCob><711.8893><404.4166><, DeadSeedCob><745.9536><346.0555><, DeadSeedCob><828.1703><355.3549><, DandelionPatch><282.8437><598.7677><17~119, DandelionPatch><733.563><254.4919><0~100, DayNightSettings><477.1228><567.0957><5~8.660254~18~2, LanternOnStick><790.8923><297.9186><-15~-87, LanternOnStick><319.8463><613.8721><16~-63, 
 FadePalette: 12, 0.1413043
+MorePalette0: 43, 0.2934783
