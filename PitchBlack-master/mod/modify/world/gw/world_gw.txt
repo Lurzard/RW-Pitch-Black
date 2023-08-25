@@ -3,6 +3,14 @@
 [FINDREGEX]^(?:\W+ : \d+-\w+.+|LINEAGE : \w+ : \d+ : .+)$
 [ADDBEFORE](X-Beacon,Photomaniac)
 [MERGE]
+ROOMS
+
+GW_LS01 : DISCONNECTED : SHELTER
+GW_LS03 : DISCONNECTED : SHELTER
+GW_LS05 : DISCONNECTED : SHELTER
+GW_LS07 : DISCONNECTED : SHELTER
+
+END ROOMS
 CONDITIONAL LINKS
 Beacon,Photomaniac : EXCLUSIVEROOM : GW_TOWER01
 Beacon,Photomaniac : EXCLUSIVEROOM : GW_TOWER02
@@ -46,6 +54,10 @@ Beacon,Photomaniac : EXCLUSIVEROOM : GW_C06_PAST
 Beacon,Photomaniac : EXCLUSIVEROOM : GW_C06_PAST
 Beacon,Photomaniac : EXCLUSIVEROOM : GW_E02_PAST
 Beacon,Photomaniac : EXCLUSIVEROOM : GW_B09_PAST
+Beacon,Photomaniac : EXCLUSIVEROOM : GW_LS01
+Beacon,Photomaniac : EXCLUSIVEROOM : GW_LS03
+Beacon,Photomaniac : EXCLUSIVEROOM : GW_LS05
+Beacon,Photomaniac : EXCLUSIVEROOM : GW_LS07
 Beacon,Photomaniac : HIDEROOM : GW_B01
 Beacon,Photomaniac : HIDEROOM : GW_A01
 Beacon,Photomaniac : HIDEROOM : GW_A05
@@ -71,6 +83,22 @@ Beacon,Photomaniac : HIDEROOM : GW_D01
 Beacon,Photomaniac : HIDEROOM : GW_C06
 Beacon,Photomaniac : HIDEROOM : GW_E02
 Beacon,Photomaniac : HIDEROOM : GW_B09
+Beacon,Photomaniac : HIDEROOM : GW_S01
+Beacon,Photomaniac : HIDEROOM : GW_S03
+Beacon,Photomaniac : HIDEROOM : GW_S05
+Beacon,Photomaniac : HIDEROOM : GW_S07
+
+Beacon,Photomaniac : GW_S03 : GATE_HI_GW : DISCONNECTED
+Beacon,Photomaniac : GATE_HI_GW : GW_S03 : GW_LS03
+Beacon,Photomaniac : GW_LS03 : 1 : GATE_HI_GW
+
+Beacon,Photomaniac : GW_S05 : GATE_DS_GW : DISCONNECTED
+Beacon,Photomaniac : GATE_DS_GW : GW_S05 : GW_LS05
+Beacon,Photomaniac : GW_LS05 : 1 : GATE_DS_GW
+
+Beacon,Photomaniac : GW_S07 : GW_B05 : DISCONNECTED
+Beacon,Photomaniac : GW_B05 : GW_S07 : GW_LS07
+Beacon,Photomaniac : GW_LS07 : 1 : GW_B05
 
 Beacon,Photomaniac : GW_B01 : GW_A01 : DISCONNECTED
 Beacon,Photomaniac : GW_B01 : GATE_HI_GW : DISCONNECTED
@@ -105,8 +133,9 @@ Beacon,Photomaniac : GW_E02_PAST : 1 : GW_B02
 Beacon,Photomaniac : GW_E02 : GW_B02 : DISCONNECTED
 
 Beacon,Photomaniac : GW_A06 : GW_S01 : DISCONNECTED
-Beacon,Photomaniac : GW_PIPE04 : 1 : GW_S01
-Beacon,Photomaniac : GW_S01 : GW_A06 : GW_PIPE04
+Beacon,Photomaniac : GW_PIPE04 : 1 : GW_LS01
+Beacon,Photomaniac : GW_S01 : GW_A06 : DISCONNECTED
+Beacon,Photomaniac : GW_LS01 : 1 : GW_PIPE04
 
 Beacon,Photomaniac : GW_C04 : GW_B08 : DISCONNECTED
 Beacon,Photomaniac : GW_C04_PAST : 1 : GW_B08
