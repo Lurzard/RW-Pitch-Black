@@ -3,6 +3,42 @@
 [FINDREGEX]^(W+  d+-w+.+LINEAGE  w+  d+  .+)$
 [ADDBEFORE](X-Beacon,Photomaniac)
 [MERGE]
+ROOMS
+
+DM_LS01 : DISCONNECTED : SHELTER
+DM_LS04 : DISCONNECTED : SHELTER
+DM_LS05 : DISCONNECTED : SHELTER
+DM_LSTOP : DISCONNECTED : SHELTER
+
+END ROOMS
+CONDITIONAL LINKS
+
+Beacon,Photomaniac : EXCLUSIVEROOM : DM_LS01
+Beacon,Photomaniac : EXCLUSIVEROOM : DM_LS04
+Beacon,Photomaniac : EXCLUSIVEROOM : DM_LS05
+Beacon,Photomaniac : EXCLUSIVEROOM : DM_LSTOP
+Beacon,Photomaniac : HIDEROOM : DM_S01
+Beacon,Photomaniac : HIDEROOM : DM_S04
+Beacon,Photomaniac : HIDEROOM : DM_S05
+Beacon,Photomaniac : HIDEROOM : DM_STOP
+
+Beacon,Photomaniac : DM_S01 : DM_ENTRANCE : DISCONNECTED
+Beacon,Photomaniac : DM_ENTRANCE : DM_S01 : DM_LS01
+Beacon,Photomaniac : DM_LS01 : 1 : DM_ENTRANCE
+
+Beacon,Photomaniac : DM_S04 : DM_I02 : DISCONNECTED
+Beacon,Photomaniac : DM_I02 : DM_S04 : DM_LS04
+Beacon,Photomaniac : DM_LS04 : 1 : DM_I02
+
+Beacon,Photomaniac : DM_S05 : DM_I13 : DISCONNECTED
+Beacon,Photomaniac : DM_I13 : DM_S05 : DM_LS05
+Beacon,Photomaniac : DM_LS05 : 1 : DM_I13
+
+Beacon,Photomaniac : DM_STOP : DM_TEMPLE : DISCONNECTED
+Beacon,Photomaniac : DM_TEMPLE : DM_STOP : DM_LSTOP
+Beacon,Photomaniac : DM_LSTOP : 1 : DM_TEMPLE
+
+END CONDITIONAL LINKS
 CREATURES
 
 (Beacon,Photomaniac)OFFSCREEN : 0-MirosVulture-4
