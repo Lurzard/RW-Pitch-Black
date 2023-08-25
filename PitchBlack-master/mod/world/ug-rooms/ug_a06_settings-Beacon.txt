@@ -17,3 +17,4 @@ AmbientSounds: OMNI><SO_WAT-DripTap.ogg><661.6606><638.8691><0.3043478><1, OMNI>
 FadePalette: 10, 1
 WetTerrain: OFF
 MorePalette0: 33, 0.1521739
+MorePalette1: 43, 0.1086956

@@ -16,3 +16,4 @@ AmbientSounds: SPOT><AM_ENV-CricketsWnd.ogg><816.3543><419.3293><0.4347826><1><5
 FadePalette: 10, 0.9130433
 WetTerrain: OFF
 MorePalette0: 33, 0.1086956
+MorePalette1: 43, 0.2282609
