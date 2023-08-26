@@ -1,0 +1,5 @@
+PlacedObjects: LightSource><579.9597><370.0541><0.4021737~Environment~-25~78~50~86.60254~1~0~None~0~0, 
+AmbientSounds: SPOT><AM_IND-ElectricHum01.ogg><723.4517><295.5559><0.4021739><1><579.4517><368.5559><-35.35534><-35.35534><0><0.1, 
+FadePalette: 33, 0.804348
+MorePalette0: 10, 0.6086956
+MorePalette1: 43, 0.2065217
