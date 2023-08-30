@@ -9,5 +9,6 @@ SecondWaveAmplitude: 0
 Palette: 33
 EffectColorB: 5
 Effects: DayNight-1-30-30, FireFlies-0.2608696-40-40, 
-PlacedObjects: DangleFruit><210.3367><478.6346><0~0~2~3, DangleFruit><243.3143><447.6755><0~0~2~3, DangleFruit><638.3671><511.6005><0~0~2~3, DevToken><523.5842><415.3619><-15~-57~44~-129~0~~White|Yellow|Red|Rivulet|Artificer|Saint|Gourmand~0~0~0~1, DayNightSettings><69.82001><290.3372><5~8.660254~1~0, LightBeam><154.974><203.6983><76.00003~531~325~528~372~63~-15~-230~0.1608694~0~0~1~None~0~0, LightBeam><150.6677><301.891><52~448~386~436~542~21~-185~-312~0.03043465~0~0~1~None~0~0, 
+PlacedObjects: DangleFruit><210.3367><478.6346><0~0~2~3, DangleFruit><243.3143><447.6755><0~0~2~3, DangleFruit><638.3671><511.6005><0~0~2~3, DevToken><523.5842><415.3619><-15~-57~44~-129~0~~White|Yellow|Red|Rivulet|Artificer|Saint|Gourmand~0~0~0~1~0~0~0~1, DayNightSettings><69.82001><290.3372><5~8.660254~1~0, LightBeam><154.974><203.6983><76.00003~531~325~528~372~63~-15~-230~0.1028701~0~0~1~None~0~0, LightBeam><150.6677><301.891><52~448~386~436~542~21~-185~-312~0.03043465~0~0~1~None~0~0, 
 FadePalette: 0, 0.1195652
+MorePalette0: 43, 0.6089929

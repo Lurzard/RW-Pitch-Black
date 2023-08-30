@@ -4,3 +4,5 @@ EffectColorB: 5
 Effects: DayNight-1-100-117, FireFlies-0.2391304-302-45, 
 PlacedObjects: DayNightSettings><214.309><268.4411><-113~85.66025~1~0, 
 FadePalette: 0, 0.326087
+MorePalette0: 43, 0.6089929
+MorePalette1: 10, 0.6089929

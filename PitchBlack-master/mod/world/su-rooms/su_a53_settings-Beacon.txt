@@ -11,3 +11,4 @@ PlacedObjects: InsectGroup><642.2263><235.9486><-62~101~261~-166~TinyDragonFly~0
 AmbientSounds: OMNI><AM_ENV-LightWind.ogg><830.937><650.9292><0.3478261><0.823913, 
 Triggers: Spot<tA>event<tB>MusicEvent<eA>songName<eB>NA_40 - Unseen Lands<eA>vol<eB>0.3326084<eA>prio<eB>1<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>-1<eA>rest<eB>5<eA>fadeIn<eB>0<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>1045.554<tB>564.2087<tA>fireChance<tB>1<tA>entrance<tB>3<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>588.5544<tB>223.2087<tA>handlePos<tB>-148.3553<tB>-130.3553, 
 FadePalette: 0, 0.1521739
+MorePalette0: 43, 0.7017922
