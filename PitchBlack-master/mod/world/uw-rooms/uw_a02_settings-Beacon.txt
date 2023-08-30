@@ -3,9 +3,10 @@ CeilingDrips: 0
 RainIntensity: 0
 RumbleIntensity: 0.05434782
 Clouds: 0
-Palette: 3
-Effects: Flies-0-20-20, Fog-0.01086957-22-73, PixelShift-0.5-32-65, AboveCloudsView-1-23-139, DayNight-0.1304348-275-22, FireFlies-0.2934783-290-79, 
+Palette: 29
+Effects: Flies-0-20-20, Fog-0.01086957-22-73, PixelShift-0.5-32-65, AboveCloudsView-1-23-139, DayNight-0.0608358-275-22, FireFlies-0.2934783-290-79, Bloom-0.6031929-284.5242-140.4539, 
 PlacedObjects: LightSource><814.925><287.5646><0.2934783~Environment~-117~206~-73~243.6025~1~0~None~0~0, WallSteamer><675.8359><518.1143><84~4, WallSteamer><807.8002><520.0079><-101~-19, WallSteamer><614.8986><123.1724><-10~-5, WallSteamer><739.1861><88.0733><0~-13, WallSteamer><831.807><125.9476><7~11, WallSteamer><748.9019><469.9613><113~23, WallSteamer><821.1487><680.7393><-103~45, WallSteamer><509.7229><668.2958><214~30, WallSteamer><762.4475><681.7814><-107~-22, DayNightSettings><726.6439><371.4096><-3.481995~6.333069~28~42, 
 AmbientSounds: SPOT><SO_WAT-LilDrips.ogg><707.072><369.0634><0.2065217><1><760.072><419.0634><-249.3553><-52.35535><0><0.3173914, 
-FadePalette: 33, 0.9021739
+FadePalette: 43, 0.9536007
 WetTerrain: OFF
+BackgroundType: testblackabovegr
