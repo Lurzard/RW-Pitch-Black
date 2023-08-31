@@ -2,7 +2,10 @@ DangerType: Flood
 Grime: 0.07608695
 BkgDroneVolume: 0
 Palette: 14
+EffectColorA: 9
 Effects: DayNight-0.2826087-51-149, FireFlies-0.423913-20-20, 
-PlacedObjects: BrokenShelterWaterLevel><470.3078><384.8052><, DayNightSettings><160.5602><311.437><5~8.660254~14~8, 
-AmbientSounds: SPOT><AM_IND-Utility02.ogg><731.8688><457.5891><0.3913043><1><465.8688><454.5891><-123.3553><-24.35535><0><0.2739132, 
+PlacedObjects: BrokenShelterWaterLevel><470.3078><384.8052><, DayNightSettings><160.5602><311.437><5~8.660254~14~8, LightSource><480.2194><409.577><0.4084055~Environment~2.667969~86.66016~50~86.60254~1~0~None~0~0, 
+AmbientSounds: SPOT><AM_IND-Utility02.ogg><731.8688><457.5891><0.3913043><1><465.8688><454.5891><-123.3553><-24.35535><0><0.2739132, SPOT><AM_IND-ElectricHum01.ogg><709.0643><291.977><0.5><1><479.3846><409.6598><-35.35534><-35.35534><0><0.1, 
 FadePalette: 33, 0.8043478
+MorePalette0: 43, 0.5567932
+MorePalette1: 10, 0.4813942

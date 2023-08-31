@@ -3,9 +3,11 @@ RainIntensity: 0.7065217
 RumbleIntensity: 0.7065217
 Grime: 0.2173913
 Palette: 5
-EffectColorA: 2
+EffectColorA: 9
 EffectColorB: 1
 Effects: DayNight-1-20-20, FireFlies-0.3369565-26-95, 
-PlacedObjects: DayNightSettings><-3.693542><289.6997><5~8.660254~8~5, 
-AmbientSounds: OMNI><AM_IND-Warehouse01.ogg><806.8074><416.3084><0.3478261><0.7652174, SPOT><Basic Mech.ogg><727.8119><163.0679><0.1847826><1.03913><480.8119><239.0679><-54.35535><-43.35535><0><0.3391306, 
+PlacedObjects: DayNightSettings><-3.693542><289.6997><5~8.660254~8~5, LightSource><491.88><420.5986><0.4084068~Environment~6.403076~87.19373~50~86.60254~1~0~None~0~0, 
+AmbientSounds: OMNI><AM_IND-Warehouse01.ogg><806.8074><416.3084><0.3478261><0.7652174, SPOT><Basic Mech.ogg><727.8119><163.0679><0.1847826><1.03913><480.8119><239.0679><-54.35535><-43.35535><0><0.3391306, SPOT><AM_IND-ElectricHum01.ogg><734.2458><294.0355><0.5><1><491.7598><418.1214><-35.35534><-35.35534><0><0.1, 
 FadePalette: 33, 0.5978261
+MorePalette0: 43, 0.5045942
+MorePalette1: 10, 0.8003911
