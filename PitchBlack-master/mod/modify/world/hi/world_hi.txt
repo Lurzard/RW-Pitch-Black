@@ -1,75 +1,145 @@
-[FIND](X-
-[ADDAFTER]Beacon,Photomaniac,
-[FINDREGEX]^(?:\W+ : \d+-\w+.+|LINEAGE : \w+ : \d+ : .+)$
-[ADDBEFORE](X-Beacon,Photomaniac)
-[MERGE]
+CONDITIONAL LINKS
+Beacon : EXCLUSIVEROOM : HI_LS01
+Photomaniac : EXCLUSIVEROOM : HI_LS01
+Beacon : EXCLUSIVEROOM : HI_LS04
+Photomaniac : EXCLUSIVEROOM : HI_LS04
+Beacon : EXCLUSIVEROOM : HI_LS05
+Photomaniac : EXCLUSIVEROOM : HI_LS05
+Beacon : HIDEROOM : HI_S01
+Photomaniac : HIDEROOM : HI_S01
+Beacon : HI_S01 : HI_A20 : DISCONNECTED
+Photomaniac : HI_S01 : HI_A20 : DISCONNECTED
+Beacon : HI_A20 : HI_S01 : HI_LS01
+Photomaniac : HI_A20 : HI_S01 : HI_LS01
+Beacon : HI_LS01 : 1 : HI_A20
+Photomaniac : HI_LS01 : 1 : HI_A20
+Beacon : HI_S04 : HI_A24 : DISCONNECTED
+Photomaniac : HI_S04 : HI_A24 : DISCONNECTED
+Beacon : HI_A24 : HI_S04 : HI_LS04
+Photomaniac : HI_A24 : HI_S04 : HI_LS04
+Beacon : HI_LS04 : 1 : HI_A10
+Photomaniac : HI_LS04 : 1 : HI_A10
+Beacon : HI_S05 : HI_A10 : DISCONNECTED
+Photomaniac : HI_S05 : HI_A10 : DISCONNECTED
+Beacon : HI_A10 : HI_S05 : HI_LS05
+Photomaniac : HI_A10 : HI_S05 : HI_LS05
+END CONDITIONAL LINKS
 ROOMS
-
+GATE_HI_CC : DISCONNECTED, HI_C11 : GATE
+GATE_HI_GW : DISCONNECTED, HI_A19, DISCONNECTED : GATE
+GATE_SU_HI : DISCONNECTED, HI_B04 : GATE
+GATE_HI_SH : HI_C13, DISCONNECTED, DISCONNECTED : GATE
+HI_C13 : HI_D01, GATE_HI_SH, HI_S06
+HI_S06 : HI_C13 : SHELTER
+HI_B04 : HI_B12, HI_A07, GATE_SU_HI, HI_S03
+HI_S03 : HI_B04 : SHELTER
+HI_B12 : HI_B13, HI_B04
+HI_B13 : HI_A15, HI_B12 : SWARMROOM
+HI_A15 : HI_B13, HI_A20, HI_A14
+HI_A20 : HI_S01, HI_A15
+HI_S01 : HI_A20 : SHELTER
+HI_A14 : HI_A15, HI_C02, HI_A07
+HI_A07 : HI_A14, HI_B04, HI_C02
+HI_C02 : HI_A14, HI_B08, HI_A07, HI_A23, DISCONNECTED
+HI_B02 : HI_C01, HI_A22 : SWARMROOM
+HI_A22 : HI_B02, HI_C14
+HI_C14 : HI_A22, HI_C15, HI_B05
+HI_C01 : HI_B02, HI_B03, HI_B08
+HI_B03 : HI_C01, HI_C04
+HI_B08 : HI_C01, HI_C04, HI_C02
+HI_C04 : HI_B03, HI_B08, HI_B06, HI_A21, HI_A25
+HI_A25 : HI_C04, HI_A16
+HI_A21 : HI_C04, HI_S02
+HI_S02 : HI_A21 : SHELTER
+HI_B06 : HI_A10, HI_C04, HI_A11
+HI_A10 : HI_C11, HI_S05, HI_B06
+HI_S05 : HI_A10 : SHELTER
+HI_C11 : GATE_HI_CC, HI_B09, HI_A10
+HI_B09 : HI_C11, HI_B07 : SWARMROOM
+HI_B07 : HI_B09, HI_B14
+HI_B14 : HI_B07, HI_C03, HI_D01
+HI_D01 : HI_C13, HI_B14
+HI_C03 : HI_B14, HI_A11, HI_B15
+HI_A11 : HI_B06, HI_C03
+HI_B15 : HI_C03, HI_A04
+HI_A04 : HI_A26, HI_B15
+HI_A26 : HI_B05, HI_A04
+HI_B05 : HI_C14, HI_A26, HI_A16
+HI_A16 : HI_A25, HI_B05, HI_A17, HI_A27
+HI_A17 : HI_A18, HI_A23, HI_A16
+HI_A27 : HI_A16
+HI_A23 : HI_C02, HI_A17
+HI_A18 : HI_C05, HI_A17
+HI_C05 : HI_A06, HI_A18
+HI_A06 : HI_A24, HI_C05 : SWARMROOM
+HI_A24 : HI_A06, HI_A19, HI_S04
+HI_S04 : HI_A24 : SHELTER
+HI_A19 : HI_A24, GATE_HI_GW
 HI_LS01 : DISCONNECTED : SHELTER
 HI_LS04 : DISCONNECTED : SHELTER
 HI_LS05 : DISCONNECTED : SHELTER
-
+GATE_HI_VS : HI_A28 : GATE
+HI_C15 : HI_C14, DISCONNECTED, HI_A28
+HI_A28 : HI_C15, DISCONNECTED, GATE_HI_VS
 END ROOMS
-CONDITIONAL LINKS
-
-Beacon,Photomaniac : EXCLUSIVEROOM : HI_LS01
-Beacon,Photomaniac : EXCLUSIVEROOM : HI_LS04
-Beacon,Photomaniac : EXCLUSIVEROOM : HI_LS05
-Beacon,Photomaniac : HIDEROOM : HI_S01
-Beacon,Photomaniac : HIDEROOM : HI_S01
-Beacon,Photomaniac : HIDEROOM : HI_S01
-
-Beacon,Photomaniac : HI_S01 : HI_A20 : DISCONNECTED
-Beacon,Photomaniac : HI_A20 : HI_S01 : HI_LS01
-Beacon,Photomaniac : HI_LS01 : 1 : HI_A20
-
-Beacon,Photomaniac : HI_S04 : HI_A24 : DISCONNECTED
-Beacon,Photomaniac : HI_A24 : HI_S04 : HI_LS04
-Beacon,Photomaniac : HI_LS04 : 1 : HI_A24
-
-Beacon,Photomaniac : HI_S05 : HI_A10 : DISCONNECTED
-Beacon,Photomaniac : HI_A10 : HI_S05 : HI_LS05
-Beacon,Photomaniac : HI_LS04 : 1 : HI_A10
-
-END CONDITIONAL LINKS
 CREATURES
-
-(Beacon)OFFSCREEN : 0-Vulture-3, 0-KingVulture-2, 0-MirosVulture, 0-Scavenger-21, 0-Elite-3
-(Photomaniac)OFFSCREEN : 0-Vulture-3, 0-KingVulture-2, 0-MirosVulture, 0-Scavenger-21, 0-Elite-3
-
+(White)HI_A04 : 2-Mimic-{18}
+(Yellow)HI_A04 : 2-Mimic-{18}
+(White)HI_B05 : 3-White
+(Yellow)HI_B05 : 3-White
+(White)LINEAGE : HI_B06 : 3 : Green-0.2, Blue-0.5, White-0.2, Red-0
+(Yellow)LINEAGE : HI_B06 : 3 : Caramel-0.2, Blue-0.5, White-0.2, Red-0
+(Yellow)OFFSCREEN : 0-Vulture, 0-Scavenger-5
+(Yellow)HI_B09 : 3-Green, 2-Eggbug
+(Yellow)HI_B15 : 2-Small Centipede-3, 3-Centipede-{0.3}
+(Yellow)HI_B07 : 3-Pink, 2-EggBug, 3-TentaclePlant-{PreCycle}
+(Yellow)HI_C05 : 3-EggBug, 4-Pink
+(Red)OFFSCREEN : 0-Vulture-2, 0-KingVulture, 0-Scavenger-7
+(Red)LINEAGE : OFFSCREEN : 0 : Vulture-0.65, KingVulture-0
+(Red)LINEAGE : OFFSCREEN : 0 : Vulture-0.7, KingVulture-0
+(Red)HI_B09 : 3-Dropwig, 2-White
+(Red)HI_B05 : 3-Dropwig
+(Red)HI_C11 : 3-Cyan
+(Red)HI_A16 : 4-Blue
+(Red)HI_A17 : 3-Green, 3-Cyan-{PreCycle}
+(Red)HI_B12 : 2-Blue, 3-EggBug
+(Red)HI_B07 : 3-Pink-2, 2-EggBug, 3-TentaclePlant-{PreCycle}
+(Red)HI_A25 : 2-Dropbug
+(Red)HI_B15 : 2-Small Centipede-2, 3-Centipede-{0.55}, 2-Centipede-{0.72}, 3-Centipede-{0.68}
+(Red)HI_C04 : 5-Cyan, 7-TentaclePlant-{PreCycle}, 5-Cyan-{PreCycle}
+(Red)HI_B06 : 3-Cyan, 4-Red
+(Red)LINEAGE : HI_B03 : 3 : Blue-1, White-1, Cyan-0
+(Red)LINEAGE : HI_C11 : 4 : Blue-0.4, Dropwig-1, Cyan-0
+(Red)LINEAGE : HI_C01 : 3 : NONE-0.07, Blue-0.4, NONE-0.1, Cyan-0
+(Red)LINEAGE : HI_C02 : 6 : Dropwig-0.2, BigSpider-0.5, SpitterSpider-0
+(Red)LINEAGE : HI_C01 : 4 : Cyan-0.3, Strawberry-0.1, Red-0
+(Red)LINEAGE : HI_A04 : 2 : Mimic-{18}-0.7, TentaclePlant-0
+(Red)LINEAGE : HI_C03 : 3 : White-0.2, Cyan-0
+(Red)LINEAGE : HI_C04 : 5 : Blue-0.5, NONE-0.2, Strawberry-0.2, NONE-0.2, White-0.5, NONE-0.5, Cyan-0
 (Beacon)LINEAGE : HI_A04 : 2 : TentaclePlant-0.5, NONE-0.5, MotherSpider-0
 (Beacon)LINEAGE : HI_A06 : 2 : Dropwig-0.2, BigSpider-0.2, Caramel-0.5, Black-0
 (Beacon)LINEAGE : HI_A10 : 3 : Centiwing-0.1, Cyan-0.5, Mouse-0.5, SpitterSpider-0
 (Beacon)LINEAGE : HI_A16 : 4 : Black-0.2, Pink-0.5, Mouse-0.5, BigSpider-0
 (Beacon)LINEAGE : HI_A17 : 3 : Black-0.2, Pink-0.5, Mouse-0.5, SpitterSpider-0
 (Beacon)LINEAGE : HI_A18 : 3 : Green-0.2, Cyan-0.5, Strawberry-0.5, Caramel-0
-(Beacon)HI_A19 : 4-Worm-3
 (Beacon)HI_A23 : 2-Mouse-4
 (Beacon)LINEAGE : HI_A23 : 2 : Mouse-1, Dropwig-1, BigSpider-0
 (Beacon)HI_A25 : 2-Small Centipede-3, 2-Centipede-2, 2-nightterror
 (Beacon)HI_A28 : 3-BigSpider, 3-MotherSpider
 (Beacon)HI_B03 : 2-Centiwing
-(Beacon)LINEAGE : HI_B03 : 3 : Blue-0.4, Strawberry-0.9, White-0.5, Black-0.2, Red-0
 (Beacon)LINEAGE : HI_B05 : 3 : Dropwig-0.5, White-0.5, Mouse-0.5, SpitterSpider-0.5, Cyan-0
 (Beacon)LINEAGE : HI_B06 : 3 : SpitterSpider-0.2, BigSpider-0.5, MotherSpider-0.5, SpitterSpider-0
-(Beacon)LINEAGE : HI_B06 : 4 : Red-0.05, Mouse-1, Cyan-0
 (Beacon)LINEAGE : HI_B07 : 2 : EggBug-0.1, Cyan-0.5, BigSpider-0.7, White-0
 (Beacon)LINEAGE : HI_B07 : 3 : Pink-0.2, Black-0.5, Centiwing-0.5, Mouse-1, Cyan-0
 (Beacon)LINEAGE : HI_B09 : 2 : Dropwig-1, BigSpider-0.3, SpitterSpider-0.5, Mouse-0.9, Centiwing-0
 (Beacon)LINEAGE : HI_B09 : 3 : Strawberry-0.1, Blue-0.5, Cyan-0.9, SpitterSpider-0.6, White-0
-(Beacon)HI_B12 : 2-Small Centipede-{AlternateForm}-3
 (Beacon)LINEAGE : HI_B12 : 2 : Centiwing-0.1, Blue-0.9, BigSpider-0.5, Cyan-0
 (Beacon)LINEAGE : HI_B12 : 3 : Eggbug-0.01, Cyan-0
-(Beacon)LINEAGE : HI_B13 : 2 : Pink-0.5, BigSpider-1, Centiwing-0
 (Beacon)LINEAGE : HI_B14 : 3 : Cyan-0.1, Mouse-1, SpitterSpider-0
-(Beacon)HI_B15 : 2-Small Centipede-3, 2-Centipede-1, 3-Small Centipede-2, 3-Centipede-2
 (Beacon)HI_C01 : 4-Yellow-4, 5-Mouse-6
 (Beacon)LINEAGE : HI_C01 : 3 : Yellow-0.5, Dropwig-1, Cyan-0.5, Blue-0.9, Black-0.2, SpitterSpider-0
 (Beacon)HI_C02 : 6-Mouse-3
-(Beacon)LINEAGE : HI_C02 : 5 : Black-0.5, BigSpider-0.5, Yellow-0
-(Beacon)LINEAGE : HI_C02 : 6 : Mouse-1, SpitterSpider-0.5, Yellow-0
 (Beacon)LINEAGE : HI_C03 : 3 : White-0.1, BigSpider-0.5, Centiwing-0.5, Cyan-0
-(Beacon)HI_C04 : 5-Mouse-6, 6-Snail-2, 7-Snail, 8-Eel
 (Beacon)LINEAGE : HI_C04 : 5 : Cyan-0.1, Mouse-1, Eel-0.5, SpitterSpider-0
 (Beacon)LINEAGE : HI_C05 : 2 : Cyan-0.5, Blue-0
 (Beacon)LINEAGE : HI_C05 : 3 : Pink-0.3, EggBug-0.5, Cyan-0.5, Black-0.3, Strawberry-0
@@ -77,39 +147,29 @@ CREATURES
 (Beacon)LINEAGE : HI_C11 : 3 : SpitterSpider-0.1, Centiwing-0.5, Blue-1, Dropwig-0.5, Eggbug-0.5, White-0
 (Beacon)LINEAGE : HI_C11 : 4 : Blue-0.5, Black-0.2, Pink-0.4, Dropwig-1, BigSpider-1, SpitterSpider-1, MotherSpider-0
 (Beacon)HI_C15 : 4-Mouse-5
-(Beacon)HI_D01 : 2-Mouse-6
-
 (Photomaniac)LINEAGE : HI_A04 : 2 : TentaclePlant-0.5, NONE-0.5, MotherSpider-0
 (Photomaniac)LINEAGE : HI_A06 : 2 : Dropwig-0.2, BigSpider-0.2, Caramel-0.5, Black-0
 (Photomaniac)LINEAGE : HI_A10 : 3 : Centiwing-0.1, Cyan-0.5, Mouse-0.5, SpitterSpider-0
 (Photomaniac)LINEAGE : HI_A16 : 4 : Black-0.2, Pink-0.5, Mouse-0.5, BigSpider-0
 (Photomaniac)LINEAGE : HI_A17 : 3 : Black-0.2, Pink-0.5, Mouse-0.5, SpitterSpider-0
 (Photomaniac)LINEAGE : HI_A18 : 3 : Green-0.2, Cyan-0.5, Strawberry-0.5, Caramel-0
-(Photomaniac)HI_A19 : 4-Worm-3
 (Photomaniac)HI_A23 : 2-Mouse-4
 (Photomaniac)LINEAGE : HI_A23 : 2 : Mouse-1, Dropwig-1, BigSpider-0
 (Photomaniac)HI_A25 : 2-Small Centipede-3, 2-Centipede-2
 (Photomaniac)HI_A28 : 3-BigSpider, 3-MotherSpider
 (Photomaniac)HI_B03 : 2-Centiwing
-(Photomaniac)LINEAGE : HI_B03 : 3 : Blue-0.4, Strawberry-0.9, White-0.5, Black-0.2, Red-0
 (Photomaniac)LINEAGE : HI_B05 : 3 : Dropwig-0.5, White-0.5, Mouse-0.5, SpitterSpider-0.5, Cyan-0
 (Photomaniac)LINEAGE : HI_B06 : 3 : SpitterSpider-0.2, BigSpider-0.5, MotherSpider-0.5, SpitterSpider-0
-(Photomaniac)LINEAGE : HI_B06 : 4 : Red-0.05, Mouse-1, Cyan-0
 (Photomaniac)LINEAGE : HI_B07 : 3 : Pink-0.2, Black-0.5, Centiwing-0.5, Mouse-1, Cyan-0
 (Photomaniac)LINEAGE : HI_B09 : 2 : Dropwig-1, BigSpider-0.3, SpitterSpider-0.5, Mouse-0.9, Centiwing-0
 (Photomaniac)LINEAGE : HI_B09 : 3 : Strawberry-0.1, Blue-0.5, Cyan-0.9, SpitterSpider-0.6, White-0
 (Photomaniac)LINEAGE : HI_B12 : 2 : Centiwing-0.1, Blue-0.9, BigSpider-0.5, Cyan-0
 (Photomaniac)LINEAGE : HI_B12 : 3 : Eggbug-0.01, Cyan-0
-(Photomaniac)LINEAGE : HI_B13 : 2 : Pink-0.5, BigSpider-1, Centiwing-0
 (Photomaniac)LINEAGE : HI_B14 : 3 : Cyan-0.1, Mouse-1, SpitterSpider-0
-(Photomaniac)HI_B15 : 2-Small Centipede-3, 2-Centipede-1, 3-Small Centipede-2, 3-Centipede-2
 (Photomaniac)HI_C01 : 4-Yellow-4, 5-Mouse-6
 (Photomaniac)LINEAGE : HI_C01 : 3 : Yellow-0.5, Dropwig-1, Cyan-0.5, Blue-0.9, Black-0.2, SpitterSpider-0
 (Photomaniac)HI_C02 : 6-Mouse-3
-(Photomaniac)LINEAGE : HI_C02 : 5 : Black-0.5, BigSpider-0.5, Yellow-0
-(Photomaniac)LINEAGE : HI_C02 : 6 : Mouse-1, SpitterSpider-0.5, Yellow-0
 (Photomaniac)LINEAGE : HI_C03 : 3 : White-0.1, BigSpider-0.5, Centiwing-0.5, Cyan-0
-(Photomaniac)HI_C04 : 5-Mouse-6, 6-Snail-2, 7-Snail, 8-Eel
 (Photomaniac)LINEAGE : HI_C04 : 5 : Cyan-0.1, Mouse-1, Eel-0.5, SpitterSpider-0
 (Photomaniac)LINEAGE : HI_C05 : 2 : Cyan-0.5, Blue-0
 (Photomaniac)LINEAGE : HI_C05 : 3 : Pink-0.3, EggBug-0.5, Cyan-0.5, Black-0.3, Strawberry-0
@@ -117,7 +177,157 @@ CREATURES
 (Photomaniac)LINEAGE : HI_C11 : 3 : SpitterSpider-0.1, Centiwing-0.5, Blue-1, Dropwig-0.5, Eggbug-0.5, White-0
 (Photomaniac)LINEAGE : HI_C11 : 4 : Blue-0.5, Black-0.2, Pink-0.4, Dropwig-1, BigSpider-1, SpitterSpider-1, MotherSpider-0
 (Photomaniac)HI_C15 : 4-Mouse-5
-(Photomaniac)HI_D01 : 2-Mouse-6
-
+(X-Beacon,Photomaniac,Yellow,Red,Gourmand,Rivulet,Artificer,Spear,Saint,Inv)OFFSCREEN : 0-Vulture-3, 0-Scavenger-6
+(X-Beacon,Photomaniac,Rivulet,Red,Artificer,Spear,Saint,Inv)HI_B12 : 2-Blue
+(X-Beacon,Photomaniac,Rivulet,Inv,Saint)HI_A18 : 2-Green, 2-TentaclePlant-{PreCycle}
+(X-Beacon,Photomaniac,Yellow,Rivulet,Artificer,Spear,Saint,Inv)HI_A06 : 2-Caramel
+(X-Beacon,Photomaniac,Saint)HI_A19 : 4-Garbage Worm-2
+(X-Beacon,Photomaniac,Saint)LINEAGE : HI_B06 : 4 : NONE-0.05, Mimic-{16}-1, Mimic-{14}-1, NONE-0
+(X-Beacon,Photomaniac,Yellow,Red,Artificer,Spear,Saint,Inv)LINEAGE : HI_C01 : 5 : Pink-0.2, Blue-0.5, White-0.1, Strawberry-0.5, Red-0
+(X-Beacon,Photomaniac,Red,Artificer,Spear,Saint,Inv)LINEAGE : HI_C01 : 4 : Blue-0.1, Cyan-0.2, Red-0
+(X-Beacon,Photomaniac,Red,Artificer,Spear,Saint,Inv)LINEAGE : HI_B03 : 3 : NONE-0.05, Blue-0.2, Red-0
+(X-Beacon,Photomaniac,Rivulet,Inv,Saint)LINEAGE : HI_B13 : 2 : Pink-0.2, NONE-0.5, Blue-0.2, Cyan-0.3, Red-0
+(X-Beacon,Photomaniac,Yellow,Rivulet,Saint,Red,Artificer,Spear,Inv)LINEAGE : HI_C02 : 5 : Pink-0.2, Blue-0.5, Cyan-0.1, Strawberry-0.6, Red-0
+(X-Beacon,Photomaniac,Rivulet,Red,Artificer,Spear,Saint,Inv)LINEAGE : HI_C02 : 6 : Green-0.2, Blue-0.5, Strawberry-0
+(X-Beacon,Photomaniac,Yellow,Rivulet,Red,Artificer,Spear,Saint,Inv)HI_B09 : 3-Green, 2-White
+(X-Beacon,Photomaniac,Yellow,Rivulet,Red,Artificer,Spear,Saint,Inv)HI_B15 : 2-Small Centipede-3, 3-Centipede-{0.5}
+(X-Beacon,Photomaniac,Rivulet,Red,Artificer,Spear,Saint,Inv)HI_C04 : 5-Blue, 6-Snail, 7-Snail-2, 7-TentaclePlant-{PreCycle}, 5-Cyan-{PreCycle}
+(X-Beacon,Photomaniac,Yellow,Rivulet,Red,Artificer,Spear,Saint,Inv)HI_B07 : 3-Pink, 2-Pink, 3-TentaclePlant-{PreCycle}
+(X-Beacon,Photomaniac,Yellow,Rivulet,Saint,Inv,Red,Artificer,Spear)HI_C05 : 3-Pink, 4-Pink
+(X-Beacon,Photomaniac,Red,Artificer,Spear,Rivulet,Saint,Inv)HI_C11 : 3-Blue
+(X-Beacon,Photomaniac,Gourmand,Red,Artificer,Spear,Saint,Inv)HI_C03 : 3-White, 3-Eel-{PreCycle}
+(X-Beacon,Photomaniac,Saint)HI_D01 : 2-Cyan-{PreCycle}-2
+(X-Beacon,Photomaniac,Red,Artificer,Spear,Saint,Inv)HI_A17 : 3-Cyan-{PreCycle}
+(X-Beacon,Photomaniac,Rivulet,Red,Artificer,Spear,Saint,Inv)HI_A16 : 4-Green
+(Gourmand)OFFSCREEN : 0-Vulture-2, 0-KingVulture-2, 0-Scavenger-7
+(Rivulet)OFFSCREEN : 0-Vulture, 0-Scavenger-5
+(Artificer)OFFSCREEN : 0-Vulture-3, 0-KingVulture, 0-Scavenger-14
+(Spear)OFFSCREEN : 0-Vulture, 0-KingVulture-2, 0-Scavenger-12
+(Saint)OFFSCREEN : 0-MirosVulture-{Night}-3, 0-Scavenger-14, 0-Vulture-4
+(Inv)OFFSCREEN : 0-MirosVulture-3, 0-Scavenger-16
+(Artificer)HI_B12 : 2-Blue, 3-EggBug
+(Spear)HI_B12 : 2-Blue, 3-EggBug
+(Saint)HI_B12 : 3-Centiwing-2
+(Inv)HI_B12 : 2-Train, 3-SpitterSpider
+(Rivulet)HI_A18 : 2-Caramel, 2-TentaclePlant-{PreCycle}
+(Inv)HI_A18 : 2-Train, 2-TentaclePlant-{PreCycle}
+(Yellow)HI_A06 : 2-Green
+(Rivulet)HI_A06 : 2-Green
+(Artificer)HI_A06 : 2-Green
+(Spear)HI_A06 : 2-Green
+(Saint)HI_A06 : 2-Strawberry
+(Inv)HI_A06 : 2-Train
+(Gourmand)LINEAGE : HI_B06 : 3 : Green-0.2, Blue-0.5, White-0.2, Red-0
+(Rivulet)LINEAGE : HI_B06 : 3 : Caramel-0.2, Blue-0.5, White-0.2, Red-0
+(Yellow)LINEAGE : HI_C01 : 5 : Pink-0.2, Blue-0.5, White-0.3, Red-0
+(Red)LINEAGE : HI_C01 : 5 : Pink-0.2, Blue-0.5, White-0.3, Red-0
+(Artificer)LINEAGE : HI_C01 : 5 : Pink-0.2, Blue-0.5, White-0.3, Red-0
+(Spear)LINEAGE : HI_C01 : 5 : Pink-0.2, Blue-0.5, White-0.3, Red-0
+(Artificer)LINEAGE : HI_C01 : 4 : Cyan-0.3, Strawberry-0.1, Red-0
+(Spear)LINEAGE : HI_C01 : 4 : Cyan-0.3, Strawberry-0.1, Red-0
+(Inv)LINEAGE : HI_C01 : 4 : Train-0
+(Artificer)LINEAGE : HI_C01 : 3 : NONE-0.07, Blue-0.4, NONE-0.1, Cyan-0
+(Spear)LINEAGE : HI_C01 : 3 : NONE-0.07, Blue-0.4, NONE-0.1, Cyan-0
+(Inv)LINEAGE : HI_C01 : 3 : Train-0
+(Artificer)LINEAGE : HI_B03 : 3 : Blue-1, White-1, Cyan-0
+(Spear)LINEAGE : HI_B03 : 3 : Blue-1, White-1, Cyan-0
+(Inv)LINEAGE : HI_B03 : 3 : Train-0
+(Rivulet)LINEAGE : HI_B13 : 2 : Pink-0.2, NONE-0.5, Blue-0.2, Cyan-0.3, Strawberry-0.5, Red-0
+(Yellow)LINEAGE : HI_C02 : 5 : Pink-0.2, Blue-0.5, Cyan-0.3, Strawberry-0.2, Red-0
+(Rivulet)LINEAGE : HI_C02 : 5 : Pink-0.2, Blue-0.5, Cyan-0.3, Strawberry-0.2, Red-0
+(Red)LINEAGE : HI_C02 : 5 : Pink-0.2, Blue-0.5, Cyan-0.3, Red-0
+(Artificer)LINEAGE : HI_C02 : 5 : Pink-0.2, Blue-0.5, Cyan-0.3, Red-0
+(Spear)LINEAGE : HI_C02 : 5 : Pink-0.2, Blue-0.5, Cyan-0.3, Red-0
+(Inv)LINEAGE : HI_C02 : 5 : Train-0
+(Rivulet)LINEAGE : HI_C02 : 6 : Green-0.2, Blue-0.5, Strawberry-0.1, Red-0
+(Artificer)LINEAGE : HI_C02 : 6 : Dropwig-0.2, BigSpider-0.5, SpitterSpider-0
+(Spear)LINEAGE : HI_C02 : 6 : Dropwig-0.2, BigSpider-0.5, SpitterSpider-0
+(Inv)LINEAGE : HI_C02 : 6 : SpitterSpider-0
+(Yellow)LINEAGE : HI_C04 : 8 : NONE-0.1, Eel-0
+(Rivulet)LINEAGE : HI_C04 : 8 : NONE-0.1, Eel-0
+(Artificer)LINEAGE : HI_C04 : 5 : Blue-0.5, NONE-0.2, Strawberry-0.2, NONE-0.2, White-0.5, NONE-0.5, Cyan-0
+(Spear)LINEAGE : HI_C04 : 5 : Blue-0.5, NONE-0.2, Strawberry-0.2, NONE-0.2, White-0.5, NONE-0.5, Cyan-0
+(Rivulet)HI_B09 : 2-Centiwing, 3-Caramel
+(Artificer)HI_B09 : 3-Dropwig, 2-White
+(Spear)HI_B09 : 3-Dropwig, 2-White
+(Saint)HI_B09 : 2-Centiwing, 3-White
+(Inv)HI_B09 : 3-Dropwig, 2-Train
+(Rivulet)HI_B15 : 2-Centipede, 3-Centipede
+(Artificer)HI_B15 : 2-Small Centipede-2, 3-Centipede-{0.55}, 2-Centipede-{0.72}, 3-Centipede-{0.68}
+(Spear)HI_B15 : 2-Small Centipede-2, 3-Centipede-{0.55}, 2-Centipede-{0.72}, 3-Centipede-{0.68}
+(Saint)HI_B15 : 2-Centipede, 3-Centipede-3
+(Inv)HI_B15 : 2-Small Centipede-2, 3-RedCentipede, 2-RedCentipede, 3-RedCentipede
+(Rivulet)HI_C04 : 7-Eel, 7-TentaclePlant-{PreCycle}, 5-Cyan-{PreCycle}
+(Artificer)HI_C04 : 5-Cyan, 7-TentaclePlant-{PreCycle}, 5-Cyan-{PreCycle}
+(Spear)HI_C04 : 5-Cyan, 7-TentaclePlant-{PreCycle}, 5-Cyan-{PreCycle}
+(Saint)HI_C04 : 5-Lantern Mouse-6, 7-TentaclePlant-{PreCycle}, 5-Cyan-{PreCycle}
+(Inv)HI_C04 : 5-Train, 7-TentaclePlant-{PreCycle}, 5-Cyan-{PreCycle}
+(Rivulet)HI_B07 : 2-EggBug, 3-Centiwing, 3-TentaclePlant-{PreCycle}
+(Artificer)HI_B07 : 3-Pink-2, 2-EggBug, 3-TentaclePlant-{PreCycle}
+(Spear)HI_B07 : 3-Pink-2, 2-EggBug, 3-TentaclePlant-{PreCycle}
+(Saint)HI_B07 : 2-Strawberry, 3-Centiwing, 3-TentaclePlant-{PreCycle}
+(Inv)HI_B07 : 3-Train-2, 2-SpitterSpider, 3-TentaclePlant-{PreCycle}
+(Rivulet)HI_C05 : 3-EggBug, 4-Pink
+(Saint)HI_C05 : 3-Yellow-3, 4-Yellow-3
+(Inv)HI_C05 : 3-SpitterSpider, 4-Train
+(Gourmand)HI_A04 : 2-Mimic-{18}
+(Rivulet)HI_A04 : 2-Mimic-{18}
+(Saint)HI_A04 : 2-Red
+(Rivulet)HI_C11 : 3-Yellow-2, 4-Cyan
+(Artificer)HI_C11 : 3-Cyan
+(Spear)HI_C11 : 3-Cyan
+(Saint)HI_C11 : 3-White, 4-Cyan
+(Inv)HI_C11 : 3-Train
+(Gourmand)HI_C03 : 3-Cyan, 3-Eel-{PreCycle}
+(Red)HI_C03 : 3-Eel-{PreCycle}
+(Artificer)HI_C03 : 3-Eel-{PreCycle}
+(Spear)HI_C03 : 3-Eel-{PreCycle}
+(Inv)HI_C03 : 3-Train, 3-Eel-{PreCycle}
+(Saint)HI_D01 : 2-Lantern Mouse-5, 2-Cyan-{PreCycle}-2
+(Artificer)HI_A17 : 3-Green, 3-Cyan-{PreCycle}
+(Spear)HI_A17 : 3-Green, 3-Cyan-{PreCycle}
+(Saint)HI_A17 : 3-Lantern Mouse-4, 3-Cyan-{PreCycle}
+(Inv)HI_A17 : 3-Train, 3-Cyan-{PreCycle}
+(Gourmand)HI_B05 : 3-Cyan
+(Rivulet)HI_B05 : 3-Cyan
+(Artificer)HI_B05 : 3-Dropwig
+(Spear)HI_B05 : 3-Dropwig
+(Inv)HI_B05 : 3-Dropwig
+(Saint)HI_B05 : 3-Cyan-3, 3-Lantern Mouse-6
+(Rivulet)HI_A16 : 4-Caramel
+(Artificer)HI_A16 : 4-Blue
+(Spear)HI_A16 : 4-Blue
+(Saint)HI_A16 : 4-Centipede-3
+(Inv)HI_A16 : 4-Train
+(Rivulet)HI_A25 : 2-Centipede-2
+(Artificer)HI_A25 : 2-Dropbug
+(Spear)HI_A25 : 2-Dropbug
+(Saint)HI_A25 : 2-Centipede-3
+(Inv)HI_A25 : 2-Dropbug
+(Gourmand)HI_B06 : 4-Red
+(Rivulet)HI_B06 : 4-Yellow-2
+(Artificer)HI_B06 : 3-Cyan, 4-Red
+(Spear)HI_B06 : 3-Cyan, 4-Red
+(Saint)HI_B06 : 4-Yellow-5
+(Inv)HI_B06 : 3-SpitterSpider, 4-Train
+(Artificer)LINEAGE : HI_C11 : 4 : Blue-0.4, Dropwig-1, Cyan-0
+(Spear)LINEAGE : HI_C11 : 4 : Blue-0.4, Dropwig-1, Cyan-0
+(Inv)LINEAGE : HI_C11 : 4 : Train-0
+(Artificer)LINEAGE : HI_A04 : 2 : Mimic-{18}-0.7, TentaclePlant-0
+(Spear)LINEAGE : HI_A04 : 2 : Mimic-{18}-0.7, TentaclePlant-0
+(Inv)LINEAGE : HI_A04 : 2 : TentaclePlant-0
+(Artificer)LINEAGE : HI_C03 : 3 : White-0.2, Cyan-0
+(Spear)LINEAGE : HI_C03 : 3 : White-0.2, Cyan-0
+(Rivulet)HI_A10 : 3-Centiwing
+(Saint)HI_A10 : 3-Centiwing
+(Inv)HI_A10 : 3-Centiwing
+(Rivulet)HI_C01 : 4-Yellow-4
+(Saint)HI_C01 : 4-Yellow-5
+(Saint)HI_B13 : 2-Yellow-5
+(Inv)HI_B13 : 2-Yellow-5
+(Saint)HI_C02 : 5-Yellow-3
+(Inv)HI_C02 : 5-Yellow-3
+(Saint)HI_B03 : 3-Centiwing-2
 END CREATURES
-[ENDMERGE]
+BAT MIGRATION BLOCKAGES
+END BAT MIGRATION BLOCKAGES
