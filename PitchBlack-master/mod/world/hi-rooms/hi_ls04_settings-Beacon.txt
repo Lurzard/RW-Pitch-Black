@@ -1,0 +1,6 @@
+DangerType: Flood
+RainIntensity: 0.6847826
+RumbleIntensity: 0.7065217
+Effects: DayNight-0.2282609-20-78, FireFlies-0.3043478-30-30, 
+PlacedObjects: BrokenShelterWaterLevel><288.4385><328.5668><, DayNightSettings><83.05319><455.0572><5~8.660254~5~20, 
+FadePalette: 33, 0.7934783
