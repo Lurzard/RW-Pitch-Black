@@ -30,7 +30,7 @@ Beacon,Photomaniac : CC_C03 : CC_S03 : CC_LS03
 Beacon,Photomaniac : CC_LS03 : 1 : CC_C03
 
 Beacon,Photomaniac : CC_S06 : CC_CLOG : DISCONNECTED
-Beacon,Photomaniac : CC_CLOG : CC_SO6 : CC_LS06
+Beacon,Photomaniac : CC_CLOG : CC_S06 : CC_LS06
 Beacon,Photomaniac : CC_LS06 : 1 : CC_CLOG
 
 
