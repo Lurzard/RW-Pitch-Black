@@ -1,0 +1,6 @@
+RainIntensity: 1
+BkgDroneVolume: 0
+Effects: DayNight-0.1847826-26-115, FireFlies-0.4021739-20-20, 
+PlacedObjects: BrokenShelterWaterLevel><279.1874><343.68><, DayNightSettings><150.079><478.8163><5~8.660254~14~8, 
+AmbientSounds: OMNI><AM_ENV-Outside.ogg><755.6008><474.8669><0.4347826><0.7065217, SPOT><AM_IND-Utility02.ogg><77.20764><492.4455><0.3804348><1><444.2076><344.4455><-182.3553><-79.35535><0><0.2413043, 
+FadePalette: 33, 0.7717391

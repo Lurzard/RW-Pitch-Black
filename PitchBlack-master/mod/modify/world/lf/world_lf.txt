@@ -6,15 +6,41 @@
 CONDITIONAL LINKS
 Beacon,Photomaniac : GATE_LF_SB : LF_S04 : DISCONNECTED
 Beacon,Photomaniac : GATE_LF_SB : LF_C03 : DISCONNECTED
-Beacon,Photomanaic : LF_S04 : GATE_LF_SB : LF_DEADGATE
+Beacon,Photomanaic : LF_S04 : GATE_LF_SB : DISCONNECTED
 Beacon,Photomaniac : LF_C03 : GATE_LF_SB : LF_DEADGATE
 
-Beacon,Photomaniac : LF_DEADGATE : 0 : LF_S04
 Beacon,Photomaniac : LF_DEADGATE : 1 : LF_C03
+
+Beacon,Photomaniac : EXCLUSIVEROOM : LF_LS01
+Beacon,Photomaniac : EXCLUSIVEROOM : LF_LS03
+Beacon,Photomaniac : EXCLUSIVEROOM : LF_LS04
+Beacon,Photomaniac : EXCLUSIVEROOM : LF_LS07
+Beacon,Photomaniac : HIDEROOM : LF_LS01
+Beacon,Photomaniac : HIDEROOM : LF_LS03
+Beacon,Photomaniac : HIDEROOM : LF_LS04
+Beacon,Photomaniac : HIDEROOM : LF_LS07
+
+Beacon,Photomaniac : LF_S01 : LF_D06 : DISCONNECTED
+Beacon,Photomaniac : LF_D06 : LF_S01 : LF_LS01
+Beacon,Photomaniac : LF_LS01 : 1 : LF_D06
+
+Beacon,Photomaniac : LF_S03 : LF_B04 : DISCONNECTED
+Beacon,Photomaniac : LF_B04 : LF_S03 : LF_LS03
+Beacon,Photomaniac : LF_LS03 : 1 : LF_B04
+
+Beacon,Photomaniac : LF_S07 : LF_B02 : DISCONNECTED
+Beacon,Photomaniac : LF_B02 : LF_S07 : LF_LS07
+Beacon,Photomaniac : LF_LS07 : 1 : LF_B02
+
 END CONDITIONAL LINKS
 ROOMS
 
-LF_DEADGATE : LF_C03, LF_DEADGATE, LF_S04
+LF_LS01 : DISCONNECTED : SHELTER
+LF_LS03 : DISCONNECTED : SHELTER
+LF_LS04 : LF_DEADGATE : SHELTER
+LF_LS07 : DISCONNECTED : SHELTER
+
+LF_DEADGATE : DISCONNECTED, DISCONNECTED, LF_LS04
 
 END ROOMS
 CREATURES
