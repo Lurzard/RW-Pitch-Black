@@ -5,8 +5,9 @@ Clouds: 0.02173913
 Grime: 0.173913
 Palette: 33
 Effects: BrokenZeroG-0.3804348-273-135, Darkness-0-278-20, SkyAndLightBloom-0.1086956-275-244, DayNight-0.5217391-292-81, 
-PlacedObjects: LightSource><279.1442><445.0931><0.02012369~Environment~1876~-314~162.6543~59.53641~1~1~None~0~0, LightBeam><1287.381><54.68176><-842~246~-831~308~9~157~-326.0301~210.4263~0.3559248~0.2019257~0~1~None~0~0, GreenToken><562.0499><319.7509><32~-81~117~160~0~Spearmaster~~1~0~0~0~1~0~0~0, DeadTokenStalk><784.942><317.0586><-50~-90, DeadTokenStalk><657.2564><310.1529><7~-57, DeadTokenStalk><926.9186><162.4328><-20~-53, DayNightSettings><183.378><303.6584><5~8.660254~8~6, 
+PlacedObjects: LightSource><279.1442><445.0931><0.04332336~Environment~2015.268~-482.6156~162.6543~59.53641~1~1~None~0~0, LightBeam><1287.381><54.68176><-842~246~-831~308~9~157~-326.0301~210.4263~0.3849244~0~0~1~None~0~0, GreenToken><562.0499><319.7509><32~-81~117~160~0~Spearmaster~~1~0~0~0~1~0~0~0~1~0~0~0~1~0~0~0, DeadTokenStalk><784.942><317.0586><-50~-90, DeadTokenStalk><657.2564><310.1529><7~-57, DeadTokenStalk><926.9186><162.4328><-20~-53, DayNightSettings><183.378><303.6584><5~8.660254~8~6, 
 AmbientSounds: DIR><AM_ENV-WallHum.ogg><838.1067><547.8605><0.3804348><1><86.24143><0, SPOT><AM_IND-Utility03.ogg><657.1237><530.3449><0.3695652><1><475.1236><530.3449><151.6447><-95.35535><0><0.3717393, 
 Triggers: Spot<tA>event<tB>MusicEvent<eA>songName<eB>NA_04 - Silicon<eA>vol<eB>0.5065221<eA>prio<eB>0.6086956<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>-1<eA>rest<eB>6<eA>fadeIn<eB>65.21739<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>690.2886<tB>384.9462<tA>fireChance<tB>1<tA>entrance<tB>-1<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>530.2887<tB>298.9462<tA>handlePos<tB>669.6447<tB>-105.3553, 
 FadePalette: 10, 0.3695652, 0.6521739
+MorePalette0: 43, 0.2087973, 0.1043993
 BackgroundType: testblackabovegr
