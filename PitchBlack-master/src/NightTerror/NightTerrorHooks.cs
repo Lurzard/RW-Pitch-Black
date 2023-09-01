@@ -8,15 +8,10 @@ using static System.Reflection.BindingFlags;
 public class NightTerrorData
 {
     public int fleeing;
-    public Vector2 fleeTo;
-
-    public NightTerrorData()
-    {
-        fleeTo = Vector2.zero;
-    }
+    public Vector2 fleeTo = Vector2.zero;
 }
 
-public class ChillTheFUCKOut
+public class ChillTheFUCKOut // Since this is referencing the creature that the Night Terror is murdering and not the NT itself I can't really compress it any - Niko
 {
     public int timesZapped = 0;
 }
@@ -59,8 +54,6 @@ namespace PitchBlack
             On.WormGrass.WormGrassPatch.Update += WormGrassPatch_Update;
             On.WormGrass.WormGrassPatch.AlreadyTrackingCreature += WormGrassPatch_AlreadyTrackingCreature;
 
-            On.Centipede.Die += Centipede_Die;
-
             //spinch: moved FlareBomb.Update hook to the one in Plugin.cs, so there's no longer a double hook
             
             On.Centipede.ctor += Centipede_ctor;
@@ -73,35 +66,6 @@ namespace PitchBlack
             On.CentipedeAI.ctor += CentipedeAICTOR;
             On.AbstractCreatureAI.ctor += AbstractCreatureAI_ctor;
         }
-
-        //private static void AbstractRoom_AddEntity(On.AbstractRoom.orig_AddEntity orig, AbstractRoom self, AbstractWorldEntity ent)
-        //{
-        //    if (ent is AbstractCreature abstrCrit
-        //        && abstrCrit.creatureTemplate.type == CreatureTemplateType.NightTerror
-        //        && self.world.game.session is StoryGameSession story
-        //        && story.game.StoryCharacter == Plugin.BeaconName
-        //        && story.saveState.cycleNumber == 0)
-        //    {
-        //        //dont spawn nightterror on cycle 0
-        //        return;
-        //    }
-
-        //    orig(self, ent);
-        //}
-
-        //private static void AbstractCreature_RealizeInRoom(On.AbstractCreature.orig_RealizeInRoom orig, AbstractCreature self)
-        //{
-        //    if (self.creatureTemplate.type == CreatureTemplateType.NightTerror
-        //        && self.world.game.session is StoryGameSession story
-        //        && story.game.StoryCharacter == Plugin.BeaconName
-        //        && story.saveState.cycleNumber == 0)
-        //    {
-        //        //dont spawn nightterror on cycle 0
-        //        return;
-        //    }
-
-        //    orig(self);
-        //}
 
         private static bool Spear_HitSomething(On.Spear.orig_HitSomething orig, Spear self, SharedPhysics.CollisionResult result, bool eu)
         {
@@ -171,14 +135,6 @@ namespace PitchBlack
             return val;
         }
         #endregion
-
-        private static void Centipede_Die(On.Centipede.orig_Die orig, Centipede self)
-        {
-            //spinch: stop dying lmao
-            //spinch: on a related note, we put this thing in puffball purgatory (we need to IL to SporeCloud.Update)
-            if (self.abstractCreature.creatureTemplate.type != CreatureTemplateType.NightTerror)
-                orig(self);
-        }
 
         /// <summary>
         /// Adds a Nightterror tracker upon creation of its abstractcreatureAI
@@ -277,40 +233,42 @@ namespace PitchBlack
             if (self.centipede.abstractCreature.creatureTemplate.type == CreatureTemplateType.NightTerror)
             {
                 self.run = 500;
+                //self.behavior = CentipedeAI.Behavior.Hunt;
                 //self.centipede.bodyDirection = true;
-                
-#if false
+
                 // This seems to cause an index error when the Nightterror is in the same room as a player. Leave this off unless you know how to fix it.
-                if (NightTerrorInfo.TryGetValue(self.centipede, out var NTInfo))
+
+                // Didn't get any errors when I tried it? If you get it again use the .pdb to get a line number
+                // Disabled though because it made it less scary - Niko
+                /*if (NightTerrorInfo.TryGetValue(self.centipede, out var NTInfo))
                 {
-                    /*
+
                     if (NTInfo.fleeing == 0)
                     {
                         for (int i = 0; i < self.centipede.room.game.Players.Count; i++)
                         {
                             if (!(self.centipede.room.game.Players[i].realizedCreature as Player).dead)
                             {
-                                //self.tracker.SeeCreature(self.centipede.room.game.Players[i]);
-                                //self.creature.abstractAI.RealAI.SetDestination(self.centipede.room.game.Players[i].pos);
-                                //self.creature.abstractAI.destination = self.centipede.room.game.Players[i].pos;
-                                //self.creature.abstractAI.migrationDestination = new WorldCoordinate?(self.centipede.room.game.Players[i].pos);
-                                //self.creature.abstractAI.InternalSetDestination(self.centipede.room.game.Players[i].pos);
+                                self.tracker.SeeCreature(self.centipede.room.game.Players[i]);
+                                self.creature.abstractAI.RealAI.SetDestination(self.centipede.room.game.Players[i].pos);
+                                self.creature.abstractAI.destination = self.centipede.room.game.Players[i].pos;
+                                self.creature.abstractAI.migrationDestination = new WorldCoordinate?(self.centipede.room.game.Players[i].pos);
+                                self.creature.abstractAI.InternalSetDestination(self.centipede.room.game.Players[i].pos);
                                 self.behavior = CentipedeAI.Behavior.Hunt;
                                 self.run = 1000;
                                 break;
                             }
                         }
-                    }*/
+                    }
 
-// turning off the fear code for now
-                    if (NTInfo.fleeing > 0)  
+                    // turning off the fear code for now
+                    /*if (NTInfo.fleeing > 0)  
                     {
                         NTInfo.fleeing--;
 
                         self.SetDestination(new WorldCoordinate(self.centipede.abstractCreature.pos.room, (int)NTInfo.fleeTo.x, (int)NTInfo.fleeTo.y, self.centipede.abstractCreature.pos.abstractNode));
-                    }
-                }
-#endif
+                    }/
+                }*/
             }
         }
 

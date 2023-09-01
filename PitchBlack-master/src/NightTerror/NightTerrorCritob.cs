@@ -64,7 +64,7 @@ namespace PitchBlack
                     Corridor = new(1f, Allowed),
                     Climb = new(0.3f, Allowed),
                     Wall = new(1f, Allowed),
-                    Ceiling = new(1f, Unallowed),
+                    Ceiling = new(1f, Allowed),
                     Air = new(1f, Unallowed),
                     Solid = new(1f, Unallowed)
                 },

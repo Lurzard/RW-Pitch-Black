@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace PitchBlack;
 public class ScareEverything {
     public static CreatureTemplate.Relationship.Type newRelation = CreatureTemplate.Relationship.Type.Afraid;
@@ -9,7 +11,23 @@ public class ScareEverything {
             return false;
         }
     }
-    public static void Apply() {
+
+    /*public static void SetRelationship<T>(T CreatureAI, CreatureTemplate.Relationship.Type Relationship) where T : ArtificialIntelligence
+    {
+        On.CreatureAI.IUseARelationshipTracker_UpdateDynamicRelationship += (orig, self, dRelation) => {
+
+            CreatureTemplate.Relationship relationship = orig(self, dRelation);
+            Creature trackedCreature = dRelation?.trackerRep?.representedCreature?.realizedCreature;
+            if (Condition(trackedCreature))
+            {
+                return new CreatureTemplate.Relationship(Relationship, 10f);
+            }
+            return relationship;
+        };
+    }*/
+
+    public static void Apply()
+    {
         On.ArtificialIntelligence.DynamicRelationship_CreatureRepresentation_AbstractCreature += (orig, self, rep, absCrit) => {
             //Debug.Log("Yippe updating");
             Creature trackedCreature = null;
