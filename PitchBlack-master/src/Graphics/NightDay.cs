@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if false
+using UnityEngine;
 //using static SlugBase.JsonAny;
 using Colour = UnityEngine.Color;
 
@@ -169,3 +170,4 @@ public class NightDay
     }
     #endregion
 }
+#endif

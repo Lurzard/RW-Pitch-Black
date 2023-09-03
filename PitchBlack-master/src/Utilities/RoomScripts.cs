@@ -37,7 +37,6 @@ public class SH_CABINETS1_IntroScript : UpdatableAndDeletable
     internal static bool alreadyRun; //sighs. but hey it fixes the problem
     int counter;
     const int COUNTER_MAX = 3 * 40; //when to force the script to stop and give players their controllers back
-    bool hitWater;
     bool alreadyTeleportedCoopPlayers;
     bool StayInAir => room.game.manager.FadeDelayInProgress || !room.fullyLoaded || !room.BeingViewed;
     Player RealizedPlayer => room.game.Players.Count > 0 ? room.game.Players[0].realizedCreature as Player : null;
@@ -91,12 +90,7 @@ public class SH_CABINETS1_IntroScript : UpdatableAndDeletable
 
         alreadyRun = true;
 
-        if (RealizedPlayer.Submersion > 0f)
-        {
-            hitWater = true;
-        }
-
-        if (hitWater || COUNTER_MAX == counter)
+        if (RealizedPlayer.Submersion > 0f || COUNTER_MAX == counter)
         {
             //has a counter check to forcibly give players back their controller, even if the script fucks up
             GiveAllPlayersControllersBack();

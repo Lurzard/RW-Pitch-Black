@@ -93,13 +93,6 @@ namespace PitchBlack
                             FlarebombtoStorage(f);
                             counter = 0;
                         }
-                        //else if (ownr.grasps[0] == null && ownr.grasps[1]?.grabbed is FlareBomb flarebombInOtherHand)
-                        //{
-                        //    //spinch: check the other hand too
-                        //    //spinch: dont do this, you can only grab 1 flarebomb from storage at a time
-                        //    FlarebombtoStorage(flarebombInOtherHand);
-                        //    counter = 0;
-                        //}
                     }
                     if (counter > 20 && storedFlares.Count > 0)
                     {
@@ -123,26 +116,27 @@ namespace PitchBlack
             public void GraphicsModuleUpdated(bool eu)
             {
                 // Skip drawing if storage is empty
-                if (storedFlares.Count > 0)
+                if (storedFlares.Count <= 0)
+                    return;
+
+                PlayerGraphics pG = ownr.graphicsModule as PlayerGraphics;
+
+                Vector2 v1 = pG.drawPositions[0, 0];
+                Vector2 v2 = pG.drawPositions[1, 0];
+                float n = Custom.VecToDeg((v1 - v2).normalized);
+                Vector2 va = v1 + Custom.RotateAroundOrigo(new(12f, -8f), n);
+                Vector2 vb = v1 + Custom.RotateAroundOrigo(new(-12f, -8f), n);
+
+                int i = 0;
+                foreach (FlareBomb fb in storedFlares)
                 {
-                    PlayerGraphics pG = (PlayerGraphics)ownr.graphicsModule;
-                    Vector2 v1 = pG.drawPositions[0, 0];
-                    Vector2 v2 = pG.drawPositions[1, 0];
-                    Vector2 va = new(12f, -8f);
-                    Vector2 vb = new(-12f, -8f);
-                    Vector2 n = (v1 - v2).normalized;
-                    va = v1 + Custom.RotateAroundOrigo(va, Custom.VecToDeg(n));
-                    vb = v1 + Custom.RotateAroundOrigo(vb, Custom.VecToDeg(n));
-                    int i = 0;
-                    foreach (FlareBomb fb in storedFlares)
-                    {
-                        float num = (i + 1f) / (storedFlares.Count + 1f);
-                        Vector2 destination = va + (vb - va) * num;
-                        fb.firstChunk.MoveFromOutsideMyUpdate(eu, destination);
-                        fb.firstChunk.vel = ownr.mainBodyChunk.vel;
-                        fb.rotationSpeed = 0f;
-                        i++;
-                    }
+                    float num = (i + 1f) / (storedFlares.Count + 1f);
+                    Vector2 destination = va + (vb - va) * num;
+                    
+                    fb.firstChunk.MoveFromOutsideMyUpdate(eu, destination);
+                    fb.firstChunk.vel = ownr.mainBodyChunk.vel;
+                    fb.rotationSpeed = 0f;
+                    i++;
                 }
             }
 
@@ -156,20 +150,7 @@ namespace PitchBlack
                         return;
                     }
                 }
-                // Find empty hand
-                //int toPaw = -1;
-                //for (int j = 0; j < 2; j++)
-                //{
-                //    if (toPaw != -1)
-                //    {
-                //        break;
-                //    }
-                //    if (ownr.grasps[j] == null)
-                //    {
-                //        toPaw = j;
-                //    }
-                //}
-                int toPaw = ownr.FreeHand(); //spinch: rw has an in-game method for finding an empty hand
+                int toPaw = ownr.FreeHand();
                 // If empty hand has been detected
                 if (toPaw != -1)
                 {

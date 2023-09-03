@@ -1,5 +1,4 @@
 ﻿using MonoMod.RuntimeDetour;
-using PitchBlack;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
@@ -40,9 +39,6 @@ namespace PitchBlack
         internal static void Apply()
         {
             new Hook(typeof(Centipede).GetMethod("get_Red", Public | NonPublic | Instance), (System.Func<Centipede, bool> orig, Centipede self) => self.Template.type == CreatureTemplateType.NightTerror || orig(self));
-
-            //On.AbstractRoom.AddEntity += AbstractRoom_AddEntity;
-            //On.AbstractCreature.RealizeInRoom += AbstractCreature_RealizeInRoom;
 
             On.Spear.HitSomething += Spear_HitSomething;
             On.Rock.HitSomething += Rock_HitSomething;
@@ -277,6 +273,14 @@ namespace PitchBlack
             orig(self, abstractCreature, world);
             if (self.abstractCreature.creatureTemplate.type == CreatureTemplateType.NightTerror)
             {
+                //personality stats are from ID 3560
+                self.abstractCreature.personality.aggression = 0.216056f;
+                self.abstractCreature.personality.bravery = 0.8485757f;
+                self.abstractCreature.personality.dominance = 0.7141814f;
+                self.abstractCreature.personality.energy = 0.9055567f;
+                self.abstractCreature.personality.nervous = 0.4577313f;
+                self.abstractCreature.personality.sympathy = 0.4754336f;
+
                 abstractCreature.ignoreCycle = true;
                 if (!NightTerrorInfo.TryGetValue(self, out var _))
                 { NightTerrorInfo.Add(self, _ = new NightTerrorData()); }
