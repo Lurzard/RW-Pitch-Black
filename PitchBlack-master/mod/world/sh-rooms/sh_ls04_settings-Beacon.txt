@@ -1,0 +1,11 @@
+DangerType: None
+RainIntensity: 0
+RumbleIntensity: 0
+WaveSpeed: 0.5016488
+WaveLength: 0.7491755
+WaveAmplitude: 0.04860936
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+BkgDroneVolume: 0
+PlacedObjects: BrokenShelterWaterLevel><526.0503><500.7391><, 
+AmbientSounds: SPOT><AM_IND-Utility02.ogg><740.9316><460.0838><0.3478261><1><618.9316><534.0839><-108.3553><-58.35535><0><0.3173914, 
