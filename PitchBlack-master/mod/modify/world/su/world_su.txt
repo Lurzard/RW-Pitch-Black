@@ -3,6 +3,17 @@
 [FINDREGEX]^(?:\W+ : \d+-\w+.+|LINEAGE : \w+ : \d+ : .+)$
 [ADDBEFORE](X-Beacon,Photomaniac)
 [MERGE]
+ROOMS
+
+SU_LS01 : DISCONNECTED : SHELTER
+SU_LS01r : DISCONNECTED : SHELTER
+SU_LS02 : DISCONNECTED : SHELTER
+SU_LS02r : DISCONNECTED : SHELTER
+SU_LS03 : DISCONNECTED : SHELTER
+SU_LS04 : DISCONNECTED : SHELTER
+SU_LS05 : DISCONNECTED : SHELTER
+
+END ROOMS
 CONDITIONAL LINKS
 
 Beacon,Photomaniac : SU_B14 : SU_C01 : DISCONNECTED
@@ -11,6 +22,31 @@ Beacon,Photomaniac : SU_C01 : SU_B14 : SU_B14SAINT
 Beacon,Photomaniac : GATE_SU_DS : SU_B14 : SU_B14SAINT
 Beacon,Photomaniac : SU_B14SAINT : 1 : SU_C01
 Beacon,Photomaniac : SU_B14SAINT : 2 : GATE_SU_DS
+
+Beacon,Photomaniac : EXCLUSIVEROOM : SU_LS01
+Beacon,Photomaniac : EXCLUSIVEROOM : SU_LS03
+Beacon,Photomaniac : EXCLUSIVEROOM : SU_LS04
+Beacon,Photomaniac : EXCLUSIVEROOM : SU_LS05
+Beacon,Photomaniac : HIDEROOM : SU_S01
+Beacon,Photomaniac : HIDEROOM : SU_S03
+Beacon,Photomaniac : HIDEROOM : SU_S04
+Beacon,Photomaniac : HIDEROOM : SU_S05
+
+Beacon,Photomaniac : SU_S01 : SU_A22 : DISCONNECTED
+Beacon,Photomaniac : SU_A22 : SU_S01 : SU_LS01
+Beacon,Photomaniac : SU_LS01 : 1 : SU_A22
+
+Beacon,Photomaniac : SU_S03 : SU_B01 : DISCONNECTED
+Beacon,Photomaniac : SU_B01 : SU_S03 : SU_LS03
+Beacon,Photomaniac : SU_LS03 : 1 : SU_B01
+
+Beacon,Photomaniac : SU_S04 : SU_A37 : DISCONNECTED
+Beacon,Photomaniac : SU_A37 : SU_S04 : SU_LS04
+Beacon,Photomaniac : SU_LS04 : 1 : SU_A37
+
+Beacon,Photomaniac : SU_S05 : SU_PUMP03 : DISCONNECTED
+Beacon,Photomaniac : SU_PUMP03 : SU_S05 : SU_LS05
+Beacon,Photomaniac : SU_LS05 : 1 : SU_PUMP03
 
 END CONDITIONAL LINKS
 CREATURES
