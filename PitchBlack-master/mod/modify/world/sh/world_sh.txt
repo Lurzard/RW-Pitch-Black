@@ -18,7 +18,61 @@ SH_CABINETS5 : SH_CABINETS6, SH_CABINETS4
 SH_CABINETS6 : SH_PBMEM, SH_CABINETS4, SH_CABINETS5
 SH_PBMEM : SH_E04, SH_E01, SH_CABINETS6
 
+SH_LS01 : DISCONNECTED : SHELTER
+SH_LS02 : DISCONNECTED : SHELTER
+SH_LS04 : DISCONNECTED : SHELTER
+SH_LS05 : DISCONNECTED : SHELTER
+SH_LS06 : DISCONNECTED : SHELTER
+SH_LS07 : DISCONNECTED : SHELTER
+SH_LS11 : DISCONNECTED : SHELTER
+
 END ROOMS
+CONDITIONAL LINKS
+
+Beacon,Photomaniac : EXCLUSIVEROOM : SH_LS01
+Beacon,Photomaniac : EXCLUSIVEROOM : SH_LS02
+Beacon,Photomaniac : EXCLUSIVEROOM : SH_LS04
+Beacon,Photomaniac : EXCLUSIVEROOM : SH_LS05
+Beacon,Photomaniac : EXCLUSIVEROOM : SH_LS06
+Beacon,Photomaniac : EXCLUSIVEROOM : SH_LS07
+Beacon,Photomaniac : EXCLUSIVEROOM : SH_LS11
+Beacon,Photomaniac : HIDEROOM : SH_S01
+Beacon,Photomaniac : HIDEROOM : SH_S02
+Beacon,Photomaniac : HIDEROOM : SH_S04
+Beacon,Photomaniac : HIDEROOM : SH_S05
+Beacon,Photomaniac : HIDEROOM : SH_S06
+Beacon,Photomaniac : HIDEROOM : SH_S07
+Beacon,Photomaniac : HIDEROOM : SH_S11
+
+Beacon,Photomaniac : SH_S01 : SH_C07 : DISCONNECTED
+Beacon,Photomaniac : SH_C07 : SH_S01 : SH_LS01
+Beacon,Photomaniac : SH_LS01 : 1 : SH_C07
+
+Beacon,Photomaniac : SH_S02 : SH_C04 : DISCONNECTED
+Beacon,Photomaniac : SH_C04 : SH_S02 : SH_LS02
+Beacon,Photomaniac : SH_LS02 : 1 : SH_C04
+
+Beacon,Photomaniac : SH_S04 : SH_A05 : DISCONNECTED
+Beacon,Photomaniac : SH_A05 : SH_S04 : SH_LS04
+Beacon,Photomaniac : SH_LS04 : 1 : SH_A05
+
+Beacon,Photomaniac : SH_S05 : GATE_SH_SL : DISCONNECTED
+Beacon,Photomaniac : GATE_SH_SL : SH_S05 : SH_LS05
+Beacon,Photomaniac : SH_LS05 : 1 : GATE_SH_SL
+
+Beacon,Photomaniac : SH_S06 : SH_A24 : DISCONNECTED
+Beacon,Photomaniac : SH_A24 : SH_S06 : SH_LS06
+Beacon,Photomaniac : SH_LS06 : 1 : SH_A24
+
+Beacon,Photomaniac : SH_S07 : SH_B13 : DISCONNECTED
+Beacon,Photomaniac : SH_B13 : SH_S07 : SH_LS07
+Beacon,Photomaniac : SH_LS07 : 1 : SH_B13
+
+Beacon,Photomaniac : SH_S11 : SH_HALL : DISCONNECTED
+Beacon,Photomaniac : SH_HALL : SH_S11 : SH_LS11
+Beacon,Photomaniac : SH_LS11 : 1 : SH_HALL
+
+END CONDITIONAL LINKS
 CREATURES
 
 (Beacon)OFFSCREEN : 0-Miros-10, 0-MirosVulture-2, 0-Scavenger-12

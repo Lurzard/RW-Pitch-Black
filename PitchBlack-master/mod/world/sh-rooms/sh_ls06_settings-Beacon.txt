@@ -1,0 +1,12 @@
+DangerType: None
+RainIntensity: 0
+RumbleIntensity: 0
+WaveSpeed: 0.5
+WaveLength: 0.75
+WaveAmplitude: 0.04641051
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+BkgDroneVolume: 0
+PlacedObjects: BrokenShelterWaterLevel><484.5867><371.4302><, 
+AmbientSounds: OMNI><Weird Deep Hole.wav><825.5623><643.1901><0.1413043><1, OMNI><SO_WAT-DripTap.ogg><645.7856><643.4468><0.3369565><1, 
+FadePalette: 12, 0.1521739
