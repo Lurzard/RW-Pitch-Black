@@ -16,7 +16,7 @@ public static class JollyMenuHooks
 {
     public static bool ContainsBeaconOrPhoto(string str)
     {
-        return str.Contains(Plugin.PhotoName.value) || str.Contains(Plugin.PhotoName.value);
+        return str.Contains(Plugin.PhotoName.value) || str.Contains(Plugin.BeaconName.value);
     }
 
     public static void Apply()

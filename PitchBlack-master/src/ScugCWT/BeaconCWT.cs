@@ -121,6 +121,8 @@ namespace PitchBlack
 
                 PlayerGraphics pG = ownr.graphicsModule as PlayerGraphics;
 
+                if (pG == null) return;
+
                 Vector2 v1 = pG.drawPositions[0, 0];
                 Vector2 v2 = pG.drawPositions[1, 0];
                 float n = Custom.VecToDeg((v1 - v2).normalized);
@@ -138,6 +140,37 @@ namespace PitchBlack
                     fb.rotationSpeed = 0f;
                     i++;
                 }
+
+#if false
+//doesnt work lol
+                //spinch: below is correcting the pos of the middle flarebombs
+                //only needs to be corrected if theres more than 2 flarebombs
+                if (storedFlares.Count <= 2) return;
+
+                var flareArr = storedFlares.ToArray();
+
+                Vector2 leftEndOfCollarPos = flareArr[0].firstChunk.pos;
+                Vector2 rightEndOfCollarPos = flareArr[storedFlares.Count - 2].firstChunk.pos;
+                Vector2 dirVectorNormalized = (leftEndOfCollarPos - rightEndOfCollarPos).normalized;
+
+                float padding = leftEndOfCollarPos.x - rightEndOfCollarPos.x;
+                if (storedFlares.Count >= 4)
+                    padding = Mathf.Max(padding - 1f, 0);
+
+                i = 1;
+                foreach (FlareBomb fb in storedFlares)
+                {
+                    if (i == 0) continue;
+
+                    float num = (i + 1f) / (storedFlares.Count + 1f);
+                    Vector2 destination = va + (vb - va) * num + padding * i * dirVectorNormalized;
+
+                    fb.firstChunk.MoveFromOutsideMyUpdate(eu, destination);
+                    fb.firstChunk.vel = ownr.mainBodyChunk.vel;
+                    fb.rotationSpeed = 0f;
+                    i++;
+                }
+#endif
             }
 
             public void FlarebombFromStorageToPaw(bool eu)
