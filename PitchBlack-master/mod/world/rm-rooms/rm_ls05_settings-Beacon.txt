@@ -1,0 +1,6 @@
+DangerType: None
+Palette: 23
+Effects: ZeroG-0.25-40-134, ZeroGSpecks-0.1847826-38-77, Bloom-0.1521739-298-135, BrokenZeroG-1-296-77, ReplaceEffectColorB-0-436-354-Color-0.2826087-0-1,
+PlacedObjects: LightSource><120.3561><538.8611><1~Environment~0~100~50~86.60254~1~0~None~0~0, LightSource><708.7382><372.4496><1~Environment~0~100~6~-308.3975~1~0~None~0~0, LightSource><804.5731><662.9362><1~Environment~0~100~50~86.60254~1~0~None~0~0, LightSource><177.3186><190.0844><1~Environment~0~100~50~86.60254~1~0~None~0~0, SuperStructureFuses><710.7011><469.556><146~133, LightFixture><247.491><622.3002><RedLight~17.32051~-10~81, CorruptionDarkness><395.9838><505.5507><59~158, CorruptionDarkness><559.5657><623.9389><107~-61, 
+AmbientSounds: OMNI><AM_IND-SuperStructure.ogg><839.0552><644.5453><0.3804348><0.9021739, OMNI><SO_SFX-Drowning.ogg><652.0336><660.8029><0.4456522><1, SPOT><SO_SFX-DataStream.ogg><769.4484><216.2246><0.3695652><1.254348><780.4484><534.2246><-152.3553><-62.35535><0><0.2630436, 
+FadePalette: 10, 0.8804348

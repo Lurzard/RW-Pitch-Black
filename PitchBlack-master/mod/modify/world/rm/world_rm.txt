@@ -1,0 +1,63 @@
+[MERGE]
+ROOMS
+
+RM_LLCS2 : DISCONNECTED : SHELTER
+RM_LS01 : DISCONNECTED : SHELTER
+RM_LS02 : DISCONNECTED : SHELTER
+RM_LS03 : DISCONNECTED : SHELTER
+RM_LS05 : DISCONNECTED : SHELTER
+RM_LSDEAD : DISCONNECTED : SHELTER
+RM_LSFINAL : DISCONNECTED : SHELTER
+
+END ROOMS
+CONDITIONAL LINKS
+
+Beacon,Photomaniac : EXCLUSIVEROOM : RM_LLCS2
+Beacon,Photomaniac : EXCLUSIVEROOM : RM_LS01
+Beacon,Photomaniac : EXCLUSIVEROOM : RM_LS02
+Beacon,Photomaniac : EXCLUSIVEROOM : RM_LS03
+Beacon,Photomaniac : EXCLUSIVEROOM : RM_LS05
+Beacon,Photomaniac : EXCLUSVIEROOM : RM_LSDEAD
+Beacon,Photomaniac : EXCLUSIVEROOM : RM_LSFINAL
+Beacon,Photomaniac : HIDEROOM : RM_LCS2
+Beacon,Photomaniac : HIDEROOM : RM_S01
+Beacon,Photomaniac : HIDEROOM : RM_S02
+Beacon,Photomaniac : HIDEROOM : RM_S03
+Beacon,Photomaniac : HIDEROOM : RM_S04
+Beacon,Photomaniac : HIDEROOM : RM_S05
+Beacon,Photomaniac : HIDEROOM : RM_SDEAD
+Beacon,Photomaniac : HIDEROOM : RM_SFINAL
+
+Beacon,Photomaniac : RM_LCS2 : RM_LCSWAP : DISCONNECTED
+Beacon,Photomaniac : RM_LCSWAP : RM_LCS2 : RM_LLCS2
+Beacon,Photomaniac : RM_LLCS2 : 1 : RM_LCSWAP
+
+Beacon,Photomaniac : RM_S01 : RM_A08 : DISCONNECTED
+Beacon,Photomaniac : RM_A08 : RM_S01 : RM_LS01
+Beacon,Photomaniac : RM_LS01 : 1 : RM_A08
+
+Beacon,Photomaniac : RM_S02 : RM_F02 : DISCONNECTED
+Beacon,Photomaniac : RM_F02 : RM_S02 : RM_LS02
+Beacon,Photomaniac : RM_LS02 : 1 : RM_F02
+
+Beacon,Photomaniac : RM_S03 : RM_B04 : DISCONNECTED
+Beacon,Photomaniac : RM_B04 : RM_S03 : RM_LS03
+Beacon,Photomaniac : RM_LS03 : 1 : RM_B04
+
+Beacon,Photomaniac : RM_S05 : RM_B02 : DISCONNECTED
+Beacon,Photomaniac : RM_B02 : RM_S05 : RM_LS05
+Beacon,Photomaniac : RM_LS05 : 1 : RM_B02
+
+Beacon,Photomaniac : RM_SDEAD : RM_DEAD02 : DISCONNECTED
+Beacon,Photomaniac : RM_DEAD02 : RM_SDEAD : RM_LSDEAD
+Beacon,Photomaniac : RM_LSDEAD : 1 : RM_DEAD02
+
+Beacon,Photomaniac : RM_SFINAL : RM_LCFINAL : DISCONNECTED
+Beacon,Photomaniac : RM_LCFINAL : RM_SFINAL : RM_LSFINAL
+Beacon,Photomaniac : RM_LSFINAL : 1 : RM_LCFINAL
+
+END CONDITIONAL LINKS
+
+CREATURES
+END CREATURES
+[ENDMERGE]
