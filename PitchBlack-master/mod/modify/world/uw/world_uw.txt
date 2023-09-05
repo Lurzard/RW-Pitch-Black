@@ -1,44 +1,272 @@
-[FIND](X-
-[ADDAFTER]Beacon,Photomaniac,
-[FINDREGEX]^(?:\W+ : \d+-\w+.+|LINEAGE : \w+ : \d+ : .+)$
-[ADDBEFORE](X-Beacon,Photomaniac)
-[MERGE]
+CONDITIONAL LINKS
+Rivulet : EXCLUSIVEROOM : UW_D05RIV
+Rivulet : EXCLUSIVEROOM : UW_A04RIV
+Rivulet : EXCLUSIVEROOM : UW_C02RIV
+Rivulet : EXCLUSIVEROOM : UW_A05RIV
+Rivulet : EXCLUSIVEROOM : UW_C01RIV
+Rivulet : EXCLUSIVEROOM : UW_A06RIV
+Rivulet : EXCLUSIVEROOM : UW_E04RIV
+Rivulet : EXCLUSIVEROOM : UW_A11RIV
+Rivulet : EXCLUSIVEROOM : UW_J02RIV
+Rivulet : HIDEROOM : UW_D05
+Rivulet : HIDEROOM : UW_A04
+Rivulet : HIDEROOM : UW_C02
+Rivulet : HIDEROOM : UW_A05
+Rivulet : HIDEROOM : UW_C01
+Rivulet : HIDEROOM : UW_A06
+Rivulet : HIDEROOM : UW_E04
+Rivulet : HIDEROOM : UW_A11
+Rivulet : HIDEROOM : UW_J02
+Rivulet : UW_C04 : UW_D05 : UW_D05RIV
+Rivulet : UW_D05 : UW_C04 : DISCONNECTED
+Rivulet : UW_D05RIV : 1 : UW_C04
+Rivulet : UW_A03 : UW_C01 : UW_C01RIV
+Rivulet : UW_C01 : UW_A03 : DISCONNECTED
+Rivulet : UW_C01RIV : 1 : UW_A03
+Rivulet : UW_A03 : UW_J02 : UW_J02RIV
+Rivulet : UW_J02 : UW_A03 : DISCONNECTED
+Rivulet : UW_J02RIV : 1 : UW_A03
+Rivulet : UW_I01 : UW_J02 : UW_J02RIV
+Rivulet : UW_J02 : UW_I01 : DISCONNECTED
+Rivulet : UW_J02RIV : 2 : UW_I01
+Rivulet : UW_A11 : UW_A06 : DISCONNECTED
+Rivulet : UW_A06 : UW_A11 : DISCONNECTED
+Rivulet : UW_I01 : UW_A11 : UW_A11RIV
+Rivulet : UW_A11 : UW_I01 : DISCONNECTED
+Rivulet : UW_A11RIV : 1 : UW_I01
+Rivulet : UW_A08 : UW_E04 : UW_E04RIV
+Rivulet : UW_E04 : UW_A08 : DISCONNECTED
+Rivulet : UW_E04RIV : 1 : UW_A08
+END CONDITIONAL LINKS
+ROOMS
+GATE_UW_SS : DISCONNECTED, UW_C08 : GATE
+GATE_CC_UW : DISCONNECTED, UW_D07 : GATE
+GATE_SH_UW : UW_D02, DISCONNECTED : GATE
+GATE_SS_UW : UW_C07, DISCONNECTED : GATE
+UW_C08 : UW_I01, GATE_UW_SS
+UW_C07 : UW_H01, GATE_SS_UW
+UW_H01 : UW_C07, UW_A12
+UW_A14 : UW_A12
+UW_A12 : UW_A14, UW_H01, UW_F01, GATE_UW_LC
+UW_F01 : UW_A12, UW_A13
+UW_A13 : UW_F01, UW_S03, UW_E01
+UW_S03 : UW_A13 : SHELTER
+UW_E01 : UW_A13, UW_A02
+UW_A02 : UW_E01, UW_J01 : SWARMROOM
+UW_J01 : UW_A02, DISCONNECTED, UW_A01
+UW_A01 : UW_J01, UW_D01 : SWARMROOM
+UW_D01 : UW_A01, UW_D07
+UW_D07 : UW_D01, UW_S04, GATE_CC_UW, UW_C05
+UW_S04 : UW_D07 : SHELTER
+UW_C05 : UW_D07, UW_D06
+UW_D06 : UW_C04, UW_S01, UW_C05
+UW_S01 : UW_D06 : SHELTER
+UW_C04 : UW_D05, UW_D06
+UW_D05 : UW_C04, UW_A04
+UW_A04 : UW_D05, UW_C02
+UW_C02 : UW_A05, UW_A04
+UW_A05 : UW_C02, UW_C01
+UW_C01 : UW_A03, UW_A05
+UW_A03 : UW_A10, UW_C01, UW_J02
+UW_J02 : UW_A03, UW_I01, UW_A06
+UW_I01 : UW_C08, UW_A10, UW_A11, UW_S02, UW_J02
+UW_S02 : UW_I01 : SHELTER
+UW_A10 : UW_I01, UW_A03
+UW_A11 : UW_I01, UW_A06
+UW_A06 : UW_A11, UW_J02, UW_E04
+UW_E04 : UW_A06, UW_A08
+UW_A08 : UW_E04, UW_C03
+UW_C03 : UW_A08, UW_D04
+UW_D04 : UW_C03, UW_B01, UW_D03
+UW_B01 : UW_PREGATE, UW_D04
+UW_S07 : UW_PREGATE : SHELTER
+UW_D03 : UW_D04, UW_E03
+UW_A09 : UW_E03, UW_S06, UW_C06
+UW_S06 : UW_A09 : SHELTER
+UW_E03 : UW_D03, UW_A09, UW_E02
+UW_E02 : UW_E03, UW_A07, UW_D02
+UW_A07 : UW_C06, UW_E02
+UW_C06 : UW_A09, UW_A07
+UW_D02 : UW_E02, UW_S05, GATE_SH_UW
+UW_S05 : UW_D02 : SHELTER
+GATE_UW_LC : DISCONNECTED, DISCONNECTED, UW_A12 : GATE
+GATE_UW_SL : DISCONNECTED, UW_PREGATE : GATE
+UW_PREGATE : GATE_UW_SL, UW_S07, UW_B01
+UW_D05RIV : DISCONNECTED, UW_A04RIV
+UW_A04RIV : UW_D05RIV, UW_C02RIV
+UW_C02RIV : UW_A05RIV, UW_A04RIV
+UW_A05RIV : UW_C02RIV, UW_C01RIV
+UW_C01RIV : DISCONNECTED, UW_A05RIV
+UW_A06RIV : DISCONNECTED, UW_J02RIV, UW_E04RIV
+UW_E04RIV : UW_A06RIV, DISCONNECTED
+UW_A11RIV : DISCONNECTED, DISCONNECTED
+UW_J02RIV : DISCONNECTED, DISCONNECTED, UW_A06RIV
+END ROOMS
 CREATURES
-(Beacon)OFFSCREEN : 0-KingVulture-1, 0-Vulture-2, 0-MirosVulture-2, 0-Scavenger-8, 0-EliteScavenger-3-{Night}
-(Photomaniac)OFFSCREEN : 0-KingVulture-1, 0-Vulture-3, 0-MirosVulture-3, 0-Scavenger-10, 0-Elite-{IgnoreCycle}, 0-Elite-3-{Night}
-
+UW_A07 : 3-Tube, 4-Tube, 5-Tube
+UW_E01 : 3-Blue, 2-White, 3-Cyan-{Night}, 4-Mimic-{18}, 5-Mimic-{16}
+UW_C06 : 2-Tube, 3-Tube, 4-Tube, 6-Tube
+(X-Beacon,Photomaniac)LINEAGE : UW_J02 : 11 : White-0.5, White-{Mean:1.0}-0.5, NONE-0.3, Red-0
+(White)UW_E03 : 4-Daddy, 8-White
+(White)UW_A09 : 5-Tube, 3-Tube, 4-White
+(White)UW_E04 : 3-Daddy, 6-Tube, 7-Tube
+(White)UW_I01 : 5-Yellow-2, 6-Yellow-2
+(White)UW_D03 : 3-Daddy
+(White)UW_J02 : 5-Daddy, 16-Yellow, 19-Yellow, 17-Yellow-2, 13-Tube, 14-Tube
+(White)UW_J01 : 3-Cyan-{Night}, 4-Cyan-{Night}, 5-Cyan-{Night}, 3-Yellow, 4-Yellow, 5-Yellow, 6-Yellow-2
+(White)LINEAGE : UW_D02 : 3 : White-{Mean:0.5}-0.5, White-{Mean:1.0}-0.5, NONE-0.4, Red-0
+(White)LINEAGE : UW_E02 : 5 : White-{Mean:0.4}-0.5, NONE-0.3, White-{Mean:0.7}-0.3, Red-0
+(White)UW_D04 : 4-Daddy, 5-Tube, 6-Tube, 7-Tube
+(Yellow)UW_D04 : 4-Daddy, 5-Tube, 6-Tube, 7-Tube
+(Yellow)UW_D03 : 3-White-{Mean:-0.05}
+(Yellow)UW_D02 : 3-White-{Mean:-0.05}
+(Yellow)UW_E03 : 4-Daddy, 8-White-{Mean:-0.05}
+(Yellow)UW_A09 : 5-Tube, 3-Tube
+(Yellow)UW_E04 : 3-White-{Mean:-0.05}, 6-Tube, 7-Tube
+(Yellow)UW_I01 : 5-Yellow, 6-Yellow
+(Yellow)UW_J02 : 5-Daddy, 19-Yellow, 17-Yellow, 13-Tube, 14-Tube
+(Yellow)UW_J01 : 3-Yellow-{Ignorecycle}, 4-Yellow-{Ignorecycle}, 5-Yellow-{Ignorecycle}, 6-Yellow-{Ignorecycle}
+(Red)OFFSCREEN : 0-KingVulture
+(Red)UW_I01 : 5-Cyan-2, 6-Cyan-2
+(Red)UW_J01 : 3-Cyan-{Ignorecycle}, 4-Cyan, 5-Cyan-{Ignorecycle}, 6-Cyan-2
+(Red)UW_E03 : 8-White-{Mean:1.0}, 3-SpitterSpider, 4-BigSpider-2, 5-BigSpider, 6-BigSpider, 7-SpitterSpider, 9-SpitterSpider
+(Red)UW_D02 : 3-White-{Mean:1.0}, 4-SpitterSpider
+(Red)UW_E02 : 3-BigSpider, 4-BigSpider, 6-White-{Mean:1.0}, 6-Mimic
+(Red)UW_D03 : 2-Cyan-2, 3-SpitterSpider
+(Red)UW_D04 : 4-Dropbug, 3-Dropbug, 5-Tube, 6-Tube, 7-Tube
+(Red)LINEAGE : UW_D02 : 4 : Dropbug-0.5, White-{Mean:1.0}-0
+(Red)UW_J02 : 5-Daddy, 16-Cyan, 19-Cyan, 17-Cyan, 13-Tube, 14-Tube
+(Red)UW_E04 : 3-White, 6-Tube, 7-Tube
+(Red)UW_D06 : 3-Tube
+(Red)UW_C04 : 3-White-{Mean:0.7}, 5-Tube-2
+(Red)UW_A09 : 4-White-{Mean:0.7}
+(Red)LINEAGE : UW_D07 : 4 : NONE-0.4, Dropbug-0
+(Beacon)OFFSCREEN : 0-KingVulture, 0-Vulture-2, 0-MirosVulture-2, 0-Scavenger-8, 0-EliteScavenger-{Night}-3
+(Photomaniac)OFFSCREEN : 0-KingVulture, 0-Vulture-3, 0-MirosVulture-3, 0-Scavenger-10, 0-Elite-{IgnoreCycle}, 0-Elite-{Night}-3
 (Beacon)UW_J02 : 16-Yellow, 19-Yellow, 17-Yellow-2, 13-Tube, 14-Tube, 7-Daddy, 10-Tube-2, 3-nightterror
-(Beacon)UW_E03 : 7-White-{Mean:1.0}, 3-SpitterSpider-3, 5-BigSpider-4, 6-Mouse-4, 9-nightterror, 9-Centiwing-2, 4-Daddy, 8-Daddy
+(Beacon)UW_E03 : 7-White-{Mean:1.0}, 3-SpitterSpider-3, 5-BigSpider-4, 6-Mouse-4, 9-Centiwing-2, 4-Daddy, 8-Daddy
 (Beacon)UW_E01 : 3-Blue-{Night}, 2-White, 3-Cyan, 4-nightterror, 5-Mouse-6, 6-Centiwing-2
 (Photomaniac)UW_J02 : 16-Yellow, 19-Yellow, 17-Yellow-2, 13-Tube, 14-Tube, 7-Daddy, 10-Tube-2
 (Photomaniac)UW_E03 : 7-White-{Mean:1.0}, 3-SpitterSpider-3, 5-BigSpider-4, 6-Mouse-4, 9-Centiwing-2, 4-Daddy, 8-Daddy
 (Photomaniac)UW_E01 : 3-Blue-{Night}, 2-White, 3-Cyan, 5-Mouse-6, 6-Centiwing-2
-
-(Beacon,Photomaniac)UW_A01 : 2-Centiwing-2, 3-Dropwig
-(Beacon,Photomaniac)UW_A02 : 2-White, 2-SpitterSpider-{Night}
-(Beacon,Photomaniac)UW_A07 : 3-Tube, 4-Tube, 5-Tube, 6-Mouse-4	
-(Beacon,Photomaniac)UW_A09 : 4-White-{Mean:0.7}, 5-Tube, 3-Tube
-(Beacon,Photomaniac)UW_B01 : 2-Small Centipede-{AlternateForm}-3, 2-Centiwng
-(Beacon,Photomaniac)UW_C01 : 2-Tube-2, 2-BigSpider, 4-Cyan, 3-Daddy
-(Beacon,Photomaniac)UW_C02 : 4-Yellow, 5-Yellow, 2-Tube, 3-Tube, 6-MotherSpider, 6-BigSpider-2
-(Beacon,Photomaniac)UW_C03 : 3-Centiwing-2, 2-Mouse-4
-(Beacon,Photomaniac)UW_C04 : 3-White-{Mean:0.7}, 5-Tube-2, 4-Centiwing-2, 2-BigSpider
-(Beacon,Photomaniac)UW_D01 : 2-Dropbug, 2-Eggbug-{PreCycle}
-(Beacon,Photomaniac)UW_D02 : 3-White-{Mean:1.0}, 5-SpitterSpider, 4-Daddy
-(Beacon,Photomaniac)UW_D03 : 2-Cyan-2, 2-White-{Mean:-0.05}, 3-Daddy
-(Beacon,Photomaniac)UW_D04 : 3-Dropbug, 3-Centiwing, 5-MotherSpider, 5-SpitterSpider, 6-Tube, 6-Cyan, 7-Tube, 4-Daddy, 5-Tube, 5-Mouse-5
-(Beacon,Photomaniac)UW_D05 : 2-SpitterSpider
-(Beacon,Photomaniac)UW_D06 : 3-Tube-2
-(Beacon,Photomaniac)UW_D07 : 4-Tube
-(Beacon,Photomaniac)UW_E02 : 4-SpitterSpider, 4-Mouse-5, 3-White, 6-Mimic, 5-Centiwing-3, 5-MotherSpider
-(Beacon,Photomaniac)UW_E03 : 7-White-{Mean:1.0}, 3-SpitterSpider-3, 5-BigSpider-4, 6-Mouse-4, 9-Centiwing-2, 4-Daddy, 8-Daddy
-(Beacon,Photomaniac)UW_E04 : 3-White, 4-Daddy, 5-Cyan, 6-Tube-2, 6-Centiwing, 7-Mouse-4
-(Beacon,Photomaniac)UW_F01 : 3-Mimic-{12}, 4-White, 5-White, 2-BigSpider-{Night}, 4-CicadaB-2-{PreCycle}, 3-CicadaA-5-{PreCycle}
-(Beacon,Photomaniac)UW_I01 : 5-SpitterSpider, 5-BigSpider, 6-Mouse-5
-(Beacon,Photomaniac)UW_J01 : 3-Yellow-2-{IgnoreCycle}, 4-Yellow-2-{IgnoreCycle}, 5-Cyan-{IgnoreCycle}, 6-Cyan-{IgnoreCycle}
-(Beacon,Photomaniac)UW_PREGATE : 3-Scavenger-4
-(Beacon,Photomaniac)LINEAGE : UW_D02 : 4 : Dropbug-0.5, White-{Mean:1.0}-0
-(Beacon,Photomaniac)LINEAGE : UW_D07 : 4 : NONE-0.4, Dropbug-0
-(Beacon,Photomaniac)LINEAGE : UW_J02 : 11 : White-0.5, White-{Mean:1.0}-0.5, NONE-0.3, Red-0
+(Beacon)UW_A01 : 2-Centiwing-2, 3-Dropwig
+(Photomaniac)UW_A01 : 2-Centiwing-2, 3-Dropwig
+(Beacon)UW_A07 : 3-Tube, 4-Tube, 5-Tube, 6-Mouse-4
+(Photomaniac)UW_A07 : 3-Tube, 4-Tube, 5-Tube, 6-Mouse-4
+(Beacon)UW_A09 : 4-White-{Mean:0.7}, 5-Tube, 3-Tube
+(Photomaniac)UW_A09 : 4-White-{Mean:0.7}, 5-Tube, 3-Tube
+(Beacon)UW_B01 : 2-Small Centipede-{AlternateForm}-3, 2-Centiwng
+(Photomaniac)UW_B01 : 2-Small Centipede-{AlternateForm}-3, 2-Centiwng
+(Beacon)UW_C03 : 3-Centiwing-2, 2-Mouse-4
+(Photomaniac)UW_C03 : 3-Centiwing-2, 2-Mouse-4
+(Beacon)UW_D02 : 3-White-{Mean:1.0}, 5-SpitterSpider, 4-Daddy
+(Photomaniac)UW_D02 : 3-White-{Mean:1.0}, 5-SpitterSpider, 4-Daddy
+(Beacon)UW_D03 : 2-Cyan-2, 2-White-{Mean:-0.05}, 3-Daddy
+(Photomaniac)UW_D03 : 2-Cyan-2, 2-White-{Mean:-0.05}, 3-Daddy
+(Beacon)UW_D04 : 3-Dropbug, 3-Centiwing, 5-MotherSpider, 5-SpitterSpider, 6-Tube, 6-Cyan, 7-Tube, 4-Daddy, 5-Tube, 5-Mouse-5
+(Photomaniac)UW_D04 : 3-Dropbug, 3-Centiwing, 5-MotherSpider, 5-SpitterSpider, 6-Tube, 6-Cyan, 7-Tube, 4-Daddy, 5-Tube, 5-Mouse-5
+(Beacon)UW_D05 : 2-SpitterSpider
+(Photomaniac)UW_D05 : 2-SpitterSpider
+(Beacon)UW_D07 : 4-Tube
+(Photomaniac)UW_D07 : 4-Tube
+(Beacon)UW_E04 : 3-White, 4-Daddy, 5-Cyan, 6-Tube-2, 6-Centiwing, 7-Mouse-4
+(Photomaniac)UW_E04 : 3-White, 4-Daddy, 5-Cyan, 6-Tube-2, 6-Centiwing, 7-Mouse-4
+(Beacon)UW_I01 : 5-SpitterSpider, 5-BigSpider, 6-Mouse-5
+(Photomaniac)UW_I01 : 5-SpitterSpider, 5-BigSpider, 6-Mouse-5
+(Beacon)UW_J01 : 3-Yellow-{IgnoreCycle}-2, 4-Yellow-{IgnoreCycle}-2, 5-Cyan-{IgnoreCycle}, 6-Cyan-{IgnoreCycle}
+(Photomaniac)UW_J01 : 3-Yellow-{IgnoreCycle}-2, 4-Yellow-{IgnoreCycle}-2, 5-Cyan-{IgnoreCycle}, 6-Cyan-{IgnoreCycle}
+(Beacon)UW_PREGATE : 3-Scavenger-4
+(Photomaniac)UW_PREGATE : 3-Scavenger-4
+(Beacon)LINEAGE : UW_D02 : 4 : Dropbug-0.5, White-{Mean:1.0}-0
+(Photomaniac)LINEAGE : UW_D02 : 4 : Dropbug-0.5, White-{Mean:1.0}-0
+(Beacon)LINEAGE : UW_D07 : 4 : NONE-0.4, Dropbug-0
+(Photomaniac)LINEAGE : UW_D07 : 4 : NONE-0.4, Dropbug-0
+(Beacon)LINEAGE : UW_J02 : 11 : White-0.5, White-{Mean:1.0}-0.5, NONE-0.3, Red-0
+(Photomaniac)LINEAGE : UW_J02 : 11 : White-0.5, White-{Mean:1.0}-0.5, NONE-0.3, Red-0
+(X-Beacon,Photomaniac,Spear,Inv)UW_C01 : 2-Tube-2, 4-Daddy
+(X-Beacon,Photomaniac,Rivulet)UW_C02 : 4-Yellow, 5-Yellow, 2-Tube, 3-Tube
+(X-Beacon,Photomaniac,Rivulet)UW_A02 : 2-White, 2-SpitterSpider-{Night}
+(X-Beacon,Photomaniac,Red,Artificer,Spear,Inv)UW_E02 : 6-Mimic
+(X-Beacon,Photomaniac,Spear)UW_F01 : 4-White, 5-White, 2-BigSpider-{Night}, 4-CicadaB-{PreCycle}-2, 3-CicadaA-{PreCycle}-5
+(X-Beacon,Photomaniac,Red,Artificer,Spear,Inv)UW_C04 : 5-Tube-2
+(X-Beacon,Photomaniac,Yellow,Rivulet)UW_D01 : 2-Dropbug, 2-Eggbug-{PreCycle}
+(X-Beacon,Photomaniac,Red,Artificer,Spear,Inv)UW_D06 : 3-Tube-2
+(Artificer)OFFSCREEN : 0-KingVulture, 0-MirosVulture, 0-Scavenger-8, 0-EliteScavenger-{Night}-3
+(Spear)OFFSCREEN : 0-KingVulture, 0-Vulture-2, 0-MirosVulture-2, 0-Scavenger-8, 0-EliteScavenger-{Night}-3
+(Inv)OFFSCREEN : 0-MirosVulture-7
+(Spear)UW_C01 : 2-Tube-2, 3-BigSpider, 4-Cyan
+(Inv)UW_C01 : 2-Tube-2, 4-Daddy-{AlternateForm}
+(Rivulet)UW_A02 : 2-White
+(Artificer)UW_E02 : 3-BigSpider, 4-BigSpider, 6-White-{Mean:1.0}, 6-Mimic
+(Spear)UW_E02 : 4-SpitterSpider, 3-White, 6-Mimic
+(Inv)UW_E02 : 3-SpitterSpider, 4-SpitterSpider, 6-Red, 6-Mimic
+(Spear)UW_F01 : 3-Mimic-{12}, 4-White, 5-White, 2-BigSpider-{Night}, 4-CicadaB-{PreCycle}-2, 3-CicadaA-{PreCycle}-5
+(Artificer)UW_C04 : 3-White-{Mean:0.7}, 5-Tube-2
+(Spear)UW_C04 : 3-White-{Mean:0.7}, 5-Tube-2
+(Inv)UW_C04 : 3-Red, 5-Tube-2
+(Yellow)UW_D01 : 2-Eggbug-{PreCycle}
+(Rivulet)UW_D01 : 2-Eggbug-{PreCycle}
+(Artificer)UW_D06 : 3-Tube
+(Spear)UW_D06 : 3-Tube
+(Inv)UW_D06 : 3-Tube
+(Artificer)UW_D04 : 4-Dropbug, 3-Blue, 5-Tube, 6-Tube, 7-Tube
+(Spear)UW_D04 : 3-Dropbug, 4-Blue, 5-SpitterSpider, 6-Tube, 7-Tube
+(Rivulet)UW_D04 : 4-Daddy, 5-Tube, 6-Tube, 7-Tube
+(Inv)UW_D04 : 4-Daddy-{AlternateForm}, 3-Dropbug, 5-Dropbug, 6-Tube, 7-Tube
+(Gourmand)UW_J01 : 3-Cyan-{Night}, 4-Cyan-{Night}, 5-Cyan-{Night}, 3-Yellow, 4-Yellow, 5-Yellow, 6-Yellow-2
+(White)LINEAGE : UW_D07 : 4 : NONE-0.3, Tube-0
+(Gourmand)LINEAGE : UW_D07 : 4 : NONE-0.3, Tube-0
+(Artificer)UW_J01 : 3-Cyan-{Ignorecycle}, 4-Cyan, 5-Cyan-{Ignorecycle}, 6-Cyan-2
+(Spear)UW_J01 : 3-Cyan-{Ignorecycle}, 4-Cyan, 5-Cyan-{Ignorecycle}, 6-Cyan-2
+(Inv)UW_J01 : 3-Cyan-{Ignorecycle}, 4-Cyan, 5-Cyan-{Ignorecycle}, 6-Cyan-2
+(Artificer)UW_E03 : 8-White-{Mean:1.0}, 3-SpitterSpider, 4-BigSpider-2, 5-BigSpider, 6-BigSpider, 7-SpitterSpider, 9-SpitterSpider
+(Spear)UW_E03 : 8-White-{Mean:1.0}, 3-SpitterSpider, 4-BigSpider-2, 5-BigSpider, 6-BigSpider, 7-SpitterSpider, 9-SpitterSpider
+(Inv)UW_E03 : 8-Red, 3-SpitterSpider, 4-SpitterSpider-2, 5-SpitterSpider, 6-SpitterSpider, 7-SpitterSpider, 9-SpitterSpider
+(Artificer)UW_I01 : 5-Cyan, 6-SpitterSpider
+(Spear)UW_I01 : 5-Cyan, 6-SpitterSpider
+(Artificer)UW_D02 : 3-White-{Mean:1.0}, 4-SpitterSpider
+(Spear)UW_D02 : 3-White-{Mean:1.0}, 4-SpitterSpider
+(Rivulet)UW_D02 : 3-Daddy
+(Inv)UW_D02 : 3-Red, 4-SpitterSpider
+(Artificer)UW_D03 : 2-Cyan, 3-SpitterSpider
+(Inv)UW_D03 : 2-Cyan, 3-SpitterSpider
+(Spear)UW_D03 : 2-Cyan-2, 3-White-{Mean:-0.05}
+(Artificer)LINEAGE : UW_D02 : 4 : Dropbug-0.5, White-{Mean:1.0}-0
+(Spear)LINEAGE : UW_D02 : 4 : Dropbug-0.5, White-{Mean:1.0}-0
+(Inv)LINEAGE : UW_D02 : 4 : Red-0
+(Artificer)UW_J02 : 5-Daddy, 16-Cyan, 19-Cyan, 17-White, 13-Tube, 14-Tube
+(Artificer)UW_E04 : 3-White, 6-Tube, 7-Tube
+(Spear)UW_E04 : 3-White, 5-Blue, 6-Tube, 7-Tube
+(Artificer)UW_A09 : 4-White-{Mean:0.7}
+(Spear)UW_A09 : 4-White-{Mean:0.7}
+(Artificer)LINEAGE : UW_D07 : 4 : NONE-0.4, Dropbug-0
+(Spear)LINEAGE : UW_D07 : 4 : NONE-0.4, Dropbug-0
+(Inv)LINEAGE : UW_D07 : 4 : Dropbug-0
+(Spear)UW_A01 : 3-Dropbug
+(Inv)UW_A01 : 3-Dropbug
+(Gourmand)UW_E03 : 4-Daddy, 8-White
+(Rivulet)UW_E03 : 4-Daddy, 8-Daddy
+(Gourmand)UW_A09 : 5-Tube, 3-Tube, 4-White
+(Rivulet)UW_A09 : 5-Tube, 3-Tube
+(Gourmand)UW_E04 : 3-Daddy, 6-Tube, 7-Tube
+(Inv)UW_A09 : 4-Red
+(Inv)UW_E04 : 3-Red, 6-Tube, 7-Tube
+(Gourmand)UW_I01 : 5-Yellow-2, 6-Yellow-2
+(Rivulet)UW_I01 : 5-Daddy
+(Inv)UW_I01 : 5-Cyan-2, 6-Cyan-2
+(Gourmand)UW_D03 : 3-Daddy
+(Rivulet)UW_D03 : 3-Daddy
+(Gourmand)UW_J02 : 5-Daddy, 16-Yellow, 19-Yellow, 17-Yellow-2, 13-Tube, 14-Tube
+(Spear)UW_J02 : 16-Yellow, 19-Yellow, 17-Yellow-2, 13-Tube, 14-Tube
+(Inv)UW_J02 : 5-Daddy-{AlternateForm}, 16-Cyan, 19-Cyan, 17-Cyan, 13-Tube, 14-Tube
+(Gourmand)LINEAGE : UW_D02 : 3 : White-{Mean:0.5}-0.5, White-{Mean:1.0}-0.5, NONE-0.4, Red-0
+(Gourmand)LINEAGE : UW_E02 : 5 : White-{Mean:0.4}-0.5, NONE-0.3, White-{Mean:0.7}-0.3, Red-0
+(Rivulet)UW_J01 : 3-Yellow-{Ignorecycle}, 4-Yellow-{Ignorecycle}, 5-Yellow-{Ignorecycle}, 6-Yellow-{Ignorecycle}
+(Yellow)UW_D07 : 4-Tube
+(Rivulet)UW_D07 : 4-Tube
+(Rivulet)UW_E04RIV : 3-Daddy, 5-Tube
+(Rivulet)UW_J02RIV : 5-Daddy, 8-Tube-2
+(Rivulet)UW_C01RIV : 2-Tube-2, 3-Daddy
 END CREATURES
-[ENDMERGE]
+BAT MIGRATION BLOCKAGES
+END BAT MIGRATION BLOCKAGES
