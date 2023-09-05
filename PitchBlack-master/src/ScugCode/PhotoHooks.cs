@@ -7,7 +7,7 @@ namespace PitchBlack
     {
         public static void Apply() {
             On.Player.Update += PhotoParry;
-            On.Player.Update += PhotoCallOverseerToRoom;
+            //On.Player.Update += PhotoCallOverseerToRoom;
         }
         public static void PhotoParry(On.Player.orig_Update orig, Player self, bool eu)
         {
@@ -17,10 +17,10 @@ namespace PitchBlack
                 cwt.Photo.Update();
             }
         }
+#if false
         public static void PhotoCallOverseerToRoom(On.Player.orig_Update orig, Player self, bool eu)
         {
             orig(self, eu);
-            #if false
             if (Input.GetKey(KeyCode.C) && Plugin.pbcooldown == 0 && self.room != null && self.slugcatStats.name == Plugin.PhotoName)
             {
                 Plugin.pbcooldown = 400;
@@ -60,7 +60,6 @@ namespace PitchBlack
                     Plugin.Speaking = true;
                 }
             }
-            #endif
             if (Plugin.Speaking)
             {
                 if (Plugin.currentDialog.Count == 0)
@@ -84,5 +83,6 @@ namespace PitchBlack
                 Plugin.pbcooldown--;
             }
         }
+#endif
     }
 }

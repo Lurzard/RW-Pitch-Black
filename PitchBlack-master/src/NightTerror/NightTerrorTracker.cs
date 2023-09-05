@@ -36,11 +36,12 @@ namespace PitchBlack
                 On.RainWorldGame.Update += RainWorldGame_Update;
                 //On.CentipedeAI.Update += CentipedeAIUPDATER;
 
-                Debug.Log(">>> NIGHTTERROR TRACKER INIT! BEWARE OF THE DARK");
+                //Debug.Log(">>> NIGHTTERROR TRACKER INIT! BEWARE OF THE DARK");
             }
 
 
             #region Update Shenanigans
+#if false
             /// <summary>
             /// Update attempt on CentipedeAI. Decided against using this since it isn't reliable. Potentially ticks more than once even.
             /// </summary>
@@ -49,6 +50,7 @@ namespace PitchBlack
                 orig(self);
                 if (ac is not null) Update();
             }
+#endif
 
             /// <summary>
             /// The sweetspot for updating the tracker... it's how the expedition pursue does it. I could just hook into AbstractCreature.Update() outside of this CWT and upon checking the template type as NightTerror access the CWT and use this Update()... but I'm lazy so uhh I'll leave it as a todo or something. It won't affect that much so it's low priority.
@@ -59,6 +61,7 @@ namespace PitchBlack
                 if (ac is not null) Update();
             }
 
+#if false
             /// <summary>
             /// Theoretically only works when the centipede is realized, so until then this code wouldn't run. But in reality, as long as ONE centipede is alive, it would tick... or maybe it would tick for EVERY SINGLE REALIZED CENTIPEDE meaning the tracker could be ticking more than once... oh dear.
             /// </summary>
@@ -67,7 +70,8 @@ namespace PitchBlack
                 orig(self, eu);
                 if (ac is not null) Update();
             }
-            #endregion
+#endif
+#endregion
 
             /// <summary>
             /// Ticks the tickers.
@@ -129,6 +133,7 @@ namespace PitchBlack
                 }
 
                 #region Location update (FOR LOGGING PURPOSES)
+#if false
                 try
                 {
                     if (ac.Room != null && ac.Room?.name != currentRoom)
@@ -147,6 +152,7 @@ namespace PitchBlack
                     Debug.LogWarning(">>> Nightterror generic error while attempting to update position!");
                     Debug.LogException(err);
                 }
+#endif
                 #endregion
 
 
@@ -185,7 +191,7 @@ namespace PitchBlack
                         if (firstPlayer?.realizedCreature?.room != null && ac.realizedCreature is null)
                         {
                             //spinch: apparently 2nd check is for if centipede isnt realized, allow it to tp
-                            Debug.Log(">>> Migrate Nightterror!");
+                            //Debug.Log(">>> Migrate Nightterror!");
 
                             // Find a room that isn't a shelter or a gate and place the Nightterror there. No shelters because that makes no sense (no den for Nightterror to use the excuse "it shrimply used a den"). No gates because it tends to get stuck on the wrong side.
                             if (firstPlayer != null && firstPlayer.realizedCreature != null && firstPlayer.realizedCreature.room != null) {
@@ -228,17 +234,17 @@ namespace PitchBlack
                         {
                             ac.abstractAI.MigrateTo(firstPlayer.Room.RandomNodeInRoom());
                         }
-                    }
 #endif
-                }
-                catch (NullReferenceException nerr)
-                {
-                    Debug.LogError(">>> Nightterror null error while attempting to update destination!");
-                    Debug.LogException(nerr);
-                }
+                    }
+                    //}
+                    //catch (NullReferenceException nerr)
+                    //{
+                    //    Debug.LogError(">>> Nightterror null error while attempting to update destination!");
+                    //    Debug.LogException(nerr);
+                    //}
                 catch (Exception err)
                 {
-                    Debug.LogError(">>> Nightterror generic error while attempting to update destination!");
+                    //Debug.LogError(">>> Nightterror generic error while attempting to update destination!");
                     Debug.LogException(err);
                 }
                 #endregion
@@ -257,23 +263,23 @@ namespace PitchBlack
                                 //Debug.Log("This tracked creature has: " + (tracked is not null ? "Tracker " : "") + (tracked?.representedCreature is not null ? "RepresentedCreature" : ""));
                                 if (tracked?.representedCreature is null)
                                 {
-                                    Debug.Log(">>> Nightterror has an unrealized creature!");
+                                    //Debug.Log(">>> Nightterror has an unrealized creature!");
                                     continue;
                                 }
                                 if (tracked.representedCreature.creatureTemplate.type != CreatureTemplate.Type.Slugcat)
                                 {
-                                    Debug.Log(">>> Nightterror forgets creature: " + tracked.representedCreature.creatureTemplate.name);
+                                    //Debug.Log(">>> Nightterror forgets creature: " + tracked.representedCreature.creatureTemplate.name);
                                     ac.abstractAI.RealAI.tracker.ForgetCreature(tracked.representedCreature);
-                                    Debug.Log("    Nightterror forgor!");
+                                    //Debug.Log("    Nightterror forgor!");
                                 }
                                 else
                                 {
-                                    Debug.Log(">>> Nightterror is angy at player!");
+                                    //Debug.Log(">>> Nightterror is angy at player!");
                                     ac.abstractAI.RealAI.tracker.SeeCreature(sameRoomPlayer);
                                     (ac.realizedCreature as Centipede).bodyDirection = true;
                                     ac.abstractAI.freezeDestination = false;
                                     ac.abstractAI.RealAI.SetDestination(sameRoomPlayer.pos);
-                                    Debug.Log("    Nightterror angr!");
+                                    //Debug.Log("    Nightterror angr!");
                                 }
                             }
                         }
@@ -294,14 +300,14 @@ namespace PitchBlack
                         //Debug.Log(">>> Nightterror WANT TO KILL YOU!");
                     }
                 }
-                catch (NullReferenceException nerr)
-                {
-                    Debug.LogError(">>> Nightterror null error while attempting to track player in same room!");
-                    Debug.LogException(nerr);
-                }
+                //catch (NullReferenceException nerr)
+                //{
+                //    Debug.LogError(">>> Nightterror null error while attempting to track player in same room!");
+                //    Debug.LogException(nerr);
+                //}
                 catch (Exception err)
                 {
-                    Debug.LogError(">>> Nightterror generic error while attempting to track player in same room!");
+                    //Debug.LogError(">>> Nightterror generic error while attempting to track player in same room!");
                     Debug.LogException(err);
                 }
                 #endregion

@@ -1,0 +1,8 @@
+Template: SU_SettingsTemplate_Inside
+Clouds: 0.0326087
+Grime: 0.1956522
+Palette: 33
+PlacedObjects: CustomDecal><368.9894><288.9497><1~51~66~51~64~-2~-471~-6~0.3043478~1~0~Littledude~0.6956522~0~0.6956522~0~0.6956522~0~0.6956522~0, 
+AmbientSounds: SPOT><SO_NAT-LilDrips.ogg><473.1193><426.4014><0.25><1><484.1193><309.4014><-49.35535><-69.35535><0><0.154348, 
+FadePalette: 5, 0.1798006
+MorePalette0: 10, 0.3711959

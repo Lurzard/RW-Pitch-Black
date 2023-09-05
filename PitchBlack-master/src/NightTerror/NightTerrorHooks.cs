@@ -35,6 +35,17 @@ namespace PitchBlack
                 }
             }
         }
+        public static bool TryGetNightTerror(this Centipede centi, out NightTerrorData NTData)
+        {
+            if (centi.abstractCreature.creatureTemplate.type == CreatureTemplateType.NightTerror)
+            {
+                NTData = NightTerrorInfo.GetValue(centi, _ => new());
+                return true;
+            }
+            NTData = null;
+            return false;
+        }
+        public static ChillTheFUCKOut GetZapVictim(this AbstractCreature abstrCrit) => KILLIT.GetValue(abstrCrit, _ => new());
 
         internal static void Apply()
         {
@@ -103,7 +114,7 @@ namespace PitchBlack
                     if (self.grabbedBy[j]?.grabber?.grasps == null)
                         continue;
 
-                    for (int i = 0; i < self.grabbedBy[j].grabber.grasps.Length; i ++)
+                    for (int i = 0; i < self.grabbedBy[j].grabber.grasps.Length; i++)
                     {
                         if (self.grabbedBy[j].grabber.grasps[i]?.grabbed == self)
                             self.grabbedBy[j].grabber.ReleaseGrasp(i);
@@ -186,11 +197,9 @@ namespace PitchBlack
             orig(self, shockObj);
             if (self.abstractCreature.creatureTemplate.type == CreatureTemplateType.NightTerror)
             {
-                if (shockObj != null && shockObj.abstractPhysicalObject != null && shockObj.abstractPhysicalObject is AbstractCreature)
+                if (shockObj?.abstractPhysicalObject is AbstractCreature abstrCrit)
                 {
-                    if (!KILLIT.TryGetValue(shockObj.abstractPhysicalObject as AbstractCreature, out var victim))
-                    { KILLIT.Add(shockObj.abstractPhysicalObject as AbstractCreature, victim = new ChillTheFUCKOut()); }
-                    victim.timesZapped++;
+                    abstrCrit.GetZapVictim().timesZapped++;
                 }
             }
         }
@@ -199,14 +208,9 @@ namespace PitchBlack
         {
             if (self.centipede.abstractCreature.creatureTemplate.type == CreatureTemplateType.NightTerror)
             {
-                if (critter.realizedCreature is Player)
+                if (critter.realizedCreature is Player && critter.GetZapVictim().timesZapped < 6)
                 {
-                    if (!KILLIT.TryGetValue(critter, out var victim))
-                    { KILLIT.Add(critter, victim = new ChillTheFUCKOut()); }
-                    if (victim.timesZapped < 6)
-                    {
-                        return true;
-                    }
+                    return true;
                 }
             }
             return orig(self, critter);
@@ -216,8 +220,6 @@ namespace PitchBlack
         {
             if (self.abstractCreature.creatureTemplate.type == CreatureTemplateType.NightTerror)
             {
-                //orig(self, source, directionAndMomentum, hitChunk, hitAppendage, type, 0f, stunBonus);
-                //spinch: why are we calling orig twice?
                 damage = 0f;
             }
             orig(self, source, directionAndMomentum, hitChunk, hitAppendage, type, damage, stunBonus);
@@ -273,7 +275,7 @@ namespace PitchBlack
             orig(self, abstractCreature, world);
             if (self.abstractCreature.creatureTemplate.type == CreatureTemplateType.NightTerror)
             {
-                //personality stats are from ID 3560
+                //spinch: personality stats are from ID 3560. the energy stat makes it go fucking zoom
                 self.abstractCreature.personality.aggression = 0.216056f;
                 self.abstractCreature.personality.bravery = 0.8485757f;
                 self.abstractCreature.personality.dominance = 0.7141814f;
@@ -282,24 +284,28 @@ namespace PitchBlack
                 self.abstractCreature.personality.sympathy = 0.4754336f;
 
                 abstractCreature.ignoreCycle = true;
-                if (!NightTerrorInfo.TryGetValue(self, out var _))
-                { NightTerrorInfo.Add(self, _ = new NightTerrorData()); }
+                if (!NightTerrorInfo.TryGetValue(self, out _))
+                    NightTerrorInfo.Add(self, new NightTerrorData());
                 
                 self.bodyChunks = new BodyChunk[19];
                 for (int i = 0; i < self.bodyChunks.Length; i++)
                 {
-                    float num = (float)i / (float)(self.bodyChunks.Length - 1);
+                    float num = i / (float)(self.bodyChunks.Length - 1);
                     float num2 = Mathf.Lerp(Mathf.Lerp(2f, 3.5f, self.size), Mathf.Lerp(4f, 6.5f, self.size), Mathf.Pow(Mathf.Clamp(Mathf.Sin(3.1415927f * num), 0f, 1f), Mathf.Lerp(0.7f, 0.3f, self.size)));
                     num2 += 1.5f;
 
-                    self.bodyChunks[i] = new BodyChunk(self, i, new Vector2(0f, 0f), num2, Mathf.Lerp(0.042857144f, 0.32352942f, Mathf.Pow(self.size, 1.4f)));
-                    self.bodyChunks[i].loudness = 0f;
+                    self.bodyChunks[i] = new(self, i, new Vector2(0f, 0f), num2, Mathf.Lerp(0.042857144f, 0.32352942f, Mathf.Pow(self.size, 1.4f)))
+                    {
+                        loudness = 0f
+                    };
+                    self.bodyChunks[i].mass += 0.02f + 0.08f * Mathf.Clamp01(Mathf.Sin(Mathf.InverseLerp(0f, self.bodyChunks.Length - 1, i) * 3.1415927f));
                 }
 
-                for (int j = 0; j < self.bodyChunks.Length; j++)
-                {
-                    self.bodyChunks[j].mass += 0.02f + 0.08f * Mathf.Clamp01(Mathf.Sin(Mathf.InverseLerp(0f, (float)(self.bodyChunks.Length - 1), (float)j) * 3.1415927f));
-                }
+                //spinch: put the stuff in the for loop below into the one above
+                //for (int j = 0; j < self.bodyChunks.Length; j++)
+                //{
+                //    self.bodyChunks[j].mass += 0.02f + 0.08f * Mathf.Clamp01(Mathf.Sin(Mathf.InverseLerp(0f, self.bodyChunks.Length - 1, j) * 3.1415927f));
+                //}
 
                 self.mainBodyChunkIndex = self.bodyChunks.Length / 2;
                 if (!self.Small && (self.CentiState.shells == null || self.CentiState.shells.Length != self.bodyChunks.Length))
