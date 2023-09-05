@@ -1,0 +1,15 @@
+Template: NONE
+DangerType: Thunder
+CeilingDrips: 0
+RainIntensity: 0
+RumbleIntensity: 0.5050722
+Clouds: 0.1005322
+Grime: 0.1082658
+Palette: 29
+Effects: RockFlea-0.05413271-20-20, ElectricDeath-1-22.17395-108.9719, DayNight-0.2087973-295.1961-170.8, 
+PlacedObjects: DayNightSettings><217.0562><269.4094><-130.1111~98.26022~29~10, ColouredLightSource><1059.442><-28.16863><-355.1555~220.6667~FF0027~-435.946^471.4~0.2170092~False~0.5~0~0.5~Always~0~100, 
+AmbientSounds: OMNI><AM_ENV-WallHum.ogg><114.2889><366.1767><0.4072007><1, OMNI><AM_ENV-NatWind.ogg><120.3774><443.1661><0.4072007><1, OMNI><AM_ENV-LightWind.ogg><113.2278><520.6027><0.3994678><1, SPOT><AM_IND-Welder.ogg><712.4972><215.4718><0.159737><1><245.5136><396.1187><-50.29599><-47.45013><0><0.2546652, 
+FadePalette: 10, 0.2010195
+WetTerrain: OFF
+MorePalette0: 33, 0.9395891
+MorePalette1: 10, 0.6031932

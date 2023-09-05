@@ -1,0 +1,14 @@
+Template: NONE
+DangerType: None
+CeilingDrips: 0
+RainIntensity: 0
+RumbleIntensity: 0
+Grime: 0.2293363
+Palette: 35
+EffectColorA: 13
+Effects: RoofTopView-1-20-20, DayNight-0.01739104-22.88889-82.62222, 
+PlacedObjects: NoSpearStickZone><7901.553><192.7923><0~100, DayNightSettings><433.7998><286.7992><-174.9111~41.37134~30~30, 
+AmbientSounds: OMNI><AM_ENV-NatWind.ogg><77.1095><417.2296><0.407201><1, OMNI><AM_ENV-LightWind.ogg><73.06856><499.537><0.4072012><1, 
+Triggers: Spot<tA>event<tB>MusicEvent<eA>songName<eB>Outlooker<eA>vol<eB>0.4546641<eA>prio<eB>0.5<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>-1<eA>rest<eB>5<eA>fadeIn<eB>83.51838<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>418.0444<tB>445.8818<tA>fireChance<tB>1<tA>entrance<tB>-1<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>229.2736<tB>170.4839<tA>handlePos<tB>8038.274<tB>34.36761, 
+FadePalette: 10, 0.9021739, 0.9021739, 0.9021739, 0.9021739, 0.9021739, 0.9021739, 0.9021739, 0.9021739
+WetTerrain: OFF

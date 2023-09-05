@@ -1,0 +1,14 @@
+Template: NONE
+DangerType: Thunder
+CeilingDrips: 0
+RainIntensity: 0.5050725
+RumbleIntensity: 0.3040085
+Grime: 0
+Palette: 9
+EffectColorA: 0
+EffectColorB: 5
+Effects: BkgOnlyLightning-0.6056045-43.47813-111.0667, ElectricDeath-0.5026608-20-20, ZeroG-0.2010644-279.7219-18.61667, DayNight-0.9047897-299.4649-81.2, 
+PlacedObjects: LightFixture><632.9188><63.39583><RedLight~17.32051~-10~42, LightSource><104.3709><249.6265><1~Environment~0~100~50~86.60254~1~0~None~0~0, DayNightSettings><79.4603><485.8157><5~8.660254~9~10, 
+AmbientSounds: OMNI><AM_RAIN-Rumbles.ogg><81.59972><396.2284><0.2061363><1, SPOT><AM_IND-SuperStructure.ogg><743.4536><290.5083><0.3066685><1><110.0212><248.4687><-35.35534><-35.35534><0><0.1464001, OMNI><AM_ENV-WallHum.ogg><82.67181><321.6774><0.2525356><1, 
+FadePalette: 10, 0.9047896
+MorePalette0: 10, 0.6553928

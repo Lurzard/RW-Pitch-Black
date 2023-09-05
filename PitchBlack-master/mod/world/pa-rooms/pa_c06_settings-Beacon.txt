@@ -1,0 +1,13 @@
+Template: NONE
+DangerType: None
+CeilingDrips: 0
+Clouds: 1
+Grime: 0
+Palette: 17
+EffectColorA: 10
+EffectColorB: 16
+Effects: ZeroG-1-32.80627-114.7663, ZeroGSpecks-0.3062364-20-20, 
+PlacedObjects: ColouredLightSource><168.9921><371.3379><-254.3063~-183.0738~FF0000~-114.4025^-98.88879~0.4246466~False~0.5~0.6588724~0.4164812~Always~0~100, LightSource><2813.297><411.557><1~Environment~0~100~50~86.60254~0~0~None~0~0, WallMycelia><2607.151><372.058><16.22119~141.8338, WallMycelia><546.293><303.1053><0~100, LightSource><2331.313><326.0912><1~Environment~0~100~50~86.60254~0~0~None~0~0, LightSource><551.0102><286.7973><0.3968065~EffectColor1~3.414978~148.6638~50~86.60254~1~0~None~0~0, LightSource><-89.83605><371.3286><0.1532102~EffectColor2~767.8416~229.0666~50~86.60254~1~0~None~0~0, 
+AmbientSounds: OMNI><SO_SFX-Pi.ogg><25.66121><535.531><0.4072013><1, OMNI><SO_SFX-Drowning.ogg><25.98717><459.6165><0.4072007><1, OMNI><AM_IND-SuperStructure.ogg><27.20638><378.7615><0.3066691><1, 
+FadePalette: 25, 0.4547149, 0.6031929, 0.7516712
+WetTerrain: OFF

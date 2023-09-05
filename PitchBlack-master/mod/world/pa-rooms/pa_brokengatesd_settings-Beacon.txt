@@ -1,0 +1,13 @@
+Template: NONE
+DangerType: Thunder
+CeilingDrips: 0
+RainIntensity: 0.1029438
+RumbleIntensity: 0.1029438
+Grime: 0
+Palette: 155
+EffectColorA: 13
+Effects: SandStorm-0.100532-20-20, SandPuffs-1-36.40314-113.2406, Fog-0.5026607-295.374-20.03958, DayNight-0.3073963-303.2-88.66667, 
+PlacedObjects: LightSource><129.1761><251.556><0.08747731~Environment~515.0959~-97.78543~50~86.60254~0~1~None~0~1, DayNightSettings><-23.68925><148.9289><5~8.660254~155~3, 
+AmbientSounds: OMNI><AM_ENV-NatWind.ogg><73.60712><486.5009><0.407201><1, OMNI><AM_ENV-WallHum.ogg><73.16144><411.5434><0.3994671><1, 
+FadePalette: 3, 0.30933
+MorePalette0: 10, 0.9511891

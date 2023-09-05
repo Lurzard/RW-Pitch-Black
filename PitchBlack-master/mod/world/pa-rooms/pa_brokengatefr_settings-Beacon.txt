@@ -1,0 +1,12 @@
+Template: NONE
+CeilingDrips: 0
+RumbleIntensity: 1
+Clouds: 1
+Grime: 0
+Palette: 29
+Effects: DayNight-0.2551971-20-20, 
+PlacedObjects: SeedCob><114.3167><295.7583><0~0~7~10, DeadSeedCob><169.6937><253.8111><, DayNightSettings><-0.716568><125.1995><5~8.660254~29~33, 
+AmbientSounds: OMNI><AM_ENV-WallHum.ogg><69.7287><510.2907><0.4072465><1, SPOT><AM_IND-DeepHum.ogg><768.0922><308.9955><0.5><1><483.6255><270.1733><-35.35534><-35.35534><0><0.2159417, 
+FadePalette: 33, 0.2551971
+MorePalette0: 33, 0.8641902
+MorePalette1: 10, 0.8757901

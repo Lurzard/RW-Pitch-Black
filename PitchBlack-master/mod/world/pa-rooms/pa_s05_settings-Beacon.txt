@@ -1,0 +1,8 @@
+Template: NONE
+Grime: 0.07467154
+Palette: 9
+Effects: DayNight-0.8003907-26.40311-93.59999, 
+PlacedObjects: LightSource><379.6796><570.7904><0.4045397~Environment~0~100~58.53754~-22.25061~1~0~None~0~1, LightSource><378.808><381.6843><0.404541~Environment~0~100~50~86.60254~1~0~None~0~1, DayNightSettings><-78.97507><306.0698><5~8.660254~9~17, 
+AmbientSounds: OMNI><AM_ENV-WallHum.ogg><38.57869><527.9612><0.407202><1, 
+FadePalette: 17, 0.8042571
+MorePalette0: 10, 1
