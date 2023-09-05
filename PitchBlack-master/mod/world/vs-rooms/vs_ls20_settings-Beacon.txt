@@ -1,0 +1,7 @@
+EffectColorA: 5
+EffectColorB: 13
+Effects: DayNight-0.8695652-20-20, Darkness-0.3043478-21-78, 
+PlacedObjects: BrokenShelterWaterLevel><390.09><438.37><, DayNightSettings><113.1911><324.441><5~8.660254~8~72, 
+AmbientSounds: SPOT><AM_IND-Utility02.ogg><768.4536><459.4445><0.3913043><1><243.4536><275.4445><-221.3553><-94.35535><0><0.4260871, SPOT><SO_WAT-Splashes.ogg><770.5466><346.8055><0.2934783><1><350.5466><176.8055><-88.35535><-72.35535><0><0.3717393, 
+FadePalette: 33, 0.7065217
+MorePalette0: 43, 0.4523946

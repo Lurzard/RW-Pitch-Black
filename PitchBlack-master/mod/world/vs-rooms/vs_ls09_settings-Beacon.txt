@@ -1,0 +1,6 @@
+DangerType: Rain
+Effects: DayNight-0.3913043-20-20, 
+PlacedObjects: BrokenShelterWaterLevel><267.9417><224.3087><, DayNightSettings><100.0719><396.159><5~8.660254~3~72, 
+FadePalette: 33, 0.8586956
+MorePalette0: 43, 0.3015966
+MorePalette1: 40, 0.3537956

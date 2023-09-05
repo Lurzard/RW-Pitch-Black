@@ -3,10 +3,50 @@
 [FINDREGEX]^(W+  d+-w+.+LINEAGE  w+  d+  .+)$
 [ADDBEFORE](X-Beacon,Photomaniac)
 [MERGE]
+ROOMS
+
+VS_LS02 : DISCONNECTED : SHELTER
+VS_LS05 : DISCONNECTED : SHELTER
+VS_LS08 : DISCONNECTED : SHELTER
+VS_LS09 : DISCONNECTED : SHELTER
+VS_LS20 : DISCONNECTED : SHELTER
+
+END ROOMS
 CONDITIONAL LINKS
 
 Beacon,Photomaniac : GATE_SB_VS : VS_H01 : DISCONNECTED
 Beacon,Photomaniac : VS_H01 : GATE_SB_VS : DISCONNECTED
+
+Beacon,Photomaniac : EXCLUSIVEROOM : VS_LS02
+Beacon,Photomaniac : EXCLUSIVEROOM : VS_LS05
+Beacon,Photomaniac : EXCLUSIVEROOM : VS_LS08
+Beacon,Photomaniac : EXCLUSIVEROOM : VS_LS09
+Beacon,Photomaniac : EXCLUSIVEROOM : VS_LS20
+Beacon,Photomaniac : HIDEROOM : VS_S02
+Beacon,Photomaniac : HIDEROOM : VS_S05
+Beacon,Photomaniac : HIDEROOM : VS_S08
+Beacon,Photomaniac : HIDEROOM : VS_S09
+Beacon,Photomaniac : HIDEROOM : VS_S20
+
+Beacon,Photomaniac : VS_S02 : VS_D02 : DISCONNECTED
+Beacon,Photomaniac : VS_D02 : VS_S02 : VS_LS02
+Beacon,Photomaniac : VS_LS02 : 1 : VS_D02
+
+Beacon,Photomaniac : VS_S05 : VS_A07 : DISCONNECTED
+Beacon,Photomaniac : VS_A07 : VS_S05 : VS_LS05
+Beacon,Photomaniac : VS_LS05 : 1 : VS_A07
+
+Beacon,Photomaniac : VS_S08 : VS_E06 : DISCONNECTED
+Beacon,Photomaniac : VS_E06 : VS_S08 : VS_LS08
+Beacon,Photomaniac : VS_LS08 : 1 : VS_E06
+
+Beacon,Photomaniac : VS_S09 : GATE_SI_VS : DISCONNECTED
+Beacon,Photomaniac : GATE_SI_VS : VS_S09 : VS_LS09
+Beacon,Photomaniac : VS_LS09 : 1 : GATE_SI_VS
+
+Beacon,Photomaniac : VS_S20 : VS_A04 : DISCONNECTED
+Beacon,Photomaniac : VS_A04 : VS_S20 : VS_LS20
+Beacon,Photomaniac : VS_LS20 : 1 : VS_A04
 
 END CONDITIONAL LINKS
 CREATURES
