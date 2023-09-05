@@ -5,8 +5,8 @@ Grime: 0.2065217
 Palette: 33
 EffectColorA: 2
 EffectColorB: 1
-Effects: LightBurn-0.1195652-20-20, 
-PlacedObjects: LightSource><660.5581><193.8062><1~EffectColor1~0~100~50~86.60254~1~0~None~0~0, LightSource><311.9083><171.6277><1~White~0~100~-247~3.602539~1~0~None~0~0, LightSource><174.6653><391.5688><1~EffectColor2~0~100~50~86.60254~1~0~None~0~0, LightSource><436.7712><564.9489><1~Environment~0~100~50~86.60254~1~0~None~0~0, LightSource><755.6383><339.5841><1~EffectColor2~0~100~50~86.60254~1~0~None~0~0, InsectGroup><481.05><345.0041><-2~91~-638~21~StandardFly~0.2065217, DangleFruit><438.6932><404.4485><-643~-131~2~3, DangleFruit><483.4126><414.3201><-673~76~2~3, DangleFruit><524.7578><390.4498><-776~-302~2~3, 
+Effects: LightBurn-0.1195652-20-20, DayNight-1-30-30, 
+PlacedObjects: LightSource><660.5581><193.8062><1~EffectColor1~0~100~50~86.60254~1~0~None~0~0, LightSource><311.9083><171.6277><1~White~0~100~-247~3.602539~1~0~None~0~0, LightSource><174.6653><391.5688><1~EffectColor2~0~100~50~86.60254~1~0~None~0~0, LightSource><436.7712><564.9489><1~Environment~0~100~50~86.60254~1~0~None~0~0, LightSource><755.6383><339.5841><1~EffectColor2~0~100~50~86.60254~1~0~None~0~0, InsectGroup><481.05><345.0041><-2~91~-638~21~StandardFly~0.2065217, DangleFruit><438.6932><404.4485><-643~-131~2~3, DangleFruit><483.4126><414.3201><-673~76~2~3, DangleFruit><524.7578><390.4498><-776~-302~2~3, DayNightSettings><108.5249><589.4485><5~8.660254~1~0, 
 AmbientSounds: OMNI><AM_ENV-LightWind.ogg><716.7951><516.8052><0.173913><0.6869565, SPOT><AM_IND-ElectricHum01.ogg><735.689><290.5656><0.3152174><1><473.689><-21.43445><-35.35534><-35.35534><0><0.3826088, 
 FadePalette: 8, 0.5723053
 MorePalette0: 43, 0.4277403
