@@ -4,5 +4,7 @@ RainIntensity: 0
 RumbleIntensity: 0
 BkgDroneVolume: 0
 Palette: 12
-AmbientSounds: SPOT><Weird Deep Hole.wav><742.1854><511.675><0.1847826><1><352.1854><169.675><-143.3553><-85.35535><0><0.1978262, OMNI><SO_WAT-DripTap.ogg><825.9442><648.5479><0.2826087><1, 
+EffectColorA: 9
+PlacedObjects: LightSource><194.8044><361.7917><0.4021739~Environment~0~100~50~86.60254~1~0~None~0~0, 
+AmbientSounds: SPOT><Weird Deep Hole.wav><742.1854><511.675><0.1847826><1><352.1854><169.675><-143.3553><-85.35535><0><0.1978262, OMNI><SO_WAT-DripTap.ogg><825.9442><648.5479><0.2826087><1, SPOT><AM_IND-ElectricHum01.ogg><734.8655><291.8367><0.4021739><1><193.8655><360.8367><-35.35534><-35.35534><0><0.1, 
 FadePalette: 8, 0.9347826

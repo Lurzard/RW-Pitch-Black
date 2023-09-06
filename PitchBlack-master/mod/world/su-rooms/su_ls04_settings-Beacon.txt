@@ -1,8 +1,10 @@
 DangerType: Flood
 Grime: 0.2065217
 Palette: 0
+EffectColorA: 9
 Effects: FireFlies-0.2934783-28-93, DayNight-0.7608696-307-78, 
-PlacedObjects: DayNightSettings><234.593><270.6771><-131~80.66025~1~0, 
+PlacedObjects: DayNightSettings><234.593><270.6771><-131~80.66025~1~0, LightSource><471.8757><540.6567><0.4021739~Environment~0~100~106~-19.39743~1~0~None~0~0, 
+AmbientSounds: SPOT><AM_IND-ElectricHum01.ogg><725.9085><294.3719><0.4021739><1><470.9085><538.3719><-35.35534><-35.35534><0><0.1, 
 FadePalette: 33, 0.7934783
 MorePalette0: 43, 0.6031925
 MorePalette1: 10, 0.6089929

@@ -7,5 +7,6 @@ WaveAmplitude: 0.04860936
 SecondWaveLength: 0.1666667
 SecondWaveAmplitude: 0
 BkgDroneVolume: 0
-PlacedObjects: BrokenShelterWaterLevel><526.0503><500.7391><, 
-AmbientSounds: SPOT><AM_IND-Utility02.ogg><740.9316><460.0838><0.3478261><1><618.9316><534.0839><-108.3553><-58.35535><0><0.3173914, 
+EffectColorA: 9
+PlacedObjects: BrokenShelterWaterLevel><526.0503><500.7391><, LightSource><481.5233><528.5514><0.4021739~Environment~0~100~170~-39.39746~1~0~None~0~0, 
+AmbientSounds: SPOT><AM_IND-Utility02.ogg><740.9316><460.0838><0.3478261><1><618.9316><534.0839><-108.3553><-58.35535><0><0.3173914, SPOT><AM_IND-ElectricHum01.ogg><727.4257><297.1545><0.4021739><1><479.4257><531.1545><-35.35534><-35.35534><0><0.1, 
