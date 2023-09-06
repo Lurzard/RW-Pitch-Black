@@ -1,4 +1,5 @@
 ﻿using MonoMod.RuntimeDetour;
+using System;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
@@ -8,6 +9,90 @@ public class NightTerrorData
 {
     public int fleeing;
     public Vector2 fleeTo = Vector2.zero;
+
+}
+
+public class NightTerrorAbstractData
+{
+    public WeakReference<AbstractCreature> ntRef;
+
+    public NightTerrorAbstractData(AbstractCreature centi)
+    {
+        ntRef = new(centi);
+    }
+
+    public int timeUntilRevive;
+    public const int MAX_TIME_UNTIL_REVIVE = 300;
+    public bool justRevived;
+
+    public void DecreaseReviveTimer(int timeDecreasedBy = 80)
+    {
+        timeUntilRevive = Mathf.Max(0, timeUntilRevive - timeDecreasedBy);
+
+#if DEBUG
+        Debug.Log($"Pitch Black: NightTerror got hit! timeUnitlRevive = {timeUntilRevive}");
+#endif
+    }
+
+    public void TryRevive()
+    {
+        if (!ntRef.TryGetTarget(out var centi)) return;
+
+        if (!centi.state.alive || centi.realizedCreature != null && centi.realizedCreature.dead) return;
+
+        timeUntilRevive++;
+
+        if (timeUntilRevive >= MAX_TIME_UNTIL_REVIVE)
+        {
+            Revive();
+        }
+    }
+    public void Revive()
+    {
+        //yoinked from BigSpider.Revive
+        if (!ntRef.TryGetTarget(out var centi)) return;
+
+        timeUntilRevive = 0;
+
+        if (centi.realizedCreature != null)
+        {
+            centi.realizedCreature.dead = false;
+            centi.realizedCreature.killTag = null;
+            centi.realizedCreature.killTagCounter = 0;
+        }
+
+        centi.abstractAI.SetDestination(centi.pos);
+
+        for (int i = centi.stuckObjects.Count - 1; i >= 0; i--)
+        {
+            if (centi.stuckObjects[i] is AbstractPhysicalObject.AbstractSpearStick
+                && centi.realizedCreature.abstractCreature.stuckObjects[i].A.type == AbstractPhysicalObject.AbstractObjectType.Spear
+                && centi.stuckObjects[i].A.realizedObject is Spear spear)
+            {
+                spear.ChangeMode(Weapon.Mode.Free);
+            }
+        }
+        if (ModManager.MMF)
+        {
+            centi.LoseAllStuckObjects();
+        }
+
+        justRevived = true;
+
+        Debug.Log("Pitch Black: NightTerror revived!");
+    }
+    public void SetRealizedCreatureDataOnRevive()
+    {
+        if (!ntRef.TryGetTarget(out var centi)) return;
+
+        if (centi.realizedCreature != null && timeUntilRevive == 0 && justRevived)
+        {
+            justRevived = false;
+            centi.realizedCreature.dead = false;
+            centi.realizedCreature.killTag = null;
+            centi.realizedCreature.killTagCounter = 0;
+        }
+    }
 }
 
 public class ChillTheFUCKOut // Since this is referencing the creature that the Night Terror is murdering and not the NT itself I can't really compress it any - Niko
@@ -20,6 +105,7 @@ namespace PitchBlack
     public static class NightTerrorHooks
     {
         public static ConditionalWeakTable<Centipede, NightTerrorData> NightTerrorInfo = new();
+        public static ConditionalWeakTable<AbstractCreature, NightTerrorAbstractData> NTAbstractCWT = new();
         public static ConditionalWeakTable<AbstractCreature, ChillTheFUCKOut> KILLIT = new();
 
         public static void NightTerrorReleasePlayersInGrasp(this Centipede self)
@@ -45,6 +131,16 @@ namespace PitchBlack
             NTData = null;
             return false;
         }
+        public static bool TryGetAbstractNightTerror(this AbstractCreature centi, out NightTerrorAbstractData NTData)
+        {
+            if (centi.creatureTemplate.type == CreatureTemplateType.NightTerror)
+            {
+                NTData = NTAbstractCWT.GetValue(centi, _ => new(centi));
+                return true;
+            }
+            NTData = null;
+            return false;
+        }
         public static ChillTheFUCKOut GetZapVictim(this AbstractCreature abstrCrit) => KILLIT.GetValue(abstrCrit, _ => new());
 
         internal static void Apply()
@@ -56,6 +152,7 @@ namespace PitchBlack
             On.FirecrackerPlant.HitSomething += FirecrackerPlant_HitSomething;
 
             On.Centipede.Update += Centipede_Update;
+            On.AbstractCreature.Update += AbstractCreature_Update;
 
             On.WormGrass.WormGrassPatch.InteractWithCreature += WormGrassPatch_InteractWithCreature;
             On.WormGrass.WormGrassPatch.Update += WormGrassPatch_Update;
@@ -74,12 +171,30 @@ namespace PitchBlack
             On.AbstractCreatureAI.ctor += AbstractCreatureAI_ctor;
         }
 
+        private static void AbstractCreature_Update(On.AbstractCreature.orig_Update orig, AbstractCreature self, int time)
+        {
+            orig(self, time);
+            if (self.TryGetAbstractNightTerror(out var nt))
+            {
+                nt.TryRevive();
+#if DEBUG
+                Debug.Log($"Pitch Black ({nameof(AbstractCreature_Update)}):" +
+                    $"\n\tIs dead? = {!self.state.alive || self.realizedCreature != null && self.realizedCreature.dead}" +
+                    $"\n\ttimeUntilRevive = {nt.timeUntilRevive}");
+#endif
+            }
+        }
+
         private static bool Spear_HitSomething(On.Spear.orig_HitSomething orig, Spear self, SharedPhysics.CollisionResult result, bool eu)
         {
             bool val = orig(self, result, eu);
             if (result.obj is Centipede centi && centi.abstractCreature.creatureTemplate.type == CreatureTemplateType.NightTerror)
             {
                 centi.NightTerrorReleasePlayersInGrasp();
+                if (centi.abstractCreature.TryGetAbstractNightTerror(out var nt))
+                {
+                    nt.DecreaseReviveTimer();
+                }
             }
             return val;
         }
@@ -89,6 +204,10 @@ namespace PitchBlack
             if (result.obj is Centipede centi && centi.abstractCreature.creatureTemplate.type == CreatureTemplateType.NightTerror)
             {
                 centi.NightTerrorReleasePlayersInGrasp();
+                if (centi.abstractCreature.TryGetAbstractNightTerror(out var nt))
+                {
+                    nt.DecreaseReviveTimer();
+                }
             }
             return val;
         }
@@ -98,6 +217,10 @@ namespace PitchBlack
             if (result.obj is Centipede centi && centi.abstractCreature.creatureTemplate.type == CreatureTemplateType.NightTerror)
             {
                 centi.NightTerrorReleasePlayersInGrasp();
+                if (centi.abstractCreature.TryGetAbstractNightTerror(out var nt))
+                {
+                    nt.DecreaseReviveTimer();
+                }
             }
             return val;
         }
@@ -284,6 +407,7 @@ namespace PitchBlack
                 self.abstractCreature.personality.sympathy = 0.4754336f;
 
                 abstractCreature.ignoreCycle = true;
+
                 if (!NightTerrorInfo.TryGetValue(self, out _))
                     NightTerrorInfo.Add(self, new NightTerrorData());
                 
