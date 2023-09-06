@@ -1,0 +1,45 @@
+
+Palette: 0
+batDepleteCyclesMin: 2
+batDepleteCyclesMax: 7
+batDepleteCyclesMaxIfLessThanTwoLeft: 3
+batDepleteCyclesMaxIfLessThanFiveLeft: 4
+batsPerActiveSwarmRoom: 7
+overseersSpawnChance: 0.8
+overseersMin: 0
+overseersMax: 4
+playerGuideOverseerSpawnChance: 1.0
+Room Setting Templates: Outside, Inside
+Subregion: Roaring Rupture
+Room_Attr: HC_A03: RedCentipede-Forbidden,
+Room_Attr: HC_A07: RedCentipede-Forbidden,
+Room_Attr: HC_A08: BlackLizard-Forbidden,MirosVulture-Like,
+Room_Attr: HC_B03: MirosBird-Forbidden,MirosVulture-Forbidden,
+Room_Attr: HC_B04: RedCentipede-Like,
+Room_Attr: HC_B07: RedCentipede-Forbidden,MirosVulture-Like,
+Room_Attr: HC_B09: RedCentipede-Stay,
+Room_Attr: HC_B10: BlackLizard-Forbidden,MirosVulture-Like,
+Room_Attr: HC_B12: MirosVulture-Forbidden,
+Room_Attr: HC_C01: GreenLizard-Avoid,PinkLizard-Avoid,BlueLizard-Avoid,WhiteLizard-Avoid,SpitterSpider-Avoid,MirosVulture-Forbidden,
+Room_Attr: HC_C03: BlackLizard-Forbidden,
+Room_Attr: HC_C06: RedCentipede-Forbidden,
+Room_Attr: HC_C07: BlackLizard-Forbidden,
+Room_Attr: HC_C08: GreenLizard-Forbidden,PinkLizard-Forbidden,BlueLizard-Forbidden,WhiteLizard-Forbidden,BlackLizard-Forbidden,SpitterSpider-Forbidden,MirosBird-Stay,MirosVulture-Avoid,
+Room_Attr: HC_C09: BlackLizard-Forbidden,
+Room_Attr: HC_C11: MirosVulture-Like,
+Room_Attr: HC_CNTR: GreenLizard-Forbidden,PinkLizard-Forbidden,BlueLizard-Forbidden,WhiteLizard-Forbidden,BlackLizard-Forbidden,SpitterSpider-Forbidden,MirosVulture-Avoid,
+Room_Attr: HC_D01: GreenLizard-Forbidden,PinkLizard-Forbidden,BlueLizard-Forbidden,WhiteLizard-Forbidden,SpitterSpider-Forbidden,MirosBird-Stay,MirosVulture-Forbidden,
+Room_Attr: HC_D02: RedCentipede-Forbidden,MirosVulture-Like,
+Room_Attr: HC_D03: BlackLizard-Stay,
+Room_Attr: HC_D04: MirosVulture-Like,
+Room_Attr: HC_D05: MirosVulture-Forbidden,
+Room_Attr: HC_D06: MirosVulture-Like,
+Room_Attr: HC_D07: GreenLizard-Forbidden,PinkLizard-Forbidden,BlueLizard-Forbidden,WhiteLizard-Forbidden,BlackLizard-Forbidden,SpitterSpider-Forbidden,
+Room_Attr: HC_D08: GreenLizard-Forbidden,PinkLizard-Forbidden,BlueLizard-Forbidden,WhiteLizard-Forbidden,BlackLizard-Forbidden,SpitterSpider-Forbidden,MirosBird-Stay,MirosVulture-Avoid,
+Room_Attr: HC_D09: BlackLizard-Forbidden,MirosVulture-Forbidden,
+Room_Attr: HC_E01: MirosVulture-Like,
+Room_Attr: HC_F01: MirosVulture-Forbidden,
+Room_Attr: HC_F03: BlackLizard-Forbidden,MirosVulture-Like,
+Room_Attr: HC_F04: GreenLizard-Forbidden,PinkLizard-Forbidden,BlueLizard-Forbidden,WhiteLizard-Forbidden,BlackLizard-Forbidden,SpitterSpider-Forbidden,MirosBird-Stay,MirosVulture-Avoid,
+Room_Attr: HC_H01: GreenLizard-Forbidden,PinkLizard-Forbidden,BlueLizard-Forbidden,WhiteLizard-Forbidden,BlackLizard-Forbidden,SpitterSpider-Forbidden,MirosBird-Stay,MirosVulture-Like,
+Room_Attr: HC_PIT: GreenLizard-Forbidden,PinkLizard-Forbidden,BlueLizard-Forbidden,WhiteLizard-Forbidden,BlackLizard-Forbidden,SpitterSpider-Forbidden,MirosBird-Stay,
