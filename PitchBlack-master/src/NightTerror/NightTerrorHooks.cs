@@ -369,8 +369,9 @@ namespace PitchBlack
         {
             if (self.abstractCreature.creatureTemplate.type == CreatureTemplateType.NightTerror)
             {
-                damage = 0f;
+                //damage = 0f;
                 //spinch: i think it'd be cooler if it was damage /= 2 so nt can get hit and maybe die
+                damage /= 2;
             }
             orig(self, source, directionAndMomentum, hitChunk, hitAppendage, type, damage, stunBonus);
         }
