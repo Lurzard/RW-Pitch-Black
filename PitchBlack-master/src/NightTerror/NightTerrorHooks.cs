@@ -9,7 +9,6 @@ public class NightTerrorData
 {
     public int fleeing;
     public Vector2 fleeTo = Vector2.zero;
-
 }
 
 public class NightTerrorAbstractData
@@ -22,15 +21,19 @@ public class NightTerrorAbstractData
     }
 
     public int timeUntilRevive;
-    public const int MAX_TIME_UNTIL_REVIVE = 300;
-    public bool justRevived;
+    public bool diedToSporeCloud;
+    private bool _justRevived;
 
-    public void DecreaseReviveTimer(int timeDecreasedBy = 80)
+    public int MaxTimeUntilRevive => !diedToSporeCloud ? 20 : 5;
+    //spinch: thrown PuffBalls makes NT revive faster because that looks cool + it dies like a second after it gets back up
+    public bool JustRevived => _justRevived;
+
+    public void DecreaseReviveTimer(int timeDecreasedBy = 2)
     {
         timeUntilRevive = Mathf.Max(0, timeUntilRevive - timeDecreasedBy);
 
-#if DEBUG
-        Debug.Log($"Pitch Black: NightTerror got hit! timeUnitlRevive = {timeUntilRevive}");
+#if false
+        Debug.Log($"Pitch Black: NightTerror got hit! {nameof(timeUntilRevive)} = {timeUntilRevive}");
 #endif
     }
 
@@ -38,11 +41,11 @@ public class NightTerrorAbstractData
     {
         if (!ntRef.TryGetTarget(out var centi)) return;
 
-        if (!centi.state.alive || centi.realizedCreature != null && centi.realizedCreature.dead) return;
+        if (centi.state.alive || centi.realizedCreature != null && !centi.realizedCreature.dead) return;
 
         timeUntilRevive++;
 
-        if (timeUntilRevive >= MAX_TIME_UNTIL_REVIVE)
+        if (timeUntilRevive >= MaxTimeUntilRevive)
         {
             Revive();
         }
@@ -53,13 +56,9 @@ public class NightTerrorAbstractData
         if (!ntRef.TryGetTarget(out var centi)) return;
 
         timeUntilRevive = 0;
+        _justRevived = true;
 
-        if (centi.realizedCreature != null)
-        {
-            centi.realizedCreature.dead = false;
-            centi.realizedCreature.killTag = null;
-            centi.realizedCreature.killTagCounter = 0;
-        }
+        SetRealizedCreatureDataOnRevive();
 
         centi.abstractAI.SetDestination(centi.pos);
 
@@ -77,17 +76,15 @@ public class NightTerrorAbstractData
             centi.LoseAllStuckObjects();
         }
 
-        justRevived = true;
-
         Debug.Log("Pitch Black: NightTerror revived!");
     }
     public void SetRealizedCreatureDataOnRevive()
     {
         if (!ntRef.TryGetTarget(out var centi)) return;
 
-        if (centi.realizedCreature != null && timeUntilRevive == 0 && justRevived)
+        if (centi.realizedCreature != null && timeUntilRevive == 0 && _justRevived)
         {
-            justRevived = false;
+            _justRevived = false;
             centi.realizedCreature.dead = false;
             centi.realizedCreature.killTag = null;
             centi.realizedCreature.killTagCounter = 0;
@@ -95,8 +92,9 @@ public class NightTerrorAbstractData
     }
 }
 
-public class ChillTheFUCKOut // Since this is referencing the creature that the Night Terror is murdering and not the NT itself I can't really compress it any - Niko
+public class ChillTheFUCKOut
 {
+    // Since this is referencing the creature that the Night Terror is murdering and not the NT itself I can't really compress it any - Niko
     public int timesZapped = 0;
 }
 
@@ -153,6 +151,7 @@ namespace PitchBlack
 
             On.Centipede.Update += Centipede_Update;
             On.AbstractCreature.Update += AbstractCreature_Update;
+            On.SporeCloud.Update += SporeCloud_Update;
 
             On.WormGrass.WormGrassPatch.InteractWithCreature += WormGrassPatch_InteractWithCreature;
             On.WormGrass.WormGrassPatch.Update += WormGrassPatch_Update;
@@ -171,20 +170,7 @@ namespace PitchBlack
             On.AbstractCreatureAI.ctor += AbstractCreatureAI_ctor;
         }
 
-        private static void AbstractCreature_Update(On.AbstractCreature.orig_Update orig, AbstractCreature self, int time)
-        {
-            orig(self, time);
-            if (self.TryGetAbstractNightTerror(out var nt))
-            {
-                nt.TryRevive();
-#if DEBUG
-                Debug.Log($"Pitch Black ({nameof(AbstractCreature_Update)}):" +
-                    $"\n\tIs dead? = {!self.state.alive || self.realizedCreature != null && self.realizedCreature.dead}" +
-                    $"\n\ttimeUntilRevive = {nt.timeUntilRevive}");
-#endif
-            }
-        }
-
+        #region weapon.HitSomething hooks
         private static bool Spear_HitSomething(On.Spear.orig_HitSomething orig, Spear self, SharedPhysics.CollisionResult result, bool eu)
         {
             bool val = orig(self, result, eu);
@@ -224,6 +210,21 @@ namespace PitchBlack
             }
             return val;
         }
+        #endregion
+
+        #region update method hooks
+        private static void AbstractCreature_Update(On.AbstractCreature.orig_Update orig, AbstractCreature self, int time)
+        {
+            orig(self, time);
+            if (self.TryGetAbstractNightTerror(out var nt))
+            {
+                nt.TryRevive();
+#if false
+                Debug.Log($"Pitch Black NightTerror Revive Status:" +
+                    $"\n\tIs dead? = {!self.state.alive || self.realizedCreature != null && self.realizedCreature.dead} | {nameof(nt.timeUntilRevive)} = {nt.timeUntilRevive}");
+#endif
+            }
+        }
 
         private static void Centipede_Update(On.Centipede.orig_Update orig, Centipede self, bool eu)
         {
@@ -243,8 +244,33 @@ namespace PitchBlack
                             self.grabbedBy[j].grabber.ReleaseGrasp(i);
                     }
                 }
+
+                if (self.abstractCreature.TryGetAbstractNightTerror(out var nt))
+                {
+                    nt.SetRealizedCreatureDataOnRevive();
+                    //spinch: there's checks in that method to make sure it was just revived
+                }
             }
         }
+
+        private static void SporeCloud_Update(On.SporeCloud.orig_Update orig, SporeCloud self, bool eu)
+        {
+            orig(self, eu);
+
+            if (!self.nonToxic)
+            {
+                foreach (var abstrCrit in self.room.abstractRoom.creatures)
+                {
+                    if (abstrCrit.realizedCreature is InsectoidCreature
+                        && abstrCrit.creatureTemplate.type == CreatureTemplateType.NightTerror
+                        && abstrCrit.TryGetAbstractNightTerror(out var nt))
+                    {
+                        nt.diedToSporeCloud = true;
+                    }
+                }
+            }
+        }
+        #endregion
 
         #region wormgrass immunity (stop getting pulled)
         private static void WormGrassPatch_InteractWithCreature(On.WormGrass.WormGrassPatch.orig_InteractWithCreature orig, WormGrass.WormGrassPatch self, WormGrass.WormGrassPatch.CreatureAndPull creatureAndPull)
@@ -344,6 +370,7 @@ namespace PitchBlack
             if (self.abstractCreature.creatureTemplate.type == CreatureTemplateType.NightTerror)
             {
                 damage = 0f;
+                //spinch: i think it'd be cooler if it was damage /= 2 so nt can get hit and maybe die
             }
             orig(self, source, directionAndMomentum, hitChunk, hitAppendage, type, damage, stunBonus);
         }
@@ -354,6 +381,7 @@ namespace PitchBlack
             if (self.centipede.abstractCreature.creatureTemplate.type == CreatureTemplateType.NightTerror)
             {
                 self.run = 500;
+                #region
                 //self.behavior = CentipedeAI.Behavior.Hunt;
                 //self.centipede.bodyDirection = true;
 
@@ -390,6 +418,7 @@ namespace PitchBlack
                         self.SetDestination(new WorldCoordinate(self.centipede.abstractCreature.pos.room, (int)NTInfo.fleeTo.x, (int)NTInfo.fleeTo.y, self.centipede.abstractCreature.pos.abstractNode));
                     }/
                 }*/
+                #endregion
             }
         }
 
@@ -425,7 +454,7 @@ namespace PitchBlack
                     self.bodyChunks[i].mass += 0.02f + 0.08f * Mathf.Clamp01(Mathf.Sin(Mathf.InverseLerp(0f, self.bodyChunks.Length - 1, i) * 3.1415927f));
                 }
 
-                //spinch: put the stuff in the for loop below into the one above
+                //spinch: i put the stuff in the for loop below into the one above
                 //for (int j = 0; j < self.bodyChunks.Length; j++)
                 //{
                 //    self.bodyChunks[j].mass += 0.02f + 0.08f * Mathf.Clamp01(Mathf.Sin(Mathf.InverseLerp(0f, self.bodyChunks.Length - 1, j) * 3.1415927f));
