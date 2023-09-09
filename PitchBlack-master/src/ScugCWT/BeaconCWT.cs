@@ -173,16 +173,19 @@ namespace PitchBlack
 #endif
             }
 
-            public void FlarebombFromStorageToPaw(bool eu)
+            public int FlarebombFromStorageToPaw(bool eu)
             {
+                //spinch: the int return is to find which grasp index the flarebomb is now in
+
                 // See if it's possible to add weapon
                 for (int i = 0; i < 2; i++)
                 {
                     if (ownr.grasps[i] != null && ownr.Grabability(ownr.grasps[i].grabbed) >= Player.ObjectGrabability.TwoHands)
                     {
-                        return;
+                        return -1;
                     }
                 }
+
                 int toPaw = ownr.FreeHand();
                 // If empty hand has been detected
                 if (toPaw != -1)
@@ -202,10 +205,13 @@ namespace PitchBlack
                     ownr.noPickUpOnRelease = 20;
                     ownr.room.PlaySound(SoundID.Slugcat_Pick_Up_Flare_Bomb, ownr.mainBodyChunk);
                     Debug.Log("Successfully applied flare to paw! Storage index is now: " + storedFlares.Count);
+
+                    return toPaw;
                 }
                 else
                 {
                     Debug.Log("Couldn't add flare to paw! Index is now: " + storedFlares.Count);
+                    return -1;
                 }
 
             }

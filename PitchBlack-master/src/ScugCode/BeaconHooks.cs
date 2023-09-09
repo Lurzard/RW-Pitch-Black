@@ -176,8 +176,8 @@ public static class BeaconHooks
                 if (!dontAutoThrowFlarebomb && self.input[0].thrw && !self.input[1].thrw && cwt.Beacon.storage.storedFlares.Count > 0)
                 {
                     //auto throw flarebomb on an empty hand
-                    cwt.Beacon.storage.FlarebombFromStorageToPaw(eu);
-                    self.ThrowObject(self.FreeHand(), eu);
+                    int handWithFlarebomb = cwt.Beacon.storage.FlarebombFromStorageToPaw(eu);
+                    self.ThrowObject(handWithFlarebomb, eu);
                     self.wantToThrow = 0;
                 }
             }

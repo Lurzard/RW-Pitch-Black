@@ -18,17 +18,17 @@ public class NightTerrorAbstractData
     public NightTerrorAbstractData(AbstractCreature centi)
     {
         ntRef = new(centi);
-        MaxHp = (centi.state as HealthState).health;
+        MaxHP = (centi.state as HealthState).health;
     }
+
+    private bool _justRevived;
 
     public int timeUntilRevive;
     public bool diedToSporeCloud;
-    private bool _justRevived;
-    private readonly float MaxHp;
+    public readonly float MaxHP;
 
-    public int MaxTimeUntilRevive => !diedToSporeCloud ? 20 : 5;
-    //spinch: thrown PuffBalls makes NT revive faster because that looks cool + it dies like a second after it gets back up
-    public bool JustRevived => _justRevived;
+    public int MaxTimeUntilRevive => !diedToSporeCloud ? 15 : 3;
+    //spinch: thrown PuffBalls makes NT revive faster because that looks cool
 
     public void DecreaseReviveTimer(int timeDecreasedBy = 2)
     {
@@ -62,6 +62,7 @@ public class NightTerrorAbstractData
 
         SetRealizedCreatureDataOnRevive();
 
+        (centi.state as HealthState).health = MaxHP;
         centi.abstractAI.SetDestination(centi.pos);
 
         for (int i = centi.stuckObjects.Count - 1; i >= 0; i--)
@@ -87,7 +88,6 @@ public class NightTerrorAbstractData
         if (centi.realizedCreature != null && /*timeUntilRevive == 0 &&*/ _justRevived)
         {
             _justRevived = false;
-            (centi.realizedCreature as Centipede).CentiState.health = MaxHp;
             centi.realizedCreature.dead = false;
             centi.realizedCreature.killTag = null;
             centi.realizedCreature.killTagCounter = 0;
