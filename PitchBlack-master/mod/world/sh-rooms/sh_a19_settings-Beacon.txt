@@ -1,4 +1,4 @@
-DangerType: Rain
+DangerType: None
 RainIntensity: 0.1086956
 RumbleIntensity: 0.09782609
 BkgDroneVolume: 0

@@ -29,10 +29,13 @@ namespace PitchBlack
         //public static ConditionalWeakTable<Player, PhotoCWT> pCon = new ConditionalWeakTable<Player, PhotoCWT>();
         public static ConditionalWeakTable<Player, ScugCWT> scugCWT = new();
 
-        public static List<string> currentDialog = new();
-        public static bool Speaking = false;
-        public static AbstractCreature PBOverseer;
-        public static int pbcooldown = 0;
+        internal static bool RotundWorldEnabled => _rotundWorldEnabled; //for a single check in BeaconHooks' Player.Update hook
+        private static bool _rotundWorldEnabled;
+
+        //public static List<string> currentDialog = new();
+        //public static bool Speaking = false;
+        //public static AbstractCreature PBOverseer;
+        //public static int pbcooldown = 0;
         public void OnEnable()
         {
             On.RainWorld.OnModsInit += Extras.WrapInit(LoadResources);
@@ -80,13 +83,18 @@ namespace PitchBlack
         {
             orig(self, newlyDisabledMods);
 
-            if (newlyDisabledMods.Any(mod => mod.id == MOD_ID))
+            foreach (var mod in newlyDisabledMods)
             {
-                if (MultiplayerUnlocks.CreatureUnlockList.Contains(SandboxUnlockID.NightTerror))
-                    MultiplayerUnlocks.CreatureUnlockList.Remove(SandboxUnlockID.NightTerror);
+                if (mod.id == MOD_ID)
+                {
+                    if (MultiplayerUnlocks.CreatureUnlockList.Contains(SandboxUnlockID.NightTerror))
+                        MultiplayerUnlocks.CreatureUnlockList.Remove(SandboxUnlockID.NightTerror);
 
-                CreatureTemplateType.UnregisterValues();
-                SandboxUnlockID.UnregisterValues();
+                    CreatureTemplateType.UnregisterValues();
+                    SandboxUnlockID.UnregisterValues();
+                }
+                else if (mod.id == "willowwisp.bellyplus")
+                    _rotundWorldEnabled = true;
             }
         }
 

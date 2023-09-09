@@ -1,4 +1,4 @@
-DangerType: Rain
+DangerType: None
 CeilingDrips: 0.5760869
 RainIntensity: 0.2934783
 RumbleIntensity: 0.2826087

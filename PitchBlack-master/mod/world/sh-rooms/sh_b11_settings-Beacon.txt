@@ -1,5 +1,5 @@
 Template: NONE
-DangerType: Rain
+DangerType: None
 RainIntensity: 0.06521739
 RumbleIntensity: 0
 WaveSpeed: 0.5

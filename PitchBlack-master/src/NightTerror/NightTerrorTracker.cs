@@ -107,9 +107,26 @@ namespace PitchBlack
                 {
                     return;
                 }
+
+                static bool RoomIsAStartingCabinetsRoom(string roomName)
+                {
+                    if (roomName == "SH_CABINETMERCHANT")
+                        return true;
+
+                    for (int i = 1; i <= 5; i++)
+                    {
+                        //spinch: nt gets to track SH_CABINETS6, as a treat
+                        if (roomName == $"SH_CABINETS{i}")
+                            return true;
+                    }
+
+                    return false;
+                }
+
                 Tick();  // Tick the tickers
                 AbstractCreature firstPlayer = null;  // For tracking the first non-dead player
                 AbstractCreature sameRoomPlayer = null;  // For tracking a player in same room
+
                 foreach (AbstractCreature c in world.game.Players)
                 {
                     if (
@@ -118,6 +135,8 @@ namespace PitchBlack
                         !player.room.abstractRoom.shelter &&  // Forbid tracking players in shelters
                         !player.room.abstractRoom.gate && // Forbid tracking players in gates
                         !player.dead
+                        //spinch: AND i made it so the night terror doesn't track in the spawn rooms
+                        && !RoomIsAStartingCabinetsRoom(player.room.abstractRoom.name)
                         )
                     {
                         firstPlayer ??= c;  // Only store the first usable player

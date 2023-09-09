@@ -1,10 +1,10 @@
-DangerType: Rain
+DangerType: None
 CeilingDrips: 0.6304348
 RainIntensity: 0.06521739
 RumbleIntensity: 0.05434782
-WaveSpeed: 0.5
-WaveLength: 1
-WaveAmplitude: 0
+WaveSpeed: 0.5000253
+WaveLength: 0.9999874
+WaveAmplitude: 2.007226E-11
 SecondWaveLength: 0.1666667
 SecondWaveAmplitude: 0
 Grime: 0

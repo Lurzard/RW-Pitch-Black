@@ -133,20 +133,31 @@ public static class BeaconHooks
 
         if (slugIsBeacon)
         {
-            bool interactionLockFlarebombStorage = self.eatMeat > 0;
-            if (!interactionLockFlarebombStorage)
+            bool interactLockStorage = self.eatMeat > 0;
+
+            if (!Plugin.RotundWorldEnabled && self.FoodInStomach >= self.MaxFoodInStomach)
+            {
+                //spinch: if bacon is full and rotund isnt enabled, put flarebomb into storage
+                //dont even check for grasps if bacon's holding a food item
+                goto JustGoOverHere;
+            }
+
+            if (!interactLockStorage)
             {
                 //check grasps for food if not eating meat
                 for (int i = 0; i < 2; i++)
                 {
                     if (self.grasps[i]?.grabbed is IPlayerEdible)
                     {
-                        interactionLockFlarebombStorage = true;
+                        interactLockStorage = true;
                         break;
                     }
                 }
             }
-            if (interactionLockFlarebombStorage)
+
+            JustGoOverHere:
+
+            if (interactLockStorage)
             {
                 //dont take flarebomb from storage if holding food or eating
                 cwt.Beacon.storage.interactionLocked = true;
