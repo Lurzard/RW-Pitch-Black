@@ -19,4 +19,4 @@ Triggers: Spot<tA>event<tB>MusicEvent<eA>songName<eB>RW_81 - Breathing Hyometer<
 FadePalette: 10, 0.9782609, 0.9782609
 WetTerrain: OFF
 MorePalette0: 33, 0.1086956, 0.1413043
-MorePalette1: 43, 0.05434782, 0.1086956
+MorePalette1: 367, 0.05434782, 0.1086956

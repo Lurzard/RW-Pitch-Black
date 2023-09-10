@@ -3,5 +3,5 @@ RumbleIntensity: 0.7065217
 Effects: DayNight-0.1630435-293-31, FireFlies-0.2717391-295-91, 
 PlacedObjects: InsectGroup><453.7271><1445.199><0~100~0~0~Wasp~0.3369565, DayNightSettings><132.056><1344.558><5~8.660254~6~15, 
 FadePalette: 33, 0.8152174, 0.8369565
-MorePalette0: 37, 0.05434782, 0
-MorePalette1: 43, 0.8043478, 0.8043478
+MorePalette0: 363, 0.05434782, 0
+MorePalette1: 367, 0.8043478, 0.8043478

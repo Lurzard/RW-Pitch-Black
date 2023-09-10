@@ -18,4 +18,4 @@ Triggers: Spot<tA>event<tB>MusicEvent<eA>songName<eB>NA_22 - They Say<eA>vol<eB>
 FadePalette: 10, 1, 1
 WetTerrain: OFF
 MorePalette0: 33, 0.1521739, 0.1304348
-MorePalette1: 43, 0.1413043, 0.1086956
+MorePalette1: 367, 0.1413043, 0.1086956

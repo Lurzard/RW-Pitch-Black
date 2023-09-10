@@ -12,5 +12,5 @@ AmbientSounds: OMNI><AM_RAIN-Rumbles.ogg><657.0812><643.1072><0.3586957><1, OMNI
 Triggers: Spot<tA>event<tB>MusicEvent<eA>songName<eB>NA_03 - Wormpad<eA>vol<eB>0.3543476<eA>prio<eB>0.7499998<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>-1<eA>rest<eB>5<eA>fadeIn<eB>0<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>828.3734<tB>431.1548<tA>fireChance<tB>1<tA>entrance<tB>1<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>1557.374<tB>335.1536<tA>handlePos<tB>-188.3553<tB>242.6447, 
 FadePalette: 33, 0.5998048, 0.5940048, 0.5998046, 0.5998046, 0.5940048, 0.5998048
 RoomSpecificScriptActive: ON
-MorePalette0: 40, 0.8003898, 0.8061901, 0.8061908, 0.8061901, 0.8003905, 0.8003905
+MorePalette0: 368, 0.8003898, 0.8061901, 0.8061908, 0.8061901, 0.8003905, 0.8003905
 MorePalette1: 10, 0.5509936, 0.5567932, 0.5509929, 0.5509936, 0.5567932, 0.5567932

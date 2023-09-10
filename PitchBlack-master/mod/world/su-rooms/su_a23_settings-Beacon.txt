@@ -16,5 +16,5 @@ PlacedObjects: CustomDecal><534.0498><162.0563><52~420~287~450~310~-42~6.999878~
 AmbientSounds: OMNI><AM_ENV-Outside.ogg><691.2224><402.3019><0.4891304><0.6673913, SPOT><SO_IND-MechHum01.ogg><769.3632><297.0851><0.326087><1><427.6187><302.0851><-69.35535><-41.35535><0.2826087><0.5326087, 
 Triggers: Spot<tA>event<tB>PickUpObjectInstruction<tA>multiUse<tB>0<tA>toCycle<tB>7<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>81.69623<tB>465.5387<tA>fireChance<tB>1<tA>entrance<tB>-1<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>574.6962<tB>236.5387<tA>handlePos<tB>-242.3553<tB>-146.3553, Spot<tA>event<tB>BringPlayerGuideToRoom<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>803.1984<tB>211.7752<tA>fireChance<tB>1<tA>entrance<tB>2<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>326.1984<tB>167.7752<tA>handlePos<tB>-96.35535<tB>-93.35535, 
 FadePalette: 0, 0.1413043
-MorePalette0: 43, 0.7017915
+MorePalette0: 367, 0.7017915
 MorePalette1: 10, 0.3595959

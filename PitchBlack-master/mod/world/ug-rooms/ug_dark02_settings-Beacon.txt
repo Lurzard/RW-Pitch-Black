@@ -15,4 +15,4 @@ Triggers: Spot<tA>event<tB>StopMusicEvent<eA>songName<eB>RW_94 - Weathered Steps
 FadePalette: 10, 0.9673913
 WetTerrain: OFF
 MorePalette0: 33, 0.2065217
-MorePalette1: 43, 0.1086956
+MorePalette1: 367, 0.1086956

@@ -15,4 +15,4 @@ PlacedObjects: Mushroom><91.68433><329.4224><-142~230~2~3, Mushroom><107.949><31
 AmbientSounds: SPOT><AM_ENV-NatWind.ogg><835.6072><530.6099><0.423913><1><550.6072><691.6099><-34.35535><-172.3553><0><1, OMNI><SO_IND-HeatDuct.ogg><845.5117><451.3004><0><1, 
 FadePalette: 0, 0.0326087
 MorePalette0: 33, 0.1630435
-MorePalette1: 43, 0.1086956
+MorePalette1: 367, 0.1086956

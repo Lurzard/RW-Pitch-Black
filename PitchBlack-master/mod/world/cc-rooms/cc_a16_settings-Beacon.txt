@@ -14,6 +14,6 @@ Effects: DayNight-0.2608696-20-20, FireFlies-0.2934783-37-102,
 PlacedObjects: DayNightSettings><66.30554><461.0578><5~8.660254~6~15, 
 AmbientSounds: SPOT><AM_IND-Utility02.ogg><723.817><613.4385><0.326087><1><403.817><597.4385><-53.35535><-41.35535><0><0.5130436, 
 FadePalette: 33, 0.7173913
-MorePalette0: 37, 0.04347826
+MorePalette0: 363, 0.04347826
 MorePalette1: 10, 0.7391304
-MorePalette2: 43, 0.4021739
+MorePalette2: 367, 0.4021739

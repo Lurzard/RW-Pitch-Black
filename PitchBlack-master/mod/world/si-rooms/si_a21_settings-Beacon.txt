@@ -16,5 +16,5 @@ PlacedObjects: TradeOutpost><483.7994><274.5562><0~100, LanternOnStick><627.3951
 AmbientSounds: SPOT><AM_IND-Utility02.ogg><772.0511><463.7289><0.3913043><1><577.0511><361.7289><-223.3553><11.64465><0><0.6652175, 
 FadePalette: 5, 0.09782609
 WetTerrain: OFF
-MorePalette0: 43, 0.3913043
+MorePalette0: 367, 0.3913043
 MorePalette1: 10, 0.2826087

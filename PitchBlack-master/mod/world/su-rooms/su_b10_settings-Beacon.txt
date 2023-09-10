@@ -16,5 +16,5 @@ Effects: DayNight-1-31-87, FireFlies-0.3478261-300-98,
 PlacedObjects: DangleFruit><608.3694><1357.91><0~0~2~3, DangleFruit><578.6281><1420.658><0~0~2~3, DangleFruit><631.2464><1377.3><0~0~2~3, DayNightSettings><-10.19104><1139.309><5~8.660254~1~0, 
 AmbientSounds: SPOT><AM_ENV-LightWind.ogg><761.607><514.8898><0.3695652><1><478.6071><1231.89><-86.35535><-68.35535><0><0.252174, 
 FadePalette: 0, 0.05434782, 0
-MorePalette0: 43, 0.7017915, 0.7017922
+MorePalette0: 367, 0.7017915, 0.7017922
 MorePalette1: 10, 0.2551966, 0.4001956

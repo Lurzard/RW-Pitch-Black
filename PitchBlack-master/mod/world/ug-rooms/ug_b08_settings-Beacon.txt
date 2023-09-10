@@ -9,4 +9,4 @@ PlacedObjects: InsectGroup><562.828><909.684><0~100~0~0~RockFlea~0.5, DayNightSe
 AmbientSounds: OMNI><SO_WAT-DripTap.ogg><649.0363><567.9467><0.25><1, OMNI><SO_WAT-LilDrips.ogg><648.3156><637.689><0.4021739><1, OMNI><AM_ENV-LushNight.ogg><816.4695><496.4477><0.3478261><1, OMNI><AM_IND-Utility02.ogg><837.3013><645.9775><0><1, OMNI><SO_IND-HeatDuct.ogg><857.5117><573.3004><0><1, 
 FadePalette: 10, 0.9565217, 0.9891304
 MorePalette0: 33, 0.1086956, 0.1086956
-MorePalette1: 43, 0.1086956, 0.173913
+MorePalette1: 367, 0.1086956, 0.173913

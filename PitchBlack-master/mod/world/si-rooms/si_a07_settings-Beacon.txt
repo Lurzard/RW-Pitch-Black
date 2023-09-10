@@ -7,8 +7,7 @@ Effects: PixelShift-0.5-32-65, AboveCloudsView-1-20-20, Flies-0-18-92, SkyDandel
 PlacedObjects: DataPearl><409.6669><146.3896><-525~385~0~0~BroadcastMisc~1, UniqueDataPearl><546.3074><143.0584><-660~257~0~0~SI_top~0, BlueToken><479.648><339.1155><0~-59~78~207~1~KingVulture~White|Yellow|Rivulet|Saint~0~0~0~0~0~0~0~0~0~0~0~0, DeadTokenStalk><439.0966><312.1283><11~-53, DeadTokenStalk><518.5503><280.2612><-16~-35, DayNightSettings><222.8><435.2459><5~8.660254~18~2, 
 AmbientSounds: OMNI><AM_ENV-LightWind.ogg><749.2><521.5049><0.3043478><0.8826087, SPOT><AM_WIN-StrongWnd2.ogg><786.4443><219.0579><0.2282609><1.03913><51.44434><142.0579><-277.3553><53.64465><0><0.3826088, 
 FadePalette: 12, 0.3478261
-MorePalette0: 43, 0.4021739
-MorePalette1: 37, 0.2065217
-MorePalette2: 36, 0.2065217
+MorePalette0: 367, 0.4021739
+MorePalette1: 363, 0.2065217
 MorePalette3: 2, 0.05219965
 BackgroundType: atc_si_msc

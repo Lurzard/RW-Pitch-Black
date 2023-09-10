@@ -5,4 +5,4 @@ Effects: DayNight-0.7173913-20-20,
 PlacedObjects: ExitSymbolHidden><130.6743><385.3483><, FlyLure><260.05><354.7472><0~0~4~9, FlyLure><548.1619><77.57047><0~0~4~9, WhiteToken><807.8465><509.232><61~-24~-371~33.88483~0~Chatlog_Broadcast9~White|Yellow|Rivulet|Saint~0~1~0~0~0~1~0~0, DeadTokenStalk><847.8267><542.4617><21~-25, DeadTokenStalk><832.8><455.4944><36~6, DataPearl><825.0283><420.4224><-389~-18.98706~0~0~BroadcastMisc~1, Filter><828.0588><409.1912><-22~20~20~-393~Red|Artificer|Spear|Gourmand, Filter><842.4219><507.6841><5~65~-661~31.01129~White|Yellow|Rivulet|Saint, DayNightSettings><3.972107><231.052><5~8.660254~8~72, 
 AmbientSounds: SPOT><AM_ENV-LightWind.ogg><503.6385><582.834><0.3478261><1><503.6385><698.834><-65.35535><-279.3553><0><0.3826088, SPOT><AM_IND-Utility02.ogg><866.8912><516.5822><0.4130435><1><-54.10883><265.5822><-55.35535><-233.3553><0><0.3173914, 
 FadePalette: 33, 0.6521739
-MorePalette0: 43, 0.6553922
+MorePalette0: 367, 0.6553922

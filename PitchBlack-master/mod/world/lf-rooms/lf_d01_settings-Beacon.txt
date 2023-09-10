@@ -9,4 +9,4 @@ AmbientSounds: OMNI><AM_ENV-Outside.ogg><823.8714><621.3411><0.4347826><0.823913
 Triggers: Spot<tA>event<tB>MusicEvent<eA>songName<eB>NA_30 - Distance<eA>vol<eB>0.3<eA>prio<eB>0.5<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>6<eA>rest<eB>5<eA>fadeIn<eB>163.0435<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>744.3171<tB>474.669<tA>fireChance<tB>1<tA>entrance<tB>1<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>3491.317<tB>365.669<tA>handlePos<tB>-266.3553<tB>-160.3553, 
 FadePalette: 33, 0.8804349, 0.8586958, 0.7391303, 0.6413047
 MorePalette0: 10, 0.5108696, 0.3043478, 0, 0
-MorePalette1: 43, 0.5543478, 0.5543478, 0.5543478, 0.5543478
+MorePalette1: 367, 0.5543478, 0.5543478, 0.5543478, 0.5543478

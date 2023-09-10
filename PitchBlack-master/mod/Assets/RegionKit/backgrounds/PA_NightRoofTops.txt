@@ -1,0 +1,52 @@
+Parent: AtC_GeneralDefault
+---------------
+startAltitude: 20000
+endAltitude: 31400
+cloudsStartDepth: 5
+cloudsEndDepth: 40
+distantCloudsEndDepth: 150
+cloudsCount: 70
+distantCloudsCount: 110
+overrideYStart: -1600
+overrideYEnd: 0
+daySky: NightRf_Sky
+duskSky: Dayrf_dusksky
+nightSky: DayRf_Sky
+Floor: Nightfloor, 0, 0, 1, 12
+
+DistantBuilding: Nightfloor, 1100, 600, 8, 20
+DistantBuilding: Nightfloor, 1600, 600, 8, 20
+DistantBuilding: Nightfloor, 300, 600, 8, 20
+DistantBuilding: Nightfloor, -600, 600, 8, 20
+
+DistantBuilding: NightRf_DistantFence, 900, 900, 7, 0
+DistantBuilding: NightRf_DistantFence, 900, 880, 7, 0
+DistantBuilding: NightRf_DistantFence, -900, 900, 7, 0
+DistantBuilding: NightRf_DistantFence, -900, 880, 7, 0
+
+DistantBuilding: NightRf_CityC, -300, 645, 10, 20
+DistantBuilding: NightRf_CityB, -300, 645, 10, 20
+DistantBuilding: NightRf_CityA, -450, 645, 10, 15
+DistantBuilding: NightRf_CityC, -300, 645, 10, 15
+
+DistantBuilding: NightRf_CityC, -300, 575, 11, 35
+
+DistantBuilding: NightRf_CityC, -100, 575, 11, 35
+
+DistantBuilding: NightRf_CityC, -170, 575, 11, 35
+
+DistantBuilding: NightRf_Rubble, 600, 820, 8, 13
+DistantBuilding: NightRf_Rubble, 1000, 820, 8, 13
+DistantBuilding: NightRf_Rubble, 200, 800, 8, 5
+DistantBuilding: NightRf_Rubble, 900, 800, 8, 5
+DistantBuilding: NightRf_Rubble, -600, 810, 8, 0
+DistantBuilding: NightRf_Rubble, 1200, 810, 8, 0
+
+DistantBuilding: NightRF_Ferns, 0, 1065, 6, 0
+DistantBuilding: NightRF_Ferns, 600, 1060, 6, 0
+DistantBuilding: NightRF_Ferns, 1200, 1060, 6, 0
+
+Smoke: 0, 586, 7, 2.5, 0.1, 0.8, False
+Smoke: 0, 26, 4.2, 0.2, 0.1, 0, True
+Smoke: 0, 54, 2, 0.5, 0.1, 0, True
+Smoke: 0, 40, 1.2, 0.75, 0.1, 0, True

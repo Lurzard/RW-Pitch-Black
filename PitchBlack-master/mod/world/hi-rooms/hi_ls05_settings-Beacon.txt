@@ -7,4 +7,4 @@ PlacedObjects: DayNightSettings><100.9722><389.0519><5~8.660254~5~20, LightSourc
 AmbientSounds: SPOT><AM_IND-ElectricHum01.ogg><730.2405><297.2427><0.5><1><373.5656><380.7755><-35.35534><-35.35534><0><0.1, 
 FadePalette: 33, 0.7391304
 MorePalette0: 10, 0.6553922
-MorePalette1: 43, 0.3073969
+MorePalette1: 367, 0.3073969

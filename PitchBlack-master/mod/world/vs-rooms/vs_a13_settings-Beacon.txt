@@ -2,5 +2,5 @@ Template: VS_SettingsTemplate_Filter
 Effects: DayNight-0.5-20-20, 
 PlacedObjects: DayNightSettings><112.1563><472.8748><5~8.660254~17~21, 
 FadePalette: 21, 0.1304348
-MorePalette0: 43, 0.1043986
+MorePalette0: 367, 0.1043986
 MorePalette1: 10, 0.2551966

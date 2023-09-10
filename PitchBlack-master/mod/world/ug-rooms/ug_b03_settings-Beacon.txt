@@ -17,4 +17,4 @@ AmbientSounds: SPOT><SO_NAT-LilDrips.ogg><725.1879><561.9315><0.2934783><1><345.
 FadePalette: 10, 0.9891304, 0.9891304
 WetTerrain: OFF
 MorePalette0: 33, 0.1086956, 0.1086956
-MorePalette1: 43, 0.1195652, 0.1847826
+MorePalette1: 367, 0.1195652, 0.1847826

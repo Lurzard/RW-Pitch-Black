@@ -8,4 +8,4 @@ PlacedObjects: CustomDecal><179.6699><84.39447><-283~499~732~633~856~-16~-535~-5
 AmbientSounds: OMNI><AM_ENV-LightWind.ogg><729.4301><544.087><0.2173913><0.726087, 
 FadePalette: 5, 0.3800001
 MorePalette0: 10, 0.5722603
-MorePalette1: 43, 0.5514712
+MorePalette1: 367, 0.5514712

@@ -12,4 +12,4 @@ PlacedObjects: LightSource><247.1732><131.8149><0.3968075~Environment~0~100~-180
 AmbientSounds: OMNI><AM_ENV-WallHum.ogg><59.55098><526.5129><0.4072013><1, OMNI><AM_RAIN-QuietThunder.ogg><61.35957><450.3738><0.4072013><1, OMNI><AM_RAIN-Rumbles.ogg><60.46167><372.8794><0.3066691><1, OMNI><AM_RAIN-RollingThunder.ogg><61.36517><298.2671><0.3066691><1, 
 FadePalette: 17, 0.8506567
 MorePalette0: 10, 0.9569888
-MorePalette1: 43, 0.1043986
+MorePalette1: 367, 0.1043986

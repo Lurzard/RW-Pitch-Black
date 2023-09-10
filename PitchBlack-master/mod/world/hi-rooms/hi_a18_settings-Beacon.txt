@@ -11,5 +11,5 @@ PlacedObjects: FirecrackerPlant><792.8851><312.1644><-829~274~2~3, FirecrackerPl
 AmbientSounds: SPOT><OM.wav><256.8094><485.5605><0.2173913><1><-42.07362><388.8741><-35.35534><-35.35534><0><0.2739132, 
 Triggers: Spot<tA>event<tB>MusicEvent<eA>songName<eB>RW_50 - Mist Engine<eA>vol<eB>0.2891308<eA>prio<eB>0.5<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>5<eA>rest<eB>6<eA>fadeIn<eB>163.0435<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>21<tA>delay<tB>0<tA>panPos<tB>623.9002<tB>595.1179<tA>fireChance<tB>1<tA>entrance<tB>-1<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>583.9002<tB>308.1179<tA>handlePos<tB>-198.3553<tB>33.64465, 
 FadePalette: 33, 0.6521739
-MorePalette0: 37, 0.0326087
-MorePalette1: 43, 0.8043478
+MorePalette0: 363, 0.0326087
+MorePalette1: 367, 0.8043478

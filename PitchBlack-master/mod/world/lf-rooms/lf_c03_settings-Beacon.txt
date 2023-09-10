@@ -14,4 +14,4 @@ AmbientSounds: OMNI><AM_ENV-LightWind.ogg><799.379><620.3472><0.3369565><0.64782
 FadePalette: 33, 0.8695655, 0.8152177, 0.8804348
 RoomSpecificScriptActive: ON
 MorePalette0: 10, 0.5, 0.4021739, 0.3369565
-MorePalette1: 43, 0.4021739, 0.5, 0.5
+MorePalette1: 367, 0.4021739, 0.5, 0.5

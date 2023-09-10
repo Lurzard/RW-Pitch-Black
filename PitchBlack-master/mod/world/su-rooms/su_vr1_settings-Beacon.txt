@@ -14,5 +14,5 @@ EffectColorB: 5
 Effects: Brightness-0-43-110, FireFlies-0.3586957-333-42, DayNight-1-329-107, WaterDepth-0.05799932-264.2477-176.2047, 
 PlacedObjects: LightBeam><353.6449><263.1702><-594~564~-297~562~41~4~-135~301~0.09565204~0~0~1~None~0~0, LightSource><182.8221><143.3414><0.3369565~Environment~-129~21~-73~435.6025~1~1~None~0~1, LightSource><563.5514><139.7736><0.2934783~Environment~-18~122~50~86.60254~1~1~None~0~1, InsectGroup><373.5933><182.1769><-127~117~0~0~TinyDragonFly~0.3586957, DangleFruit><590.09><548.37><0~0~2~3, DangleFruit><485.7214><613.3021><0~0~2~3, Mushroom><272.87><127.59><0~0~2~3, LightSource><-61.1579><748.1227><0.5108696~Environment~126~-112~50~86.60254~1~0~None~0~0, CustomDecal><68.30457><336.7923><0~139~214~228~268~-55~315~75~0.6195652~0.6847826~1~Rabbit~1~0.25~1~0.25~1~0.25~1~0.25, UniqueDataPearl><179.1062><113.139><-115~98~0~0~SU_filt~0, NoSpearStickZone><1.56012><336.9407><0~258, DayNightSettings><-158.4413><224.0585><5~8.660254~1~0, 
 FadePalette: 0, 0.1304348
-MorePalette0: 43, 0.7017915
+MorePalette0: 367, 0.7017915
 MorePalette1: 10, 0.3073963

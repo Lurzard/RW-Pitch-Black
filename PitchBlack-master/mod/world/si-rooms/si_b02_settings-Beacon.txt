@@ -9,4 +9,4 @@ Effects: PixelShift-0.5-32-65, AboveCloudsView-1-20-20, Fog-0.8369565-19-79, Pix
 PlacedObjects: NeedleEgg><1560.8><76.24786><0~0~4~9, DandelionPatch><1022.676><461.1554><0~100, DandelionPatch><723.8033><412.7862><15~75, InsectGroup><838.113><531.8958><-39~111~0~0~TinyDragonFly~0.2173913, WhiteToken><1981.072><524.8402><-3~-72~-251~25~0~Chatlog_SI2~White|Yellow|Red|Rivulet|Saint|Gourmand~0~1~0~0~0~1~0~0, DataPearl><1937.064><463.5726><-461~110~0~0~BroadcastMisc~1, Filter><1907.404><457.9254><3~50~-312~-1~Artificer|Spear, DayNightSettings><1277.803><410.2871><5~8.660254~18~2, 
 AmbientSounds: OMNI><AM_ENV-LightWind.ogg><759.5138><517.5505><0.3043478><0.8826087, 
 FadePalette: 12, 0.2717391, 0.2717391
-MorePalette0: 43, 0.2065217, 0.2065217
+MorePalette0: 367, 0.2065217, 0.2065217

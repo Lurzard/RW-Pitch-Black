@@ -3,4 +3,4 @@ Palette: 21
 Effects: DayNight-0.5-20-20, 
 PlacedObjects: DayNightSettings><77.5556><1996.797><5~8.660254~8~21, 
 FadePalette: 8, 0.8586956, 0.9021739, 0.9347826
-MorePalette0: 43, 0.249397, 0.2029976, 0.1275986
+MorePalette0: 367, 0.249397, 0.2029976, 0.1275986

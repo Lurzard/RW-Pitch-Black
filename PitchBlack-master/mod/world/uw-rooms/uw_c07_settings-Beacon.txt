@@ -10,7 +10,7 @@ SecondWaveLength: 0.1666667
 SecondWaveAmplitude: 0
 Clouds: 0.1521739
 Grime: 0.2282609
-Palette: 43
+Palette: 367
 EffectColorA: 17
 EffectColorB: 15
 Effects: DayNight-0.326087-20-20, FireFlies-0.3043478-24-79, ReplaceEffectColorA-0-385-227-Color-0.2826087-0-1, 

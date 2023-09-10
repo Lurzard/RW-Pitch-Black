@@ -19,8 +19,7 @@ AmbientSounds: SPOT><AM_ENV-WallHum.ogg><44.60425><480.4207><0.3152174><1><57.60
 Triggers: Spot<tA>event<tB>MusicEvent<eA>songName<eB>RW_78 - Obverse of the Old Wind<eA>vol<eB>0.3<eA>prio<eB>0.9347826<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>-1<eA>rest<eB>5<eA>fadeIn<eB>19.56522<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>678.9163<tB>440.3611<tA>fireChance<tB>1<tA>entrance<tB>1<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>5754.917<tB>196.3611<tA>handlePos<tB>-244.3553<tB>-13.35535, Spot<tA>event<tB>MusicEvent<eA>songName<eB>RW_78 - Obverse of the Old Wind<eA>vol<eB>0.3<eA>prio<eB>0.9347826<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>-1<eA>rest<eB>5<eA>fadeIn<eB>19.56522<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>936.6909<tB>439.4402<tA>fireChance<tB>1<tA>entrance<tB>0<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>1390.691<tB>328.4402<tA>handlePos<tB>-170.3553<tB>-265.3553, 
 FadePalette: 42, 0.10715, 0.1071502, 0.1013502, 0.1071502, 0.1071502, 0.10715, 0.3695652
 WetTerrain: OFF
-MorePalette0: 43, 0.7075918, 0.6843925, 0.6553928, 0.6495925, 0.6727918, 0.7017922
+MorePalette0: 367, 0.7075918, 0.6843925, 0.6553928, 0.6495925, 0.6727918, 0.7017922
 MorePalette1: 10, 0.2029976, 0.173998, 0.1797976, 0.197198, 0.249397, 0.3247953
-MorePalette2: 36, 0.06959932, 0.1333983, 0.1681983, 0.185598, 0.185598, 0.1822098
 MorePalette3: 2, 0.05219965, 0.05799932, 0.03479933, 0, 0, 0
 BackgroundType: moonrooftops

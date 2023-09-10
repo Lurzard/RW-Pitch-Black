@@ -9,4 +9,4 @@ PlacedObjects: NoSpearStickZone><961.155><441.1265><-44~125, NoSpearStickZone><6
 AmbientSounds: OMNI><AM_ENV-Outside.ogg><831.8484><652.0759><0.4673913><0.9021739, OMNI><AM_ENV-LightWind.ogg><656.8224><652.9364><0.423913><0.6869565, 
 Triggers: Spot<tA>event<tB>MusicEvent<eA>songName<eB>RW_49 - Nest in Metal<eA>vol<eB>0.256<eA>prio<eB>0.5<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>4<eA>rest<eB>5<eA>fadeIn<eB>163.0435<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>651.7761<tB>558.1983<tA>fireChance<tB>1<tA>entrance<tB>-1<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>495.7761<tB>385.1983<tA>handlePos<tB>-419.3553<tB>-255.3553, 
 FadePalette: 33, 0.858696
-MorePalette0: 43, 0.6304348
+MorePalette0: 367, 0.6304348

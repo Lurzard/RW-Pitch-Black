@@ -17,4 +17,4 @@ AmbientSounds: OMNI><AM_ENV-LushNight.ogg><639.7988><561.944><0.2282609><1, SPOT
 FadePalette: 10, 0.9782609, 0.9891304
 WetTerrain: OFF
 MorePalette0: 33, 0.1521739, 0.1521739
-MorePalette1: 43, 0.2065217, 0.1521739
+MorePalette1: 367, 0.2065217, 0.1521739

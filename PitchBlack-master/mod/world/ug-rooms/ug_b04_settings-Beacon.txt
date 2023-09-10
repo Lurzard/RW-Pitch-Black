@@ -15,4 +15,4 @@ AmbientSounds: SPOT><SO_WAT-OpenFlow.ogg><764.8345><341.3188><0.4130435><1><1456
 Triggers: Spot<tA>event<tB>MusicEvent<eA>songName<eB>RW_38 - The Wet Moist<eA>vol<eB>0.2999997<eA>prio<eB>0.5<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>8<eA>rest<eB>5<eA>fadeIn<eB>163.0435<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>736.5198<tB>371.199<tA>fireChance<tB>1<tA>entrance<tB>-1<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>699.5198<tB>450.199<tA>handlePos<tB>-219.3553<tB>-83.35535, 
 FadePalette: 0, 0.02173913, 0.02173913
 MorePalette0: 33, 0.1086956, 0.1086956
-MorePalette1: 43, 0.1086956, 0.1086956
+MorePalette1: 367, 0.1086956, 0.1086956

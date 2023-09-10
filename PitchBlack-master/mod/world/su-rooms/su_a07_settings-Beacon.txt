@@ -7,4 +7,4 @@ PlacedObjects: Mushroom><429.5274><83.55191><-359~496.1176~2~3, Mushroom><452.44
 AmbientSounds: OMNI><AM_ENV-LightWind.ogg><873.808><569.9441><0.4673913><0.726087, SPOT><AM_IND-Utility02.ogg><875.5566><424.949><0.4456519><1><45.55652><360.949><58.64465><-175.3553><0><0.2304348, SPOT><AM_IND-Utility02.ogg><874.0928><309.8763><0.3695665><1.078261><1041.093><429.8763><-97.35535><-159.3553><0><0.3173914, 
 Triggers: Spot<tA>event<tB>MusicEvent<eA>songName<eB>NA_01 - Proxima<eA>vol<eB>0.3108693<eA>prio<eB>0.5<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>6<eA>rest<eB>5<eA>fadeIn<eB>202.1739<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>710.8168<tB>218.3115<tA>fireChance<tB>1<tA>entrance<tB>-1<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>710.0718<tB>289.2014<tA>handlePos<tB>-103.3553<tB>-215.3553, 
 FadePalette: 14, 0.2391304
-MorePalette0: 43, 0.7075912
+MorePalette0: 367, 0.7075912

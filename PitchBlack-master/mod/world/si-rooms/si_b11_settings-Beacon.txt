@@ -11,7 +11,6 @@ PlacedObjects: DandelionPatch><613.6581><212.1777><-68~120, DandelionPatch><140.
 AmbientSounds: SPOT><AM_IND-Utility02.ogg><577.5656><285.3274><0.4021739><1><482.5656><81.32742><-336.3553><35.64466><0><0.6652175, SPOT><OM.wav><736.1943><473.3079><0.2282609><0.7847826><726.1943><1034.308><-76.35535><-24.35535><0><0.2847827, 
 Triggers: Spot<tA>event<tB>MusicEvent<eA>songName<eB>NA_20 - Crystalline<eA>vol<eB>0.2891302<eA>prio<eB>0.5<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>2<eA>rest<eB>5<eA>fadeIn<eB>156.5217<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>624.8534<tB>558.4212<tA>fireChance<tB>1<tA>entrance<tB>-1<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>588.8534<tB>1241.421<tA>handlePos<tB>-320.3553<tB>-362.3553, 
 FadePalette: 12, 0.1630435, 0.1630435
-MorePalette0: 43, 0.2065217, 0.2065217
-MorePalette1: 37, 0.1521739, 0.08695652
-MorePalette2: 36, 0.06521739, 0
-MorePalette3: 40, 0.3043478, 0.1521739
+MorePalette0: 367, 0.2065217, 0.2065217
+MorePalette1: 363, 0.1521739, 0.08695652
+MorePalette3: 364, 0.3043478, 0.1521739

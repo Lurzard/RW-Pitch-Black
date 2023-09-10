@@ -16,4 +16,4 @@ AmbientSounds: SPOT><SO_IND-Fridge.ogg><755.9488><368.5219><0.2173913><0.8434783
 FadePalette: 10, 0.9673913
 WetTerrain: OFF
 MorePalette0: 33, 0.1086956
-MorePalette1: 43, 0.1086956
+MorePalette1: 367, 0.1086956

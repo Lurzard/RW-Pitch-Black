@@ -6,5 +6,5 @@ PlacedObjects: CustomDecal><-204.1461><-51.38666><-2~392~982~375~954~-10~291~-28
 AmbientSounds: OMNI><AM_ENV-LightWind.ogg><719.1805><517.0861><0.25><0.8826087, SPOT><AM_IND-DeepHum.ogg><780.6995><228.4855><0.3695652><1><901.6995><492.4855><-35.35534><-35.35534><0><0.2956523, 
 Triggers: Spot<tA>event<tB>MusicEvent<eA>songName<eB>Plains<eA>vol<eB>0.1478261<eA>prio<eB>0.6086958<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>-1<eA>rest<eB>7<eA>fadeIn<eB>0<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>347.9315<tB>361.9158<tA>fireChance<tB>1<tA>entrance<tB>-1<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>612.9315<tB>336.9158<tA>handlePos<tB>365.6447<tB>-152.3553, 
 FadePalette: 5, 0.326087
-MorePalette0: 43, 1
-MorePalette1: 42, 0.3804348
+MorePalette0: 367, 1
+MorePalette1: 366, 0.3804348

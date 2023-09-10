@@ -11,4 +11,4 @@ PlacedObjects: WaterNut><410.3454><161.0742><54~181~2~3, WaterNut><470.0519><136
 Triggers: Spot<tA>event<tB>BringPlayerGuideToRoom<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>986.8971<tB>373.3285<tA>fireChance<tB>1<tA>entrance<tB>0<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>978.8971<tB>203.3285<tA>handlePos<tB>-35.35534<tB>-35.35534, 
 FadePalette: 33, 0.8586956
 MorePalette0: 10, 0.3586957
-MorePalette1: 43, 0.2065217
+MorePalette1: 367, 0.2065217

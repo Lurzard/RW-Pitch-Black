@@ -13,4 +13,4 @@ AmbientSounds: OMNI><AM_ENV-LightWind.ogg><830.3689><650.401><0.3152174><0.82391
 Triggers: RegionBump<tA>event<tB>MusicEvent<eA>songName<eB>RW_14 - All Thats Left<eA>vol<eB>0.2456526<eA>prio<eB>0.5<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>7<eA>rest<eB>5<eA>fadeIn<eB>163.0435<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>1027.559<tB>544.8085<tA>fireChance<tB>1<tA>entrance<tB>-1<tA>karma<tB>0<tA>slugcats<tB>, 
 FadePalette: 33, 0.9021741
 MorePalette0: 10, 0.3043478
-MorePalette1: 43, 0.5
+MorePalette1: 367, 0.5

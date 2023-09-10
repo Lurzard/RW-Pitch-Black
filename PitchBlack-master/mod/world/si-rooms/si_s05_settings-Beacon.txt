@@ -4,4 +4,4 @@ Effects: DayNight-0.423913-32-126,
 PlacedObjects: BrokenShelterWaterLevel><499.861><176.1438><, DayNightSettings><199.1708><410.146><5~8.660254~2~8, 
 AmbientSounds: SPOT><AM_IND-Utility02.ogg><770.7397><385.9497><0.423913><1><727.7397><177.9497><-138.3553><-69.35535><0><0.2847827, 
 FadePalette: 33, 0.5760869
-MorePalette0: 43, 0.2065217
+MorePalette0: 367, 0.2065217

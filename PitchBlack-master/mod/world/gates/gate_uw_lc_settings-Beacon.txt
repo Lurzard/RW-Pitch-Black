@@ -8,5 +8,5 @@ EffectColorB: 5
 Effects: LightBurn-0-26-68, Flies-0.2173913-295-23, DayNight-0.4021739-307-72, ReplaceEffectColorA-0-385-227-Color-0.2826087-0-1, 
 PlacedObjects: ExitSymbolHidden><730.8135><111.5723><, ExitSymbolHidden><731.8718><394.5966><, NoSpearStickZone><479.6848><249.1735><170~-201, DayNightSettings><16.19995><88.49463><5~8.660254~12~8, ExitSymbolHidden><884.6356><230.2664><, 
 AmbientSounds: OMNI><AM_ENV-WallHum.ogg><882.0589><647.1909><0.3260872><1, SPOT><AM_IND-DeepHum.ogg><881.8548><527.6703><0.4130435><1><481.8548><-191.3297><-37.35535><365.6447><0><0.3608697, 
-FadePalette: 43, 0.8891559
+FadePalette: 367, 0.8891559
 MorePalette0: 10, 0.5045936

@@ -12,5 +12,5 @@ PlacedObjects: NoSpearStickZone><477.519><248.0509><-244~98, DayNightSettings><-
 AmbientSounds: OMNI><AM_ENV-LightWind.ogg><760.437><518.571><0.326087><0.5695652, SPOT><AM_IND-DeepHum.ogg><773.1953><307.7929><0.3695652><1><481.1953><-31.20709><-111.3553><-34.35534><0><0.328261, 
 FadePalette: 33, 0.8043478
 MorePalette0: 10, 0.7282609
-MorePalette1: 37, 0.1086956
-MorePalette2: 43, 0.3043478
+MorePalette1: 363, 0.1086956
+MorePalette2: 367, 0.3043478
