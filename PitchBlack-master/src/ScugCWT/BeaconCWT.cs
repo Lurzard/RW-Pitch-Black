@@ -123,54 +123,41 @@ namespace PitchBlack
 
                 if (pG == null) return;
 
-                Vector2 v1 = pG.drawPositions[0, 0];
-                Vector2 v2 = pG.drawPositions[1, 0];
-                float n = Custom.VecToDeg((v1 - v2).normalized);
-                Vector2 va = v1 + Custom.RotateAroundOrigo(new(12f, -8f), n);
-                Vector2 vb = v1 + Custom.RotateAroundOrigo(new(-12f, -8f), n);
 
-                int i = 0;
-                foreach (FlareBomb fb in storedFlares)
+                for (int i = 0; i < storedFlares.Count; i++)
                 {
-                    float num = (i + 1f) / (storedFlares.Count + 1f);
-                    Vector2 destination = va + (vb - va) * num;
+                    // These may be able to be replaced with math involving bodyChunks of the player, which while may be more intuitive to understand, could come with positioning issues.
+                    Vector2 drawPointLeft = pG.drawPositions[0, 0];
+                    Vector2 drawPointRight = pG.drawPositions[1, 0];
+                    // n is the angle created by going from the left draw point to the right draw point, based on a horizontal line as 0 degrees
+                    float n = Custom.VecToDeg((drawPointLeft - drawPointRight).normalized);
+                    // These vectors are the limits on the linear position displacement of flarebombs in between them
+                    Vector2 flarePositionStart = new(-30f, -8f);
+                    Vector2 flarePositionEnd = new(30f, -8f);
+                    if (i >= capacity/2) {
+                        flarePositionStart = new Vector2(-8f, -8f);
+                        flarePositionEnd = new Vector2(8f, -8f);
+                    }
+                    if (ownr.bodyMode == Player.BodyModeIndex.Crawl) {
+                        flarePositionStart.y += 3.25f;
+                        flarePositionEnd.y += 3.25f;
+                    }
+
+                    // The same as the vectors previously defined, but rotated around with the player's rotation.
+                    Vector2 vector = drawPointLeft + Custom.RotateAroundOrigo(flarePositionStart, n);
+                    Vector2 vector1 = drawPointLeft + Custom.RotateAroundOrigo(flarePositionEnd, n);
+
+                    // num is a fraction, that essentially determines at what point the flare is in between the flare position caps.
+                    float fractionOfDistance = (i + 1f) / (Mathf.Min(storedFlares.Count, capacity/2) + 1f);
+                    if (i >= capacity/2) {
+                        fractionOfDistance = (i - capacity/2 + 1f) / (storedFlares.Count - capacity/2 + 1f);
+                    }
+                    Vector2 calculatedDestination = vector + (vector1 - vector) * fractionOfDistance;
                     
-                    fb.firstChunk.MoveFromOutsideMyUpdate(eu, destination);
-                    fb.firstChunk.vel = ownr.mainBodyChunk.vel;
-                    fb.rotationSpeed = 0f;
-                    i++;
+                    storedFlares.ToArray()[i].firstChunk.MoveFromOutsideMyUpdate(eu, calculatedDestination);
+                    storedFlares.ToArray()[i].firstChunk.vel = Vector2.zero;
+                    storedFlares.ToArray()[i].rotationSpeed = 0f;
                 }
-
-#if false
-//doesnt work lol
-                //spinch: below is correcting the pos of the middle flarebombs
-                //only needs to be corrected if theres more than 2 flarebombs
-                if (storedFlares.Count <= 2) return;
-
-                var flareArr = storedFlares.ToArray();
-
-                Vector2 leftEndOfCollarPos = flareArr[0].firstChunk.pos;
-                Vector2 rightEndOfCollarPos = flareArr[storedFlares.Count - 2].firstChunk.pos;
-                Vector2 dirVectorNormalized = (leftEndOfCollarPos - rightEndOfCollarPos).normalized;
-
-                float padding = leftEndOfCollarPos.x - rightEndOfCollarPos.x;
-                if (storedFlares.Count >= 4)
-                    padding = Mathf.Max(padding - 1f, 0);
-
-                i = 1;
-                foreach (FlareBomb fb in storedFlares)
-                {
-                    if (i == 0) continue;
-
-                    float num = (i + 1f) / (storedFlares.Count + 1f);
-                    Vector2 destination = va + (vb - va) * num + padding * i * dirVectorNormalized;
-
-                    fb.firstChunk.MoveFromOutsideMyUpdate(eu, destination);
-                    fb.firstChunk.vel = ownr.mainBodyChunk.vel;
-                    fb.rotationSpeed = 0f;
-                    i++;
-                }
-#endif
             }
 
             public int FlarebombFromStorageToPaw(bool eu)
@@ -200,6 +187,7 @@ namespace PitchBlack
                     af?.Deactivate();
 
                     fb.CollideWithObjects = true;
+                    fb.collisionRange = 50f;
                     ownr.SlugcatGrab(fb, toPaw);
                     interactionLocked = true;
                     ownr.noPickUpOnRelease = 20;
@@ -229,6 +217,7 @@ namespace PitchBlack
                 }
                 f.ChangeMode(Weapon.Mode.OnBack);
                 f.CollideWithObjects = false;
+                f.collisionRange = 0f;
                 storedFlares.Push(f);
                 interactionLocked = true;
                 ownr.noPickUpOnRelease = 20;
