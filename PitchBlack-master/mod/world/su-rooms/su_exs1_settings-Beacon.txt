@@ -1,0 +1,9 @@
+Template: SU_SettingsTemplate_Inside
+Grime: 0.1847826
+BkgDroneVolume: 0
+EffectColorA: 2
+EffectColorB: 2
+PlacedObjects: LightSource><511.1412><408.8916><1~Environment~0~100~50~86.60254~1~0~None~0~0, 
+AmbientSounds: OMNI><AM_ENV-Outside.ogg><764.0152><469.9494><0.25><0.7065217, SPOT><AM_IND-ElectricHum01.ogg><710.7711><263.3011><0.3695652><0.726087><547.7711><384.3011><-35.35534><-35.35534><0><0.154348, 
+FadePalette: 8, 0.5760869
+MorePalette0: 10, 1

@@ -14,9 +14,10 @@
     "Creatures",
     "Game Mechanics",
     "Game Modes",
+    "Accessibility",
     "Custom Slugcat"
   ],
   "WorkshopID": 3032862920,
-  "UploadFilesOnly": false,
+  "UploadFilesOnly": true,
   "UploadThumbnail": false
 }
