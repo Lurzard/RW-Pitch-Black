@@ -55,6 +55,8 @@ class Plugin : BaseUnityPlugin
 
         JollyMenuHooks.Apply();
 
+        DevCommOverride.Apply();
+
         //NightDay.Apply(); //unfinished
 
         //On.Player.GraspsCanBeCrafted += Player_GraspsCanBeCrafted;
