@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace PitchBlack;
 public class ScareEverything {
     public static CreatureTemplate.Relationship.Type newRelation = CreatureTemplate.Relationship.Type.Afraid;

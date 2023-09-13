@@ -1,6 +1,5 @@
 ﻿using System;
 using static PitchBlack.Plugin;
-using Debug = UnityEngine.Debug;
 
 namespace PitchBlack;
 
@@ -34,7 +33,7 @@ public class ScugCWT
             IsPhoto = true;
             Photo = new PhotoCWT(this);
         }
-        else
-            Debug.Log($"Pitch Black: How did {player.slugcatStats.name} player {player.playerState.playerNumber} get in the scug CWT?!");
+        // else
+        //     Debug.Log($"Pitch Black: How did {player.slugcatStats.name} player {player.playerState.playerNumber} get in the scug CWT?!");
     }
 }

@@ -4,7 +4,7 @@ using SlugBase.Features;
 using SlugBase;
 using Colour = UnityEngine.Color;
 using JollyColorMode = Options.JollyColorMode;
-using Custom = RWCustom.Custom;
+using RWCustom;
 using MonoMod.Cil;
 using Mono.Cecil.Cil;
 using Exception = System.Exception;

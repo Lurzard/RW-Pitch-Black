@@ -299,13 +299,13 @@ public static class Crafting
         #region electric stuff
         void SmallZap()
         {
-            Debug.Log("Small zap");
+            // Debug.log("Small zap");
             Flash();
             Stun();
         }
         void BigZap()
         {
-            Debug.Log("Big zap");
+            // Debug.log("Big zap");
             //like zapcoil
             self.room.PlaySound(SoundID.Zapper_Zap, self.firstChunk.pos, 1f, 1f);
             self.room.AddObject(new ZapCoil.ZapFlash(self.firstChunk.pos, 6f));
@@ -317,13 +317,13 @@ public static class Crafting
         {
             if (self.grasps[0]?.grabbed is ElectricSpear spear1 && self.grasps[1]?.grabbed is ElectricSpear spear2)
             {
-                Debug.Log("Short circuit both grasps");
+                // Debug.log("Short circuit both grasps");
                 spear1.ShortCircuit();
                 spear2.ShortCircuit();
             }
             else
             {
-                Debug.Log("Failed to short circuit both grasps! Resorting to short circuiting both grasps indivudually");
+                // Debug.log("Failed to short circuit both grasps! Resorting to short circuiting both grasps indivudually");
                 for (int i = 0; i < 2; i++)
                 {
                     if (self.grasps[i]?.grabbed is ElectricSpear spear)
@@ -336,7 +336,7 @@ public static class Crafting
         #region explosive stuff
         void SmallDetonate(int index)
         {
-            Debug.Log("Small detonate");
+            // Debug.log("Small detonate");
             SmallDetonateEffects();
             self.room.PlaySound(SoundID.Fire_Spear_Explode, self.firstChunk.pos);
             self.room.InGameNoise(new Noise.InGameNoise(self.firstChunk.pos, 8000f, self, 1f));
@@ -348,11 +348,11 @@ public static class Crafting
             if (self.grasps[index]?.grabbed is ExplosiveSpear spear)
             {
                 DetonateEffects();
-                Debug.Log($"Big detonate grasp at index {index}");
+                // Debug.log($"Big detonate grasp at index {index}");
                 spear.Explode();
             }
-            else
-                Debug.Log($"Failed to detonate grasp! Player grasp at index {index} is not an explosive spear.");
+            // else
+                // Debug.log($"Failed to detonate grasp! Player grasp at index {index} is not an explosive spear.");
             //dont even need to call self.Die() tbh
         }
         void BigDetonateBothGrasps()
@@ -361,14 +361,14 @@ public static class Crafting
             if (self.grasps[0]?.grabbed is ExplosiveSpear spear1 && self.grasps[1]?.grabbed is ExplosiveSpear spear2)
             {
                 DetonateEffects();
-                Debug.Log("Big detonate both grasps");
+                // Debug.log("Big detonate both grasps");
                 if (CanCraftTwoSpears)
                     spear2.Explode();
                 spear1.Explode();
             }
             else
             {
-                Debug.Log("Failed to detonate both grasps! Resorting to denoting both grasps indivudually");
+                // Debug.log("Failed to detonate both grasps! Resorting to denoting both grasps indivudually");
                 BigDetonate(0);
                 BigDetonate(1); //if the previous works, this one fails because grasp is null now
             }
@@ -432,7 +432,7 @@ public static class Crafting
             self.room.PlaySound(SoundID.Zapper_Zap, self.firstChunk.pos, 1f, 1.5f + Random.value * 1.5f);
             self.room.AddObject(new Explosion.ExplosionLight(self.firstChunk.pos, 80f, 1f, 6, new Colour(0.7f, 1f, 1f)));
 
-            Debug.Log("Spawning new electric spear");
+            // Debug.log("Spawning new electric spear");
 
             AbstractPhysicalObject item = new AbstractSpear(self.room.world, null, self.abstractPhysicalObject.pos, self.grasps[index].grabbed.abstractPhysicalObject.ID, false, true);
             self.room.abstractRoom.AddEntity(item);
@@ -484,11 +484,11 @@ public static class Crafting
 
         if (grasp == null)
         {
-            Debug.Log($"Unable to delete null player grasp at index {index}");
+            // Debug.log($"Unable to delete null player grasp at index {index}");
             return;
         }
 
-        Debug.Log($"Delete player grasp at index {index}");
+        // Debug.log($"Delete player grasp at index {index}");
 
         if (self.room.game.session is StoryGameSession story)
             story.RemovePersistentTracker(grasp);

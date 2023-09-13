@@ -1,6 +1,4 @@
-﻿using Vector2 = UnityEngine.Vector2;
-using Debug = UnityEngine.Debug;
-using static PitchBlack.RoomScripts;
+﻿using UnityEngine;
 
 namespace PitchBlack;
 

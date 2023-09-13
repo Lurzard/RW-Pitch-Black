@@ -1,10 +1,6 @@
 ﻿using System;
 using static PitchBlack.Plugin;
-using Debug = UnityEngine.Debug;
-using Vector2 = UnityEngine.Vector2;
-using Colour = UnityEngine.Color;
-using MonoMod.Cil;
-using Mono.Cecil.Cil;
+using UnityEngine;
 
 namespace PitchBlack;
 
@@ -47,17 +43,18 @@ public class ScugGraphics
             cwt.SpritesInitialized = true;
 
             #region photo splat sprite
+            // SPLAT.SFX
             if (cwt.IsPhoto)
             {
                 cwt.Photo.PhotoSetUniqueSpriteIndex(sLeaser.sprites.Length);
-                Debug.Log($"Length is: {sLeaser.sprites.Length}");
-                Debug.Log($"Name is: {sLeaser.sprites[sLeaser.sprites.Length - 1].element.name}");
+                // Debug.Log($"Length is: {sLeaser.sprites.Length}");
+                // Debug.Log($"Name is: {sLeaser.sprites[sLeaser.sprites.Length - 1].element.name}");
 
                 Array.Resize(ref sLeaser.sprites, sLeaser.sprites.Length + 1);
 
                 sLeaser.sprites[cwt.Photo.photoSpriteIndex] = new FSprite("PhotoSplatter", false);
-                Debug.Log($"Length is: {sLeaser.sprites.Length}");
-                Debug.Log($"Name is: {sLeaser.sprites[cwt.Photo.photoSpriteIndex].element.name}");
+                // Debug.Log($"Length is: {sLeaser.sprites.Length}");
+                // Debug.Log($"Name is: {sLeaser.sprites[cwt.Photo.photoSpriteIndex].element.name}");
             }
             #endregion
 
@@ -81,7 +78,7 @@ public class ScugGraphics
             cwt.SpritesInitialized = false;
             if (cwt.IsPhoto)
             {
-                Debug.Log($"Debuging ATC in Photo >>> spritesLength: {sLeaser.sprites.Length}");
+                // Debug.Log($"Debuging ATC in Photo >>> spritesLength: {sLeaser.sprites.Length}");
                 if (sLeaser.sprites.Length > 13)
                 {
                     rCam.ReturnFContainer("Foreground").RemoveChild(sLeaser.sprites[cwt.Photo.photoSpriteIndex]);
@@ -138,21 +135,8 @@ public class ScugGraphics
         {
             if (cwt.IsPhoto && cwt.Photo.photoSpriteIndex < sLeaser.sprites.Length)
             {
-                // Jolly Coop Colors!
-                if (ModManager.CoopAvailable && self.useJollyColor)
-                {
-                    sLeaser.sprites[cwt.Photo.photoSpriteIndex].color = PlayerGraphics.JollyColor(self.player.playerState.playerNumber, 2);
-                }
-                // Custom color (not jolly!)
-                else if (PlayerGraphics.CustomColorsEnabled())
-                {
-                    sLeaser.sprites[cwt.Photo.photoSpriteIndex].color = PlayerGraphics.CustomColorSafety(2);
-                }
-                // Arena/no-custom color
-                else
-                {
-                    sLeaser.sprites[cwt.Photo.photoSpriteIndex].color = Colour.white;
-                }
+                // Slugbase can now just handle this itself, wow amazing what a cool feature
+                sLeaser.sprites[cwt.Photo.photoSpriteIndex].color = SlugBase.DataTypes.PlayerColor.GetCustomColor(self, 2);
             }
 
             //apply whisker palette correctly

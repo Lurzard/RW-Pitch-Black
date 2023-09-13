@@ -2,229 +2,227 @@
 using UnityEngine;
 using RWCustom;
 
-namespace PitchBlack
+namespace PitchBlack;
+public class BeaconCWT
 {
-    public class BeaconCWT
+    public ScugCWT scugCWTData; //for if you need to get any variables from ScugCWT while accessing BeaconCWT
+    public FlareStore storage;
+    public BeaconCWT(ScugCWT cwtData)
     {
-        public ScugCWT scugCWTData; //for if you need to get any variables from ScugCWT while accessing BeaconCWT
-        public FlareStore storage;
-        public BeaconCWT(ScugCWT cwtData)
+        scugCWTData = cwtData;
+        cwtData.playerRef.TryGetTarget(out Player player);
+        storage = new FlareStore(player);
+    }
+
+    public class AbstractStoredFlare : AbstractPhysicalObject.AbstractObjectStick
+    {
+        public AbstractPhysicalObject Player
         {
-            scugCWTData = cwtData;
-            cwtData.playerRef.TryGetTarget(out Player player);
-            storage = new FlareStore(player);
+            get
+            {
+                return A;
+            }
+            set
+            {
+                A = value;
+            }
         }
 
-        public class AbstractStoredFlare : AbstractPhysicalObject.AbstractObjectStick
+        public AbstractPhysicalObject FlareBomb
         {
-            public AbstractPhysicalObject Player
+            get
             {
-                get
-                {
-                    return A;
-                }
-                set
-                {
-                    A = value;
-                }
+                return B;
             }
-
-            public AbstractPhysicalObject FlareBomb
+            set
             {
-                get
-                {
-                    return B;
-                }
-                set
-                {
-                    B = value;
-                }
+                B = value;
             }
-
-            public AbstractStoredFlare(AbstractPhysicalObject player, AbstractPhysicalObject bomb) : base(player, bomb) { }
         }
 
-        public class FlareStore
+        public AbstractStoredFlare(AbstractPhysicalObject player, AbstractPhysicalObject bomb) : base(player, bomb) { }
+    }
+
+    public class FlareStore
+    {
+        public Player ownr;
+        public Stack<FlareBomb> storedFlares;
+        public bool increment;
+        public int counter;
+
+        // Change this to increase the number of flares stored
+        public int capacity = 4;
+        public bool interactionLocked;
+        public Stack<AbstractStoredFlare> abstractFlare;
+
+        public FlareStore(Player owner)
         {
-            public Player ownr;
-            public Stack<FlareBomb> storedFlares;
-            public bool increment;
-            public int counter;
-
-            // Change this to increase the number of flares stored
-            public int capacity = 4;
-            public bool interactionLocked;
-            public Stack<AbstractStoredFlare> abstractFlare;
-
-            public FlareStore(Player owner)
+            if (storedFlares == null)
             {
-                if (storedFlares == null)
-                {
-                    storedFlares = new Stack<FlareBomb>(capacity);
-                    abstractFlare = new Stack<AbstractStoredFlare>(capacity);
-                }
-                ownr = owner;
-                Debug.Log("Flare storage initiated!");
+                storedFlares = new Stack<FlareBomb>(capacity);
+                abstractFlare = new Stack<AbstractStoredFlare>(capacity);
             }
+            ownr = owner;
+            // Debug.log("Flare storage initiated!");
+        }
 
-            public void Update(bool eu)
+        public void Update(bool eu)
+        {
+            if (increment)
             {
-                if (increment)
+                counter++;
+                if (counter > 20 && storedFlares.Count < capacity)
                 {
-                    counter++;
-                    if (counter > 20 && storedFlares.Count < capacity)
+                    if (storedFlares.Count == 0)
                     {
-                        if (storedFlares.Count == 0)
+                        // Move flare from any hand to store if store is empty
+                        for (int i = 0; i < 2; i++)
                         {
-                            // Move flare from any hand to store if store is empty
-                            for (int i = 0; i < 2; i++)
+                            if (ownr.grasps[i] != null && ownr.grasps[i].grabbed is FlareBomb f)
                             {
-                                if (ownr.grasps[i] != null && ownr.grasps[i].grabbed is FlareBomb f)
-                                {
-                                    FlarebombtoStorage(f);
-                                    counter = 0;
-                                    break;
-                                }
+                                FlarebombtoStorage(f);
+                                counter = 0;
+                                break;
                             }
                         }
-                        else if (ownr.grasps[0]?.grabbed is FlareBomb f)
-                        {
-                            // Move flare from main paw to store
-                            FlarebombtoStorage(f);
-                            counter = 0;
-                        }
                     }
-                    if (counter > 20 && storedFlares.Count > 0)
+                    else if (ownr.grasps[0]?.grabbed is FlareBomb f)
                     {
-                        // Move flare from store to paw
-                        FlarebombFromStorageToPaw(eu);
+                        // Move flare from main paw to store
+                        FlarebombtoStorage(f);
                         counter = 0;
                     }
-
                 }
-                else
+                if (counter > 20 && storedFlares.Count > 0)
                 {
+                    // Move flare from store to paw
+                    FlarebombFromStorageToPaw(eu);
                     counter = 0;
                 }
-                if (!ownr.input[0].pckp)
-                {
-                    interactionLocked = false;
-                }
-                increment = false;
+
             }
-
-            public void GraphicsModuleUpdated(bool eu)
+            else
             {
-                // Skip drawing if storage is empty
-                if (storedFlares.Count <= 0)
-                    return;
-
-                PlayerGraphics pG = ownr.graphicsModule as PlayerGraphics;
-
-                if (pG == null) return;
-
-
-                for (int i = 0; i < storedFlares.Count; i++)
-                {
-                    // These may be able to be replaced with math involving bodyChunks of the player, which while may be more intuitive to understand, could come with positioning issues.
-                    Vector2 drawPointLeft = pG.drawPositions[0, 0];
-                    Vector2 drawPointRight = pG.drawPositions[1, 0];
-                    // n is the angle created by going from the left draw point to the right draw point, based on a horizontal line as 0 degrees
-                    float n = Custom.VecToDeg((drawPointLeft - drawPointRight).normalized);
-                    // These vectors are the limits on the linear position displacement of flarebombs in between them
-                    Vector2 flarePositionStart = new(-30f, -8f);
-                    Vector2 flarePositionEnd = new(30f, -8f);
-                    if (i >= capacity/2) {
-                        flarePositionStart = new Vector2(-8f, -8f);
-                        flarePositionEnd = new Vector2(8f, -8f);
-                    }
-                    if (ownr.bodyMode == Player.BodyModeIndex.Crawl) {
-                        flarePositionStart.y += 3.25f;
-                        flarePositionEnd.y += 3.25f;
-                    }
-
-                    // The same as the vectors previously defined, but rotated around with the player's rotation.
-                    Vector2 vector = drawPointLeft + Custom.RotateAroundOrigo(flarePositionStart, n);
-                    Vector2 vector1 = drawPointLeft + Custom.RotateAroundOrigo(flarePositionEnd, n);
-
-                    // num is a fraction, that essentially determines at what point the flare is in between the flare position caps.
-                    float fractionOfDistance = (i + 1f) / (Mathf.Min(storedFlares.Count, capacity/2) + 1f);
-                    if (i >= capacity/2) {
-                        fractionOfDistance = (i - capacity/2 + 1f) / (storedFlares.Count - capacity/2 + 1f);
-                    }
-                    Vector2 calculatedDestination = vector + (vector1 - vector) * fractionOfDistance;
-                    
-                    storedFlares.ToArray()[i].firstChunk.MoveFromOutsideMyUpdate(eu, calculatedDestination);
-                    storedFlares.ToArray()[i].firstChunk.vel = Vector2.zero;
-                    storedFlares.ToArray()[i].rotationSpeed = 0f;
-                }
+                counter = 0;
             }
-
-            public int FlarebombFromStorageToPaw(bool eu)
+            if (!ownr.input[0].pckp)
             {
-                //spinch: the int return is to find which grasp index the flarebomb is now in
+                interactionLocked = false;
+            }
+            increment = false;
+        }
 
-                // See if it's possible to add weapon
-                for (int i = 0; i < 2; i++)
-                {
-                    if (ownr.grasps[i] != null && ownr.Grabability(ownr.grasps[i].grabbed) >= Player.ObjectGrabability.TwoHands)
-                    {
-                        return -1;
-                    }
+        public void GraphicsModuleUpdated(bool eu)
+        {
+            // Skip drawing if storage is empty
+            if (storedFlares.Count <= 0)
+                return;
+
+            PlayerGraphics pG = ownr.graphicsModule as PlayerGraphics;
+
+            if (pG == null) return;
+
+
+            for (int i = 0; i < storedFlares.Count; i++)
+            {
+                // These may be able to be replaced with math involving bodyChunks of the player, which while may be more intuitive to understand, could come with positioning issues.
+                Vector2 drawPointLeft = pG.drawPositions[0, 0];
+                Vector2 drawPointRight = pG.drawPositions[1, 0];
+                // n is the angle created by going from the left draw point to the right draw point, based on a horizontal line as 0 degrees
+                float n = Custom.VecToDeg((drawPointLeft - drawPointRight).normalized);
+                // These vectors are the limits on the linear position displacement of flarebombs in between them
+                Vector2 flarePositionStart = new(-30f, -8f);
+                Vector2 flarePositionEnd = new(30f, -8f);
+                if (i >= capacity/2) {
+                    flarePositionStart = new Vector2(-8f, -8f);
+                    flarePositionEnd = new Vector2(8f, -8f);
+                }
+                if (ownr.bodyMode == Player.BodyModeIndex.Crawl) {
+                    flarePositionStart.y += 3.25f;
+                    flarePositionEnd.y += 3.25f;
                 }
 
-                int toPaw = ownr.FreeHand();
-                // If empty hand has been detected
-                if (toPaw != -1)
-                {
-                    FlareBomb fb = storedFlares.Pop();
-                    AbstractStoredFlare af = abstractFlare.Pop();
-                    if (ownr.graphicsModule != null)
-                    {
-                        fb.firstChunk.MoveFromOutsideMyUpdate(eu, (ownr.graphicsModule as PlayerGraphics).hands[toPaw].pos);
-                    }
-                    
-                    af?.Deactivate();
+                // The same as the vectors previously defined, but rotated around with the player's rotation.
+                Vector2 vector = drawPointLeft + Custom.RotateAroundOrigo(flarePositionStart, n);
+                Vector2 vector1 = drawPointLeft + Custom.RotateAroundOrigo(flarePositionEnd, n);
 
-                    fb.CollideWithObjects = true;
-                    fb.collisionRange = 50f;
-                    ownr.SlugcatGrab(fb, toPaw);
-                    interactionLocked = true;
-                    ownr.noPickUpOnRelease = 20;
-                    ownr.room.PlaySound(SoundID.Slugcat_Pick_Up_Flare_Bomb, ownr.mainBodyChunk);
-                    Debug.Log("Successfully applied flare to paw! Storage index is now: " + storedFlares.Count);
-
-                    return toPaw;
+                // num is a fraction, that essentially determines at what point the flare is in between the flare position caps.
+                float fractionOfDistance = (i + 1f) / (Mathf.Min(storedFlares.Count, capacity/2) + 1f);
+                if (i >= capacity/2) {
+                    fractionOfDistance = (i - capacity/2 + 1f) / (storedFlares.Count - capacity/2 + 1f);
                 }
-                else
+                Vector2 calculatedDestination = vector + (vector1 - vector) * fractionOfDistance;
+                
+                storedFlares.ToArray()[i].firstChunk.MoveFromOutsideMyUpdate(eu, calculatedDestination);
+                storedFlares.ToArray()[i].firstChunk.vel = Vector2.zero;
+                storedFlares.ToArray()[i].rotationSpeed = 0f;
+            }
+        }
+
+        public int FlarebombFromStorageToPaw(bool eu)
+        {
+            //spinch: the int return is to find which grasp index the flarebomb is now in
+
+            // See if it's possible to add weapon
+            for (int i = 0; i < 2; i++)
+            {
+                if (ownr.grasps[i] != null && ownr.Grabability(ownr.grasps[i].grabbed) >= Player.ObjectGrabability.TwoHands)
                 {
-                    Debug.Log("Couldn't add flare to paw! Index is now: " + storedFlares.Count);
                     return -1;
                 }
-
             }
 
-            public void FlarebombtoStorage(FlareBomb f)
+            int toPaw = ownr.FreeHand();
+            // If empty hand has been detected
+            if (toPaw != -1)
             {
-                // Take off the flare from hand
-                for (int i = 0; i < 2; i++)
+                FlareBomb fb = storedFlares.Pop();
+                AbstractStoredFlare af = abstractFlare.Pop();
+                if (ownr.graphicsModule != null)
                 {
-                    if (ownr.grasps[i] != null && ownr.grasps[i].grabbed == f)
-                    {
-                        ownr.ReleaseGrasp(i);
-                        break;
-                    }
+                    fb.firstChunk.MoveFromOutsideMyUpdate(eu, (ownr.graphicsModule as PlayerGraphics).hands[toPaw].pos);
                 }
-                f.ChangeMode(Weapon.Mode.OnBack);
-                f.CollideWithObjects = false;
-                f.collisionRange = 0f;
-                storedFlares.Push(f);
+                
+                af?.Deactivate();
+
+                fb.CollideWithObjects = true;
+                fb.collisionRange = 50f;
+                ownr.SlugcatGrab(fb, toPaw);
                 interactionLocked = true;
                 ownr.noPickUpOnRelease = 20;
-                ownr.room.PlaySound(SoundID.Slugcat_Stash_Spear_On_Back, ownr.mainBodyChunk);
-                abstractFlare.Push(new AbstractStoredFlare(ownr.abstractPhysicalObject, f.abstractPhysicalObject));
-                Debug.Log("Applied flare into storage! Storage index is now: " + storedFlares.Count);
+                ownr.room.PlaySound(SoundID.Slugcat_Pick_Up_Flare_Bomb, ownr.mainBodyChunk);
+                // Debug.log("Successfully applied flare to paw! Storage index is now: " + storedFlares.Count);
+
+                return toPaw;
             }
+            else
+            {
+                Debug.Log("Pitch Black: Couldn't add flare to paw! Index is now: " + storedFlares.Count);
+                return -1;
+            }
+
+        }
+
+        public void FlarebombtoStorage(FlareBomb f)
+        {
+            // Take off the flare from hand
+            for (int i = 0; i < 2; i++)
+            {
+                if (ownr.grasps[i] != null && ownr.grasps[i].grabbed == f)
+                {
+                    ownr.ReleaseGrasp(i);
+                    break;
+                }
+            }
+            f.ChangeMode(Weapon.Mode.OnBack);
+            f.CollideWithObjects = false;
+            f.collisionRange = 0f;
+            storedFlares.Push(f);
+            interactionLocked = true;
+            ownr.noPickUpOnRelease = 20;
+            ownr.room.PlaySound(SoundID.Slugcat_Stash_Spear_On_Back, ownr.mainBodyChunk);
+            abstractFlare.Push(new AbstractStoredFlare(ownr.abstractPhysicalObject, f.abstractPhysicalObject));
+            // Debug.log("Applied flare into storage! Storage index is now: " + storedFlares.Count);
         }
     }
 }

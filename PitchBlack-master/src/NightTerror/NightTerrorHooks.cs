@@ -13,11 +13,11 @@ public class NightTerrorData
 
 public class NightTerrorAbstractData
 {
-    public WeakReference<AbstractCreature> ntRef;
+    public WeakReference<AbstractCreature> abstrNightterrorRef;
 
     public NightTerrorAbstractData(AbstractCreature centi)
     {
-        ntRef = new(centi);
+        abstrNightterrorRef = new(centi);
         MaxHP = (centi.state as HealthState).health;
     }
 
@@ -41,7 +41,7 @@ public class NightTerrorAbstractData
 
     public void TryRevive()
     {
-        if (!ntRef.TryGetTarget(out var centi)) return;
+        if (!abstrNightterrorRef.TryGetTarget(out var centi)) return;
 
         if (centi.state.alive || centi.realizedCreature != null && !centi.realizedCreature.dead) return;
 
@@ -55,7 +55,7 @@ public class NightTerrorAbstractData
     public void Revive()
     {
         //yoinked from BigSpider.Revive
-        if (!ntRef.TryGetTarget(out var centi)) return;
+        if (!abstrNightterrorRef.TryGetTarget(out var centi)) return;
 
         timeUntilRevive = 0;
         _justRevived = true;
@@ -83,7 +83,7 @@ public class NightTerrorAbstractData
     }
     public void SetRealizedCreatureDataOnRevive()
     {
-        if (!ntRef.TryGetTarget(out var centi)) return;
+        if (!abstrNightterrorRef.TryGetTarget(out var centi)) return;
 
         if (centi.realizedCreature != null && /*timeUntilRevive == 0 &&*/ _justRevived)
         {
@@ -101,6 +101,7 @@ public class ChillTheFUCKOut
     public int timesZapped = 0;
 }
 
+// Moon - This makes this file cursed why is it like this, remind me to never touch it again
 namespace PitchBlack
 {
     public static class NightTerrorHooks
