@@ -1,4 +1,6 @@
-﻿namespace PitchBlack;
+﻿using Debug = UnityEngine.Debug;
+
+namespace PitchBlack;
 
 public class ScugHooks
 {
@@ -20,8 +22,25 @@ public class ScugHooks
                 self.playerState.isPup = true;
             }
 
-            if (!Plugin.scugCWT.TryGetValue(self, out _))
+            if (!Plugin.scugCWT.TryGetValue(self, out _)) {
                 Plugin.scugCWT.Add(self, new ScugCWT(self));
+            }
+            
+            if (self.slugcatStats.name == Plugin.BeaconName && self.room.abstractRoom.shelter && Plugin.scugCWT.TryGetValue(self, out var cwt)) {
+                foreach (var thingQuar in self.room.physicalObjects) {
+                    foreach (var item in thingQuar) {
+                        if (item is FlareBomb flashbang && cwt.Beacon.storage.storedFlares.Count < cwt.Beacon.storage.capacity) {
+                            foreach (var player in self.room.PlayersInRoom) {
+                                if (player != null && Plugin.scugCWT.TryGetValue(player, out var otherPlayer) && otherPlayer.IsBeacon && otherPlayer.Beacon.storage.storedFlares.Contains(flashbang)) {
+                                    goto SkipAddingFlare;
+                                }
+                            }
+                            cwt.Beacon.storage.FlarebombtoStorage(flashbang);
+                            SkipAddingFlare:;
+                        }
+                    }
+                }
+            }
         }
     }
     public static Player.ObjectGrabability BeaconDontWantToTouchCollar(On.Player.orig_Grabability orig, Player self, PhysicalObject obj)
