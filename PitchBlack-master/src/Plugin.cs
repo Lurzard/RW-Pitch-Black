@@ -56,6 +56,7 @@ class Plugin : BaseUnityPlugin
         JollyMenuHooks.Apply();
 
         DevCommOverride.Apply();
+        OhNoMoonAndPebblesAreDeadGuys.Apply();
 
         //NightDay.Apply(); //unfinished
 
