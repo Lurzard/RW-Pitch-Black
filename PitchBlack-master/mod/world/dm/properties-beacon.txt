@@ -15,7 +15,7 @@ Subregion: Stygian Bowels
 Subregion: Braces
 Subregion: Looks to the Moon
 Subregion: The Peak
-Subregion: Muted CHambers
+Subregion: Muted Chambers
 Subregion: Ducts
 Room Setting Templates: Itterator, Wall, Conflux, Underhang, Leg
 Room_Attr: GATE_SL_DM: MirosVulture-Forbidden,

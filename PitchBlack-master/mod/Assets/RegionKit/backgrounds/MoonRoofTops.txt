@@ -5,8 +5,8 @@ OffsetY: 0
 ---------------
 floorLevel: 26
 daySky: NightRf_Sky
-duskSky: Dayrf_dusksky
-nightSky: DayRf_Sky
+duskSky: NightRf_Sky
+nightSky: NightRf_Sky
 
 Floor: Nightfloor, 0, 0, 1, 12
 DistantBuilding: NightRf_HoleFix, -2676, -17, 1, 0

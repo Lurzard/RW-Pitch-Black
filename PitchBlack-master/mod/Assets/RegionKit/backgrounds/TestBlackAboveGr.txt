@@ -2,8 +2,8 @@ Parent: AtC_GeneralDefault
 PROTECTED
 ---------------
 daySky: NightAtC_Sky
-duskSky: DayAtC_duskSky
-nightSky: DayAtC_Sky
+duskSky: NightAtC_Sky
+nightSky: NightAtC_Sky
 
 DistantBuilding: AtC_Structure1, -520, -85, 160, -20
 DistantLightning: AtC_Light1, -520, -119, 160, 55
