@@ -1,0 +1,182 @@
+GATE_HI_CC: 86.31167><635.5886><610.4418><1194.096><1><><48><35
+GATE_HI_GW: 538.9068><-141.1494><889.0847><-275.3324><0><><48><35
+GATE_SU_HI: -1289.484><-254.5884><-670.7444><433.0335><1><><48><35
+GATE_HI_SH: 1749.516><-128.5885><1952.256><546.0333><1><><48><35
+HI_C13: 1453.002><-145.816><1624.462><534.2974><1><Industrial Complex><152><35
+HI_S06: 1458.742><-206.096><1732.462><401.6974><1><><48><35
+HI_B04: -1120.141><-209.0024><-530.4352><419.3307><1><Industrial Complex><54><78
+HI_S03: -1151.723><-370.3203><-546.538><298.6035><1><><48><35
+HI_B12: -1111.141><49.99743><-518.4352><659.3306><1><Industrial Complex><48><78
+HI_B13: -1026.141><291.9977><-451.4351><878.3306><1><Industrial Complex><66><78
+HI_A15: -959.1408><109.9976><-381.4351><729.3306><1><Industrial Complex><48><35
+HI_A20: -844.1408><110.9976><-228.4353><761.3306><1><Industrial Complex><48><35
+HI_S01: -834.4834><194.4117><-220.7446><876.0336><1><><48><35
+HI_A14: -961.1408><-41.00266><-382.4351><610.3303><1><Industrial Complex><48><35
+HI_A07: -959.1408><-151.0027><-392.4351><497.3305><1><Industrial Complex><54><35
+HI_C02: -792.1408><-160.0026><-229.4353><424.3307><1><Industrial Complex><54><121
+HI_B02: -634.1414><383.9977><-81.4352><1063.331><0><Industrial Complex><54><78
+HI_A22: -647.1414><357.9977><-76.43507><322.3305><2><Industrial Complex><48><35
+HI_C14: -591.903><100.1827><-79.21007><17.01855><2><Industrial Complex><49><121
+HI_C01: -635.1414><203.9977><-69.4352><786.3306><1><Industrial Complex><54><121
+HI_B03: -382.1414><197.9977><90.56493><844.3306><1><Industrial Complex><110><35
+HI_B08: -558.1414><-32.00259><-70.4352><617.3303><1><Industrial Complex><100><35
+HI_C04: -299.1412><-170.0027><188.5648><429.3307><1><Industrial Complex><62><121
+HI_A25: -467.1416><-269.0024><29.56471><454.3307><1><Industrial Complex><54><35
+HI_A21: -182.1412><-256.0024><387.5648><181.3309><1><><48><35
+HI_S02: -185.8279><-312.1089><392.9067><54.32876><1><><48><35
+HI_B06: -62.14142><-31.00266><342.5648><618.3303><1><Industrial Complex><100><37
+HI_A10: 36.85858><204.9977><449.5649><815.3306><1><Industrial Complex><48><35
+HI_S05: 136.2874><189.7554><600.3997><729.6035><1><><48><35
+HI_C11: 138.8586><389.9977><594.5649><842.3306><1><Industrial Complex><54><120
+HI_B09: 274.8593><180.9976><752.5648><767.3306><1><Industrial Complex><54><78
+HI_B07: 513.8592><127.9976><912.5648><788.3306><1><Industrial Complex><106><35
+HI_B14: 567.8584><-94.00263><1031.565><528.3303><1><Industrial Complex><54><78
+HI_D01: 956.8572><-142.0027><1186.566><535.3303><1><Industrial Complex><208><35
+HI_C03: 364.8592><-163.0027><751.5648><446.3308><1><Industrial Complex><54><121
+HI_A11: 186.8589><-38.00263><598.5648><611.3303><1><Industrial Complex><48><35
+HI_B15: 71.85897><-408.0023><702.5646><-71.66942><2><Industrial Complex><104><35
+HI_A04: -159.1414><-299.266><545.8016><-3.959203><2><Industrial Complex><54><35
+HI_A26: -287.1411><-400.0023><281.565><-115.6694><2><Industrial Complex><48><35
+HI_B05: -468.1411><-206.0027><109.5649><-10.66944><2><Industrial Complex><54><78
+HI_A16: -485.1415><-374.0023><-1.435009><-455.6693><0><Scavenger Camp><54><35
+HI_A17: -651.1414><-373.0023><-159.4352><-455.6693><0><Scavenger Camp><54><35
+HI_A27: -329.823><-372.9174><130.35><-456.3414><0><Scavenger Camp><48><35
+HI_A23: -825.1408><-372.0023><-314.4351><-451.6693><0><Scavenger Camp><54><35
+HI_A18: -618.1414><-156.0025><-157.4352><-307.6693><0><Industrial Complex><54><37
+HI_C05: -289.1413><-160.0025><1.565021><-293.6693><0><Industrial Complex><162><36
+HI_A06: 39.85858><-155.0025><371.5645><-312.6693><0><Industrial Complex><54><35
+HI_A24: 208.8592><-155.0025><541.5648><-301.6693><0><Industrial Complex><54><35
+HI_S04: 211.7874><-266.6823><546.4622><-421.3965><0><><48><35
+HI_A19: 376.8587><-158.0025><720.5648><-309.6693><0><Industrial Complex><54><38
+GATE_HI_VS: -820><-368.8708><-399.9138><-320.7516><2><><48><35
+HI_C15: -752.4535><-29.94013><-397.8649><-53.51602><2><><48><112
+HI_A28: -860.4154><-255.2669><-470.4611><-190.9969><2><><48><35
+HI_undera16: 872.6852><226.5551><-3.543347><-576.5109><1><Scavenger Camp><48><35
+HI_under06: 982.6852><226.5551><659.4567><-724.5109><1><><48><35
+HI_Bexvent: -117.3148><176.5551><445.4567><-727.5109><1><Scavenger Camp><100><35
+HI_Abaseexppool: -7.314827><176.5551><500.4567><-865.5109><1><Scavenger Camp><48><35
+HI_exbasekarma: 102.6852><176.5551><608.4567><-850.5109><1><Scavenger Camp><48><35
+HI_exbasecorri1: 212.6852><176.5551><401.4566><-601.5109><1><Scavenger Camp><48><35
+HI_basebetween: 322.6852><176.5551><-868.5433><-418.5108><1><Scavenger Camp><48><35
+HI_baseexhub: 432.6852><176.5551><-980.5433><-420.5108><1><Scavenger Camp><48><38
+HI_exscavvent: 542.6852><176.5551><-1052.543><-213.4442><1><Scavenger Camp><48><38
+HI_exbaseextrerior: 652.6852><176.5551><-1179.543><-54.51084><1><Scavenger Camp><100><35
+HI_exunderextrerior: 762.6852><176.5551><-1208.543><-179.5108><1><Scavenger Camp><48><35
+HI_exsmallpool: 872.6852><176.5551><-1208.077><-302.7775><1><Scavenger Camp><48><35
+HI_pipedebasex: 982.6852><176.5551><164.4566><-725.5109><1><Scavenger Camp><48><35
+HI_excellarhub: -117.3148><126.5552><169.4566><-865.5109><1><Scavenger Camp><48><35
+HI_baseexshelter01: -7.314827><126.5552><208.4566><-984.5109><1><><48><35
+HI_largebaseexdrain: 102.6852><126.5552><281.9902><-848.5109><1><Scavenger Camp><100><35
+HI_baseextowerbase: 212.6852><126.5552><-1319.543><-177.5108><1><Scavenger Camp><48><35
+HI_exbaseTowerinside: 322.6852><126.5552><-1303.077><-44.44416><1><Scavenger Camp><48><121
+HI_exbaseoutsidetower: 432.6852><126.5552><-1420.01><94.08912><1><Scavenger Camp><48><164
+HI_exbasehighertower: 542.6852><126.5552><-1305.409><208.9559><1><Scavenger Camp><48><123
+HI_exmcconnecttop: 652.6852><126.5552><-1309.543><500.4892><1><Scavenger Camp><54><80
+HI_exbaseventcircle: 762.6852><126.5552><-931.5433><-210.5108><1><Scavenger Camp><48><35
+HI_baseexsidetop: 872.6852><126.5552><-949.4129><-77.31083><1><Scavenger Camp><48><35
+HI_baseexdetgift: 982.6852><126.5552><68.45665><-1005.511><1><Scavenger Camp><62><38
+HI_Sbaseexshelt2: -117.3148><76.55513><-155.5434><-988.5109><1><><48><35
+HI_exvulturehole: -7.314827><76.55513><-43.54338><-988.5109><1><Scavenger Camp><48><35
+HI_Industrilacomp: 102.6852><76.55513><-32.54341><-704.5109><1><Scavenger Camp><48><35
+HI_exbasethinpipe: 212.6852><76.55513><-164.5434><-705.5109><1><Scavenger Camp><54><35
+HI_rightofunderdetgift: 322.6852><76.55513><-166.5434><-820.9775><1><Scavenger Camp><52><35
+HI_exunderdet: 432.6852><76.55513><142.4566><-1117.511><1><Scavenger Camp><48><37
+HI_exbasepoolcross: 542.6852><76.55513><-289.0098><-830.5109><1><Scavenger Camp><54><35
+HI_exbaselastroom: 652.6852><76.55513><-408.0098><-840.5109><1><Scavenger Camp><48><35
+OffScreenDen_HI: -649.1414><-306.0023><409.5648><1160.331><1><Industrial Complex><0><0
+Connection: GATE_HI_CC,HI_C11,36,5,22,117,3,1
+Connection: GATE_HI_GW,HI_A19,11,5,50,10,3,0
+Connection: GATE_SU_HI,HI_B04,45,9,5,16,0,2
+Connection: GATE_HI_SH,HI_C13,2,11,147,17,2,0
+Connection: HI_C13,HI_D01,3,19,190,18,2,0
+Connection: HI_C13,HI_S06,81,14,27,25,3,1
+Connection: HI_B04,HI_B12,32,74,26,5,0,0
+Connection: HI_B04,HI_A07,49,44,3,3,0,2
+Connection: HI_B04,HI_S03,8,5,16,23,2,2
+Connection: HI_B12,HI_B13,34,75,21,42,1,3
+Connection: HI_B13,HI_A15,44,42,16,30,3,1
+Connection: HI_A15,HI_A20,43,18,13,18,0,2
+Connection: HI_A15,HI_A14,16,4,16,31,3,1
+Connection: HI_A20,HI_S01,28,29,24,12,1,3
+Connection: HI_A14,HI_C02,43,19,3,102,0,2
+Connection: HI_A14,HI_A07,16,1,19,31,3,1
+Connection: HI_A07,HI_C02,50,3,3,49,0,2
+Connection: HI_C02,HI_B08,43,102,10,17,3,3
+Connection: HI_C02,HI_A23,4,11,15,30,2,1
+Connection: HI_B02,HI_C01,11,50,15,88,2,2
+Connection: HI_B02,HI_A22,32,19,31,10,2,0
+Connection: HI_A22,HI_C14,17,13,18,117,3,1
+Connection: HI_C14,HI_C15,2,34,45,76,2,0
+Connection: HI_C14,HI_B05,15,9,17,55,3,1
+Connection: HI_C01,HI_B03,49,67,5,23,0,2
+Connection: HI_C01,HI_B08,36,4,33,31,3,1
+Connection: HI_B03,HI_C04,99,9,52,118,3,1
+Connection: HI_B08,HI_C04,97,19,6,106,0,2
+Connection: HI_C04,HI_B06,55,106,4,19,0,2
+Connection: HI_C04,HI_A21,52,40,20,27,1,1
+Connection: HI_C04,HI_A25,10,25,48,16,2,0
+Connection: HI_A25,HI_A16,15,16,15,27,3,1
+Connection: HI_A21,HI_S02,22,10,23,19,3,1
+Connection: HI_B06,HI_A10,66,34,10,7,1,3
+Connection: HI_B06,HI_A11,97,19,3,20,0,2
+Connection: HI_A10,HI_C11,42,26,11,17,1,3
+Connection: HI_A10,HI_S05,42,5,18,10,3,3
+Connection: HI_C11,HI_B09,48,20,8,68,0,2
+Connection: HI_B09,HI_B07,49,33,4,29,0,2
+Connection: HI_B07,HI_B14,79,10,35,68,3,1
+Connection: HI_B14,HI_C03,4,62,49,107,2,0
+Connection: HI_B14,HI_D01,48,22,5,16,0,2
+Connection: HI_C03,HI_A11,3,105,43,20,2,0
+Connection: HI_C03,HI_B15,33,12,85,31,3,1
+Connection: HI_B15,HI_A04,7,30,33,17,1,3
+Connection: HI_A04,HI_A26,5,3,45,30,3,1
+Connection: HI_A26,HI_B05,5,30,42,9,1,0
+Connection: HI_B05,HI_A16,16,5,20,27,3,1
+Connection: HI_A16,HI_A17,3,16,50,17,2,0
+Connection: HI_A16,HI_A27,51,13,4,12,0,2
+Connection: HI_A16,HI_undera16,23,9,23,26,3,1
+Connection: HI_A17,HI_A18,11,30,10,3,1,3
+Connection: HI_A17,HI_A23,4,23,49,23,2,0
+Connection: HI_A18,HI_C05,49,22,10,23,0,2
+Connection: HI_C05,HI_A06,153,25,3,22,0,2
+Connection: HI_A06,HI_A24,50,29,5,29,0,2
+Connection: HI_A06,HI_under06,11,2,21,18,3,1
+Connection: HI_A24,HI_A19,48,29,4,32,0,2
+Connection: HI_A24,HI_S04,25,26,21,17,3,0
+Connection: GATE_HI_VS,HI_A28,11,19,15,4,1,3
+Connection: HI_C15,HI_A28,9,16,45,31,3,1
+Connection: HI_undera16,HI_Industrilacomp,28,6,37,27,3,1
+Connection: HI_under06,HI_Bexvent,5,12,94,15,2,0
+Connection: HI_Bexvent,HI_exbasecorri1,8,22,33,4,1,3
+Connection: HI_Bexvent,HI_Abaseexppool,59,7,31,27,3,1
+Connection: HI_Abaseexppool,HI_largebaseexdrain,5,12,94,13,2,0
+Connection: HI_Abaseexppool,HI_exbasekarma,41,12,6,10,0,2
+Connection: HI_exbasecorri1,HI_basebetween,7,10,36,7,2,0
+Connection: HI_basebetween,HI_baseexhub,5,9,41,11,2,0
+Connection: HI_baseexhub,HI_exscavvent,15,30,15,7,1,3
+Connection: HI_baseexhub,HI_exbaseventcircle,21,30,26,6,1,3
+Connection: HI_baseexhub,HI_exbaseextrerior,6,9,90,23,2,0
+Connection: HI_baseexhub,HI_pipedebasex,21,5,22,30,3,1
+Connection: HI_exbaseextrerior,HI_exunderextrerior,21,5,31,23,3,1
+Connection: HI_exunderextrerior,HI_baseextowerbase,8,10,43,10,2,0
+Connection: HI_exunderextrerior,HI_exsmallpool,21,4,33,30,3,1
+Connection: HI_exsmallpool,HI_exbasepoolcross,4,6,16,30,2,1
+Connection: HI_pipedebasex,HI_excellarhub,26,6,25,24,3,1
+Connection: HI_excellarhub,HI_exbaselastroom,4,14,41,11,2,0
+Connection: HI_excellarhub,HI_largebaseexdrain,42,14,6,13,0,2
+Connection: HI_excellarhub,HI_baseexshelter01,23,11,23,22,3,1
+Connection: HI_baseextowerbase,HI_exbaseTowerinside,13,29,11,11,1,3
+Connection: HI_baseextowerbase,HI_baseexdetgift,17,4,18,32,3,1
+Connection: HI_exbaseTowerinside,HI_exbasehighertower,34,112,37,13,1,3
+Connection: HI_exbaseTowerinside,HI_exbaseoutsidetower,7,106,38,23,2,0
+Connection: HI_exbaseoutsidetower,HI_exmcconnecttop,37,150,14,55,0,2
+Connection: HI_exbaseoutsidetower,HI_exbasehighertower,41,113,9,104,0,2
+Connection: HI_exbaseventcircle,HI_baseexsidetop,20,30,11,9,1,3
+Connection: HI_baseexdetgift,HI_exvulturehole,9,9,42,9,2,0
+Connection: HI_baseexdetgift,HI_exunderdet,44,5,7,30,3,1
+Connection: HI_Sbaseexshelt2,HI_exvulturehole,34,9,5,9,0,2
+Connection: HI_Industrilacomp,HI_exbasethinpipe,5,8,47,9,2,0
+Connection: HI_exbasethinpipe,HI_rightofunderdetgift,16,6,19,28,3,1
+Connection: HI_rightofunderdetgift,HI_exunderdet,6,10,42,7,2,0
+Connection: HI_rightofunderdetgift,HI_exbasepoolcross,46,10,6,15,0,2
+Connection: HI_exbasepoolcross,HI_exbaselastroom,47,15,6,11,0,2
