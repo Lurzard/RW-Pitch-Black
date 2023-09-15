@@ -4,7 +4,7 @@ Clouds: 0.8695652
 Grime: 0.3586957
 Palette: 33
 Effects: FireFlies-0.2717391-312-153, 
-PlacedObjects: BrokenShelterWaterLevel><477.8003><204.261><, DayNightSettings><84.39957><387.6329><5~8.660254~21~4, LightSource><445.6252><228.5937><0.5108683~White~-5~22~50~86.60254~1~1~Fade~0.5108689~0, LightSource><430.8665><227.1626><0.5~White~5~128~326~85.60254~1~0~Fade~0.5108696~0, 
+PlacedObjects: BrokenShelterWaterLevel><477.8003><204.261><, LightSource><445.6252><228.5937><0.5108683~White~-5~22~50~86.60254~1~1~Fade~0.5108689~0, LightSource><430.8665><227.1626><0.5~White~5~128~326~85.60254~1~0~Fade~0.5108696~0, 
 AmbientSounds: SPOT><AM_IND-50hz.ogg><729.4293><343.1871><0.3043478><1><441.4293><226.1871><-35.35534><-35.35534><0><0.1, 
 FadePalette: 21, 0.2391304
 MorePalette0: 55, 0.1304348

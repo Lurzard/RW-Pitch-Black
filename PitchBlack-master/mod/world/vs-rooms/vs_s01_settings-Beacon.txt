@@ -1,6 +1,6 @@
 EffectColorB: 6
-Effects: DayNight-0.7391304-20-20, 
-PlacedObjects: BrokenShelterWaterLevel><712.3084><245.5574><, DayNightSettings><70.62512><373.594><5~8.660254~20~72, 
+Effects: 
+PlacedObjects: BrokenShelterWaterLevel><712.3084><245.5574><, 
 FadePalette: 33, 0.8043478
 MorePalette0: 367, 0.5045942
 MorePalette1: 10, 0.5045942

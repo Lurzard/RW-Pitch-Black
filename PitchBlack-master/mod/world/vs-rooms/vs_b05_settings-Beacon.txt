@@ -3,6 +3,6 @@ Clouds: 0.8260869
 Grime: 0
 EffectColorA: 10
 EffectColorB: 2
-Effects: Fog-0.09782609-20-20, FastFloodDrain-0.3043478-22-79, DayNight-0.5108696-23-133, 
-PlacedObjects: LillyPuck><1383.017><231.9493><0~0~2~3, LillyPuck><1693.151><230.6188><0~0~2~3, DayNightSettings><1215.086><477.5694><5~8.660254~10~34, 
+Effects: Fog-0.09782609-20-20, FastFloodDrain-0.3043478-22-79, 
+PlacedObjects: LillyPuck><1383.017><231.9493><0~0~2~3, LillyPuck><1693.151><230.6188><0~0~2~3, 
 FadePalette: 10, 0.9130435, 0.9347826

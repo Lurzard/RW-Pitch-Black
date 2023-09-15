@@ -13,7 +13,7 @@ Grime: 0
 BkgDroneVolume: 0
 Palette: 35
 EffectColorA: 10
-Effects: DayNight-0.6630435-20-20, 
-PlacedObjects: BrokenShelterWaterLevel><634.7582><470.8002><, DayNightSettings><203.5525><266.0314><5~8.660254~35~10, 
+Effects: 
+PlacedObjects: BrokenShelterWaterLevel><634.7582><470.8002><, 
 AmbientSounds: OMNI><AM_RAIN-Rumbles.ogg><811.4434><485.3082><0.2173913><1, 
 FadePalette: 10, 0.8804348

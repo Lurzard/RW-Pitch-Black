@@ -8,7 +8,7 @@ WaveAmplitude: 0.0004833334
 SecondWaveLength: 0.1666667
 SecondWaveAmplitude: 0
 Palette: 11
-PlacedObjects: DayNightSettings><224.1486><269.8838><5~8.660254~35~11, 
+PlacedObjects: 
 AmbientSounds: SPOT><AM_ENV-Outside.ogg><853.3689><607.5892><0.4782609><1><259.3689><713.5892><-104.3553><-152.3553><0><0.4695654, SPOT><SO_WAT-OpenFlow.ogg><848.665><385.681><0.3369565><1><287.665><438.681><-130.3553><-152.3553><0><0.2739132, SPOT><SO_WAT-RunningWater.ogg><853.6444><493.6116><0.4130435><1.215217><290.6444><166.6116><-95.35535><-61.35535><0><0.2739132, 
 FadePalette: 33, 1
 MorePalette0: 10, 0.6086956

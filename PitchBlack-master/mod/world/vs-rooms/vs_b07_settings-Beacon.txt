@@ -1,6 +1,6 @@
 RainIntensity: 0.7065217
 RumbleIntensity: 0.7065217
-Effects: DayNight-0.4565217-20-20, Darkness-0.3043478-30-30, 
-PlacedObjects: DayNightSettings><-48.39755><1198.875><5~8.660254~8~72, 
+Effects: Darkness-0.3043478-30-30, 
+PlacedObjects: 
 FadePalette: 33, 0.7065217, 0.7065217
 MorePalette0: 367, 0.6553922, 0.6553928

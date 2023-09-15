@@ -1,6 +1,6 @@
 Template: UW_SettingsTemplate_Underhang
 RainIntensity: 0.1086956
 RumbleIntensity: 0.1086956
-Effects: DayNight-0.1304348-23-84, FireFlies-0-27-128, BrokenZeroG-0.7075921-294.6625-105.7703, 
-PlacedObjects: DayNightSettings><134.6838><347.9387><5~8.660254~16~8, LightFixture><116.3582><339.1411><RedLight~17.32051~-10~32, LightFixture><784.3449><521.3763><RedLight~17.32051~-10~15, 
+Effects: FireFlies-0-27-128, BrokenZeroG-0.7075921-294.6625-105.7703, 
+PlacedObjects: LightFixture><116.3582><339.1411><RedLight~17.32051~-10~32, LightFixture><784.3449><521.3763><RedLight~17.32051~-10~15, 
 FadePalette: 33, 0.7173913

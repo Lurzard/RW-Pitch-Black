@@ -1,5 +1,5 @@
-Effects: DayNight-0.4673913-37-125, FireFlies-0.4456522-20-20, 
-PlacedObjects: BrokenShelterWaterLevel><308.8043><276.6531><, DayNightSettings><131.2233><399.3018><5~8.660254~14~14, 
+Effects: FireFlies-0.4456522-20-20, 
+PlacedObjects: BrokenShelterWaterLevel><308.8043><276.6531><, 
 AmbientSounds: OMNI><AM_ENV-LightWind.ogg><648.3644><643.6029><0.3695652><0.7847826, OMNI><AM_ENV-Outside.ogg><826.2629><646.0504><0.3369565><0.7652174, 
 FadePalette: 33, 0.8043482
 MorePalette0: 10, 0.9021739

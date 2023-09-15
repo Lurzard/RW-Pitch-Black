@@ -3,7 +3,7 @@ DangerType: Flood
 RainIntensity: 1
 Grime: 0.2173913
 Palette: 21
-Effects: DayNight-0.6086956-20-20, 
-PlacedObjects: DangleFruit><366.9978><465.3><0~0~2~3, DangleFruit><345.814><514.4264><0~0~2~3, DayNightSettings><100.0247><333.5515><5~8.660254~10~21, 
+Effects: 
+PlacedObjects: DangleFruit><366.9978><465.3><0~0~2~3, DangleFruit><345.814><514.4264><0~0~2~3, 
 AmbientSounds: OMNI><waterGurgleLOOP1.wav><725.6159><567.8984><0.3586957><1, 
 FadePalette: 10, 0.8804348

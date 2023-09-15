@@ -8,8 +8,8 @@ SecondWaveLength: 0.1666667
 SecondWaveAmplitude: 0
 Grime: 0.1521739
 Palette: 11
-Effects: SilenceWater-0.4021739-17-136, RockFlea-0.75-30-30, HeatWave-0.2391304-287-35, Fog-0.2608696-275-82, WaterDepth-0.09782609-305-132, DayNight-0.3478261-265-199, 
-PlacedObjects: DayNightSettings><39.05206><407.0287><5~8.660254~11~4, 
+Effects: SilenceWater-0.4021739-17-136, RockFlea-0.75-30-30, HeatWave-0.2391304-287-35, Fog-0.2608696-275-82, WaterDepth-0.09782609-305-132, 
+PlacedObjects: 
 AmbientSounds: OMNI><AM_ENV-LushNight.ogg><624.937><564.6898><0.3804348><1, 
 FadePalette: 10, 0.9565217, 0.9673913, 0.9673913
 MorePalette0: 33, 0.1086956, 0.1086956, 0.1086956

@@ -2,8 +2,8 @@ Template: SU_SettingsTemplate_Inside
 Grime: 0.09782609
 Palette: 10
 EffectColorA: 9
-Effects: DayNight-0.7608696-76-96, FireFlies-0.1847826-315-33, 
-PlacedObjects: DayNightSettings><219.6141><263.1643><-124~78.66025~0~4, LightSource><539.1487><351.0775><0.4021739~Environment~0~100~50~86.60254~1~0~None~0~0, 
+Effects: FireFlies-0.1847826-315-33, 
+PlacedObjects: LightSource><539.1487><351.0775><0.4021739~Environment~0~100~50~86.60254~1~0~None~0~0, 
 AmbientSounds: OMNI><Basic Mech.ogg><757.4195><162.8938><0.1521739><0.8630434, SPOT><Mech Basic.wav><764.8282><551.3976><0.4347826><0.7456522><295.8282><234.3976><-39.35535><-29.35535><0><0.4586958, SPOT><AM_IND-ElectricHum01.ogg><753.5842><294.0686><0.4021739><1><538.5842><350.0686><-35.35534><-35.35534><0><0.1, 
 FadePalette: 33, 0.7608696
 MorePalette0: 367, 0.6031932

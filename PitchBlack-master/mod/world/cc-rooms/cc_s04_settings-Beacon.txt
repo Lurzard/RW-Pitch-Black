@@ -1,6 +1,6 @@
 Palette: 33
 Effects: FireFlies-0.25-303-141, 
-PlacedObjects: BrokenShelterWaterLevel><349.55><468.7491><, DayNightSettings><131.0555><346.0464><5~8.660254~3~15, LightSource><557.3151><487.4391><0.5~White~18~10~275~25.60251~0~1~Fade~0.5~0, LightSource><577.6083><487.8911><0.5~White~-142~-67~161~-171.3975~1~0~Fade~0.5~0, 
+PlacedObjects: BrokenShelterWaterLevel><349.55><468.7491><, LightSource><557.3151><487.4391><0.5~White~18~10~275~25.60251~0~1~Fade~0.5~0, LightSource><577.6083><487.8911><0.5~White~-142~-67~161~-171.3975~1~0~Fade~0.5~0, 
 AmbientSounds: SPOT><AM_IND-50hz.ogg><726.3399><336.1302><0.3043478><1><555.3399><486.1301><-35.35534><-35.35534><0><0.1, 
 FadePalette: 15, 0.2391304
 MorePalette0: 10, 0.7065217

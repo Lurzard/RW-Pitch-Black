@@ -1,5 +1,5 @@
 Template: VS_SettingsTemplate_Sewer
 EffectColorA: 2
-Effects: Fog-0.6521739-20-20, DayNight-0.5217391-23-81, 
-PlacedObjects: LillyPuck><1265.174><194.0984><0~0~2~3, LillyPuck><1476.833><193.1106><0~0~2~3, DayNightSettings><2176.053><375.9658><5~8.660254~10~34, 
+Effects: Fog-0.6521739-20-20, 
+PlacedObjects: LillyPuck><1265.174><194.0984><0~0~2~3, LillyPuck><1476.833><193.1106><0~0~2~3, 
 FadePalette: 10, 0.9347826, 0.9347826, 0.9456522

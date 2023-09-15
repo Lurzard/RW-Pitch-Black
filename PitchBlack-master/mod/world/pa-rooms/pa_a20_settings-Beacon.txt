@@ -5,8 +5,8 @@ RainIntensity: 0
 RumbleIntensity: 0
 Grime: 0.08240509
 Palette: 28
-Effects: AboveCloudsView-1-20-20, Fog-0.2010642-31.42291-108.2604, DayNight-0.227664-287.4222-22.88889, 
-PlacedObjects: DayNightSettings><428.2224><330.3372><-78.91113~76.21579~28~29, LightSource><587.6101><38.74031><0.3098078~EffectColor1~0~100~50~86.60254~1~0~None~0~0, LightSource><912.0681><46.04919><0.3040082~EffectColor1~0~100~50~86.60254~1~0~None~0~0, LightSource><750.283><246.4678><0.3040082~EffectColor1~0~100~50~86.60254~1~0~None~0~0, LightSource><887.2428><254.4878><0.3098078~EffectColor1~0~100~170.0586~78.60254~1~0~None~0~0, LightSource><757.4746><644.5112><0.3098074~EffectColor1~-288.6743~26.39996~94.8219~-52.06409~1~0~None~0~0, 
+Effects: AboveCloudsView-1-20-20, Fog-0.2010642-31.42291-108.2604, 
+PlacedObjects: LightSource><587.6101><38.74031><0.3098078~EffectColor1~0~100~50~86.60254~1~0~None~0~0, LightSource><912.0681><46.04919><0.3040082~EffectColor1~0~100~50~86.60254~1~0~None~0~0, LightSource><750.283><246.4678><0.3040082~EffectColor1~0~100~50~86.60254~1~0~None~0~0, LightSource><887.2428><254.4878><0.3098078~EffectColor1~0~100~170.0586~78.60254~1~0~None~0~0, LightSource><757.4746><644.5112><0.3098074~EffectColor1~-288.6743~26.39996~94.8219~-52.06409~1~0~None~0~0, 
 AmbientSounds: OMNI><AM_ENV-WallHum.ogg><67.92682><503.3055><0.3066685><1, OMNI><AM_ENV-NatWind.ogg><74.97888><345.5777><0.407201><1, OMNI><AM_ENV-LightWind.ogg><67.57552><420.7209><0.4072012><1, 
 FadePalette: 29, 0.2242566
 WetTerrain: OFF

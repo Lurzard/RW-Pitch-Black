@@ -8,7 +8,7 @@ Palette: 5
 EffectColorA: 2
 EffectColorB: 2
 Effects: FireFlies-0.2717391-39-132, 
-PlacedObjects: NoSpearStickZone><477.519><248.0509><-244~98, DayNightSettings><-85.65253><274.3794><5~8.660254~5~12, LightBeam><679.8005><115.7354><37~251~66~251~110~-1~128~71~0.3999979~1~0~1~None~0~0, 
+PlacedObjects: NoSpearStickZone><477.519><248.0509><-244~98, LightBeam><679.8005><115.7354><37~251~66~251~110~-1~128~71~0.3999979~1~0~1~None~0~0, 
 AmbientSounds: OMNI><AM_ENV-LightWind.ogg><760.437><518.571><0.326087><0.5695652, SPOT><AM_IND-DeepHum.ogg><773.1953><307.7929><0.3695652><1><481.1953><-31.20709><-111.3553><-34.35534><0><0.328261, 
 FadePalette: 33, 0.8043478
 MorePalette0: 10, 0.7282609

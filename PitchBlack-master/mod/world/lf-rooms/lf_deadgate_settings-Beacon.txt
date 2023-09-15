@@ -1,7 +1,7 @@
 RainIntensity: 0.7065217
 RumbleIntensity: 0.7065217
 Palette: 14
-Effects: DayNight-0-20-93, FireFlies-0.4456522-23-42, 
-PlacedObjects: NoSpearStickZone><556.6164><235.9126><26~177, DayNightSettings><138.1074><298.3903><5~8.660254~14~14, ExitSymbolHidden><213.1931><101.4477><, CustomDecal><645.6266><348.4048><-28~386~323~380~287~-6~-296~-34~0~1~0.5217391~dontfuckingdoit~0~0.25~0~0.2391304~0~0.1956528~0.3586957~0.07608695, CustomDecal><58.90875><214.072><-15~-111~128~-127~134~-16~-5~116~0~1~0~iteratorsaint~0~0~0.1413037~0~0~0~0~0, ResizeablePopupTrigger><540.0525><172.807><91~167~Maybe if you came back later...~0~1.510883~-1~1~True~True~1~-141^43, 
+Effects: FireFlies-0.4456522-23-42, 
+PlacedObjects: NoSpearStickZone><556.6164><235.9126><26~177, ExitSymbolHidden><213.1931><101.4477><, CustomDecal><645.6266><348.4048><-28~386~323~380~287~-6~-296~-34~0~1~0.5217391~dontfuckingdoit~0~0.25~0~0.2391304~0~0.1956528~0.3586957~0.07608695, CustomDecal><58.90875><214.072><-15~-111~128~-127~134~-16~-5~116~0~1~0~iteratorsaint~0~0~0.1413037~0~0~0~0~0, ResizeablePopupTrigger><540.0525><172.807><91~167~Maybe if you came back later...~0~1.510883~-1~1~True~True~1~-141^43, 
 FadePalette: 33, 0.8913042
 MorePalette0: 10, 0.75

@@ -2,8 +2,8 @@ Template: NONE
 Clouds: 0
 Grime: 0.09787153
 Palette: 29
-Effects: DayNight-0.6147929-28.53748-86.66667, 
-PlacedObjects: LightSource><362.7844><353.0302><0.1996088~Environment~-43.7547~136.8~50~86.60254~1~0~None~0~0, DayNightSettings><-165.8013><303.4624><5~8.660254~29~10, 
+Effects: 
+PlacedObjects: LightSource><362.7844><353.0302><0.1996088~Environment~-43.7547~136.8~50~86.60254~1~0~None~0~0, 
 AmbientSounds: OMNI><AM_ENV-WallHum.ogg><76.00838><466.5041><0.5><1, SPOT><AM_ENV-NatWind.ogg><773.3242><337.6689><0.5><1><975.1439><351.1231><-35.35534><-35.35534><0><0.4479961, 
 FadePalette: 10, 0.6109263
 MorePalette0: 10, 0.9047891

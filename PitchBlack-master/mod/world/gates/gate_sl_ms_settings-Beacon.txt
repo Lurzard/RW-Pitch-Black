@@ -13,8 +13,8 @@ BkgDroneVolume: 0
 Palette: 27
 EffectColorA: 12
 EffectColorB: 6
-Effects: Contrast-0.05434782-20-20, SilenceWater-1-19-80, WaterDepth-1-276-18, Moth-0.1521739-270-77, RockFlea-0.05434782-288-142, DayNight-0.6031929-19.32813-134.5844, 
-PlacedObjects: NoSpearStickZone><483.5829><238.318><-236~137, LightFixture><772.4195><512.3938><RedLight~17.32051~-10~52, LightFixture><-64.57666><280.5998><RedLight~17.32051~-10~5, LightSource><401.8103><674.3473><0.1068112~White~459.4244~-176.4016~-332.5867~-88.4162~1~1~None~0~1, DayNightSettings><4.903564><453.4728><5~8.660254~27~35, 
+Effects: Contrast-0.05434782-20-20, SilenceWater-1-19-80, WaterDepth-1-276-18, Moth-0.1521739-270-77, RockFlea-0.05434782-288-142, 
+PlacedObjects: NoSpearStickZone><483.5829><238.318><-236~137, LightFixture><772.4195><512.3938><RedLight~17.32051~-10~52, LightFixture><-64.57666><280.5998><RedLight~17.32051~-10~5, LightSource><401.8103><674.3473><0.1068112~White~459.4244~-176.4016~-332.5867~-88.4162~1~1~None~0~1, 
 AmbientSounds: SPOT><AM_IND-DeepHum.ogg><78.57001><473.1873><0.3369565><1><464.57><-39.81265><-132.3553><-32.35534><0><0.3173914, OMNI><AM_SUB-BlankState.ogg><829.9221><646.3518><0.326087><1, OMNI><Deep Weird Wind.wav><830.9498><574.7589><0.1630435><1, OMNI><AM_IND-SuperStructure.ogg><827.4743><501.3017><0.2173913><1, 
 FadePalette: 35, 0.6086956
 MorePalette0: 367, 0.7539912

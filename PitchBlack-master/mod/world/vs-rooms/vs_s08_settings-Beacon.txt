@@ -2,6 +2,6 @@ Template: VS_SettingsTemplate_Filter
 RainIntensity: 0
 RumbleIntensity: 0
 Palette: 10
-Effects: Darkness-0.5108696-20-20, DayNight-1-27-60, 
-PlacedObjects: DayNightSettings><3.928711><375.8131><5~8.660254~8~21, 
+Effects: Darkness-0.5108696-20-20, 
+PlacedObjects: 
 FadePalette: 22, 0

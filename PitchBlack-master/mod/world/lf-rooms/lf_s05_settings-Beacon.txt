@@ -1,5 +1,5 @@
 Grime: 0.423913
-Effects: DayNight-0.2173913-58-149, FireFlies-0.423913-20-20, 
-PlacedObjects: BrokenShelterWaterLevel><290.7915><385.3127><, DayNightSettings><15.94705><293.1929><5~8.660254~14~8, 
+Effects: FireFlies-0.423913-20-20, 
+PlacedObjects: BrokenShelterWaterLevel><290.7915><385.3127><, 
 FadePalette: 33, 0.8043478
 MorePalette0: 10, 0.6956522

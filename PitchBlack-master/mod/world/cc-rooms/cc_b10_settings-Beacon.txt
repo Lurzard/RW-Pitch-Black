@@ -12,7 +12,7 @@ Grime: 0.3586957
 BkgDroneVolume: 0.2869565
 Palette: 6
 Effects: Fog-0.2282609-20-20, FireFlies-0.2608696-32-133, 
-PlacedObjects: DangleFruit><529.5568><2875.551><0~0~2~3, DangleFruit><496.5387><2737.196><0~0~2~3, DangleFruit><456.0904><2831.38><0~0~2~3, DayNightSettings><75.30908><2703.939><5~8.660254~6~8, 
+PlacedObjects: DangleFruit><529.5568><2875.551><0~0~2~3, DangleFruit><496.5387><2737.196><0~0~2~3, DangleFruit><456.0904><2831.38><0~0~2~3, 
 AmbientSounds: SPOT><AM_WIN-StrongWnd2.ogg><750.5905><407.9283><0.3478261><1.273913><479.5905><10.92834><46.64465><306.6447><0><1, 
 FadePalette: 33, 0.7608696, 0.7826087, 0.8152174, 0.5543476
 MorePalette0: 55, 0, 0.1086956, 0.1413043, 0.1413043

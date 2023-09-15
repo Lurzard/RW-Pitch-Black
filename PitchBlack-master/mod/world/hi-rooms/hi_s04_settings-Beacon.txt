@@ -2,6 +2,6 @@ DangerType: Flood
 RainIntensity: 0.6847826
 RumbleIntensity: 0.7065217
 Effects: FireFlies-0.3043478-30-30, 
-PlacedObjects: BrokenShelterWaterLevel><288.4385><328.5668><, DayNightSettings><83.05319><455.0572><5~8.660254~5~20, LightSource><187.8428><348.1237><0.5~White~-197~14~289~78.60254~1~0~Fade~0.5108696~0, LightSource><207.2743><346.9485><0.391305~White~-3~29~278~197.6025~1~1~Fade~0.5108709~0, 
+PlacedObjects: BrokenShelterWaterLevel><288.4385><328.5668><, LightSource><187.8428><348.1237><0.5~White~-197~14~289~78.60254~1~0~Fade~0.5108696~0, LightSource><207.2743><346.9485><0.391305~White~-3~29~278~197.6025~1~1~Fade~0.5108709~0, 
 FadePalette: 33, 0.7934783
 MorePalette0: 10, 0.7826087

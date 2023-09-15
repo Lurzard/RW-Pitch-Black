@@ -4,7 +4,7 @@ RainIntensity: 0.5
 RumbleIntensity: 0.5
 Clouds: 0.6413044
 Palette: 35
-Effects: Fog-0-20-20, ElectricDeath-0.01086957-30-30, DayNight-0.3043478-40-40, 
-PlacedObjects: DayNightSettings><207.3422><263.1229><5~8.660254~35~3, 
+Effects: Fog-0-20-20, ElectricDeath-0.01086957-30-30, 
+PlacedObjects: 
 AmbientSounds: SPOT><AM_WIN-SubWnd.ogg><730.8548><487.6125><0.2826087><1><-115.1452><186.6125><56.64466><-198.3553><0><0.3717393, SPOT><AM_WIN-SubWnd.ogg><731.1999><487.7438><0.2826087><1><870.2><502.7438><-123.3553><-145.3553><0><0.3717393, 
 FadePalette: 33, 0.7826087

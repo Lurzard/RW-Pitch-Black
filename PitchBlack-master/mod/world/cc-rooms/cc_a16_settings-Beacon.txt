@@ -11,7 +11,7 @@ Clouds: 0.2282609
 Grime: 0.05434782
 BkgDroneVolume: 0.2869565
 Effects: FireFlies-0.2934783-37-102, 
-PlacedObjects: DayNightSettings><66.30554><461.0578><5~8.660254~6~15, 
+PlacedObjects: 
 AmbientSounds: SPOT><AM_IND-Utility02.ogg><723.817><613.4385><0.326087><1><403.817><597.4385><-53.35535><-41.35535><0><0.5130436, 
 FadePalette: 33, 0.7173913
 MorePalette0: 363, 0.04347826

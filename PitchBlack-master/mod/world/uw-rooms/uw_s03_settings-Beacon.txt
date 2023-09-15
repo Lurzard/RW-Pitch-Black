@@ -4,7 +4,7 @@ RainIntensity: 0
 RumbleIntensity: 0
 Grime: 0
 Palette: 21
-Effects: DayNight-0.8804348-29-123, FireFlies-0.2717391-20-20, 
-PlacedObjects: DayNightSettings><63.59399><399.1248><5~8.660254~3~28, 
+Effects: FireFlies-0.2717391-20-20, 
+PlacedObjects: 
 FadePalette: 367, 1
 MorePalette0: 10, 0.5045942

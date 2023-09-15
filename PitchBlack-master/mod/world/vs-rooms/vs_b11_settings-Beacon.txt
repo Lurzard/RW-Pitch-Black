@@ -6,7 +6,7 @@ WaveLength: 0.919375
 WaveAmplitude: 0.03219516
 SecondWaveLength: 0.1666667
 SecondWaveAmplitude: 0
-Effects: DayNight-0.5652174-20-20, Darkness-0.5-20-76, 
-PlacedObjects: DayNightSettings><9.215729><1181.303><5~8.660254~8~72, 
+Effects: Darkness-0.5-20-76, 
+PlacedObjects: 
 FadePalette: 33, 0.7065217, 0.7065217
 MorePalette0: 367, 0.5219939, 0.5509936

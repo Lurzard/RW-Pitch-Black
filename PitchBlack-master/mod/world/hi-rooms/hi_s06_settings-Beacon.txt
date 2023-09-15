@@ -5,7 +5,7 @@ RumbleIntensity: 0.6956522
 Grime: 0.3043478
 Palette: 5
 Effects: FireFlies-0.2608696-20-20, 
-PlacedObjects: BrokenShelterWaterLevel><543.9487><367.9773><, DayNightSettings><48.79999><421.998><5~8.660254~5~12, LightSource><502.7515><367.7><0.5~White~0~137~50~86.60254~1~0~Fade~0.5108696~0, LightSource><525.1467><366.9213><0.5~White~3~25~312~65.60254~1~1~Fade~0.5108696~0, LightSource><581.9251><365.9355><0.1086956~White~12.00012~17~215~-174.3975~1~1~Fade~0.3043478~0, LightSource><612.8674><362.6619><0.2065217~White~1~102~188~-297.3975~1~0~Fade~0.3043478~0, 
+PlacedObjects: BrokenShelterWaterLevel><543.9487><367.9773><, LightSource><502.7515><367.7><0.5~White~0~137~50~86.60254~1~0~Fade~0.5108696~0, LightSource><525.1467><366.9213><0.5~White~3~25~312~65.60254~1~1~Fade~0.5108696~0, LightSource><581.9251><365.9355><0.1086956~White~12.00012~17~215~-174.3975~1~1~Fade~0.3043478~0, LightSource><612.8674><362.6619><0.2065217~White~1~102~188~-297.3975~1~0~Fade~0.3043478~0, 
 AmbientSounds: OMNI><AM_ENV-LightWind.ogg><831.9324><644.0821><0.3043478><0.7847826, 
 FadePalette: 33, 0.8260869
 MorePalette0: 10, 0.5869565

@@ -3,7 +3,7 @@ RainIntensity: 0
 RumbleIntensity: 0
 Palette: 10
 EffectColorA: 9
-Effects: DayNight-1-27-60, 
-PlacedObjects: DayNightSettings><3.928711><375.8131><5~8.660254~8~21, LightSource><258.6998><363.4911><0.2065217~Environment~3~83~50~86.60254~1~0~None~0~0, 
+Effects: 
+PlacedObjects: LightSource><258.6998><363.4911><0.2065217~Environment~3~83~50~86.60254~1~0~None~0~0, 
 AmbientSounds: SPOT><AM_IND-ElectricHum01.ogg><745.3995><294.8672><0.4021739><1><255.3995><365.8672><-15.35535><-19.35535><0><0.05652187, 
 FadePalette: 22, 0

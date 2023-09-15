@@ -1,6 +1,6 @@
 Template: VS_SettingsTemplate_Sewer
 Clouds: 1
-Effects: DayNight-0.5326087-20-20, 
-PlacedObjects: DayNightSettings><185.5049><448.55><5~8.660254~10~34, 
+Effects: 
+PlacedObjects: 
 AmbientSounds: SPOT><SO_WAT-Splashes.ogg><654.5253><497.3016><0.25><1><43.52533><330.3016><430.6447><1.644653><0><1, 
 FadePalette: 10, 0.9673913, 0.9673913

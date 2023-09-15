@@ -1,5 +1,5 @@
 Template: VS_SettingsTemplate_Filter
 EffectColorA: 10
-Effects: DayNight-0.4456522-20-20, 
-PlacedObjects: DayNightSettings><72.18552><1131.825><5~8.660254~17~21, LightSource><341.466><234.3935><0.09782609~EffectColor1~328~-5~50~86.60254~1~0~None~0~0, 
+Effects: 
+PlacedObjects: LightSource><341.466><234.3935><0.09782609~EffectColor1~328~-5~50~86.60254~1~0~None~0~0, 
 FadePalette: 21, 0.1956522, 0.1956522, 0.173913, 0.173913

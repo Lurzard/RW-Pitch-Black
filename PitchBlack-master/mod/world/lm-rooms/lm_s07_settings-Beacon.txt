@@ -5,6 +5,6 @@ WaveAmplitude: 0.04867629
 SecondWaveLength: 0.1666667
 SecondWaveAmplitude: 0.3478261
 Palette: 35
-Effects: Fog-0.5652174-20-20, DayNight-0.7065217-30-30, 
-PlacedObjects: BrokenShelterWaterLevel><423.051><345.5203><, DayNightSettings><17.48987><290.4497><5~8.660254~35~11, 
+Effects: Fog-0.5652174-20-20, 
+PlacedObjects: BrokenShelterWaterLevel><423.051><345.5203><, 
 FadePalette: 33, 0.7065217

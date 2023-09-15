@@ -13,7 +13,7 @@ Palette: 11
 EffectColorA: 8
 EffectColorB: 12
 Effects: WaterViscosity-0.113768-20-76, SilenceWater-0-287-18, Darkness-0.2608696-20-20, LethalWater-0-286-78, HeatWave-0-280-140, FireFlies-0.4021286-30-30, 
-PlacedObjects: ExitSymbolHidden><349.0719><589.1591><, DayNightSettings><200.3195><268.7177><5~8.660254~34~11, 
+PlacedObjects: ExitSymbolHidden><349.0719><589.1591><, 
 AmbientSounds: OMNI><waterGurgleLOOP1.wav><849.6308><645.4013><0.4347826><0.5891304, OMNI><SO_NAT-Burning.ogg><668.0651><648.5761><0><0.6478261, SPOT><AM_IND-Utility02.ogg><666.6594><528.8708><0.3804348><1><243.6594><111.8708><-158.3553><-74.35535><0><0.6326088, SPOT><AM_IND-Utility04.ogg><853.212><526.0536><0.3478261><1><712.212><123.0536><-112.3553><-77.35535><0><0.5673915, 
 FadePalette: 33, 0.805163
 MorePalette0: 10, 0.8586956
