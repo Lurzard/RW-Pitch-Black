@@ -11,7 +11,7 @@ Clouds: 0.25
 Grime: 0.3804348
 BkgDroneVolume: 0.2469565
 Palette: 5
-Effects: Darkness-0.25-20-20, FireFlies-0.2608696-20-134, DayNight-0-20-77, 
+Effects: Darkness-0.25-20-20, FireFlies-0.2608696-20-134, 
 PlacedObjects: VultureGrub><655.6766><372.314><-509~182~7~10, InsectGroup><373.3822><254.1617><-6~101~0~0~Ant~0.8152174, DeadVultureGrub><690.5584><370.8087><-543~104~7~10, DayNightSettings><29.94659><329.2133><5~8.660254~5~20, 
 AmbientSounds: OMNI><AM_IND-Warehouse02.ogg><771.6337><395.6488><0.5><0.5695652, 
 FadePalette: 33, 0.5978261

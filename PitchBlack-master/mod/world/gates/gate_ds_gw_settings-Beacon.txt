@@ -3,7 +3,7 @@ RainIntensity: 0.8152174
 RumbleIntensity: 0.8043478
 Grime: 0.2391304
 Palette: 11
-Effects: DayNight-0.2934783-296-82, FireFlies-0.5-30-30, Darkness-0.4130435-40-40, 
+Effects: FireFlies-0.5-30-30, Darkness-0.4130435-40-40, 
 PlacedObjects: ExitSymbolShelter><913.1998><269.9436><, NoSpearStickZone><483.6084><243.3913><-147~221, DayNightSettings><803.4453><452.7933><1~-0.3397522~4~8, LightBeam><656.8524><128.6719><60.99994~247~92~246~155~1~-41~-203~0.454348~1~0~1~Flash~0.304348~0, LightBeam><165.8431><139.124><43.99994~233~74.99997~232~129~1~-247~-185~0.3565216~1~0~1~Flash~0.5~0, 
 FadePalette: 10, 0.7282609
 MorePalette0: 33, 0.1086956

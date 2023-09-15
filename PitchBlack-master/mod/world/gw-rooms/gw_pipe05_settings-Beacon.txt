@@ -13,8 +13,9 @@ BkgDroneVolume: 0.2769565
 WaterReflectionAlpha: 0.25
 Palette: 11
 EffectColorA: 12
-EffectColorB: 12
-Effects: RockFlea-0.08695652-20-20, Darkness-0.3557288-336.0833-114.6, HeatWave-0-23-83, FireFlies-0.5799932-332.3698-22.17778, DayNight-0.5026605-338.0615-180.0444, 
+EffectColorB: 21
+Effects: RockFlea-0.08695652-20-20, Darkness-0.3557288-336.0833-114.6, HeatWave-0-23-83, FireFlies-0.5799932-332.3698-22.17778, 
 PlacedObjects: DayNightSettings><1241.822><274.8012><5~8.660254~35~11, 
 AmbientSounds: OMNI><SO_WAT-ProperDrips.ogg><841.0628><645.5601><0.4021739><1, OMNI><AM_ENV-LightWind.ogg><668.9183><646.3921><0.3152174><0.7847826, SPOT><AM_IND-Utility02.ogg><848.5535><530.2875><0.3695652><1><968.5535><701.2875><-74.35535><-136.3553><0><0.6978262, 
 FadePalette: 33, 0.7522759, 0.7242641, 0.75
+MorePalette0: 10, 0.9130435, 0.9130435

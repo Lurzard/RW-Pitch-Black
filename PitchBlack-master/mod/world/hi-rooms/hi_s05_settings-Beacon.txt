@@ -1,7 +1,7 @@
 DangerType: Flood
 RainIntensity: 0.7282609
 RumbleIntensity: 0.6956522
-Effects: DayNight-0.1086956-31-80, FireFlies-0.3043478-30-134, 
+Effects: FireFlies-0.3043478-30-134, 
 PlacedObjects: DayNightSettings><100.9722><389.0519><5~8.660254~5~20, 
 FadePalette: 33, 0.7391304
 MorePalette0: 10, 0.7608696
