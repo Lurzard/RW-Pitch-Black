@@ -1,7 +1,7 @@
 Template: SU_SettingsTemplate_Inside
 Palette: 33
 EffectColorA: 9
-EffectColorB: 5
+EffectColorB: 21
 Effects: FireFlies-0.2391304-302-45, 
 PlacedObjects: LightSource><286.8645><292.3971><0.4021739~Environment~0~100~50~86.60254~1~0~None~0~0, 
 AmbientSounds: SPOT><AM_IND-ElectricHum01.ogg><755.9449><295.7053><0.4021739><1><285.9449><291.7053><-35.35534><-35.35534><0><0.1, 

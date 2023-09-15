@@ -13,7 +13,7 @@ Palette: 33
 EffectColorA: 9
 EffectColorB: 8
 Effects: FireFlies-0.2717391-30-30, 
-PlacedObjects: FlyLure><623.343><81.37599><256~34~4~9, WhiteToken><102.3423><494.377><-45~-93~0~0~0~Chatlog_Broadcast2~Yellow|Rivulet|Saint~0~1~0~0~0~1~0~0, DataPearl><92.30017><308.2585><149~52~0~0~BroadcastMisc~1, Filter><106.798><302.0558><-5~69~133~-43~White|Red|Artificer|Spear|Gourmand, LightBeam><-18.06345><60.17775><-177~664~444~677~738.0002~-81~0~0~0.07391324~0~0~1~None~0~0, LanternOnStick><596.5508><155.232><-14~-106, LanternOnStick><838.1804><536.0865><5~-67, 
+PlacedObjects: FlyLure><623.343><81.37599><256~34~4~9, WhiteToken><102.3423><494.377><-45~-93~0~0~0~Chatlog_Broadcast2~Yellow|Rivulet|Saint~0~1~0~0~0~1~0~0~0~1~0~0, DataPearl><92.30017><308.2585><449~159~0~0~BroadcastMisc~1, Filter><106.798><302.0558><-5~69~133~-43~White|Red|Artificer|Spear|Gourmand, LightBeam><-18.06345><60.17775><-177~664~444~677~738.0002~-81~0~0~0.07391324~0~0~1~None~0~0, LanternOnStick><596.5508><155.232><-14~-106, LanternOnStick><838.1804><536.0865><5~-67, LightSource><-5.929932><473.3373><0.09782609~White~0~100~50~86.60254~1~1~None~0~0, LightSource><681.5558><132.2977><0.08695652~White~-8~89~50~86.60254~1~1~None~0~0, LightSource><431.1323><215.3383><0.6086956~White~18~134~50~86.60254~1~0~None~0~0, LightSource><774.4377><217.4311><0.4891304~White~0~100~50~86.60254~1~0~None~0~0, LightSource><206.1616><298.1178><0.5217391~White~0~116~50~86.60254~1~0~None~0~0, 
 AmbientSounds: OMNI><AM_ENV-LightWind.ogg><550.4125><528.8834><0.4130435><0.9413043, SPOT><AM_ENV-NatWind.ogg><432.2><335.9981><0.3043478><1><70.20001><549.998><-179.3553><-240.3553><0><0.2956523, 
 FadePalette: 0, 0.1086956
 MorePalette0: 367, 0.7075918

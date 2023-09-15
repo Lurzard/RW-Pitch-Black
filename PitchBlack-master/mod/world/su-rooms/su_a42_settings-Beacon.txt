@@ -11,9 +11,8 @@ Grime: 0.2934783
 BkgDroneVolume: 0
 RandomItemDensity: 0
 Palette: 33
-EffectColorB: 5
+EffectColorB: 21
 Effects: FireFlies-0.3695652-20-20, 
-PlacedObjects: 
 AmbientSounds: OMNI><AM_ENV-LightWind.ogg><830.0495><652.8062><0.3913043><0.7065217, SPOT><AM_IND-Utility02.ogg><742.0999><460.1322><0.5><1><679.0999><392.1322><-130.3553><-64.35535><0><0.2847827, OMNI><SO_WAT-DripTap.ogg><649.1895><651.5641><0.2717391><1, 
 FadePalette: 0, 0.1413043
 MorePalette0: 367, 0.7075918

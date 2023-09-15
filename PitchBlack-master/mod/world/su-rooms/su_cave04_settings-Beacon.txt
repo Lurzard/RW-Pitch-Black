@@ -11,7 +11,7 @@ Palette: 33
 EffectColorA: 18
 EffectColorB: 5
 Effects: Darkness-0.2065217-23-70, FireFlies-0.5217391-293-83, 
-PlacedObjects: DangleFruit><833.9724><332.3019><0~0~2~3, DangleFruit><863.9297><296.3128><0~0~2~3, 
+PlacedObjects: DangleFruit><833.9724><332.3019><26~-15~2~3, DangleFruit><863.9297><296.3128><0~0~2~3, LightSource><402.838><610.1796><0.09782609~EffectColor1~-173~45~-371~-63.39749~1~1~None~0~0, ShortcutColor><348.8353><645.5691><-145~-176~0~0~0.07608695~126^-18, LightSource><123.1561><259.875><0.07608695~EffectColor1~0~54~-497~162.6025~1~1~None~0~0, LightSource><302.3423><262.377><0.07608695~EffectColor1~3~57~-676~138.6025~1~1~None~0~0, LightSource><404.5482><262.0559><0.07608695~EffectColor1~2~52~-778~113.6025~1~1~None~0~0, LightSource><646.0117><263.9496><0.06521739~EffectColor1~0~47~-1019~87.60254~1~1~None~0~0, LightSource><852.4429><404.3028><0.07608695~EffectColor1~-2~50~-1225~-78.39746~1~1~None~0~0, LightSource><748.059><403.9409><0.06521739~EffectColor1~0~54~-1122~-103.3974~1~1~None~0~0, LightSource><528.3528><403.8285><0.06521739~EffectColor1~2~50~50~86.60254~1~1~None~0~0, LightSource><303.8177><404.1678><0.08695652~EffectColor1~0~100~50~86.60254~1~1~None~0~0, 
 FadePalette: 0, 0.2826087
 MorePalette0: 10, 0.6031932
 MorePalette1: 367, 0.5567932
