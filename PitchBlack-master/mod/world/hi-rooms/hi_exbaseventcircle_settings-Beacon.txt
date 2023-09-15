@@ -1,0 +1,15 @@
+Template: HI_SettingsTemplate_Inside
+WaveSpeed: 0.4543718
+WaveLength: 0.9271026
+WaveAmplitude: 0.0004201372
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Clouds: 0.2065217
+Grime: 0.3043478
+Palette: 5
+EffectColorA: 0
+EffectColorB: 2
+Effects: Flies-0.2391304-20-20, RockFlea-0.1304348-30-30, Beetle-0.2282609-40-40, 
+PlacedObjects: NeedleEgg><499.7494><468.05><0~0~4~9, NeedleEgg><545.5533><396.2139><0~0~4~9, DataPearl><326.2145><286.9468><-118~-194~0~0~Misc~0, CustomDecal><222.105><169.6377><-49~399~369~397~328~-58~-284~64~0.6521739~1~0~caterpillar~0~0.05434782~0~0.05434782~0~0.05434782~0~0.05434782, LightSource><529.3803><252.8398><0.2065217~EffectColor1~-36~100~50~86.60254~1~0~None~0~0, LightSource><381.1262><245.6552><0.2391304~EffectColor1~4~50~-150~121.6025~1~0~None~0~0, LanternOnStick><420.4014><229.3693><-12~-77, 
+FadePalette: 20, 0.2173913
+MorePalette0: 10, 1

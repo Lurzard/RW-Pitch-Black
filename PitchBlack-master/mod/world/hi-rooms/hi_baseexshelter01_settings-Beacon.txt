@@ -1,0 +1,5 @@
+Template: NONE
+Grime: 0.3586957
+Palette: 5
+FadePalette: 20, 0.3804348
+MorePalette0: 10, 1
