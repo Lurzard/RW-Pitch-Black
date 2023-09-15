@@ -32,8 +32,8 @@
 		"start_room": [ "SH_CABINETS1" ],
 		"karma": 1,
 		"diet": {
-			"plants": 0.25,
-			"meat": 0.5,
+			"plants": 1,
+			"meat": 1,
 			"corpses": 1
 		},
 		"guide_overseer": 87,
