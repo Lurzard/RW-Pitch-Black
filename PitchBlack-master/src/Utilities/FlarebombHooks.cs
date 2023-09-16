@@ -30,6 +30,23 @@ public class FlarebombHooks
     {
         int val = orig(self, obj, weaponFiltered);
 
+        //spinch: hopefully the below is better anti theft code
+        if (obj is FlareBomb flarebomb)
+        {
+            foreach (var abstrCrit in self.scavenger.room.game.Players)
+            {
+                if (abstrCrit.realizedCreature == null)
+                    continue;
+
+                if (scugCWT.TryGetValue(abstrCrit.realizedCreature as Player, out var cwt) && cwt.IsBeacon)
+                {
+                    if (cwt.Beacon.storage.storedFlares.Contains(flarebomb))
+                        return 0; //if in beacon storage, dont steal
+                }
+            }
+        }
+
+#if false
         if (obj is FlareBomb flarebomb && obj.room != null)
         {
             foreach (AbstractCreature abstrCrit in flarebomb.room.game.Players)
@@ -44,6 +61,7 @@ public class FlarebombHooks
                 }
             }
         }
+#endif
 
         return val;
     }

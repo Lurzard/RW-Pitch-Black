@@ -22,7 +22,7 @@ public class Whiskers
 
     public Vector2[] headPositions = new Vector2[4];
     public PlayerGraphics.AxolotlScale[] headScales = new PlayerGraphics.AxolotlScale[4];
-    public Colour whiskerColour;
+    //public Colour whiskerColour;
 
     public Whiskers(PlayerGraphics playerGraphics)
     {
@@ -34,7 +34,7 @@ public class Whiskers
             headPositions[i] = new Vector2(i < headScales.Length / 2 ? 0.7f : -0.7f, i == 1 ? 0.035f : 0.026f);
         }
 
-        SetupWhiskerColour(playerGraphics.player);
+        //SetupWhiskerColour(playerGraphics.player);
 
         //initialWhiskerIndex, endWhiskerIndex & initialLowerWhiskerIndex is done in PlayerGraphics.InitializeSprites;
     }
@@ -44,6 +44,7 @@ public class Whiskers
     //    //this falls apart with a larger array and starts to get previously-accessed indices
     //    return initialWhiskerIndex + side + pair + pair;
     //}
+#if false
     public void SetupWhiskerColour(Player player)
     {
         //prevent arena colours being assinged to main player outside of arena
@@ -79,6 +80,7 @@ public class Whiskers
         if (whiskerColour == null) //just in case
             whiskerColour = Colour.white;
     }
+#endif
 
     public void Update()
     {
@@ -232,13 +234,15 @@ public class Whiskers
             sLeaser.sprites[i].x = vector.x - camPos.x;
             sLeaser.sprites[i].y = vector.y - camPos.y;
             sLeaser.sprites[i].rotation = Custom.AimFromOneVectorToAnother(vector, Vector2.Lerp(headScales[index].lastPos, headScales[index].pos, timeStacker)) + rotationAngle;
-            sLeaser.sprites[i].color = whiskerColour;
+            //sLeaser.sprites[i].color = whiskerColour;
+            sLeaser.sprites[i].color = sLeaser.sprites[0].color; //[0] is body sprite
         }
     }
 
     public void ApplyPalette(PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser)
     {
-        Colour newColour = whiskerColour;
+        //Colour newColour = whiskerColour;
+        Colour newColour = sLeaser.sprites[0].color;
         if (self.malnourished > 0f)
         {
             float num = self.player.Malnourished ? self.malnourished : Mathf.Max(0f, self.malnourished - 0.005f);
