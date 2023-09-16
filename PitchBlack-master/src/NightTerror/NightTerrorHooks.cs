@@ -239,8 +239,12 @@ namespace PitchBlack
                 //spinch: thats right miros birds. suck it
                 for (int j = 0; j < self.grabbedBy.Count; j++)
                 {
-                    if (self.grabbedBy[j]?.grabber?.grasps == null)
+                    if (self.grabbedBy[j] == null
+                        || self.grabbedBy[j].grabber == null
+                        || self.grabbedBy[j].grabber.grasps == null)
+                    {
                         continue;
+                    }
 
                     for (int i = 0; i < self.grabbedBy[j].grabber.grasps.Length; i++)
                     {
