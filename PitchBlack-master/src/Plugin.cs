@@ -35,6 +35,7 @@ class Plugin : BaseUnityPlugin
     {
         On.RainWorld.OnModsInit += Extras.WrapInit(LoadResources);
         On.RainWorld.OnModsDisabled += DisableMod;
+        On.RainWorld.PostModsInit += RainWorld_PostModsInit;
 
         Content.Register(new NightTerrorCritob());
         ScareEverything.Apply();
@@ -91,8 +92,23 @@ class Plugin : BaseUnityPlugin
                 CreatureTemplateType.UnregisterValues();
                 SandboxUnlockID.UnregisterValues();
             }
-            else if (mod.id == "willowwisp.bellyplus")
+        }
+    }
+
+    private void RainWorld_PostModsInit(On.RainWorld.orig_PostModsInit orig, RainWorld self)
+    {
+        orig(self);
+
+        foreach (var mod in ModManager.ActiveMods)
+        {
+            if (mod.id == "willowwisp.bellyplus")
+            {
                 _rotundWorldEnabled = true;
+            }
+            else if (mod.id == "dressmyslugcat")
+            {
+                DMSPatch.AddSpritesToDMS();
+            }
         }
     }
 
