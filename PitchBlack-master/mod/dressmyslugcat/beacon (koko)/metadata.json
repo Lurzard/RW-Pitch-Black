@@ -1,6 +1,6 @@
 {
-    "id": "koko.fancyphoto",
-    "name": "Photomaniac",
+    "id": "koko.fancybeacon",
+    "name": "Beacon (Koko)",
     "author": "Koko",
     "defaults": {
         "BODY": {

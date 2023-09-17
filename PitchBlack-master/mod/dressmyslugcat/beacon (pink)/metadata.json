@@ -1,0 +1,28 @@
+{
+    "id": "pink.fancybeacon",
+    "name": "Beacon (pink)",
+    "author": "pink",
+    "defaults": {
+        "BODY": {
+            "color": "#ffffff"
+        },
+        "HIPS": {
+            "color": "#ffffff"
+        },
+        "ARMS": {
+            "color": "#ffffff"
+        },
+        "LEGS": {
+            "color": "#ffffff"
+        },
+        "TAIL": {
+            "color": "#ffffff"
+        },
+        "FACE": {
+            "color": "#ffffff"
+        },
+        "HEAD": {
+            "color": "#ffffff"
+        }
+    }
+}
