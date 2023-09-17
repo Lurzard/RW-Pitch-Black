@@ -34,7 +34,7 @@ public class DevCommOverride
         }
         cursor.Emit(OpCodes.Ldloc_0);
         cursor.EmitDelegate((string[] array2, string path) => {
-            if (path.Contains("PitchBlack")) {
+            if (path.Contains("3032862920") || path.Contains("PitchBlack")) {
                 string rawText = File.ReadAllText(path);
                 return rawText.Split(new string[]{ "\r\n", "\r", "\n" }, StringSplitOptions.None);
             }
