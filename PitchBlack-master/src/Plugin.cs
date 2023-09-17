@@ -3,6 +3,7 @@ using System.Security.Permissions;
 using System.Runtime.CompilerServices;
 using System.Security;
 using Fisobs.Core;
+using UnityEngine;
 
 #pragma warning disable CS0618 // Type or member is obsolete
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -19,6 +20,7 @@ class Plugin : BaseUnityPlugin
 
     public static readonly SlugcatStats.Name BeaconName = new("Beacon", false);
     public static readonly SlugcatStats.Name PhotoName = new("Photomaniac", false);
+    private bool init = false;
 
     //public static ConditionalWeakTable<Player, BeaconCWT> bCon = new ConditionalWeakTable<Player, BeaconCWT>();
     //public static ConditionalWeakTable<Player, PhotoCWT> pCon = new ConditionalWeakTable<Player, PhotoCWT>();
@@ -33,7 +35,7 @@ class Plugin : BaseUnityPlugin
     //public static int pbcooldown = 0;
     public void OnEnable()
     {
-        On.RainWorld.OnModsInit += Extras.WrapInit(LoadResources);
+        On.RainWorld.OnModsInit += OnModsInit;
         On.RainWorld.OnModsDisabled += DisableMod;
         On.RainWorld.PostModsInit += RainWorld_PostModsInit;
 
@@ -58,6 +60,11 @@ class Plugin : BaseUnityPlugin
 
         DevCommOverride.Apply();
         OhNoMoonAndPebblesAreDeadGuys.Apply();
+        
+        // Make a reference to "...\steamapps\workshop\content\312520\2920439169\plugins\Pom.dll" in the csproj for these to work
+            // Also to here "...\steamapps\common\Rain World\RainWorld_Data\Managed\UnityEngine.AssetBundleModule.dll"
+        PBPOMSunrays.RegisterLightrays();
+        PBPOMDarkness.RegisterDarkness();
 
         //NightDay.Apply(); //unfinished
 
@@ -68,14 +75,16 @@ class Plugin : BaseUnityPlugin
         //On.Player.SwallowObject += Player_SwallowObject1;
         //On.Player.Grabability += GrabCoalescipedes;
     }
-
-    /// <summary>
-    /// If you're not using this, I'm stealing it
-    /// </summary>
-    public void LoadResources(RainWorld rainWorld)
+    public void OnModsInit(On.RainWorld.orig_OnModsInit orig, RainWorld self)
     {
-        Futile.atlasManager.LoadAtlas("atlases/photosplt");
-        Futile.atlasManager.LoadAtlas("atlases/nightTerroratlas");
+        orig(self);
+        if (!init) {
+            Futile.atlasManager.LoadAtlas("atlases/photosplt");
+            Futile.atlasManager.LoadAtlas("atlases/nightTerroratlas");
+            self.Shaders["Red"] = FShader.CreateShader("red", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath(path: "assetbundles/red")).LoadAsset<Shader>("Assets/red.shader"));
+            self.Shaders["Sunrays"] = FShader.CreateShader("sunrays", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/sunrays")).LoadAsset<Shader>("Assets/sunrays.shader"));
+            init = true;
+        }
     }
 
     public static void DisableMod(On.RainWorld.orig_OnModsDisabled orig, RainWorld self, ModManager.Mod[] newlyDisabledMods)
