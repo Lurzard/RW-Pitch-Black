@@ -1,0 +1,14 @@
+Template: NONE
+DangerType: None
+CeilingDrips: 0
+RainIntensity: 0
+RumbleIntensity: 0
+Clouds: 0
+Grime: 0
+BkgDroneVolume: 0
+RandomItemDensity: 0
+RandomItemSpearChance: 0
+Palette: 26
+Effects: SunBlock-1-14-118, ZeroG-1-18-57, SSMusic-0.2934783-19-8, Bloom-0.6521739-262-10, Darkness-0.6031927-275.5914-66.4, 
+PlacedObjects: LightSource><251.8286><590.934><1~Environment~879~-623~-360.0516~4.669189~0~0~None~0.2826087~0, LightSource><747.3002><92.24152><1~Environment~-891~647~96.75~-84.66413~0~0~Fade~0.2173913~0, LightSource><233.0621><104.3183><1~Environment~517.1344~511.4667~-358.5648~43.80252~0~0~Fade~0.1521739~0, LightSource><757.9443><591.9521><1~Environment~-520~-512~83.52191~-32.99744~0~0~Fade~0.2173913~0, SlugcatEyeSelector><147.1958><3.12368><-287.9226~-9.733322~0~0~10~3~1~Stunned~686.4196^693.8899, ReliableSpear><612.0892><82.57194><, ReliableSpear><586.0269><138.9528><, ReliableSpear><567.5206><103.0537><, ReliableSpear><648.8594><94.40611><, ReliableSpear><630.2679><86.45098><, ReliableSpear><589.9189><86.63924><, ReliableSpear><628.479><135.2009><, ReliableSpear><578.1845><94.00865><, ReliableSpear><600.9489><82.02971><, ReliableSpear><640.485><91.48283><, ReliableSpear><620.5028><84.61395><, Vine><489.5206><643.9996><273.7336~-25.86658, 
+AmbientSounds: OMNI><AM_IND-SuperStructure.ogg><828.1998><653.0092><0.4021739><0.7456522, OMNI><AM_WIN-StrongWnd2.ogg><649.244><654.55><0.3695652><1, OMNI><SO_SFX-DataTrans2.ogg><828.8108><578.3148><0.2608696><0.8434783, SPOT><SO_IND-Deep50hz.ogg><712.1506><515.0211><0.802802><0.5093267><364.3412><71.75446><58.55719><183.8447><0><0.2739981, SPOT><AM_IND-50hz.ogg><722.9372><340.2129><0.2576095><1.524165><343.6458><64.41286><-44.42642><-44.95535><0><0.2739981, 
