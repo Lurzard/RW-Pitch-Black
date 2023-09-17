@@ -1,7 +1,7 @@
 {
-    "id": "pink.fancyphoto",
-    "name": "Photomaniac (pink)",
-    "author": "pink",
+    "id": "koko.fancybeacon",
+    "name": "Beacon",
+    "author": "Koko",
     "defaults": {
         "BODY": {
             "color": "#ffffff"
