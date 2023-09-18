@@ -1,5 +1,6 @@
 ﻿using MonoMod.RuntimeDetour;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
@@ -172,6 +173,8 @@ namespace PitchBlack
             On.Centipede.ShortCutColor += Centipede_ShortCutColor;
             On.CentipedeAI.ctor += CentipedeAICTOR;
             On.AbstractCreatureAI.ctor += AbstractCreatureAI_ctor;
+
+            On.RoomRealizer.PutOutARoom += RoomRealizer_PutOutARoom;
         }
 
         #region weapon.HitSomething hooks
@@ -215,6 +218,20 @@ namespace PitchBlack
             return val;
         }
         #endregion
+
+        private static AbstractRoom RoomRealizer_PutOutARoom(On.RoomRealizer.orig_PutOutARoom orig, RoomRealizer self, ref List<RoomRealizer.RealizedRoomTracker> candidates)
+        {
+            List<RoomRealizer.RealizedRoomTracker> newCandidates = new List<RoomRealizer.RealizedRoomTracker>();
+            foreach (RoomRealizer.RealizedRoomTracker roomTracker in candidates) {
+                foreach (AbstractCreature abcrit in roomTracker.room.creatures) {
+                    if (abcrit.creatureTemplate.type != CreatureTemplateType.NightTerror) {
+                        newCandidates.Add(roomTracker);
+                    }
+                }
+            }
+            candidates = newCandidates;
+            return orig(self, ref candidates);
+        }
 
         #region update method hooks
         private static void AbstractCreature_Update(On.AbstractCreature.orig_Update orig, AbstractCreature self, int time)
