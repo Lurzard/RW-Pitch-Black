@@ -1,0 +1,10 @@
+DangerType: Flood
+RainIntensity: 0
+Clouds: 0.6413044
+Grime: 0.1956522
+BkgDroneVolume: 0
+Palette: 57
+EffectColorA: 13
+EffectColorB: 13
+Effects: LightBurn-1-283-201, LethalWater-1-1026-429, SilenceWater-1-1026-377, WaterViscosity-1-1026-479, HeatWave-1-283-201,
+Triggers: Spot<tA>event<tB>MusicEvent<eA>songName<eB>na_37 - else6<eA>vol<eB>1<eA>prio<eB>1<eA>mxThrt<eB>1<eA>loop<eB>1<eA>droneTol<eB>0<eA>rooms<eB>-1<eA>rest<eB>-1<eA>fadeIn<eB>117.3913<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>628.9656<tB>558.053<tA>fireChance<tB>1<tA>entrance<tB>-1<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>356.9656<tB>4186.053<tA>handlePos<tB>-515.3553<tB>285.6447, 

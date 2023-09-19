@@ -1,0 +1,11 @@
+Template: SB_SettingsTemplate_Gilded
+Clouds: 0.3804348
+Grime: 0.1630435
+Palette: 57
+EffectColorA: 8
+EffectColorB: 18
+Effects: FireFlies-0.3043478-20-20, 
+PlacedObjects: NoSpearStickZone><1708.183><287.6688><-9~273, ScavengerOutpost><682.9299><139.9369><-87~396~0~0~0.2455789~80~14, SporePlant><1776.934><608.9218><10~51~7~10, InsectGroup><1267.9><261.8671><-296~283~0~0~RockFlea~0.5, DeadSeedCob><1235.125><239.4059><, DeadSeedCob><1465.386><207.3965><, SeedCob><1537.594><279.6254><0~0~7~10, DeadSeedCob><1013.751><260.3><, 
+AmbientSounds: OMNI><AM_ENV-NatWind.ogg><656.676><646.8142><0.3369565><1, OMNI><AM_ENV-Outside.ogg><830.05><645.748><0.3369565><1, SPOT><AM_ENV-Pasture.ogg><829.7066><531.9453><0.4565217><1><2006.707><708.9453><-504.3552><-291.3553><0><1, SPOT><AM_ENV-WindGrass.ogg><824.2499><423.95><0.3586957><1><2052.25><717.95><-371.3553><-430.3553><0><1, 
+FadePalette: 22, 0.2391304, 0.2934783
+MorePalette0: 48, 0.1565983, 0.1565976

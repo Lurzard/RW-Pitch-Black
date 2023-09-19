@@ -1,0 +1,14 @@
+WaveSpeed: 0.5552685
+WaveLength: 0.9723658
+WaveAmplitude: 1.498788E-16
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Clouds: 0.2173913
+Grime: 0
+BkgDroneVolume: 0
+Palette: 14
+EffectColorB: 18
+PlacedObjects: GhostSpot><620.9124><367.6168><, FirecrackerPlant><379.8074><191.0538><-418~24~2~3, FirecrackerPlant><307.6997><201.0103><-347~-71~2~3, DeadSeedCob><841.0406><258.9458><, GooieDuck><381.3559><445.1113><0~0~2~3, GooieDuck><440.6788><498.1604><0~0~2~3, GooieDuck><528.6968><465.2144><0~0~2~3, GooieDuck><826.3138><369.323><0~0~2~3, GooieDuck><875.554><315.0574><0~0~2~3, 
+AmbientSounds: SPOT><AM_ENV-NatWind.ogg><86.92493><499.403><0.3478261><1><120.9249><233.403><-129.3553><-55.35535><0><0.5565219, SPOT><SO_NAT-LilDrips.ogg><273.1884><499.1829><0.1956522><1><613.1884><99.18289><-210.3553><-104.3553><0><0.2739132, 
+FadePalette: 20, 0.3152174
+MorePalette0: 48, 0.1521739

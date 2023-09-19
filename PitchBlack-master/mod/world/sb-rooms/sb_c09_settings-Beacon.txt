@@ -1,0 +1,10 @@
+Template: SB_SettingsTemplate_Temple
+DangerType: None
+CeilingDrips: 0.5434783
+BkgDroneVolume: 0
+Palette: 17
+EffectColorA: 13
+EffectColorB: 13
+Effects: VoidMelt-1-22-73, VoidSpawn-0-20-20, 
+AmbientSounds: OMNI><AM_SUB-BlankState.ogg><833.6546><639.1758><0.7391304><1.254348, OMNI><AM_ENV-SubTerr.ogg><662.0606><641.1857><0.7608696><1.430435, OMNI><SO_WAT-DripTap.ogg><483.3101><632.3127><0.3586957><1.176087, OMNI><SO_SFX-BlackWidow2.ogg><735.3178><172.8326><1><0.7065217, 
+Triggers: Spot<tA>event<tB>StopMusicEvent<eA>songName<eB>NO SONG<eA>prio<eB>1<eA>type<eB>AllSongs<eA>fadeOut<eB>200<tA>multiUse<tB>1<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>707.6464<tB>216.8289<tA>fireChance<tB>1<tA>entrance<tB>-1<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>155.6464<tB>1986.829<tA>handlePos<tB>-86.35535<tB>96.64465, 

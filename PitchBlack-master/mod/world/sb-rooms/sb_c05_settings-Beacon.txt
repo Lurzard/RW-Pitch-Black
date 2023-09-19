@@ -1,0 +1,10 @@
+Template: SB_SettingsTemplate_Gilded
+DangerType: Flood
+Grime: 0.1086956
+BkgDroneVolume: 0
+Palette: 57
+Effects: HeatWave-1-20-20, 
+PlacedObjects: SSLightRod><428.0669><427.4385><104.3205~-139~0.6195652~0~104.7826~0.3369565, SSLightRod><526.8474><429.1207><17.32051~-10~0.6195652~0~104.7826~0.326087, PlayerPushback><511.9366><357.5604><-4~197, ExitSymbolHidden><508.9446><362.7962><, ExitSymbolHidden><550.4275><2195.408><, PlayerPushback><547.1659><2195.888><-3~-164, 
+AmbientSounds: OMNI><AM_ENV-SubTerr.ogg><830.5569><648.6979><0.423913><1, OMNI><AM_SUB-BlankState.ogg><653.1877><647.8099><0.3152174><1, 
+FadePalette: 21, 0.2065217, 0.1413043, 0.05434782
+MorePalette0: 48, 0.1521739, 0.1521739, 0.1521739
