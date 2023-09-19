@@ -6,7 +6,7 @@ Clouds: 0.5
 Grime: 0
 BkgDroneVolume: 0
 Palette: 16
-EffectColorA: 0
+EffectColorA: 21
 EffectColorB: 21
 Effects: Lightning-0.09782609-5-64, GreenSparks-0.09782609-6-120, ElectricDeath-0.09782609-5-12, FireFlies-0.2717391-274-86, 
 PlacedObjects: DangleFruit><812.9302><821.4371><-888~492~2~3, DangleFruit><725.5615><876.6901><-805~520~2~3, DangleFruit><681.0793><841.6833><-761~376~2~3, DangleFruit><575.0508><1630.482><-685~506~2~3, ReliableSpear><133.598><1897.37><, DangleFruit><650.8226><1644.342><0~0~2~3, DangleFruit><694.886><1560.085><0~0~2~3, 
@@ -14,4 +14,4 @@ AmbientSounds: SPOT><AM_ENV-NatWind.ogg><66.91895><501.5671><0.3369565><1><546.9
 Triggers: Spot<tA>event<tB>MusicEvent<eA>songName<eB>RW_55 - White Lizard<eA>vol<eB>0.3000004<eA>prio<eB>0.5<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>7<eA>rest<eB>5<eA>fadeIn<eB>163.0435<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>633.5555<tB>553.8079<tA>fireChance<tB>1<tA>entrance<tB>-1<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>453.5555<tB>1825.808<tA>handlePos<tB>-384.3553<tB>-105.3553, 
 FadePalette: 33, 0.6413044, 0.6086956, 0.5652174, 0.5326087
 MorePalette0: 33, 0.7017915, 0.7042031, 0.7042037, 0.7042031
-MorePalette1: 10, 0.7365915, 0.7365909, 0.7307919, 0.7307919
+MorePalette1: 10, 0.8525895, 0.8583891, 0.9047898, 0.9047898

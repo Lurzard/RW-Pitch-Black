@@ -1,0 +1,13 @@
+Template: NONE
+DangerType: Flood
+WaveSpeed: 0.5162199
+WaveLength: 0.9918901
+WaveAmplitude: 2.011051E-05
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Palette: 4
+EffectColorB: 18
+Effects: ZeroG-1-20-20, BrokenZeroG-0.0181301-26-61, SSSwarmers-0.03479966-30-101, SSMusic-0.04639949-14-137, ElectricDeath-0.05799932-285-27, SuperStructureProjector-0.06959932-285-77, ProjectedScanLines-0.07539898-282-115, Lightning-0.08699898-281-146, GreenSparks-0.09859898-280-185, ZeroGSpecks-0.1043986-280-223, HeatWave-0.1159986-278-257, 
+PlacedObjects: SteamPipe><482.0457><496.9447><28~-28, SteamPipe><369.1687><551.6426><18~30, SteamPipe><302.1002><540.5769><-39~-33, CoralStemWithNeurons><241.6674><333.2132><602~188, CoralNeuron><477.278><313.1541><288~27, WallMycelia><603.4537><531.2937><337~78, DeepProcessing><10.0925><83.23869><0~40~40~40~40~0~-72.03516~-21.86668~0~1~0.5, SSLightRod><143.9688><546.697><-232.4014~28.93332~0~0~80~0.5, 
+AmbientSounds: OMNI><AM_ENV-LightWind.ogg><742.3232><523.1861><0.2826087><0.7847826, SPOT><SO_NAT-LilDrips.ogg><590.8341><595.3185><0.3369565><1><255.8341><271.3185><-159.3553><-12.35535><0><0.4369566, 
+FadePalette: 8, 0.1086956

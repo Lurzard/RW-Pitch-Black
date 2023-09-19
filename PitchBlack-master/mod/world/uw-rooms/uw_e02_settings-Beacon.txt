@@ -6,7 +6,7 @@ Clouds: 0.7065217
 Grime: 0
 BkgDroneVolume: 0
 Palette: 16
-EffectColorA: 0
+EffectColorA: 21
 EffectColorB: 21
 Effects: Lightning-0.2065217-3-154, GreenSparks-0.2065217-7-95, ElectricDeath-0.4565217-12-37, FireFlies-0.3586957-289-115, 
 PlacedObjects: ReliableSpear><927.1185><265.8892><, 
