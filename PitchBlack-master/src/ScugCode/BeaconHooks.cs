@@ -70,8 +70,11 @@ public static class BeaconHooks
                 FlareBomb fb = cwt.Beacon.storage.storedFlares.Pop();
                 BeaconCWT.AbstractStoredFlare af = cwt.Beacon.storage.abstractFlare.Pop();
 
-                fb.firstChunk.vel = self.mainBodyChunk.vel + RWCustom.Custom.RNV() * 3f * UnityEngine.Random.value;
-                fb.ChangeMode(Weapon.Mode.Free);
+                if (fb != null)
+                {
+                    fb.firstChunk.vel = self.mainBodyChunk.vel + RWCustom.Custom.RNV() * 3f * UnityEngine.Random.value;
+                    fb.ChangeMode(Weapon.Mode.Free);
+                }
 
                 af?.Deactivate();
             }
