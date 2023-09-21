@@ -14,7 +14,13 @@
     
     <ItemGroup>
       <Reference Include="Fisobs">
-        <HintPath>bin\Debug\net48\Fisobs.dll</HintPath>
+        <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\workshop\content\312520\2920541687\plugins\Fisobs.dll</HintPath>
+      </Reference>
+      <Reference Include="Pom">
+        <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\workshop\content\312520\2920439169\plugins\Pom.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine.AssetBundleModule">
+        <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Rain World\RainWorld_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
       </Reference>
     </ItemGroup>
     
