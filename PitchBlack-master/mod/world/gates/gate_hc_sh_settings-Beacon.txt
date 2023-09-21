@@ -1,0 +1,9 @@
+Template: NONE
+BkgDroneVolume: 0
+Palette: 10
+EffectColorA: 14
+EffectColorB: 18
+PlacedObjects: FanLight><482.2212><242.3021><17.32051~-10~43~1~0~0~0~FanLightMask1~-5~190~0~0, LightSource><-31.96674><262.0528><1~EffectColor2~0~-408~50~86.60254~1~0~None~0~0, LightSource><844.812><409.8183><0.173913~EffectColor1~-10~153~50~86.60254~0~1~None~0~0, LightSource><116.0646><416.5607><0.173913~EffectColor1~6~146~50~86.60254~0~1~None~0~0, ExitSymbolShelter><725.1823><109.3118><, ExitSymbolShelter><234.8361><117.6146><, 
+AmbientSounds: OMNI><AM_IND-ElectricHum01.ogg><730.1431><279.831><0.2391304><0.373913, OMNI><AM_ENV-WallHum.ogg><706.2264><411.8014><0.423913><0.9217392, OMNI><AM_IND-Warehouse01.ogg><118.6919><468.6936><1><0.5695652, 
+FadePalette: 141, 0.4565217
+MorePalette0: 10, 0.9021739

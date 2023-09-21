@@ -1,0 +1,10 @@
+Template: NONE
+Clouds: 0.8695652
+BkgDroneVolume: 0
+Palette: 141
+EffectColorB: 18
+PlacedObjects: LightSource><486.9026><370.1747><0.3586957~EffectColor2~-27~162~50~86.60254~1~0~None~0~0, 
+AmbientSounds: OMNI><AM_IND-Warehouse02.ogg><766.9719><383.698><0.6413044><0.6478261, OMNI><AM_IND-Factory01.ogg><704.1571><206.6238><0.5326087><0.6282609, 
+FadePalette: 10, 0.6413044
+MorePalette0: 10, 1
+MorePalette1: 36, 0.05799932

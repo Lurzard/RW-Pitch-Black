@@ -1,0 +1,10 @@
+Template: NONE
+Clouds: 1
+Grime: 0.1956522
+Palette: 141
+EffectColorB: 14
+PlacedObjects: LightSource><404.5637><258.8228><0.1630435~EffectColor2~0~100~50~86.60254~1~0~None~0~0, LightSource><414.5777><257.3984><0.07608695~EffectColor2~-4~57~88~-28.39746~1~1~None~0~0, LightSource><433.1561><494.0734><0.106377~Environment~11~-176~99.62421~14.06921~1~0~None~0~0, 
+AmbientSounds: OMNI><AM_ENV-CityTone.ogg><-7.972473><378.6981><0.8043478><0.5108696, OMNI><AM_IND-Fabrik02.ogg><13.71558><254.697><0.6630435><0.2565217, 
+FadePalette: 143, 0.4021739
+MorePalette0: 10, 0.8003911
+MorePalette1: 36, 0.05219965

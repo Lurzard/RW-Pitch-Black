@@ -1,0 +1,12 @@
+Template: NONE
+DangerType: Flood
+Grime: 0.1195652
+BkgDroneVolume: 0
+Palette: 141
+EffectColorA: 14
+EffectColorB: 18
+Effects: Lightning-0.4565217-20-20, 
+PlacedObjects: ExitSymbolShelter><898.5504><470.4873><, LightSource><649.432><511.8329><1~EffectColor1~-147.8054~111.7333~50~86.60254~1~0~None~0~0, LightSource><309.4497><370.5106><1~EffectColor1~167.0149~18.39999~-211~132.6026~1~0~None~0~0, LightFixture><883.0659><488.9216><RedLight~17.32051~-10~100, LightFixture><482.1262><49.1571><RedLight~17.32051~-10~60, LightSource><131.917><192.36><0.6086956~Environment~63~143~-467~-145.3975~1~0~None~0~0, LightSource><508.0969><376.575><0.4565217~EffectColor2~213~-11~50~86.60254~0~0~None~0~0, LightFixture><132.3697><370.0983><SlimeMoldLight~19.3205~65~65, LightFixture><109.6094><327.0826><SlimeMoldLight~-205.6795~179~55, CosmeticSlimeMold><92.67981><364.8376><5~124, CosmeticSlimeMold2><77.20612><338.9451><39~106, SlimeMold><114.7><287.2502><-178~-267~2~3, SlimeMold><122.4444><338.0579><-163~-237~2~3, SlimeMold><163.6914><290.192><-234~-181~2~3, CosmeticSlimeMold><169.4666><399.0528><1~79, LightSource><310.6032><367.4009><0.08941054~EffectColor1~0~100~50~86.60254~1~1~None~0~0, LightSource><655.8812><504.4911><0.0836102~EffectColor1~0~100~50~86.60254~1~1~None~0~0, 
+AmbientSounds: OMNI><AM_ENV-WallHum.ogg><714.671><418.8537><0.5869565><0.6673913, OMNI><AM_IND-Fabrik01.ogg><726.699><232.0203><0.2826087><0.2565217, OMNI><AM_RAIN-Rumbles.ogg><730.8616><330.3944><0.3369565><1, OMNI><AM_RAIN-RollingThunder.ogg><310.532><431.5526><0.3586957><1, 
+MorePalette0: 10, 0.9130435
+MorePalette1: 38, 0.1521739

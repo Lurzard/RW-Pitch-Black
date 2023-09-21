@@ -1,0 +1,7 @@
+Template: NONE
+Palette: 141
+PlacedObjects: LightFixture><283.3617><431.4159><RedLight~17.32051~-10~79, 
+AmbientSounds: OMNI><AM_ENV-CityTone.ogg><728.6895><564.8094><0.6739131><0.6282609, OMNI><AM_SUB-CaveTone.ogg><525.8377><591.8669><0.5><1, SPOT><SO_IND-Generator.ogg><714.5976><220.5754><0.6521739><0.2956522><486.5976><413.5754><-35.35534><-35.35534><0><0.1, 
+FadePalette: 10, 0.7608696
+MorePalette0: 10, 1
+MorePalette1: 36, 0.05461121

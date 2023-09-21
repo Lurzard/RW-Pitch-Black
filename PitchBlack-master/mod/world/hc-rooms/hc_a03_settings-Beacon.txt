@@ -1,0 +1,13 @@
+Template: NONE
+Grime: 0
+RandomItemDensity: 0.5978261
+RandomItemSpearChance: 0.3521738
+Palette: 141
+EffectColorA: 14
+EffectColorB: 12
+Effects: SunBlock-1-178-101, FireFlies-0.3478261-20-20, 
+PlacedObjects: SuperStructureFuses><485.1193><358.5986><85~133, LightSource><184.8477><276.6746><0.1086956~EffectColor1~6~266~-135.5833~-50.64191~1~1~None~0~0, FanLight><542.858><400.1092><241.8622~-2.888855~83~1~0~0~0~FanLightMask1~-10~217~0~0, LightSource><150.5277><495.4499><0~Environment~0~100~-239~-347.8864~1~0~None~0~0, LightSource><861.9419><632.1937><0.1521739~EffectColor1~0~100~50~86.60254~1~1~None~0~0, LightSource><955.9214><624.1469><0.173913~EffectColor1~0~100~50~86.60254~1~1~None~0~0, LightSource><847.9009><583.4705><0.2750085~EffectColor1~-366.5789~-82.93335~-430.2344~-45.13077~1~0~None~0~0, LightSource><175.3475><274.8645><0.2286092~EffectColor1~419.9383~188.5333~50~86.60254~1~0~None~0~0, 
+AmbientSounds: OMNI><AM_ENV-WallHum.ogg><746.5659><296.4219><0.2717391><0.7847826, OMNI><AM_IND-SuperStructure.ogg><776.7755><357.4484><0.6195652><0.4130435, OMNI><SO_NAT-WindTunnel.ogg><552.6658><312.0686><0.4347826><0.4326087, OMNI><SO_SFX-LakeBottom.ogg><318.2642><460.5505><0.2282609><0.7456522, 
+FadePalette: 148, 0
+MorePalette0: 10, 1
+MorePalette1: 36, 0.05219965
