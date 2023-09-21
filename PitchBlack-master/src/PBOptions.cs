@@ -8,11 +8,9 @@ namespace PitchBlack;
 public class PBOptions : OptionInterface
 {
     public static readonly PBOptions Instance = new();
-    private readonly ManualLogSource Logger;
 
     public PBOptions()
     {
-        //Logger = loggerSource;
 		maxFlashStore = this.config.Bind<int>("maxFlashStore", 4, new ConfigAcceptableRange<int>(0, 10));
 		shockStun = this.config.Bind<bool>("shockStun", true);
 		elecImmune = this.config.Bind<bool>("elecImmune", false);
@@ -26,8 +24,6 @@ public class PBOptions : OptionInterface
 	public static Configurable<bool> elecImmune;
 	public static Configurable<bool> chargeSpears;
 	public static Configurable<bool> pursuer;
-
-    private UIelement[] UIArrPlayerOptions;
 
 	public OpSlider pDistOp;
 	public OpCheckBox mpBox1;
@@ -60,14 +56,13 @@ public class PBOptions : OptionInterface
 		
 		lineCount -= 60;
 		dsc = Translate("Maximum number of flashbangs stored");
-		int barLngt = 35 * 3;
-		float sldPad = 15;
+		int barLngt = 45 * 3;
 		Tabs[0].AddItems(new UIelement[]
 		{
             pDistOp = new OpSlider(PBOptions.maxFlashStore, new Vector2(margin + 250, lineCount-5), barLngt)
 			{description = dsc},
-            lblOp1 = new OpLabel(pDistOp.pos.x + ((barLngt * 1) / 6f), pDistOp.pos.y - 20, Translate("Max Flashbangs"), bigText: false)
-			{alignment = FLabelAlignment.Center}
+            lblOp1 = new OpLabel(pDistOp.pos.x, pDistOp.pos.y - 20, Translate("Beacon's Max Stored Flashbangs"), bigText: false)
+			//{alignment = FLabelAlignment.Center}
 		});
 		
 		
@@ -76,7 +71,7 @@ public class PBOptions : OptionInterface
 		{
 			mpBox1 = new OpCheckBox(PBOptions.pursuer, new Vector2(margin, lineCount))
 			{description = dsc},
-			new OpLabel(mpBox1.pos.x + 30, mpBox1.pos.y+3, Translate("Pursuer"))
+			new OpLabel(mpBox1.pos.x + 30, mpBox1.pos.y+3, Translate("Beacon's Pursuer Spawns"))
 			{description = dsc},
         });
 		
@@ -88,7 +83,7 @@ public class PBOptions : OptionInterface
         {
             mpBox4 = new OpCheckBox(PBOptions.shockStun, new Vector2(margin, lineCount))
             {description = dsc},
-            new OpLabel(mpBox4.pos.x + 30, mpBox4.pos.y+3, Translate("Shock Stun"))
+            new OpLabel(mpBox4.pos.x + 30, mpBox4.pos.y+3, Translate("Photomaniac's Shock Stun"))
             {description = dsc}
         });
 		
@@ -99,11 +94,12 @@ public class PBOptions : OptionInterface
 		{
 			mpBox5 = new OpCheckBox(PBOptions.elecImmune, new Vector2(margin, lineCount))
 			{description = dsc},
-			new OpLabel(mpBox5.pos.x + 30, mpBox5.pos.y+3, Translate("Electricity Resistance"))
+			new OpLabel(mpBox5.pos.x + 30, mpBox5.pos.y+3, Translate("Photomaniac's Electricity Resistence"))
 			{description = dsc}
 		});
-        
-		
+
+        //Not exactly sure what to do with this so I will leave it here for now
+        /*
 		lineCount -= 60;
 		dsc = Translate("Photomaniac will charge uncharged electric spears");
 		Tabs[0].AddItems(new UIelement[]
@@ -113,15 +109,27 @@ public class PBOptions : OptionInterface
 			new OpLabel(mpBox7.pos.x + 30, mpBox7.pos.y+3, Translate("Charge Spears"))
 			{description = dsc}
 		});
-		
-		
-		
+		*/
+
+
         int descLine = 225;
-        Tabs[0].AddItems(new OpLabel(25f, descLine + 25f, "--- How It Works: ---"));
-        // Tabs[0].AddItems(new OpLabel(25f, descLine, "Press up against stuck creatures to push them. Grab them to pull"));
-        // descLine -= 20;
-        Tabs[0].AddItems(new OpLabel(25f, descLine, Translate("Entering a pipe will create a warp beacon for other players")));
+		Tabs[0].AddItems(new OpLabel(25f, descLine, "Beacon:"));
+		descLine -= 20;
+		Tabs[0].AddItems(new OpLabel(25f, descLine, Translate("Flashbang creation: Costs 1 food pip per rock + SHIFT / Grab (Automatically added to storage).")));
         descLine -= 20;
+        Tabs[0].AddItems(new OpLabel(25f, descLine, Translate("Add flashbang to storage: Have a flashbang in hand + hold SHIFT / Grab.")));
+        descLine -= 20;
+        Tabs[0].AddItems(new OpLabel(25f, descLine, Translate("Remove flashbang from storage: Have a stored flashbang + hold SHIFT / Grab.")));
+        descLine -= 20;
+        Tabs[0].AddItems(new OpLabel(25f, descLine, Translate("Quick-throw flashbang: Have a stored flashbang + X / Throw on an empty hand.")));
+
+        descLine -= 45;
+        Tabs[0].AddItems(new OpLabel(25f, descLine, "Photomaniac:"));
+        descLine -= 20;
+        Tabs[0].AddItems(new OpLabel(25f, descLine, Translate("Electric Spear creation: Costs 1 food pip per spear + SHIFT / Grab.")));
+        descLine -= 20;
+        Tabs[0].AddItems(new OpLabel(25f, descLine, Translate("Electric shockwave ability: SHIFT / Grab + Z / Jump.")));
+
     }
 
     public override void Update()
