@@ -1,4 +1,5 @@
 ﻿using MonoMod.RuntimeDetour;
+using PitchBlack;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,7 +43,7 @@ public class NightTerrorAbstractData
 
     public void TryRevive()
     {
-        if (!abstrNightterrorRef.TryGetTarget(out var centi)) return;
+        if (!abstrNightterrorRef.TryGetTarget(out var centi) || !PBOptions.pursuer.Value) return;
 
         if (centi.state.alive || centi.realizedCreature != null && !centi.realizedCreature.dead) return;
 

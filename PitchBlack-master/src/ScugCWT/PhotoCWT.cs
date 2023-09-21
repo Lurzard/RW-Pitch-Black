@@ -181,7 +181,7 @@ public class PhotoCWT
             {
                 PhotoExplosiveDie(self);
             }
-            else
+            else if (PBOptions.shockStun.Value)
             {
                 self.Stun(80);
                 self.room.AddObject(new CreatureSpasmer(self, allowDead: false, 60));
