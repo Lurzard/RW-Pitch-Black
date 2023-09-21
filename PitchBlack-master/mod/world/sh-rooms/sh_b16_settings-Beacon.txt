@@ -6,6 +6,6 @@ WaveLength: 1
 WaveAmplitude: 0
 SecondWaveLength: 0.1666667
 SecondWaveAmplitude: 0
-PlacedObjects: KarmaFlower><530.4185><169.6422><-639~388~5~7, VoidSpawnEgg><621.4292><305.8389><-700~292~2~3~0, VoidSpawnEgg><398.3546><267.0796><-674~131~2~3~0, 
+PlacedObjects: KarmaFlower><530.4185><169.6422><-639~388~5~7, 
 AmbientSounds: OMNI><AM_ENV-CityTone.ogg><835.9832><639.3007><0.3478261><0.823913, OMNI><SO_WAT-DripTap.ogg><652.1797><640.1873><0.3043478><1, 
 FadePalette: 0, 0.05434782, 0.0326087
