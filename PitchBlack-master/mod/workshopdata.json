@@ -7,7 +7,7 @@
   "Requirements": "slime-cubed.slugbase,moreslugcats,fisobs,regionkit,crs",
   "RequirementNames": "SlugBase,More Slugcats Expansion,Fisobs,RegionKit,Custom Regions Support",
   "Authors": "[ Pitch Black Team ]\n\nLurzard: The Beacon, Art, Room Settings\n\nMillisec: The Photomaniac, Thumbnail, Lediting\n\nNiko: Coder \u002B Leditor\n\nURUFUDOGGO, Bluecubism, Moon615: Coder\n\nOpey: World Changes\n\nLudocrypt: Music\n\n- - -\n\nMusicalMiracle, TurtleMan27, dogbitchdogbitch, Noir, Tronx: Playtesting\n\nFaeling: New Illustrations\n\nMerfaruk: New Backgrounds\n\nKoko: Custom DMS Skins",
-  "Visibility": "Unlisted",
+  "Visibility": "Public",
   "Tags": [
     "Regions",
     "Campaigns",
