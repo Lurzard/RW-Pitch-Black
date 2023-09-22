@@ -1,0 +1,11 @@
+Template: NONE
+DangerType: Flood
+Grime: 0.1630435
+Palette: 22
+EffectColorA: 19
+EffectColorB: 20
+PlacedObjects: LightSource><127.0638><327.4271><0.1304348~EffectColor1~0~100~-161~192.6026~1~1~None~0~0, LightSource><835.3508><339.6168><0.173913~EffectColor1~1~92~50~86.60254~1~1~None~0~0, LightSource><123.486><329.3005><0.5326087~EffectColor1~-13~163~-339~88.60257~1~0~None~0~0, LightSource><834.0609><336.8095><0.5434783~EffectColor1~-110~124~-348~10.60254~1~0~None~0~0, CustomDecal><160.05><325.254><-66~219~425~248~561~31~-550~-385~0~1~0~Rust1~0~1~0~1~0~1~0~1, NoSpearStickZone><479.3523><248.6152><-3~138, ShortcutColor><734.5995><89.11829><111~-82~0.08695652~0~0~119^89, LightSource><732.615><134.8525><1~EffectColor2~2~56~50~86.60254~1~0~None~0~0, LightSource><71.46002><188.554><1~EffectColor2~59~2~27~172.6025~1~0~None~0~0, ExitSymbolHidden><735.9459><110.71><, ExitSymbolHidden><48.81168><189.5673><, ARKillRect><-92.8772><-24.64931><1077.306~593.6, SlugcatEyeSelector><-103.6879><-37.21873><100~50~0~0~10~3~0.5~Dead~1107.959^626.4, 
+AmbientSounds: OMNI><AM_IND-Factory03.ogg><743.1713><171.1467><0.5543478><0.7652174, 
+FadePalette: 23, 0.3913043
+MorePalette0: 10, 1
+MorePalette1: 367, 0.3043478

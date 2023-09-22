@@ -1,0 +1,11 @@
+Template: NONE
+Clouds: 1
+Grime: 0.02173913
+BkgDroneVolume: 0
+Palette: 141
+EffectColorB: 18
+PlacedObjects: LightFixture><407.6832><601.1697><RedLight~17.32051~-10~41, LightSource><399.6956><533.7079><0.1195652~EffectColor2~8~-409~50~86.60254~1~1~None~0~0, 
+AmbientSounds: OMNI><AM_IND-Factory01.ogg><734.6118><208.6055><0.6521739><0.3934783, OMNI><AM_RAIN-RollingThunder.ogg><746.6884><292.9402><0.4130435><1, OMNI><AM_RAIN-QuietThunder.ogg><701.7886><417.5537><0.3478261><1, OMNI><AM_ENV-WallHum.ogg><697.8665><568.9126><0.9239131><0.3347826, 
+FadePalette: 10, 0.3152174
+MorePalette0: 10, 0.3595959
+MorePalette1: 36, 0.05799932

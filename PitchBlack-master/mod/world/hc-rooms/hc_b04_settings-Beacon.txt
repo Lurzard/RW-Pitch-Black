@@ -1,0 +1,16 @@
+Template: NONE
+DangerType: Flood
+Clouds: 1
+Grime: 0.2826087
+BkgDroneVolume: 0.2934783
+RandomItemDensity: 0.8260869
+RandomItemSpearChance: 0.4065217
+Palette: 141
+EffectColorA: 13
+EffectColorB: 18
+Effects: BkgOnlyLightning-0.423913-20-20, FireFlies-0.7608696-134-94, 
+PlacedObjects: LightSource><369.0507><238.4839><0.2608696~EffectColor1~58~339~50~86.60254~1~0~None~0~0, LightFixture><353.3295><118.8544><RedLight~17.32051~-10~27, SuperStructureFuses><119.0505><910.9854><75~115, SuperStructureFuses><305.4846><911.0505><79~149, SuperStructureFuses><538.3531><912.1714><117~172, SuperStructureFuses><782.3766><917.8452><85~140, FanLight><485.4496><1311.262><17.32051~-10~30~1~0~0~0~FanLightMask1~11~161~0~0, SuperStructureFuses><145.6991><434.9812><56~99, LightSource><36.86902><853.6509><0.2391304~EffectColor2~-8~180~50~86.60254~1~0~None~0~0, LightSource><281.6962><485.8074><0.6630435~EffectColor2~2~86~60~147.6025~1~0~None~0~0, LightSource><352.1366><487.5852><0.5434783~EffectColor2~2~72~50~86.60254~1~0~None~0~0, LightSource><351.2906><995.0542><1~EffectColor2~2~176~50~86.60254~1~0~None~0~0, LightSource><600.0199><1009.949><1~EffectColor2~0~199~50~86.60254~1~0~None~0~0, LightSource><158.4801><977.699><1~EffectColor2~6~164~50~86.60254~1~0~None~0~0, LightSource><822.4423><1004.445><1~EffectColor2~-19~195~50~86.60254~1~0~None~0~0, LightSource><753.4491><351.0212><1~EffectColor1~0~100~-204~25.60254~1~0~None~0~0, 
+AmbientSounds: OMNI><AM_IND-Utility04.ogg><54.88641><355.5854><0.8260869><0.3934783, OMNI><OM.wav><55.14722><280.6354><0.2826087><0.5108696, OMNI><SO_SFX-PulseWav.ogg><50.67438><507.9022><0.2173913><0.6869565, OMNI><SO_SFX-LakeBottom.ogg><53.40259><435.3708><0.7173913><0.823913, SPOT><SO_SFX-DataTrans2.ogg><486.2708><402.1989><0.5><1><351.2708><991.1987><-95.35535><-106.3553><0><0.1652175, SPOT><SO_SFX-Data4.ogg><459.7572><537.8002><0.6956522><0.5695652><161.7572><976.7999><-64.35535><-95.35535><0><0.1, SPOT><SO_SFX-DataTones.ogg><751.8687><487.1508><0.3913043><1><570.8687><1036.682><-96.35535><-126.3553><0><0.1217393, SPOT><SO_SFX-Data1.ogg><721.2343><162.4494><0.5><1><792.2343><1025.45><-112.3553><-109.3553><0><0.1326088, 
+FadePalette: 142, 0.07608695, 0
+MorePalette0: 10, 1, 1
+MorePalette1: 38, 0.05799932, 0.05799932

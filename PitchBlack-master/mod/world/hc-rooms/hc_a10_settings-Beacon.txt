@@ -1,0 +1,12 @@
+Template: NONE
+Grime: 0.1521739
+BkgDroneVolume: 0
+Palette: 141
+EffectColorA: 12
+EffectColorB: 14
+Effects: LightBurn-0-20-20, FireFlies-0.6847826-99-113, 
+PlacedObjects: LightSource><367.8003><205.489><0.1086956~EffectColor2~0~267~-313~-60.39746~1~1~None~0~0, LightSource><1013.059><146.6917><0.1847826~EffectColor2~-124~166~50~86.60254~1~1~None~0~0, LightSource><393.1565><205.9268><0.1521739~EffectColor2~-22~173~290~-57.39746~1~1~None~0~0, LightSource><298.4786><258.0511><1~EffectColor2~-3~115~-79~114.6025~1~0~None~0~0, LightSource><1038.311><99.31616><0.2934783~EffectColor2~-114~179~50~86.60254~1~0~None~0~0, LightSource><386.9774><562.9487><1~EffectColor1~-24~168~-353~-78.39746~1~0~None~0~0, SuperStructureFuses><506.2072><157.1954><121~116, SuperStructureFuses><333.1912><507.8088><128~99, LightFixture><357.113><676.6042><RedLight~17.32051~-10~3, LightFixture><558.0579><49.80542><RedLight~17.32051~-10~61, LightSource><864.3179><531.0352><0.07781186~EffectColor2~224.6429~90.39996~50~86.60254~1~1~None~0~0, 
+AmbientSounds: OMNI><AM_ENV-CityTone.ogg><715.8287><555.3533><0.5869565><0.55, OMNI><AM_ENV-WallHum.ogg><763.1826><415.1883><0.5652174><0.5304348, OMNI><SO_SFX-LakeBottom.ogg><585.5322><323.1974><0.8695652><0.5891304, OMNI><AM_IND-Warehouse01.ogg><758.0762><261.1849><1><0.2956522, SPOT><SO_SFX-DataTones.ogg><709.928><186.0634><0.5543478><1><573.928><212.0634><-74.35535><-76.35535><0><0.2847827, SPOT><SO_SFX-Data3.ogg><720.5298><253.5522><0.5><1><383.5298><554.5522><-62.35535><-119.3553><0><0.1, 
+FadePalette: 143, 0.09782609
+MorePalette0: 10, 1
+MorePalette1: 36, 0.05799932

@@ -1,0 +1,13 @@
+Template: NONE
+DangerType: Flood
+Clouds: 0.9239131
+Grime: 0.1086956
+Palette: 141
+EffectColorA: 14
+EffectColorB: 19
+Effects: Fog-0.4456522-20-20, FireFlies-0.6739131-210-20, 
+PlacedObjects: SuperStructureFuses><1537.167><269.1101><73~54, SuperStructureFuses><1401.424><283.8151><66~77, SuperStructureFuses><1309.055><269.4576><38~52, LightSource><1445.294><328.3049><1~EffectColor2~-3~138~50~86.60254~1~0~None~0~0, LightSource><1576.859><307.8583><1~EffectColor2~133~22~50~86.60254~1~0~None~0~0, LightSource><1325.375><304.6565><1~EffectColor2~-10~131~50~86.60254~1~0~None~0~0, LightFixture><1484.271><334.301><RedLight~17.32051~-10~23, LightFixture><2106.386><351.647><RedLight~17.32051~-10~93, LightFixture><370.6833><120.0799><RedLight~17.32051~-10~7, LightSource><969.6752><298.8389><1~EffectColor2~-39~185~50~86.60254~1~0~None~0~0, LightSource><947.0719><520.5634><1~EffectColor2~-5~48~50~86.60254~1~0~None~0~0, LightSource><1052><484.8><0.6739131~EffectColor2~8~26~50~86.60254~1~0~None~0~0, CustomDecal><795.3322><145.5677><-29~236~222~294~402~-122~-707.1359~-119.2667~0~1~0~BlackRust1~0.2054093~1~0.2054093~1~0.2054093~1~0.2054093~1, LightSource><730.4473><217.5327><0.1195652~EffectColor1~-43~165~50~86.60254~1~1~None~0~0, LightSource><2093.699><406.233><0.173913~EffectColor1~-28~174~-385~97.60254~1~1~None~0~0, WholeScreenSpawner><142.1453><317.9204><100~50~23^4~20~10~80~0~0~0~80~0~1~False~0~0~0~False, ParticleVisualCustomizer><1426.612><532.4155><-1092~-316~000000~000000~FF0000~FF0000~-1352^-743~Foreground~EggBugEggColor~False~0.1304348~1~200~0~200~0~Basic~1~1, 
+AmbientSounds: OMNI><Mech Multiactive Highpass.wav><360.7302><95.94904><0.4456522><0.3152174, OMNI><SO_IND-Humm.ogg><757.243><561.8001><0.326087><1, OMNI><SO_IND-WinFan.ogg><718.9827><427.1992><0.326087><1, SPOT><SO_SFX-DataTones.ogg><703.8207><160.6613><0.5><1><1453.821><330.6613><-168.3553><-105.3553><0><0.1869567, SPOT><Mech Multiactive Highpass.wav><428.0959><419.3725><0.5978261><0.6478261><987.0959><320.3725><-73.35535><-84.35535><0><0.1869567, OMNI><AM_WAT-Shoreline.ogg><72.12378><492.3429><0.6195652><0.1782609, 
+FadePalette: 141, 0, 0
+MorePalette0: 10, 0.7042031, 0.7042037
+MorePalette1: 38, 0.05219965, 0.05219899

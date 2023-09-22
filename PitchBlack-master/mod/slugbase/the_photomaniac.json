@@ -40,10 +40,9 @@
 		"the_glow": true,
 		"world_state": [ "Photomaniac", "Beacon" ],
 		"select_menu_scene": "Slugcat_Photo",
-		"select_menu_scene_ascended": "Ghost_Photo",
+		"select_menu_scene_ascended": "Trapped",
 		"sleep_scene": "Sleep_Photo",
 
-		"expedition_enabled": true,
-		"expedition_description": "TBD"
+		"expedition_enabled": false
 	}
 }

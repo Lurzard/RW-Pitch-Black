@@ -1,0 +1,12 @@
+Template: HC_SettingsTemplate_Inside
+Grime: 0.2282609
+BkgDroneVolume: 0
+Palette: 141
+EffectColorA: 14
+EffectColorB: 18
+Effects: Lightning-0.4347826-20-20, FireFlies-0.7717391-322-48, ExtraLoudThunder-0.2826087-278-210, 
+PlacedObjects: FanLight><240.3351><1059.363><17.32051~-10~7~1~0~0~0~FanLightMask1~135~107~0~0, FanLight><820.3709><1064.909><17.32051~-10~98~1~0~0~0~FanLightMask1~121~131~0~0, FanLight><1546.52><1059.949><17.32051~-10~83~1~0~0~0~FanLightMask1~138~161~0~0, CosmeticSlimeMold><812.0834><937.0682><0~54, CosmeticSlimeMold2><970.0964><837.8781><0~84, SlimeMold><967.5701><819.0872><-800~-70~2~3, LightFixture><964.0808><847.1431><SlimeMoldLight~-524.6795~14~81, LightSource><-41.43701><835.9291><0.2065217~EffectColor1~0~258~50~86.60254~1~1~None~0~0, LightSource><561.8307><874.067><0.3260874~EffectColor1~0~100~50~86.60254~1~1~None~0~0, LightSource><563.934><754.8112><0.2826087~EffectColor1~0~100~50~86.60254~1~1~None~0~0, LightSource><819.3853><411.1474><0.2391304~Environment~7~169~50~86.60254~1~0~None~0~0, LightFixture><1629.287><517.9464><RedLight~17.32051~-10~53, LightFixture><1635.671><260.6837><RedLight~17.32051~-10~9, LightFixture><835.9492><531.2331><RedLight~-351.6795~-36~80, SlimeMold><176.3788><447.0909><-327~-182~2~3, CosmeticSlimeMold2><205.3491><460.6313><0~100, LightFixture><225.2784><451.0521><SlimeMoldLight~48.3205~-279~26, SlimeMold><259.4028><458.129><0~0~2~3, SlimeMold><129.0641><489.4261><0~0~2~3, LightSource><219.6515><1290.131><0.5326087~EffectColor1~0~100~50~86.60254~1~0~None~0~0, LightSource><220.686><1467.574><0.5217391~EffectColor1~0~100~50~86.60254~1~0~None~0~0, 
+AmbientSounds: OMNI><Weird Deep Hole.wav><731.8821><507.0999><0.3695652><0.7065217, OMNI><AM_IND-SuperStructure.ogg><748.7504><409.7><0.6739131><0.4717391, OMNI><AM_IND-Warehouse02.ogg><756.449><276.1934><1><0.4521739, SPOT><AM_WIN-HowlingWnd.ogg><752.55><550.0009><0.2826087><0.9217392><1657.55><156.0009><-228.3553><159.6447><0><0.2739132, SPOT><AM_RAIN-Rumbles.ogg><754.8142><295.6759><0.4891304><1><1689.814><106.6759><-330.3553><244.6447><0><0.2739132, SPOT><Deep Weird Wind.wav><465.9091><326.3713><0.3478261><1><1774.909><93.37128><-181.3553><11.64466><0><0.1, 
+FadePalette: 10, 0, 0, 0, 0
+MorePalette0: 10, 1, 1, 1, 1
+MorePalette1: 38, 0.1043993, 0.1043993, 0.1043986, 0.1043986

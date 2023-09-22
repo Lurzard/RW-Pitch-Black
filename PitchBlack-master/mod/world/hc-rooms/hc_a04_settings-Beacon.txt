@@ -1,0 +1,11 @@
+Template: HC_SettingsTemplate_Inside
+Grime: 0
+BkgDroneVolume: 0
+Palette: 141
+EffectColorA: 14
+EffectColorB: 18
+Effects: Lightning-0.5-20-20, 
+PlacedObjects: LightFixture><133.0963><379.2907><RedLight~17.32051~-10~76, LightFixture><718.0604><328.7332><RedLight~17.32051~-10~35, DangleFruit><562.6345><354.352><0~0~2~3, DangleFruit><609.5792><377.1041><0~0~2~3, LightSource><907.7871><450.1965><0.1847826~EffectColor1~0~100~-380~-5.397461~1~1~None~0~0, LightSource><910.95><561.9973><0.1521739~EffectColor1~0~100~-485~-19.39746~1~1~None~0~0, LightSource><875.5632><474.6952><0.4026071~EffectColor1~-332.429~-5.599976~50~86.60254~1~0~None~0~0, 
+AmbientSounds: OMNI><AM_IND-Factory02.ogg><120.9399><351.5626><0.8478261><0.4130435, OMNI><AM_IND-Utility04.ogg><205.3502><461.6325><0.9021739><0.276087, OMNI><SO_SFX-BlackWidow2.ogg><719.1363><352.6036><1><0.3543478, OMNI><SO_SFX-PulseWav.ogg><744.4325><423.8318><0.75><0.4717391, OMNI><SO_SFX-AlienScythe.ogg><562.888><403.6448><0.6630435><0.7065217, 
+MorePalette0: 10, 0.5012061
+MorePalette1: 38, 0.1043986

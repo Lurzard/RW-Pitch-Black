@@ -1,0 +1,12 @@
+Template: NONE
+Grime: 0.3369565
+BkgDroneVolume: 0
+BkgDroneNoThreatVolume: 0
+Palette: 141
+EffectColorA: 18
+EffectColorB: 14
+Effects: LightBurn-0.5-20-20, 
+PlacedObjects: LightSource><542.3><291.7459><1~EffectColor1~0~100~-928~178.6025~1~0~None~0~0, LightSource><330.6174><254.5881><1~EffectColor1~0~100~-717~233.6025~1~0~None~0~0, LightSource><511.3447><578.876><1~EffectColor1~0~100~-898~-135.3975~1~0~None~0~0, LightSource><328.6981><550.7224><1~EffectColor1~0~100~-714~-45.39746~1~0~None~0~0, LightSource><399.3042><323.041><0.2826087~EffectColor2~41~201~-391~-259.3974~1~0~None~0~0, LightSource><665.1936><302.5501><0.5217391~EffectColor1~0~100~-1051~78.60254~1~0~None~0~0, LightSource><665.1085><404.668><1~EffectColor1~0~100~-1051~-3.397491~1~0~None~0~0, LightSource><666.8263><495.4009><1~EffectColor1~0~100~-1053~-75.39746~1~0~None~0~0, SeedCob><385.5977><373.9246><-510~23~7~10, DeadSeedCob><450.4761><323.0515><, UniqueDataPearl><189.6805><355.0624><-247~128~0~0~HowlingRift~0, LightSource><449.1293><382.9095><0.05434782~EffectColor2~-646~-431~418~-48.39749~1~1~None~0~0, 
+AmbientSounds: SPOT><SO_IND-HVAC.ogg><738.4504><164.6938><0.2826087><1><421.4504><577.6937><-41.35535><-151.3553><0><0.1760871, OMNI><SO_IND-Humm.ogg><443.999><168.55><0.3152174><1, OMNI><AM_IND-Utility01.ogg><750.6619><459.1326><0.3369565><1, SPOT><SO_IND-Deep50hz.ogg><724.0553><265.7958><0.5><1><424.0553><373.7958><-106.3553><-72.35535><0><0.1760871, 
+MorePalette0: 10, 1
+MorePalette1: 36, 0.1086956

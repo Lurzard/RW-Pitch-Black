@@ -1,5 +1,5 @@
 RainIntensity: 0.7065217
 RumbleIntensity: 0.7065217
 Effects: FireFlies-0.2934783-22-79, Lightning-0.3043478-30-30, 
-PlacedObjects: 
 FadePalette: 33, 0.7608696
+MorePalette0: 10, 0.9047898

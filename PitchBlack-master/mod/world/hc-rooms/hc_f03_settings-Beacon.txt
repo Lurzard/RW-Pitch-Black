@@ -1,0 +1,14 @@
+Template: NONE
+Clouds: 0.01086957
+Grime: 0.173913
+BkgDroneVolume: 0
+Palette: 141
+EffectColorA: 15
+EffectColorB: 18
+Effects: Lightning-0.8478261-20-20, ExtraLoudThunder-1-138-111, FireFlies-1-261-38, 
+PlacedObjects: FanLight><4355.294><346.2153><-1.679504~128.0003~50~1~0~0~0~FanLightMask1~11~289~1~0, LightSource><-97.85957><383.6779><0.3043486~EffectColor1~38~226~-20.00067~174.6028~1~1~None~0~0, LightSource><-94.1441><133.6113><0.2608988~EffectColor1~22~204~50~86.60254~1~1~None~0~0, LightSource><5378.138><727.3118><1~EffectColor2~5~-186~50~86.60254~1~0~None~0~0, LightFixture><4349.875><134.699><RedLight~17.32051~-10~87, LightFixture><2269.078><717.4679><RedLight~17.32051~-10~19, LightFixture><179.9089><534.1206><RedLight~174.1207~41.74408~37, LightFixture><5642.46><330.5581><RedLight~17.32051~-10~100, LightFixture><5148.588><310.3798><RedLight~17.32051~-10~63, PWLightrod><5390.437><225.6481><-321.9319~-186.1135~0.6413468~45~352.6087~0.4554868~1~0~0~1~0~0~1~0~0, PWLightrod><5497.877><208.6005><-58.6795~-211.9975~0.6413786~45~344.3478~0.5~1~0~0~1~0~0~1~0~0, LightSource><1706.954><198.0973><1~EffectColor2~-6~167~50~86.60254~1~0~None~0~0, LightSource><3924.304><23.17814><0.2576088~EffectColor1~-30.41484~193.8667~50~86.60254~1~0~None~0~0, LightSource><4774.028><25.51241><0.1532102~EffectColor1~43.22107~190.6667~50~86.60254~1~0~None~0~0, 
+AmbientSounds: OMNI><AM_IND-SuperStructure.ogg><750.3109><486.9349><0.6304348><0.4521739, OMNI><AM_WIN-HowlingWnd.ogg><763.1354><553.5861><0.4021739><0.7065217, OMNI><SO_ENV-StrongWnd.ogg><702.6352><658.5862><0><0.6673913, OMNI><Deep Weird Wind.wav><667.2516><251.95><0.3152174><1, OMNI><AM_RAIN-Rumbles.ogg><158.0972><307.9247><0.7608696><1, OMNI><Noise Wind.wav><423.7349><179.0506><0.5652174><0.5891304, OMNI><SO_SFX-RinseNFall.ogg><600.5513><400.7269><1><0.373913, OMNI><SO_SFX-Escape.ogg><464.8792><526.1527><0><0.373913, 
+Triggers: Spot<tA>event<tB>MusicEvent<eA>songName<eB>Industrial_march<eA>vol<eB>0.2021743<eA>prio<eB>0.5<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>-1<eA>rest<eB>6<eA>fadeIn<eB>0<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>707.106<tB>215.3304<tA>fireChance<tB>1<tA>entrance<tB>0<tA>karma<tB>0<tA>slugcats<tB>Rivulet|Artificer|Saint|Spear|Gourmand|Beacon|Photomaniac<tA>pos<tB>205.106<tB>454.3304<tA>handlePos<tB>151.6447<tB>-366.3553, 
+FadePalette: 10, 0.2934783, 0.2826087, 0.2608696, 0.2826087, 0.2282609, 0.2282609
+MorePalette0: 10, 0.5045942, 0.5045936, 0.5045942, 0.5045942, 0.5045942, 0.5045942
+MorePalette1: 38, 0.1068109, 0.1043986, 0.1043986, 0.104398, 0.1043993, 0.1043986

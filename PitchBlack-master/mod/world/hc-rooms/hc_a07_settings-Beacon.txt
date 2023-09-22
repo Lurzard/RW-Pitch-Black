@@ -1,0 +1,10 @@
+Template: HC_SettingsTemplate_Inside
+Clouds: 1
+Grime: 0.1956522
+EffectColorA: 14
+EffectColorB: 18
+Effects: Lightning-0.4130435-20-20, FireFlies-1-282-9, 
+PlacedObjects: SuperStructureFuses><174.135><568.1476><50~84, LightSource><2.950195><414.0563><1~EffectColor2~21~85~50~86.60254~1~0~None~0~0, LightSource><864.1469><160.3857><1~EffectColor2~-10~55~50~86.60254~1~0~None~0~0, LightSource><75.651><414.8262><1~EffectColor2~-2~70~-118~-192.3975~1~0~None~0~0, LightSource><403.9671><157.6973><1~EffectColor2~-6~150~50~86.60254~1~0~None~0~0, LightFixture><602.3188><550.4378><RedLight~17.32051~-10~58, LightFixture><622.1137><-6.603699><RedLight~17.32051~-10~5, LightSource><706.5283><669.302><0.1630435~EffectColor1~-245~-112~-523~-210.3975~1~1~None~0~0, LightSource><84.59424><626.0736><1~Environment~0~100~-10~-240.3975~1~0~None~0~0, LightSource><-10.33472><0.9311523><0.1521739~EffectColor1~0~208~50~86.60254~1~1~None~0~0, 
+AmbientSounds: OMNI><SO_SFX-DataTones.ogg><755.4276><317.408><0.2717391><1, OMNI><SO_IND-WinFan.ogg><722.9476><457.7191><0.3695652><0.8630434, OMNI><AM_IND-Midsex03.ogg><716.5637><535.0726><0.5543478><0.4130435, OMNI><AM_RAIN-Rumbles.ogg><502.1384><259.1444><0.5434783><1, SPOT><AM_WIN-HowlingWnd.ogg><272.1972><463.0333><0.5869565><1.136956><430.1972><-45.96674><-17.35535><301.6447><0><0.154348, SPOT><AM_WIN-MedWind.ogg><538.3331><588.9935><0.5><1.9><383.0275><318.7268><2.644653><261.6447><0><0.1, SPOT><SO_NAT-WindTunnel.ogg><741.3634><379.6039><0.2391304><1.9><458.3634><-45.39604><-19.35535><250.6447><0><0.1652175, 
+MorePalette0: 10, 0.7539912
+MorePalette1: 38, 0.05219899
