@@ -51,7 +51,7 @@ public class BeaconCWT
         public int counter;
 
         // Change this to increase the number of flares stored
-        public int capacity = 4;
+        public int capacity = PBOptions.maxFlashStore.Value;
         public bool interactionLocked;
         public Stack<AbstractStoredFlare> abstractFlare;
 
@@ -125,6 +125,7 @@ public class BeaconCWT
 
             for (int i = 0; i < storedFlares.Count; i++)
             {
+                float necklaceLength = 2; //capacity / 2; //WW- Didn't work well for numbers past 4, changing it.
                 // These may be able to be replaced with math involving bodyChunks of the player, which while may be more intuitive to understand, could come with positioning issues.
                 Vector2 drawPointLeft = pG.drawPositions[0, 0];
                 Vector2 drawPointRight = pG.drawPositions[1, 0];
@@ -133,7 +134,7 @@ public class BeaconCWT
                 // These vectors are the limits on the linear position displacement of flarebombs in between them
                 Vector2 flarePositionStart = new(-30f, -8f);
                 Vector2 flarePositionEnd = new(30f, -8f);
-                if (i >= capacity/2) {
+                if (i >= necklaceLength) {
                     flarePositionStart = new Vector2(-8f, -8f);
                     flarePositionEnd = new Vector2(8f, -8f);
                 }
@@ -147,9 +148,10 @@ public class BeaconCWT
                 Vector2 vector1 = drawPointLeft + Custom.RotateAroundOrigo(flarePositionEnd, n);
 
                 // num is a fraction, that essentially determines at what point the flare is in between the flare position caps.
-                float fractionOfDistance = (i + 1f) / (Mathf.Min(storedFlares.Count, capacity/2) + 1f);
-                if (i >= capacity/2) {
-                    fractionOfDistance = (i - capacity/2 + 1f) / (storedFlares.Count - capacity/2 + 1f);
+                
+                float fractionOfDistance = (i + 1f) / (Mathf.Min(storedFlares.Count, necklaceLength) + 1f);
+                if (i >= necklaceLength) {
+                    fractionOfDistance = (i - necklaceLength + 1f) / (storedFlares.Count - necklaceLength + 1f);
                 }
                 Vector2 calculatedDestination = vector + (vector1 - vector) * fractionOfDistance;
                 
