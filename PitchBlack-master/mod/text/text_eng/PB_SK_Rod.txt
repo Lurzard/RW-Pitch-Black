@@ -1,5 +1,4 @@
 Attempting Relay: “Automatic Weather Report”
-…
 [[STATION STATUS REPORT]]
 [ SYSTEM READINGS ]
 Temperature: 23°C

@@ -18,7 +18,7 @@ public class OverseerEx
     internal static ConditionalWeakTable<AbstractCreature, OverseerEx> OverseerPorlStuff = new ConditionalWeakTable<AbstractCreature, OverseerEx>();
     // Actually used to find a file of matching id. Name does not matter, but the "value" param does.
     static ChatlogID chatlogIDTest = new("test");
-    static ChatlogID PB_CC_answer = new ("PB_CC_answer");
+    static ChatlogID PB_CC = new ("PB_CC");
     static ChatlogID PB_DS = new ("PB_DS");
     static ChatlogID PB_GW = new ("PB_GW");
     static ChatlogID PB_HI = new ("PB_HI");
@@ -128,7 +128,7 @@ public class OverseerEx
     public static string[] ChatlogData_getChatLog_id(On.MoreSlugcats.ChatlogData.orig_getChatlog_ChatlogID orig, ChatlogID id)
     {
         // Add ids here to skip encryption. It's literally the same as the base method but without putting the ReadAllText results through decryption.
-        if (id == chatlogIDTest || id == PB_CC_answer || id == PB_DS || id == PB_GW || id == PB_HI || id == PB_LF_bottom || id == PB_LF_west || id == PB_MS || id == PB_RM || id == PB_SB_filtration || id == PB_SH || id == PB_SI_CWdeath || id == PB_SI_funeral || id == PB_SI_NSHdeath || id == PB_SI_SRSdeath || id == PB_SI_UIdeath || id == PB_SK_Rod || id == PB_SL_bridge || id == PB_SL_chimney || id == PB_SL_moon || id == PB_SU || id == PB_SU_filt || id == PB_UW || id == PB_VS) {
+        if (id == chatlogIDTest || id == PB_CC || id == PB_DS || id == PB_GW || id == PB_HI || id == PB_LF_bottom || id == PB_LF_west || id == PB_MS || id == PB_RM || id == PB_SB_filtration || id == PB_SH || id == PB_SI_CWdeath || id == PB_SI_funeral || id == PB_SI_NSHdeath || id == PB_SI_SRSdeath || id == PB_SI_UIdeath || id == PB_SK_Rod || id == PB_SL_bridge || id == PB_SL_chimney || id == PB_SL_moon || id == PB_SU || id == PB_SU_filt || id == PB_UW || id == PB_VS) {
             string path = ChatlogData.UniquePath(id);
             string[] array2;
             if (File.Exists(path))
@@ -270,12 +270,13 @@ public class OverseerEx
     private ChatlogID PearlTypeToChatlogID(DataPearlType type)
     {
         if (type == dataPearlTypeTest) { return chatlogIDTest; }
-        if (type == DataPearlType.CC) { return PB_CC_answer; }
+        if (type == DataPearlType.CC) { return PB_CC; }
         if (type == DataPearlType.DS) { return PB_DS; }
         if (type == DataPearlType.GW) { return PB_GW; }
         if (type == DataPearlType.HI) { return PB_HI; }
         if (type == DataPearlType.LF_bottom) { return PB_LF_bottom; }
         if (type == DataPearlType.LF_west) { return PB_LF_west; }
+        if (type == DataPeralTypeMSC.MS) { return PB_MS; }
         if (type == DataPearlType.SB_filtration) { return PB_SB_filtration; }
         if (type == DataPearlType.SH) { return PB_SH; }
         if (type == DataPearlType.SI_top) { return PB_SI_CWdeath; }
