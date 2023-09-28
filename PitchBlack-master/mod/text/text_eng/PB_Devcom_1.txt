@@ -4,7 +4,7 @@ Initiating Relay.
 
 Moon: So you found me, hi there!
 Moon: Hope you're having fun with the mod. 
-Moon: Also, I hope the Night Terror is as difficult<LINE>for you to deal with while playing as it was for us to code.
+Moon: Also, I hope the Night Terror is as difficult for<LINE>you to deal with while playing as it was for us to code.
 Moon: Have fun! 
 
 Relay Terminated.

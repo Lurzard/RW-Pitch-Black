@@ -18,6 +18,8 @@ public class OverseerEx
     internal static ConditionalWeakTable<AbstractCreature, OverseerEx> OverseerPorlStuff = new ConditionalWeakTable<AbstractCreature, OverseerEx>();
     // Actually used to find a file of matching id. Name does not matter, but the "value" param does.
     static ChatlogID chatlogIDTest = new("test");
+    
+    // VANILLA
     static ChatlogID PB_CC = new ("PB_CC");
     static ChatlogID PB_DS = new ("PB_DS");
     static ChatlogID PB_GW = new ("PB_GW");
@@ -33,7 +35,6 @@ public class OverseerEx
     static ChatlogID PB_SI_NSHdeath = new ("PB_SI_NSHdeath");
     static ChatlogID PB_SI_SRSdeath = new ("PB_SI_SRSdeath");
     static ChatlogID PB_SI_UIdeath = new ("PB_SI_UIdeath");
-    static ChatlogID PB_SK_Rod = new ("PB_SK_Rod");
     static ChatlogID PB_SL_bridge = new ("PB_SL_bridge");
     static ChatlogID PB_SL_chimney = new ("PB_SL_chimney");
     static ChatlogID PB_SL_moon = new ("PB_SL_moon");
@@ -41,6 +42,27 @@ public class OverseerEx
     static ChatlogID PB_SU_filt = new ("PB_SU_filt");
     static ChatlogID PB_UW = new ("PB_UW");
     static ChatlogID PB_VS = new ("PB_VS");
+
+    // MODDED
+    static ChatlogID PB_SK_Rod = new("PB_SK_Rod");
+
+    // DEV COMMENTARY
+    static ChatlogID PB_Devcom_1 = new ("PB_Devcom_1");
+    static ChatlogID PB_Devcom_2 = new ("PB_Devcom_2");
+    static ChatlogID PB_Devcom_3 = new ("PB_Devcom_3");
+    static ChatlogID PB_Devcom_4 = new ("PB_Devcom_4");
+    static ChatlogID PB_Devcom_5 = new ("PB_Devcom_5");
+    static ChatlogID PB_Devcom_6 = new ("PB_Devcom_6");
+    static ChatlogID PB_Devcom_7 = new ("PB_Devcom_7");
+    static ChatlogID PB_Devcom_8 = new ("PB_Devcom_8");
+    static ChatlogID PB_Devcom_9 = new ("PB_Devcom_9");
+    static ChatlogID PB_Devcom_10 = new ("PB_Devcom_10");
+    static ChatlogID PB_Devcom_11 = new ("PB_Devcom_11");
+    static ChatlogID PB_Devcom_12 = new ("PB_Devcom_12");
+    static ChatlogID PB_Devcom_13 = new ("PB_Devcom_13");
+    static ChatlogID PB_Devcom_14 = new ("PB_Devcom_14");
+    static ChatlogID PB_Devcom_15 = new ("PB_Devcom_15");
+
     // Used to test against
     static DataPearlType dataPearlTypeTest = new ("test");
     static DataPearlType PB_SK_Rod_DPT = new ("PB_SK_Rod");
