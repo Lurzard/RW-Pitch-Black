@@ -174,7 +174,7 @@ namespace PitchBlack
             On.CentipedeAI.ctor += CentipedeAICTOR;
             On.AbstractCreatureAI.ctor += AbstractCreatureAI_ctor;
 
-            On.RoomRealizer.PutOutARoom += RoomRealizer_PutOutARoom;
+            //On.RoomRealizer.PutOutARoom += RoomRealizer_PutOutARoom; Does't seem like this is needed. Creatures can move from unloaded rooms fine -WW
         }
 
         #region weapon.HitSomething hooks
