@@ -175,7 +175,7 @@ namespace PitchBlack
             On.CentipedeAI.ctor += CentipedeAICTOR;
             On.AbstractCreatureAI.ctor += AbstractCreatureAI_ctor;
 
-            On.RoomRealizer.PutOutARoom += RoomRealizer_PutOutARoom;
+            // On.RoomRealizer.PutOutARoom += RoomRealizer_PutOutARoom;
         }
 
         #region weapon.HitSomething hooks
