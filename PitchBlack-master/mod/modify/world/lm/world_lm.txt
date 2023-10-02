@@ -38,7 +38,7 @@ CREATURES
 (Beacon)LM_BRIDGE02 : 2-White, 3-BigSpider, 4-BigSpider, 5-Cyan, 8-Mouse-6, 11-Centiwing, 12-Centiwing
 (Beacon)LM_BRIDGE03 : 2-Dropwig, 3-Centiwing-2, 4-Cyan-2, 6-Mouse-4, 7-SpitterSpider
 (Beacon)LM_BRIDGE04 : 2-Centiwing, 3-Centiwing, 4-BigSpider, 5-MotherSpider, 8-SpitterSpider, 9-Mouse-4
-(Beacon)LM_BRIDGEEND : 3-Bro
+(Beacon)LM_BRIDGEEND : 3-LMiniLongLegs
 (Beacon)LM_ECNIUS03 : 2-Snail, 3-Snail
 (Beacon)LM_EDGE02 : 1-Mouse-6, 2-MotherSpider, 3-Dropwig-2, 4-Cyan, 5-Yellow-2, 6-Yellow-2, 7-SpitterSpider, 9-BigSpider, 10-BigSpider
 (Beacon)LM_MIRRORSIDE : 4-Snail, 5-CicadaB-2, 5-CicadaA, 6-White
@@ -87,7 +87,7 @@ CREATURES
 (Photomaniac)LM_BRIDGE02 : 2-White, 3-BigSpider, 4-BigSpider, 5-Cyan, 8-Mouse-6, 11-Centiwing, 12-Centiwing
 (Photomaniac)LM_BRIDGE03 : 2-Dropwig, 3-Centiwing-2, 4-Cyan-2, 6-Mouse-4, 7-SpitterSpider
 (Photomaniac)LM_BRIDGE04 : 2-Centiwing, 3-Centiwing, 4-BigSpider, 5-MotherSpider, 8-SpitterSpider, 9-Mouse-4
-(Photomaniac)LM_BRIDGEEND : 3-Bro
+(Photomaniac)LM_BRIDGEEND : 3-LMiniLongLegs
 (Photomaniac)LM_ECNIUS03 : 2-Snail, 3-Snail
 (Photomaniac)LM_EDGE02 : 1-Mouse-6, 2-MotherSpider, 3-Dropwig-2, 4-Cyan, 5-Yellow-2, 6-Yellow-2, 7-SpitterSpider, 9-BigSpider, 10-BigSpider
 (Photomaniac)LM_MIRRORSIDE : 4-Snail, 5-CicadaB-2, 5-CicadaA, 6-White

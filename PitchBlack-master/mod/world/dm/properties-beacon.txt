@@ -11,12 +11,12 @@ earlyCycleFloodChance: 0.0
 playerGuideOverseerSpawnChance: 0.0
 pupSpawnChance: 0.0
 Subregion: The Stargazer
-Subregion: Stygian Bowels
-Subregion: Braces
+Subregion: The Stargazer (Stygian Bowels)
+Subregion: The Stargazer (Braces)
 Subregion: Looks to the Moon
 Subregion: The Peak
-Subregion: Muted Chambers
-Subregion: Ducts
+Subregion: The Stargazer (Muted Chambers)
+Subregion: The Stargazer (Ducts)
 Room Setting Templates: Itterator, Wall, Conflux, Underhang, Leg
 Room_Attr: GATE_SL_DM: MirosVulture-Forbidden,
 Room_Attr: GATE_SL_MS: YellowLizard-Forbidden,DropBug-Forbidden,Inspector-Forbidden,

@@ -12,12 +12,12 @@ overseersMin: 0
 overseersMax: 4
 earlyCycleChance: 0.0
 earlyCycleFloodChance: 0.0
-Subregion: Carcass
-Subregion: Cerebellum
-Subregion: Vestige
-Subregion: Guts
-Subregion: Arteries
-Subregion: Ventricles
+Subregion: The Carcass
+Subregion: The Carcass (Cerebellum)
+Subregion: The Carcass (Vestige)
+Subregion: The Carcass (Guts)
+Subregion: The Carcass (Arteries)
+Subregion: The Carcass (Ventricles)
 playerGuideOverseerSpawnChance: 0.0
 Room Setting Templates: Corrupt, Lympathic, Linear, Dead
 Room_Attr: GATE_SS_UW: Overseer-Forbidden,
