@@ -1,6 +1,8 @@
 using AbstractObjectType = AbstractPhysicalObject.AbstractObjectType;
 using MonoMod.Cil;
 using Mono.Cecil.Cil;
+using UnityEngine;
+using MoreSlugcats;
 
 namespace PitchBlack;
 
@@ -16,6 +18,64 @@ public static class BeaconHooks
         On.Player.SwallowObject += BeaconTransmuteIntoFlashbang;
         On.Player.GrabUpdate += Player_GrabUpdate;
         On.Player.GraphicsModuleUpdated += BeaconStorageGrafUpdate;
+        On.PlayerGraphics.Update += PlayerGraphics_Update;
+    }
+
+    private static void PlayerGraphics_Update(On.PlayerGraphics.orig_Update orig, PlayerGraphics self)
+    {
+        orig(self);
+        bool slugIsBeacon = Plugin.scugCWT.TryGetValue(self.player, out ScugCWT cwt) && cwt.IsBeacon;
+
+        if (slugIsBeacon && self.player.room.Darkness(self.player.mainBodyChunk.pos) > 0f) //ASSUMING THIS WILL BE TRUE MOST OF THE TIME IN BEACON'S WORLD STATE
+        {
+            if (self.lightSource == null) //GIVE THIS BACK SINCE ORIG PROBABLY TOOK IT
+            {
+                self.lightSource = new LightSource(self.player.mainBodyChunk.pos, false, Color.Lerp(new Color(1f, 1f, 1f), (ModManager.MSC && self.player.SlugCatClass == MoreSlugcatsEnums.SlugcatStatsName.Slugpup) ? self.player.ShortCutColor() : PlayerGraphics.SlugcatColor(self.CharacterForColor), 0.5f), self.player);
+                self.lightSource.requireUpKeep = true;
+                self.lightSource.setRad = new float?(300f);
+                self.lightSource.setAlpha = new float?(1f);
+                self.player.room.AddObject(self.lightSource);
+            }
+
+            float glowStr; //DEFAULT, NO FLASHBANGS
+            int flares = cwt.Beacon.storage.storedFlares.Count;
+            //CURVED LIGHT SCALE?
+            switch (flares)
+            {
+                case 0:
+                    glowStr = 200;
+                    break;
+                case 1:
+                    glowStr = 300; //+100
+                    break;
+                case 2:
+                    glowStr = 400; //+100
+                    break;
+                case 3:
+                    glowStr = 475; //+75
+                    break;
+                case 4:
+                    glowStr = 550; //+75
+                    break;
+                default:
+                    glowStr = 550 + (25 * (flares - 4)); //+25
+                    break;
+            }
+
+            //ROTUND WORLD SHENANIGANS
+            float baseWeight = (0.7f * self.player.slugcatStats.bodyWeightFac) / 2f;
+            glowStr *= (self.player.bodyChunks[0].mass / baseWeight) / 2f;
+            //AT +2 BONUS PIPS THIS IS ROUGHLY 125% RAD. CAPPING AT 150%
+
+            //IF WE HAVE THE_GLOW, DON'T LET OUR GLOW STRENGTH UNDERCUT THAT
+            if (self.player.glowing && glowStr < 300)
+                glowStr = 300;
+
+            self.lightSource.setRad = glowStr;
+            self.lightSource.stayAlive = true;
+            self.lightSource.setPos = new Vector2?(self.player.mainBodyChunk.pos);
+
+        }
     }
 
     private static void Player_GrabUpdate_IL(ILContext il)
