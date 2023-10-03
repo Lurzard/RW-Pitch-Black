@@ -65,7 +65,7 @@ public class OverseerEx
 
     // Used to test against
     static DataPearlType dataPearlTypeTest = new ("test");
-    static DataPearlType PB_SK_Rod_DPT = new ("PB_SK_Rod");
+    static DataPearlType SK_Rod_Pearl = new ("SK_Rod_Pearl");
     #region Hooks
     public static void Apply() {
         On.Overseer.ctor += Overseer_ctor;
@@ -315,7 +315,7 @@ public class OverseerEx
         if (type == DataPeralTypeMSC.VS) { return PB_VS; }
         if (type == DataPeralTypeMSC.MS) { return PB_MS; }
         if (type == DataPeralTypeMSC.RM) { return PB_RM; }
-        if (type == PB_SK_Rod_DPT) { return PB_SK_Rod; }
+        if (type == SK_Rod_Pearl) { return PB_SK_Rod; }
         return new (Conversation.DataPearlToConversation(type).value);
     }
 }
