@@ -1,0 +1,7 @@
+Template: UW_SettingsTemplate_Underhang
+RainIntensity: 0.1086956
+RumbleIntensity: 0.1086956
+Effects: FireFlies-0-27-128, BrokenZeroG-0.7075921-294.6625-105.7703, 
+PlacedObjects: LightFixture><116.3582><339.1411><RedLight~17.32051~-10~32, LightFixture><784.3449><521.3763><RedLight~17.32051~-10~15, 
+FadePalette: 33, 0.7173913
+MorePalette0: 10, 0.6089929

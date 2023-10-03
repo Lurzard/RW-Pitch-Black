@@ -1,0 +1,9 @@
+RainIntensity: 0
+RumbleIntensity: 0.2065217
+Palette: 18
+EffectColorA: 0
+EffectColorB: 18
+Effects: BrokenZeroG-0.8043478-285-20, ReplaceEffectColorB-0-436-354-Color-0.3043478-0.02173913-0.9891304, ReplaceEffectColorB-0-436-354-Color-0.2826087-0-1,
+PlacedObjects: LightFixture><52.60358><531.3638><RedLight~-32.6795~32~0, LightFixture><639.554><549.1926><RedLight~-48.6795~-182~5, SuperStructureFuses><552.9138><56.31956><231~14, SuperStructureFuses><391.0566><55.94933><24~23, SuperStructureFuses><231.8644><44.35301><29~21, SuperStructureFuses><93.11798><45.66154><18~19, LightSource><51.86792><141.3499><1~Environment~0~100~50~86.60254~1~0~None~0~0, LightSource><868.4663><267.4471><1~Environment~0~100~50~86.60254~1~0~None~0~0, Corruption><206.5945><567.8757><113~-102, Corruption><692.935><579.826><0~100, CorruptionTube><200.3443><473.3755><283~105, Corruption><475.1475><534.6717><-1~-136, Corruption><712.3732><160.6575><76~-47, CorruptionTube><246.1706><529.9336><388~46, LightSource><434.6288><665.9092><0.1086956~EffectColor2~80~-412~29~-124.3975~1~0~None~0~0, LightSource><744.8401><148.3702><0.07608695~EffectColor2~-160~85~50~86.60254~1~0~None~0~0, 
+AmbientSounds: OMNI><AM_IND-SuperStructure.ogg><827.3224><644.3136><0.3043478><0.9413043, SPOT><SO_SFX-Data5.ogg><773.1768><233.5934><0.4673913><1><676.1768><63.59344><-118.3553><-45.35534><0><0.1, SPOT><AM_IND-DeepHum.ogg><104.1612><141.6316><0.3478261><1><-9.838806><331.6316><-94.35535><-49.35535><0><0.1978262, 
+FadePalette: 17, 0.9673913

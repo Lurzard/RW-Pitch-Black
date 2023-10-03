@@ -1,0 +1,8 @@
+Template: RM_SettingsTemplate_Lympathic
+DangerType: Rain
+CeilingDrips: 0.3369565
+RainIntensity: 0
+RumbleIntensity: 0
+Effects: SilenceWater-0.9891304-271-132, CorruptionSpores-0.2282609-14-73, 
+PlacedObjects: Corruption><4702.037><674.0508><1~72, Corruption><4480.549><681.5074><2~48, Corruption><1702.922><682.1473><3~86, Corruption><949.4593><82.69507><-2~88, Corruption><1540.752><53.55003><-5~71, LightFixture><675.224><28.60698><RedSubmersible~17.32051~-10~0, LightFixture><1408.839><308.2499><RedSubmersible~17.32051~-10~0, LightFixture><153.6999><660.2521><RedSubmersible~17.32051~-10~28, LightFixture><191.509><310.3055><RedSubmersible~17.32051~-10~0, LightFixture><717.4769><698.8282><RedLight~-87.6795~-44.00073~0, LightFixture><2165.439><574.1625><RedSubmersible~17.32051~-10~46, LightFixture><1998.38><276.3397><RedSubmersible~17.32051~-10~0, LightFixture><4405.811><341.2966><RedSubmersible~17.32051~-10~0, LightFixture><3408.212><277.4969><RedSubmersible~17.32051~-10~46, LightFixture><3046.448><388.4473><RedSubmersible~17.32051~-10~0, LightFixture><3673.077><622.5998><RedSubmersible~17.32051~-10~0, Corruption><3490.202><68.79823><0~100, Corruption><3298.299><496.7487><2~84, 
+FadePalette: 10, 0.4782609, 0.5434783, 0.6195652, 0.6630435, 0.7065217

@@ -1,0 +1,3 @@
+Template: RM_SettingsTemplate_Lympathic
+PlacedObjects: LightFixture><603.9758><540.0465><RedLight~17.32051~-10~54, 
+FadePalette: 17, 0.2826087

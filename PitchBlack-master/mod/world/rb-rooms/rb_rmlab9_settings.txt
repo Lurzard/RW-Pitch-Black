@@ -1,0 +1,10 @@
+Template: RM_SettingsTemplate_Amnesia
+DangerType: None
+Clouds: 1
+Grime: 0
+BkgDroneVolume: 0
+Palette: 31
+Effects: ZeroG-1-20-20, ZeroGSpecks-0.2934783-21-81, SunBlock-1-285-81, SSSwarmers-0.1413043-279-21, CorruptionSpores-1-565-54, 
+PlacedObjects: LightSource><124.9802><291.801><1~Environment~-59~159~50~86.60254~1~0~None~0~0, LightSource><909.379><564.9093><1~Environment~-146~109~50~86.60254~1~0~None~0~0, SpotLight><150.8867><166.396><-21~506~629~473~463~-13, CoralNeuron><425.1317><258.8495><335~92, WallMycelia><814.7035><346.1945><0~100, WallMycelia><664.5735><59.65601><-9~129, WallMycelia><166.1683><232.9326><0~100, CoralCircuit><528.0826><322.3179><1~79, CoralCircuit><450.9298><380.4124><-6~80, CoralNeuron><193.8217><236.0633><153~57, CoralStemWithNeurons><485.902><592.1743><155~-274, CoralStem><624.9851><47.19943><-89~171, Corruption><89.13452><401.3519><123~260, 
+AmbientSounds: SPOT><AM_IND-DeepHum.ogg><723.6931><304.8021><0.6847826><1><488.6931><378.8021><-109.3553><-142.3553><0><0.1, OMNI><SO_SFX-Escape.ogg><707.6765><522.064><0.1304348><1, OMNI><SO_SFX-Drowning.ogg><717.95><455.0018><0.5><1, OMNI><SO_SFX-Doomsday.ogg><715.3161><572.8112><0.423913><1, 
+FadePalette: 24, 0.2173913

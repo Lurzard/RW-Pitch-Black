@@ -1,0 +1,10 @@
+DangerType: Rain
+CeilingDrips: 0.25
+RainIntensity: 0
+RumbleIntensity: 0
+Grime: 0
+Palette: 23
+EffectColorB: 10
+Effects: SunBlock-1-20-20, ProjectedScanLines-0.2608696-279-129, BrokenZeroG-1-13-125, ZeroG-0.2717391-280-27, 
+PlacedObjects: Corruption><710.9483><1150.974><0~100, Corruption><1065.4><1113.077><38~-82, Corruption><265.8359><164.0324><0~100, Corruption><65.6936><592.1997><0~100, Corruption><3952.581><943.1382><-4~99, Corruption><3553.599><652.3693><0~68, Corruption><3111.324><111.0948><67~84, Corruption><1202.578><149.3161><0~100, Corruption><1535.316><431.5796><0~100, RotFlyPaper><3560.392><647.1683><-152~-114, BlueToken><1183.106><370.5421><-20~104~96.4223~-161.2216~1~DaddyLongLegs~~0~0~0, DeadTokenStalk><1024.349><414.7359><71~54, DeadTokenStalk><1119.912><410.9297><25~65, DeadTokenStalk><1211.935><415.9391><-7~50, 
+FadePalette: 10, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5

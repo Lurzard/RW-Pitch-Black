@@ -1,0 +1,16 @@
+Template: RM_SettingsTemplate_Dead
+DangerType: Rain
+CeilingDrips: 0.2282609
+RainIntensity: 0
+RumbleIntensity: 0
+Clouds: 0.9239131
+RandomItemDensity: 0.8913044
+RandomItemSpearChance: 0.3956521
+Palette: 10
+EffectColorA: 18
+EffectColorB: 12
+Effects: Fog-0.02173913-21-23, ReplaceEffectColorB-0-441-463-Color-0.2826087-0-1, Darkness-0.9021739-30-30, WaterDepth-0.1521739-40-40, 
+PlacedObjects: LightSource><630.9408><894.4403><0.08695652~EffectColor2~-810~59~54~-100.3975~0~0~None~0~0, LightSource><1143.304><607.0576><0.2391304~EffectColor2~267~-414~61~3.602539~0~0~None~0~0, LightFixture><2369.854><516.3866><RedLight~-103.6794~-384~79, Corruption><706.6887><1124.817><-18~294, Corruption><1113.44><472.4381><3~-133, Corruption><1292.56><441.1909><9~62, Corruption><1568.938><463.4307><65~104, Corruption><877.0593><54.67987><3~134, Corruption><484.3521><115.828><15~117, LightSource><124.7781><1161.052><0.2282609~EffectColor2~416~-414~50~86.60254~0~0~Fade~0.8369564~0, LightFixture><124.6078><1161.891><RedLight~17.32051~-10~99, LightFixture><1789.632><731.1617><RedLight~-68.6795~-168~34, CorruptionTube><1564.226><520.9485><-124~203, LightFixture><1233.399><734.1163><RedLight~-26.6795~-196~25, LightFixture><489.3091><724.441><RedLight~17.32051~-10~12, CorruptionDarkness><663.0867><1188.07><327~47, 
+AmbientSounds: SPOT><SO_WAT-OpenFlow.ogg><460.3332><57.68187><0.3152174><0.6673913><1002.333><246.6819><194.6447><9.644653><0><0.2739132, SPOT><SO_WAT-LightFlow.ogg><870.9318><164.3335><0.4456522><0.726087><2212.931><245.3335><112.6447><-1.355347><0><0.3065219, SPOT><AM_WIN-SubWnd.ogg><655.5079><529.0502><0.4347826><1.508696><1244.508><269.0502><-228.3553><329.6447><0><0.4913045, 
+FadePalette: 26, 0.25, 0.25, 0.25, 0.25
+MorePalette0: 10, 0, 0.6195652, 0, 0.6086956

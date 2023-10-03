@@ -1,0 +1,13 @@
+Template: RM_SettingsTemplate_Dead
+DangerType: Rain
+CeilingDrips: 0.4891304
+RainIntensity: 0
+RumbleIntensity: 0
+Clouds: 1
+Grime: 0
+BkgDroneVolume: 0
+Palette: 31
+Effects: CorruptionSpores-0.5326087-285-20, ZeroGSpecks-0.3369565-289-85, HeatWave-0-13-131, ReplaceEffectColorB-0-436-354-Color-0.2826087-0-1, Darkness-1-30-30, 
+PlacedObjects: LightFixture><11.61066><409.0834><RedLight~17.32051~-10~5, LightFixture><456.5692><25.3354><RedLight~17.32051~-10~65, LightSource><12.04016><408.5541><0.2934783~EffectColor2~446~-61~50~86.60254~0~0~Fade~0.75~0, LightSource><458.1276><25.90401><0.2391304~EffectColor2~283~339~50~86.60254~0~0~Fade~0.8369565~0, Corruption><758.197><599.5344><50~137, Corruption><845.1342><270.3516><-19~191, Corruption><450.8536><627.8636><0~100, CorruptionTube><848.1951><251.4561><-99~383, Corruption><724.8215><53.68678><-33~141, CorruptionTube><751.4117><32.6324><-239~580, Corruption><157.1985><86.72523><112~118, CorruptionTube><150.3076><75.19557><218~601, 
+AmbientSounds: SPOT><AM_IND-DeepHum.ogg><746.8437><309.8233><0.1847826><0.8826087><479.8437><368.8233><-102.3553><-110.3553><0><0.5565219, OMNI><SO_SFX-Drowning.ogg><659.6912><582.9412><0.05434782><0.1, OMNI><SO_SFX-Heartbeat1.ogg><834.939><563.5596><0.02173913><0.1, OMNI><SO_SFX-Heartbeat2.ogg><832.1455><486.8628><0.04347826><0.1, OMNI><SO_WAT-MoreDrips.ogg><835.873><406.6545><0.2173913><1, OMNI><Deep Weird Wind.wav><654.9246><656.3475><0.04347826><0.1, 
+FadePalette: 33, 0.1847826

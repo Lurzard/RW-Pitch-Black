@@ -1,0 +1,5 @@
+RainIntensity: 0.1521739
+RumbleIntensity: 0.1521739
+Effects: FireFlies-0.2826087-21-134, 
+FadePalette: 33, 0.6413044
+MorePalette0: 10, 1

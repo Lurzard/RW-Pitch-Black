@@ -1,0 +1,10 @@
+Template: NONE
+DangerType: None
+RainIntensity: 0
+RumbleIntensity: 0
+Grime: 0
+Palette: 21
+Effects: FireFlies-0.2717391-20-20, 
+PlacedObjects: 
+FadePalette: 367, 1
+MorePalette0: 10, 0.5045942
