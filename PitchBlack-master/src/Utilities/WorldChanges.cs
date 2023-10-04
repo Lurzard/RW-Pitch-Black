@@ -22,13 +22,6 @@ public static class WorldChanges
                 case "DS":
                     text = "UG";
                     break;
-                case "RM":
-                    text = "RB";
-                    break;
-                case "UW":
-                    text = "RB";
-                    break;
-
             }
 
             foreach (var path in AssetManager.ListDirectory("World", true, false)

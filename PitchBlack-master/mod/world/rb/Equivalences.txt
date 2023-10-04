@@ -1,4 +1,1 @@
-UW-Beacon
-UW-Photomaniac
-RM-Beacon
-RM-Photomaniac
+Beacon-UW,UW-Beacon,Beacon-SS,SS-Beacon,Beacon-RM,RM-Beacon

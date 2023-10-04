@@ -1,3 +1,0 @@
-Template: RM_SettingsTemplate_Linear
-PlacedObjects: LightFixture><592.7425><430.4377><RedLight~17.32051~-10~32, LightSource><659.5801><138.9317><0.6741955~EffectColor1~-526~424~-10~36.60254~0~0~Fade~0.8152174~0, LightSource><671.0096><124.8002><0.359488~EffectColor1~-374~218~3~-73.39746~0~0~None~0~0, 
-FadePalette: 17, 0.4782609
