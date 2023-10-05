@@ -1,0 +1,13 @@
+Template: NONE
+DangerType: None
+CeilingDrips: 0.1086956
+Clouds: 1
+Grime: 0
+BkgDroneVolume: 0
+Palette: 31
+EffectColorA: 18
+EffectColorB: 12
+Effects: ZeroG-0.2391304-20-20, ZeroGSpecks-0.5760869-18-75, CorruptionSpores-0.6956522-281-79, ReplaceEffectColorB-0-436-354-Color-0.2826087-0-1, Darkness-1-30-30, 
+PlacedObjects: LightFixture><869.5593><572.309><RedLight~17.32051~-10~36, LightSource><13.46521><441.303><0.6304348~Environment~0~100~50~86.60254~1~0~None~0~0, Corruption><726.6793><116.0887><35~164, Corruption><142.3949><373.9201><-14~105, Corruption><897.6948><396.5451><0~100, CorruptionTube><721.1821><77.08276><193~277, CorruptionTube><890.4175><390.8593><-429~243, Corruption><676.126><613.4069><49~-88, CorruptionTube><634.8426><616.3227><163~51, CorruptionDarkness><753.5801><64.14444><-163~266, CorruptionDarkness><935.9189><508.6829><-210~-196, LightSource><863.9464><574.9622><0.5217391~EffectColor1~-1030~-615~18~-703.3975~0~0~Fade~0.7391304~0, Corruption><246.2494><83.20003><72~158, CorruptionTube><381.0511><74.97939><-133~609, CorruptionTube><157.0806><340.1063><492~292, StuckDaddy><780.6565><70.07318><-106~72, Corruption><355.8157><86.42239><0~100, Corruption><529.8188><129.8348><0~100, Corruption><169.1244><242.1557><0~100, Corruption><820.2947><253.0551><4~123, CorruptionDarkness><492.7725><-24.94873><-469~41, LightSource><500.4493><20.26595><0.4782609~EffectColor2~10~612~50~86.60254~1~0~None~0~0, 
+AmbientSounds: SPOT><SO_SFX-Heartbeat2.ogg><786.3111><493.8157><0.2826087><0.6282609><497.636><358.0889><-266.3553><-42.35535><0><0.3173914, 
+FadePalette: 33, 0.6521739

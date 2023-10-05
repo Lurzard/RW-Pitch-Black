@@ -14,12 +14,12 @@ Subregion: Laden Stilt
 Subregion: Breached Passage
 Subregion: Upheld Rampart
 //RM Subregions
-Subregion: Rotten Beast
-Subregion: Rotten Beast (Cerebellum)
-Subregion: Rotten Beast (Vestige)
-Subregion: Rotten Beast (Guts)
-Subregion: Rotten Beast (Arteries)
-Subregion: Rotten Beast (Ventricles)
+Subregion: The Carcass
+Subregion: Five Pebbles (Cerebellum)
+Subregion: The Carcass (Vestige)
+Subregion: The Beast (Guts)
+Subregion: The Beast (Arteries)
+Subregion: The Carcass (Ventricles)
 
 //UW room attr
 Room_Attr: RB_BOTTOMGATE: Overseer-Avoid,KingVulture-Forbidden,

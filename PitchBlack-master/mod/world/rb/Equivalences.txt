@@ -1,1 +1,2 @@
-Beacon-UW,UW-Beacon,Beacon-SS,SS-Beacon,Beacon-RM,RM-Beacon
+UW-Beacon
+SS-Beacon

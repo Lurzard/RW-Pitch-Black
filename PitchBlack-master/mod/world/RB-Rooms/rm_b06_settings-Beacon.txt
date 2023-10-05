@@ -1,0 +1,9 @@
+DangerType: None
+Clouds: 1
+Grime: 0
+BkgDroneVolume: 0
+Palette: 23
+Effects: ZeroG-0.2934783-20-20, ZeroGSpecks-0.2934783-18-78, Bloom-0.3152174-18-138, BrokenZeroG-1-281-23, ReplaceEffectColorB-0-436-354-Color-0.2826087-0-1,
+PlacedObjects: ZapCoil><391.8><520.4993><181~44, ZapCoil><808.8226><524.4076><174~41, ZapCoil><818.6204><333.0977><169~45, SuperStructureFuses><-22.69958><318.9873><154~49, SuperStructureFuses><-30.41449><539.3638><157~47, LightSource><2028.434><273.5621><0.2282609~Environment~-389~-18~-492.437~19.75467~1~0~None~0~0, LightSource><-19.8201><429.0874><0.2608702~Environment~871~26~50~86.60254~1~0~None~0~0, LightFixture><941.9351><535.6741><ZapCoilLight~17.32051~-10~26, LightFixture><461.0026><579.45><ZapCoilLight~17.32051~-10~37, LightSource><658.8286><187.3531><0.2934787~Environment~-354~358~50~86.60254~1~0~None~0~0, LightSource><1487.098><502.9246><0.2173913~Environment~244~-368~50~86.60254~1~0~None~0~0, SuperStructureFuses><1189.331><81.89374><173~122, DeepProcessing><-34.67297><188.6846><-101~454~708~474~496~-135~0~0~0.1956396~1~0.04078243, Corruption><1698.486><519.9319><-84~196, Corruption><1489.441><561.696><-201~151, Corruption><1237.042><276.7542><22~80, CorruptionTube><1284.496><269.628><196~211, CorruptionTube><1210.664><337.2348><192~200, LightFixture><884.9435><348.7003><ZapCoilLight~17.32051~-10~40, StuckDaddy><1689.196><405.2119><0~100, 
+AmbientSounds: OMNI><AM_IND-SuperStructure.ogg><836.9404><652.3113><0.326087><0.9021739, OMNI><SO_SFX-Drowning.ogg><657.4456><650.7918><0.4130435><1, SPOT><AM_IND-DeepHum.ogg><760.1404><312.4173><0.4347826><1><720.9187><443.9012><-285.3553><-117.3553><0><0.2413045, 
+FadePalette: 10, 0.7608696, 0.7608696
