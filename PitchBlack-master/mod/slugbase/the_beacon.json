@@ -60,7 +60,7 @@
 				"RedCentipede": 1.5
 			}
 		},
-		"the_glow": true,
+		"the_glow": false,
 
 		"karma": 4,
 		"karma_cap": 4,
