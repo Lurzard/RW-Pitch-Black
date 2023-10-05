@@ -65,7 +65,7 @@ public class PBOptions : OptionInterface
 			//{alignment = FLabelAlignment.Center}
 		});
 		
-		
+		/* DISABLING UNTIL FIXED
 		dsc = Translate("Something is pursuing you...");
 		Tabs[0].AddItems(new UIelement[]
 		{
@@ -77,6 +77,7 @@ public class PBOptions : OptionInterface
 		
 		
 		lineCount -= 60;
+		*/
         OpCheckBox mpBox4;
         dsc = Translate("Photomaniac becomes stunned after using their shock");
         Tabs[0].AddItems(new UIelement[]
