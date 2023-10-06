@@ -1,7 +1,9 @@
 [FIND](X-
 [ADDAFTER]Beacon,Photomaniac,
-[FINDREGEX]^(W+  d+-w+.+LINEAGE  w+  d+  .+)$
-[ADDBEFORE](X-Beacon,Photomaniac)
+[FIND],Beacon,Photomaniac
+[REPLACE]
+[FINDREGEX]^(\w+ : \d+-\w+.+|LINEAGE : \w+ : \d+ : .+)$
+[ADDBEFORE](Beacon,Photomaniac)
 [MERGE]
 ROOMS
 

@@ -1,7 +1,9 @@
 [FIND](X-
 [ADDAFTER]Beacon,Photomaniac,
-[FINDREGEX]^(?:\W+ : \d+-\w+.+|LINEAGE : \w+ : \d+ : .+)$
-[ADDBEFORE](X-Beacon,Photomaniac)
+[FIND],Beacon,Photomaniac
+[REPLACE]
+[FINDREGEX]^(\w+ : \d+-\w+.+|LINEAGE : \w+ : \d+ : .+)$
+[ADDBEFORE](Beacon,Photomaniac)
 [MERGE]
 CONDITIONAL LINKS
 
@@ -11,105 +13,63 @@ Beacon,Photomaniac : LM_D05 : GATE_SB_SL : DISCONNECTED
 END CONDITIONAL LINKS
 CREATURES
 
+//offscreen
 (Beacon)OFFSCREEN : 0-MirosVulture-2, 0-Vulture-2, 0-KingVulture, 0-Scavenger-8
 (Photomaniac)OFFSCREEN : 0-MirosVulture-2, 0-Vulture-3, 0-KingVulture, 0-Scavenger-13, 0-Elite
 
-(Beacon)LM_A02 : 3-TentaclePlant, 4-Salamander
-(Beacon)LM_A03 : 2-Snail-2, 3-Snail-3
-(Beacon)LM_A10 : 3-SeaLeech-6
-(Beacon)LM_B02 : 4-TentaclePlant
-(Beacon)LM_B04 : 3-Cyan, 4-CicadaB-3, 5-CicadaA-2
-(Beacon)LM_C02 : 4-SpitterSpider, 5-Salamander, 6-Salamander, 7-Snail-2
-(Beacon)LM_C05 : 3-Jetfish-{PreCycle}
-(Beacon)LM_C06 : 4-Jetfish
-(Beacon)LM_C10 : 2-Jetfish
-(Beacon)LM_C11 : 2-SeaLeech-4, 3-SeaLeech-3, 4-TentaclePlant, 5-TentaclePlant
-(Beacon)LM_D01 : 3-SeaLeech-7, 5-SeaLeech-7, 4-Eel-{PreCycle}
-(Beacon)LM_D02 : 6-Aquapede, 5-Jetfish-{PreCycle}
-(Beacon)LM_D03 : 5-Jetfish-2, 6-Aquapede, 8-Jetfish-{PreCycle}
-(Beacon)LM_D04 : 2-Salamander, 5-Dropwig, 12-Mimic, 13-Leech-10, 14-Mimic, 16-Leech-15
-(Beacon)LM_D05 : 5-Eel, 6-Eel, 7-Snail, 8-Snail
-(Beacon)LM_D06 : 3-Salamander, 5-Salamander, 6-TentaclePlant, 7-Jetfish, 7-Salamander
-(Beacon)LM_E01 : 4-Jetfish-2
-(Beacon)LM_E02 : 3-SeaLeech-7
-(Beacon)LM_F01 : 3-Salamander, 3-SpitterSpider-2, 5-Snail-4, 6-Leech-5, 8-Leech-8
-(Beacon)LM_F02 : 10-Leech-9, 11-Leech-6, 13-Leech-7, 14-Leech-9, 15-Jetfish-2, 16-Aquapede, 19-Eel-{PreCycle}
-(Beacon)LM_H03 : 2-Blue, 4-TentaclePlant, 6-TentaclePlant
-(Beacon)LM_BRIDGE02 : 2-White, 3-BigSpider, 4-BigSpider, 5-Cyan, 8-Mouse-6, 11-Centiwing, 12-Centiwing
-(Beacon)LM_BRIDGE03 : 2-Dropwig, 3-Centiwing-2, 4-Cyan-2, 6-Mouse-4, 7-SpitterSpider
-(Beacon)LM_BRIDGE04 : 2-Centiwing, 3-Centiwing, 4-BigSpider, 5-MotherSpider, 8-SpitterSpider, 9-Mouse-4
-(Beacon)LM_BRIDGEEND : 3-LMiniLongLegs
-(Beacon)LM_ECNIUS03 : 2-Snail, 3-Snail
-(Beacon)LM_EDGE02 : 1-Mouse-6, 2-MotherSpider, 3-Dropwig-2, 4-Cyan, 5-Yellow-2, 6-Yellow-2, 7-SpitterSpider, 9-BigSpider, 10-BigSpider
-(Beacon)LM_MIRRORSIDE : 4-Snail, 5-CicadaB-2, 5-CicadaA, 6-White
-(Beacon)LM_SIDESWAMP : 2-TentaclePlant, 6-Salamander
-(Beacon)LM_TOWER01 : 3-BigSpider, 4-MotherSpider, 6-Centiwing, 6-EggBug, 7-nightterror
-(Beacon)LM_TOWER02 : 2-Cyan, 4-Centiwing
-(Beacon)LM_TOWER03 : 3-White, 5-Dropwig
-(Beacon)LM_TOWER04 : 3-Mouse-4, 3-CicadaB-3, 4-Centiwing
-(Beacon)LM_TOWER05 : 4-TentaclePlant, 5-BigSpider, 6-MotherSpider, 7-Mouse-5, 8-Cyan
-(Beacon)LM_TOWER07 : 3-Bro
-(Beacon)LM_TOWER08 : 3-Centiwing, 4-Centiwing, 6-White, 7-Dropwig
-(Beacon)LM_TOWER09 : 3-CicadaB-2, 4-SpitterSpider
-(Beacon)LM_TOWER10 : 3-Mouse-6, 4-Cyan
-(Beacon)LM_TOWER11 : 2-Centiwing, 3-CicadaA-2
-(Beacon)LM_TOWER12 : 3-Dropwig
-(Beacon)LM_TOWER13 : 2-Centiwing, 3-Cyan, 4-CicadaB-2, 5-Bro, 7-BigSpider, 8-BigSpider, 9-Mouse-4
-(Beacon)LM_TOWER14 : 3-Centiwing, 4-EggBug, 5-Yellow-3, 6-Yellow-2
-(Beacon)LM_TOWERSIDE : 4-White, 6-Snail-3
-(Beacon)LM_TUNNELA : 8-Eel-{PreCycle}
-(Beacon)LM_WALL02 : 2-Mouse-4, 4-BigSpider, 5-MotherSpider, 6-Centiwing, 7-Centiwing, 9-Drowpig, 12-White, 13-Cyan, 14-Dropwig
-(Beacon)LM_WALL03 : 3-Yellow-4
-(Beacon)LINEAGE : LM_A10 : 2 : None-0.01, TentaclePlant-0.16, Jetfish-0
-(Beacon)LINEAGE : LM_C10 : 2 : Daddy-0.01, Daddy-0.01, Daddy-0.01, Bro-0
+(Beacon,Photomaniac)LM_A02 : 3-TentaclePlant, 4-Salamander
+(Beacon,Photomaniac)LM_A03 : 2-Snail-2, 3-Snail-3
+(Beacon,Photomaniac)LM_A10 : 3-SeaLeech-6
+(Beacon,Photomaniac)LM_B02 : 4-TentaclePlant
+(Beacon,Photomaniac)LM_B04 : 3-Cyan, 4-CicadaB-3, 5-CicadaA-2
+(Beacon,Photomaniac)LM_C02 : 4-SpitterSpider, 5-Salamander, 6-Salamander, 7-Snail-2
+(Beacon,Photomaniac)LM_C05 : 3-Jetfish-{PreCycle}
+(Beacon,Photomaniac)LM_C06 : 4-Jetfish
+(Beacon,Photomaniac)LM_C10 : 2-Jetfish
+(Beacon,Photomaniac)LM_C11 : 2-SeaLeech-4, 3-SeaLeech-3, 4-TentaclePlant, 5-TentaclePlant
+(Beacon,Photomaniac)LM_D01 : 3-SeaLeech-7, 5-SeaLeech-7, 4-Eel-{PreCycle}
+(Beacon,Photomaniac)LM_D02 : 6-Aquapede, 5-Jetfish-{PreCycle}
+(Beacon,Photomaniac)LM_D03 : 5-Jetfish-2, 6-Aquapede, 8-Jetfish-{PreCycle}
+(Beacon,Photomaniac)LM_D04 : 2-Salamander, 5-Dropwig, 12-Mimic, 13-Leech-10, 14-Mimic, 16-Leech-15
+(Beacon,Photomaniac)LM_D05 : 5-Eel, 6-Eel, 7-Snail, 8-Snail
+(Beacon,Photomaniac)LM_D06 : 3-Salamander, 5-Salamander, 6-TentaclePlant, 7-Jetfish, 7-Salamander
+(Beacon,Photomaniac)LM_E01 : 4-Jetfish-2
+(Beacon,Photomaniac)LM_E02 : 3-SeaLeech-7
+(Beacon,Photomaniac)LM_F01 : 3-Salamander, 3-SpitterSpider-2, 5-Snail-4, 6-Leech-5, 8-Leech-8
+(Beacon,Photomaniac)LM_F02 : 10-Leech-9, 11-Leech-6, 13-Leech-7, 14-Leech-9, 15-Jetfish-2, 16-Aquapede, 19-Eel-{PreCycle}
+(Beacon,Photomaniac)LM_H03 : 2-Blue, 4-TentaclePlant, 6-TentaclePlant
+(Beacon,Photomaniac)LM_BRIDGE02 : 2-White, 3-BigSpider, 4-BigSpider, 5-Cyan, 8-Mouse-6, 11-Centiwing, 12-Centiwing
+(Beacon,Photomaniac)LM_BRIDGE03 : 2-Dropwig, 3-Centiwing-2, 4-Cyan-2, 6-Mouse-4, 7-SpitterSpider
+(Beacon,Photomaniac)LM_BRIDGE04 : 2-Centiwing, 3-Centiwing, 4-BigSpider, 5-MotherSpider, 8-SpitterSpider, 9-Mouse-4
+(Beacon,Photomaniac)LM_BRIDGEEND : 3-Bro
+(Beacon,Photomaniac)LM_ECNIUS03 : 2-Snail, 3-Snail
+(Beacon,Photomaniac)LM_EDGE02 : 1-Mouse-6, 2-MotherSpider, 3-Dropwig-2, 4-Cyan, 5-Yellow-2, 6-Yellow-2, 7-SpitterSpider, 9-BigSpider, 10-BigSpider
+(Beacon,Photomaniac)LM_MIRRORSIDE : 4-Snail, 5-CicadaB-2, 5-CicadaA, 6-White
+(Beacon,Photomaniac)LM_SIDESWAMP : 2-TentaclePlant, 6-Salamander
+(Beacon,Photomaniac)LM_TOWER02 : 2-Cyan, 4-Centiwing
+(Beacon,Photomaniac)LM_TOWER03 : 3-White, 5-Dropwig
+(Beacon,Photomaniac)LM_TOWER04 : 3-Mouse-4, 3-CicadaB-3, 4-Centiwing
+(Beacon,Photomaniac)LM_TOWER05 : 4-TentaclePlant, 5-BigSpider, 6-MotherSpider, 7-Mouse-5, 8-Cyan
+(Beacon,Photomaniac)LM_TOWER07 : 3-Bro
+(Beacon,Photomaniac)LM_TOWER08 : 3-Centiwing, 4-Centiwing, 6-White, 7-Dropwig
+(Beacon,Photomaniac)LM_TOWER09 : 3-CicadaB-2, 4-SpitterSpider
+(Beacon,Photomaniac)LM_TOWER10 : 3-Mouse-6, 4-Cyan
+(Beacon,Photomaniac)LM_TOWER11 : 2-Centiwing, 3-CicadaA-2
+(Beacon,Photomaniac)LM_TOWER12 : 3-Dropwig
+(Beacon,Photomaniac)LM_TOWER13 : 2-Centiwing, 3-Cyan, 4-CicadaB-2, 5-Bro, 7-BigSpider, 8-BigSpider, 9-Mouse-4
+(Beacon,Photomaniac)LM_TOWER14 : 3-Centiwing, 4-EggBug, 5-Yellow-3, 6-Yellow-2
+(Beacon,Photomaniac)LM_TOWERSIDE : 4-White, 6-Snail-3
+(Beacon,Photomaniac)LM_TUNNELA : 8-Eel-{PreCycle}
+(Beacon,Photomaniac)LM_WALL02 : 2-Mouse-4, 4-BigSpider, 5-MotherSpider, 6-Centiwing, 7-Centiwing, 9-Drowpig, 12-White, 13-Cyan, 14-Dropwig
+(Beacon,Photomaniac)LM_WALL03 : 3-Yellow-4
+(Beacon,Photomaniac)LINEAGE : LM_A10 : 2 : None-0.01, TentaclePlant-0.16, Jetfish-0
+(Beacon,Photomaniac)LINEAGE : LM_C10 : 2 : Daddy-0.01, Daddy-0.01, Daddy-0.01, Bro-0
 
-(Photomaniac)LM_A02 : 3-TentaclePlant, 4-Salamander
-(Photomaniac)LM_A03 : 2-Snail-2, 3-Snail-3
-(Photomaniac)LM_A10 : 3-SeaLeech-6
-(Photomaniac)LM_B02 : 4-TentaclePlant
-(Photomaniac)LM_B04 : 3-Cyan, 4-CicadaB-3, 5-CicadaA-2
-(Photomaniac)LM_C02 : 4-SpitterSpider, 5-Salamander, 6-Salamander, 7-Snail-2
-(Photomaniac)LM_C05 : 3-Jetfish-{PreCycle}
-(Photomaniac)LM_C06 : 4-Jetfish
-(Photomaniac)LM_C10 : 2-Jetfish
-(Photomaniac)LM_C11 : 2-SeaLeech-4, 3-SeaLeech-3, 4-TentaclePlant, 5-TentaclePlant
-(Photomaniac)LM_D01 : 3-SeaLeech-7, 5-SeaLeech-7, 4-Eel-{PreCycle}
-(Photomaniac)LM_D02 : 6-Aquapede, 5-Jetfish-{PreCycle}
-(Photomaniac)LM_D03 : 5-Jetfish-2, 6-Aquapede, 8-Jetfish-{PreCycle}
-(Photomaniac)LM_D04 : 2-Salamander, 5-Dropwig, 12-Mimic, 13-Leech-10, 14-Mimic, 16-Leech-15
-(Photomaniac)LM_D05 : 5-Eel, 6-Eel, 7-Snail, 8-Snail
-(Photomaniac)LM_D06 : 3-Salamander, 5-Salamander, 6-TentaclePlant, 7-Jetfish, 7-Salamander
-(Photomaniac)LM_E01 : 4-Jetfish-2
-(Photomaniac)LM_E02 : 3-SeaLeech-7
-(Photomaniac)LM_F01 : 3-Salamander, 3-SpitterSpider-2, 5-Snail-4, 6-Leech-5, 8-Leech-8
-(Photomaniac)LM_F02 : 10-Leech-9, 11-Leech-6, 13-Leech-7, 14-Leech-9, 15-Jetfish-2, 16-Aquapede, 19-Eel-{PreCycle}
-(Photomaniac)LM_H03 : 2-Blue, 4-TentaclePlant, 6-TentaclePlant
-(Photomaniac)LM_BRIDGE02 : 2-White, 3-BigSpider, 4-BigSpider, 5-Cyan, 8-Mouse-6, 11-Centiwing, 12-Centiwing
-(Photomaniac)LM_BRIDGE03 : 2-Dropwig, 3-Centiwing-2, 4-Cyan-2, 6-Mouse-4, 7-SpitterSpider
-(Photomaniac)LM_BRIDGE04 : 2-Centiwing, 3-Centiwing, 4-BigSpider, 5-MotherSpider, 8-SpitterSpider, 9-Mouse-4
-(Photomaniac)LM_BRIDGEEND : 3-LMiniLongLegs
-(Photomaniac)LM_ECNIUS03 : 2-Snail, 3-Snail
-(Photomaniac)LM_EDGE02 : 1-Mouse-6, 2-MotherSpider, 3-Dropwig-2, 4-Cyan, 5-Yellow-2, 6-Yellow-2, 7-SpitterSpider, 9-BigSpider, 10-BigSpider
-(Photomaniac)LM_MIRRORSIDE : 4-Snail, 5-CicadaB-2, 5-CicadaA, 6-White
-(Photomaniac)LM_SIDESWAMP : 2-TentaclePlant, 6-Salamander
+//Beacon
+(Beacon)LM_TOWER01 : 3-BigSpider, 4-MotherSpider, 6-Centiwing, 6-EggBug, 7-nightterror
+
+//Photomaniac
 (Photomaniac)LM_TOWER01 : 3-BigSpider, 4-MotherSpider, 6-Centiwing, 7-EggBug
-(Photomaniac)LM_TOWER02 : 2-Cyan, 4-Centiwing
-(Photomaniac)LM_TOWER03 : 3-White, 5-Dropwig
-(Photomaniac)LM_TOWER04 : 3-Mouse-4, 3-CicadaB-3, 4-Centiwing
-(Photomaniac)LM_TOWER05 : 4-TentaclePlant, 5-BigSpider, 6-MotherSpider, 7-Mouse-5, 8-Cyan
-(Photomaniac)LM_TOWER07 : 3-Bro
-(Photomaniac)LM_TOWER08 : 3-Centiwing, 4-Centiwing, 6-White, 7-Dropwig
-(Photomaniac)LM_TOWER09 : 3-CicadaB-2, 4-SpitterSpider
-(Photomaniac)LM_TOWER10 : 3-Mouse-6, 4-Cyan
-(Photomaniac)LM_TOWER11 : 2-Centiwing, 3-CicadaA-2
-(Photomaniac)LM_TOWER12 : 3-Dropwig
-(Photomaniac)LM_TOWER13 : 2-Centiwing, 3-Cyan, 4-CicadaB-2, 5-Bro, 7-BigSpider, 8-BigSpider, 9-Mouse-4
-(Photomaniac)LM_TOWER14 : 3-Centiwing, 4-EggBug, 5-Yellow-3, 6-Yellow-2
-(Photomaniac)LM_TOWERSIDE : 4-White, 6-Snail-3
-(Photomaniac)LM_TUNNELA : 8-Eel-{PreCycle}
-(Photomaniac)LM_WALL02 : 2-Mouse-4, 4-BigSpider, 5-MotherSpider, 6-Centiwing, 7-Centiwing, 9-Drowpig, 12-White, 13-Cyan, 14-Dropwig
-(Photomaniac)LM_WALL03 : 3-Yellow-4
-(Photomaniac)LINEAGE : LM_A10 : 2 : None-0.01, TentaclePlant-0.16, Jetfish-0
-(Photomaniac)LINEAGE : LM_C10 : 2 : Daddy-0.01, Daddy-0.01, Daddy-0.01, Bro-0
+
 END CREATURES
 [ENDMERGE]
