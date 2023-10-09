@@ -3,7 +3,7 @@
 [FIND],Beacon,Photomaniac
 [REPLACE]
 [FINDREGEX]^(\w+ : \d+-\w+.+|LINEAGE : \w+ : \d+ : .+)$
-[ADDBEFORE](Beacon,Photomaniac)
+[ADDBEFORE](X-Beacon,Photomaniac)
 [FIND]SH_E01 : SH_E03, DISCONNECTED, SH_E04
 [REPLACE]SH_E01 : SH_E03, DISCONNECTED, SH_PBMEM
 [FIND]SH_E04 : SH_E01, SH_H01

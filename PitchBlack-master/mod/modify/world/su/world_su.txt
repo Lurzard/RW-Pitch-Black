@@ -3,7 +3,7 @@
 [FIND],Beacon,Photomaniac
 [REPLACE]
 [FINDREGEX]^(\w+ : \d+-\w+.+|LINEAGE : \w+ : \d+ : .+)$
-[ADDBEFORE](Beacon,Photomaniac)
+[ADDBEFORE](X-Beacon,Photomaniac)
 [MERGE]
 ROOMS
 

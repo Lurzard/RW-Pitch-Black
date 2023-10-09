@@ -17,12 +17,11 @@ CREATURES
 (Beacon)OFFSCREEN : 0-Scavenger-13-{Ignorecycle}, 0-MirosVulture-{Ignorecycle}
 (Photomaniac)OFFSCREEN : 0-Scavenger-16-{Ignorecycle}, 0-Elite-{Ignorecycle}, 0-MirosVulture-{Ignorecycle}
 
-(Beacon,Photomaniac)UG_A02 : 3-BigSpider-2-{Ignorecycle}, 4-JungleLeech-6-{Ignorecycle}
+(Beacon,Photomaniac)UG_A02 : 3-BigSpider-2-{Ignorecycle}
 (Beacon,Photomaniac)UG_A05 : 5-Mimic-{9}, 6-Mimic-{10}, 7-Mouse-4-{Ignorecycle}
-(Beacon,Photomaniac)UG_A06 : 2-JungleLeech-6-{Ignorecycle}
-(Beacon,Photomaniac)UG_A07 : 3-JungleLeech-5-{Ignorecycle}, 4-Snail-2-{Ignorecycle}, 5-Mimic-{18}
+(Beacon,Photomaniac)UG_A07 : 4-Snail-2-{Ignorecycle}, 5-Mimic-{18}
 (Beacon,Photomaniac)UG_A09 : 2-Spider-15
-(Beacon,Photomaniac)UG_A16 : 3-TentaclePlant-{Ignorecycle}, 5-JungleLeech-9-{Ignorecycle}, 7-TentaclePlant-{Ignorecycle}
+(Beacon,Photomaniac)UG_A16 : 3-TentaclePlant-{Ignorecycle}, 7-TentaclePlant-{Ignorecycle}
 (Beacon,Photomaniac)UG_A19 : 2-Centipede-5, 2-Small Centipede-4, 2-Spider-15
 (Beacon,Photomaniac)LINEAGE : UG_A19 : 2 : Small Centipede-0.10, Centipede-0.20, Red Centipede-0
 (Beacon,Photomaniac)UG_A21 : 2-Mimic-{16}, 2-Spider-20, 3-Blue-{Ignorecycle}

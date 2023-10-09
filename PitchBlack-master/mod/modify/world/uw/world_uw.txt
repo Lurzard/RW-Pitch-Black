@@ -3,7 +3,7 @@
 [FIND],Beacon,Photomaniac
 [REPLACE]
 [FINDLINESTART]LINEAGE : UW_J02 : 
-[ADDBEFORE](Beacon,Photomaniac)
+[ADDBEFORE](X-Beacon,Photomaniac)
 [MERGE]
 
 CREATURES
@@ -26,17 +26,16 @@ CREATURES
 (Beacon,Photomaniac)UW_E04 : 3-White, 4-Daddy, 5-Cyan, 6-Tube-2, 6-Centiwing, 7-Mouse-4
 (Beacon,Photomaniac)UW_I01 : 5-SpitterSpider, 5-BigSpider, 6-Mouse-5
 (Beacon,Photomaniac)UW_J01 : 3-Yellow-{IgnoreCycle}-2, 4-Yellow-{IgnoreCycle}-2, 5-Cyan-{IgnoreCycle}, 6-Cyan-{IgnoreCycle}
+(Beacon,Photomaniac)UW_J02 : 16-Yellow, 19-Yellow, 17-Yellow-2, 13-Tube, 14-Tube, 7-Daddy, 10-Tube-2
 (Beacon,Photomaniac)UW_PREGATE : 3-Scavenger-4
 (Beacon,Photomaniac)LINEAGE : UW_D02 : 4 : Dropbug-0.5, White-{Mean:1.0}-0
 (Beacon,Photomaniac)LINEAGE : UW_D07 : 4 : NONE-0.4, Dropbug-0
 (Beacon,Photomaniac)LINEAGE : UW_J02 : 11 : White-0.5, White-{Mean:1.0}-0.5, NONE-0.3, Red-0
 
 //Beacon
-(Beacon)UW_J02 : 16-Yellow, 19-Yellow, 17-Yellow-2, 13-Tube, 14-Tube, 7-Daddy, 10-Tube-2, 3-nightterror
 (Beacon)UW_E01 : 3-Blue-{IgnoreCycle}, 2-White, 3-Cyan, 4-nightterror, 5-Mouse-6, 6-Centiwing-2
 
 //Photomaniac
-(Photomaniac)UW_J02 : 16-Yellow, 19-Yellow, 17-Yellow-2, 13-Tube, 14-Tube, 7-Daddy, 10-Tube-2
 (Photomaniac)UW_E01 : 3-Blue-{IgnoreCycle}, 2-White, 3-Cyan, 5-Mouse-6, 6-Centiwing-2
 
 END CREATURES
