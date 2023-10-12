@@ -1,0 +1,11 @@
+DangerType: Rain
+RainIntensity: 0
+RumbleIntensity: 0
+Clouds: 0.9130435
+Grime: 0
+BkgDroneVolume: 0.326087
+Palette: 23
+Effects: ZeroG-0.2826087-20-20, ZeroGSpecks-0.2391304-19-134, BrokenZeroG-1-278-19, ReplaceEffectColorB-0-436-354-Color-0.2826087-0-1,
+PlacedObjects: LightSource><403.9608><516.9462><0.5652174~Environment~0~100~50~86.60254~1~0~None~0~0, LightFixture><343.8547><640.3625><ZapCoilLight~17.32051~-10~14, Corruption><376.6353><84.61171><11~220, LightFixture><702.6125><556.304><RedLight~17.32051~-10~72, LightFixture><849.7039><196.0464><RedLight~60.3205~-95~0, Corruption><700.8415><543.378><0~100, RotFlyPaper><638.7985><555.2449><38~-141, RotFlyPaper><699.1924><570.194><-21~-198, Corruption><428.5749><124.3145><0~100, StuckDaddy><408.5809><134.6433><0~100, LightSource><410.14><125.6671><1~EffectColor2~-4~218~50~86.60254~1~0~None~0~0, 
+AmbientSounds: OMNI><SO_SFX-Drowning.ogg><833.8794><646.1595><0.4565217><1, SPOT><AM_IND-SuperStructure.ogg><62.71497><501.3031><0.3586957><0.9021739><784.7822><495.6442><-227.3553><-183.3553><0><0.252174, SPOT><SO_SFX-Heartbeat2.ogg><63.69995><378.0043><0.5760869><0.5695652><412.7168><132.3498><71.64465><190.6447><0><0.3826088, SPOT><SO_WAT-ProperDrips.ogg><732.5101><217.5502><0.5><1><949.2375><129.8871><-195.3553><134.6447><0><0.4369566, 
+FadePalette: 10, 0.8804348

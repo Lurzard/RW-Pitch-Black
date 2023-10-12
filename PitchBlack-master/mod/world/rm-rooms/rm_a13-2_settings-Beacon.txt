@@ -1,0 +1,14 @@
+DangerType: Rain
+CeilingDrips: 0.25
+RainIntensity: 0
+RumbleIntensity: 0
+Clouds: 0.9565217
+Grime: 0.08695652
+BkgDroneVolume: 0.326087
+Palette: 24
+EffectColorA: 5
+EffectColorB: 12
+Effects: CorruptionSpores-0.9130435-19-86, ZeroGSpecks-0.7934783-278-86, BrokenZeroG-0.2717391-20-20, ZeroG-0.2717391-277-25, Fog-1-16-140, ReplaceEffectColorB-0-436-354-Color-0.2826087-0-1,
+PlacedObjects: Corruption><406.417><127.7467><-88~134, Corruption><62.6217><584.4034><75~-139, Corruption><603.569><421.5623><136~66, CorruptionTube><32.33046><478.1316><135~141, CorruptionTube><485.8015><435.7256><228~28, CorruptionTube><446.7268><107.0751><-48~251, LightFixture><900.3184><617.438><RedLight~17.32051~-10~0, LightFixture><41.13403><429.2846><RedLight~-141.1123~-230.5224~0, LightFixture><935.8071><115.7805><RedLight~8.320557~-101~0, SuperStructureFuses><311.4505><369.6646><112~89, SSLightRod><127.3976><591.6718><262.3205~-639~0.6195652~180~410.4348~0.5, LightFixture><249.0208><637.0193><RedLight~-437.7267~-240.974~34, Corruption><49.64769><375.7164><75~94, CorruptionTube><287.2253><55.55144><-4~306, CorruptionTube><103.1585><235.1778><95~407, Corruption><542.4559><657.3051><-53~-57, CorruptionTube><519.6604><465.5712><-15~217, CorruptionTube><639.7961><447.9446><-75~225, CorruptionTube><676.902><455.394><30~191, DevToken><785.5364><233.6268><-20~82~0~0~0~~~0~0~0~1, Corruption><604.5217><13.05118><3~154, LightSource><344.0607><490.6856><0.25~EffectColor2~-422~7~50~86.60254~1~0~None~0~0, 
+AmbientSounds: OMNI><AM_IND-SuperStructure.ogg><830.3997><653.327><0.4130435><0.9217392, OMNI><SO_SFX-Drowning.ogg><651.5601><653.0629><0.4347826><1, SPOT><SO_SFX-Data4.ogg><68.13055><495.0984><0.2717391><1><369.1306><418.0984><-184.3553><-88.35535><0><0.1978262, 
+FadePalette: 10, 0.9347826

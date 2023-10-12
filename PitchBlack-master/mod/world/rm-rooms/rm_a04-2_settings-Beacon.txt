@@ -1,0 +1,9 @@
+DangerType: None
+Clouds: 0.9782609
+Grime: 0
+BkgDroneVolume: 0.326087
+Palette: 24
+Effects: ZeroG-0.2717391-20-20, ZeroGSpecks-0.2391304-21-83, Bloom-0.25-22-147, BrokenZeroG-1-282-20, ReplaceEffectColorB-0-436-354-Color-0.2826087-0-1,
+PlacedObjects: ZapCoil><451.3008><146.2684><39~267, SuperStructureFuses><111.5883><438.5705><82~267, SuperStructureFuses><-31.63733><-0.3954163><79~146, LightFixture><477.5764><283.8494><ZapCoilLight~-140.6795~-152~33, LightSource><39.32794><628.398><0.1521825~Environment~627~-271~42~-185.3975~1~0~None~0~0, LightSource><984.2388><145.5841><0.108888~EffectColor2~-740~423~-383~28.60255~1~0~None~0~0, DeepProcessing><-26.20001><322.5001><654~63~949~-296~-53~-326~-104~-92~0.8043478~1~0.5326087, LightFixture><624.4125><601.5701><RedLight~17.32051~-10~41, LightFixture><860.9589><-1.35384><RedLight~17.32051~-10~46, Corruption><357.4096><93.96515><46~139, Corruption><141.9491><73.00572><39~209, Corruption><318.1653><221.3004><-33~153, CorruptionTube><75.87115><177.5909><87~250, CorruptionTube><87.94409><165.7019><225~188, Corruption><899.759><556.0819><2~200, DeadTokenStalk><572.0232><567.4988><52~-6, DeadTokenStalk><592.3325><605.1093><30~-23, DeadTokenStalk><573.2298><485.9389><51~40, GoldToken><529.665><539.181><96~11~112~-94~0~RM~~0~0~0~0, DevToken><636.6061><111.6111><-27~-77~-81.75519~181.7037~0~~~0~0~0~1, LightSource><178.6689><72.60715><0.3043478~EffectColor2~-9~482~50~86.60254~1~0~None~0~0, 
+AmbientSounds: OMNI><AM_IND-SuperStructure.ogg><830.4486><653.9766><0.3804348><0.9021739, OMNI><SO_SFX-Drowning.ogg><652.5622><657.5599><0.4456522><0.9804348, SPOT><SO_SFX-Data5.ogg><72.05066><137.0565><0.3913043><1.136956><146.4075><496.1031><-56.35535><-103.3553><0><0.2847827, 
+FadePalette: 10, 0.9239131

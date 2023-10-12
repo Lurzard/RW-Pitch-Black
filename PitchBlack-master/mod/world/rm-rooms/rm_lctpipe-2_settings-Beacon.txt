@@ -1,0 +1,12 @@
+Template: RM_SettingsTemplate_Dead
+DangerType: Rain
+CeilingDrips: 0.423913
+RainIntensity: 0
+RumbleIntensity: 0
+Palette: 10
+EffectColorA: 18
+EffectColorB: 12
+Effects: ReplaceEffectColorB-0-436-354-Color-0.2826087-0-1,
+PlacedObjects: Corruption><588.1259><1466.094><0~100, LightFixture><42.86334><607.895><RedLight~17.32051~-10~15, LightFixture><790.8829><1130.912><RedLight~57.3205~-77~3, LightFixture><550.1414><344.8511><RedLight~17.32051~-10~33, Corruption><537.188><529.8182><-2~111, Corruption><436.0596><1183.689><-25~193, CorruptionTube><523.2153><1064.553><231~392, Corruption><770.5808><1100.107><-1~103, Corruption><301.6216><432.4034><5~131, LightSource><33.30099><1028.27><0.09782609~EffectColor1~1219~-38~-89~-136.3975~0~0~None~0~0, CorruptionTube><531.7049><389.1948><-191~478, CorruptionTube><306.7383><354.8003><235~205, LightFixture><299.9698><1095.948><RedLight~-312.6795~101~3, Corruption><541.3438><414.8749><-104~50, Corruption><638.0557><277.0471><18~193, Corruption><231.1003><1323.632><0~100, LightSource><529.694><60.79877><0.25~EffectColor2~5~710~50~86.60254~1~0~None~0~0, StuckDaddy><750.1102><270.0831><-111~186, Corruption><703.45><237.2515><0~100, CorruptionTube><632.3015><341.5248><-78~216, 
+AmbientSounds: SPOT><SO_WAT-OpenFlow.ogg><836.8687><290.3492><0.4347826><0.6673913><128.8687><259.3492><123.6447><13.64465><0><0.2413045, SPOT><waterGurgleLOOP1.wav><662.4206><522.1044><0.5652174><0.7847826><122.4206><1384.105><82.64465><-306.3553><0><0.3065219, SPOT><SO_SFX-Heartbeat2.ogg><666.3091><410.8096><0.5326087><0.6869565><277.3091><1388.81><231.6447><-251.3553><0><0.2739132, SPOT><SO_SFX-Heartbeat2.ogg><660.0195><299.699><0.4673913><0.6673913><714.0194><145.699><-235.3553><230.6447><0><0.252174, 
+FadePalette: 26, 0.1956522, 0.1956522
