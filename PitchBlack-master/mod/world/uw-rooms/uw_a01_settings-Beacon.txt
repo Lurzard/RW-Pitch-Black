@@ -10,4 +10,5 @@ PlacedObjects: CustomDecal><502.0504><344.0128><-34~140~478~142~462~-3~-384~-12~
 AmbientSounds: SPOT><SO_WAT-LilDrips.ogg><764.6356><366.836><0.3043478><1><723.6356><242.836><-142.3553><-37.35535><0><0.404348, 
 FadePalette: 367, 0.951189
 MorePalette0: 10, 0.3073963
+BackgroundOffset: -435,340
 BackgroundType: testblackabovegr

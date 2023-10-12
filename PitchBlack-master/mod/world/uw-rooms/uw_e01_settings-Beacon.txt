@@ -13,4 +13,5 @@ AmbientSounds: SPOT><AM_ENV-WallHum.ogg><66.63177><503.3387><0.4565217><1><1064.
 FadePalette: 367, 0.936201, 0.936201, 0.9420007, 0.9420007, 0.9536007
 WetTerrain: OFF
 MorePalette0: 10, 0, 0, 0, 0.05799932, 0.1043986
+BackgroundOffset: -435,700
 BackgroundType: testblackabovegr

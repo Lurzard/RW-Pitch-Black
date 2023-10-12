@@ -12,4 +12,5 @@ PlacedObjects: GhostSpot><593.5597><552.3114><, NoSpearStickZone><-80.58911><346
 FadePalette: 367, 0.9768003
 WetTerrain: OFF
 MorePalette0: 365, 0.05461054
+BackgroundOffset: -435,1000
 BackgroundType: testblackabovegr

@@ -9,4 +9,5 @@ PlacedObjects: LightSource><814.925><287.5646><0.2934783~Environment~-117~206~-7
 AmbientSounds: SPOT><SO_WAT-LilDrips.ogg><707.072><369.0634><0.2065217><1><760.072><419.0634><-249.3553><-52.35535><0><0.3173914, 
 FadePalette: 367, 0.9536007
 WetTerrain: OFF
+BackgroundOffset: -435,615
 BackgroundType: testblackabovegr
