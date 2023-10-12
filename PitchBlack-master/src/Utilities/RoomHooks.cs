@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using Mono.Cecil.Cil;
+using MonoMod.Cil;
 
-namespace PitchBlack.Utilities;
+namespace PitchBlack;
 
 public static class RoomHooks
 {
-    public static Apply()
+    public static void Apply()
     {
         // update RoomSettings.Load when ending in -2 (pebblesEnergyTaken == true)
         IL.RoomSettings.Load += RoomSettings_Load;
@@ -35,7 +34,7 @@ public static class RoomHooks
                 return path;
             });
         }
-        else base.Logger.LogError("Couldn't ILHook RoomSettings.Load! (for MSC)");
+        else Plugin.logger.LogError("Couldn't ILHook RoomSettings.Load! (for MSC)");
 
         //reached if MSC is disabled, doesn't use second set of settings when pebblesEneryTaken == true (which shouldn't be possible normally)
         if (c.TryGotoNext(x => x.MatchCallvirt<String>("Substring")))
@@ -54,6 +53,6 @@ public static class RoomHooks
                 return path;
             });
         }
-        else base.Logger.LogError("Couldn't ILHook RoomSettings.Load! (for Vanilla)");
+        else Plugin.logger.LogError("Couldn't ILHook RoomSettings.Load! (for Vanilla)");
     }
 }

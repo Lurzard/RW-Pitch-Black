@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Security;
 using Fisobs.Core;
 using UnityEngine;
+using BepInEx.Logging;
 
 #pragma warning disable CS0618 // Type or member is obsolete
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -29,12 +30,16 @@ class Plugin : BaseUnityPlugin
     internal static bool RotundWorldEnabled => _rotundWorldEnabled; //for a single check in BeaconHooks' Player.Update hook
     private static bool _rotundWorldEnabled;
 
+    public static ManualLogSource logger;
+
     //public static List<string> currentDialog = new();
     //public static bool Speaking = false;
     //public static AbstractCreature PBOverseer;
     //public static int pbcooldown = 0;
     public void OnEnable()
     {
+        logger = base.Logger;
+
         On.RainWorld.OnModsInit += OnModsInit;
         On.RainWorld.OnModsDisabled += DisableMod;
         On.RainWorld.PostModsInit += RainWorld_PostModsInit;
