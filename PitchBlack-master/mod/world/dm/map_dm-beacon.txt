@@ -1,0 +1,211 @@
+GATE_SL_DM: -860.301><-156.9219><-583.0951><-122.5153><0><><48><35
+GATE_SL_MS: 569.5975><1912.03><431.9242><1634.381><0><><48><35
+GATE_DM_SL: -1318.468><-2630.017><-818.6324><-2105.055><1><><48><35
+DM_ENTRANCE: -714.3701><-191.4548><-470.54><-160.071><2><Looks to the Moon (Abstract Convergence Manifold)><48><45
+DM_LS01: -568.5853><-182.4735><-357.2805><-127.2929><2><><48><35
+DM_M03: -714.1884><49.63644><-476.2669><44.11047><2><Looks to the Moon (Abstract Convergence Manifold)><48><112
+DM_O08: -434.716><118.61><-353.9265><115.9265><2><Looks to the Moon (Abstract Convergence Manifold)><101><72
+DM_O01: -1113.264><378.1336><-726.9098><310.7289><2><Looks to the Moon (Abstract Convergence Manifold)><48><112
+DM_O02: -680.1876><455.1356><-608.9336><313.1104><2><Looks to the Moon (Abstract Convergence Manifold)><204><159
+DM_O03: -1045.91><62.6326><-721.6598><78.37197><2><Looks to the Moon (Abstract Convergence Manifold)><104><78
+DM_O07: -1127.071><-159.038><-717.0199><-80.99759><2><Looks to the Moon (Abstract Convergence Manifold)><48><35
+DM_O04: -1023.348><-299.6285><-698.5647><-268.4467><2><Looks to the Moon (Abstract Convergence Manifold)><104><35
+DM_O05: -1105.415><-485.5387><-788.2201><-486.6982><2><Looks to the Moon (Abstract Convergence Manifold)><150><75
+DM_O06: -1073.243><-707.1389><-793.0967><-616.3179><2><Looks to the Moon (Abstract Convergence Manifold)><151><35
+DM_VISTA: -1612.741><-721.7213><-1019.119><-619.9222><0><Looks to the Moon (Abstract Convergence Manifold)><104><35
+DM_CROSSOVER01: -119.4181><440.1356><-186.4723><430.4182><1><Looks to the Moon><158><35
+DM_CROSSOVER02: -713.369><-465.5848><-470.6088><-616.0762><1><Looks to the Moon (Abstract Convergence Manifold)><48><192
+DM_I01: -545.5648><-52.67667><-583.4535><-4.352177><1><Looks to the Moon (Abstract Convergence Manifold)><247><40
+DM_I02: -53.62228><196.0142><-131.4691><130.6811><1><Looks to the Moon><152><121
+DM_LS04: 78.61923><222.1722><226.3281><239.8162><2><><48><35
+DM_I03: -109.969><-42.08857><-71.28101><-26.6783><1><Looks to the Moon (Abstract Convergence Manifold)><48><35
+DM_I04: -74.43461><-212.9445><-70.37109><-217.3576><1><Looks to the Moon (Abstract Convergence Manifold)><48><78
+DM_I05: 97.56529><-158.9443><61.62944><-188.357><1><Looks to the Moon><48><112
+DM_I06: 620.2264><-61.29116><202.1727><-44.00754><1><Looks to the Moon><246><40
+DM_I07: 1077.026><-171.4418><739.9232><-182.8568><1><Looks to the Moon><48><112
+DM_S03: 1122.151><64.49072><740.3269><96.3348><1><><48><35
+DM_I08: 1075.858><-58.53865><852.4597><-118.589><2><Looks to the Moon><48><112
+DM_I09: 1383.095><-135.9912><962.9121><-116.1365><2><Looks to the Moon><104><78
+DM_I10: 1066.62><-481.2385><734.197><-416.9735><1><Looks to the Moon><48><78
+DM_I11: 1458.306><144.0232><1068.245><103.3832><2><Looks to the Moon><48><78
+DM_I12: 1305.46><208.6002><917.7373><190.0593><2><Looks to the Moon><48><35
+DM_I13: 625.3517><-194.5742><403.3552><-186.3037><1><Looks to the Moon><48><35
+DM_LS05: 774.1412><-181.7449><513.7628><-179.0273><1><><48><35
+DM_FAKEGATE_UNDER: 1065.275><-622.9293><733.1787><-553.3179><0><><48><35
+DM_WALL04: -1498.301><1027.079><-1059.094><734.4844><0><Luna><48><67
+DM_WALL06: -1607.025><1546.815><-1208.266><1003.982><0><Luna><120><292
+DM_ROOF01: -966.7628><1881.889><-890.7618><1601.921><0><Luna><306><35
+DM_TEMPLE: -353.812><1931.464><-258.9619><1598.131><0><Luna><107><78
+DM_LSTOP: -456.7283><1778.722><-268.0617><1473.333><0><><48><35
+DM_ROOF03: 166.4109><1932.109><-22.0079><1603.745><0><Luna><216><78
+DM_ACCSHAFT: 111.2387><1747.415><-26.06322><1488.614><1><><201><35
+DM_ROOF04: -117.5883><1451.282><-66.23447><1083.66><1><Looks to the Moon (Neural Terminus)><48><149
+DM_M01: -1174.3><985.0782><-945.094><738.4844><1><><155><35
+DM_A16: -1016.301><1089.079><-735.0951><854.4841><1><Looks to the Moon (Neural Terminus)><48><35
+DM_S10: -1158.967><1089.746><-845.5398><854.9285><1><><48><35
+DM_M02: -718.3029><1061.079><-620.0951><750.4846><1><Looks to the Moon (Neural Terminus)><152><121
+DM_A15: -418.3033><1063.079><-295.0952><837.4846><1><Looks to the Moon (Neural Terminus)><48><35
+DM_S06: -418.3033><1167.078><-297.0952><970.4846><1><><48><35
+DM_MOONCHAMBER: -119.3589><872.2776><-177.1528><546.4196><1><Looks to the Moon (Neural Terminus)><148><226
+DM_MEM01: 686.4927><1090.365><456.5996><933.8267><1><><104><78
+DM_MEM02: 349.435><440.0227><148.1133><428.4814><1><Looks to the Moon><152><35
+DM_MEM03: 680.0475><468.2671><472.0533><427.7639><1><Looks to the Moon><48><35
+DM_MEM04: 681.61><190.0926><470.5063><98.76146><1><Looks to the Moon><48><112
+DM_LAB1: 961.082><1114.721><683.5017><1022.31><2><Looks to the Moon (Memory Conflux)><48><35
+DM_LAB2: 1132.895><1114.875><797.0404><1038.28><2><Looks to the Moon (Memory Conflux)><48><35
+DM_LAB3: 1303.27><1113.686><917.6118><1032.114><2><Looks to the Moon (Memory Conflux)><48><35
+DM_LAB4: 960.5212><981.2668><684.2014><895.0875><2><Looks to the Moon (Memory Conflux)><48><35
+DM_LAB5: 1131.834><979.6017><801.9951><886.0831><2><Looks to the Moon (Memory Conflux)><48><35
+DM_LAB6: 1303.093><980.8702><915.6948><891.2028><2><Looks to the Moon (Memory Conflux)><48><35
+DM_LAB7: 786.2549><847.5121><543.9425><744.2457><2><Looks to the Moon (Memory Conflux)><48><35
+DM_LAB8: 959.0353><846.0959><683.9154><759.7739><2><Looks to the Moon (Memory Conflux)><48><35
+DM_LAB9: 1131.223><846.8553><797.5623><758.2324><2><Looks to the Moon (Memory Conflux)><48><35
+DM_LAB10: 1303.962><845.5652><911.1876><764.8696><2><Looks to the Moon (Memory Conflux)><48><35
+DM_LAB11: 787.743><651.5671><543.348><542.8674><2><Looks to the Moon (Memory Conflux)><48><78
+DM_LAB12: 958.2402><718.7906><682.5288><614.3248><2><Looks to the Moon (Memory Conflux)><48><35
+DM_LAB13: 1130.08><717.3774><798.7987><611.436><2><Looks to the Moon (Memory Conflux)><48><35
+DM_LAB14: 1303.489><539.8365><915.5988><391.0175><2><Looks to the Moon (Memory Conflux)><48><152
+DM_C13: 249.9012><1164.167><134.8736><990.1453><1><Looks to the Moon (Neural Terminus)><152><35
+DM_AI: -120.3025><945.079><-293.0958><703.4852><0><Looks to the Moon (Neural Terminus)><48><36
+DM_U01: 9.629206><-391.9699><-7.972223><-315.5099><1><Looks to the Moon><48><35
+DM_U02: 11.69751><-530.6953><-60.63159><-554.0541><0><Looks to the Moon><104><78
+DM_S02: 253.4171><-592.8864><167.2701><-511.2878><0><><48><35
+DM_U03: -401.2712><-465.5284><-359.9609><-427.6653><1><Looks to the Moon (Abstract Convergence Manifold)><150><35
+DM_U04: 26.93337><-965.5891><-33.7104><-940.3107><0><Looks to the Moon (Vents)><80><157
+DM_U05: 184.713><-896.7913><140.5105><-711.2925><0><Looks to the Moon (Vents)><48><35
+DM_U06: 598.9794><-1010.79><233.7264><-879.7607><0><Looks to the Moon (Vents)><228><35
+DM_U07: 1063.126><-1004.822><711.4486><-872.5817><0><Looks to the Moon (Vents)><111><35
+DM_U08: 898.6747><-841.7426><639.2899><-761.5331><0><Looks to the Moon (Vents)><48><78
+DM_U09: 1913.064><-800.2526><1173.536><-758.621><0><Looks to the Moon (Vents)><154><122
+DM_U10: 1297.65><-844.5134><852.5803><-737.9949><0><Looks to the Moon (Vents)><99><72
+DM_U11: 1550.231><-1005.348><1010.327><-877.3528><0><Looks to the Moon (Vents)><106><35
+DM_UHALL: 1400.689><-663.5894><848.5028><-581.5073><0><Looks to the Moon (Vents)><152><35
+DM_LEG01: -1173.228><-2479.206><-704.646><-2155.668><1><Struts><48><152
+DM_S14: -1025.194><-2645.795><-588.0904><-2115.625><1><><48><35
+DM_LEG02: -1166.228><-1572.206><-697.646><-1511.671><1><Struts><48><152
+DM_S11: -1311.019><-1635.366><-817.8376><-1437.175><0><><48><35
+DM_LEG03: -1320.228><-2041.206><-817.646><-1912.671><0><Struts><48><192
+DM_LEG04: -1059.228><-2020.206><-698.646><-1748.671><1><Struts><120><78
+DM_LEG05: -969.2277><-1641.206><-568.646><-1513.671><1><Struts><48><147
+DM_LEG06: -1399.228><-1288.206><-939.646><-1273.671><0><Struts><106><162
+DM_LEG08: -1076.228><-1071.206><-716.646><-1040.671><1><><111><78
+DM_S13: -1317.484><-1033.916><-827.5685><-877.8107><1><><48><35
+DM_LEG07: -567.228><-1020.205><-474.6457><-956.67><0><Looks to the Moon (Vents)><210><47
+DM_LEG09: -221.3232><-898.3234><-151.7505><-802.9584><0><Looks to the Moon (Vents)><48><35
+OffScreenDen_DM: -1446.3><-3736.932><395.9048><-648.5154><1><Looks to the Moon><0><0
+Connection: GATE_SL_DM,DM_ENTRANCE,45,9,2,25,0,2
+Connection: GATE_SL_MS,DM_ROOF03,2,9,209,24,2,0
+Connection: GATE_DM_SL,DM_LEG01,44,9,4,17,0,2
+Connection: DM_ENTRANCE,DM_M03,38,30,39,3,0,3
+Connection: DM_ENTRANCE,DM_LS01,38,26,16,18,0,2
+Connection: DM_ENTRANCE,DM_CROSSOVER02,38,22,42,170,0,1
+Connection: DM_M03,DM_O08,39,103,7,12,0,2
+Connection: DM_M03,DM_O03,13,77,96,72,2,0
+Connection: DM_O08,DM_O02,14,67,108,10,2,3
+Connection: DM_O01,DM_O02,43,101,2,98,0,2
+Connection: DM_O01,DM_O03,21,4,25,74,3,1
+Connection: DM_O02,DM_CROSSOVER01,200,74,4,18,0,2
+Connection: DM_O03,DM_I01,97,18,27,37,0,2
+Connection: DM_O03,DM_O07,24,3,23,32,3,1
+Connection: DM_O07,DM_O04,2,17,4,31,2,2
+Connection: DM_O04,DM_O05,22,4,72,72,3,1
+Connection: DM_O05,DM_CROSSOVER02,146,28,8,95,0,2
+Connection: DM_O05,DM_O06,120,2,110,32,3,1
+Connection: DM_O06,DM_VISTA,6,13,99,16,2,0
+Connection: DM_O06,DM_CROSSOVER02,140,11,8,9,0,2
+Connection: DM_CROSSOVER01,DM_MOONCHAMBER,79,29,78,3,1,3
+Connection: DM_CROSSOVER01,DM_MEM02,153,16,8,24,0,3
+Connection: DM_CROSSOVER01,DM_I02,79,5,54,118,3,1
+Connection: DM_CROSSOVER02,DM_U03,39,95,5,22,0,3
+Connection: DM_I01,DM_I03,243,13,4,7,0,2
+Connection: DM_I02,DM_LS04,82,64,10,12,0,2
+Connection: DM_I02,DM_I03,74,12,41,28,3,1
+Connection: DM_I02,DM_I05,126,13,24,110,3,1
+Connection: DM_I03,DM_I04,41,2,29,73,3,1
+Connection: DM_I04,DM_U01,13,9,10,28,3,1
+Connection: DM_I05,DM_I06,42,84,7,24,0,2
+Connection: DM_I05,DM_U01,19,2,30,28,3,1
+Connection: DM_I06,DM_MEM04,120,35,19,4,1,2
+Connection: DM_I06,DM_I07,240,24,4,97,0,2
+Connection: DM_I06,DM_I13,125,10,24,30,3,1
+Connection: DM_I07,DM_S03,36,105,21,12,1,3
+Connection: DM_I07,DM_I09,44,93,3,74,0,2
+Connection: DM_I07,DM_I08,36,87,42,25,3,1
+Connection: DM_I07,DM_I10,22,12,26,72,3,1
+Connection: DM_I08,DM_MEM04,3,90,45,6,2,0
+Connection: DM_I08,DM_I09,44,5,8,14,0,2
+Connection: DM_I09,DM_I11,88,73,35,4,1,3
+Connection: DM_I10,DM_FAKEGATE_UNDER,7,7,11,19,3,1
+Connection: DM_I11,DM_I12,4,64,42,21,2,0
+Connection: DM_I12,DM_LAB14,20,30,21,6,1,3
+Connection: DM_I13,DM_LS05,34,16,15,14,0,3
+Connection: DM_FAKEGATE_UNDER,DM_UHALL,45,9,3,23,0,2
+Connection: DM_WALL04,DM_WALL06,41,50,115,12,0,0
+Connection: DM_WALL04,DM_M01,30,16,4,17,0,2
+Connection: DM_WALL06,DM_ROOF01,113,264,5,21,0,2
+Connection: DM_ROOF01,DM_TEMPLE,298,7,5,10,0,2
+Connection: DM_TEMPLE,DM_ROOF03,103,49,7,50,0,2
+Connection: DM_TEMPLE,DM_LSTOP,39,8,24,20,3,0
+Connection: DM_ROOF03,DM_ACCSHAFT,184,13,186,28,3,1
+Connection: DM_ACCSHAFT,DM_ROOF04,20,5,23,145,3,2
+Connection: DM_ROOF04,DM_MOONCHAMBER,31,11,70,220,3,1
+Connection: DM_M01,DM_A16,151,32,43,3,1,3
+Connection: DM_A16,DM_S10,4,26,30,26,2,0
+Connection: DM_A16,DM_M02,43,13,4,62,0,2
+Connection: DM_M02,DM_A15,144,66,3,21,0,2
+Connection: DM_A15,DM_S06,43,32,31,20,1,0
+Connection: DM_A15,DM_MOONCHAMBER,44,3,2,148,0,1
+Connection: DM_MOONCHAMBER,DM_C13,94,211,4,18,0,2
+Connection: DM_MOONCHAMBER,DM_AI,70,158,24,33,3,1
+Connection: DM_MEM01,DM_C13,5,63,147,17,2,0
+Connection: DM_MEM01,DM_LAB4,97,12,5,10,1,3
+Connection: DM_MEM02,DM_MEM03,149,30,2,21,0,2
+Connection: DM_MEM03,DM_LAB11,41,30,7,2,1,3
+Connection: DM_MEM03,DM_MEM04,43,4,42,105,3,0
+Connection: DM_LAB1,DM_LAB2,44,4,6,9,0,3
+Connection: DM_LAB1,DM_LAB4,19,2,27,32,3,1
+Connection: DM_LAB2,DM_LAB3,41,24,8,30,1,2
+Connection: DM_LAB3,DM_LAB6,28,2,28,32,3,1
+Connection: DM_LAB4,DM_LAB5,43,8,21,7,0,3
+Connection: DM_LAB4,DM_LAB8,43,3,35,32,0,0
+Connection: DM_LAB5,DM_LAB6,20,21,6,23,0,2
+Connection: DM_LAB5,DM_LAB9,9,2,5,32,3,1
+Connection: DM_LAB6,DM_LAB10,22,2,22,32,3,1
+Connection: DM_LAB7,DM_LAB8,42,6,6,8,3,2
+Connection: DM_LAB7,DM_LAB11,25,3,18,76,2,0
+Connection: DM_LAB8,DM_LAB12,26,5,22,32,3,1
+Connection: DM_LAB9,DM_LAB10,42,32,2,30,1,2
+Connection: DM_LAB9,DM_LAB13,42,10,30,30,3,0
+Connection: DM_LAB11,DM_LAB12,43,69,3,3,0,2
+Connection: DM_LAB12,DM_LAB13,44,9,3,4,0,2
+Connection: DM_LAB13,DM_LAB14,43,4,5,126,0,3
+Connection: DM_U01,DM_U02,43,11,83,54,0,0
+Connection: DM_U02,DM_U03,3,57,141,14,2,0
+Connection: DM_U02,DM_S02,99,19,18,18,0,2
+Connection: DM_U02,DM_U04,43,16,29,144,3,3
+Connection: DM_U04,DM_LEG09,13,75,44,25,1,3
+Connection: DM_U04,DM_U05,56,75,5,25,1,3
+Connection: DM_U05,DM_U06,41,6,22,31,0,1
+Connection: DM_U06,DM_U08,196,31,5,24,1,2
+Connection: DM_U07,DM_U08,20,29,42,24,1,0
+Connection: DM_U07,DM_U10,80,29,12,7,1,2
+Connection: DM_U08,DM_U10,44,62,6,60,0,2
+Connection: DM_U09,DM_UHALL,4,111,142,22,2,0
+Connection: DM_U09,DM_U10,4,70,93,60,2,0
+Connection: DM_U09,DM_U11,4,29,98,28,2,1
+Connection: DM_U10,DM_U11,83,5,7,28,0,1
+Connection: DM_LEG01,DM_LEG04,41,149,41,15,0,0
+Connection: DM_LEG01,DM_LEG03,8,143,44,17,2,0
+Connection: DM_LEG01,DM_S14,41,18,16,15,0,2
+Connection: DM_LEG02,DM_LEG06,4,145,99,73,2,0
+Connection: DM_LEG02,DM_S11,32,53,36,16,3,3
+Connection: DM_LEG02,DM_LEG03,4,16,40,182,2,3
+Connection: DM_LEG02,DM_LEG04,44,18,36,74,3,0
+Connection: DM_LEG03,DM_LEG04,44,129,4,65,0,2
+Connection: DM_LEG04,DM_LEG05,100,71,34,5,1,3
+Connection: DM_LEG05,DM_LEG08,15,139,61,6,1,3
+Connection: DM_LEG05,DM_LEG06,2,133,96,22,2,3
+Connection: DM_LEG06,DM_LEG08,95,146,4,30,0,2
+Connection: DM_LEG08,DM_LEG07,108,56,12,23,0,2
+Connection: DM_LEG08,DM_S13,5,52,33,18,2,0
+Connection: DM_LEG07,DM_LEG09,196,40,3,25,1,3

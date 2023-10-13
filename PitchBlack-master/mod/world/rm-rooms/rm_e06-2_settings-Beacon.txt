@@ -1,0 +1,11 @@
+Template: NONE
+DangerType: None
+Clouds: 0
+Grime: 0
+BkgDroneVolume: 0
+Palette: 25
+EffectColorB: 12
+Effects: ZeroG-0.2608696-20-20, ZeroGSpecks-0.3043478-21-76, BrokenZeroG-1-279-22, ProjectedScanLines-0.7065217-275-76, SunBlock-1-531-76, ReplaceEffectColorB-0-436-354-Color-0.2826087-0-1,
+PlacedObjects: SuperStructureFuses><427.6326><79.39972><386~34, SuperStructureFuses><67.43945><593.6859><236~27, ZapCoil><635.1296><562.4023><321~42, SuperStructureFuses><1309.606><590.1383><523~51, LightFixture><729.4493><597.2335><ZapCoilLight~17.32051~-10~55, LightFixture><1647.675><138.6532><DeepProcessing~17.32051~-10~100, LightSource><2468.575><50.68558><0.7282609~Environment~0~100~84.0752~-29.47858~1~0~None~0~0, LightSource><-54.75018><369.3><0.5869565~Environment~-27~104~50~86.60254~1~0~None~0~0, LightSource><821.0411><107.6957><1~Environment~0~100~50~86.60254~1~0~None~0~0, LightFixture><2285.385><529.6025><RedLight~17.32051~-10~0, LightFixture><2752.086><173.3194><RedLight~80.25409~-179.7079~7, LightSource><3274.478><482.5512><0.6304348~Environment~-83~124~49.02124~-145.4164~1~0~None~0~0, WallMycelia><1613.05><581.2637><323~49, WallMycelia><1861.651><105.1736><-191~33, CoralStem><2264.781><276.0523><-233~-75, WallMycelia><2293.306><345.1996><-216~-61, SuperStructureFuses><1858.652><595.3254><408~36, LightFixture><3393.664><506.3851><RedLight~17.32051~-10~33, LightFixture><604.5704><460.9121><RedLight~17.32051~-10~55, LightFixture><271.5797><237.1047><RedLight~17.32051~-10~82, Corruption><3204.052><536.4821><18~162, Corruption><2796.852><207.3734><64~116, Corruption><2555.763><528.3676><71~130, LightSource><2532.277><362.1981><0.3043478~EffectColor2~-673~9~50~86.60254~1~0~None~0~0, 
+AmbientSounds: OMNI><SO_SFX-Drowning.ogg><838.596><651.9255><0.5><1, SPOT><SO_SFX-Heartbeat1.ogg><66.78711><270.4465><0.423913><0.5108696><2518.787><354.4465><-449.3553><-184.3553><0><0.2195653, SPOT><AM_SFX-RandomGods.ogg><63.8465><153.9252><0.02173913><1><2529.846><392.9252><-423.3553><-279.3553><0><0.9152175, SPOT><SO_SFX-DataTrans2.ogg><808.8571><177.11><0.2608696><0.6869565><2528.857><372.11><-90.35535><-167.3553><0><0.2086958, 
+FadePalette: 10, 0.9130435, 0.9565217, 1, 0.9565217, 0.9021739

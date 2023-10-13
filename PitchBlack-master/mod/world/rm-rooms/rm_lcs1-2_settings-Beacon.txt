@@ -1,0 +1,5 @@
+Template: RM_SettingsTemplate_Lympathic
+EffectColorB: 16
+Effects: ReplaceEffectColorB-0-436-354-Color-0.2826087-0-1, 
+PlacedObjects: LightFixture><603.9758><540.0465><RedLight~17.32051~-10~54, CorruptionDarkness><242.5925><318.3733><50~126, CorruptionDarkness><454.0643><472.0743><144~-41, 
+FadePalette: 10, 0.8260869

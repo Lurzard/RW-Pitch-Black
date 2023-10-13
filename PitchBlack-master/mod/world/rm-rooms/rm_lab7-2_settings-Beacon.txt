@@ -1,0 +1,14 @@
+Template: NONE
+CeilingDrips: 0.1847826
+RainIntensity: 0
+RumbleIntensity: 0
+Clouds: 0.9130435
+Grime: 0
+BkgDroneVolume: 0
+Palette: 31
+EffectColorA: 18
+EffectColorB: 12
+Effects: ZeroG-0.2608696-20-20, ZeroGSpecks-0.3043478-19-72, ReplaceEffectColorB-0-436-354-Color-0.2826087-0-1, Darkness-0.9130435-30-30, 
+PlacedObjects: Corruption><121.9448><369.9423><69~143, Corruption><203.37><74.91><36~135, Corruption><860.5327><111.8027><-69~175, ExitSymbolHidden><870.5767><71.90021><, LightFixture><861.4421><657.1942><RedLight~17.32051~-10~33, LightSource><859.5536><654.9623><0.4347826~EffectColor1~-642~-481~-220~-202.3975~0~0~Fade~0.7608696~0, Corruption><407.1974><618.782><-3~96, CorruptionTube><245.3621><36.10513><-125~466, CorruptionTube><225.5864><40.06964><171~634, 
+AmbientSounds: SPOT><AM_IND-DeepHum.ogg><698.7678><308.3008><0.4021739><1><533.7678><358.3008><-167.3553><-93.35535><0><0.1, OMNI><SO_SFX-Drowning.ogg><834.6663><651.3184><0.0326087><0.1391304, 
+FadePalette: 33, 0.2282609

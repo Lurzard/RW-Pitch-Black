@@ -1,0 +1,14 @@
+Template: RM_SettingsTemplate_Dead
+DangerType: Rain
+CeilingDrips: 0.5108696
+RainIntensity: 0
+RumbleIntensity: 0
+BkgDroneVolume: 0
+EffectColorA: 18
+EffectColorB: 12
+Effects: ReplaceEffectColorB-0-461-449-Color-0.2826087-0-1, Darkness-1-30-30, Fog-0-40-40, 
+PlacedObjects: Corruption><298.7268><596.6573><129~111, Corruption><811.058><385.8063><-67~156, Corruption><333.639><401.6664><92~78, LightFixture><933.0151><575.5506><RedLight~17.32051~-10~8, LightFixture><46.58557><244.1808><RedLight~88.3205~-84~59, LightFixture><1671.233><598.3007><RedLight~17.32051~-10~100, Corruption><1366.21><459.9459><-202~-20, RotFlyPaper><808.1382><379.6658><0~-124, RotFlyPaper><873.4285><368.4099><6~-116, RotFlyPaper><1425.355><459.3877><4~-127, RotFlyPaper><1394.332><468.3581><-9~-110, 
+AmbientSounds: SPOT><SO_WAT-RunningWater.ogg><837.3001><287.007><0.3152174><0.5891304><247.3001><210.007><-19.35535><-82.35535><0><0.1869567, SPOT><SO_WAT-OpenFlow.ogg><835.05><173.2539><0.4347826><1.234783><781.05><215.2539><-93.35535><-35.35535><0><0.154348, SPOT><SO_WAT-OpenFlow.ogg><832.2218><49.302><0.4347826><0.6869565><1381.222><231.302><-123.3553><-5.355347><0><0.1869567, 
+Triggers: Spot<tA>event<tB>MusicEvent<eA>songName<eB>RW_76 - Not Your Rain<eA>vol<eB>0.3543482<eA>prio<eB>0.5<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>-1<eA>rest<eB>5<eA>fadeIn<eB>0<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>676.5695<tB>413.6638<tA>fireChance<tB>1<tA>entrance<tB>-1<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>897.5696<tB>424.6638<tA>handlePos<tB>1176.645<tB>-342.3553, 
+FadePalette: 26, 0.8804348, 0.8804348
+MorePalette0: 10, 0.8152174, 0.8152174

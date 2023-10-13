@@ -35,12 +35,16 @@ class Plugin : BaseUnityPlugin
         Logger = base.Logger;
     }
 
+    public static ManualLogSource logger;
+
     //public static List<string> currentDialog = new();
     //public static bool Speaking = false;
     //public static AbstractCreature PBOverseer;
     //public static int pbcooldown = 0;
     public void OnEnable()
     {
+        logger = base.Logger;
+
         On.RainWorld.OnModsInit += OnModsInit;
         On.RainWorld.OnModsDisabled += DisableMod;
         On.RainWorld.PostModsInit += RainWorld_PostModsInit;
@@ -63,6 +67,7 @@ class Plugin : BaseUnityPlugin
         WorldChanges.Apply();
 
         JollyMenuHooks.Apply();
+        RoomHooks.Apply();
 
         DevCommOverride.Apply();
         OhNoMoonAndPebblesAreDeadGuys.Apply();
