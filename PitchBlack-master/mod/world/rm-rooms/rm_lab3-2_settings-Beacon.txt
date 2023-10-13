@@ -1,0 +1,14 @@
+Template: RM_SettingsTemplate_Dead
+DangerType: Rain
+CeilingDrips: 0.4456522
+RainIntensity: 0
+RumbleIntensity: 0
+Clouds: 1
+Grime: 0
+BkgDroneVolume: 0
+Palette: 14
+EffectColorA: 18
+EffectColorB: 12
+Effects: ReplaceEffectColorB-0-436-354-Color-0.2826087-0-1, Darkness-1-21-134, Fog-0-30-30, 
+PlacedObjects: Corruption><131.1761><531.8447><-19~-140, Corruption><235.6396><127.8568><67~109, CorruptionTube><325.3835><656.8374><-65~-593, LightSource><191.3871><217.6456><0.1521739~EffectColor2~823~-331~50~86.60254~0~0~None~0~0, LightSource><849.6714><545.5661><0.1304348~EffectColor2~-1004~-462~-257~-291.3975~0~0~None~0~0, LightFixture><561.947><27.80713><RedLight~17.32051~-10~69, LightSource><561.6116><30.35559><1~EffectColor1~119~567~50~86.60254~0~0~Fade~0.7934783~0, CorruptionTube><92.11517><475.6023><151~200, CorruptionTube><131.6633><562.5698><565~88, LightSource><1592.552><290.4431><0.1521739~EffectColor2~-776~-453~99~-150.3975~0~0~None~0~0, LightFixture><1339.77><100.199><RedLight~17.32051~-10~75, LightSource><1337.06><100.3123><0.3369565~EffectColor1~43~284~50~86.60254~0~0~Fade~0.7608696~0, LightFixture><1823.688><480.4324><RedLight~-262.6794~15~68, Corruption><1302.639><513.8563><177~-186, CorruptionTube><1191.35><415.8674><-143~47, Corruption><1757.831><603.6075><82~129, Corruption><1643.059><-33.69168><-3~109, Corruption><1783.564><-27.07318><5~156, CorruptionTube><1287.194><348.2977><485~266, Corruption><1171.377><568.9077><0~100, Corruption><1415.052><506.1932><0~100, Corruption><158.7472><193.95><0~100, 
+FadePalette: 33, 0.9673913, 1

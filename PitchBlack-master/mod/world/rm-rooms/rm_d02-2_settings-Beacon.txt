@@ -1,0 +1,16 @@
+Template: RM_SettingsTemplate_Dead
+DangerType: None
+CeilingDrips: 0.3586957
+Clouds: 1
+Grime: 0
+BkgDroneVolume: 0.2173913
+WaterReflectionAlpha: 1
+Palette: 31
+EffectColorA: 18
+EffectColorB: 12
+Effects: HeatWave-0-18-135, Darkness-0.3695652-269-196, ReplaceEffectColorB-0-436-354-Color-0.2826087-0-1,
+PlacedObjects: LightSource><476.1664><1063.682><0.1847826~EffectColor2~-612~492~-529~54.60254~0~0~None~0~0, Corruption><163.3224><948.408><103~135, Corruption><916.0842><1358.862><45~192, Corruption><950.0928><851.9272><-193~214, StuckDaddy><872.3038><852.2111><535~181, Corruption><1380.713><825.4465><94~229, CorruptionTube><1342.327><925.4348><-251~487, LightSource><1519.153><1130.371><0.2173913~EffectColor2~-627~376~152~261.6025~0~0~None~0~0, LightSource><1797.802><854.7759><0.173913~EffectColor2~270~460~50~86.60254~0~0~None~0~0, Corruption><1980.942><1201.809><-64~136, CorruptionTube><1991.177><1154.407><-617~-351, LightSource><1543.382><399.1612><0.2826087~EffectColor2~-690~394~50~86.60254~0~0~None~0~0, LightSource><532.1993><363.7662><0.2934783~EffectColor2~-658~428~50~86.60254~0~0~None~0~0, CorruptionTube><1511.159><536.1211><473~637, Corruption><1523.367><525.8503><17~125, Corruption><1237.556><198.2011><-9~170, Corruption><575.8901><110.6427><29~217, Corruption><310.8881><487.3947><20~161, CorruptionTube><1244.891><197.0821><155~547, Corruption><1749.695><275.3076><-119~212, StuckDaddy><1761.11><306.3925><-25~154, StuckDaddy><611.8087><232.6918><11~130, 
+AmbientSounds: SPOT><SO_SFX-Doomsday.ogg><38.05151><494.7255><0.2826087><1><483.0515><1136.726><-156.3553><-140.3553><0><0.3391306, SPOT><SO_SFX-Doomsday.ogg><220.1702><495.4334><0.2826087><1><1593.17><455.4334><-148.3553><-101.3553><0><0.3065219, SPOT><SO_SFX-Doomsday.ogg><218.5774><378.8989><0.2826087><1><496.5774><462.8989><-120.3553><-153.3553><0><0.3391306, SPOT><AM_IND-DeepHum.ogg><223.7219><259.802><0.2608696><1><1572.722><1149.802><-165.3553><-123.3553><0><0.2413045, OMNI><SO_SFX-Drowning.ogg><840.6912><645.9412><0.2282609><1, OMNI><SO_SFX-Heartbeat2.ogg><832.1455><486.8628><0.0326087><0.1, OMNI><SO_SFX-Heartbeat1.ogg><835.939><332.5596><0.05434782><0.1391304, 
+Triggers: Spot<tA>event<tB>MusicEvent<eA>songName<eB>NA_10 - Qanda<eA>vol<eB>0.2021737<eA>prio<eB>0.5<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>-1<eA>rest<eB>5<eA>fadeIn<eB>58.69565<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>51<tA>panPos<tB>522.1603<tB>426.1304<tA>fireChance<tB>1<tA>entrance<tB>-1<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>926.1193<tB>787.1304<tA>handlePos<tB>1278.645<tB>769.6447, 
+FadePalette: 33, 0.2173913, 0.2173913, 0.1195652, 0.1195652
+RoomSpecificScriptActive: ON

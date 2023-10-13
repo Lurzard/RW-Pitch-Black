@@ -1,0 +1,11 @@
+DangerType: Rain
+RainIntensity: 0
+RumbleIntensity: 0
+Clouds: 1
+Grime: 0
+BkgDroneVolume: 0
+Palette: 23
+Effects: ZeroG-0.2717391-20-20, ZeroGSpecks-0.1521739-19-78, BrokenZeroG-0.25-286-17, ReplaceEffectColorB-0-436-354-Color-0.2826087-0-1,
+PlacedObjects: LightSource><573.1985><297.4758><0.4565217~Environment~-2~169~-100~-335.3975~1~0~None~0~0, LightSource><864.4373><39.82031><0.7282609~Environment~0~100~50~86.60254~1~0~None~0~0, LightSource><614.6796><558.7803><0.3478261~Environment~-27~132~-398.321~-598.3184~1~0~None~0~0, Corruption><325.2279><516.8317><130~-145, Corruption><137.6693><360.8565><92~105, Corruption><268.3265><254.8495><36~136, CorruptionTube><230.9051><535.4927><418~-100, CorruptionTube><206.9708><278.5522><435~142, 
+AmbientSounds: OMNI><SO_SFX-Drowning.ogg><827.2978><654.3058><0.4673913><1, 
+FadePalette: 17, 0.8695652

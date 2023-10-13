@@ -1,0 +1,8 @@
+Template: RM_SettingsTemplate_Lympathic
+DangerType: Rain
+RainIntensity: 0
+RumbleIntensity: 0
+Effects: ReplaceEffectColorB-0-436-354-Color-0.2826087-0-1,
+PlacedObjects: Corruption><250.9379><539.4313><-2~123, Corruption><449.4095><563.1495><-8~122, StuckDaddy><199.9556><591.3134><61~-197, LightFixture><937.6772><629.2548><RedLight~17.32051~-10~74, LightFixture><432.4216><99.75148><RedLight~17.32051~-10~0, LightSource><308.1799><702.0874><0.2934787~EffectColor2~99~-438~310~-197.3975~1~0~None~0~0, 
+AmbientSounds: OMNI><SO_WAT-ProperDrips.ogg><830.3137><346.0728><0.5><1, OMNI><SO_WAT-LilDrips.ogg><827.4266><423.6562><0.5><1, SPOT><SO_IND-Turbine.ogg><831.0533><225.0573><0.5><1><515.0534><54.05721><-140.3553><16.64465><0><0.1978262, SPOT><SO_IND-HeatDuct.ogg><820.0725><113.3422><0.7717391><1><-31.15356><318.2039><148.6447><-4.355347><0><0.2956523, SPOT><SO_IND-HeatDuct.ogg><652.8616><114.8556><0.5><1><901.5963><442.7041><-29.35535><-149.3553><0><0.1978262, SPOT><waterGurgleLOOP1.wav><652.6855><223.3107><0.5434783><0.726087><674.0591><1.102093><-78.35535><79.64466><0><0.1326088, 
+FadePalette: 10, 0.8586956
