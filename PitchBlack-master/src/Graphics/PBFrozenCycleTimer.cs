@@ -6,8 +6,8 @@ namespace PitchBlack;
 
 internal class PBFrozenCycleTimer
 {
-    static bool IsBeaconWorldState(RainMeter rm) => rm.hud.owner is Player player && player.room?.game.session is StoryGameSession session && session.saveStateNumber == BeaconName;
-    static bool IsBeaconWorldState(RainCycle rc) => rc.world.game.session is StoryGameSession session && session.saveStateNumber == BeaconName;
+    static bool IsBeaconWorldState(RainMeter rm) => rm.hud.owner is Player player && player.room?.game.session is StoryGameSession session && MiscUtils.IsBeaconOrPhoto(session.saveStateNumber);
+    static bool IsBeaconWorldState(RainCycle rc) => rc.world.game.session is StoryGameSession session && MiscUtils.IsBeaconOrPhoto(session.saveStateNumber);
     public static void Apply()
     {
         On.HUD.RainMeter.Draw += NighttimePipColors;
