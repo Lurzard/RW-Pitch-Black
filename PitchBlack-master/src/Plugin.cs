@@ -79,7 +79,7 @@ class Plugin : BaseUnityPlugin
 
         OverseerEx.Apply();
 
-        //PBFrozenCycleTimer.Apply(); Uncomment this once working properly
+        PBFrozenCycleTimer.Apply(); // Uncomment this once working properly
 
         //NightDay.Apply(); //unfinished    Forever gone but not forgored
 
