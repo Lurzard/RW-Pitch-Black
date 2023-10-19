@@ -1,0 +1,9 @@
+Clouds: 0.6195652
+Palette: 10
+EffectColorA: 13
+EffectColorB: 18
+Effects: BkgOnlyLightning-0.5217391-20-20, LightBurn-0.2826087-25-64, 
+PlacedObjects: LightSource><577.761><561.0503><1~EffectColor1~0~100~50~86.60254~1~0~None~0~0, LightSource><479.8806><567.0986><1~EffectColor1~0~100~50~86.60254~1~0~None~0~0, LightSource><380.9425><570.3044><1~EffectColor1~0~100~50~86.60254~1~0~None~0~0, LightFixture><117.0642><364.4394><RedLight~17.32051~-10~79, LightSource><643.5948><139.3239><1~EffectColor2~-4~194~50~86.60254~1~0~None~0~0, SlimeMold><231.0046><251.8><0~0~2~3, SlimeMold><263.6809><248.6647><0~0~2~3, LightFixture><240.5399><251.304><SlimeMoldLight~17.32051~-10~86, CosmeticSlimeMold><242.1046><272.4205><0~100, LightSource><910.55><493.9993><0.1847826~White~184~-16~-47~47.60254~1~0~None~0~0, LightSource><893.1948><502.4548><0.02173913~White~295~55~28~-127.3975~1~1~None~0~0, LightSource><403.5789><551.6465><0.5326087~EffectColor1~445~18~50~86.60254~1~0~None~0~0, 
+AmbientSounds: OMNI><AM_ENV-CityTone.ogg><724.45><549.9952><0.3586957><1.019565, SPOT><AM_ENV-WallHum.ogg><726.6273><415.5958><0.5><1><162.6273><378.5958><392.6447><-11.35535><0><0.3608697, 
+FadePalette: 141, 0.3804348
+MorePalette0: 10, 0.75

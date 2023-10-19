@@ -1,7 +1,9 @@
 [FIND](X-
 [ADDAFTER]Beacon,Photomaniac,
-[FINDREGEX]^(W+  d+-w+.+LINEAGE  w+  d+  .+)$
-[ADDBEFORE](X-Beacon,Photomaniac)
+[FIND],Beacon,Photomaniac
+[REPLACE]
+[FINDREGEX]^(\w+ : \d+-\w+.+|LINEAGE : \w+ : \d+ : .+)$
+[ADDBEFORE](Beacon,Photomaniac)
 [MERGE]
 CONDITIONAL LINKS
 Beacon,Photomaniac : GATE_LF_SB : LF_S04 : DISCONNECTED
@@ -45,67 +47,44 @@ LF_DEADGATE : DISCONNECTED, DISCONNECTED, LF_LS04
 END ROOMS
 CREATURES
 
+//offscreen
 (Beacon)OFFSCREEN : 0-MirosVulture-2, 0-Deer-6, 0-Scavenger-17, 0-Elite
 (Photomaniac)OFFSCREEN : 0-MirosVulture-3, 0-Deer-6, 0-Scavenger-21, 0-Elite
 
-(Beacon)LF_A03 : 3-Small Centipede-2
-(Beacon)LF_A05 : 3-Small Centipede-2
-(Beacon)LF_A13 : 3-BigSpider, 4-BigSpider, 5-EggBug
-(Beacon)LF_B04 : 3-Mouse-4, 4-Small Centipede, 5-Small Centipede-2
-(Beacon)LF_C01 : 2-Green, 4-Black, 3-TentaclePlant-{PreCycle}
-(Beacon)LF_C02 : 5-SpitterSpider, 6-Black
-(Beacon)LF_C03 : 3-Small Centipede-4, 4-Centipede-2
-(Beacon)LF_D01 : 4-Black, 6-Salamander-{PreCycle}
-(Beacon)LF_D02 : 4-Black
-(Beacon)LF_D03 : 2-Cyan, 3-Cyan, 4-BigNeedleWorm, 5-SmallNeedleWorm-3, 6-BigSpider-2, 6-Salamander-{PreCycle}
-(Beacon)LF_D04 : 3-CicadaA-2
-(Beacon)LF_D06 : 4-Small Centipede-2, 5-Small Centipede-2, 5-nightterror
-(Beacon)LF_D08 : 8-SpitterSpider-2, 9-SpitterSpider, 9-BigSpider-2
-(Beacon)LF_E01 : 2-Black, 4-Green, 2-Salamander-{PreCycle}
-(Beacon)LF_E02 : 2-Black, 5-Green
-(Beacon)LF_E03 : 2-Mouse-2, 3-Mouse-3
-(Beacon)LF_E04 : 3-Centipede
-(Beacon)LF_F02 : 3-Centiwing-3, 4-SpitterSpider, 5-CicadaA-3
-(Beacon)LINEAGE : LF_A03 : 3 : Small Centipede-0.5, Centipede-{0.3}-0.5, Centipede-{0.6}-0.5, Centipede-{0.9}-0.5, SpitterSpider-0
-(Beacon)LINEAGE : LF_A05 : 4 : Small Centipede-0.5, Centipede-{0.3}-0.5, Centipede-{0.6}-0.5, Centipede-{0.9}-0.5, SpitterSpider-0
-(Beacon)LINEAGE : LF_B03 : 3 : Centipede-{0.5}-0.3, Centipede-{0.7}-0.3, Centipede-{0.9}-0.2, RedCenti-0
-(Beacon)LINEAGE : LF_C02 : 3 : White-0.5, Cyan-0
-(Beacon)LINEAGE : LF_C03 : 4 : Small Centipede-0.5, Centipede-{0.3}-0.5, Centipede-{0.6}-0.5, Centipede-{0.9}-0.5, SpitterSpider-0
-(Beacon)LINEAGE : LF_D01 : 2 : White-0.5, Cyan-0
-(Beacon)LINEAGE : LF_D02 : 3 : White-0.5, Cyan-0
-(Beacon)LINEAGE : LF_D04 : 3 : CicadaA-0.5, Centiwing-0
-(Beacon)LINEAGE : LF_E01 : 3 : White-0.5, Cyan-0
-(Beacon)LINEAGE : LF_E02 : 3 : White-0.5, Cyan-0.3, Red-0
-(Beacon)LINEAGE : LF_E04 : 5 : Pink-0.15, Black-0.6, Red-0
+(Beacon,Photomaniac)LF_A03 : 3-Small Centipede-2
+(Beacon,Photomaniac)LF_A05 : 3-Small Centipede-2
+(Beacon,Photomaniac)LF_A13 : 3-BigSpider, 4-BigSpider, 5-EggBug
+(Beacon,Photomaniac)LF_B04 : 3-Mouse-4, 4-Small Centipede, 5-Small Centipede-2
+(Beacon,Photomaniac)LF_C01 : 2-Green, 4-Black, 3-TentaclePlant-{PreCycle}
+(Beacon,Photomaniac)LF_C02 : 5-SpitterSpider, 6-Black
+(Beacon,Photomaniac)LF_C03 : 3-Small Centipede-4, 4-Centipede-2
+(Beacon,Photomaniac)LF_D01 : 4-Black, 6-Salamander-{PreCycle}
+(Beacon,Photomaniac)LF_D02 : 4-Black
+(Beacon,Photomaniac)LF_D03 : 2-Cyan, 3-Cyan, 4-BigNeedleWorm, 5-SmallNeedleWorm-3, 6-BigSpider-2, 6-Salamander-{PreCycle}
+(Beacon,Photomaniac)LF_D04 : 3-CicadaA-2
+(Beacon,Photomaniac)LF_D08 : 8-SpitterSpider-2, 9-SpitterSpider, 9-BigSpider-2
+(Beacon,Photomaniac)LF_E01 : 2-Black, 4-Green, 2-Salamander-{PreCycle}
+(Beacon,Photomaniac)LF_E02 : 2-Black, 5-Green
+(Beacon,Photomaniac)LF_E03 : 2-Mouse-2, 3-Mouse-3
+(Beacon,Photomaniac)LF_E04 : 3-Centipede
+(Beacon,Photomaniac)LF_F02 : 3-Centiwing-3, 4-SpitterSpider, 5-CicadaA-3
+(Beacon,Photomaniac)LINEAGE : LF_A03 : 3 : Small Centipede-0.5, Centipede-{0.3}-0.5, Centipede-{0.6}-0.5, Centipede-{0.9}-0.5, SpitterSpider-0
+(Beacon,Photomaniac)LINEAGE : LF_A05 : 4 : Small Centipede-0.5, Centipede-{0.3}-0.5, Centipede-{0.6}-0.5, Centipede-{0.9}-0.5, SpitterSpider-0
+(Beacon,Photomaniac)LINEAGE : LF_B03 : 3 : Centipede-{0.5}-0.3, Centipede-{0.7}-0.3, Centipede-{0.9}-0.2, RedCenti-0
+(Beacon,Photomaniac)LINEAGE : LF_C02 : 3 : White-0.5, Cyan-0
+(Beacon,Photomaniac)LINEAGE : LF_C03 : 4 : Small Centipede-0.5, Centipede-{0.3}-0.5, Centipede-{0.6}-0.5, Centipede-{0.9}-0.5, SpitterSpider-0
+(Beacon,Photomaniac)LINEAGE : LF_D01 : 2 : White-0.5, Cyan-0
+(Beacon,Photomaniac)LINEAGE : LF_D02 : 3 : White-0.5, Cyan-0
+(Beacon,Photomaniac)LINEAGE : LF_D04 : 3 : CicadaA-0.5, Centiwing-0
+(Beacon,Photomaniac)LINEAGE : LF_E01 : 3 : White-0.5, Cyan-0
+(Beacon,Photomaniac)LINEAGE : LF_E02 : 3 : White-0.5, Cyan-0.3, Red-0
+(Beacon,Photomaniac)LINEAGE : LF_E04 : 5 : Pink-0.15, Black-0.6, Red-0
 
-(Photomaniac)LF_A03 : 3-Small Centipede-2
-(Photomaniac)LF_A05 : 3-Small Centipede-2
-(Photomaniac)LF_A13 : 3-BigSpider, 4-BigSpider, 5-EggBug
-(Photomaniac)LF_B04 : 3-Mouse-4, 4-Small Centipede, 5-Small Centipede-2
-(Photomaniac)LF_C01 : 2-Green, 4-Black, 3-TentaclePlant-{PreCycle}
-(Photomaniac)LF_C02 : 5-SpitterSpider, 6-Black
-(Photomaniac)LF_C03 : 3-Small Centipede-4, 4-Centipede-2
-(Photomaniac)LF_D01 : 4-Black, 6-Salamander-{PreCycle}
-(Photomaniac)LF_D02 : 4-Black
-(Photomaniac)LF_D03 : 2-Cyan, 3-Cyan, 4-BigNeedleWorm, 5-SmallNeedleWorm-3, 6-BigSpider-2, 6-Salamander-{PreCycle}
-(Photomaniac)LF_D04 : 3-CicadaA-2
+//Beacon
+(Beacon)LF_D06 : 4-Small Centipede-2, 5-Small Centipede-2, 5-nightterror
+
+//Photomanaic
 (Photomaniac)LF_D06 : 4-Small Centipede-2, 5-Small Centipede-2, 5-Centipede
-(Photomaniac)LF_D08 : 8-SpitterSpider-2, 9-SpitterSpider, 9-BigSpider-2
-(Photomaniac)LF_E01 : 2-Black, 4-Green, 2-Salamander-{PreCycle}
-(Photomaniac)LF_E02 : 2-Black, 5-Green
-(Photomaniac)LF_E03 : 2-Mouse-2, 3-Mouse-3
-(Photomaniac)LF_E04 : 3-Centipede
-(Photomaniac)LF_F02 : 3-Centiwing-3, 4-SpitterSpider, 5-CicadaA-3
-(Photomaniac)LINEAGE : LF_A03 : 3 : Small Centipede-0.5, Centipede-{0.3}-0.5, Centipede-{0.6}-0.5, Centipede-{0.9}-0.5, SpitterSpider-0
-(Photomaniac)LINEAGE : LF_A05 : 4 : Small Centipede-0.5, Centipede-{0.3}-0.5, Centipede-{0.6}-0.5, Centipede-{0.9}-0.5, SpitterSpider-0
-(Photomaniac)LINEAGE : LF_B03 : 3 : Centipede-{0.5}-0.3, Centipede-{0.7}-0.3, Centipede-{0.9}-0.2, RedCenti-0
-(Photomaniac)LINEAGE : LF_C02 : 3 : White-0.5, Cyan-0
-(Photomaniac)LINEAGE : LF_C03 : 4 : Small Centipede-0.5, Centipede-{0.3}-0.5, Centipede-{0.6}-0.5, Centipede-{0.9}-0.5, SpitterSpider-0
-(Photomaniac)LINEAGE : LF_D01 : 2 : White-0.5, Cyan-0
-(Photomaniac)LINEAGE : LF_D02 : 3 : White-0.5, Cyan-0
-(Photomaniac)LINEAGE : LF_D04 : 3 : CicadaA-0.5, Centiwing-0
-(Photomaniac)LINEAGE : LF_E01 : 3 : White-0.5, Cyan-0
-(Photomaniac)LINEAGE : LF_E02 : 3 : White-0.5, Cyan-0.3, Red-0
-(Photomaniac)LINEAGE : LF_E04 : 5 : Pink-0.15, Black-0.6, Red-0
+
 END CREATURES
 [ENDMERGE]

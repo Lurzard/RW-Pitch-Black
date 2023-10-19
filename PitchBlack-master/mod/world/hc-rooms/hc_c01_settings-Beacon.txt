@@ -1,0 +1,12 @@
+Template: NONE
+Clouds: 0.8260869
+Palette: 140
+EffectColorA: 15
+EffectColorB: 18
+Effects: BkgOnlyLightning-0.4130435-20-20, FireFlies-0.326087-272-52, 
+PlacedObjects: LightSource><173.0758><942.5983><1~EffectColor2~0~100~50~86.60254~1~0~None~0~0, LightSource><173.1823><1021.688><1~EffectColor2~0~100~50~86.60254~1~0~None~0~0, LightSource><166.0532><1101.536><1~EffectColor2~0~100~50~86.60254~1~0~None~0~0, CustomDecal><322.08><426.8167><6~144~134~146~145~7~176.1211~17.53333~0.2717391~1~0~miros_cheerful~0.04639933~0.4782609~0.04639933~0.4782609~0.04639933~0.4782609~0.04639933~0.4782609, LightSource><-22.14923><1078.923><0.173913~EffectColor1~17~231~-48~273.6025~1~1~None~0~0, LightSource><56.07776><595.8157><0.1956522~EffectColor1~0~100~48~-132.3975~1~1~None~0~0, LightSource><58.4259><718.0952><0.1630435~EffectColor1~0~100~19~-38.39752~1~1~None~0~0, LightSource><42.26591><667.1996><0.4896061~EffectColor1~695.2726~-5.600037~50~86.60254~1~0~None~0~0, 
+AmbientSounds: OMNI><AM_WIN-StrongWnd2.ogg><741.6897><499.6866><0.3695652><1, SPOT><AM_WIN-HowlingWnd.ogg><752.1705><552.1454><0.4891304><1.136956><1895.17><498.1454><-604.3553><-33.35535><0><0.5347828, OMNI><AM_IND-Utility04.ogg><620.1542><361.6755><0.3695652><0.3934783, 
+Triggers: Spot<tA>event<tB>MusicEvent<eA>songName<eB>Erosion<eA>vol<eB>0.1586954<eA>prio<eB>0.5<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>-1<eA>rest<eB>8<eA>fadeIn<eB>91.30434<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>1<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>104<tA>panPos<tB>792.1487<tB>423.3276<tA>fireChance<tB>1<tA>entrance<tB>-1<tA>karma<tB>0<tA>slugcats<tB>Rivulet|Artificer|Saint|Spear|Gourmand<tA>pos<tB>304.1487<tB>1332.328<tA>handlePos<tB>-133.3553<tB>-146.3553, 
+FadePalette: 27, 0.2173913, 0.1304348, 0.06521739
+MorePalette0: 10, 1, 1, 1
+MorePalette1: 36, 0.02900032, 0.02319999, 0.02319999

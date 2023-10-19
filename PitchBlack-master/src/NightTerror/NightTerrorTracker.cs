@@ -12,10 +12,8 @@ public static class NightTerrorTrackers
     /// </summary>
     public class NightTerrorTracker
     {
-        public AbstractCreature ac;
-        public World world;
-        [Obsolete] public WorldCoordinate previousRoom;  // I think I stopped using this
-        public string currentRoom;  // Used only for logging where the night terror is going
+        public WeakReference<AbstractCreature> _Ac;
+        public WeakReference<World> _World;
         public int slowTick;  // Used for ticking something after waiting a while (to reduce lag/wait for AI)
         public int fastTick;  // Used for ticking every once in a while (to reduce lag/wait for AI)
         public int doHax;  // Used to teleport 
@@ -28,8 +26,8 @@ public static class NightTerrorTrackers
         /// <param name="world">a world</param>
         public NightTerrorTracker(AbstractCreature ac, World world)
         {
-            this.ac = ac;
-            this.world = world;  // What do I even use this for? I can't remember lol.
+            this._Ac = new WeakReference<AbstractCreature>(ac);
+            this._World = new WeakReference<World>(world);  // What do I even use this for? I can't remember lol.
 
             // TODO: Move the update hook out of the CWT (so it doesn't hook for every single new CWT created) and instead hook into abstractCreature.Update() outside.
             //On.Centipede.Update += Centipede_Update;
@@ -58,7 +56,7 @@ public static class NightTerrorTrackers
         private void RainWorldGame_Update(On.RainWorldGame.orig_Update orig, RainWorldGame self)
         {
             orig(self);
-            if (ac is not null) Update();
+            if (_Ac is not null) Update();
         }
 
 #if false
@@ -103,7 +101,7 @@ public static class NightTerrorTrackers
         /// </summary>
         public void Update()
         {
-            if (ac?.abstractAI is null || world?.game?.session?.Players is null)
+            if (!_Ac.TryGetTarget(out var ac) || ac.abstractAI is null || !_World.TryGetTarget(out World world) || world.game?.session?.Players is null)
             {
                 return;
             }
@@ -126,7 +124,7 @@ public static class NightTerrorTrackers
             Tick();  // Tick the tickers
             AbstractCreature firstPlayer = null;  // For tracking the first non-dead player
             AbstractCreature sameRoomPlayer = null;  // For tracking a player in same room
-
+            // if (_World.TryGetTarget(out World world))
             foreach (AbstractCreature c in world.game.Players)
             {
                 if (

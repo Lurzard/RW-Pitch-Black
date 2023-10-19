@@ -1,71 +1,53 @@
 [FIND](X-
 [ADDAFTER]Beacon,Photomaniac,
-[FINDREGEX]^(?:\W+ : \d+-\w+.+|LINEAGE : \w+ : \d+ : .+)$
+[FIND],Beacon,Photomaniac
+[REPLACE]
+[FINDREGEX]^(\w+ : \d+-\w+.+|LINEAGE : \w+ : \d+ : .+)$
 [ADDBEFORE](X-Beacon,Photomaniac)
 [MERGE]
 CONDITIONAL LINKS
 
-Beacon, Photomaniac : GATE_DS_SB : UG_D02 : DISCONNECTED
-Beacon, Photomaniac : UG_D02 : GATE_DS_SB : DISCONNECTED
+Beacon,Photomaniac : GATE_DS_SB : UG_D02 : DISCONNECTED
+Beacon,Photomaniac : UG_D02 : GATE_DS_SB : DISCONNECTED
 
 END CONDITIONAL LINKS
 CREATURES
 
+//offscreen
 (Beacon)OFFSCREEN : 0-Scavenger-13-{Ignorecycle}, 0-MirosVulture-{Ignorecycle}
 (Photomaniac)OFFSCREEN : 0-Scavenger-16-{Ignorecycle}, 0-Elite-{Ignorecycle}, 0-MirosVulture-{Ignorecycle}
 
-(Beacon)UG_A02 : 3-BigSpider-2-{Ignorecycle}, 4-JungleLeech-6-{Ignorecycle}
-(Beacon)UG_A05 : 5-Mimic-{9}, 6-Mimic-{10}, 7-Mouse-4-{Ignorecycle}
-(Beacon)UG_A06 : 2-JungleLeech-6-{Ignorecycle}
-(Beacon)UG_A07 : 3-JungleLeech-5-{Ignorecycle}, 4-Snail-2-{Ignorecycle}, 5-Mimic-{18}
-(Beacon)UG_A09 : 2-Spider-15
-(Beacon)UG_A16 : 3-TentaclePlant-{Ignorecycle}, 5-JungleLeech-9-{Ignorecycle}, 7-TentaclePlant-{Ignorecycle}
-(Beacon)UG_A19 : 2-Centipede-5, 2-Small Centipede-4, 2-Spider-15
-(Beacon)LINEAGE : UG_A19 : 2 : Small Centipede-0.10, Centipede-0.20, Red Centipede-0
-(Beacon)UG_A21 : 2-Mimic-{16}, 2-Spider-20, 3-Blue-{Ignorecycle}
-(Beacon)UG_A22 : 3-BigSpider-{Ignorecycle}, 4-Mouse-4
-(Beacon)UG_A25 : 3-Eel, 5-Leech-5-{Ignorecycle}, 6-Leech-7-{Ignorecycle}, 3-Spider-10, 4-Spider-15
-(Beacon)LINEAGE : UG_B03 : 4 : Mimic-{14}-0.10, TentaclePlant-0
-(Beacon)UG_B07 : 3-Small Centipede-6, 4-Small Centipede-4, 4-Red Centipede
-(Beacon)LINEAGE : UG_C01 : 6 : None-0.10, Mimic-{19}-0
-(Beacon)LINEAGE : UG_C01 : 8 : None-0.80, Mimic-{23}-0.01, TentaclePlant-0
-(Beacon)UG_C03 : 2-SpitterSpider-{Ignorecycle}
-(Beacon)UG_C04 : 3-nightterror-{Ignorecycle}, 3-Spider-20
-(Beacon)UG_D02 : 2-Small Centipede-3
-(Beacon)UG_D03 : 2-TentaclePlant-{Ignorecycle}, 8-TentaclePlant-{Ignorecycle}
-(Beacon)UG_DARK01 : 4-TentaclePlant-{Ignorecycle}, 6-Big Spider-2-{Ignorecycle}
-(Beacon)UG_DARK03 : 3-MotherSpider-2-{Ignorecycle}
-(Beacon)UG_GUTTER01 : 2-Snail-1-{Ignorecycle}, 4-Leech-10-{Ignorecycle}
-(Beacon)UG_GUTTER02 : 2-SpitterSpider-{Ignorecycle}
-(Beacon)UG_GUTTER03 : 7-White-{Ignorecycle}, 8-Snail-1-{Ignorecycle}, 9-Snail-2-{Ignorecycle}, 9-Mouse-5, 9-Spider-20
-(Beacon)UG_GUTTER04 : 6-Big Spider-3-{Ignorecycle}, 5-MotherSpider-{Ignorecycle}
-(Beacon)UG_TOLL : 6-Mimic-{21}, 8-Mimic-{16}
+(Beacon,Photomaniac)UG_A02 : 3-BigSpider-2-{Ignorecycle}, 4-JungleLeech-6-{Ignorecycle}
+(Beacon,Photomaniac)UG_A05 : 5-Mimic-{9}, 6-Mimic-{10}, 7-Mouse-4-{Ignorecycle}
+(Beacon,Photomaniac)UG_A06 : 2-JungleLeech-6-{Ignorecycle}
+(Beacon,Photomaniac)UG_A07 : 3-JungleLeech-5-{Ignorecycle}, 4-Snail-2-{Ignorecycle}, 5-Mimic-{18}
+(Beacon,Photomaniac)UG_A09 : 2-Spider-15
+(Beacon,Photomaniac)UG_A16 : 3-TentaclePlant-{Ignorecycle}, 5-JungleLeech-9-{Ignorecycle}, 7-TentaclePlant-{Ignorecycle}
+(Beacon,Photomaniac)UG_A19 : 2-Centipede-5, 2-Small Centipede-4, 2-Spider-15
+(Beacon,Photomaniac)LINEAGE : UG_A19 : 2 : Small Centipede-0.10, Centipede-0.20, Red Centipede-0
+(Beacon,Photomaniac)UG_A21 : 2-Mimic-{16}, 2-Spider-20, 3-Blue-{Ignorecycle}
+(Beacon,Photomaniac)UG_A22 : 3-BigSpider-{Ignorecycle}, 4-Mouse-4
+(Beacon,Photomaniac)UG_A25 : 3-Eel, 5-Leech-5-{Ignorecycle}, 6-Leech-7-{Ignorecycle}, 3-Spider-10, 4-Spider-15
+(Beacon,Photomaniac)LINEAGE : UG_B03 : 4 : Mimic-{14}-0.10, TentaclePlant-0
+(Beacon,Photomaniac)UG_B07 : 3-Small Centipede-6, 4-Small Centipede-4, 4-Red Centipede
+(Beacon,Photomaniac)LINEAGE : UG_C01 : 6 : None-0.10, Mimic-{19}-0
+(Beacon,Photomaniac)LINEAGE : UG_C01 : 8 : None-0.80, Mimic-{23}-0.01, TentaclePlant-0
+(Beacon,Photomaniac)UG_C03 : 2-SpitterSpider-{Ignorecycle}
+(Beacon,Photomaniac)UG_D02 : 2-Small Centipede-3
+(Beacon,Photomaniac)UG_D03 : 2-TentaclePlant-{Ignorecycle}, 8-TentaclePlant-{Ignorecycle}
+(Beacon,Photomaniac)UG_DARK01 : 4-TentaclePlant-{Ignorecycle}, 6-Big Spider-2-{Ignorecycle}
+(Beacon,Photomaniac)UG_DARK03 : 3-MotherSpider-2-{Ignorecycle}
+(Beacon,Photomaniac)UG_GUTTER01 : 2-Snail-1-{Ignorecycle}, 4-Leech-10-{Ignorecycle}
+(Beacon,Photomaniac)UG_GUTTER02 : 2-SpitterSpider-{Ignorecycle}
+(Beacon,Photomaniac)UG_GUTTER03 : 7-White-{Ignorecycle}, 8-Snail-1-{Ignorecycle}, 9-Snail-2-{Ignorecycle}, 9-Mouse-5, 9-Spider-20
+(Beacon,Photomaniac)UG_GUTTER04 : 6-Big Spider-3-{Ignorecycle}, 5-MotherSpider-{Ignorecycle}
+(Beacon,Photomaniac)UG_TOLL : 6-Mimic-{21}, 8-Mimic-{16}
 
-(Photomaniac)UG_A02 : 3-BigSpider-2-{Ignorecycle}, 4-JungleLeech-6-{Ignorecycle}
-(Photomaniac)UG_A05 : 5-Mimic-{9}, 6-Mimic-{10}, 7-Mouse-4-{Ignorecycle}
-(Photomaniac)UG_A06 : 2-JungleLeech-6-{Ignorecycle}
-(Photomaniac)UG_A07 : 3-JungleLeech-5-{Ignorecycle}, 4-Snail-2-{Ignorecycle}, 5-Mimic-{18}
-(Photomaniac)UG_A09 : 2-Spider-15
-(Photomaniac)UG_A16 : 3-TentaclePlant-{Ignorecycle}, 5-JungleLeech-9-{Ignorecycle}, 7-TentaclePlant-{Ignorecycle}
-(Photomaniac)UG_A19 : 2-Centipede-5, 2-Small Centipede-4, 2-Spider-15
-(Photomaniac)LINEAGE : UG_A19 : 2 : Small Centipede-0.10, Centipede-0.20, Red Centipede-0
-(Photomaniac)UG_A21 : 2-Mimic-{16}, 2-Spider-20, 3-Blue-{Ignorecycle}
-(Photomaniac)UG_A22 : 3-BigSpider-{Ignorecycle}, 4-Mouse-4
-(Photomaniac)UG_A25 : 3-Eel, 5-Leech-5-{Ignorecycle}, 6-Leech-7-{Ignorecycle}, 3-Spider-10, 4-Spider-15
-(Photomaniac)LINEAGE : UG_B03 : 4 : Mimic-{14}-0.10, TentaclePlant-0
-(Photomaniac)UG_B07 : 3-Small Centipede-6, 4-Small Centipede-4, 4-Red Centipede
-(Photomaniac)LINEAGE : UG_C01 : 6 : None-0.10, Mimic-{19}-0
-(Photomaniac)LINEAGE : UG_C01 : 8 : None-0.80, Mimic-{23}-0.01, TentaclePlant-0
-(Photomaniac)UG_C03 : 2-SpitterSpider-{Ignorecycle}
+//Beacon
+(Beacon)UG_C04 : 3-nightterror-{Ignorecycle}, 3-Spider-20
+
+//Photomaniac
 (Photomaniac)UG_C04 : 3-TentaclePlant-{Ignorecycle}, 3-Spider-20
-(Photomaniac)UG_D02 : 2-Small Centipede-3
-(Photomaniac)UG_D03 : 2-TentaclePlant-{Ignorecycle}, 8-TentaclePlant-{Ignorecycle}
-(Photomaniac)UG_DARK01 : 4-TentaclePlant-{Ignorecycle}, 6-Big Spider-2-{Ignorecycle}
-(Photomaniac)UG_DARK03 : 3-MotherSpider-2-{Ignorecycle}
-(Photomaniac)UG_GUTTER01 : 2-Snail-1-{Ignorecycle}, 4-Leech-10-{Ignorecycle}
-(Photomaniac)UG_GUTTER02 : 2-SpitterSpider-{Ignorecycle}
-(Photomaniac)UG_GUTTER03 : 7-White-{Ignorecycle}, 8-Snail-1-{Ignorecycle}, 9-Snail-2-{Ignorecycle}, 9-Mouse-5, 9-Spider-20
-(Photomaniac)UG_GUTTER04 : 6-Big Spider-3-{Ignorecycle}, 5-MotherSpider-{Ignorecycle}
-(Photomaniac)UG_TOLL : 6-Mimic-{21}, 8-Mimic-{16}
+
 END CREATURES
 [ENDMERGE]

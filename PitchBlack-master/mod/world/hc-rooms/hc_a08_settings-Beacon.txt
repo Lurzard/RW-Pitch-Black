@@ -1,0 +1,13 @@
+Template: NONE
+Clouds: 0.9021739
+Grime: 0.173913
+Palette: 141
+EffectColorA: 14
+EffectColorB: 18
+Effects: BkgOnlyLightning-0.2608696-20-20, FireFlies-0.75-185-97, LightBurn-0.09782609-231-253, 
+PlacedObjects: LightSource><713.0707><571.8129><0.7717393~EffectColor1~48~-283~50~86.60254~1~0~None~0~0, LightSource><643.6555><395.1258><1~EffectColor1~0~100~50~86.60254~1~0~None~0~0, LightSource><771.8205><398.5883><1~EffectColor1~0~100~-392~70.60254~1~0~None~0~0, LightSource><1062.802><265.4745><0.1195652~EffectColor1~-2~145~-397~30.60254~1~1~None~0~0, LightSource><1103.929><427.563><0.2282609~EffectColor2~-805~9~50~86.60254~1~0~None~0~0, 
+AmbientSounds: OMNI><AM_RAIN-QuietThunder.ogg><725.9435><309.9497><0.2391304><1, OMNI><AM_ENV-CityTone.ogg><757.2498><546.05><0.326087><1.078261, OMNI><AM_WIN-MedWind.ogg><365.8235><507.3441><0.3586957><1, SPOT><SO_IND-Deep50hz.ogg><728.0688><267.4378><0.5><1><734.0688><450.4378><-75.35535><-109.3553><0><0.2195653, 
+Triggers: RegionBump<tA>event<tB>MusicEvent<eA>songName<eB>Premortem<eA>vol<eB>0.2565221<eA>prio<eB>0.5<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>-1<eA>rest<eB>5<eA>fadeIn<eB>32.6087<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>260<tA>panPos<tB>510.8193<tB>378.6876<tA>fireChance<tB>1<tA>entrance<tB>-1<tA>karma<tB>0<tA>slugcats<tB>, 
+FadePalette: 10, 0.2826087
+MorePalette0: 10, 0.8430958
+MorePalette1: 38, 0.05219965

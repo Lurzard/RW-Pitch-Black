@@ -1,0 +1,13 @@
+Template: RM_SettingsTemplate_Dead
+DangerType: Rain
+CeilingDrips: 0.2173913
+RainIntensity: 0
+RumbleIntensity: 0
+Clouds: 1
+Grime: 0
+BkgDroneVolume: 0.326087
+Palette: 31
+Effects: Darkness-0.3804348-276-16, HeatWave-0-18-137, ReplaceEffectColorB-0-436-354-Color-0.2826087-0-1,
+PlacedObjects: WallMycelia><536.0695><593.4141><-114~53, CoralStem><196.1084><493.1681><135~-5, Corruption><153.9298><86.33762><38~174, Corruption><760.1866><80.32184><0~100, Corruption><701.4466><652.2133><2~64, CorruptionTube><798.303><80.28424><-44~580, CorruptionTube><203.687><79.93979><475~569, LightSource><-22.39673><333.8641><0.3152174~EffectColor2~1193~-436~50~86.60254~0~0~None~0~0, LightFixture><-21.81543><334.3271><RedLight~17.32051~-10~15, LightFixture><775.6605><485.1193><RedLight~17.32051~-10~85, 
+AmbientSounds: SPOT><AM_IND-DeepHum.ogg><70.05524><382.7044><0.2934783><1><496.0552><348.7044><-119.3553><-91.35535><0><0.2195652, OMNI><SO_SFX-Drowning.ogg><661.6912><640.9412><0.04347826><0.1, OMNI><SO_SFX-Heartbeat2.ogg><832.1455><486.8628><0.04347826><0.1, OMNI><SO_SFX-Heartbeat1.ogg><834.939><563.5596><0.02173913><0.1, 
+FadePalette: 10, 1

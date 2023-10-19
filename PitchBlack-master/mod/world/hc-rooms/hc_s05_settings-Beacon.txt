@@ -1,0 +1,7 @@
+Template: HC_SettingsTemplate_Inside
+Grime: 0.1847826
+EffectColorB: 19
+PlacedObjects: LightSource><658.0789><420.9338><1~EffectColor2~-418~157~50~86.60254~0~0~None~0~0, 
+AmbientSounds: OMNI><AM_IND-Utility01.ogg><716.9214><459.1469><0.3695652><0.7456522, OMNI><AM_SUB-BlankState.ogg><718.8454><250.6231><0.2826087><1.352174, 
+MorePalette0: 10, 1
+MorePalette1: 36, 0.05726889

@@ -1,0 +1,15 @@
+Template: RM_SettingsTemplate_Dead
+DangerType: Rain
+CeilingDrips: 0.4891304
+RainIntensity: 0
+RumbleIntensity: 0
+Clouds: 0.3152174
+RandomItemDensity: 0.8695652
+RandomItemSpearChance: 0.5043477
+Palette: 14
+EffectColorA: 18
+EffectColorB: 12
+Effects: ReplaceEffectColorB-0-436-354-Color-0.2826087-0-1, Darkness-1-22-132, Fog-0-30-30, 
+PlacedObjects: Corruption><1106.406><1271.177><-64~254, Corruption><903.5906><1060.371><-56~142, LightSource><652.3132><97.92859><0.3586957~EffectColor1~-412~449~214~-125.3975~0~0~Fade~0.75~0, LightSource><460.2405><589.3002><0.1413043~EffectColor2~-652~51~-46~-127.3975~0~0~None~0~0, Corruption><1023.442><1714.806><12~116, LightSource><531.1552><983.624><0.2826087~EffectColor1~-646~473~50~86.60254~0~0~Fade~0.6195652~0, LightSource><453.1563><1584.927><0.1630435~EffectColor2~785~544~15~166.6025~0~0~None~0~0, LightSource><709.1084><1992.141><0.08695652~EffectColor2~620~-545~-629~-506.3975~0~0~None~0~0, LightSource><737.3514><404.3661><0.1195652~EffectColor1~-459~456~125~-314.3975~0~0~None~0~0, LightFixture><534.9384><980.6901><RedLight~17.32051~-10~29, LightFixture><334.1096><2077.333><RedLight~17.32051~-10~84, LightFixture><866.824><2124.405><RedLight~17.32051~-10~76, Corruption><172.1039><1716.671><-2~136, Corruption><1040.927><1993.343><-115~107, Corruption><234.1409><797.6422><103~83, Corruption><207.2736><302.9486><3~97, LightFixture><650.9185><99.64229><RedLight~-42.6795~-128~54, LightSource><707.6985><2133.775><0.2826087~EffectColor1~-870~-722~-364~-188.3975~0~0~Fade~0.7934783~0, RotFlyPaper><188.5841><309.3883><-3~-138, RotFlyPaper><225.8><304.7531><-3~-96, DevToken><581.9376><1586.069><40~57~135~-118~0~RM~White|Yellow|Red|Artificer|Saint|Spear|Gourmand~0~0~0~1~0~0~0~1, Corruption><147.5087><1973.45><22~148, CorruptionDarkness><51.43689><1140.179><9~-262, 
+AmbientSounds: SPOT><SO_IND-FlourLight.ogg><717.5618><246.0598><0.5><1><532.5618><975.0598><-35.35534><-35.35534><0><0.2086958, 
+FadePalette: 33, 0.7608696, 0.8478261, 0.9130435

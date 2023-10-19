@@ -1,0 +1,9 @@
+Template: RM_SettingsTemplate_Lympathic
+DangerType: Rain
+RainIntensity: 0
+RumbleIntensity: 0
+Clouds: 0.9239131
+Effects: SilenceWater-1-268-130, ReplaceEffectColorB-0-436-354-Color-0.2826087-0-1,
+PlacedObjects: Corruption><182.618><556.4115><-69~92, StuckDaddy><183.7416><560.2097><163~-67, LightFixture><732.2809><629.7544><RedSubmersible~-33.6795~-156~1, LightFixture><119.6381><146.1549><RedSubmersible~17.32051~-10~55, LightFixture><686.3524><236.4647><RedSubmersible~17.32051~-10~0, Corruption><140.881><427.6608><33~101, Corruption><326.5555><530.2031><1~137, CorruptionDarkness><147.9152><612.8627><112~-171, LightSource><212.6243><523.8444><0.25~EffectColor2~504~-6~52~-132.3975~1~0~None~0~0, 
+AmbientSounds: OMNI><SO_WAT-MoreDrips.ogg><834.3038><420.5386><0.6956522><1, OMNI><SO_WAT-ProperDrips.ogg><832.3354><338.3864><0.3043478><1, SPOT><SO_IND-Survey.ogg><651.4492><599.9821><0.5326087><0.4130435><333.1839><-43.41204><-269.3553><279.6447><0><0.01304361, SPOT><SO_IND-Turbine.ogg><649.7153><481.053><0.3369565><1><525.7152><672.053><-91.35535><-87.35535><0><0.2086958, SPOT><SO_IND-WeirdVent.ogg><652.3879><370.1449><0.4565217><1><693.3878><280.1448><-70.35535><-52.35535><0><0.252174, OMNI><AM_ENV-WallHum.ogg><834.4406><268.9409><0.5760869><0.6478261, 
+FadePalette: 10, 0.8913044

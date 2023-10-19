@@ -11,7 +11,7 @@ Clouds: 0.6521739
 Grime: 0.08695652
 BkgDroneVolume: 0
 Palette: 16
-EffectColorA: 0
+EffectColorA: 21
 EffectColorB: 21
 Effects: Lightning-0.1847826-40-197, GreenSparks-0.2065217-41-136, ExtraLoudThunder-0.1630435-43-74, ElectricDeath-0.4021739-43-18, ReplaceEffectColorA-0-385-227-Color-0.2826087-0-1, 
 PlacedObjects: ReliableSpear><901.3107><2718.81><, ReliableSpear><903.1952><1207.544><, ReliableSpear><431.95><1942.504><, 

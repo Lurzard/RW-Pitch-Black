@@ -1,0 +1,11 @@
+Template: HC_SettingsTemplate_Inside
+Grime: 0
+Palette: 141
+EffectColorA: 15
+EffectColorB: 19
+Effects: BkgOnlyLightning-0.7173913-20-20, 
+PlacedObjects: LightSource><451.6929><657.8028><1~EffectColor2~0~100~50~86.60254~1~0~None~0~0, FanLight><374.0612><1131.934><-398.6795~65~84~1~0~0~0~FanLightMask1~-1~192~0~0, SuperStructureFuses><378.8537><1888.136><74~100, SuperStructureFuses><574.595><1874.676><35~85, SuperStructureFuses><215.6939><1837.701><38~65, LightSource><409.1883><1944.683><1~EffectColor2~-29~159~43~160.6025~1~0~None~0~0, LightSource><592.3385><1909.132><1~EffectColor2~-5~116~50~86.60254~1~0~None~0~0, LightSource><241.6927><1888.947><1~EffectColor2~-2~105~50~86.60254~1~0~None~0~0, LightFixture><332.0501><-13.5061><RedLight~17.32051~-10~34, LightSource><410.0559><1914.558><0.5434783~EffectColor2~23~329~50~86.60254~1~0~None~0~0, LightSource><880.4496><1797.738><0.07608695~EffectColor2~51~274~50~86.60254~1~0~None~0~0, LightSource><379.2339><1130.551><0.1521739~EffectColor2~475~253~50~86.60254~1~0~None~0~0, LightSource><559.2941><267.3049><1~EffectColor2~8~73~50~86.60254~1~0~None~0~0, LightSource><732.1754><867.4041><0.07608695~EffectColor1~-18~240~50~86.60254~1~1~None~0~0, LightSource><708.9515><865.5562><0.6739131~EffectColor1~-4~155~45~189.6025~1~0~None~0~0, CustomDecal><344.6447><836.58><-37~454~258~422~534~-92~-496~-48~0~1~0~BlackRust1~0.6304348~1~1~1~0.3043478~1~1~1, LightSource><861.5206><2024.949><0.1630435~EffectColor1~0~100~50~86.60254~1~1~None~0~0, LightSource><734.6776><2012.842><0.1413043~EffectColor1~0~100~-854~11.60254~1~1~None~0~0, 
+AmbientSounds: OMNI><OM.wav><894.8022><439.7798><0.8369565><0.373913, OMNI><AM_ENV-WallHum.ogg><615.5523><476.4695><0.5><0.5695652, SPOT><SO_SFX-DeepLake.ogg><690.3><163.7482><0.6847826><1><153.3><1784.748><-243.3553><-61.35535><0><0.1, SPOT><AM_IND-DeepHum.ogg><721.8782><306.0914><0.6195652><1><459.8782><427.0914><-129.3553><-141.3553><0><0.1, 
+FadePalette: 10, 0, 0.4456522, 0
+MorePalette0: 10, 1, 1, 1
+MorePalette1: 38, 0.05434782, 0.05434782, 0.05434782

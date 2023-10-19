@@ -45,6 +45,33 @@ public class DevCommOverride
         orig();
         // Conversation.PrefixColors is a static dictionary.
         // Add a key here. Each new line that begins with this value (i.e "Moon: This mod is awesome!") will have the color specified by the key here.
-        Conversation.PrefixColors.Add("Moon", new Color(71f/255f, 200f/255f, 148f/255f));
+        Conversation.PrefixColors.Add("Moon", new Color
+            (71f/255f, 200f/255f, 148f/255f)); //#47c894
+
+        Conversation.PrefixColors.Add("Lurzard", new Color
+            (96f/255f, 71f/255f, 255f/255f)); //#4d47ff
+
+        Conversation.PrefixColors.Add("Millisec", new Color
+            (255f/255f, 89f/255f, 71f/255f)); //#ff5947
+
+        Conversation.PrefixColors.Add("Niko", new Color
+            (133f/255f, 77f/255f, 255f/255f)); //#854dff
+
+        Conversation.PrefixColors.Add("Serpanoy", new Color
+            (20f/169f, 122f/255f, 61f/255f)); //#147a3d
+
+        Conversation.PrefixColors.Add("Opey", new Color
+            (166f/255f, 20f/255f, 188f/255f)); //#a614bc
+
+        Conversation.PrefixColors.Add("Spinch", new Color
+            (247f/255f, 42f/255f, 42f/255f)); //#f72a2a
+
+        //Deathpits
+
+        //Ludocrypt
+
+        //Willow
+
+        //Detrax
     }
 }

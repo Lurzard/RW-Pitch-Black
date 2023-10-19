@@ -1,0 +1,10 @@
+Template: NONE
+DangerType: Thunder
+RumbleIntensity: 1
+Grime: 0.1566441
+Palette: 9
+EffectColorA: 10
+Effects: ElectricDeath-1-20-20, 
+PlacedObjects: LightFixture><77.88766><279.5364><RedLight~17.32051~-10~66, NoSpearStickZone><480.9075><255.1786><34.15002~290.6708, 
+FadePalette: 10, 0.7516715
+MorePalette0: 10, 0.901401

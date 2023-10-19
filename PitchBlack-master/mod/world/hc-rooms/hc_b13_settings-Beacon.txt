@@ -1,0 +1,13 @@
+Template: NONE
+DangerType: Flood
+Grime: 0.1630435
+BkgDroneVolume: 0.2608696
+Palette: 140
+EffectColorA: 14
+EffectColorB: 19
+Effects: LightBurn-0-20-20, FireFlies-0.7391304-386-11, 
+PlacedObjects: LightFixture><479.5837><832.6111><RedLight~17.32051~-10~59, LightFixture><449.3828><104.357><RedLight~17.32051~-10~4, FanLight><278.3103><657.9407><17.32051~-10~24~1~0~0~0~FanLightMaskVentEroded~-130~-117~0~0, LightSource><399.8677><234.1617><1~EffectColor1~0~100~-518~222.6025~1~0~None~0~0, LightSource><525.3975><234.0782><1~EffectColor1~0~100~50~86.60254~1~0~None~0~0, LightSource><480.3403><284.1296><1~EffectColor1~0~100~-558~47.60254~1~0~None~0~0, LightSource><749.5153><683.6994><1~EffectColor2~0~100~50~86.60254~1~0~None~0~0, LightSource><319.6973><1369.467><0.173913~EffectColor1~0~100~-576~-79.39746~0~1~None~0~0, LightSource><322.3594><1250.642><0.2173913~EffectColor1~0~100~-572~-21.39746~0~1~None~0~0, LightSource><314.6178><1327.838><1~EffectColor1~-4~171~-555~27.60254~0~0~None~0~0, LightSource><360.7236><1039.802><1~EffectColor2~-2~60~-128~124.6025~0~0~None~0~0, LightSource><602.312><1036.31><1~EffectColor2~-2~70~156~-80.39746~0~0~None~0~0, LightSource><482.7714><1036.693><1~EffectColor2~-2~76~18~177.6025~0~0~None~0~0, 
+AmbientSounds: OMNI><AM_ENV-NatWind.ogg><743.1665><470.6108><0.3695652><0.1978261, OMNI><AM_IND-Factory04.ogg><749.1299><162.4021><0.5><0.373913, OMNI><AM_WAT-Shoreline.ogg><757.8415><551.3781><0.5><0.1586957, SPOT><AM_IND-Welder.ogg><3.424988><338.0969><0.1304348><0.726087><451.425><269.0969><-91.35535><-65.35535><0><0.2086956, SPOT><SO_SFX-AlienScythe.ogg><729.4816><379.9492><0.5652174><0.5304348><454.4816><277.9492><-69.35535><-56.35535><0><0.2086958, SPOT><SO_IND-MechHum01.ogg><705.3115><158.567><0.4565217><0.823913><466.3115><269.567><-35.35534><-35.35534><0><0.154348, 
+FadePalette: 141, 0.8478261, 1
+MorePalette0: 10, 1, 1
+MorePalette1: 36, 0.05219899, 0.05799932

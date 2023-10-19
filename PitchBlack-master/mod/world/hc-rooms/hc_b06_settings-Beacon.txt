@@ -1,0 +1,14 @@
+Template: NONE
+DangerType: Flood
+Clouds: 0.4130435
+Grime: 0.1521739
+Palette: 22
+EffectColorA: 19
+EffectColorB: 14
+Effects: LightBurn-0.1630435-20-20, FireFlies-0.3369565-28-81, 
+PlacedObjects: LightSource><333.316><355.8284><0.4021739~EffectColor1~-133~189~50~86.60254~1~0~None~0~0, CustomDecal><407.0664><116.4207><-24~365~537~296~592~67~-565~215~0.2826087~1~0~Nauti_Graffiti_2~0.2065217~0.2391304~0~0~0~0~0~0, CustomDecal><136.8241><400.1858><-16~184~204~223~435~-34~-546~-120~0~0.2717391~0~BlackRust1~0~1~0~1~0~1~0~1, CustomDecal><887.1639><243.6149><11~174~160~168~145~-4~-269~-31~0~1~0~TrainLogo~0~1~0~1~0~0~0~1, CustomDecal><1529.435><241.5607><-10~205~208~186~243~-25~-185~87~0~1~0~snoodle~0.2065217~0.2826087~0.2065217~0.2826087~0.2065217~0.2826087~0.2065217~0.2826087, CustomDecal><987.5869><239.8199><-5~92~77~57~60~2~-368~-48~0~1~0~Ghostling1~0~0.3913043~0~0.3913043~0~0.3913043~0~0.3913043, CustomDecal><1036.693><235.9494><-10~188~149~184~111~-3~-413~43~0~1~0~UndeadThumb~0~0.3913043~0~0.3913043~0~0.3913043~0~0.3913043, CustomDecal><1110.146><217.6138><-7~204~290~204~268~12~-486~80~0~1~0~PR~0~1~0~1~0~1~0~1, CustomDecal><1664.767><316.8008><12~106~222~68~207~-36~-1041~-57~0~0.1086956~0~YCIO~0~0~0~0~0~0~0~0, CustomDecal><1725.094><240.3755><0~40~96~52~100~-3~-1103~-6~0~1~0~WhiteTag3Q~0~0~0~0~0~0~0~0, LightSource><328.1953><374.9424><0.05434716~EffectColor1~482~183~54~45.60254~1~1~None~0~0, ColouredLightSource><112.2806><207.4476><-147~-247~0000FF~79^0~1~False~0.5~0~0.5~Always~0~100, ShortcutColor><10.12012><206.6521><100~50~0.1195652~0~0~212^60, ExitSymbolHidden><93.16418><206.8858><, ResizeablePopupTrigger><1313.573><334.4364><-224~167~The air near it feels toxic~3.913043~4.0761~-1~1~True~True~1~639^263, ARKillRect><88.89059><170.8577><40~80, SlugcatEyeSelector><1105.45><5.512207><100~50~0~0~10~3~0.5~Closed~740^624, SlugcatEyeSelector><445.0803><4.544907><100~50~0~0~10~3~0.5~Stunned~677.8773^625.2, SlugcatEyeSelector><-186.9837><1.699341><100~50~0~0~10~3~0.5~Dead~650.9883^632.4, ResizeablePopupTrigger><298.5651><303.5971><-150.2554~79.8667~It's unbearable.~0~6~-1~1~True~True~1~1.382813^515.7334, 
+AmbientSounds: OMNI><AM_IND-12thFloor.ogg><655.4355><554.1752><0.4565217><0.7847826, OMNI><AM_IND-Factory03.ogg><728.7711><180.4489><0.4565217><0.7652174, OMNI><AM_IND-Warehouse03.ogg><713.1897><366.9367><0.7608696><0.6282609, 
+Triggers: Spot<tA>event<tB>MusicEvent<eA>songName<eB>premortem<eA>vol<eB>0.3<eA>prio<eB>1<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>-1<eA>rest<eB>5<eA>fadeIn<eB>280.4348<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>692.8857<tB>211.8969<tA>fireChance<tB>1<tA>entrance<tB>-1<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>123.8857<tB>207.8969<tA>handlePos<tB>740.6447<tB>291.6447, 
+FadePalette: 4, 0, 0.2065217
+MorePalette0: 10, 1, 1
+MorePalette1: 367, 0.1086956, 0.1086956

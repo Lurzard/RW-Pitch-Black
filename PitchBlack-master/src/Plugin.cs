@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Security;
 using Fisobs.Core;
 using UnityEngine;
+using BepInEx.Logging;
 
 #pragma warning disable CS0618 // Type or member is obsolete
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -21,6 +22,8 @@ class Plugin : BaseUnityPlugin
     public static readonly SlugcatStats.Name BeaconName = new("Beacon", false);
     public static readonly SlugcatStats.Name PhotoName = new("Photomaniac", false);
     private bool init = false;
+    
+    new internal static ManualLogSource Logger;
 
     //public static ConditionalWeakTable<Player, BeaconCWT> bCon = new ConditionalWeakTable<Player, BeaconCWT>();
     //public static ConditionalWeakTable<Player, PhotoCWT> pCon = new ConditionalWeakTable<Player, PhotoCWT>();
@@ -28,6 +31,11 @@ class Plugin : BaseUnityPlugin
 
     internal static bool RotundWorldEnabled => _rotundWorldEnabled; //for a single check in BeaconHooks' Player.Update hook
     private static bool _rotundWorldEnabled;
+    public Plugin() {
+        Logger = base.Logger;
+    }
+
+    public static ManualLogSource logger;
 
     //public static List<string> currentDialog = new();
     //public static bool Speaking = false;
@@ -35,6 +43,10 @@ class Plugin : BaseUnityPlugin
     //public static int pbcooldown = 0;
     public void OnEnable()
     {
+        logger = base.Logger;
+
+        PBFrozenCycleTimer.Apply(); // Uncomment this once working properly
+
         On.RainWorld.OnModsInit += OnModsInit;
         On.RainWorld.OnModsDisabled += DisableMod;
         On.RainWorld.PostModsInit += RainWorld_PostModsInit;
@@ -66,7 +78,9 @@ class Plugin : BaseUnityPlugin
         PBPOMSunrays.RegisterLightrays();
         PBPOMDarkness.RegisterDarkness();
 
-        //NightDay.Apply(); //unfinished
+        OverseerEx.Apply();
+
+        //NightDay.Apply(); //unfinished    Forever gone but not forgored
 
         //On.Player.GraspsCanBeCrafted += Player_GraspsCanBeCrafted;
         //On.Player.SpitUpCraftedObject += Player_SpitUpCraftedObject;
@@ -78,9 +92,11 @@ class Plugin : BaseUnityPlugin
     public void OnModsInit(On.RainWorld.orig_OnModsInit orig, RainWorld self)
     {
         orig(self);
+        MachineConnector.SetRegisteredOI("lurzard.pitchblack", PBOptions.Instance);
         if (!init) {
             Futile.atlasManager.LoadAtlas("atlases/photosplt");
             Futile.atlasManager.LoadAtlas("atlases/nightTerroratlas");
+            Futile.atlasManager.LoadAtlas("atlases/pearlCursor");
             self.Shaders["Red"] = FShader.CreateShader("red", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath(path: "assetbundles/red")).LoadAsset<Shader>("Assets/red.shader"));
             self.Shaders["Sunrays"] = FShader.CreateShader("sunrays", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/sunrays")).LoadAsset<Shader>("Assets/sunrays.shader"));
             init = true;

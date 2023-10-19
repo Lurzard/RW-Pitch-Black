@@ -1,0 +1,13 @@
+Template: NONE
+DangerType: Flood
+Clouds: 0.2065217
+Grime: 0.1630435
+Palette: 141
+EffectColorA: 15
+EffectColorB: 18
+Effects: FireFlies-0.7065217-20-20, 
+PlacedObjects: LightSource><584.2062><646.9368><0.1195652~EffectColor1~314~4~50~86.60254~1~1~None~0~0, LightSource><-101.6907><666.6285><0.1521739~EffectColor1~259~-25~50~-103.3975~1~1~None~0~0, LightSource><-96.94489><166.705><0.1195652~EffectColor1~0~100~50~86.60254~1~1~None~0~0, LightSource><-102.6965><301.5573><0.1195652~EffectColor1~0~100~50~86.60254~1~1~None~0~0, LightSource><-100.6085><444.6087><0.1195652~EffectColor1~0~100~50~86.60254~1~1~None~0~0, LightSource><-119.1943><307.5475><0.1086956~EffectColor1~690~109~1079~-12.39746~1~0~None~0~0, LightSource><572.2441><625.45><0.2065217~EffectColor1~-285~-402~50~86.60254~1~0~None~0~0, 
+AmbientSounds: OMNI><AM_IND-Fabrik02.ogg><735.3426><216.1266><0.5869565><0.4913043, OMNI><AM_IND-Utility04.ogg><732.3851><416.3362><0.2826087><0.9217392, OMNI><AM_IND-Warehouse01.ogg><397.5737><380.8444><0.8913044><0.4521739, 
+FadePalette: 34, 0.2717391, 0.2282609
+MorePalette0: 10, 1, 1
+MorePalette1: 36, 0, 0.0326087

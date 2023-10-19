@@ -1,0 +1,10 @@
+[[ DEVELOPER COMMENTARY ]]
+
+Initiating Relay.
+
+Lurzard: If you haven't found out already, there is no day night cycle in this world.
+Lurzard: At first we did plan for daytime to be at the end of the cycle, hell you'd have a sort of<LINE>Blizzard-like mechanic that was instead themed around Cold management and constant heat damage.
+Lurzard: That was far too ambitious, and made making compat for modded regions incredibly tedious.
+Lurzard: You are able to find relics of that in room settings, due to the method we used to remove it from the mod. 
+
+Relay Terminated.

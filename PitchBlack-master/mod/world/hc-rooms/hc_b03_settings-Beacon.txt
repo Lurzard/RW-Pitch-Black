@@ -1,0 +1,10 @@
+Clouds: 0.05434782
+Palette: 140
+EffectColorA: 14
+EffectColorB: 18
+Effects: GreenSparks-0-30-30, 
+PlacedObjects: LightSource><757.8793><1109.66><0.2826087~EffectColor1~-15~218~-408~-10.39746~1~1~None~0~0, FanLight><373.1014><1119.828><-500.6795~-48~13~1~0~0~0~FanLightMaskVent~-110~-128~0~0, PlayerPushback><1146.142><1190.11><-263~-8, 
+AmbientSounds: OMNI><AM_WIN-MedWind.ogg><477.171><505.9337><0.4021739><1.508696, OMNI><AM_WIN-SubWnd.ogg><739.4449><492.2946><0.6956522><1, OMNI><AM_WIN-HowlingWnd.ogg><728.737><549.8004><0.3804348><1, 
+FadePalette: 10, 0.25, 0.3152174
+MorePalette0: 10, 0.9021739, 0.9021739
+MorePalette1: 36, 0.05799932, 0.05219899
