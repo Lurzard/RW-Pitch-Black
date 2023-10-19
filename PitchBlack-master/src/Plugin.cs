@@ -45,6 +45,8 @@ class Plugin : BaseUnityPlugin
     {
         logger = base.Logger;
 
+        PBFrozenCycleTimer.Apply(); // Uncomment this once working properly
+
         On.RainWorld.OnModsInit += OnModsInit;
         On.RainWorld.OnModsDisabled += DisableMod;
         On.RainWorld.PostModsInit += RainWorld_PostModsInit;
@@ -67,7 +69,6 @@ class Plugin : BaseUnityPlugin
         WorldChanges.Apply();
 
         JollyMenuHooks.Apply();
-        RoomHooks.Apply();
 
         DevCommOverride.Apply();
         OhNoMoonAndPebblesAreDeadGuys.Apply();
@@ -78,8 +79,6 @@ class Plugin : BaseUnityPlugin
         PBPOMDarkness.RegisterDarkness();
 
         OverseerEx.Apply();
-
-        PBFrozenCycleTimer.Apply(); // Uncomment this once working properly
 
         //NightDay.Apply(); //unfinished    Forever gone but not forgored
 

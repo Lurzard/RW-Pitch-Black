@@ -1,6 +1,6 @@
 ﻿using HUD;
 using RWCustom;
-using static PitchBlack.Plugin;
+using UnityEngine;
 
 namespace PitchBlack;
 
@@ -12,19 +12,20 @@ internal class PBFrozenCycleTimer
     {
         On.HUD.RainMeter.Draw += NighttimePipColors;
         // On.HUD.RainMeter.Update += NighttimeCycleVisualPause;
-        On.RainCycle.GetDesiredCycleLength += NighttimeCyclePause1;
-        On.RainCycle.Update += NighttimeCyclePause2;
+        // On.RainCycle.GetDesiredCycleLength += NighttimeCyclePause1;
+        // On.RainCycle.Update += NighttimeCyclePause2;
     }
     public static void NighttimePipColors(On.HUD.RainMeter.orig_Draw orig, RainMeter self, float timeStacker)
     {
         orig(self, timeStacker);
+        Debug.Log($"Is this beacon's world?: {IsBeaconWorldState(self)}. lastFade: {self.lastFade}");
         if (IsBeaconWorldState(self) && self.lastFade > 0)
         {
             for (int c = 0; c < self.circles.Length; c++)
             {
                 if (self.circles[c].lastRad > 0)
                 {
-                    self.circles[c].sprite.color = Custom.hexToColor("08FE00"); // Needs "using RWCustom;"
+                    self.circles[c].sprite.color = Custom.hexToColor("08FE00");
                 }
             }
         }
@@ -52,7 +53,7 @@ internal class PBFrozenCycleTimer
     {
         if (IsBeaconWorldState(self))
         {
-            self.cycleLength = 10;
+            self.cycleLength = 20000;
             self.baseCycleLength = self.cycleLength;
         }
         return orig(self);
@@ -63,7 +64,7 @@ internal class PBFrozenCycleTimer
         orig(self);
         if (IsBeaconWorldState(self) && self.timer != self.cycleLength * 0.66f) //if you want to freeze the timer at 2/3rds of the way done
         {
-            self.timer = 10;
+            self.timer = 20000;
         }
     }
 }
