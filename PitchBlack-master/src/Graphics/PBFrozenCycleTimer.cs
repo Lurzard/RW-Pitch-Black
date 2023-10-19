@@ -10,61 +10,42 @@ internal class PBFrozenCycleTimer
     static bool IsBeaconWorldState(RainCycle rc) => rc.world.game.session is StoryGameSession session && MiscUtils.IsBeaconOrPhoto(session.saveStateNumber);
     public static void Apply()
     {
-        On.HUD.RainMeter.Draw += NighttimePipColors;
-        // On.HUD.RainMeter.Update += NighttimeCycleVisualPause;
-        // On.RainCycle.GetDesiredCycleLength += NighttimeCyclePause1;
-        // On.RainCycle.Update += NighttimeCyclePause2;
+        On.HUD.RainMeter.Draw += RainMeter_Draw;
+        On.RainCycle.GetDesiredCycleLength += RainCycle_GetDesiredCycleLength;
+        On.RainCycle.Update += RainCycle_Update;
     }
-    public static void NighttimePipColors(On.HUD.RainMeter.orig_Draw orig, RainMeter self, float timeStacker)
+    public static void RainMeter_Draw(On.HUD.RainMeter.orig_Draw orig, RainMeter self, float timeStacker)
     {
         orig(self, timeStacker);
-        Debug.Log($"Is this beacon's world?: {IsBeaconWorldState(self)}. lastFade: {self.lastFade}");
-        if (IsBeaconWorldState(self) && self.lastFade > 0)
+        if (IsBeaconWorldState(self) && self.lastFade >= 1f)
         {
             for (int c = 0; c < self.circles.Length; c++)
             {
-                if (self.circles[c].lastRad > 0)
+                if (self.circles[c].lastRad >= 1f)
                 {
                     self.circles[c].sprite.color = Custom.hexToColor("08FE00");
                 }
             }
         }
     }
-
-
-    // You have two options, that I can see, for pausing the cycle timer.
-    // Option 1 needs only 1 hook:
-    public static void NighttimeCycleVisualPause(On.HUD.RainMeter.orig_Update orig, RainMeter self)
+    public static int RainCycle_GetDesiredCycleLength(On.RainCycle.orig_GetDesiredCycleLength orig, RainCycle self)
     {
-        orig(self);
-        if (IsBeaconWorldState(self) && self.lastFade > 0)
-        {
-            for (int i = 0; i < self.circles.Length; i++)
-            {
-                int timerCutoffPoint = (int)(self.circles.Length * 0.33f);
-                self.circles[i].rad = i < timerCutoffPoint ? 2f : 0;
-                self.circles[i].snapRad = self.circles[i].rad;
-            }
-        } // This keeps the timer VISUALS paused even if the actual timer is progressing.
-    }
-
-    // Option 2 needs 2 hooks, but this pauses the actual timer itself, not just the visuals.
-    public static int NighttimeCyclePause1(On.RainCycle.orig_GetDesiredCycleLength orig, RainCycle self)
-    {
+        Debug.Log($"cLength: {self.cycleLength}, base: {self.baseCycleLength}");
         if (IsBeaconWorldState(self))
         {
-            self.cycleLength = 20000;
+            self.cycleLength = 19726;
             self.baseCycleLength = self.cycleLength;
         }
         return orig(self);
     }
 
-    public static void NighttimeCyclePause2(On.RainCycle.orig_Update orig, RainCycle self)
+    public static void RainCycle_Update(On.RainCycle.orig_Update orig, RainCycle self)
     {
         orig(self);
-        if (IsBeaconWorldState(self) && self.timer != self.cycleLength * 0.66f) //if you want to freeze the timer at 2/3rds of the way done
+        Debug.Log($"Pitch black: timer: {self.timer}");
+        if (IsBeaconWorldState(self) && self.timer != Mathf.RoundToInt(self.cycleLength * 0.33f))
         {
-            self.timer = 20000;
+            self.timer = Mathf.RoundToInt(self.cycleLength * 0.33f);
         }
     }
 }
