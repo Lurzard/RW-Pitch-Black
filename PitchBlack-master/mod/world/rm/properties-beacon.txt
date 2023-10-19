@@ -12,14 +12,10 @@ overseersMin: 0
 overseersMax: 4
 earlyCycleChance: 0.0
 earlyCycleFloodChance: 0.0
-Subregion: Laden Stilt
-Subregion: Breached Exterior
-Subregion: The Carcass
-Subregion: The Carcass (Cerebellum)
-Subregion: The Carcass (Vestige)
-Subregion: The Beast (Guts)
-Subregion: The Beast (Arteries)
-Subregion: The Carcass (Ventricles)
+Subregion: Cerebellum
+Subregion: Arteries
+Subregion: Ventricles
+Subregion: Infestation
 playerGuideOverseerSpawnChance: 0.0
 Room Setting Templates: Corrupt, Lympathic, Linear, Dead
 Room_Attr: GATE_SS_UW: Overseer-Forbidden,
