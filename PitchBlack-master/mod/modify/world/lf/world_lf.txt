@@ -1,90 +1,23 @@
-[FIND](X-
-[ADDAFTER]Beacon,Photomaniac,
-[FIND],Beacon,Photomaniac
-[REPLACE]
-[FINDREGEX]^(\w+ : \d+-\w+.+|LINEAGE : \w+ : \d+ : .+)$
-[ADDBEFORE](Beacon,Photomaniac)
 [MERGE]
 CONDITIONAL LINKS
-Beacon,Photomaniac : GATE_LF_SB : LF_S04 : DISCONNECTED
-Beacon,Photomaniac : GATE_LF_SB : LF_C03 : DISCONNECTED
-Beacon,Photomanaic : LF_S04 : GATE_LF_SB : DISCONNECTED
-Beacon,Photomaniac : LF_C03 : GATE_LF_SB : LF_DEADGATE
 
-Beacon,Photomaniac : LF_DEADGATE : 1 : LF_C03
+// - Disconnected GATE_LF_SB
+Beacon : GATE_LF_SB : LF_S04 : DISCONNECTED
+Beacon : GATE_LF_SB : LF_C03 : DISCONNECTED
+Beacon : LF_S04 : GATE_LF_SB : DISCONNECTED
+Beacon : LF_C03 : GATE_LF_SB : LF_DEADGATE
+Beacon : LF_DEADGATE : 1 : LF_C03
 
-Beacon,Photomaniac : EXCLUSIVEROOM : LF_LS01
-Beacon,Photomaniac : EXCLUSIVEROOM : LF_LS03
-Beacon,Photomaniac : EXCLUSIVEROOM : LF_LS04
-Beacon,Photomaniac : EXCLUSIVEROOM : LF_LS07
-Beacon,Photomaniac : HIDEROOM : LF_LS01
-Beacon,Photomaniac : HIDEROOM : LF_LS03
-Beacon,Photomaniac : HIDEROOM : LF_LS04
-Beacon,Photomaniac : HIDEROOM : LF_LS07
-
-Beacon,Photomaniac : LF_S01 : LF_D06 : DISCONNECTED
-Beacon,Photomaniac : LF_D06 : LF_S01 : LF_LS01
-Beacon,Photomaniac : LF_LS01 : 1 : LF_D06
-
-Beacon,Photomaniac : LF_S03 : LF_B04 : DISCONNECTED
-Beacon,Photomaniac : LF_B04 : LF_S03 : LF_LS03
-Beacon,Photomaniac : LF_LS03 : 1 : LF_B04
-
-Beacon,Photomaniac : LF_S07 : LF_B02 : DISCONNECTED
-Beacon,Photomaniac : LF_B02 : LF_S07 : LF_LS07
-Beacon,Photomaniac : LF_LS07 : 1 : LF_B02
+// - Lamp shelters
+Beacon : REPLACEROOM : LF_S01 : LF_LS01
+Beacon : REPLACEROOM : LF_S03 : LF_LS03
+Beacon : REPLACEROOM : LF_S04 : LF_LS04
+Beacon : REPLACEROOM : FL_S07 : LF_LS07
 
 END CONDITIONAL LINKS
 ROOMS
 
-LF_LS01 : DISCONNECTED : SHELTER
-LF_LS03 : DISCONNECTED : SHELTER
-LF_LS04 : LF_DEADGATE : SHELTER
-LF_LS07 : DISCONNECTED : SHELTER
-
 LF_DEADGATE : DISCONNECTED, DISCONNECTED, LF_LS04
 
 END ROOMS
-CREATURES
-
-//offscreen
-(Beacon)OFFSCREEN : 0-MirosVulture-2, 0-Deer-6, 0-Scavenger-17, 0-Elite
-(Photomaniac)OFFSCREEN : 0-MirosVulture-3, 0-Deer-6, 0-Scavenger-21, 0-Elite
-
-(Beacon,Photomaniac)LF_A03 : 3-Small Centipede-2
-(Beacon,Photomaniac)LF_A05 : 3-Small Centipede-2
-(Beacon,Photomaniac)LF_A13 : 3-BigSpider, 4-BigSpider, 5-EggBug
-(Beacon,Photomaniac)LF_B04 : 3-Mouse-4, 4-Small Centipede, 5-Small Centipede-2
-(Beacon,Photomaniac)LF_C01 : 2-Green, 4-Black, 3-TentaclePlant-{PreCycle}
-(Beacon,Photomaniac)LF_C02 : 5-SpitterSpider, 6-Black
-(Beacon,Photomaniac)LF_C03 : 3-Small Centipede-4, 4-Centipede-2
-(Beacon,Photomaniac)LF_D01 : 4-Black, 6-Salamander-{PreCycle}
-(Beacon,Photomaniac)LF_D02 : 4-Black
-(Beacon,Photomaniac)LF_D03 : 2-Cyan, 3-Cyan, 4-BigNeedleWorm, 5-SmallNeedleWorm-3, 6-BigSpider-2, 6-Salamander-{PreCycle}
-(Beacon,Photomaniac)LF_D04 : 3-CicadaA-2
-(Beacon,Photomaniac)LF_D08 : 8-SpitterSpider-2, 9-SpitterSpider, 9-BigSpider-2
-(Beacon,Photomaniac)LF_E01 : 2-Black, 4-Green, 2-Salamander-{PreCycle}
-(Beacon,Photomaniac)LF_E02 : 2-Black, 5-Green
-(Beacon,Photomaniac)LF_E03 : 2-Mouse-2, 3-Mouse-3
-(Beacon,Photomaniac)LF_E04 : 3-Centipede
-(Beacon,Photomaniac)LF_F02 : 3-Centiwing-3, 4-SpitterSpider, 5-CicadaA-3
-(Beacon,Photomaniac)LINEAGE : LF_A03 : 3 : Small Centipede-0.5, Centipede-{0.3}-0.5, Centipede-{0.6}-0.5, Centipede-{0.9}-0.5, SpitterSpider-0
-(Beacon,Photomaniac)LINEAGE : LF_A05 : 4 : Small Centipede-0.5, Centipede-{0.3}-0.5, Centipede-{0.6}-0.5, Centipede-{0.9}-0.5, SpitterSpider-0
-(Beacon,Photomaniac)LINEAGE : LF_B03 : 3 : Centipede-{0.5}-0.3, Centipede-{0.7}-0.3, Centipede-{0.9}-0.2, RedCenti-0
-(Beacon,Photomaniac)LINEAGE : LF_C02 : 3 : White-0.5, Cyan-0
-(Beacon,Photomaniac)LINEAGE : LF_C03 : 4 : Small Centipede-0.5, Centipede-{0.3}-0.5, Centipede-{0.6}-0.5, Centipede-{0.9}-0.5, SpitterSpider-0
-(Beacon,Photomaniac)LINEAGE : LF_D01 : 2 : White-0.5, Cyan-0
-(Beacon,Photomaniac)LINEAGE : LF_D02 : 3 : White-0.5, Cyan-0
-(Beacon,Photomaniac)LINEAGE : LF_D04 : 3 : CicadaA-0.5, Centiwing-0
-(Beacon,Photomaniac)LINEAGE : LF_E01 : 3 : White-0.5, Cyan-0
-(Beacon,Photomaniac)LINEAGE : LF_E02 : 3 : White-0.5, Cyan-0.3, Red-0
-(Beacon,Photomaniac)LINEAGE : LF_E04 : 5 : Pink-0.15, Black-0.6, Red-0
-
-//Beacon
-(Beacon)LF_D06 : 4-Small Centipede-2, 5-Small Centipede-2, 5-nightterror
-
-//Photomanaic
-(Photomaniac)LF_D06 : 4-Small Centipede-2, 5-Small Centipede-2, 5-Centipede
-
-END CREATURES
 [ENDMERGE]

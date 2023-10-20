@@ -1,0 +1,58 @@
+(Beacon)OFFSCREEN : 0-Scavenger-22, 0-Elite-3, 0-Vulture-3-{Seed:6006}
+
+SU_A04 : 2-CicadaB, 3-CicadaB-2, 4-Black, 5-Pink
+LINEAGE : SU_A06 : 4 : Caramel-0.5, Blue-0.4, Cyan-0.7, Red-0
+SU_A07 : 2-CicadaA, 3-CicadaB, 5-Small Centipede-2
+SU_A10 : 3-Black
+LINEAGE : SU_A10 : 2 : TentaclePlant-0.5, NONE-0
+SU_A13 : 2-CicadaB, 3-CicadaB, 4-Pink, 5-Cyan
+SU_A17 : 2-Cyan
+SU_A30 : 2-EggBug, 2-Dropwig
+SU_A32 : 2-BigSpider
+LINEAGE : SU_A32 : 2 : MotherSpider-0.3, BigSpider-0.4, Dropwig-0.9, BigSpider-0
+SU_A40 : 2-Mouse-4
+LINEAGE : SU_A40 : 2 : Mouse-1, Black-0.5, Strawberry-0.1, Cyan-0
+SU_B01 : 4-Blue
+LINEAGE : SU_B01 : 4 : CicadaB-1, Centiwing-0
+LINEAGE : SU_B01 : 5 : CicadaB-1, Centiwing-0
+LINEAGE : SU_B01 : 6 : TentaclePlant-0.5, Mouse-0.5, Dropwig-0.5, SpitterSpider-0
+SU_B02 : 5-Mouse-2, 6-Yellow-3, 7-CicadaB-2, 8-Yellow-2
+LINEAGE : SU_B02 : 4 : CicadaB-1, CicadaA-1, Centiwing-0
+LINEAGE : SU_B02 : 5 : CicadaB-1, CicadaA-1, Centiwing-0
+SU_B04 : 3-Mouse-4, 4-Black-2, 5-Dropwig
+LINEAGE : SU_B05 : 3 : Cyan-0.4, Green-0.5, Caramel-0.5, Cyan-0
+SU_B06 : 6-CicadaA-2, 7-Small Centipede-{AlternateForm}-2
+LINEAGE : SU_B06 : 3 : Blue-0.5, White-0.5, Cyan-0
+LINEAGE : SU_B06 : 4 : White-0.2, Blue-0.5, Cyan-0.8, Strawberry-0
+LINEAGE : SU_B06 : 5 : CicadaB-1, BigSpider-0, Centiwing-1
+LINEAGE : SU_B06 : 7 : Small Centipede-{AlternateForm}-0.5, Centiwing-0.5, SpitterSpider-0.3, BigSpider-0.05, Monster Kelp-0
+LINEAGE : SU_B07 : 2 : Green-0.1, Caramel-0.5, Black-0.9, Yellow-0
+LINEAGE : SU_B07 : 3 : CicadaB-1, Mouse-1, Yellow-0
+SU_B08 : 4-Mouse-2
+LINEAGE : SU_B08 : 3 : Red-0.05, NONE-1, Train-1, NONE-0
+LINEAGE : SU_B08 : 2 : Pink-0.5, Black-0.2, BigSpider-0.5, Green-0
+LINEAGE : SU_B08 : 4 : Mouse-0.5, NONE-0.5, Mouse-0.5, BigSpider-0
+LINEAGE : SU_B11 : 3 : NONE-0.5, Centiwing-0.1, SpitterSpider-0.5, BigSpider-0
+LINEAGE : SU_B11 : 6 : N0NE-0.5, CicadaA-1, White-1, Cyan-0
+LINEAGE : SU_B11 : 7 : White-0.5, Cyan-0
+LINEAGE : SU_B12 : 2 : Green-0.9, Caramel-0.5, BigSpider-0.6, Black-0
+LINEAGE : SU_B12 : 3 : Strawberry-0.5, Centiwing-1, Cyan-0
+SU_C02 : 2-BigNeedleWorm, 2-SmallNeedleWorm-3, 3-Centiwing-2
+LINEAGE : SU_C02 : 4 : Caramel-0.5, Green-0.5, Yellow-0
+LINEAGE : SU_C02 : 5 : Pink-0.5, Strawberry-0.5, Yellow-0
+SU_CAVE01 : 4-Mouse-3
+SU_CAVE02 : 4-Mouse-3, 6-Mouse-3, 11-Mouse-4
+SU_CAVE03 : 5-Mouse-3, 6-Mouse-3
+SU_CAVE04 : 2-Mouse-4
+SU_CAVE05 : 4-Mouse-4
+SU_PUMP03 : 5-Mouse-5
+SU_PMPSTATION01 : 3-Mouse-3
+LINEAGE : SU_A02 : 2 : BigSpider-0.4, MotherSpider-0.4, NONE-0.9, SpitterSpider-0
+LINEAGE : SU_A02 : 3 : BigSpider-0.4, NONE-0.9, MotherSpider-0.4, SpitterSpider-0
+LINEAGE : SU_A06 : 3 : Dropwig-0.5, MotherSpider-0.3, BigSpider-0
+LINEAGE : SU_A17 : 2 : White-0.4, Strawberry-0.5, Blue-0-6, Cyan-0
+SU_A20 : 4-Mouse-2, 5-Centipede-2, 6-Small Centipede-3
+LINEAGE : SU_A20 : 4 : SpitterSpider-0.2, BigSpider-0
+LINEAGE : SU_A31 : 3 : Dropwig-0.3, BigSpider-0
+SU_B09 : 4-Centipede-{0.9}, 4-Centipede-2
+SU_B11 : 4-CicadaB-2, 5-Centiwing, 8-Pink

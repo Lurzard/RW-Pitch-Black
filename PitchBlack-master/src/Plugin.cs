@@ -80,6 +80,8 @@ class Plugin : BaseUnityPlugin
 
         OverseerEx.Apply();
 
+        PBFrozenCycleTimer.Apply();
+
         //NightDay.Apply(); //unfinished    Forever gone but not forgored
 
         //On.Player.GraspsCanBeCrafted += Player_GraspsCanBeCrafted;

@@ -1,121 +1,16 @@
-[FIND](X-
-[ADDAFTER]Beacon,Photomaniac,
-[FIND],Beacon,Photomaniac
-[REPLACE]
-[FINDREGEX]^(\w+ : \d+-\w+.+|LINEAGE : \w+ : \d+ : .+)$
-[ADDBEFORE](Beacon,Photomaniac)
 [MERGE]
-ROOMS
-
-VS_LS02 : DISCONNECTED : SHELTER
-VS_LS05 : DISCONNECTED : SHELTER
-VS_LS08 : DISCONNECTED : SHELTER
-VS_LS09 : DISCONNECTED : SHELTER
-VS_LS20 : DISCONNECTED : SHELTER
-
-END ROOMS
 CONDITIONAL LINKS
 
+// Disconnected GATE_SB_VS
 Beacon,Photomaniac : GATE_SB_VS : VS_H01 : DISCONNECTED
 Beacon,Photomaniac : VS_H01 : GATE_SB_VS : DISCONNECTED
 
-Beacon,Photomaniac : EXCLUSIVEROOM : VS_LS02
-Beacon,Photomaniac : EXCLUSIVEROOM : VS_LS05
-Beacon,Photomaniac : EXCLUSIVEROOM : VS_LS08
-Beacon,Photomaniac : EXCLUSIVEROOM : VS_LS09
-Beacon,Photomaniac : EXCLUSIVEROOM : VS_LS20
-Beacon,Photomaniac : HIDEROOM : VS_S02
-Beacon,Photomaniac : HIDEROOM : VS_S05
-Beacon,Photomaniac : HIDEROOM : VS_S08
-Beacon,Photomaniac : HIDEROOM : VS_S09
-Beacon,Photomaniac : HIDEROOM : VS_S20
-
-Beacon,Photomaniac : VS_S02 : VS_D02 : DISCONNECTED
-Beacon,Photomaniac : VS_D02 : VS_S02 : VS_LS02
-Beacon,Photomaniac : VS_LS02 : 1 : VS_D02
-
-Beacon,Photomaniac : VS_S05 : VS_A07 : DISCONNECTED
-Beacon,Photomaniac : VS_A07 : VS_S05 : VS_LS05
-Beacon,Photomaniac : VS_LS05 : 1 : VS_A07
-
-Beacon,Photomaniac : VS_S08 : VS_E06 : DISCONNECTED
-Beacon,Photomaniac : VS_E06 : VS_S08 : VS_LS08
-Beacon,Photomaniac : VS_LS08 : 1 : VS_E06
-
-Beacon,Photomaniac : VS_S09 : GATE_SI_VS : DISCONNECTED
-Beacon,Photomaniac : GATE_SI_VS : VS_S09 : VS_LS09
-Beacon,Photomaniac : VS_LS09 : 1 : GATE_SI_VS
-
-Beacon,Photomaniac : VS_S20 : VS_A04 : DISCONNECTED
-Beacon,Photomaniac : VS_A04 : VS_S20 : VS_LS20
-Beacon,Photomaniac : VS_LS20 : 1 : VS_A04
+// Lamp shelters
+Beacon,Photomaniac : REPLACEROOM : VS_S02 : VS_LS02
+Beacon,Photomaniac : REPLACEROOM : VS_S05 : VS_LS05
+Beacon,Photomaniac : REPLACEROOM : VS_S08 : VS_LS08
+Beacon,Photomaniac : REPLACEROOM : VS_S09 : VS_LS09
+Beacon,Photomaniac : REPLACEROOM : VS_S20 : VS_LS20
 
 END CONDITIONAL LINKS
-CREATURES
-
-//offscreen
-(Beacon)OFFSCREEN : 0-Scavenger-10, 0-KingVulture, 0-Vulture-3
-(Photomaniac)OFFSCREEN : 0-Scavenger-12, 0-Elite, 0-KingVulture-2, 0-Vulture-3
-
-(Beacon,Photomaniac)VS_A01 : 4-Small Centipede-2
-(Beacon,Photomaniac)VS_A02 : 2-Mouse-3, 2-EggBug-{PreCycle}
-(Beacon,Photomaniac)VS_A03 : 4-Small Centipede-2, 5-Centipede
-(Beacon,Photomaniac)VS_A04 : 4-Dropwig, 5-BigSpider, 4-Eel-{PreCycle}
-(Beacon,Photomaniac)VS_A05 : 3-Cyan-3
-(Beacon,Photomaniac)VS_A06 : 4-BigSpider-2, 4-Salamander-{PreCycle}
-(Beacon,Photomaniac)VS_A08 : 2-Centipede-2, 3-Small Centipede-4
-(Beacon,Photomaniac)VS_A09 : 2-Eel
-(Beacon,Photomaniac)VS_A10 : 3-Dropwig, 4-SpitterSpider
-(Beacon,Photomaniac)VS_A11 : 3-Eel
-(Beacon,Photomaniac)VS_A13 : 3-Mouse-4, 4-BigSpider
-(Beacon,Photomaniac)VS_A15 : 6-Dropwig
-(Beacon,Photomaniac)VS_B01 : 3-EggBug, 5-BigSpider
-(Beacon,Photomaniac)VS_B02 : 6-White
-(Beacon,Photomaniac)VS_B06 : 3-Mouse-4
-(Beacon,Photomaniac)VS_B07 : 6-Centipede-5, 6-Eel-{PreCycle}
-(Beacon,Photomaniac)VS_B09 : 2-Centipede-3, 3-Yellow-2, 4-Yellow-2, 5-Small Centipede-3
-(Beacon,Photomaniac)VS_B10 : 3-Mouse-7, 7-White
-(Beacon,Photomaniac)VS_B12 : 3-BigSpider, 6-Small Centipede-5
-(Beacon,Photomaniac)VS_B13 : 3-Eel
-(Beacon,Photomaniac)VS_B14 : 2-Snail, 3-Snail, 5-Eel
-(Beacon,Photomaniac)VS_B15 : 2-Snail, 3-Snail
-(Beacon,Photomaniac)VS_B16 : 3-BigSpider-2, 4-Mouse-2, 7-Black
-(Beacon,Photomaniac)VS_B17 : 2-SpitterSpider, 7-TentaclePlant, 10-Black
-(Beacon,Photomaniac)VS_C01 : 9-Eel, 13-Eel, 15-Eel
-(Beacon,Photomaniac)VS_C02 : 3-Cyan
-(Beacon,Photomaniac)VS_C03 : 4-Snail-4, 5-Dropwig
-(Beacon,Photomaniac)VS_C04 : 2-SpitterSpider, 3-BigSpider
-(Beacon,Photomaniac)VS_C05 : 3-Centipede-4, 4-RedCenti
-(Beacon,Photomaniac)VS_C06 : 4-TentaclePlant
-(Beacon,Photomaniac)VS_C07 : 3-Centipede-2, 6-SpitterSpider, 7-Yellow-2, 9-BigSpider, 10-Yellow-2, 14-Centipede-4
-(Beacon,Photomaniac)VS_C08 : 4-Snail-4, 6-Eel, 7-Jetfish
-(Beacon,Photomaniac)VS_C09 : 2-EggBug, 3-SpitterSpider
-(Beacon,Photomaniac)VS_C10 : 4-Mouse-4, 6-BigSpider, 7-Black
-(Beacon,Photomaniac)VS_C11 : 3-Black
-(Beacon,Photomaniac)VS_C12 : 5-BigSpider, 8-TentaclePlant, 10-TentaclePlant
-(Beacon,Photomaniac)VS_C13 : 8-Cyan
-(Beacon,Photomaniac)VS_D01 : 4-Dropwig
-(Beacon,Photomaniac)VS_D02 : 4-Snail-2, 5-Aquapede, 6-TentaclePlant
-(Beacon,Photomaniac)VS_D03 : 3-Mouse-6, 4-Snail-3
-(Beacon,Photomaniac)VS_D04 : 3-Mouse-2, 4-BigSpider, 5-Mouse-3, 6-Black, 7-BigSpider, 8-Black
-(Beacon,Photomaniac)VS_D05 : 8-Eel
-(Beacon,Photomaniac)VS_E01 : 6-Jetfish, 7-Eel
-(Beacon,Photomaniac)VS_E02 : 3-Mouse-3, 5-SpitterSpider, 6-Mouse-3, 7-BigSpider, 8-Black, 10-Black, 11-Mouse-3, 13-Black, 14-MotherSpider
-(Beacon,Photomaniac)VS_E06 : 3-SpitterSpider, 6-Mouse-6
-(Beacon,Photomaniac)VS_E07 : 2-Blue, 3-Blue
-(Beacon,Photomaniac)VS_F01 : 5-SpitterSpider, 9-Small Centipede-5
-(Beacon,Photomaniac)VS_F02 : 4-BigSpider, 7-Black, 8-Mouse-3, 17-TentaclePlant
-(Beacon,Photomaniac)VS_H01 : 8-TentaclePlant, 9-Eel
-(Beacon,Photomaniac)LINEAGE : VS_A05 : 4 : NONE-0.5, Cyan-0.2, White-0
-(Beacon,Photomaniac)LINEAGE : VS_C02 : 3 : Cyan-0.2, White-0.5, Eel-0
-(Beacon,Photomaniac)LINEAGE : VS_C04 : 4 : Cyan-0.2, White-0.5, Eel-0
-(Beacon,Photomaniac)LINEAGE : VS_C13 : 5 : Cyan-0.2, White-0.01, Blue-1, Cyan-0
-
-//Beacon
-(Beacon)VS_H02 : 6-EggBug, 8-SpitterSpider, 9-Cyan, 10-BigSpider, 12-BigSpider, 13-nightterror
-
-//Photomaniac
-(Photomaniac)VS_H02 : 6-EggBug, 8-SpitterSpider, 9-Cyan, 10-BigSpider, 12-BigSpider, 13-SpitterSpider
-
-END CREATURES
 [ENDMERGE]

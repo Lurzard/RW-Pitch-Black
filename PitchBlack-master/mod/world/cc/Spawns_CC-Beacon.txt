@@ -1,0 +1,33 @@
+OFFSCREEN : 0-Vulture-3-{Seed:6006}, 0-Scavenger-13, 0-Elite-2
+
+CC_A07 : 3-TentaclePlant
+CC_A15 : 3-CicadaB-3, 3-Mouse-4, 4-Yellow-2
+CC_B01 : 2-Blue, 3-BigSpider, 3-Snail-3
+CC_B04 : 3-Yellow, 4-CicadaB-2, 3-Snail-2
+CC_B05 : 2-Centiwing-3, 3-White, 4-CicadaB-2
+CC_B08 : 2-Centiwing-2, 3-White
+CC_B11 : 3-Mouse-4
+CC_B14 : 2-CicadaB-2, 3-Tube-2, 4-Centiwing-2
+CC_C03 : 5-BigSpider-2, 6-SpitterSpider
+CC_C04 : 3-Yellow
+CC_C05 : 3-Snail-2
+CC_C07 : 3-Blue, 3-CicadaB-2
+CC_C08 : 5-Black, 6-Yellow-5
+CC_B10 : 4-SpitterSpider, 5-Cyan
+CC_C11 : 3-SpitterSpider, 4-Mouse-6
+CC_F01 : 3-Blue, 4-Yellow-2
+
+CC_OUTPUT : 9-Small Centipede-7, 11-Snail-2
+CC_SHAFT01x : 2-Eel
+CC_SHAFT02 : 3-SpitterSpider, 5-BigSpider
+CC_STRAINER01 : 2-Small Centipede-5, 3-Centipede-2
+CC_STRAINER02 : 3-TentaclePlant
+CC_STRAINER03 : 2-Snail-3
+CC_SUMP01 : 5-MotherSpider, 6-TentaclePlant, 7-Eel
+CC_SUMP03 : 4-TentaclePlant, 7-MotherSpider-2, 8-TentaclePlant, 12-Snail-5, 13-Eel
+CC_SUMP04 : 3-Eel, 4-Snail-6
+CC_SUMP05 : 5-Centipede-3, 8-SpitterSpider, 9-Mouse-9, 11-Centipede-2, 11-Small Centipede-2, 2-TentaclePlant, 3-TentaclePlant
+
+LINEAGE : CC_A07 : 2 : Yellow-0.4, Cyan-0
+LINEAGE : CC_B08 : 2 : BigSpider-0.4, SpitterSpider-0.2, MotherSpider-0
+LINEAGE : CC_C05 : 3 : White-0.4, Red-0.01, Yellow-0
