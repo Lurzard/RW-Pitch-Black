@@ -1,4 +1,4 @@
-4-beacon
+0-4-beacon
 Little creature, too bright for you?
 
 come from below the clouds, a sunless landscape...
@@ -9,4 +9,4 @@ Scorching the distant horizon forevermore.
 
 Any closer, and the very god we’re on would be melted to slag.
 
-I’m uncertain what this cycle will bring, tread carefully.
+I’m uncertain what this cycle will bring.
