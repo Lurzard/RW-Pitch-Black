@@ -1,0 +1,13 @@
+OFFSCREEN : 0-KingVulture-1-{Seed:9057}, 0-Vulture-2-{Seed:6006}, 0-MirosVulture-2, 0-Scavenger-8, 0-EliteScavenger-3
+
+// - The Exterior (Outside)
+UW_A09 : 5-Tube, 3-Tube
+UW_C01 : 2-Tube-2, 3-Daddy
+UW_D02 : 3-Daddy
+UW_D04 : 4-Daddy, 5-Tube, 6-Tube, 7-Tube
+UW_D07 : 4-Tube
+UW_E03 : 4-Daddy, 8-Daddy
+UW_E04 : 3-Daddy, 5-Tube
+UW_I01 : 5-Daddy
+UW_J01 : 3-Yellow-{Ignorecycle}, 4-Yellow-{Ignorecycle}, 5-Yellow-{Ignorecycle}, 6-Yellow-{Ignorecycle}
+UW_J02 : 5-Daddy, 8-Tube-2

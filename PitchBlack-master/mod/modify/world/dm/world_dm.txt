@@ -1,77 +1,11 @@
-[FIND](X-
-[ADDAFTER]Beacon,Photomaniac,
-[FIND],Beacon,Photomaniac
-[REPLACE]
-[FINDREGEX]^(\w+ : \d+-\w+.+|LINEAGE : \w+ : \d+ : .+)$
-[ADDBEFORE](X-Beacon,Photomaniac)
 [MERGE]
-ROOMS
-
-DM_LS01 : DISCONNECTED : SHELTER
-DM_LS04 : DISCONNECTED : SHELTER
-DM_LS05 : DISCONNECTED : SHELTER
-DM_LSTOP : DISCONNECTED : SHELTER
-
-END ROOMS
 CONDITIONAL LINKS
 
-Beacon,Photomaniac : EXCLUSIVEROOM : DM_LS01
-Beacon,Photomaniac : EXCLUSIVEROOM : DM_LS04
-Beacon,Photomaniac : EXCLUSIVEROOM : DM_LS05
-Beacon,Photomaniac : EXCLUSIVEROOM : DM_LSTOP
-Beacon,Photomaniac : HIDEROOM : DM_S01
-Beacon,Photomaniac : HIDEROOM : DM_S04
-Beacon,Photomaniac : HIDEROOM : DM_S05
-Beacon,Photomaniac : HIDEROOM : DM_STOP
-
-Beacon,Photomaniac : DM_S01 : DM_ENTRANCE : DISCONNECTED
-Beacon,Photomaniac : DM_ENTRANCE : DM_S01 : DM_LS01
-Beacon,Photomaniac : DM_LS01 : 1 : DM_ENTRANCE
-
-Beacon,Photomaniac : DM_S04 : DM_I02 : DISCONNECTED
-Beacon,Photomaniac : DM_I02 : DM_S04 : DM_LS04
-Beacon,Photomaniac : DM_LS04 : 1 : DM_I02
-
-Beacon,Photomaniac : DM_S05 : DM_I13 : DISCONNECTED
-Beacon,Photomaniac : DM_I13 : DM_S05 : DM_LS05
-Beacon,Photomaniac : DM_LS05 : 1 : DM_I13
-
-Beacon,Photomaniac : DM_STOP : DM_TEMPLE : DISCONNECTED
-Beacon,Photomaniac : DM_TEMPLE : DM_STOP : DM_LSTOP
-Beacon,Photomaniac : DM_LSTOP : 1 : DM_TEMPLE
+// Lamp shelters
+Beacon,Photomaniac : REPLACEROOM : DM_S01 : DM_LS01
+Beacon,Photomaniac : REPLACEROOM : DM_S04 : DM_LS04
+Beacon,Photomaniac : REPLACEROOM : DM_S05 : DM_LS05
+Beacon,Photomaniac : REPLACEROOM : DM_STOP : DM_LSTOP
 
 END CONDITIONAL LINKS
-CREATURES
-
-(Beacon,Photomaniac)OFFSCREEN : 0-MirosVulture-4
-
-//Looks to the Moon Interior
-
-(Beacon)DM_ROOF04 : 5-nightteror
-(Beacon,Photomaniac)DM_I02 : 6-Inpsector, 10-Inspector
-(Beacon,Photomaniac)DM_I05 : 3-Inspector
-(Beacon,Photomaniac)DM_O06 : 3-Inpsector
-(Beacon,Photomaniac)DM_M01 : 2-Inpsector
-(Beacon,Photomaniac)DM_M02 : 4-Inspector, 6-Inspector
-(Beacon,Photomaniac)DM_LAB1 : 4-Inspector
-(Beacon,Photomaniac)DM_LAB12 : 6-Inspector
-
-//Looks to the Moon Exterior/Top
-
-(Beacon,Photomaniac)DM_LEG01 : 4-MotherSpider, 4-BigSpider-2, 5-Mouse-3, 6-Mouse-2, 8-Spider-10
-(Beacon,Photomaniac)DM_LEG02 : 4-Spider-10, 6-Spider-10, 7-Mouse-3, 9-BigSpider
-(Beacon,Photomaniac)DM_LEG03 : 5-BigSpider, 8-SpitterSpider, 11-Spider-10, 12-Spider-10, 13-MotherSpider-2
-(Beacon,Photomaniac)DM_LEG04 : 4-Spider-5, 6-BigSpider-5, 9-Spider-5, 11-Yellow-5
-(Beacon,Photomaniac)DM_LEG05 : 4-Spider-10, 6-Spider-10, 7-Spider-10
-(Beacon,Photomaniac)DM_LEG06 : 6-MotherSpider-2, 6-Spider-2, 9-Spider-2, 10-Yellow-5, 10-Spider-2
-(Beacon,Photomaniac)DM_LEG07 : 3-Blue
-(Beacon,Photomaniac)DM_LEG08 : 5-MotherSpider-2, 5-Spider-10, 7-Spider-10, 9-Dropwig, 9-Mouse-2, 10-Mouse-2, 11-Mouse-2, 11-Spider-5
-(Beacon,Photomaniac)DM_U04 : 3-SpitterSpider, 12-MotherSpider, 14-Yellow, 15-Yellow-2, 17-Yellow-2
-(Beacon,Photomaniac)DM_U06 : 3-SpitterSpider, 4-MotherSpider-2, 6-Blue, 6-Yellow, 8-MotherSpider, 9-SpitterSpider
-(Beacon,Photomaniac)DM_U07 : 3-SpitterSpider, 4-Blue-2, 5-SpitterSpider
-(Beacon,Photomaniac)DM_U09 : 5-MotherSpider-3, 6-Cyan-2
-(Beacon,Photomaniac)DM_U10 : 7-Mouse-2, 9-Mouse-2, 10-Mouse
-(Beacon,Photomaniac)DM_I10 : 3-Mouse-2, 5-Mouse-3
-(Beacon,Photomaniac)DM_WALL06 : 6-Yellow, 7-Yellow-2, 8-Yellow-2
-END CREATURES
 [ENDMERGE]

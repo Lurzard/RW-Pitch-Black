@@ -1,0 +1,14 @@
+// - The Rot (Inside)
+RM_F01 : 4-Bro-{Ignorecycle}
+RM_F02 : 6-Bro-{Ignorecycle}
+RM_I02 : 2-Terror-{Ignorecycle}
+RM_H01 : 2-Daddy-{Ignorecycle}, 4-Daddy-{Ignorecycle}
+RM_LCHUNT : 5-Daddy-{Ignorecycle}
+RM_LSVALVES : 4-Daddy-{Ignorecycle}, 5-Daddy-{Ignorecycle}
+RM_LCRPIPE : 4-Daddy-{Ignorecycle}
+RM_LCMEMEXIT : 5-Daddy-{Ignorecycle}
+RM_LCUPSIDE : 4-Daddy-{Ignorecycle}
+RM_TERROR : 3-Terror-{Ignorecycle}
+RM_CONVERGENCE : 5-Bro-{Ignorecycle}
+RM_LCTPIPE : 4-Bro-{Ignorecycle}
+RM_LSLOCKDOWN : 4-Bro-{Ignorecycle}

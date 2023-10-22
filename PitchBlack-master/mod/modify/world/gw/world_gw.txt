@@ -1,12 +1,7 @@
-[FIND](X-
-[ADDAFTER]Beacon,Photomaniac,
-[FIND],Beacon,Photomaniac
-[REPLACE]
-[FINDREGEX]^(\w+ : \d+-\w+.+|LINEAGE : \w+ : \d+ : .+)$
-[ADDBEFORE](X-Beacon,Photomaniac)
 [MERGE]
 ROOMS
 
+// Lamp shelters
 GW_LS01 : DISCONNECTED : SHELTER
 GW_LS03 : DISCONNECTED : SHELTER
 GW_LS05 : DISCONNECTED : SHELTER
@@ -14,6 +9,8 @@ GW_LS07 : DISCONNECTED : SHELTER
 
 END ROOMS
 CONDITIONAL LINKS
+
+// Past GW
 Beacon,Photomaniac : EXCLUSIVEROOM : GW_TOWER01
 Beacon,Photomaniac : EXCLUSIVEROOM : GW_TOWER02
 Beacon,Photomaniac : EXCLUSIVEROOM : GW_TOWER03
@@ -90,24 +87,14 @@ Beacon,Photomaniac : HIDEROOM : GW_S03
 Beacon,Photomaniac : HIDEROOM : GW_S05
 Beacon,Photomaniac : HIDEROOM : GW_S07
 
-Beacon,Photomaniac : GW_S03 : GATE_HI_GW : DISCONNECTED
-Beacon,Photomaniac : GATE_HI_GW : GW_S03 : GW_LS03
-Beacon,Photomaniac : GW_LS03 : 1 : GATE_HI_GW
-
-Beacon,Photomaniac : GW_S05 : GATE_DS_GW : DISCONNECTED
-Beacon,Photomaniac : GATE_DS_GW : GW_S05 : GW_LS05
-Beacon,Photomaniac : GW_LS05 : 1 : GATE_DS_GW
-
-Beacon,Photomaniac : GW_S07 : GW_B05 : DISCONNECTED
-Beacon,Photomaniac : GW_B05 : GW_S07 : GW_LS07
-Beacon,Photomaniac : GW_LS07 : 1 : GW_B05
-
+// GW_B01_PAST
 Beacon,Photomaniac : GW_B01 : GW_A01 : DISCONNECTED
 Beacon,Photomaniac : GW_B01 : GATE_HI_GW : DISCONNECTED
 Beacon,Photomaniac : GW_A01 : GW_B01 : DISCONNECTED
 Beacon,Photomaniac : GATE_HI_GW : GW_B01 : GW_B01_PAST
 Beacon,Photomaniac : GW_B01_PAST : 1 : GATE_HI_GW
 
+// GW_B06_PAST
 Beacon,Photomaniac : GW_B06 : GW_A22 : DISCONNECTED
 Beacon,Photomaniac : GW_B06 : GW_C08 : DISCONNECTED
 Beacon,Photomaniac : GW_A22 : GW_B06 : GW_B06_PAST
@@ -115,124 +102,67 @@ Beacon,Photomaniac : GW_C08 : GW_B06 : GW_B06_PAST
 Beacon,Photomaniac : GW_B06_PAST : 1 : GW_A22
 Beacon,Photomaniac : GW_B06_PAST : 2 : GW_C08
 
-Beacon,Photomaniac : GW_C10_PAST : 1 : GW_E01_PB
-Beacon,Photomaniac : GW_E01_PB : 1 : GW_C10_PAST
-
-Beacon,Photomaniac : GW_C09 : GW_C08 : DISCONNECTED
-Beacon,Photomaniac : GW_C08 : GW_C09 : GW_C09_PB
-Beacon,Photomaniac : GW_C09_PB : 1 : GW_C08
-
-Beacon,Photomaniac : GW_C09 : GW_B05 : DISCONNECTED
-Beacon,Photomaniac : GW_B05 : GW_C09 : GW_C09_PB
-Beacon,Photomaniac : GW_C09_PB : 2 : GW_B05
-
+// GW_C06_PAST
 Beacon,Photomaniac : GW_C06 : GW_S02 : DISCONNECTED
 Beacon,Photomaniac : GW_C06_PAST : 1 : GW_S02
 Beacon,Photomaniac : GW_S02 : GW_C06 : GW_C06_PAST
 
+// GW_E02_PAST
 Beacon,Photomaniac : GW_B02 : GW_E02 : GW_E02_PAST
 Beacon,Photomaniac : GW_E02_PAST : 1 : GW_B02
 Beacon,Photomaniac : GW_E02 : GW_B02 : DISCONNECTED
 
+GW_PIPE04
 Beacon,Photomaniac : GW_A06 : GW_S01 : DISCONNECTED
-Beacon,Photomaniac : GW_PIPE04 : 1 : GW_LS01
+Beacon,Photomaniac : GW_PIPE04 : 1 : GW_S01
 Beacon,Photomaniac : GW_S01 : GW_A06 : DISCONNECTED
-Beacon,Photomaniac : GW_LS01 : 1 : GW_PIPE04
+Beacon,Photomaniac : GW_S01 : 1 : GW_PIPE04
 
+// GW_C04_PAST
 Beacon,Photomaniac : GW_C04 : GW_B08 : DISCONNECTED
 Beacon,Photomaniac : GW_C04_PAST : 1 : GW_B08
 Beacon,Photomaniac : GW_B08 : GW_C04 : GW_C04_PAST
 
+// GW_TOWER04
 Beacon,Photomaniac : GW_C04 : GW_C11 : DISCONNECTED
 Beacon,Photomaniac : GW_C11 : GW_C04 : GW_TOWER04
 Beacon,Photomaniac : GW_TOWER04 : 1 : GW_C11
 
+// GW_PIPE12
 Beacon,Photomaniac : GW_B07 : GW_A04 : DISCONNECTED
 Beacon,Photomaniac : GW_A04 : GW_B07 : GW_PIPE12
 Beacon,Photomaniac : GW_PIPE12 : 1 : GW_A04
 
+// GW_A11_PAST
 Beacon,Photomaniac : GW_A11 : GW_S08 : DISCONNECTED
 Beacon,Photomaniac : GW_S08 : GW_A11 : GW_A11_PAST
 Beacon,Photomaniac : GW_A11_PAST : 2 : GW_S08
-
 Beacon,Photomaniac : GW_A11 : GW_A19 : DISCONNECTED
 Beacon,Photomaniac : GW_A19 : GW_A11 : GW_A11_PAST
 Beacon,Photomaniac : GW_A11_PAST : 1 : GW_A19
 
+// GW_B09_PAST
 Beacon,Photomaniac : GW_B09 : GATE_DS_GW : DISCONNECTED
 Beacon,Photomaniac : GW_B09_PAST : 1 : GATE_DS_GW
 Beacon,Photomaniac : GATE_DS_GW : GW_B09 : GW_B09_PAST
-END CONDITIONAL LINKS
 
+// PB - GW_E01_PB
+Beacon,Photomaniac : GW_C10_PAST : 1 : GW_E01_PB
+Beacon,Photomaniac : GW_E01_PB : 1 : GW_C10_PAST
+
+// PB - GW_C09_PB
+Beacon,Photomaniac : GW_C09 : GW_C08 : DISCONNECTED
+Beacon,Photomaniac : GW_C08 : GW_C09 : GW_C09_PB
+Beacon,Photomaniac : GW_C09_PB : 1 : GW_C08
+Beacon,Photomaniac : GW_C09 : GW_B05 : DISCONNECTED
+Beacon,Photomaniac : GW_B05 : GW_C09 : GW_C09_PB
+Beacon,Photomaniac : GW_C09_PB : 2 : GW_B05
+
+END CONDITIONAL LINKS
 ROOMS
 
 GW_C09_PB : DISCONNECTED, DISCONNECTED, GW_E01_PB
 GW_E01_PB : GW_C09_PB, DISCONNECTED
 
 END ROOMS
-
-CREATURES
-
-//offscreen
-(Beacon)OFFSCREEN : 0-Vulture-2, 0-KingVulture-2, 0-MirosVulture, 0-Scavenger-30, 0-Elite-1
-(Photomaniac)OFFSCREEN : 0-Vulture-3, 0-KingVulture-2, 0-MirosVulture, 0-Scavenger-32, 0-Elite-2
-
-(Beacon,Photomaniac)GW_A11_PAST : 4-Centipede-2, 5-Mimic-{12}
-(Beacon,Photomaniac)GW_A25 : 3-Mouse-5, 5-BigSpider
-(Beacon,Photomaniac)GW_B01_PAST : 7-Leech-10, 10-Garbage Worm-2, 4-CicadaB-2, 4-CicadaA
-(Beacon,Photomaniac)GW_B06_PAST : 2-SpitterSpider
-(Beacon,Photomaniac)GW_B08 : 2-CicadaB-2, 3-CicadaA, 6-BigSpider-2
-(Beacon,Photomaniac)GW_B09_PAST : 2-Leech-10, 4-Snail-2, 7-Garbage Worm-2
-(Beacon,Photomaniac)GW_C01_PAST : 5-Leech-7, 7-Leech-7, 2-CicadaB-3, 3-CicadaA-2
-(Beacon,Photomaniac)GW_C02_PAST : 13-Garbage Worm-4, 2-CicadaB-3, 3-Cyan, 9-Leech-7, 6-TentaclePlant-{PreCycle}, 6-Scavenger-{PreCycle,Seed:2837}
-(Beacon,Photomaniac)GW_C04_PAST : 15-Garbage Worm-2, 7-Leech-3, 9-Leech-3, 11-Salamander-2-{PreCycle}
-(Beacon,Photomaniac)GW_C08 : 3-Leech-10, 5-Snail-4, 3-Eel-{PreCycle}
-(Beacon,Photomaniac)GW_D01_PAST : 7-Leech-8, 16-Garbage Worm-5, 5-Cyan-2, 8-Leech-7
-(Beacon,Photomaniac)GW_E02_PAST : 7-Yellow-3, 8-Black, 5-Mimic-{14}, 3-CicadaB-3, 4-CicadaA-2, 18-Garbage Worm-3
-(Beacon,Photomaniac)GW_EDGE02 : 3-BigSpider, 4-MotherSpider, 5-Leech-12, 8-Leech-6
-(Beacon,Photomaniac)GW_EDGE03 : 17-Leech-9, 18-Leech-12, 5-DropBug-2, 7-CicadaB-3, 8-Mouse-5, 17-Salamander-{PreCycle}, 18-Salamander-{PreCycle}
-(Beacon,Photomaniac)GW_EDGE04 : 3-BigSpider-2, 6-Mouse-2
-(Beacon,Photomaniac)GW_PIPE02 : 3-Leech-6, 4-Snail-2
-(Beacon,Photomaniac)GW_PIPE03 : 2-White
-(Beacon,Photomaniac)GW_PIPE05 : 5-Centipede, 6-Small Centipede-3
-(Beacon,Photomaniac)GW_PIPE07 : 4-Big Spider-2, 4-SpitterSpider
-(Beacon,Photomaniac)GW_PIPE09 : 2-Centipede, 2-Small Centipede-3
-(Beacon,Photomaniac)GW_PIPE12 : 5-Leech-12
-(Beacon,Photomaniac)GW_PIPE13 : 2-CicadaA-3, 3-CicadaB-6, 5-Leech-5, 4-Leech-8
-(Beacon,Photomaniac)GW_TOWER01 : 3-Mouse-5
-(Beacon,Photomaniac)GW_TOWER03 : 3-Leech-7, 2-Leech-5
-(Beacon,Photomaniac)GW_TOWER04 : 3-MotherSpider
-(Beacon,Photomaniac)GW_TOWER07 : 3-Dropwig, 7-White
-(Beacon,Photomaniac)GW_TOWER08 : 3-Cyan-2
-(Beacon,Photomaniac)GW_TOWER11 : 3-SpitterSpider-2
-(Beacon,Photomaniac)GW_TOWER15 : 3-CicadaA-2, 4-CicadaB-3
-(Beacon,Photomaniac)LINEAGE : GW_A11_PAST : 4 : Centipede-{0.4}-0.5, Centipede-{0.7}-0.5, RedCentipede-0
-(Beacon,Photomaniac)LINEAGE : GW_C03 : 5 : Black-0.2, Green-0.2, Yellow-0.5, Red-0
-(Beacon,Photomaniac)LINEAGE : GW_C04_PAST : 2 : EggBug-1.0, Cyan-0
-(Beacon,Photomaniac)LINEAGE : GW_E02_PAST : 6 : NONE-0.05, Mimic-{17}-0.5, Mimic-{21}-0.5, TentaclePlant-0
-(Beacon,Photomaniac)LINEAGE : GW_TOWER02 : 4 : Blue-1, None-0
-
-//Beacon
-(Beacon)GW_A04 : 3-Small Centipede-3, 3-Centipede
-(Beacon)GW_B02 : 4-White-2, 4-Eel-{PreCycle}
-(Beacon)GW_C03 : 3-BigSpider
-(Beacon)GW_C05 : 2-Mouse-5, 3-Mouse-5
-(Beacon)GW_C06_PAST : 3-Cyan-2, 4-BigSpider, 8-Dropbug
-(Beacon)GW_E01_PB : 2-MotherSpider, 3-BigSpider, 4-SpitterSpider, 7-Snail
-(Beacon)GW_EDGE05 : 2-White
-(Beacon)GW_TOWER05 : 5-White
-(Beacon)GW_TOWER10 : 5-nightterror, 3-Blue
-
-//Photomaniac
-(Photomaniac)GW_A04 : 3-Small Centipede-2, 3-Centipede-2
-(Photomaniac)GW_B02 : 4-White-2, 4-RedCenti, 4-Eel-{PreCycle}
-(Photomaniac)GW_C03 : 3-BigSpider-3
-(Photomaniac)GW_C05 : 2-Mouse-5, 2-White, 3-Mouse-5, 3-White
-(Photomaniac)GW_C06_PAST : 3-Cyan-2, 4-BigSpider-2, 8-Dropbug
-(Photomaniac)GW_E01_PB : 2-MotherSpider, 3-BigSpider-2, 4-SpitterSpider, 7-Snail
-(Photomaniac)GW_EDGE05 : 2-Cyan
-(Photomaniac)GW_TOWER05 : 2-Cyan, 5-White
-(Photomaniac)GW_TOWER10 : 5-SpitterSpider, 3-Blue
-
-END CREATUERS
 [ENDMERGE]

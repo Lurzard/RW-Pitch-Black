@@ -74,6 +74,7 @@
 		"food_max": 7,
 		"select_menu_scene": "Slugcat_Beacon",
 		"sleep_scene": "Sleep_Beacon",
-		"select_menu_scene_ascended": "Trapped"
+		"select_menu_scene_ascended": "Trapped",
+		"expedition_enabled": false
 	}
 }

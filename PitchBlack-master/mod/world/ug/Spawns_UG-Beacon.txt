@@ -1,0 +1,28 @@
+OFFSCREEN : 0-Scavenger-13-{Ignorecycle}, 0-Vulture-{Seed:6006}
+
+UG_A02 : 3-BigSpider-2-{Ignorecycle}, 4-JungleLeech-6-{Ignorecycle}
+UG_A05 : 5-Mimic-{9}, 6-Mimic-{10}, 7-Mouse-4-{Ignorecycle}
+UG_A06 : 2-JungleLeech-6-{Ignorecycle}
+UG_A07 : 3-JungleLeech-5-{Ignorecycle}, 4-Snail-2-{Ignorecycle}, 5-Mimic-{18}
+UG_A09 : 2-Spider-15
+UG_A16 : 3-TentaclePlant-{Ignorecycle}, 5-JungleLeech-9-{Ignorecycle}, 7-TentaclePlant-{Ignorecycle}
+UG_A19 : 2-Centipede-5, 2-Small Centipede-4, 2-Spider-15
+LINEAGE : UG_A19 : 2 : Small Centipede-0.10, Centipede-0.20, Red Centipede-0
+UG_A21 : 2-Mimic-{16}, 2-Spider-20, 3-Blue-{Ignorecycle}
+UG_A22 : 3-BigSpider-{Ignorecycle}, 4-Mouse-4
+UG_A25 : 3-Eel, 5-Leech-5-{Ignorecycle}, 6-Leech-7-{Ignorecycle}, 3-Spider-10, 4-Spider-15
+LINEAGE : UG_B03 : 4 : Mimic-{14}-0.10, TentaclePlant-0
+UG_B07 : 3-Small Centipede-6, 4-Small Centipede-4, 4-Red Centipede
+LINEAGE : UG_C01 : 6 : None-0.10, Mimic-{19}-0
+LINEAGE : UG_C01 : 8 : None-0.80, Mimic-{23}-0.01, TentaclePlant-0
+UG_C03 : 2-SpitterSpider-{Ignorecycle}
+UG_C04 : 3-TentaclePlant-{Ignorecycle}, 3-Spider-20
+UG_D02 : 2-Small Centipede-3
+UG_D03 : 2-TentaclePlant-{Ignorecycle}, 8-TentaclePlant-{Ignorecycle}
+UG_DARK01 : 4-TentaclePlant-{Ignorecycle}, 6-Big Spider-2-{Ignorecycle}
+UG_DARK03 : 3-MotherSpider-2-{Ignorecycle}
+UG_GUTTER01 : 2-Snail-1-{Ignorecycle}, 4-Leech-10-{Ignorecycle}
+UG_GUTTER02 : 2-SpitterSpider-{Ignorecycle}
+UG_GUTTER03 : 7-White-{Ignorecycle}, 8-Snail-1-{Ignorecycle}, 9-Snail-2-{Ignorecycle}, 9-Mouse-5, 9-Spider-20
+UG_GUTTER04 : 6-Big Spider-3-{Ignorecycle}, 5-MotherSpider-{Ignorecycle}
+UG_TOLL : 6-Mimic-{21}, 8-Mimic-{16}
