@@ -1,6 +1,8 @@
 Template: NONE
 Clouds: 1
 Palette: 10
+EffectColorB: 7
 Effects: FireFlies-0.6956522-20-20, 
+PlacedObjects: LightSource><718.4458><303.0412><0.2065217~EffectColor2~-211~3~-438.9999~80.60254~0~0~Fade~0.4891301~0, 
 AmbientSounds: OMNI><AM_WIN-SubWnd.ogg><726.8724><517.6581><0.2065217><0.6673913, OMNI><SO_NAT-LilDrips.ogg><747.0539><401.0392><0.5><1, OMNI><SO_WAT-MoreDrips.ogg><742.0582><321.4413><0.5><1, SPOT><waterGurgleLOOP1.wav><771.4465><371.3073><0.3695652><0.7847826><700.4465><308.3073><-284.3553><-51.35535><0><0.578261, 
-FadePalette: 9, 0.1029438, 0.1029439
+FadePalette: 9, 0.05946549, 0.07033522
