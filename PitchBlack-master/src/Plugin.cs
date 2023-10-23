@@ -62,7 +62,6 @@ class Plugin : BaseUnityPlugin
         WorldChanges.Apply();
 
         JollyMenuHooks.Apply();
-        RoomHooks.Apply();
 
         DevCommOverride.Apply();
         OhNoMoonAndPebblesAreDeadGuys.Apply();
