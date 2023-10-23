@@ -1,0 +1,4 @@
+EffectColorB: 19
+Effects: FireFlies-0.6521739-20-20, 
+PlacedObjects: ShelterBhvrSpawnPosition><111.822><484.0911><, ShelterBhvrTriggerZone><575.1258><199.4055><291~163, ShelterBhvrManager><-94.6008><114.8272><100~50~False~False~4~False~3~6~20~40~60~120~120~120~False, LanternOnStick><662.3011><293.4786><19~-65, LanternOnStick><126.4706><516.6978><13~-45, LanternOnStick><468.3231><491.6567><-8~-47, ShelterBhvrTriggerZone><38.72775><443.1988><170~122, ShelterBhvrTriggerZone><355.5531><450.2851><173~95, LightSource><308.2128><478.3035><0.08695652~EffectColor2~499~6~50~86.60254~1~0~None~0~0, ShelterBhvrPlacedDoor><111.1976><499.0308><0^1, 
+FadePalette: 9, 0.02173913
