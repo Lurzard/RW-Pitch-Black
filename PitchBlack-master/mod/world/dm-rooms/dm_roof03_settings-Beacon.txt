@@ -13,4 +13,3 @@ AmbientSounds: SPOT><AM_IND-DeepHum.ogg><829.7178><495.5526><0.5434783><1><3661.
 FadePalette: 367, 0.9603855, 0.9545857, 0.9545856, 0.9545856, 0.9545856
 RoomSpecificScriptActive: ON
 MorePalette0: 10, 0.3131959, 0.3595959, 0.4291952, 0.4871939, 0.5335939
-BackgroundType: moonrooftops

@@ -16,4 +16,3 @@ Triggers: Spot<tA>event<tB>MusicEvent<eA>songName<eB>NA_28 - Stargazer<eA>vol<eB
 FadePalette: 374, 0.9417799, 0.9437125, 0.9456462, 0.943713, 0.9425102, 0.9425102, 0.9432403, 0.9456522
 WetTerrain: OFF
 MorePalette0: 10, 0, 0, 0.2065217, 0.3695652, 0.4782609, 0.5, 0.5434783, 0.6413044
-BackgroundType: nightrooftops

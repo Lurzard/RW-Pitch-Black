@@ -1,12 +1,12 @@
 Template: NONE
 DangerType: None
-Palette: 29
+Palette: 10
 EffectColorA: 6
 EffectColorB: 20
 Effects: Flies-0-0-0, Fog-0-2-49, PixelShift-0.5-10-91, AboveCloudsView-1-20-20, FireFlies-0.2717391-263-157, Bloom-1-272-37, ReplaceEffectColorB-0-587-436-Color-0.2826087-0-1, 
 PlacedObjects: Corruption><885.902><949.4243><-131~111, CorruptionTube><754.5397><1033.304><68~41, Corruption><825.1801><715.4374><158~-96, Corruption><681.6663><603.3889><-93~161, Corruption><435.8073><558.8036><17~148, CorruptionDarkness><785.7206><1047.948><-74~53, CorruptionDarkness><967.2811><634.9475><-120~81, StuckDaddy><782.8408><716.1289><233~-95, CorruptionTube><788.5427><645.8046><149~119, CorruptionTube><411.8563><542.8306><348~358, DangleFruit><657.8175><1136.938><-244~-113~2~3, DangleFruit><608.6906><1155.311><-192~-137~2~3, LightSource><633.194><770.9513><0.1086956~EffectColor2~-196~441~50~86.60254~1~0~None~0~0, WallSteamer><462.6727><1143.601><-51~95, WallSteamer><408.3452><1109.373><-74~131, WallSteamer><349.5251><1127.302><155~95, SlugcatEyeSelector><124.8399><1083.87><15~11~0~0~10~3~0.5~Stunned~102^203, SlugcatEyeSelector><24.59552><851.0743><100~50~0~0~10~3~0.5~Stunned~643^216, SlugcatEyeSelector><24.1601><521.8698><73.99999~91~0~0~10~3~0.5~Stunned~903^323, LightSource><1089.041><686.9458><0.2934783~EffectColor2~-22~438~50~86.60254~1~0~None~0~0, Corruption><955.394><645.1112><0~100, 
 AmbientSounds: SPOT><SO_IND-Boiler.ogg><128.4332><244.8303><0.25><1><911.4332><820.8303><-165.3553><-59.35535><0><0.2956523, SPOT><SO_IND-HeatDuct.ogg><137.3132><361.5715><0.4891304><1><911.3132><794.5715><-195.3553><-35.35535><0><0.2304349, SPOT><SO_IND-Humm.ogg><151.6378><486.6656><0.2391304><1><926.6378><664.6655><-277.3553><68.64465><0><0.404348, OMNI><SO_ENV-StrongWnd.ogg><755.6407><566.6675><0.2608696><1, OMNI><AM_WIN-HowlingWnd.ogg><756.05><480.7512><0.2826087><1, 
-FadePalette: 367, 0.9673913
+FadePalette: 367, 0.5
 WetTerrain: OFF
-BackgroundOffset: -652.1741,760.8694
+BackgroundOffset: -1087.175,1000.001
 BackgroundType: testblackabovegr

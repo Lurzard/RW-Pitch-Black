@@ -1,7 +1,10 @@
 ﻿#if false
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
-//using static SlugBase.JsonAny;
 using Colour = UnityEngine.Color;
+using Mono.Cecil.Cil;
+using MonoMod.Cil;
 
 namespace PitchBlack;
 
@@ -10,164 +13,126 @@ public class NightDay
     //unfinished code
     public static void Apply()
     {
-        On.AboveCloudsView.ctor += AboveCloudsView_ctor;
-        //On.AboveCloudsView.AddElement += ACVSwitchSkies;
-        On.AboveCloudsView.Update += ACVColorSwitch;
-
-        On.RoofTopView.ctor += RTVSwitchSkies;
-        On.RoofTopView.Update += RTVColorSwitch;
+        //On.RoofTopView.ctor += DarkRTV;
+        IL.RoofTopView.ctor += RoofTopView_ctor;
     }
 
-    private static void AboveCloudsView_ctor(On.AboveCloudsView.orig_ctor orig, AboveCloudsView self, Room room, RoomSettings.RoomEffect effect)
+    private static void RoofTopView_ctor(ILContext il)
     {
-        orig(self, room, effect);
-        if (ModManager.MSC && room.game.session is StoryGameSession story && MiscUtils.IsBeaconOrPhoto(story.saveStateNumber)) //campaign check
+        ILCursor c = new(il);
+        c.TryGotoNext(
+            x => x.MatchLdarg(0),
+            x => x.MatchLdcR4(0.16078432f),
+            x => x.MatchLdcR4(0.23137255f),
+            x => x.MatchLdcR4(0.31764707f),
+            x => x.MatchNewobj<UnityEngine.Color>(),
+            x => x.MatchStfld<RoofTopView>("atmosphereColor")
+            );
+        c.Emit(OpCodes.Ldarg_0);
+        c.EmitDelegate((RoofTopView self) =>
         {
-            self.daySky = new BackgroundScene.Simple2DBackgroundIllustration(self, "AtC_NightSky", new Vector2(683f, 384f)); //switch day sky w night sky
-            self.duskSky = new BackgroundScene.Simple2DBackgroundIllustration(self, "AtC_DuskSky-Rivulet", new Vector2(683f, 384f)); //switch dusk sky for riv's
-            self.nightSky = new BackgroundScene.Simple2DBackgroundIllustration(self, "AtC_Sky", new Vector2(683f, 384f)); //switch night sky for day sky
-        }
+            if (ModManager.MSC && self.room?.game.session is StoryGameSession story && MiscUtils.IsBeaconOrPhoto(story.saveStateNumber))
+            {
+                self.atmosphereColor = new Colour(0.04882353f, 0.0527451f, 0.06843138f);
+            }
+        });
+
+
+        //c.Index = 0;
+        //c.Next.Operand = 0.04882353f;
+        //c.Next.Operand = 0.0527451f;
+        //c.Next.Operand = 0.06843138f;
     }
 
-    #region Invert AboveCloudsView
+    //public static Color PB_atmosphereColor = new Color(0.04882353f, 0.0527451f, 0.06843138f);
 
-    //Change how colors blend for our campaigns
-    private static void ACVColorSwitch(On.AboveCloudsView.orig_Update orig, AboveCloudsView self, bool eu)
-    {
-        orig(self, eu);
+    //private static void DarkRTV(On.RoofTopView.orig_ctor orig, RoofTopView self, Room room, RoomSettings.RoomEffect effect)
+    //{
+    //    if (ModManager.MSC && self.room?.game.session is StoryGameSession story && MiscUtils.IsBeaconOrPhoto(story.saveStateNumber))
+    //    {
+    //        self.effect = effect;
+    //        self.sceneOrigo = self.RoomToWorldPos(room.abstractRoom.size.ToVector2() * 10f);
+    //        room.AddObject(new RoofTopView.DustpuffSpawner());
 
-        if (ModManager.MSC && self.room?.game.session is StoryGameSession story && MiscUtils.IsBeaconOrPhoto(story.saveStateNumber)) //campaign check
-        {
-            //spinch: i dont even know if this works btw
-            float num = 1320f;
-            float num2 = self.room.world.rainCycle.dayNightCounter / num;
-            float num3 = (self.room.world.rainCycle.dayNightCounter - num) / num;
-            float num4 = (self.room.world.rainCycle.dayNightCounter - num) / (num * 1.25f);
-            //Colour a = new(0.16078432f, 0.23137255f, 0.31764707f); //tumblr blue
-            //Colour color = new(0.5176471f, 0.3254902f, 0.40784314f); //green
-            //Colour color2 = new(0.04882353f, 0.0527451f, 0.06843138f); //black
-            //Colour color3 = new(1f, 0.79f, 0.47f); //salmon pink
-            Colour color4 = new(0.078431375f, 0.14117648f, 0.21176471f); //dark-ish navy blue
+    //        self.daySky = new BackgroundScene.Simple2DBackgroundIllustration(self, "Rf_Sky", new Vector2(683f, 384f));
+    //        self.duskSky = new BackgroundScene.Simple2DBackgroundIllustration(self, "Rf_Sky", new Vector2(683f, 384f));
+    //        self.nightSky = new BackgroundScene.Simple2DBackgroundIllustration(self, "Rf_Sky", new Vector2(683f, 384f));
 
-            //Day (Functionally)
-            Colour a = new(0.04882353f, 0.0527451f, 0.06843138f); //a has color2 (black)
+    //        string text = "";
+    //        bool flag = false;
+    //        if ((ModManager.MSC && room.world.region != null && room.world.region.name == "DM") || self.room.abstractRoom.name.StartsWith("DM_"))
+    //        {
+    //            text = "_DM";
+    //            flag = true;
+    //        }
 
-            //Dusk
-            Colour color = new(1f, 0.79f, 0.47f); //riv's
-            Colour color3 = new(0.7564706f, 0.3756863f, 0.3756863f); //riv's
+    //        #region isLC
+    //        self.isLC = (ModManager.MSC && ((room.world.region != null && room.world.region.name == "LC") || self.room.abstractRoom.name.StartsWith("LC_")));
+    //        if (self.isLC && (self.room.abstractRoom.name == "LC_entrancezone" || self.room.abstractRoom.name == "LC_shelter_above"))
+    //        {
+    //            self.isLC = false;
+    //        }
 
-            //Night (Functionally)
-            Colour color2 = new(0.16078432f, 0.23137255f, 0.31764707f); //color2 has a (tumblr blue)
+    //        if (self.isLC)
+    //        {
+    //            self.daySky = new BackgroundScene.Simple2DBackgroundIllustration(self, "AtC_Sky", new Vector2(683f, 384f));
+    //            self.duskSky = new BackgroundScene.Simple2DBackgroundIllustration(self, "AtC_DuskSky", new Vector2(683f, 384f));
+    //            self.nightSky = new BackgroundScene.Simple2DBackgroundIllustration(self, "AtC_NightSky", new Vector2(683f, 384f));
+    //            self.AddElement(self.nightSky);
+    //            self.AddElement(self.duskSky);
+    //            self.AddElement(self.daySky);
+    //            self.floorLevel = self.room.world.RoomToWorldPos(new Vector2(0f, 0f), self.room.abstractRoom.index).y - 30992.8f;
+    //            self.floorLevel *= 22f;
+    //            self.floorLevel = -self.floorLevel;
+    //            float num3 = self.room.world.RoomToWorldPos(new Vector2(0f, 0f), self.room.abstractRoom.index).x - 11877f;
+    //            num3 *= 0.01f;
+    //            Shader.SetGlobalVector("_AboveCloudsAtmosphereColor", PB_atmosphereColor);
+    //            Shader.SetGlobalVector("_MultiplyColor", Color.white);
+    //            Shader.SetGlobalVector("_SceneOrigoPosition", self.sceneOrigo);
+    //            self.AddElement(new RoofTopView.Building(self, "city2", new Vector2(self.PosFromDrawPosAtNeutralCamPos(new Vector2(880f, 0f), 200f - num3).x, self.floorLevel * 0.2f - 170000f), 420.5f, 2f));
+    //            self.AddElement(new RoofTopView.Building(self, "city1", new Vector2(self.PosFromDrawPosAtNeutralCamPos(new Vector2(880f, 0f), 70f - num3 * 0.5f).x, self.floorLevel * 0.25f - 116000f), 340f, 2f));
+    //            self.AddElement(new RoofTopView.Building(self, "city3", new Vector2(self.PosFromDrawPosAtNeutralCamPos(new Vector2(880f, 0f), 70f - num3 * 0.5f).x, self.floorLevel * 0.3f - 85000f), 260f, 2f));
+    //            self.AddElement(new RoofTopView.Building(self, "city2", new Vector2(self.PosFromDrawPosAtNeutralCamPos(new Vector2(880f, 0f), 40f - num3 * 0.5f).x, self.floorLevel * 0.35f - 42000f), 180f, 2f));
+    //            self.AddElement(new RoofTopView.Building(self, "city1", new Vector2(self.PosFromDrawPosAtNeutralCamPos(new Vector2(880f, 0f), 90f - num3 * 0.2f).x, self.floorLevel * 0.4f + 5000f), 100f, 2f));
+    //            self.AddElement(new RoofTopView.Floor(self, "floor", new Vector2(0f, self.floorLevel * 0.2f - 90000f), 400.5f, 500.5f));
+    //            return;
+    //        }
+    //        #endregion
 
-            Colour? color5 = null;
-            Colour? color6 = null;
+    //        self.AddElement(self.nightSky);
+    //            self.AddElement(self.duskSky);
+    //            self.AddElement(self.daySky);
+    //            Shader.SetGlobalVector("_MultiplyColor", Color.white);
+    //            self.AddElement(new RoofTopView.Floor(self, "floor", new Vector2(0f, self.floorLevel), 1f, 12f));
+    //            Shader.SetGlobalVector("_AboveCloudsAtmosphereColor", PB_atmosphereColor);
+    //            Shader.SetGlobalVector("_SceneOrigoPosition", self.sceneOrigo);
+    //            for (int i = 0; i < 16; i++)
+    //            {
+    //                float f = (float)i / 15f;
+    //                self.AddElement(new RoofTopView.Rubble(self, "Rf_Rubble", new Vector2(0f, self.floorLevel), Mathf.Lerp(1.5f, 8f, Mathf.Pow(f, 1.5f)), i));
+    //            }
+    //            self.AddElement(new RoofTopView.DistantBuilding(self, "Rf_HoleFix", new Vector2(-2676f, 9f), 1f, 0f));
+    //            if (!ModManager.MSC || text == "")
+    //            {
+    //                self.AddElement(new RoofTopView.Building(self, "city2", new Vector2(self.PosFromDrawPosAtNeutralCamPos(new Vector2(1780f, 0f), 11.5f).x, self.floorLevel), 11.5f, 3f));
+    //                self.AddElement(new RoofTopView.Building(self, "city1", new Vector2(self.PosFromDrawPosAtNeutralCamPos(new Vector2(880f, 0f), 10.5f).x, self.floorLevel), 10.5f, 3f));
+    //            }
+    //            self.AddElement(new RoofTopView.DistantBuilding(self, "RF_CityA" + text, new Vector2(self.PosFromDrawPosAtNeutralCamPos(new Vector2(300f + (flag ? -300f : 0f), 0f), 8.5f).x, self.floorLevel - 25.5f), 8.5f, 0f));
+    //            self.AddElement(new RoofTopView.DistantBuilding(self, "RF_CityB" + text, new Vector2(self.PosFromDrawPosAtNeutralCamPos(new Vector2(515f + (flag ? -300f : 0f), 0f), 6.5f).x, self.floorLevel - 13f), 6.5f, 0f));
+    //            self.AddElement(new RoofTopView.DistantBuilding(self, "RF_CityC" + text, new Vector2(self.PosFromDrawPosAtNeutralCamPos(new Vector2(400f + (flag ? -300f : 0f), 0f), 5f).x, self.floorLevel - 8.5f), 5f, 0f));
+    //            self.LoadGraphic("smoke1", false, false);
+    //            self.AddElement(new RoofTopView.Smoke(self, new Vector2(0f, self.floorLevel + 560f), 7f, 0, 2.5f, 0.1f, 0.8f, false));
+    //            self.AddElement(new RoofTopView.Smoke(self, new Vector2(0f, self.floorLevel), 4.2f, 0, 0.2f, 0.1f, 0f, true));
+    //            self.AddElement(new RoofTopView.Smoke(self, new Vector2(0f, self.floorLevel + 28f), 2f, 0, 0.5f, 0.1f, 0f, true));
+    //            self.AddElement(new RoofTopView.Smoke(self, new Vector2(0f, self.floorLevel + 14f), 1.2f, 0, 0.75f, 0.1f, 0f, true));
+    //    }
 
-            if (self.spireLights != null)
-            {
-                if (num3 > 0f)
-                {
-                    self.spireLights.alpha = Mathf.Min(1f, num3);
-                }
-                else
-                {
-                    self.spireLights.alpha = 0f;
-                }
-            }
-            if (self.pebblesLightning != null)
-            {
-                if (num3 > 0f)
-                {
-                    self.pebblesLightning.intensityMultiplier = Mathf.Min(1f, num3);
-                }
-                else
-                {
-                    self.pebblesLightning.intensityMultiplier = 0f;
-                }
-            }
-            if (num2 > 0f && num2 < 1f)
-            {
-                self.daySky.alpha = 1f - num2;
-                color5 = new Colour?(Colour.Lerp(a, color, num2));
-                color6 = new Colour?(Colour.Lerp(Colour.white, color3, num2));
-            }
-            if (num2 >= 1f)
-            {
-                self.daySky.alpha = 0f;
-                if (num3 > 0f && num3 < 1f)
-                {
-                    self.duskSky.alpha = 1f - num3;
-                    color5 = new Colour?(Colour.Lerp(color, color2, num3));
-                }
-                if (num3 >= 1f)
-                {
-                    self.duskSky.alpha = 0f;
-                    color5 = new Colour?(color2);
-                }
-                if (num4 > 0f && num4 < 1f)
-                {
-                    color6 = new Colour?(Colour.Lerp(color3, color4, num4));
-                }
-                if (num4 >= 1f)
-                {
-                    color6 = new Colour?(color4);
-                }
-            }
+    //    else
+    //    {
+    //        orig(self, room, effect);
+    //    }
+    //} //unused
 
-            if (color5 != null)
-            {
-                self.atmosphereColor = color5.Value;
-                Shader.SetGlobalVector("_AboveCloudsAtmosphereColor", self.atmosphereColor);
-            }
-            if (color6 != null)
-            {
-                Shader.SetGlobalVector("_MultiplyColor", color6.Value);
-            }
-        }
-    }
 
-    #endregion
-
-    #region Invert RoofTopView
-    //Reverse Day Night skies for our campaigns
-    private static void RTVSwitchSkies(On.RoofTopView.orig_ctor orig, RoofTopView self, Room room, RoomSettings.RoomEffect effect)
-    {
-        orig(self, room, effect);
-        if (ModManager.MSC && self.room?.game.session is StoryGameSession story && MiscUtils.IsBeaconOrPhoto(story.saveStateNumber)) //campaign check
-        {
-            self.daySky = new BackgroundScene.Simple2DBackgroundIllustration(self, "Rf_NightSky", new Vector2(683f, 384f)); //switch day sky w night sky
-            self.duskSky = new BackgroundScene.Simple2DBackgroundIllustration(self, "Rf_DuskSky-Rivulet", new Vector2(683f, 384f)); //switch dusk sky for riv's
-            self.nightSky = new BackgroundScene.Simple2DBackgroundIllustration(self, "Rf_Sky", new Vector2(683f, 384f)); //switch night sky for day sky
-        }
-    }
-
-    //Change how colors blend for our campaigns
-    private static void RTVColorSwitch(On.RoofTopView.orig_Update orig, RoofTopView self, bool eu)
-    {
-        float num = 1320f;
-        float num2 = self.room.world.rainCycle.dayNightCounter / num;
-        float num3 = (self.room.world.rainCycle.dayNightCounter - num) / num;
-        float num4 = (self.room.world.rainCycle.dayNightCounter - num) / (num * 1.25f);
-        Colour a; //= new(0.16078432f, 0.23137255f, 0.31764707f);
-        Colour color; //= new(0.5176471f, 0.3254902f, 0.40784314f);
-        Colour color2; //= new(0.04882353f, 0.0527451f, 0.06843138f);
-        Colour color3; //= new(1f, 0.79f, 0.47f);
-        Colour color4 = new(0.078431375f, 0.14117648f, 0.21176471f);
-
-        orig(self, eu);
-
-        if (ModManager.MSC && self.room?.game.session is StoryGameSession story && MiscUtils.IsBeaconOrPhoto(story.saveStateNumber)) //campaign check
-        {
-            //Day (Functionally)
-            a = new(0.04882353f, 0.0527451f, 0.06843138f); //now color2
-
-            //Dusk
-            color = new(1f, 0.79f, 0.47f); //riv's
-            color3 = new(0.7564706f, 0.3756863f, 0.3756863f); //riv's
-
-            //Night (Functionally)
-            color2 = new(0.16078432f, 0.23137255f, 0.31764707f); //now a
-        }
-    }
-    #endregion
 }
 #endif
