@@ -19,7 +19,7 @@ public class OverseerEx
     // Actually used to find a file of matching id. Name does not matter, but the "value" param does.
     static ChatlogID chatlogIDTest = new("test");
     
-    // VANILLA
+    // CONVERSATION ID
     static ChatlogID PB_CC = new ("PB_CC");
     static ChatlogID PB_DS = new ("PB_DS");
     static ChatlogID PB_GW = new ("PB_GW");
@@ -42,11 +42,7 @@ public class OverseerEx
     static ChatlogID PB_SU_filt = new ("PB_SU_filt");
     static ChatlogID PB_UW = new ("PB_UW");
     static ChatlogID PB_VS = new ("PB_VS");
-
-    // MODDED
     static ChatlogID PB_SK_Rod = new("PB_SK_Rod");
-
-    // Pitch Black
     static ChatlogID PB_Devcom_1 = new ("PB_Devcom_1");
     static ChatlogID PB_Devcom_2 = new ("PB_Devcom_2");
     static ChatlogID PB_Devcom_3 = new ("PB_Devcom_3");
@@ -64,7 +60,7 @@ public class OverseerEx
     static ChatlogID PB_Devcom_15 = new ("PB_Devcom_15");
     static ChatlogID PB_Techy = new("PB_Techy");
 
-    // DECLARED DATAPEARLS
+    // DECLARED MODDED DATAPEARLS
     static DataPearlType dataPearlTypeTest = new ("test");
     static DataPearlType SK_Rod_Pearl = new ("SK_Rod_Pearl");
     static DataPearlType PB_Devcom_pearl_1 = new("PB_Developer_Commentary_Pearl_1");
