@@ -174,8 +174,17 @@ namespace PitchBlack
             On.Centipede.ShortCutColor += Centipede_ShortCutColor;
             On.CentipedeAI.ctor += CentipedeAICTOR;
             On.AbstractCreatureAI.ctor += AbstractCreatureAI_ctor;
+            On.CentipedeGraphics.InitiateSprites += CentipedeGraphics_InitiateSprites;
 
             //On.RoomRealizer.PutOutARoom += RoomRealizer_PutOutARoom; Does't seem like this is needed. Creatures can move from unloaded rooms fine -WW
+        }
+
+        private static void CentipedeGraphics_InitiateSprites(On.CentipedeGraphics.orig_InitiateSprites orig, CentipedeGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
+        {
+            orig(self, sLeaser, rCam);
+            foreach (var sprite in sLeaser.sprites) {
+                sprite.shader = self.centipede.abstractCreature.Room.world.game.rainWorld.Shaders["Hologram"];
+            }
         }
 
         #region weapon.HitSomething hooks

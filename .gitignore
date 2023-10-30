@@ -400,3 +400,4 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 /PitchBlack-master/lib/Fisobs.dll
+PitchBlack-master/src/PitchBlack.csproj
