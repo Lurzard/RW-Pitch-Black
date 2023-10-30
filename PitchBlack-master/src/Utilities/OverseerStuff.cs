@@ -46,7 +46,7 @@ public class OverseerEx
     // MODDED
     static ChatlogID PB_SK_Rod = new("PB_SK_Rod");
 
-    // DEV COMMENTARY
+    // Pitch Black
     static ChatlogID PB_Devcom_1 = new ("PB_Devcom_1");
     static ChatlogID PB_Devcom_2 = new ("PB_Devcom_2");
     static ChatlogID PB_Devcom_3 = new ("PB_Devcom_3");
@@ -62,10 +62,28 @@ public class OverseerEx
     static ChatlogID PB_Devcom_13 = new ("PB_Devcom_13");
     static ChatlogID PB_Devcom_14 = new ("PB_Devcom_14");
     static ChatlogID PB_Devcom_15 = new ("PB_Devcom_15");
+    static ChatlogID PB_Techy = new("PB_Techy");
 
-    // Used to test against
+    // DECLARED DATAPEARLS
     static DataPearlType dataPearlTypeTest = new ("test");
     static DataPearlType SK_Rod_Pearl = new ("SK_Rod_Pearl");
+    static DataPearlType PB_Devcom_pearl_1 = new("PB_Developer_Commentary_Pearl_1");
+    static DataPearlType PB_Devcom_pearl_2 = new("PB_Developer_Commentary_Pearl_2");
+    static DataPearlType PB_Devcom_pearl_3 = new("PB_Developer_Commentary_Pearl_3");
+    static DataPearlType PB_Devcom_pearl_4 = new("PB_Developer_Commentary_Pearl_4");
+    static DataPearlType PB_Devcom_pearl_5 = new("PB_Developer_Commentary_Pearl_5");
+    static DataPearlType PB_Devcom_pearl_6 = new("PB_Developer_Commentary_Pearl_6");
+    static DataPearlType PB_Devcom_pearl_7 = new("PB_Developer_Commentary_Pearl_7");
+    static DataPearlType PB_Devcom_pearl_8 = new("PB_Developer_Commentary_Pearl_8");
+    static DataPearlType PB_Devcom_pearl_9 = new("PB_Developer_Commentary_Pearl_9");
+    static DataPearlType PB_Devcom_pearl_10 = new("PB_Developer_Commentary_Pearl_10");
+    static DataPearlType PB_Devcom_pearl_11 = new("PB_Developer_Commentary_Pearl_11");
+    static DataPearlType PB_Devcom_pearl_12 = new("PB_Developer_Commentary_Pearl_12");
+    static DataPearlType PB_Devcom_pearl_13 = new("PB_Developer_Commentary_Pearl_13");
+    static DataPearlType PB_Devcom_pearl_14 = new("PB_Developer_Commentary_Pearl_14");
+    static DataPearlType PB_Devcom_pearl_15 = new("PB_Developer_Commentary_Pearl_15");
+    static DataPearlType PB_Techy_Pearl = new("PB_Techy_Pearl");
+
     #region Hooks
     public static void Apply() {
         On.Overseer.ctor += Overseer_ctor;
@@ -315,7 +333,26 @@ public class OverseerEx
         if (type == DataPeralTypeMSC.VS) { return PB_VS; }
         if (type == DataPeralTypeMSC.MS) { return PB_MS; }
         if (type == DataPeralTypeMSC.RM) { return PB_RM; }
+
         if (type == SK_Rod_Pearl) { return PB_SK_Rod; }
+        if (type == PB_Devcom_pearl_1) { return PB_Devcom_1; }
+        if (type == PB_Devcom_pearl_2) { return PB_Devcom_2; }
+        if (type == PB_Devcom_pearl_3) { return PB_Devcom_3; }
+        if (type == PB_Devcom_pearl_4) { return PB_Devcom_4; }
+        if (type == PB_Devcom_pearl_5) { return PB_Devcom_5; }
+        if (type == PB_Devcom_pearl_6) { return PB_Devcom_6; }
+        if (type == PB_Devcom_pearl_7) { return PB_Devcom_7; }
+        if (type == PB_Devcom_pearl_8) { return PB_Devcom_8; }
+        if (type == PB_Devcom_pearl_9) { return PB_Devcom_9; }
+        if (type == PB_Devcom_pearl_10) { return PB_Devcom_10; }
+        if (type == PB_Devcom_pearl_11) { return PB_Devcom_11; }
+        if (type == PB_Devcom_pearl_12) { return PB_Devcom_12; }
+        if (type == PB_Devcom_pearl_13) { return PB_Devcom_13; }
+        if (type == PB_Devcom_pearl_14) { return PB_Devcom_14; }
+        if (type == PB_Devcom_pearl_15) { return PB_Devcom_15; }
+
+        if (type == PB_Techy_Pearl) { return PB_Techy; }   
+
         return new (Conversation.DataPearlToConversation(type).value);
     }
 }
