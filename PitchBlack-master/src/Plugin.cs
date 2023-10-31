@@ -22,8 +22,6 @@ class Plugin : BaseUnityPlugin
     public static readonly SlugcatStats.Name BeaconName = new("Beacon", false);
     public static readonly SlugcatStats.Name PhotoName = new("Photomaniac", false);
     private bool init = false;
-    
-    new internal static ManualLogSource Logger;
 
     //public static ConditionalWeakTable<Player, BeaconCWT> bCon = new ConditionalWeakTable<Player, BeaconCWT>();
     //public static ConditionalWeakTable<Player, PhotoCWT> pCon = new ConditionalWeakTable<Player, PhotoCWT>();
@@ -31,9 +29,6 @@ class Plugin : BaseUnityPlugin
 
     internal static bool RotundWorldEnabled => _rotundWorldEnabled; //for a single check in BeaconHooks' Player.Update hook
     private static bool _rotundWorldEnabled;
-    public Plugin() {
-        Logger = base.Logger;
-    }
 
     public static ManualLogSource logger;
 
@@ -44,8 +39,6 @@ class Plugin : BaseUnityPlugin
     public void OnEnable()
     {
         logger = base.Logger;
-
-        PBFrozenCycleTimer.Apply(); // Uncomment this once working properly
 
         On.RainWorld.OnModsInit += OnModsInit;
         On.RainWorld.OnModsDisabled += DisableMod;
@@ -78,11 +71,8 @@ class Plugin : BaseUnityPlugin
         PBPOMSunrays.RegisterLightrays();
         PBPOMDarkness.RegisterDarkness();
 
-        OverseerEx.Apply();
-
-        PBFrozenCycleTimer.Apply();
-
-        //NightDay.Apply(); //unfinished    Forever gone but not forgored
+        //NightDay.Apply(); //unfinished
+        PassageHooks.Apply();
 
         //On.Player.GraspsCanBeCrafted += Player_GraspsCanBeCrafted;
         //On.Player.SpitUpCraftedObject += Player_SpitUpCraftedObject;
@@ -98,10 +88,14 @@ class Plugin : BaseUnityPlugin
         if (!init) {
             Futile.atlasManager.LoadAtlas("atlases/photosplt");
             Futile.atlasManager.LoadAtlas("atlases/nightTerroratlas");
-            Futile.atlasManager.LoadAtlas("atlases/pearlCursor");
             self.Shaders["Red"] = FShader.CreateShader("red", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath(path: "assetbundles/red")).LoadAsset<Shader>("Assets/red.shader"));
             self.Shaders["Sunrays"] = FShader.CreateShader("sunrays", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/sunrays")).LoadAsset<Shader>("Assets/sunrays.shader"));
             init = true;
+
+            //I'M PRETTY SURE BEST PRACTICE IS TO PUT HOOKS HERE
+            On.RainWorldGame.ctor += RainWorldGame_ctor;
+            On.RainWorldGame.Update += RainWorldGame_Update;
+
         }
     }
 
@@ -138,6 +132,31 @@ class Plugin : BaseUnityPlugin
             }
         }
     }
+
+
+    public static NTTracker myTracker;// IDRK WHAT TO DO WITH THIS
+
+    private static void RainWorldGame_Update(On.RainWorldGame.orig_Update orig, RainWorldGame self)
+    {
+        orig(self);
+        //Debug.Log("UPDATEME");
+        if (myTracker is not null)
+            myTracker.Update();
+    }
+
+    private static void RainWorldGame_ctor(On.RainWorldGame.orig_ctor orig, RainWorldGame self, ProcessManager manager)
+    {
+        orig(self, manager);
+
+        if (self.IsStorySession)
+        {
+            myTracker = new NTTracker(self);
+            Debug.Log("ADDING TRACKER");
+        }
+
+    }
+
+
 
     #region Unused Code
     //public static Player.ObjectGrabability GrabCoalescipedes(On.Player.orig_Grabability orig, Player self, PhysicalObject obj)

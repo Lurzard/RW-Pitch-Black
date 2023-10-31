@@ -1,5 +1,6 @@
 using System.IO;
 using System.Linq;
+using UnityEngine;
 
 namespace PitchBlack;
 public static class WorldChanges
@@ -7,7 +8,19 @@ public static class WorldChanges
     public static void Apply()
     {
         On.Region.GetProperRegionAcronym += Region_GetProperRegionAcronym;
+        On.RoofTopView.ctor += RoofTopView_ctor;
     }
+
+    private static void RoofTopView_ctor(On.RoofTopView.orig_ctor orig, RoofTopView self, Room room, RoomSettings.RoomEffect effect)
+    {
+        orig(self, room, effect);
+        if (room.game.GetStorySession.saveStateNumber == Plugin.BeaconName)
+        {
+            self.atmosphereColor = new Color(0.04882353f, 0.0527451f, 0.06843138f);
+            Shader.SetGlobalVector("_AboveCloudsAtmosphereColor", self.atmosphereColor);
+        }
+    }
+
     public static string Region_GetProperRegionAcronym(On.Region.orig_GetProperRegionAcronym orig, SlugcatStats.Name character, string baseAcronym)
     {
         string text = baseAcronym;
