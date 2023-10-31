@@ -182,8 +182,10 @@ namespace PitchBlack
         private static void CentipedeGraphics_InitiateSprites(On.CentipedeGraphics.orig_InitiateSprites orig, CentipedeGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
         {
             orig(self, sLeaser, rCam);
-            foreach (var sprite in sLeaser.sprites) {
-                sprite.shader = self.centipede.abstractCreature.Room.world.game.rainWorld.Shaders["Hologram"];
+            if (self.centipede.Template.type == CreatureTemplateType.NightTerror) {
+                foreach (var sprite in sLeaser.sprites) {
+                    sprite.shader = self.centipede.abstractCreature.Room.world.game.rainWorld.Shaders["Hologram"];
+                }
             }
         }
 
