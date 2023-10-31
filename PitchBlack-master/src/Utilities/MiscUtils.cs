@@ -12,4 +12,9 @@ public class MiscUtils
     {
         return crit is Player player && IsBeaconOrPhoto(player.slugcatStats.name);
     }
+    
+    public static bool IsBeaconOrPhoto(Player player)
+    {
+        return player.slugcatStats?.name?.value == "Beacon" || player.slugcatStats?.name?.value == "Photomaniac";
+    }
 }

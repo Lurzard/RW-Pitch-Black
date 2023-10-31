@@ -16,6 +16,7 @@ public class PBOptions : OptionInterface
 		elecImmune = this.config.Bind<bool>("elecImmune", false);
 		chargeSpears = this.config.Bind<bool>("chargeSpears", false);
 		pursuer = this.config.Bind<bool>("pursuer", true);
+        pursuerAgro = this.config.Bind<int>("pursuerAgro", 2, new ConfigAcceptableRange<int>(0, 10));
     }
 
     
@@ -24,8 +25,9 @@ public class PBOptions : OptionInterface
 	public static Configurable<bool> elecImmune;
 	public static Configurable<bool> chargeSpears;
 	public static Configurable<bool> pursuer;
+    public static Configurable<int> pursuerAgro;
 
-	public OpSlider pDistOp;
+    public OpSlider pDistOp;
 	public OpCheckBox mpBox1;
     public OpCheckBox mpBox2;
 	public OpCheckBox mpBox3;
@@ -65,7 +67,7 @@ public class PBOptions : OptionInterface
 			//{alignment = FLabelAlignment.Center}
 		});
 		
-		/* DISABLING UNTIL FIXED
+		// DISABLING UNTIL FIXED
 		dsc = Translate("Something is pursuing you...");
 		Tabs[0].AddItems(new UIelement[]
 		{
@@ -77,7 +79,7 @@ public class PBOptions : OptionInterface
 		
 		
 		lineCount -= 60;
-		*/
+		
         OpCheckBox mpBox4;
         dsc = Translate("Photomaniac becomes stunned after using their shock");
         Tabs[0].AddItems(new UIelement[]
@@ -97,6 +99,16 @@ public class PBOptions : OptionInterface
 			{description = dsc},
 			new OpLabel(mpBox5.pos.x + 30, mpBox5.pos.y+3, Translate("Photomaniac's Electricity Resistence"))
 			{description = dsc}
+		});
+
+        
+        dsc = Translate("How long it takes for the pursuer to track you down");
+        barLngt = 45 * 3;
+        Tabs[0].AddItems(new UIelement[]
+        {
+            pDistOp = new OpSlider(PBOptions.pursuerAgro, new Vector2(margin + 250, lineCount-5), barLngt)
+            {description = dsc},
+            lblOp1 = new OpLabel(pDistOp.pos.x, pDistOp.pos.y - 20, Translate("Pursuer Aggro"), bigText: false)
 		});
 
         //Not exactly sure what to do with this so I will leave it here for now

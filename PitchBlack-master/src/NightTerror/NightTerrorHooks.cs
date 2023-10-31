@@ -29,7 +29,9 @@ public class NightTerrorAbstractData
     public bool diedToSporeCloud;
     public readonly float MaxHP;
 
-    public int MaxTimeUntilRevive => !diedToSporeCloud ? 15 : 3;
+    //public int MaxTimeUntilRevive => !diedToSporeCloud ? 15 : 3;
+    //public int MaxTimeUntilRevive => PBOptions.pursuerAgro.Value * (!diedToSporeCloud ? 60 : 6);
+    public int MaxTimeUntilRevive => PBOptions.pursuerAgro.Value * (!diedToSporeCloud ? 9999 : 6); //ACTUALLY.. ONLY RESPAWN FROM SPORES. THE OTHER TRACKER WILL HANDLE RESPAWNS
     //spinch: thrown PuffBalls makes NT revive faster because that looks cool
 
     public void DecreaseReviveTimer(int timeDecreasedBy = 2)
@@ -151,9 +153,10 @@ namespace PitchBlack
         {
             new Hook(typeof(Centipede).GetMethod("get_Red", Public | NonPublic | Instance), (System.Func<Centipede, bool> orig, Centipede self) => self.Template.type == CreatureTemplateType.NightTerror || orig(self));
 
-            On.Spear.HitSomething += Spear_HitSomething;
-            On.Rock.HitSomething += Rock_HitSomething;
-            On.FirecrackerPlant.HitSomething += FirecrackerPlant_HitSomething;
+            //DISABLING THESE IN FAVOR OF THE NEW RESPAWN TIMERS
+            //On.Spear.HitSomething += Spear_HitSomething;
+            //On.Rock.HitSomething += Rock_HitSomething;
+            //On.FirecrackerPlant.HitSomething += FirecrackerPlant_HitSomething;
 
             On.Centipede.Update += Centipede_Update;
             On.AbstractCreature.Update += AbstractCreature_Update;
@@ -167,13 +170,13 @@ namespace PitchBlack
             
             On.Centipede.ctor += Centipede_ctor;
             On.CentipedeGraphics.ctor += CentipedeGraphics_ctor;
-            On.CentipedeAI.Update += CentipedeAI_Update;
+            //On.CentipedeAI.Update += CentipedeAI_Update;
             On.Centipede.Violence += Centipede_Violence;
             On.CentipedeAI.DoIWantToShockCreature += CentipedeAI_DoIWantToShockCreature;
             On.Centipede.Shock += Centipede_Shock;
             On.Centipede.ShortCutColor += Centipede_ShortCutColor;
             On.CentipedeAI.ctor += CentipedeAICTOR;
-            On.AbstractCreatureAI.ctor += AbstractCreatureAI_ctor;
+            //On.AbstractCreatureAI.ctor += AbstractCreatureAI_ctor;
 
             //On.RoomRealizer.PutOutARoom += RoomRealizer_PutOutARoom; Does't seem like this is needed. Creatures can move from unloaded rooms fine -WW
         }
@@ -330,7 +333,7 @@ namespace PitchBlack
             orig(self, world, parent);
             if (parent.creatureTemplate.type == CreatureTemplateType.NightTerror)
             {
-                parent.NTT(world);
+                //parent.NTT(world); //WW- GONNA TRY REMOVING THIS IN FAVOR OF THE NEW VERSION
             }
         }
 
