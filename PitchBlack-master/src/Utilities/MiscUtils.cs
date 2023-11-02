@@ -17,4 +17,14 @@ public class MiscUtils
     {
         return player.slugcatStats?.name?.value == "Beacon" || player.slugcatStats?.name?.value == "Photomaniac";
     }
+
+    public static bool IsBeaconWorldstate(RainWorldGame game)
+    {
+        return game.GetStorySession.saveStateNumber == Plugin.BeaconName;
+    }
+
+    public static bool IsPhotoWorldstate(RainWorldGame game)
+    {
+        return game.GetStorySession.saveStateNumber == Plugin.PhotoName;
+    }
 }
