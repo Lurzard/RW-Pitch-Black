@@ -178,7 +178,21 @@ namespace PitchBlack
             On.CentipedeAI.ctor += CentipedeAICTOR;
             //On.AbstractCreatureAI.ctor += AbstractCreatureAI_ctor;
 
-            //On.RoomRealizer.PutOutARoom += RoomRealizer_PutOutARoom; Does't seem like this is needed. Creatures can move from unloaded rooms fine -WW
+            //On.RoomRealizer.PutOutARoom += RoomRealizer_PutOutARoom; Doesn't seem like this is needed. Creatures can move from unloaded rooms fine -WW
+
+            On.CentipedeGraphics.InitiateSprites += CentipedeGraphics_InitiateSprites;
+        }
+
+        private static void CentipedeGraphics_InitiateSprites(On.CentipedeGraphics.orig_InitiateSprites orig, CentipedeGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
+        {
+            orig(self, sLeaser, rCam);
+            if (self.centipede.Template.type == CreatureTemplateType.NightTerror)
+            {
+                foreach (var sprite in sLeaser.sprites)
+                {
+                    sprite.shader = self.centipede.abstractCreature.Room.world.game.rainWorld.Shaders["Hologram"];
+                }
+            }
         }
 
         #region weapon.HitSomething hooks
@@ -365,7 +379,7 @@ namespace PitchBlack
         {
             if (self.abstractCreature.creatureTemplate.type == CreatureTemplateType.NightTerror)
             {
-                return new Color(0.286f, 0.286f, 0.952f);
+                return new Color(0.2f, 0f, 1f);
             }
             return orig(self);
         }
@@ -470,7 +484,7 @@ namespace PitchBlack
                 if (!NightTerrorInfo.TryGetValue(self, out _))
                     NightTerrorInfo.Add(self, new NightTerrorData());
                 
-                self.bodyChunks = new BodyChunk[19];
+                self.bodyChunks = new BodyChunk[21];
                 for (int i = 0; i < self.bodyChunks.Length; i++)
                 {
                     float num = i / (float)(self.bodyChunks.Length - 1);
