@@ -1,5 +1,7 @@
 overseersMin: 1
 overseersMax: 6
+corruptionEffectColor: 0.2,0.0,0.9
+corruptionEyeColor: 0.2,0.0,0.9
 playerGuideOverseerSpawnChance: 0.0
 Subregion: Neglected Underbelly
 Subregion: Dead Spot

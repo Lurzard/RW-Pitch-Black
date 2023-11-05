@@ -1,6 +1,6 @@
 Palette: 13
-corruptionEffectColor: 0.7,0.7,0.4
-corruptionEyeColor: 0.5,0.3,0
+corruptionEffectColor: 0.1,0.0,0.9
+corruptionEyeColor: 0.1,0.0,0.9
 waterColorOverride: 0.15, 0.35, 0.15
 batDepleteCyclesMin: 2
 batDepleteCyclesMax: 7

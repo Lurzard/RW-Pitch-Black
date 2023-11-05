@@ -1,4 +1,4 @@
-base : the carcass
+base : rotten carcass
 the carcass : innards
 the carcass (cerebellum) : 0 : grieving brother
 the carcass (vestige) : -1 vestige

@@ -1,6 +1,8 @@
 Palette: 10
 batDepleteCyclesMin: 2
 batDepleteCyclesMax: 7
+corruptionEffectColor: 0.1,0.0,0.9
+corruptionEyeColor: 0.1,0.0,0.9
 batDepleteCyclesMaxIfLessThanTwoLeft: 3
 batDepleteCyclesMaxIfLessThanFiveLeft: 4
 overseersSpawnChance: 0.2
