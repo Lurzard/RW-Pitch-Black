@@ -1,0 +1,9 @@
+Template: NONE
+Clouds: 0.173913
+Grime: 0.3478261
+Palette: 6
+EffectColorA: 10
+EffectColorB: 2
+PlacedObjects: ExitSymbolHidden><229.2329><108.8007><, 
+MorePalette0: 367, 0.9021739
+MorePalette1: 10, 0.6521739

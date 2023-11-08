@@ -1,0 +1,11 @@
+Template: NONE
+Clouds: 0.793478
+Grime: 0.2934783
+BkgDroneVolume: 0.3043478
+Palette: 6
+EffectColorA: 9
+EffectColorB: 7
+Effects: Darkness-0.9021739-20-20, 
+AmbientSounds: OMNI><AM_IND-Warehouse01.ogg><692.7204><476.9478><0.3695652><1, 
+FadePalette: 33, 0.326087
+MorePalette0: 367, 0.8152174

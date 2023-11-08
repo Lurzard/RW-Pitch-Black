@@ -1,0 +1,12 @@
+Template: NONE
+Clouds: 0.1195652
+Grime: 0.3695652
+BkgDroneVolume: 0.3043478
+Palette: 6
+EffectColorA: 9
+EffectColorB: 7
+Effects: Darkness-0.4891303-20-20, 
+PlacedObjects: FreeformDecalOrSprite><349.4512><791.056><-296.0001~-5~0;0^259;-3^258;610^13;644~Futile_White~1~LightBloom~Foreground~62~False~FFFFFF, 
+AmbientSounds: OMNI><AM_IND-Factory03.ogg><1178.571><648.0892><0.2934783><1, SPOT><Mech Basic.wav><706.8466><385.8783><0.2500007><1><702.8466><258.8783><-38.35547><-121.3553><0><0.1, SPOT><SO_IND-MechHum03.ogg><547.8837><203.9127><0.2826087><0.823913><301.8837><243.9127><-16.35535><-68.35535><0><0.1, 
+FadePalette: 8, 0.2934783, 0.3478261
+MorePalette0: 367, 0.8913044, 0.8804348

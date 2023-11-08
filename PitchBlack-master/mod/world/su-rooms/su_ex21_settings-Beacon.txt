@@ -1,11 +1,9 @@
 Template: SU_SettingsTemplate_Inside
 Clouds: 0.1304348
 Grime: 0.3478261
-Palette: 33
-EffectColorB: 5
-Effects: 
+Palette: 0
+Effects: Darkness-0.7499996-30-30, 
 PlacedObjects: CentipedeAttractor><499.5591><456.0595><-112~154, DangleFruit><380.5563><513.7003><0~0~2~3, DangleFruit><405.5698><482.8368><0~0~2~3, KarmaFlower><238.801><585.9801><0~0~5~7, LanternOnStick><385.3638><412.6489><-16.36353~-99.11111, 
 AmbientSounds: SPOT><AM_IND-Utility03.ogg><531.2055><461.945><0.3804348><1><173.2055><207.945><-35.35534><-35.35534><0><0.2086958, SPOT><SO_IND-HVAC.ogg><773.0627><561.0601><0.4565217><0.823913><356.0627><692.0601><-35.35534><-35.35534><0><0.2304349, 
 FadePalette: 10, 0.1847826
-MorePalette0: 367, 0.4741397
-MorePalette1: 10, 0.3913043
+MorePalette0: 367, 0.8002266

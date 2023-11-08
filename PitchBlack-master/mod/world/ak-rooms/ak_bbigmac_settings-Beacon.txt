@@ -1,0 +1,11 @@
+Template: NONE
+Clouds: 0.1086956
+Grime: 0.3043478
+BkgDroneVolume: 0.3043478
+Palette: 6
+EffectColorA: 9
+EffectColorB: 7
+Effects: Flies-0.1413043-20-20, Darkness-0.7065217-30-30, 
+AmbientSounds: OMNI><AM_IND-Midsex01.ogg><1179.864><654.1646><0.1739134><1, SPOT><Mech Active.wav><757.4153><399.1374><0.141303><1.136956><330.4153><216.1374><-48.35535><-99.35535><0><0.1, SPOT><Mech Multiactive Highpass.wav><772.1596><368.3216><0.25><1><301.1596><1096.322><56.64465><-47.35535><0><0.1326088, 
+FadePalette: 33, 0.3586957, 0.3695652
+MorePalette0: 367, 0.8152174, 0.8152174

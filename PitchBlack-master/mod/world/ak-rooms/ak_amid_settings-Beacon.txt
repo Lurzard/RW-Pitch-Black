@@ -1,0 +1,12 @@
+Template: NONE
+Clouds: 0.1304348
+Grime: 0.4021739
+BkgDroneVolume: 0.3043478
+Palette: 6
+EffectColorA: 9
+EffectColorB: 7
+Effects: Flies-0.06521739-20-20, Darkness-0.4021741-30-30, 
+PlacedObjects: KarmaFlower><118.6939><459.9512><433~65.99997~5~7, LightSource><116.1002><435.5769><0.08695652~White~871~-305~50~86.60254~1~0~None~0~0, 
+AmbientSounds: OMNI><AM_IND-Factory03.ogg><1169.849><653.576><0.25><1, SPOT><Basic Mech.wav><390.8492><379.3686><0.1956528><0.8434795><326.8492><287.3686><-4.355347><-98.35535><0><0.1, SPOT><Mech Active.wav><713.1995><398.5138><0.2717398><0.7065229><806.1995><423.5138><-37.35535><-44.35535><0><0.1652175, 
+FadePalette: 33, 0.3369565
+MorePalette0: 367, 0.8043478

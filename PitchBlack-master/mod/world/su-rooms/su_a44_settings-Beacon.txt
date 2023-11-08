@@ -18,4 +18,4 @@ PlacedObjects: DangleFruit><720.5573><233.5536><-464~264~2~3, DangleFruit><525.8
 AmbientSounds: OMNI><AM_ENV-LightWind.ogg><665.2393><652.6997><0.2826087><0.7065217, OMNI><SO_WAT-DripTap.ogg><662.3217><572.5906><0.3043478><1, 
 FadePalette: 0, 0.1195652
 MorePalette0: 367, 0.7017915
-MorePalette1: 10, 0.5045936
+MorePalette1: 10, 0.7002457

@@ -1,0 +1,11 @@
+Template: NONE
+Grime: 0.3043478
+BkgDroneVolume: 0.3043478
+Palette: 6
+EffectColorA: 9
+EffectColorB: 7
+Effects: Flies-0.173913-20-20, Darkness-0.25-22-76, 
+PlacedObjects: LightSource><753.6942><713.4521><0.05434782~Environment~-363~-390~-622~-224.3975~1~1~None~0~0, DangleFruit><771.8394><344.571><0~0~2~3, DangleFruit><797.3905><322.3577><0~0~2~3, FreeformDecalOrSprite><447.8444><249.1256><100~50~0;0^311.0001;4^779;548^28;551~Futile_White~1~LightBloom~Foreground~158~False~FFFFFF, 
+AmbientSounds: OMNI><AM_IND-Utility03.ogg><1180.437><649.5723><0.2391304><1, SPOT><SO_IND-HeatDuct.ogg><672.3559><462.8887><0.3260856><1><277.356><211.8887><-35.35534><-35.35534><0><0.1, SPOT><SO_IND-MechHum01.ogg><804.1633><309.5698><0.141303><1><253.1633><143.5698><-35.35534><-35.35534><0><0.1, OMNI><AM_ENV-Outside.ogg><786.3256><473.598><0.3369565><1, 
+FadePalette: 33, 0.3478261
+MorePalette0: 367, 0.9021739

@@ -6,3 +6,4 @@ AmbientSounds: SPOT><AM_ENV-NatWind.ogg><767.6144><487.147><0.3043478><1><400.61
 FadePalette: 33, 0.8586956, 0.8804348
 MorePalette0: 363, 0.04347826, 0
 MorePalette1: 367, 0.8043478, 0.8043478
+MorePalette2: 10, 0, 0.2065217
