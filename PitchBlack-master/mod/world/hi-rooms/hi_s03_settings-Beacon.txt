@@ -1,8 +1,5 @@
 Template: HI_SettingsTemplate_Inside
 DangerType: Flood
-RainIntensity: 0.7065217
-RumbleIntensity: 0.7065217
-Effects: FireFlies-0.2608696-36-130, 
-PlacedObjects: BrokenShelterWaterLevel><473.9116><445.8823><, LanternOnStick><467.6068><476.0809><-7~-39, 
-FadePalette: 33, 0.7826089
-MorePalette0: 10, 0.4130435
+PlacedObjects: BrokenShelterWaterLevel><473.9116><445.8823><, 
+FadePalette: 20, 0.0326087
+MorePalette0: 10, 0.9021739

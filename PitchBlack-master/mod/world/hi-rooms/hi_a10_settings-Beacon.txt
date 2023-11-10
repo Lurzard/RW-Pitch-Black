@@ -1,12 +1,11 @@
 Template: NONE
-RainIntensity: 0.7065217
-RumbleIntensity: 0.6956522
 Clouds: 0.2391304
 BkgDroneVolume: 0.2469565
 Palette: 5
-Effects: Flies-0.07608695-20-20, FastFloodDrain-0.625-22-75, FireFlies-0.2717391-288-78, 
-PlacedObjects: NoSpearStickZone><37.04559><252.4447><-77~88, NoSpearStickZone><243.5723><357.4083><0~100, LightBeam><-181.0558><82.30794><-35~686~955~662~853.0001~1~0~0~0.1065219~0~0~1~None~0~0, 
+EffectColorA: 10
+Effects: Flies-0.07608695-20-20, FastFloodDrain-0.625-22-75, LightBurn-0.3043478-19-129, 
+PlacedObjects: NoSpearStickZone><38.04559><262.4447><-77~88, NoSpearStickZone><243.5723><357.4083><0~100, LightSource><652.1045><569.9205><0.02173912~Environment~151~4~50~86.60254~1~1~None~0~0, CustomDecal><758.7075><-6.554565><-39~671~219~591~128~-4~-369.0001~-62~0~1~0~roundblack~1~0~1~0~1~0~1~0, CustomDecal><756.9999><-5><-39~671~219~591~128~-4~-624.0001~-67~0~1~0~roundblack~1~0~1~0~1~0~1~0, LightSource><82.18341><711.2809><0.04347826~EffectColor1~1019~-659~50~86.60254~1~1~None~0~0, 
 AmbientSounds: SPOT><AM_IND-Utility03.ogg><471.3587><253.6679><0.5><1><833.3586><656.6678><-26.35535><-67.35535><0><0.3500001, 
-FadePalette: 33, 0.7391304
-MorePalette0: 37, 0.0326087
-MorePalette1: 367, 0.8043478
+FadePalette: 33, 0.4782609
+MorePalette0: 367, 0.9021739
+MorePalette1: 10, 0.6521739
