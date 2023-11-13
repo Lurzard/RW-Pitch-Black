@@ -17,6 +17,9 @@ public class PBOptions : OptionInterface
 		chargeSpears = this.config.Bind<bool>("chargeSpears", false);
 		pursuer = this.config.Bind<bool>("pursuer", true);
         pursuerAgro = this.config.Bind<int>("pursuerAgro", 2, new ConfigAcceptableRange<int>(0, 10));
+
+        debugMsg = this.config.Bind<bool>("debugMsg", false);
+        universalPursuer = this.config.Bind<bool>("universalPursuer", false);
     }
 
     
@@ -26,6 +29,9 @@ public class PBOptions : OptionInterface
 	public static Configurable<bool> chargeSpears;
 	public static Configurable<bool> pursuer;
     public static Configurable<int> pursuerAgro;
+
+    public static Configurable<bool> debugMsg;
+    public static Configurable<bool> universalPursuer;
 
     public OpSlider pDistOp;
 	public OpCheckBox mpBox1;
@@ -123,6 +129,30 @@ public class PBOptions : OptionInterface
 			{description = dsc}
 		});
 		*/
+
+        lineCount -= 60;
+        OpCheckBox mpBox8;
+        dsc = Translate("Shows debug messages on screen");
+        Tabs[0].AddItems(new UIelement[]
+        {
+            mpBox8 = new OpCheckBox(PBOptions.debugMsg, new Vector2(margin, lineCount))
+            {description = dsc},
+            new OpLabel(mpBox8.pos.x + 30, mpBox8.pos.y+3, Translate("Debug Messages"))
+            {description = dsc}
+        });
+
+
+        OpCheckBox mpBox9;
+        dsc = Translate("The Pursuer appears in all campaigns for all slugcats");
+        Tabs[0].AddItems(new UIelement[]
+        {
+            mpBox9 = new OpCheckBox(PBOptions.universalPursuer, new Vector2(margin + 250, lineCount))
+            {description = dsc},
+            new OpLabel(mpBox9.pos.x + 30, mpBox9.pos.y+3, Translate("Universal Pursuer"))
+            {description = dsc}
+        });
+
+
 
 
         int descLine = 225;

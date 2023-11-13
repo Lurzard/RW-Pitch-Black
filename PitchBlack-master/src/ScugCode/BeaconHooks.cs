@@ -121,7 +121,7 @@ public static class BeaconHooks
 
     private static void Player_Die(On.Player.orig_Die orig, Player self)
     {
-        orig(self);
+        
         //spinch: on death, all of beacon's stored flarebombs gets popped off
         if (Plugin.scugCWT.TryGetValue(self, out var cwt) && cwt.Beacon?.storage != null)
         {
@@ -139,6 +139,8 @@ public static class BeaconHooks
                 af?.Deactivate();
             }
         }
+        //WW: but do that BEFORE orig in case our death unrealizes us
+        orig(self);
     }
 
     private static void Player_Jump(On.Player.orig_Jump orig, Player self)

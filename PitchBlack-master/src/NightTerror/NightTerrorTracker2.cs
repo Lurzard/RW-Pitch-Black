@@ -105,8 +105,19 @@ public class NTTracker
             //JUST IN CASE, GET RIDDA THE OLD ONE
             if (this.pursuer != null)
             {
-                this.pursuer.Move(this.spawnPos); //TRY N RESPAWN THEM FIRST OR WE CAN'T GET RID OF THEM
-                this.game.world.GetAbstractRoom(this.spawnPos).AddEntity(this.pursuer);
+                try 
+                {
+                    if (this.pursuer.Room != null)
+                    {
+                        this.pursuer.Move(this.spawnPos); //TRY N RESPAWN THEM FIRST OR WE CAN'T GET RID OF THEM
+                        this.game.world.GetAbstractRoom(this.spawnPos).AddEntity(this.pursuer);
+                    }
+                        
+                }
+                catch (Exception e)
+                {
+                    Debug.Log("UNABLE TO MOVE PURSUER");
+                }
 
                 if (this.pursuer.realizedCreature != null && this.pursuer.realizedCreature.room != null)
                 {
@@ -132,7 +143,7 @@ public class NTTracker
     public void Update()
     {
         
-        if (this.game.world == null || !PBOptions.pursuer.Value || (this.game.session is StoryGameSession session && (session.saveStateNumber != Plugin.BeaconName)) )
+        if (this.game.world == null || !PBOptions.pursuer.Value || (!PBOptions.universalPursuer.Value && (this.game.session is StoryGameSession session && session.saveStateNumber != Plugin.BeaconName)) )
         {
             return;
         }
@@ -144,6 +155,10 @@ public class NTTracker
         this.regionSwitchCooldown--;
         if (this.pursuer != null && this.pursuer.Room != null)
         {
+            Debug.Log("region cooldown: " + this.regionCooldowns.Contains(this.region) + " Time spent here: " + this.pursuer.timeSpentHere + " Relocate Timer: " + this.hackTimer);
+
+
+            //CHECK IF WE ARE DEAD OR IN A ROOM WE SHOULDN'T BE AND UHHH DON'T DESPAWN US UNLESS WE ARE OFFSCREEN?
             if (this.pursuer.state.dead || this.region != this.pursuer.world.region.name || (this.pursuer.Room.shelter && this.pursuer.Room.realizedRoom != null && this.pursuer.Room.realizedRoom.shelterDoor.IsClosing))
             {
                 //WE DON'T NEED THEM TO POOF INTO A CLOUD OF SMOKE (UNTIL WE LEAVE THE ROOM)
@@ -167,7 +182,8 @@ public class NTTracker
                     }
                     this.pursuer = null;
 					this.hackTimer = 0;
-                    this.game.cameras[0].hud.textPrompt.AddMessage("DEBUG: Pursuer Removed...", 10, 250, true, true);
+                    if (PBOptions.debugMsg.Value)
+                        this.game.cameras[0].hud.textPrompt.AddMessage("DEBUG: Pursuer Removed...", 10, 250, true, true);
                     return;
                 }
                     
@@ -192,7 +208,7 @@ public class NTTracker
                 }
                 */
             }
-            if (this.pursuer.abstractAI != null && this.targetPlayer != null && this.ValidTrackRoom(this.targetPlayer.room))
+            if (this.pursuer.abstractAI != null && this.targetPlayer != null && this.ValidTrackRoom(this.targetPlayer.room) && this.targetPlayer.inShortcut == false)
             {
                 WorldCoordinate worldCoordinate = this.destination;
                 if (this.destination.room != this.pursuer.pos.room)
@@ -204,17 +220,27 @@ public class NTTracker
 				if (this.pursuer.pos.room == this.targetPlayer.abstractCreature.pos.room)
 				{
 					if (this.hackTimer > 0)
-						this.hackTimer--;
-				}
+						this.hackTimer -= 5; //UNDO THIS TIMER QUICKLY
+                }
 				else
 					this.hackTimer++;
-				
-				
             }
-            if ((this.pursuer.realizedCreature == null && this.pursuer.timeSpentHere > relocateTimer) || this.hackTimer > relocateTimer)
+            //CHECK IF WE'VE GOTTEN STUCK IN A ROOM OR ARE DUE TO TELEPORT 
+            if ((this.pursuer.realizedCreature == null && this.pursuer.timeSpentHere > (relocateTimer / 2) && this.hackTimer > 1000) || this.hackTimer > relocateTimer)
             {
-                Debug.Log("RE-LOCATING PURSUER!");
-                this.game.cameras[0].hud.textPrompt.AddMessage("DEBUG: Relocating Pursuer", 10, 250, true, true);
+                //CHECK IF WE GOT STUCK IN SOME ROOM SOMEWHERE
+                if (this.pursuer.timeSpentHere > relocateTimer && PBOptions.debugMsg.Value)
+                {
+                    Debug.Log("UN-STUCKING PURSUER!");
+                    this.game.cameras[0].hud.textPrompt.AddMessage("DEBUG: Un-Stucking Pursuer", 10, 250, false, false);
+                }
+                else if (PBOptions.debugMsg.Value)
+                {
+                    Debug.Log("RE-LOCATING PURSUER!");
+                    this.game.cameras[0].hud.textPrompt.AddMessage("DEBUG: Relocating Pursuer", 10, 250, false, false);
+                }
+                
+                
                 this.BeginSummon();
                 return;
                 /*
@@ -228,6 +254,8 @@ public class NTTracker
 				}
 				*/
             }
+
+            //NEVER LOSE SIGHT OF OUR TARGET
             if (this.pursuer.abstractAI.RealAI != null && this.targetPlayer != null)
             {
                 this.pursuer.abstractAI.RealAI.tracker.SeeCreature(this.targetPlayer.abstractCreature);
@@ -246,8 +274,15 @@ public class NTTracker
 
         //ACTUALLY WE CAN TRY JUST SPAWNING THEM RIGHT ON TOP OF US BECAUSE THEY WONT ACTUALLY ENTER THE ROOM UNTIL WE LEAVE
         //WHICH IS PERFECT BECAUSE THEN THEY WON'T SPAWN IN FRONT OF US
-        else if (!this.regionCooldowns.Contains(this.region) && this.game.world.rainCycle.CycleProgression > 0.1f)
+        //TBH IDK WHY WE CARE ABOUT ANYTHING OTHER THAN REGION SWITCH COOLDOWN
+        else if (!this.regionCooldowns.Contains(this.region) && this.regionSwitchCooldown <= 0) //&& this.game.world.rainCycle.CycleProgression > 0.1f
         {
+            if (PBOptions.debugMsg.Value && this.game.cameras[0].hud != null)
+            {
+                Debug.Log("SUMMONING PURSUER");
+                this.game.cameras[0].hud.textPrompt.AddMessage("DEBUG: Summoning Pursuer", 10, 250, false, false);
+            }
+            
             BeginSummon();
         }
         //else
@@ -310,8 +345,6 @@ public class NTTracker
             this.spawnPos = this.targetPlayer.room.GetWorldCoordinate(this.targetPlayer.mainBodyChunk.pos); //GetWorldCoordinate
             this.SetUpHunter();
 			this.hackTimer = 0;
-            Debug.Log("SUMMONING PURSUER");
-            this.game.cameras[0].hud.textPrompt.AddMessage("DEBUG: Summoning Pursuer", 10, 250, true, true);
         }
         //else
         //    Debug.Log("UNABLE TO SUMMON PURSUER");
@@ -336,7 +369,7 @@ public class NTTracker
 
     public List<string> regionCooldowns;
 
-    public int regionSwitchCooldown;
+    public int regionSwitchCooldown = 2400; //MAKE IT START THIS WAY SO THAT IT COUNTS FOR THE BEGINNING CYCLE TIMER TOO
 
     //TAKEN FROM BURDEN TRACKER
     public RainWorldGame game;

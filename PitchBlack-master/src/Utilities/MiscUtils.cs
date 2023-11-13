@@ -20,11 +20,11 @@ public class MiscUtils
 
     public static bool IsBeaconWorldstate(RainWorldGame game)
     {
-        return game.GetStorySession.saveStateNumber == Plugin.BeaconName;
+        return game.GetStorySession?.saveStateNumber == Plugin.BeaconName;
     }
 
     public static bool IsPhotoWorldstate(RainWorldGame game)
     {
-        return game.GetStorySession.saveStateNumber == Plugin.PhotoName;
+        return game.GetStorySession?.saveStateNumber == Plugin.PhotoName;
     }
 }

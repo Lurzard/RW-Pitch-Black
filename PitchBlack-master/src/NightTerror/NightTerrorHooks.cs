@@ -6,6 +6,9 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using static System.Reflection.BindingFlags;
+using Expedition;
+using Menu;
+
 
 public class NightTerrorData
 {
@@ -178,7 +181,21 @@ namespace PitchBlack
             On.CentipedeAI.ctor += CentipedeAICTOR;
             //On.AbstractCreatureAI.ctor += AbstractCreatureAI_ctor;
 
+            On.Menu.UnlockDialog.UpdateBurdens += UnlockDialog_UpdateBurdens;
             //On.RoomRealizer.PutOutARoom += RoomRealizer_PutOutARoom; Does't seem like this is needed. Creatures can move from unloaded rooms fine -WW
+        }
+
+        //JUST FOR TESTING I'M MODDING THE PURSUED BURDEN TO BE ALWAYS UNLOCKED
+        public static void UnlockDialog_UpdateBurdens(On.Menu.UnlockDialog.orig_UpdateBurdens orig, UnlockDialog self)
+        {
+            orig.Invoke(self);
+
+            if (self.pursuedBurden != null) //rotundBurden == null)
+            {
+                //rotundBurden = new BigSimpleButton(self, self.pages[0], self.Translate(ExpeditionProgression.BurdenName("bur-rotund")), "bur-rotund", vector1 + new Vector2(num5 * 4f, -15f), new Vector2(150f, 50f), FLabelAlignment.Center, true);
+                self.pursuedBurden.buttonBehav.greyedOut = false; // !ExpeditionData.unlockables.Contains("bur-rotund");
+                //self.pages[0].subObjects.Add(rotundBurden);
+            }
         }
 
         #region weapon.HitSomething hooks
