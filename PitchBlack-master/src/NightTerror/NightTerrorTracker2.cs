@@ -153,6 +153,8 @@ public class NTTracker
             this.regionSwitchCooldown = 2400;
         }
         this.regionSwitchCooldown--;
+        this.SetUpPlayer(); //WHY NOT DO THIS ALWAYS? SET TARGET PLAYER TO FIRST PLAYER
+
         if (this.pursuer != null && this.pursuer.Room != null)
         {
             Debug.Log("region cooldown: " + this.regionCooldowns.Contains(this.region) + " Time spent here: " + this.pursuer.timeSpentHere + " Relocate Timer: " + this.hackTimer);
@@ -188,7 +190,7 @@ public class NTTracker
                 }
                     
             }
-            this.SetUpPlayer();
+            //this.SetUpPlayer(); //MOVING THIS UP
             if (this.currentRoom != this.pursuer.Room.name)
             {
                 this.currentRoom = this.pursuer.Room.name;
@@ -275,7 +277,7 @@ public class NTTracker
         //ACTUALLY WE CAN TRY JUST SPAWNING THEM RIGHT ON TOP OF US BECAUSE THEY WONT ACTUALLY ENTER THE ROOM UNTIL WE LEAVE
         //WHICH IS PERFECT BECAUSE THEN THEY WON'T SPAWN IN FRONT OF US
         //TBH IDK WHY WE CARE ABOUT ANYTHING OTHER THAN REGION SWITCH COOLDOWN
-        else if (!this.regionCooldowns.Contains(this.region) && this.regionSwitchCooldown <= 0) //&& this.game.world.rainCycle.CycleProgression > 0.1f
+        else if (this.ValidTrackRoom(this.targetPlayer.room) && this.regionSwitchCooldown <= 0) //!this.regionCooldowns.Contains(this.region) && this.game.world.rainCycle.CycleProgression > 0.1f
         {
             if (PBOptions.debugMsg.Value && this.game.cameras[0].hud != null)
             {
