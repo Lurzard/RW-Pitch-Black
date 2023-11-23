@@ -4,6 +4,7 @@ PROTECTED
 daySky: NightAtC_Sky
 duskSky: NightAtC_Sky
 nightSky: NightAtC_Sky
+atmosphereColor: 0d1733
 
 DistantBuilding: AtC_Structure1, -520, -85, 160, -20
 DistantLightning: AtC_Light1, -520, -119, 160, 55

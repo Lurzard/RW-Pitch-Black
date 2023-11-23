@@ -1,11 +1,10 @@
 Template: LM_SettingsTemplate_Sewer
 DangerType: Rain
-RainIntensity: 0.5
-RumbleIntensity: 0.5
 Clouds: 1
 Grime: 0.2304349
-Palette: 35
+Palette: 3
 Effects: ElectricDeath-0.01086957-20-20, 
-PlacedObjects: 
 AmbientSounds: OMNI><AM_WIN-SubWnd.ogg><804.8406><459.6292><0.4347826><1, SPOT><AM_WIN-MedWind.ogg><811.0565><541.0505><0.326087><1><305.0565><50.05054><-255.3553><-411.3553><0><0.3934784, 
-FadePalette: 33, 0.8369565, 0.8260869, 0.8152174, 0.8043478
+FadePalette: 35, 0.8152174, 0.8695652, 0.9239131, 1
+MorePalette0: 10, 0.8043478, 0.8043478, 0.8043478, 0.8043478
+MorePalette1: 377, 0.7065217, 0.5, 0.3043478, 0.1086956

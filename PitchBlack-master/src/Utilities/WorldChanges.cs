@@ -9,6 +9,16 @@ public static class WorldChanges
     {
         On.Region.GetProperRegionAcronym += Region_GetProperRegionAcronym;
         On.RoofTopView.ctor += RoofTopView_ctor;
+        On.KarmaFlower.ApplyPalette += KarmaFlower_ApplyPalette;
+    }
+
+    private static void KarmaFlower_ApplyPalette(On.KarmaFlower.orig_ApplyPalette orig, KarmaFlower self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
+    {
+        orig(self, sLeaser, rCam, palette);
+        if (rCam.room.game.IsStorySession && rCam.room.game.GetStorySession.saveStateNumber == Plugin.BeaconName)
+        {
+            self.color = new HSLColor(0.702f, 96f, 0.53f).rgb;
+        }
     }
 
     private static void RoofTopView_ctor(On.RoofTopView.orig_ctor orig, RoofTopView self, Room room, RoomSettings.RoomEffect effect)

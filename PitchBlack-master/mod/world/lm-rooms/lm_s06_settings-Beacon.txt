@@ -1,8 +1,6 @@
 Template: LM_SettingsTemplate_Sewer
-DangerType: Rain
-RainIntensity: 0.3043478
-RumbleIntensity: 0.3043478
 Palette: 35
-Effects: 
 PlacedObjects: BrokenShelterWaterLevel><373.8264><366.1506><, 
-FadePalette: 33, 0.6847826
+FadePalette: 3, 0.3043478
+MorePalette0: 375, 1
+MorePalette1: 10, 0.7065217

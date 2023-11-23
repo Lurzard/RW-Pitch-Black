@@ -1,18 +1,13 @@
 Template: LM_SettingsTemplate_Sewer
-DangerType: Rain
-RainIntensity: 0.7065217
-RumbleIntensity: 0.7065217
-WaveSpeed: 0.4748068
-WaveLength: 0.9874035
-WaveAmplitude: 0.0001876857
-SecondWaveLength: 0.1666667
-SecondWaveAmplitude: 0
+DangerType: FloodAndRain
+RainIntensity: 0.7391304
 Clouds: 1
 Grime: 0.1652175
 BkgDroneVolume: 0
 Palette: 35
-EffectColorA: 10
+EffectColorA: 12
 Effects: GreenSparks-0.1304348-9-61, ElectricDeath-0-273-129, 
-PlacedObjects: LightBeam><297.4275><1558.092><-19~747~368~747~384.0001~-66~0~0~0.04130355~0~0~1~None~0~0, 
+PlacedObjects: LightSource><272.819><695.1877><0.2173913~EffectColor1~48.00003~0~50~86.60254~1~0~None~0~0, LightSource><195><756><0.2173913~EffectColor1~48.00003~0~50~86.60254~1~0~None~0~0, LightSource><275><777><0.2173913~EffectColor1~48.00003~0~50~86.60254~1~0~None~0~0, LightSource><724><757><0.2173913~EffectColor1~48.00003~0~50~86.60254~1~0~None~0~0, LightSource><666.0001><776><0.2173913~EffectColor1~48~1~50~86.60254~1~0~None~0~0, LightSource><766.0001><731><0.2173913~EffectColor1~48.00003~0~50~86.60254~1~0~None~0~0, LightSource><686.0001><693><0.2173913~EffectColor1~48.00003~0~50~86.60254~1~0~None~0~0, LightSource><255><839><0.2173913~EffectColor1~48.00003~0~50~86.60254~1~0~None~0~0, LightSource><213><879><0.2173913~EffectColor1~48.00003~0~50~86.60254~1~0~None~0~0, LightSource><274><939><0.2173913~EffectColor1~48.00003~0~50~86.60254~1~0~None~0~0, LightSource><256><1019><0.2173913~EffectColor1~48.00003~0~50~86.60254~1~0~None~0~0, LightSource><709><1114><0.2173913~EffectColor1~48.00003~0~50~86.60254~1~0~None~0~0, LightSource><687.0001><1057><0.2173913~EffectColor1~48.00003~0~50~86.60254~1~0~None~0~0, LightSource><769><855><0.2173913~EffectColor1~48.00003~0~50~86.60254~1~0~None~0~0, LightSource><687.0001><897><0.2173913~EffectColor1~34~1~50~86.60254~1~0~None~0~0, LightSource><239><929><0.05434816~EffectColor1~208~-10~50~86.60254~1~0~None~0~0, LightSource><724><797><0.05434816~EffectColor1~208~-10~50~86.60254~1~0~None~0~0, LightSource><774><1019><0.05434816~EffectColor1~292~9~50~86.60254~1~0~None~0~0, LightSource><475><922><0.02173913~EffectColor1~852~300~50~86.60254~1~0~None~0~0, 
 AmbientSounds: OMNI><AM_RAIN-Rumbles.ogg><796.1744><471.6522><0.3913043><1, OMNI><AM_ENV-NatWind.ogg><794.7855><552.4468><0><1, SPOT><AM_RAIN-RollingThunder.ogg><617.9052><510.8738><0.5><1><930.9052><2300.874><-295.3553><-250.3553><0><0.6434784, SPOT><AM_WIN-SubWnd.ogg><634.7275><385.0513><0.2608696><1><467.7275><884.0515><-408.3553><-297.3553><0><0.3717393, SPOT><Deep Weird Wind.wav><439.6069><477.6102><0.2608696><0.9021739><388.6069><2300.61><4.644653><-220.3553><0><0.6760871, 
-FadePalette: 10, 0.7717391, 0.8260869, 0.8260869, 0.5869565
+FadePalette: 8, 0.6304348, 0.5869565, 0.5869565, 0.5869565
+MorePalette0: 10, 0.75, 0.75, 0.75

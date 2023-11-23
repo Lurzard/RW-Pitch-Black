@@ -1,10 +1,8 @@
 Template: NONE
-DangerType: None
-RainIntensity: 0
-RumbleIntensity: 0
+DangerType: Flood
 Grime: 0.2608696
 Palette: 4
 EffectColorA: 13
-PlacedObjects: BrokenShelterWaterLevel><460.224><402.4483><, 
-FadePalette: 33, 0.8695652
-MorePalette0: 10, 0.8043478
+PlacedObjects: BrokenShelterWaterLevel><460.224><402.4483><, LightSource><469.634><572.8516><0.04347889~EffectColor1~70~-4~141~-96.39743~0~1~None~0~0, LightSource><550><550><0.04347826~EffectColor1~70~-4~141~-96.39743~0~1~None~0~0, LightSource><510><531><0.04347892~EffectColor1~70~-4~141~-96.39743~0~1~None~0~0, LightSource><507.9296><561.9119><0.02173913~EffectColor1~261~-1~50~86.60254~0~1~None~0~0, LightSource><503><540><0.3586963~EffectColor1~142.9999~3~-328~-48.39743~0~0~None~0~0, 
+FadePalette: 8, 0.3043478
+MorePalette0: 10, 1

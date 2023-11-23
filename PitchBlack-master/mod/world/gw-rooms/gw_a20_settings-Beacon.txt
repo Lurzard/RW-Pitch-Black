@@ -1,18 +1,10 @@
 Template: GW_SettingsTemplate_Inside
-DangerType: Rain
-RainIntensity: 0.4673913
-RumbleIntensity: 0.4673913
-WaveSpeed: 0.5
-WaveLength: 1
-WaveAmplitude: 0.04828316
-SecondWaveLength: 0.1666667
-SecondWaveAmplitude: 0
-Clouds: 1
 Palette: 11
-EffectColorA: 0
+EffectColorA: 12
 EffectColorB: 12
-Effects: FireFlies-0.6573257-25.73123-88.31112, 
-PlacedObjects: ExitSymbolHidden><552.1563><328.8748><, CustomDecal><605.8538><461.6135><-54~2~-59~-60~-24~-88~-184~-550~0~1~0~ScavMark Arrow~0.2391304~0.6521739~0.2391304~0.6521739~0.2391304~0.6521739~0.2391304~0.6521739, CustomDecal><530.1262><300.1552><-7~49~47~48~43~0~201~-351~0~1~0~ScavMark Circle~0~0.5543478~0~0.5543478~0~0.5543478~0~0.5543478, CustomDecal><130.5215><302.5511><0~618~713~618~713~0~-263~-196~0~0.02173913~0~zGWMarks - C05b~0~0~0~0~0~0.3804348~0~0, 
+Effects: Darkness-0.1521739-427-211, ReplaceEffectColorB-0-20-20-Color-0-0.04347826-0.1195652, 
+PlacedObjects: ExitSymbolHidden><552.1563><328.8748><, CustomDecal><605.8538><461.6135><-54~2~-59~-60~-24~-88~-184~-550~0~1~0~ScavMark Arrow~0~0.6521739~0.1086956~0.6521739~0~0.6521739~0.1086956~0.6521739, CustomDecal><530.1262><300.1552><-7~49~47~48~43~0~201~-351~0~1~0~ScavMark Circle~0~0.5543478~0.09782609~0.5543478~0~0.5543478~0.09782609~0.5543478, CustomDecal><130.5215><302.5511><0~618~713~618~713~0~-263~-196~0~0.02173913~0~zGWMarks - C05b~0~0~0.07608695~0~0~0.3804348~0.07608695~0, LightSource><330.3751><474.094><0.2500002~EffectColor1~155~35~50~86.60254~1~0~None~0~0, LightSource><754.0001><507><0.2500002~EffectColor1~155~35~50~86.60254~1~0~None~0~0, 
 AmbientSounds: OMNI><AM_ENV-LightWind.ogg><820.924><649.3488><0.2717391><0.7065217, OMNI><SO_WAT-LilDrips.ogg><643.5258><650.1984><0.2934783><1, 
-FadePalette: 33, 0.9399343
-MorePalette0: 10, 0.7282609
+FadePalette: 35, 0.75
+MorePalette0: 375, 1
+MorePalette1: 10, 0.5
