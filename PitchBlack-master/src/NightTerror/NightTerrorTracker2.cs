@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Music;
 using System;
+using Expedition;
 
 namespace PitchBlack;
 
@@ -154,10 +155,18 @@ public class NTTracker
         }
         this.regionSwitchCooldown--;
         this.SetUpPlayer(); //WHY NOT DO THIS ALWAYS? SET TARGET PLAYER TO FIRST PLAYER
+        
+        if (this.currentTargetRoom != this.targetPlayer?.abstractCreature?.Room) //SOMETHING NEW TO TRACK
+        {
+            this.oldTargetRoom = this.currentTargetRoom;
+            this.currentTargetRoom = this.targetPlayer.abstractCreature.Room;
+            Debug.Log("Target moving to: " + currentTargetRoom.name);
+
+        }
 
         if (this.pursuer != null && this.pursuer.Room != null)
         {
-            Debug.Log("region cooldown: " + this.regionCooldowns.Contains(this.region) + " Time spent here: " + this.pursuer.timeSpentHere + " Relocate Timer: " + this.hackTimer);
+            Debug.Log("region cooldown: " + this.regionCooldowns.Contains(this.region) + " Time spent here: " + this.pursuer.timeSpentHere + " Relocate Timer: " + this.hackTimer + " DEST: " + this.destination.room.ToString());
 
 
             //CHECK IF WE ARE DEAD OR IN A ROOM WE SHOULDN'T BE AND UHHH DON'T DESPAWN US UNLESS WE ARE OFFSCREEN?
@@ -212,12 +221,16 @@ public class NTTracker
             }
             if (this.pursuer.abstractAI != null && this.targetPlayer != null && this.ValidTrackRoom(this.targetPlayer.room) && this.targetPlayer.inShortcut == false)
             {
-                WorldCoordinate worldCoordinate = this.destination;
-                if (this.destination.room != this.pursuer.pos.room)
+                WorldCoordinate worldCoordinate = this.destination; // ????? BUT WHY? 
+                //if (this.destination.room != this.pursuer.pos.room) //WAIT THIS NEVER RUNS DOES IT... DNSPY YOU DUMBASS
+                if (this.destination.room != this.targetPlayer.abstractCreature.pos.room)
                 {
                     this.destination = this.targetPlayer.abstractCreature.pos;
                     this.pursuer.abstractAI.SetDestination(this.destination);
+                    //ac.abstractAI.SetDestination(sameRoomPlayer.pos);
+                    //Debug.Log("I SMELL YOU " + this.destination);
                 }
+                //Debug.Log("CAN I SMELL YOU? " + this.pursuer.abstractAI.offscreenSpeedFac);
 				
 				if (this.pursuer.pos.room == this.targetPlayer.abstractCreature.pos.room)
 				{
@@ -261,6 +274,7 @@ public class NTTracker
             if (this.pursuer.abstractAI.RealAI != null && this.targetPlayer != null)
             {
                 this.pursuer.abstractAI.RealAI.tracker.SeeCreature(this.targetPlayer.abstractCreature);
+                //Debug.Log("I SMELL YOU ");
                 //if (ExpeditionData.devMode && !this.pursuer.state.dead && Input.GetKey(8))
                 //{
                 //	this.pursuer.Die();
@@ -277,7 +291,7 @@ public class NTTracker
         //ACTUALLY WE CAN TRY JUST SPAWNING THEM RIGHT ON TOP OF US BECAUSE THEY WONT ACTUALLY ENTER THE ROOM UNTIL WE LEAVE
         //WHICH IS PERFECT BECAUSE THEN THEY WON'T SPAWN IN FRONT OF US
         //TBH IDK WHY WE CARE ABOUT ANYTHING OTHER THAN REGION SWITCH COOLDOWN
-        else if (this.ValidTrackRoom(this.targetPlayer.room) && this.regionSwitchCooldown <= 0) //!this.regionCooldowns.Contains(this.region) && this.game.world.rainCycle.CycleProgression > 0.1f
+        else if (this.targetPlayer != null && this.ValidTrackRoom(this.targetPlayer.room) && this.regionSwitchCooldown <= 0) //!this.regionCooldowns.Contains(this.region) && this.game.world.rainCycle.CycleProgression > 0.1f
         {
             if (PBOptions.debugMsg.Value && this.game.cameras[0].hud != null)
             {
@@ -342,9 +356,11 @@ public class NTTracker
     public void BeginSummon()
     {
         this.SetUpPlayer();
-        if (this.targetPlayer?.room != null && this.ValidTrackRoom(this.targetPlayer.room))
+        if (this.targetPlayer?.room != null && this.ValidTrackRoom(this.targetPlayer.room) && this.oldTargetRoom != null)
         {
-            this.spawnPos = this.targetPlayer.room.GetWorldCoordinate(this.targetPlayer.mainBodyChunk.pos); //GetWorldCoordinate
+            //this.spawnPos = this.targetPlayer.room.GetWorldCoordinate(this.targetPlayer.mainBodyChunk.pos); //GetWorldCoordinate
+            this.spawnPos = this.targetPlayer.room.abstractRoom.RandomNodeInRoom(); //LETS TRY CLOSER TO THE ORIG
+            //this.spawnPos = this.oldTargetRoom.RandomNodeInRoom(); //OKAY, LETS TRY THE LAST ROOM WE VISITED THEN... NOPE, ISN'T ANY BETTER
             this.SetUpHunter();
 			this.hackTimer = 0;
         }
@@ -381,4 +397,187 @@ public class NTTracker
     public bool summoning;
 	public int hackTimer = 0;
     public int relocateTimer = PBOptions.pursuerAgro.Value * 2400; //IN SECONDS
+    public AbstractRoom currentTargetRoom;
+    public AbstractRoom oldTargetRoom;
+}
+
+
+
+//AND A VERSION THAT IS BASICALLY JUST PURSUER BURDEN
+public class NTTracker_BURD
+{
+    /*
+    public NTTracker(RainWorldGame g)
+    {
+        Debug.Log("PURSUED TRACKER INIT");
+        this.regionCooldowns = new List<string>();
+        this.game = g;
+        this.unrealizedCounter = 0;
+        this.region = this.game.world.region.name;
+    }
+
+    public void SpawnPosition()
+    {
+        if (this.game != null && this.game.world != null && this.game.Players != null && this.game.Players.Count > 0 && this.game.Players[0] != null && this.game.Players[0].Room != null)
+        {
+            List<int> list = new List<int>();
+            for (int i = 0; i < this.game.world.NumberOfRooms; i++)
+            {
+                AbstractRoom abstractRoom = this.game.world.GetAbstractRoom(this.game.world.firstRoomIndex + i);
+                if (abstractRoom != null && !abstractRoom.shelter && !abstractRoom.gate && abstractRoom.name != this.game.Players[0].Room.name)
+                {
+                    list.Add(i);
+                }
+            }
+            AbstractRoom abstractRoom2 = this.game.world.GetAbstractRoom(this.game.world.firstRoomIndex + list[UnityEngine.Random.Range(0, list.Count)]);
+            //JUST KIDDING, TAKE OUR TARGET ROOM
+            abstractRoom2 = this.targetPlayer.room.abstractRoom;
+            this.spawnPos = abstractRoom2.RandomNodeInRoom();
+            Debug.Log("HUNTER LOCATION: " + abstractRoom2.name);
+        }
+    }
+
+    public void SetUpPlayer()
+    {
+        if (this.game != null)
+        {
+            for (int i = 0; i < this.game.Players.Count; i++)
+            {
+                if (this.game.Players[i] != null && this.game.Players[i].realizedCreature != null && !this.game.Players[i].realizedCreature.dead)
+                {
+                    this.targetPlayer = (this.game.Players[i].realizedCreature as Player);
+                    return;
+                }
+            }
+            if (this.game.manager.musicPlayer != null)
+            {
+                Song song = this.game.manager.musicPlayer.song;
+                if (((song != null) ? song.name : null) == "RW_20 - Polybius")
+                {
+                    this.game.manager.musicPlayer.FadeOutAllNonGhostSongs(100f);
+                }
+            }
+            return;
+        }
+    }
+
+    public void SetUpHunter()
+    {
+        if (this.game != null && this.game.world != null && this.regionSwitchCooldown <= 0)
+        {
+            this.pursuer = new AbstractCreature(this.game.world, StaticWorld.GetCreatureTemplate(CreatureTemplate.Type.RedCentipede), null, this.spawnPos, this.game.GetNewID());
+            this.pursuer.voidCreature = true;
+            this.pursuer.saveCreature = false;
+            this.pursuer.ignoreCycle = true;
+            this.pursuer.HypothermiaImmune = true;
+            this.game.world.GetAbstractRoom(this.spawnPos).AddEntity(this.pursuer);
+            this.game.cameras[0].hud.textPrompt.AddMessage("DEBUG: Summoning Pursuer", 10, 250, false, false);
+        }
+    }
+
+    public void Update()
+    {
+        if (this.game.world == null)
+        {
+            return;
+        }
+        if (this.region != this.game.world.region.name)
+        {
+            this.region = this.game.world.region.name;
+            this.regionSwitchCooldown = 2400;
+        }
+        this.regionSwitchCooldown--;
+        if (this.pursuer != null && this.pursuer.Room != null)
+        {
+            if (this.pursuer.state.dead || this.region != this.pursuer.world.region.name || (this.pursuer.Room.shelter && this.pursuer.Room.realizedRoom != null && this.pursuer.Room.realizedRoom.shelterDoor.IsClosing))
+            {
+                if (this.pursuer.realizedCreature != null && this.pursuer.realizedCreature.room != null)
+                {
+                    this.pursuer.realizedCreature.room.AddObject(new ShockWave(this.pursuer.realizedCreature.mainBodyChunk.pos, 300f, 5f, 100, true));
+                    this.pursuer.realizedCreature.room.PlaySound(SoundID.Coral_Circuit_Break, this.pursuer.realizedCreature.mainBodyChunk);
+                    this.pursuer.realizedCreature.RemoveFromRoom();
+                    this.game.cameras[0].hud.textPrompt.AddMessage(("The pursuer retreats..."), 10, 250, true, true);
+                }
+                this.pursuer.Destroy();
+                if (this.pursuer.state.dead && !this.regionCooldowns.Contains(this.region))
+                {
+                    this.regionCooldowns.Add(this.region);
+                }
+                this.pursuer = null;
+                return;
+            }
+            this.SetUpPlayer();
+            if (this.currentRoom != this.pursuer.Room.name)
+            {
+                this.currentRoom = this.pursuer.Room.name;
+                Debug.Log("Pursuer moving to: " + this.currentRoom);
+                for (int i = 0; i < this.pursuer.Room.connections.Length; i++)
+                {
+                    for (int j = 0; j < this.pursuer.world.game.AlivePlayers.Count; j++)
+                    {
+                        if (this.pursuer.Room.connections[i] == this.pursuer.world.game.AlivePlayers[j].pos.room && !this.warning)
+                        {
+                            //this.game.cameras[0].hud.textPrompt.AddMessage(("You are being pursued..."), 10, 250, true, true);
+                            this.warning = true;
+                        }
+                    }
+                }
+            }
+            if (this.pursuer.abstractAI != null && this.targetPlayer != null)
+            {
+                WorldCoordinate worldCoordinate = this.destination;
+                if (this.destination.room != this.pursuer.pos.room)
+                {
+                    this.destination = this.targetPlayer.abstractCreature.pos;
+                    this.pursuer.abstractAI.SetDestination(this.destination);
+                }
+            }
+            if (this.pursuer.realizedCreature == null && this.pursuer.timeSpentHere > 2500)
+            {
+                Debug.Log("RE-LOCATING PURSUER!");
+                this.SpawnPosition();
+                this.pursuer.Move(this.spawnPos);
+                if (this.warning)
+                {
+                    this.warning = false;
+                    this.game.cameras[0].hud.textPrompt.AddMessage(("The pursuer retreats..."), 10, 250, true, true);
+                }
+            }
+            if (this.pursuer.abstractAI.RealAI != null && this.targetPlayer != null)
+            {
+                this.pursuer.abstractAI.RealAI.tracker.SeeCreature(this.targetPlayer.abstractCreature);
+                if (ExpeditionData.devMode && !this.pursuer.state.dead && Input.GetKey(KeyCode.Backspace))
+                {
+                    this.pursuer.Die();
+                }
+                if (!this.warning)
+                {
+                    //this.game.cameras[0].hud.textPrompt.AddMessage(ChallengeTools.IGT.Translate("You are being pursued..."), 10, 250, true, true);
+                    this.warning = true;
+                    return;
+                }
+            }
+        }
+        else if (!this.regionCooldowns.Contains(this.region) && this.game.world.rainCycle.CycleProgression > 0.1f)
+        {
+            this.SetUpPlayer();
+            this.SpawnPosition();
+            this.SetUpHunter();
+        }
+    }
+
+    public Player targetPlayer;
+    public AbstractCreature pursuer;
+    public string currentRoom;
+    public string region;
+    public WorldCoordinate spawnPos;
+    public WorldCoordinate destination;
+    public bool warning;
+    public int unrealizedCounter;
+    public List<string> regionCooldowns;
+    public int regionSwitchCooldown;
+
+    //TAKEN FROM BURDEN TRACKER
+    public RainWorldGame game;
+    */
 }
