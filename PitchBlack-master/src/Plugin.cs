@@ -71,8 +71,8 @@ class Plugin : BaseUnityPlugin
         PBPOMSunrays.RegisterLightrays();
         PBPOMDarkness.RegisterDarkness();
 
-        OverseerEx.Apply();
         PBFrozenCycleTimer.Apply();
+        OverseerEx.Apply();
 
         //NightDay.Apply(); //unfinished
         PassageHooks.Apply();

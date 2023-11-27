@@ -42,7 +42,6 @@ internal class PBFrozenCycleTimer
     public static void RainCycle_Update(On.RainCycle.orig_Update orig, RainCycle self)
     {
         orig(self);
-        Debug.Log($"Pitch black: timer: {self.timer}");
         if (IsBeaconWorldState(self) && self.timer != Mathf.RoundToInt(self.cycleLength * 0.33f))
         {
             self.timer = Mathf.RoundToInt(self.cycleLength * 0.33f);

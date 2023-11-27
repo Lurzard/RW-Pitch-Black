@@ -130,7 +130,7 @@ public class OverseerEx
         }
 
         if (!cursor.TryGotoNext(MoveType.After,  i => i.MatchLdcR4(out var _))) {
-            Plugin.Logger.LogDebug("MOD: IL hook failed 1");
+            Plugin.logger.LogDebug("MOD: IL hook failed 1");
             return;
         }
         cursor.Emit(OpCodes.Ldarg_0);
@@ -138,7 +138,7 @@ public class OverseerEx
         cursor.Emit(OpCodes.Ldc_R4);
 
         if (!cursor.TryGotoNext(MoveType.After, i => i.MatchLdcR4(out var _))) {
-            Plugin.Logger.LogDebug("MOD: IL hook failed 2");
+            Plugin.logger.LogDebug("MOD: IL hook failed 2");
             return;
         }
         cursor.Emit(OpCodes.Ldarg_0);
@@ -146,7 +146,7 @@ public class OverseerEx
         cursor.Emit(OpCodes.Ldc_R4);
 
         if (!cursor.TryGotoNext(MoveType.After, i => i.MatchLdcR4(out var _))) {
-            Plugin.Logger.LogDebug("MOD: IL hook failed 3");
+            Plugin.logger.LogDebug("MOD: IL hook failed 3");
             return;
         }
         cursor.Emit(OpCodes.Ldarg_0);
@@ -154,7 +154,7 @@ public class OverseerEx
         cursor.Emit(OpCodes.Ldc_R4);
 
         if (!cursor.TryGotoNext(MoveType.After, i => i.MatchLdcR4(out var _))) {
-            Plugin.Logger.LogDebug("MOD: IL hook failed 4");
+            Plugin.logger.LogDebug("MOD: IL hook failed 4");
             return;
         }
         cursor.Emit(OpCodes.Ldarg_0);
