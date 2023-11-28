@@ -183,6 +183,21 @@ namespace PitchBlack
 
             On.Menu.UnlockDialog.UpdateBurdens += UnlockDialog_UpdateBurdens;
             //On.RoomRealizer.PutOutARoom += RoomRealizer_PutOutARoom; Does't seem like this is needed. Creatures can move from unloaded rooms fine -WW
+
+            On.CentipedeGraphics.InitiateSprites += CentipedeGraphics_InitiateSprites;
+        }
+
+        private static void CentipedeGraphics_InitiateSprites(On.CentipedeGraphics.orig_InitiateSprites orig, CentipedeGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
+        {
+            orig(self, sLeaser, rCam);
+            if (self.centipede.Template.type == CreatureTemplateType.NightTerror)
+            {
+                foreach (var sprite in sLeaser.sprites)
+                {
+                    sprite.shader = self.centipede.abstractCreature.Room.world.game.rainWorld.Shaders["Hologram"];
+
+                }
+            }
         }
 
         //JUST FOR TESTING I'M MODDING THE PURSUED BURDEN TO BE ALWAYS UNLOCKED
@@ -479,8 +494,8 @@ namespace PitchBlack
                 self.abstractCreature.personality.bravery = 0.8485757f;
                 self.abstractCreature.personality.dominance = 0.7141814f;
                 self.abstractCreature.personality.energy = 0.9055567f;
-                self.abstractCreature.personality.nervous = 0.4577313f;
-                self.abstractCreature.personality.sympathy = 0.4754336f;
+                self.abstractCreature.personality.nervous = 0.2577313f;
+                self.abstractCreature.personality.sympathy = 0.2754336f;
 
                 abstractCreature.ignoreCycle = true;
 

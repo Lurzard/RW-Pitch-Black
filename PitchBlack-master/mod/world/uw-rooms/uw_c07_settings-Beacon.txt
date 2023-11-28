@@ -14,8 +14,9 @@ Palette: 367
 EffectColorA: 17
 EffectColorB: 15
 Effects: FireFlies-0.3043478-24-79, ReplaceEffectColorA-0-385-227-Color-0.2826087-0-1, 
-PlacedObjects: LightFixture><1251.507><374.5501><RedLight~-85.6795~230~62, LightFixture><1702.303><459.2839><RedLight~-277.6795~144~30, LightFixture><2160.365><427.8977><RedLight~17.32051~-10~56, LightFixture><2745.665><276.4312><RedLight~17.32051~-10~10, Corruption><2254.323><256.533><-6.134369~88.14221, CorruptionDarkness><2901.539><225.2295><16.00781~102.6679, CorruptionDarkness><3027.852><62.07524><148.8727~-59.01096, CorruptionDarkness><2368.134><350.1173><-218.7735~41.83829, LightSource><2761.786><371.3335><0.2054092~EffectColor1~-900.1726~-43.53671~50~86.60254~1~0~None~0~0, LightSource><1420.085><19.50543><0.1590092~EffectColor1~-359.1086~512.4681~50~86.60254~1~0~None~0~0, 
+PlacedObjects: LightFixture><1251.507><374.5501><RedLight~-85.6795~230~62, LightFixture><1702.303><459.2839><RedLight~-277.6795~144~30, LightFixture><2160.365><427.8977><RedLight~17.32051~-10~56, LightFixture><2745.665><276.4312><RedLight~17.32051~-10~10, Corruption><2254.323><256.533><-6.134369~88.14221, CorruptionDarkness><2901.539><225.2295><16.00781~102.6679, CorruptionDarkness><3027.852><62.07524><148.8727~-59.01096, CorruptionDarkness><2368.134><350.1173><-218.7735~41.83829, LightSource><2267.786><340.3335><0.1293229~EffectColor1~-270.1726~4.463287~50~86.60254~1~0~None~0~0, LightSource><1499.085><476.5054><0.1590092~EffectColor1~-359.1086~512.4681~50~86.60254~1~0~None~0~0, LightSource><2222><448><0.1590092~EffectColor1~-359.1086~512.4681~50~86.60254~1~0~None~0~0, LightSource><2923><277><0.1590092~EffectColor1~-123.1086~282.4681~50~86.60254~1~0~None~0~0, 
 AmbientSounds: OMNI><SO_WAT-DripTap.ogg><825.28><607.4478><0.1630435><1, OMNI><AM_ENV-LightWind.ogg><644.3><610.9958><0.3152174><0.9021739, 
 FadePalette: 30, 0.03479966, 0.03479966, 0.02899966
 WetTerrain: OFF
-MorePalette0: 10, 0.5277935, 0.7423912, 0.9453894
+MorePalette0: 42, 0.1521739, 0.1521739, 0.1521739
+MorePalette1: 10, 0.5543478, 0.6086956, 0.75
