@@ -92,8 +92,8 @@ class Plugin : BaseUnityPlugin
             Futile.atlasManager.LoadAtlas("atlases/nightTerroratlas");
             self.Shaders["Red"] = FShader.CreateShader("red", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath(path: "assetbundles/red")).LoadAsset<Shader>("Assets/red.shader"));
             self.Shaders["Sunrays"] = FShader.CreateShader("sunrays", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/sunrays")).LoadAsset<Shader>("Assets/sunrays.shader"));
-            self.Shaders["CorruptedEchoSkin"] = FShader.CreateShader("corruptedechoskin", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/pitch_black")).LoadAsset<Shader>("Assets/pitch_black.shader"));
-            self.Shaders["CorruptedDistortion"] = FShader.CreateShader("corrupteddistortion", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/pitch_black")).LoadAsset<Shader>("Assets/pitch_black.shader"));
+            //self.Shaders["CorruptedEchoSkin"] = FShader.CreateShader("corruptedechoskin", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/pitch_black")).LoadAsset<Shader>("Assets/pitch_black.shader"));
+            //self.Shaders["CorruptedDistortion"] = FShader.CreateShader("corrupteddistortion", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/pitch_black")).LoadAsset<Shader>("Assets/pitch_black.shader"));
             init = true;
 
             //I'M PRETTY SURE BEST PRACTICE IS TO PUT HOOKS HERE
