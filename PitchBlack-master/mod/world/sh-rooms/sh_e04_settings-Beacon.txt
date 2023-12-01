@@ -1,7 +1,8 @@
 Template: NONE
 Clouds: 0.4021739
 Grime: 0.05434782
-BkgDroneVolume: 0
+BkgDroneVolume: 0.3043478
+BkgDroneNoThreatVolume: 0
 Palette: 10
 Effects: BkgOnlyLightning-0.5434783-40-199, FireFlies-0.1956522-39-138, LightBurn-0.4021739-38-75, 
 PlacedObjects: LightSource><45.80029><562.761><1~White~110~60~50~86.60254~1~0~None~0~0, LightSource><1061.749><579.7><1~White~0~100~50~86.60254~1~0~None~0~0, FlareBomb><391.1729><315.1494><-20~116~2~3, FlareBomb><465.1432><345.6292><0~0~2~3, FlareBomb><3297.633><425.5875><0~0~2~3, FlareBomb><3374.51><495.1997><0~0~2~3, FlareBomb><3423.063><415.44><0~0~2~3, FlareBomb><280.2936><266.472><195.0558~-6~2~3, NoSpearStickZone><114.6398><276.5831><-58~158, NoSpearStickZone><5257.305><298.7974><5~104, ReliableSpear><2275.444><426.7043><, ReliableSpear><3889.349><221.7599><, ReliableSpear><4267.293><189.0549><, ReliableSpear><1084.832><274.1461><, Filter><372.7691><297.1991><-47~133~133~-185~Artificer|Spear, Filter><3379.223><444.6448><32~128~87.82153~-134.5263~Artificer|Spear, 
