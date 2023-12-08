@@ -1,0 +1,26 @@
+TH_UW - KICK : NEUTRAL
+TH_UW - SCRATCHHATS : NEUTRAL
+TH_UW - POWERKICK : NEUTRAL
+TH_UW - HATS : NEUTRAL
+TH_UW - PERC1 : NEUTRAL
+TH_UW - PERC2 : NEUTRAL
+TH_UW - PERC3 : NEUTRAL
+TH_UW - DEEPBASS : NEUTRAL
+TH_UW - HEART : NEUTRAL
+TH_UW - CRUSHBASS : NEUTRAL
+TH_UW - CHORDS : NEUTRAL
+TH_UW - CRUSHARP : NEUTRAL
+TH_UW - GLITCHNOISE : DANGER
+TH_UW - WARBLE : NEUTRAL
+TH_UW - PIANO : NEUTRAL
+TH_UW - ALARM : NEUTRAL
+TH_UW - LEAD : NEUTRAL
+TH_UW - WINDNOISE : DANGER
+TH_UW - TECHARP : NEUTRAL
+
+Layer : {Underhang|The Leg}TH_UW - KICK, {Underhang}TH_UW - SCRATCHHATS, {The Wall}TH_UW - POWERKICK, {The Wall}TH_UW - HATS
+Layer : {Underhang|The Leg}TH_UW - KICK, {Underhang}TH_UW - SCRATCHHATS, {The Wall}TH_UW - POWERKICK, {The Wall}TH_UW - HATS, {Underhang}TH_UW - PERC1, {The Leg}TH_UW - PERC2, {The Wall}TH_UW - PERC3
+Layer : {Underhang|The Leg}TH_UW - KICK, {Underhang}TH_UW - SCRATCHHATS, {The Wall}TH_UW - POWERKICK, {The Wall}TH_UW - HATS, {Underhang}TH_UW - PERC1, {The Leg}TH_UW - PERC2, {The Wall}TH_UW - PERC3, {Underhang}TH_UW - DEEPBASS, {The Leg}TH_UW - HEART, {The Wall}TH_UW - CRUSHBASS, {The Wall}TH_UW - CHORDS
+Layer : {Underhang|The Leg}TH_UW - KICK, {Underhang}TH_UW - SCRATCHHATS, {The Wall}TH_UW - POWERKICK, {The Wall}TH_UW - HATS, {Underhang}TH_UW - PERC1, {The Leg}TH_UW - PERC2, {The Wall}TH_UW - PERC3, {Underhang}TH_UW - DEEPBASS, {The Leg}TH_UW - HEART, {The Wall}TH_UW - CRUSHBASS, {The Wall}TH_UW - CHORDS, {Underhang}TH_UW - CRUSHARP, {The Leg}TH_UW - WARBLE, {The Wall}TH_UW - PIANO
+Layer : {Underhang|The Leg}TH_UW - KICK, {Underhang}TH_UW - SCRATCHHATS, {The Wall}TH_UW - POWERKICK, {The Wall}TH_UW - HATS, {Underhang}TH_UW - PERC1, {The Leg}TH_UW - PERC2, {The Wall}TH_UW - PERC3, {Underhang}TH_UW - DEEPBASS, {The Leg}TH_UW - HEART, {The Wall}TH_UW - CRUSHBASS, {The Wall}TH_UW - CHORDS, {Underhang}TH_UW - CRUSHARP, {The Leg}TH_UW - WARBLE, {The Wall}TH_UW - PIANO, {Underhang}TH_UW - ALARM, {Underhang}TH_UW - LEAD, {The Wall}TH_UW - TECHARP
+Layer : {Underhang|The Leg}TH_UW - KICK, {Underhang}TH_UW - SCRATCHHATS, {The Wall}TH_UW - POWERKICK, {The Wall}TH_UW - HATS, {Underhang}TH_UW - PERC1, {The Leg}TH_UW - PERC2, {The Wall}TH_UW - PERC3, {Underhang}TH_UW - DEEPBASS, {The Leg}TH_UW - HEART, {The Wall}TH_UW - CRUSHBASS, {The Wall}TH_UW - CHORDS, {Underhang}TH_UW - CRUSHARP, {The Leg}TH_UW - WARBLE, {The Wall}TH_UW - PIANO, {Underhang}TH_UW - ALARM, {Underhang}TH_UW - LEAD, {The Wall}TH_UW - TECHARP, {Underhang|The Leg}TH_UW - GLITCHNOISE, {The Wall}TH_UW - WINDNOISE

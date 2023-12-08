@@ -322,6 +322,10 @@ public class NTTracker
     {
         if (roomName == "SH_CABINETMERCHANT")
             return true;
+        if (roomName == "SH_Long")
+            return true;
+        if (roomName == "SH_CabinetAlley")
+            return true;
         if (roomName.Substring(0, Math.Min(2, roomName.Length)) == "RM_") //ALSO DON'T TRACK IN THE ROT
             return true; 
 
