@@ -106,23 +106,23 @@ public class NTTracker
             //JUST IN CASE, GET RIDDA THE OLD ONE
             if (this.pursuer != null)
             {
-                try 
-                {
-                    if (this.pursuer.Room != null)
-                    {
-                        this.pursuer.Move(this.spawnPos); //TRY N RESPAWN THEM FIRST OR WE CAN'T GET RID OF THEM
-                        this.game.world.GetAbstractRoom(this.spawnPos).AddEntity(this.pursuer);
-                    }
+                //try 
+                //{
+                //    if (this.pursuer.Room != null)
+                //    {
+                //        this.pursuer.Move(this.spawnPos); //TRY N RESPAWN THEM FIRST OR WE CAN'T GET RID OF THEM
+                //        this.game.world.GetAbstractRoom(this.spawnPos).AddEntity(this.pursuer);
+                //    }
                         
-                }
-                catch (Exception e)
-                {
-                    Debug.Log("UNABLE TO MOVE PURSUER");
-                }
+                //}
+                //catch (Exception e)
+                //{
+                //    Debug.Log("UNABLE TO MOVE PURSUER");
+                //}
 
-                if (this.pursuer.realizedCreature != null && this.pursuer.realizedCreature.room != null)
+                if (this.pursuer.realizedCreature != null)
                 {
-                    this.pursuer.realizedCreature.RemoveFromRoom();
+                    this.pursuer.realizedCreature.Destroy(); //THIS MIGHT HAVE BEEN WHAT WE NEEDED
                 }
 
                 this.pursuer.Destroy();
@@ -166,7 +166,8 @@ public class NTTracker
 
         if (this.pursuer != null && this.pursuer.Room != null)
         {
-            Debug.Log("region cooldown: " + this.regionCooldowns.Contains(this.region) + " Time spent here: " + this.pursuer.timeSpentHere + " Relocate Timer: " + this.hackTimer + " DEST: " + this.destination.room.ToString());
+            if (PBOptions.debugMsg.Value)
+                Debug.Log("region cooldown: " + this.regionCooldowns.Contains(this.region) + " Time spent here: " + this.pursuer.timeSpentHere + " Relocate Timer: " + this.hackTimer + " DEST: " + this.destination.room.ToString());
 
 
             //CHECK IF WE ARE DEAD OR IN A ROOM WE SHOULDN'T BE AND UHHH DON'T DESPAWN US UNLESS WE ARE OFFSCREEN?
