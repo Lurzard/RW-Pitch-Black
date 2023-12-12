@@ -471,6 +471,7 @@ public static class Crafting
                 if (cwt.Beacon.storage.storedFlares.Count < cwt.Beacon.storage.capacity)
                 {
                     cwt.Beacon.storage.FlarebombtoStorage(item.realizedObject as FlareBomb);
+                    cwt.Beacon.heldCraft = true;
                 }
                 else if (self.FreeHand() != -1)
                     self.SlugcatGrab(item.realizedObject, self.FreeHand());

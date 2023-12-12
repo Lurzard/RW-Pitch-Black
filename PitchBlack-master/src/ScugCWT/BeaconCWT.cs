@@ -7,6 +7,8 @@ public class BeaconCWT
 {
     public ScugCWT scugCWTData; //for if you need to get any variables from ScugCWT while accessing BeaconCWT
     public FlareStore storage;
+    public int dontThrowTimer = 0;
+    public bool heldCraft = false;
     public BeaconCWT(ScugCWT cwtData)
     {
         scugCWTData = cwtData;
@@ -73,24 +75,16 @@ public class BeaconCWT
                 counter++;
                 if (counter > 20 && storedFlares.Count < capacity)
                 {
-                    if (storedFlares.Count == 0)
+                    // Move flare from any hand to store if store is empty
+                    //WW- WHY ONLY MAIN HAND IF STORAGE IS NOT FULL? SEEMS LIKE THIS SHOULD WORK FROM ANY HAND
+                    for (int i = 0; i < 2; i++)
                     {
-                        // Move flare from any hand to store if store is empty
-                        for (int i = 0; i < 2; i++)
+                        if (ownr.grasps[i] != null && ownr.grasps[i].grabbed is FlareBomb f)
                         {
-                            if (ownr.grasps[i] != null && ownr.grasps[i].grabbed is FlareBomb f)
-                            {
-                                FlarebombtoStorage(f);
-                                counter = 0;
-                                break;
-                            }
+                            FlarebombtoStorage(f);
+                            counter = 0;
+                            break;
                         }
-                    }
-                    else if (ownr.grasps[0]?.grabbed is FlareBomb f)
-                    {
-                        // Move flare from main paw to store
-                        FlarebombtoStorage(f);
-                        counter = 0;
                     }
                 }
                 if (counter > 20 && storedFlares.Count > 0)
@@ -99,7 +93,6 @@ public class BeaconCWT
                     FlarebombFromStorageToPaw(eu);
                     counter = 0;
                 }
-
             }
             else
             {
