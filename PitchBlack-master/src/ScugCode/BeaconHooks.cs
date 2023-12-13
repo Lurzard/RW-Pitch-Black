@@ -3,6 +3,7 @@ using MonoMod.Cil;
 using Mono.Cecil.Cil;
 using UnityEngine;
 using MoreSlugcats;
+using System;
 
 namespace PitchBlack;
 
@@ -26,8 +27,27 @@ public static class BeaconHooks
         On.Player.SwallowObject += Player_SwallowObject;
         On.Player.Regurgitate += Player_Regurgitate;
         On.Player.ObjectEaten += Player_ObjectEaten;
+        On.HUD.FoodMeter.MeterCircle.Update += MeterCircle_Update;
     }
 
+    public static int foodWarning = 0;
+    //SHOW A FOOD BAR WARNING IF WE DON'T HAVE ENOUGH FOOD TO MAKE A FLASHBANG
+    private static void MeterCircle_Update(On.HUD.FoodMeter.MeterCircle.orig_Update orig, HUD.FoodMeter.MeterCircle self)
+    {
+        orig(self);
+        if (foodWarning > 0 && !self.meter.IsPupFoodMeter && self.number < self.meter.ShowSurvivalLimit && (self.meter.hud.owner.GetOwnerType() == HUD.HUD.OwnerType.Player))
+        {
+            if (self.meter.timeCounter % 20 > 10)
+            {
+                self.rads[0, 0] *= 0.96f;
+                self.circles[0].color = 1;
+            }
+            //num = 0.65f + 0.35f * Mathf.Sin((float)self.meter.timeCounter / 20f * 3.1415927f * 2f);
+            self.circles[0].fade = 1f;
+            self.meter.visibleCounter = 80;
+            foodWarning--;
+        }
+    }
 
     private static void PlayerGraphics_Update(On.PlayerGraphics.orig_Update orig, PlayerGraphics self)
     {
