@@ -62,8 +62,8 @@ public static class Crafting
 
         if (Plugin.PhotoName == self.slugcatStats.name || Plugin.BeaconName == self.slugcatStats.name)
         {
-            if (self.FoodInStomach <= 0) //cant craft on an empty stomach
-                return false;
+            //if (self.FoodInStomach <= 0) //cant craft on an empty stomach
+            //    return false;
 
             if (Plugin.BeaconName == self.slugcatStats.name
                 && self.grasps[0]?.grabbed != null && self.CanBeSwallowed(self.grasps[0].grabbed)
@@ -102,13 +102,18 @@ public static class Crafting
                             continue;
                         if (self.FoodInStomach > 0) //you have food, yippee you can craft
                             canCraft = true;
+                        else if (self.swallowAndRegurgitateCounter > 10) //IF WE'VE BEEN HOLDING FOR A BIT
+                            BeaconHooks.foodWarning = 20; //NOT ENOUGH FOOD! ALSO SHOW A HUD WARNING
                     }
                 }
                 else if (Plugin.BeaconName == self.slugcatStats.name)
                 {
                     if (grabbed is Rock)
                     {
-                        canCraft = true;
+                        if (self.FoodInStomach > 0) //you have food, yippee you can craft
+                            canCraft = true;
+                        else
+                            BeaconHooks.foodWarning = 20; //NOT ENOUGH FOOD! ALSO SHOW A HUD WARNING
                     }
                 }
             }
@@ -471,6 +476,7 @@ public static class Crafting
                 if (cwt.Beacon.storage.storedFlares.Count < cwt.Beacon.storage.capacity)
                 {
                     cwt.Beacon.storage.FlarebombtoStorage(item.realizedObject as FlareBomb);
+                    cwt.Beacon.heldCraft = true;
                 }
                 else if (self.FreeHand() != -1)
                     self.SlugcatGrab(item.realizedObject, self.FreeHand());

@@ -10,6 +10,16 @@ public class FlarebombHooks
     {
         On.ScavengerAI.CollectScore_PhysicalObject_bool += ScavengerAI_CollectScore_PhysicalObject_bool;
         On.FlareBomb.Update += DieToFlareBomb;
+        On.FlareBomb.DrawSprites += FlareBomb_DrawSprites;
+    }
+
+    private static void FlareBomb_DrawSprites(On.FlareBomb.orig_DrawSprites orig, FlareBomb self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
+    {
+        orig(self, sLeaser, rCam, timeStacker, camPos);
+        if (MiscUtils.IsBeaconOrPhoto(self.thrownBy))
+        {
+            sLeaser.sprites[2].color = self.color;
+        }
     }
 
     #region not hooks

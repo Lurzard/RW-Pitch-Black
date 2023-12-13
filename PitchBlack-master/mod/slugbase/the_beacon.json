@@ -68,13 +68,13 @@
 		"guide_overseer": 87,
 		"has_dreams": false,
 		"perma_unlock_gates": true,
-		"world_state": "Beacon",
+		"world_state": ["Beacon", "Rivulet"],
 		"the_mark": true,
 		"food_min": 4,
 		"food_max": 7,
 		"select_menu_scene": "Slugcat_Beacon",
 		"sleep_scene": "Sleep_Beacon",
 		"select_menu_scene_ascended": "Trapped",
-		"expedition_enabled": false
+		"expedition_enabled": true
 	}
 }
