@@ -1,12 +1,13 @@
 CeilingDrips: 0.07608695
 RainIntensity: 0
-RumbleIntensity: 0.2391304
+RumbleIntensity: 0.5
 Clouds: 0.1413043
 Grime: 0.08695652
 BkgDroneVolume: 0
 Palette: 16
 EffectColorB: 5
-Effects: GreenSparks-0.1521739-20-20, Lightning-0.5652174-23-75, ElectricDeath-0.4891304-278-22, Darkness-0.1304348-23-132, FireFlies-0.25-284-138, BrokenZeroG-0.5-261-203, 
-PlacedObjects: LightSource><556.614><410.3669><0.5108685~Environment~0~100~-633~-166.3972~1~0~None~0~0, LightSource><791.9542><407.6943><0.5869565~Environment~0~100~-867.0015~-82.40121~1~0~None~0~0, Mushroom><399.1319><431.3386><-488.9999~55.99982~2~3, Mushroom><420.3721><421.6522><-502~-19~2~3, Mushroom><410.4792><434.1989><-505.0175~126.0254~2~3, SlimeMold><731.4685><403.4752><-284~-308~2~3, SlimeMold><670.8607><404.0624><-229~-384.9999~2~3, SlimeMold><636.0735><402.0646><-485~-182~2~3, CosmeticSlimeMold><673.6893><414.3076><-110~13, LightFixture><663.4148><406.4007><SlimeMoldLight~65.31927~-308.0002~20, LightFixture><125.1985><114.2744><RedLight~17.32051~-10~78, LightFixture><488.3964><642.421><RedLight~17.32051~-10~70, LightFixture><1012.489><441.3003><RedLight~17.32051~-10~82, 
-FadePalette: 33, 0.8804348
-MorePalette0: 10, 0.6553922
+Effects: GreenSparks-0.08695652-20-20, Lightning-0.5652174-23-75, ElectricDeath-1-278-22, 
+PlacedObjects: LightSource><289.2835><381.0193><0.1686727~Environment~-346.8359~251.0071~-377.4086~-121.0417~0~0~None~0~0, LightSource><850.116><411.4295><0.2099609~Environment~-306.8164~252.6078~-867.0015~-82.40121~0~0~None~0~0, Mushroom><399.1319><431.3386><-488.9999~55.99982~2~3, Mushroom><420.3721><421.6522><-502~-19~2~3, Mushroom><410.4792><434.1989><-505.0175~126.0254~2~3, SlimeMold><731.4685><403.4752><-284~-308~2~3, SlimeMold><670.8607><404.0624><-229~-384.9999~2~3, SlimeMold><636.0735><402.0646><-485~-182~2~3, CosmeticSlimeMold><673.6893><414.3076><-110~13, LightFixture><663.4148><406.4007><SlimeMoldLight~65.31927~-308.0002~20, 
+FadePalette: 17, 0.3043478
+MorePalette0: 371, 0.6031932
+MorePalette1: 10, 0.6089929

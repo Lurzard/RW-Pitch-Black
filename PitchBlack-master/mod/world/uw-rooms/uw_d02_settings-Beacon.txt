@@ -1,16 +1,16 @@
 Template: NONE
 CeilingDrips: 0.6956522
-RainIntensity: 0
-RumbleIntensity: 0
+RainIntensity: 0.8260869
 Clouds: 0.5
 Grime: 0
-BkgDroneNoThreatVolume: 0
+BkgDroneVolume: 0.3015966
 Palette: 16
 EffectColorA: 21
-EffectColorB: 21
-Effects: Lightning-0.09782609-5-64, GreenSparks-0.09782609-6-120, ElectricDeath-0.09782609-5-12, FireFlies-0.2717391-274-86, 
-PlacedObjects: DangleFruit><812.9302><821.4371><-888~492~2~3, DangleFruit><725.5615><876.6901><-805~520~2~3, DangleFruit><681.0793><841.6833><-761~376~2~3, DangleFruit><575.0508><1630.482><-685~506~2~3, ReliableSpear><133.598><1897.37><, DangleFruit><650.8226><1644.342><0~0~2~3, DangleFruit><694.886><1560.085><0~0~2~3, 
+EffectColorB: 18
+Effects: Lightning-0.4347826-5-64, GreenSparks-0-6-120, ElectricDeath-0.05434782-5-12, 
+PlacedObjects: DangleFruit><812.9302><821.4371><-888~492~2~3, DangleFruit><725.5615><876.6901><-805~520~2~3, DangleFruit><681.0793><841.6833><-761~376~2~3, DangleFruit><575.0508><1630.482><-685~506~2~3, ReliableSpear><133.598><1897.37><, DangleFruit><650.8226><1644.342><0~0~2~3, DangleFruit><694.886><1560.085><0~0~2~3, LightFixture><198.6001><284.1722><RedLight~17.32051~-10~36, LightFixture><868.2915><442.5085><RedLight~17.32051~-10~36, LightFixture><754.636><1086.023><RedLight~17.32051~-10~36, LightFixture><119.6594><1385.796><RedLight~17.32051~-10~36, LightFixture><592.4906><1833.442><RedLight~17.32051~-10~36, LightFixture><88.77814><1952.434><RedLight~17.32051~-10~36, LightFixture><87.71094><2674.544><RedLight~17.32051~-10~36, LightFixture><841.6788><2941.341><RedLight~17.32051~-10~36, LightSource><477.7972><1613.562><0.05461054~EffectColor2~670.7274~1456.929~50~86.60254~1~0~Fade~0.5045942~0, 
 AmbientSounds: SPOT><AM_ENV-NatWind.ogg><66.91895><501.5671><0.3369565><1><546.919><507.5671><-271.3553><-152.3553><0><0.4152175, SPOT><Weird Deep Hole.wav><64.43402><265.3284><0.25><1><520.8234><20.4497><-246.3553><-73.35534><0><0.1869567, SPOT><SO_NAT-LilDrips.ogg><64.44867><385.977><0.2826087><1><222.4512><341.978><-151.3553><-68.35535><0><0.6652175, SPOT><AM_ENV-NatWind.ogg><64.10791><146.3316><0.4130435><1.019565><499.1774><1373.344><-277.3553><-78.35535><0><0.4586958, SPOT><SO_NAT-LilDrips.ogg><246.4417><502.307><0.2173913><1><689.4387><1878.305><-170.3553><-83.35535><0><0.5673915, SPOT><AM_ENV-NatWind.ogg><252.3773><373.908><0.4673913><1><528.3405><2905.121><-253.3553><-144.3553><0><0.2630436, SPOT><SO_NAT-LilDrips.ogg><244.4227><258.1491><0.25><1><764.4226><1085.149><-222.3553><-77.35535><0><0.3173914, OMNI><AM_RAIN-QuietThunder.ogg><661.3265><644.5995><0.4130435><0.8434783, OMNI><SO_WAT-RainishDrips.ogg><840.9446><643.2963><0.3804348><1, OMNI><AM_ENV-WallHum.ogg><483.5845><647.3187><0.423913><0.7847826, 
-FadePalette: 33, 0.6413044, 0.6086956, 0.5652174, 0.5326087
-MorePalette0: 33, 0.7017915, 0.7042031, 0.7042037, 0.7042031
-MorePalette1: 10, 0.8525895, 0.8583891, 0.9047898, 0.9047898
+Triggers: Spot<tA>event<tB>MusicEvent<eA>songName<eB>RW_55 - White Lizard<eA>vol<eB>0.3000004<eA>prio<eB>0.5<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>7<eA>rest<eB>5<eA>fadeIn<eB>163.0435<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>633.5555<tB>553.8079<tA>fireChance<tB>1<tA>entrance<tB>-1<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>453.5555<tB>1825.808<tA>handlePos<tB>-384.3553<tB>-105.3553, 
+FadePalette: 17, 0.4130435, 0.423913, 0.4347826, 0.4456522
+MorePalette0: 371, 0.5012061, 0.5045942, 0.5045936, 0.5070058
+MorePalette1: 10, 0.8525895, 0.8583898, 0.8583905, 0.8525908
