@@ -18,6 +18,7 @@ public static class BeaconHooks
 
         IL.Player.GrabUpdate += Player_GrabUpdate_IL;
         On.Player.Die += Player_Die;
+        On.Player.PermaDie += Player_PermaDie;
         On.Player.Jump += Player_Jump;
         On.Player.SwallowObject += BeaconTransmuteIntoFlashbang;
         On.Player.GrabUpdate += Player_GrabUpdate;
@@ -28,6 +29,7 @@ public static class BeaconHooks
         On.PlayerGraphics.Update += PlayerGraphics_Update;
         On.PlayerGraphics.DrawSprites += PlayerGraphics_DrawSprites;
         On.SlugcatHand.EngageInMovement += SlugcatHand_EngageInMovement;
+        On.ShelterDoor.DoorClosed += ShelterDoor_DoorClosed;
         //qol storage stoppers for other hold-grab functions
         On.Player.SwallowObject += Player_SwallowObject;
         On.Player.Regurgitate += Player_Regurgitate;
@@ -35,8 +37,9 @@ public static class BeaconHooks
         On.HUD.FoodMeter.MeterCircle.Update += MeterCircle_Update;
     }
 
-    
 
+
+    public static int coopRefund = 0; //flashbangs to recover after respawning in jollycoop
     public static int foodWarning = 0;
     //SHOW A FOOD BAR WARNING IF WE DON'T HAVE ENOUGH FOOD TO MAKE A FLASHBANG
     private static void MeterCircle_Update(On.HUD.FoodMeter.MeterCircle.orig_Update orig, HUD.FoodMeter.MeterCircle self)
@@ -192,9 +195,23 @@ public static class BeaconHooks
 
     private static void Player_Die(On.Player.orig_Die orig, Player self)
     {
+        if (ModManager.CoopAvailable && Plugin.scugCWT.TryGetValue(self, out var cwt) && cwt.Beacon?.storage != null)
+        {
+            coopRefund = Mathf.Max(coopRefund, cwt.Beacon.storage.storedFlares.Count);
+        }
+
         //spinch: on death, all of beacon's stored flarebombs gets popped off
         DropAllFlares(self);
         //WW: but do that BEFORE orig in case our death unrealizes us
+        orig(self);
+    }
+
+    private static void Player_PermaDie(On.Player.orig_PermaDie orig, Player self)
+    {
+        if (ModManager.CoopAvailable && Plugin.scugCWT.TryGetValue(self, out var cwt) && cwt.Beacon?.storage != null)
+        {
+            coopRefund = Mathf.Max(coopRefund, cwt.Beacon.storage.storedFlares.Count);
+        }
         orig(self);
     }
 
@@ -202,6 +219,26 @@ public static class BeaconHooks
     {
         if (self is Player player && player.slugcatStats?.name?.value == "Beacon")
             DropAllFlares(player);
+
+        orig(self);
+    }
+
+    private static void ShelterDoor_DoorClosed(On.ShelterDoor.orig_DoorClosed orig, ShelterDoor self)
+    {
+        //IT'S NOT FOOLPROOF, BUT IT'S GOOD ENOUGH...
+        if (ModManager.CoopAvailable)
+        {
+            //Debug.Log("WARP AND REVIVE! HOW MANY BANGS " + coopRefund);
+            for (int i = 0; i < coopRefund; i++)
+            {
+                AbstractConsumable item = new(self.room.world, AbstractObjectType.FlareBomb, null, self.room.LocalCoordinateOfNode(0), self.room.game.GetNewID(), -1, -1, null);
+                self.room.abstractRoom.AddEntity(item);
+                item.RealizeInRoom();
+                self.room.AddObject(item.realizedObject as PhysicalObject);
+                //Debug.Log("SPAWNED BANG ");
+            }
+            coopRefund = 0;
+        }
 
         orig(self);
     }
@@ -340,7 +377,7 @@ public static class BeaconHooks
             //DETECT DARKNESS FOR BLINKING
             if (self.room != null)
             {
-                Debug.Log("ROOM DARKNESS " + self.room.Darkness(self.mainBodyChunk.pos));
+                //Debug.Log("ROOM DARKNESS " + self.room.Darkness(self.mainBodyChunk.pos));
                 if (self.room.Darkness(self.mainBodyChunk.pos) < 0.15f)
                 {
                     //
@@ -363,6 +400,14 @@ public static class BeaconHooks
                         cwt.Beacon.brightSquint--;
                 }
 
+                if (self.input[0].pckp && !self.input[1].pckp)
+                {
+                    //AbstractPhysicalObject item = new(self.room.world, AbstractObjectType.FlareBomb, null, self.abstractPhysicalObject.pos, self.room.game.GetNewID());
+                    AbstractConsumable item = new(self.room.world, AbstractObjectType.FlareBomb, null, self.room.LocalCoordinateOfNode(0), self.room.game.GetNewID(), -1, -1, null);
+                    self.room.abstractRoom.AddEntity(item);
+                    item.RealizeInRoom();
+                    self.room.AddObject(item.realizedObject as PhysicalObject);
+                }
             }
             
         }
