@@ -73,9 +73,9 @@ public class ScugGraphics
     private static void PlayerGraphics_AddToContainer(On.PlayerGraphics.orig_AddToContainer orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, FContainer newContatiner)
     {
         orig(self, sLeaser, rCam, newContatiner);
-        if (scugCWT.TryGetValue(self.player, out ScugCWT cwt) && cwt.IsBeaconOrPhoto && cwt.SpritesInitialized)
+        if (scugCWT.TryGetValue(self.player, out ScugCWT cwt) && cwt.IsBeaconOrPhoto) // && cwt.SpritesInitialized)
         {
-            cwt.SpritesInitialized = false;
+            //cwt.SpritesInitialized = false;
             if (cwt.IsPhoto)
             {
                 // Debug.Log($"Debuging ATC in Photo >>> spritesLength: {sLeaser.sprites.Length}");
@@ -86,7 +86,12 @@ public class ScugGraphics
                     sLeaser.sprites[cwt.Photo.photoSpriteIndex].MoveBehindOtherNode(sLeaser.sprites[5]);
                 }
             }
-            cwt.whiskers.AddToContainer(sLeaser, rCam);
+            if (cwt.SpritesInitialized)
+            {
+                cwt.whiskers.AddToContainer(sLeaser, rCam);
+                cwt.SpritesInitialized = false;
+            }
+            
         }
     }
     private static void PlayerGraphics_DrawSprites(On.PlayerGraphics.orig_DrawSprites orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)

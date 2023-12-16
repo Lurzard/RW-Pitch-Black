@@ -9,6 +9,8 @@ public class BeaconCWT
     public FlareStore storage;
     public int dontThrowTimer = 0;
     public bool heldCraft = false;
+    public int brightSquint = 0;
+    public Vector2 eyePos = new Vector2(0, 0);
     public BeaconCWT(ScugCWT cwtData)
     {
         scugCWTData = cwtData;

@@ -4,6 +4,9 @@ using Mono.Cecil.Cil;
 using UnityEngine;
 using MoreSlugcats;
 using System;
+using RWCustom;
+//using System.Numerics;
+//using System.Numerics;
 
 namespace PitchBlack;
 
@@ -23,12 +26,16 @@ public static class BeaconHooks
         On.Player.ThrowObject += Player_ThrowObject;
         On.Creature.Abstractize += Creature_Abstractize;
         On.PlayerGraphics.Update += PlayerGraphics_Update;
+        On.PlayerGraphics.DrawSprites += PlayerGraphics_DrawSprites;
+        On.SlugcatHand.EngageInMovement += SlugcatHand_EngageInMovement;
         //qol storage stoppers for other hold-grab functions
         On.Player.SwallowObject += Player_SwallowObject;
         On.Player.Regurgitate += Player_Regurgitate;
         On.Player.ObjectEaten += Player_ObjectEaten;
         On.HUD.FoodMeter.MeterCircle.Update += MeterCircle_Update;
     }
+
+    
 
     public static int foodWarning = 0;
     //SHOW A FOOD BAR WARNING IF WE DON'T HAVE ENOUGH FOOD TO MAKE A FLASHBANG
@@ -103,6 +110,22 @@ public static class BeaconHooks
             self.lightSource.stayAlive = true;
             self.lightSource.setPos = new Vector2?(self.player.mainBodyChunk.pos);
 
+        }
+
+
+        if (slugIsBeacon)
+        {
+            if (cwt.Beacon.brightSquint > 10)
+            {
+                if (self.blink <= 0)
+                {
+                    if (UnityEngine.Random.value < 0.35f)
+                        self.player.Blink(Mathf.FloorToInt(Mathf.Lerp(3f, 8f, UnityEngine.Random.value)));
+                    //else
+                    //    sLeaser.sprites[9].element = Futile.atlasManager.GetElementWithName("Face" + "Stunned");
+                }
+                self.head.vel -= self.lookDirection * 3f;
+            }
         }
     }
 
@@ -313,6 +336,116 @@ public static class BeaconHooks
         {
             if (cwt.Beacon.dontThrowTimer > 0)
                 cwt.Beacon.dontThrowTimer--;
+
+            //DETECT DARKNESS FOR BLINKING
+            if (self.room != null)
+            {
+                Debug.Log("ROOM DARKNESS " + self.room.Darkness(self.mainBodyChunk.pos));
+                if (self.room.Darkness(self.mainBodyChunk.pos) < 0.15f)
+                {
+                    //
+                    if (cwt.Beacon.brightSquint == 0)
+                    {
+                        cwt.Beacon.brightSquint = 40 * 6;
+                        self.Blink(8);
+                    }
+
+                    //TICK DOWN, BUT NOT ALL THE WAY
+                    if (cwt.Beacon.brightSquint > 1)
+                        cwt.Beacon.brightSquint--;
+                    else if (cwt.Beacon.brightSquint == 1)
+                        self.Blink(5);
+                }
+                else
+                {
+                    //TICK DOWN
+                    if (cwt.Beacon.brightSquint > 0)
+                        cwt.Beacon.brightSquint--;
+                }
+
+            }
+            
+        }
+    }
+
+    private static bool SlugcatHand_EngageInMovement(On.SlugcatHand.orig_EngageInMovement orig, SlugcatHand self)
+    {
+        Player myPlayer = self.owner.owner as Player;
+        if (Plugin.scugCWT.TryGetValue(myPlayer, out ScugCWT cwt) && cwt.IsBeacon && cwt.Beacon.brightSquint > 1)
+        {
+            
+            PlayerGraphics myGraphics = (myPlayer.graphicsModule as PlayerGraphics);
+            
+            //Vector2 tarLoc = (myPlayer.graphicsModule as PlayerGraphics).head.pos;
+            //self.absoluteHuntPos = tarLoc - Custom.DirVec(myPlayer.bodyChunks[0].pos, tarLoc) * 3f;
+            Vector2 baseLoc = (myPlayer.graphicsModule as PlayerGraphics).head.pos;
+            //Vector2 targPos = (myPlayer.graphicsModule as PlayerGraphics).objectLooker.mostInterestingLookPoint;
+
+
+            //OKAY WE HAVE NO ACCESS TO EYE POSITION SO WE GOTTA DO THIS...
+            //NEVERMIND IT'D BE WAY LESS WORK TO JUST TRANSFER THE EYE POS
+            //Vector2 targPos = cwt.Beacon.eyePos + myGraphics.lookDirection;
+            Vector2 shieldDir = myGraphics.lookDirection;
+            if (Mathf.Abs(shieldDir.x) <= 0.3 || myPlayer.input[0].x != 0)
+                shieldDir.x = myPlayer.flipDirection;
+            //if (shieldDir.y <= 0)
+            //    shieldDir.y = 0.35f;
+            shieldDir.y = Mathf.Clamp(shieldDir.y, 0.35f, 0.75f) - 0.2f;
+
+            int tuchingHand = shieldDir.x <= 0 ? 0 : 1;
+            if (self.limbNumber == tuchingHand)
+            {
+                self.mode = Limb.Mode.HuntAbsolutePosition;
+                self.huntSpeed = 15f;
+
+                Vector2 targPos = (myPlayer.graphicsModule as PlayerGraphics).head.pos + (shieldDir * 15) + (myPlayer.graphicsModule as PlayerGraphics).head.vel;
+
+                //self.absoluteHuntPos = myHelper.bodyChunks[0].pos - Custom.DirVec(myPlayer.bodyChunks[0].pos, myHelper.bodyChunks[0].pos) * 8f;
+                self.absoluteHuntPos = targPos - Custom.DirVec(myPlayer.bodyChunks[0].pos, targPos) * 3f;
+                return false;
+            }
+            
+        }
+        
+
+        return orig(self);
+    }
+
+
+    private static void PlayerGraphics_DrawSprites(On.PlayerGraphics.orig_DrawSprites orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
+    {
+        orig(self, sLeaser, rCam, timeStacker, camPos);
+        if (Plugin.scugCWT.TryGetValue(self.player, out ScugCWT cwt) && cwt.IsBeacon)
+        {
+            //cwt.Beacon.eyePos = sLeaser.sprites[9].GetPosition();
+
+            if (cwt.Beacon.brightSquint > (40 * 3.5f))
+                sLeaser.sprites[9].element = Futile.atlasManager.GetElementWithName("Face" + "Stunned");
+            /*
+            else if (cwt.Beacon.brightSquint > 10)
+            {
+                if (self.blink <= 0)
+                {
+                    if (UnityEngine.Random.value < 0.1f)
+                        self.player.Blink(Mathf.FloorToInt(Mathf.Lerp(3f, 8f, UnityEngine.Random.value)));
+                    else
+                        sLeaser.sprites[9].scaleY = 0.7f;
+                    //else
+                    //    sLeaser.sprites[9].element = Futile.atlasManager.GetElementWithName("Face" + "Stunned");
+                }
+
+                sLeaser.sprites[9].GetLocalMousePosition -= ;
+            }
+            if ((cwt.Beacon.brightSquint == 0 && sLeaser.sprites[9].scaleY == 0.7) || self.blink > 0)
+                sLeaser.sprites[9].scaleY = 1;
+            */
+            if (cwt.Beacon.brightSquint > 10)
+            {
+                sLeaser.sprites[9].x -= self.lookDirection.x * 2;
+                sLeaser.sprites[9].y -= self.lookDirection.y * 2;
+            }
+                
+
         }
     }
 

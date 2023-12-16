@@ -178,6 +178,7 @@ public class Whiskers
             foreground.RemoveChild(sLeaser.sprites[i]);
             midground.AddChild(sLeaser.sprites[i]);
             sLeaser.sprites[i].MoveInFrontOfOtherNode(sLeaser.sprites[3]);
+            //Debug.Log("WHISKER ADD " + i);
         }
     }
     public void DrawSprites(RoomCamera.SpriteLeaser sLeaser, float timeStacker, Vector2 camPos)
