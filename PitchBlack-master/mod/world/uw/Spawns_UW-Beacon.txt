@@ -2,12 +2,18 @@ OFFSCREEN : 0-KingVulture-1-{Seed:9057}, 0-Vulture-2-{Seed:6006}, 0-MirosVulture
 
 // - The Exterior (Outside)
 UW_A09 : 5-Tube, 3-Tube
-UW_C01 : 2-Tube-2, 3-Daddy
-UW_D02 : 3-Daddy
-UW_D04 : 4-Daddy, 5-Tube, 6-Tube, 7-Tube
+UW_C01 : 2-Tube-2
+UW_D04 : 5-Tube, 6-Tube, 7-Tube
 UW_D07 : 4-Tube
-UW_E03 : 4-Daddy, 8-Daddy
-UW_E04 : 3-Daddy, 5-Tube
-UW_I01 : 5-Daddy
+UW_E04 : 5-Tube
 UW_J01 : 3-Yellow-{Ignorecycle}, 4-Yellow-{Ignorecycle}, 5-Yellow-{Ignorecycle}, 6-Yellow-{Ignorecycle}
-UW_J02 : 5-Daddy, 8-Tube-2
+UW_J02 : 8-Tube-2
+
+LINEAGE : UW_C01 : 3 : LMiniLongLegs-0.1, TerrorLongLegs-0
+LINEAGE : UW_D02 : 3 : LMiniLongLegs-0.05, TerrorLongLegs-0
+LINEAGE : UW_D04 : 4 : LMiniLongLegs-0.1, TerrorLongLegs-0
+LINEAGE : UW_E03 : 4 : LMiniLongLegs-0.05, TerrorLongLegs-0
+LINEAGE : UW_E03 : 8 : LMiniLongLegs-0.05, TerrorLongLegs-0
+LINEAGE : UW_E04 : 3 : LMiniLongLegs-0.1, TerrorLongLegs-0
+LINEAGE : UW_I01 : 5 : LMiniLongLegs-0.1, TerrorLongLegs-0
+LINEAGE : UW_J02 : 5 : LMiniLongLegs-0.1, TerrorLongLegs-0

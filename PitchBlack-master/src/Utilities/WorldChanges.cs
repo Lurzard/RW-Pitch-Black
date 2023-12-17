@@ -9,27 +9,21 @@ public static class WorldChanges
     {
         On.Region.GetProperRegionAcronym += Region_GetProperRegionAcronym;
         On.RoofTopView.ctor += RoofTopView_ctor;
+        On.AboveCloudsView.ctor += AboveCloudsView_ctor;
         On.KarmaFlower.ApplyPalette += KarmaFlower_ApplyPalette;
-        //On.Ghost.InitiateSprites += Ghost_InitiateSprites;
     }
 
-    /*private static void Ghost_InitiateSprites(On.Ghost.orig_InitiateSprites orig, Ghost self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
+    private static void AboveCloudsView_ctor(On.AboveCloudsView.orig_ctor orig, AboveCloudsView self, Room room, RoomSettings.RoomEffect effect)
     {
-        orig(self, sLeaser, rCam);
-        if (rCam.room.game.IsStorySession && rCam.room.game.GetStorySession.saveStateNumber == Plugin.BeaconName)
+        orig(self, room, effect);
+        if (room.game.GetStorySession.saveStateNumber == Plugin.BeaconName)
         {
-            for (int i = 0; i < self.legs.GetLength(0); i++)
-            {
-                sLeaser.sprites[self.ThightSprite(i)].shader = rCam.game.rainWorld.Shaders["CorruptedEchoSkin"];
-                sLeaser.sprites[self.LowerLegSprite(i)].shader = rCam.game.rainWorld.Shaders["CorruptedEchoSkin"];
-            }
-
-            sLeaser.sprites[self.DistortionSprite].shader = rCam.game.rainWorld.Shaders["CorruptedDistortion"];
-            sLeaser.sprites[self.HeadMeshSprite].shader = rCam.game.rainWorld.Shaders["CorruptedEchoSkin"];
-
-            self.AddToContainer(sLeaser, rCam, null);
+            self.atmosphereColor = new Color(0.05098039215f, 0.09019607843f, 0.2f);
+            Color atmocolor = new Color(0.05098039215f, 0.09019607843f, 0.2f);
+            Shader.SetGlobalVector("_AboveCloudsAtmosphereColor", self.atmosphereColor);
+            Shader.SetGlobalVector("_MultiplyColor", atmocolor);
         }
-    }*/
+    }
 
     private static void KarmaFlower_ApplyPalette(On.KarmaFlower.orig_ApplyPalette orig, KarmaFlower self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
     {

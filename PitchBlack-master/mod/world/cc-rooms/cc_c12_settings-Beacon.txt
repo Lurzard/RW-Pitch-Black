@@ -8,6 +8,4 @@ Effects: Fog-0.326087-20-20, FireFlies-0.2608696-293-50,
 PlacedObjects: GhostSpot><571.6066><2268.581><, 
 AmbientSounds: OMNI><AM_WIN-HowlingWnd.ogg><745.0768><264.9001><0.2173913><0.6282609, 
 FadePalette: 33, 0.8043478, 0.8478259, 0.8478262
-MorePalette0: 37, 0.3595953, 0.3312842, 0.2594936
-MorePalette1: 367, 0.8043478, 0.8043478, 0.8043478
-MorePalette2: 368, 0.4021739, 0.3043478, 0.2065217
+MorePalette0: 379, 1, 1, 1

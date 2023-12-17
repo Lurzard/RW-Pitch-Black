@@ -7,8 +7,8 @@ Grime: 0.09782609
 BkgDroneVolume: 0.3015963
 Palette: 16
 EffectColorB: 3
-Effects: Lightning-0.5434783-20-20, GreenSparks-0.3695652-25-163, ExtraLoudThunder-0.4565217-25-107, ElectricDeath-1-271-21, 
-PlacedObjects: LightSource><725.1377><569.965><0.155698~Environment~369.2469~2.885956~50~86.60254~0~0~None~0~0, LightSource><109.0765><607.4506><0.1360649~Environment~356.9743~5.020325~-218~-188.3975~1~0~None~0~0, 
+Effects: Lightning-0.5434783-20-20, GreenSparks-0.4565642-25-163, ExtraLoudThunder-0.4565217-25-107, ElectricDeath-1-271-21, 
+PlacedObjects: LightSource><870.8088><573.7003><0.242697~Environment~272.1329~-4.584351~50~86.60254~0~0~None~0~0, LightSource><95.20306><546.621><0.3042627~Environment~263.5954~7.154663~-218~-188.3975~1~0~None~0~0, 
 AmbientSounds: OMNI><AM_WIN-HowlingWnd.ogg><664.8245><569.6542><0.3913043><0.7652174, 
 FadePalette: 17, 0.4673913
 MorePalette0: 371, 0.8003905
