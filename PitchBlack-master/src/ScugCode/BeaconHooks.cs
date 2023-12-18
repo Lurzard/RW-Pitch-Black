@@ -399,17 +399,7 @@ public static class BeaconHooks
                     if (cwt.Beacon.brightSquint > 0)
                         cwt.Beacon.brightSquint--;
                 }
-
-                if (self.input[0].pckp && !self.input[1].pckp)
-                {
-                    //AbstractPhysicalObject item = new(self.room.world, AbstractObjectType.FlareBomb, null, self.abstractPhysicalObject.pos, self.room.game.GetNewID());
-                    AbstractConsumable item = new(self.room.world, AbstractObjectType.FlareBomb, null, self.room.LocalCoordinateOfNode(0), self.room.game.GetNewID(), -1, -1, null);
-                    self.room.abstractRoom.AddEntity(item);
-                    item.RealizeInRoom();
-                    self.room.AddObject(item.realizedObject as PhysicalObject);
-                }
             }
-            
         }
     }
 
