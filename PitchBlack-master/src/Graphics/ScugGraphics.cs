@@ -1,6 +1,7 @@
 ﻿using System;
 using static PitchBlack.Plugin;
 using UnityEngine;
+using RWCustom;
 
 namespace PitchBlack;
 
@@ -58,6 +59,12 @@ public class ScugGraphics
             }
             #endregion
 
+            if (PBOptions.hazHat.Value && self.player.room.game.session is StoryGameSession session && !MiscUtils.IsBeaconOrPhoto(session.saveStateNumber)) {
+                cwt.hatIndex = sLeaser.sprites.Length;
+                Array.Resize(ref sLeaser.sprites, sLeaser.sprites.Length+1);
+                sLeaser.sprites[cwt.hatIndex] = new FSprite("PBHat");
+            }
+
             #region whiskers
             cwt.whiskers.initialWhiskerIndex = sLeaser.sprites.Length;
             cwt.whiskers.endWhiskerIndex = cwt.whiskers.initialWhiskerIndex + cwt.whiskers.headScales.Length;
@@ -87,6 +94,11 @@ public class ScugGraphics
                 }
             }
             cwt.whiskers.AddToContainer(sLeaser, rCam);
+            if (PBOptions.hazHat.Value && sLeaser.sprites.Length > 13 && self.player.room.game.session is StoryGameSession session && !MiscUtils.IsBeaconOrPhoto(session.saveStateNumber)) {
+                rCam.ReturnFContainer("Foreground").RemoveChild(sLeaser.sprites[cwt.hatIndex]);
+                rCam.ReturnFContainer("Midground").AddChild(sLeaser.sprites[cwt.hatIndex]);
+                sLeaser.sprites[cwt.hatIndex].MoveInFrontOfOtherNode(sLeaser.sprites[9]);
+            }
         }
     }
     private static void PlayerGraphics_DrawSprites(On.PlayerGraphics.orig_DrawSprites orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
@@ -112,6 +124,18 @@ public class ScugGraphics
 
         if (GotCWTData && cwt.IsBeaconOrPhoto)
         {
+            if (PBOptions.hazHat.Value && self.player.room != null && self.player.room.game.session is StoryGameSession session && !MiscUtils.IsBeaconOrPhoto(session.saveStateNumber)) {
+                Vector2 vector = Vector2.Lerp(self.drawPositions[0, 1], self.drawPositions[0, 0], timeStacker);
+                Vector2 vector2 = Vector2.Lerp(self.drawPositions[1, 1], self.drawPositions[1, 0], timeStacker);
+                Vector2 position = sLeaser.sprites[9].GetPosition()+9f*Vector2.up-4f*self.lookDirection.x*Vector2.right;
+                position += 4f*Mathf.Clamp(Mathf.Abs(self.player.mainBodyChunk.vel.x),0,self.player.standing?1:0)*self.player.flipDirection*Custom.PerpendicularVector(Custom.DirVec(vector, vector2))*Mathf.Lerp(1, 0, Mathf.Abs(self.player.mainBodyChunk.lastPos.y - self.player.mainBodyChunk.pos.y)*2f);
+                sLeaser.sprites[cwt.hatIndex].SetPosition(position);
+                sLeaser.sprites[cwt.hatIndex].scaleX = 1.1f;
+                sLeaser.sprites[cwt.hatIndex].scaleY = 0.8f;
+                sLeaser.sprites[cwt.hatIndex].rotation = sLeaser.sprites[9].rotation + 0.15f*sLeaser.sprites[3].rotation + Mathf.Abs(self.player.mainBodyChunk.vel.x);
+                Color color = SlugBase.DataTypes.PlayerColor.GetCustomColor(self, 0);
+                sLeaser.sprites[cwt.hatIndex].color = new Color(color.r*0.75f, color.g*0.75f, color.b*0.75f, color.a);
+            }
             if (cwt.IsPhoto && cwt.Photo.photoSpriteIndex < sLeaser.sprites.Length)
             {
                 //maths will actually make photo's splatter sprite follow the body more accurately

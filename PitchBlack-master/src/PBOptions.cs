@@ -17,6 +17,7 @@ public class PBOptions : OptionInterface
 		chargeSpears = this.config.Bind<bool>("chargeSpears", false);
 		pursuer = this.config.Bind<bool>("pursuer", true);
         pursuerAgro = this.config.Bind<int>("pursuerAgro", 2, new ConfigAcceptableRange<int>(0, 10));
+        hazHat = config.Bind<bool>("hazHat", false);
     }
 
     
@@ -26,6 +27,7 @@ public class PBOptions : OptionInterface
 	public static Configurable<bool> chargeSpears;
 	public static Configurable<bool> pursuer;
     public static Configurable<int> pursuerAgro;
+    public static Configurable<bool> hazHat;
 
     public OpSlider pDistOp;
 	public OpCheckBox mpBox1;
@@ -34,6 +36,7 @@ public class PBOptions : OptionInterface
 	public OpCheckBox mpBox5;
     public OpCheckBox mpBox6;
     public OpCheckBox mpBox7;
+    public OpCheckBox mpBox8;
     public OpLabel lblOp1;
 
 
@@ -110,6 +113,12 @@ public class PBOptions : OptionInterface
             {description = dsc},
             lblOp1 = new OpLabel(pDistOp.pos.x, pDistOp.pos.y - 20, Translate("Pursuer Aggro"), bigText: false)
 		});
+
+        lineCount -= 60;
+        Tabs[0].AddItems(new UIelement[] {
+            mpBox8 = new OpCheckBox(hazHat, new Vector2(margin, lineCount)) {description="If the PB slugcats wear a hat to protect their eyes in other campaigns"},
+            new OpLabel(mpBox8.pos.x+30, mpBox8.pos.y, Translate("Wear Hats"), bigText: false)
+        });
 
         //Not exactly sure what to do with this so I will leave it here for now
         /*

@@ -171,12 +171,10 @@ public class Whiskers
     }
     public void AddToContainer(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
     {
-        FContainer foreground = rCam.ReturnFContainer("Foreground");
-        FContainer midground = rCam.ReturnFContainer("Midground");
         for (int i = initialWhiskerIndex; i < endWhiskerIndex; i++)
         {
-            foreground.RemoveChild(sLeaser.sprites[i]);
-            midground.AddChild(sLeaser.sprites[i]);
+            rCam.ReturnFContainer("Foreground").RemoveChild(sLeaser.sprites[i]);
+            rCam.ReturnFContainer("Midground").AddChild(sLeaser.sprites[i]);
             sLeaser.sprites[i].MoveInFrontOfOtherNode(sLeaser.sprites[3]);
         }
     }
