@@ -10,4 +10,4 @@ PlacedObjects: InsectGroup><464.0645><415.3248><-1~86~-139~-77~FireFly~0.1195652
 AmbientSounds: OMNI><AM_ENV-LightWind.ogg><434.3002><481.2584><0.2608696><0.8043478, 
 FadePalette: 8, 0.173913
 MorePalette0: 367, 0.9021739
-MorePalette1: 10, 0.5760869
+MorePalette1: 10, 0.7152849

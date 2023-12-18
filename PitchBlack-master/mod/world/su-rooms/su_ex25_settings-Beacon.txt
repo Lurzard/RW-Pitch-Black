@@ -2,7 +2,7 @@ Template: SU_SettingsTemplate_Inside
 Clouds: 0.06521739
 Grime: 0.2065217
 Palette: 0
-EffectColorB: 5
+EffectColorB: 21
 Effects: Darkness-0.7282609-30-30, 
 PlacedObjects: DangleFruit><473.9116><378.5706><-346~61~2~3, DangleFruit><495.1874><408.82><-265~120~2~3, DataPearl><528.3652><346.6023><-265~-227~0~0~Misc~0, 
 FadePalette: 5, 0.187534

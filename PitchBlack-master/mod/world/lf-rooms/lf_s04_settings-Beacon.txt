@@ -1,9 +1,0 @@
-DangerType: Flood
-Grime: 0.07608695
-BkgDroneVolume: 0
-Palette: 14
-Effects: FireFlies-0.423913-20-20, 
-PlacedObjects: BrokenShelterWaterLevel><470.3078><384.8052><, 
-AmbientSounds: SPOT><AM_IND-Utility02.ogg><731.8688><457.5891><0.3913043><1><465.8688><454.5891><-123.3553><-24.35535><0><0.2739132, 
-FadePalette: 33, 0.8043478
-MorePalette0: 10, 0.8043478

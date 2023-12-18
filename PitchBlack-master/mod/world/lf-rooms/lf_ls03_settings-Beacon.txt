@@ -1,7 +1,3 @@
 EffectColorA: 9
-Effects: FireFlies-0.3913043-20-20, 
-PlacedObjects: BrokenShelterWaterLevel><318.348><349.7294><, LightSource><323.5115><368.485><0.4084068~Environment~2.667969~83.99219~50~86.60254~1~0~None~0~0, 
-AmbientSounds: SPOT><AM_IND-ElectricHum01.ogg><716.7354><294.5836><0.5><1><323.7759><369.5789><-35.35534><-35.35534><0><0.1, 
-FadePalette: 33, 0.7282609
-MorePalette0: 367, 0.6031932
-MorePalette1: 10, 0.4581949
+PlacedObjects: LightSource><323.0273><369.0217><0.3852075~White~0~71.18597~50~86.60254~0~0~None~0~0, 
+MorePalette0: 10, 1
