@@ -10,4 +10,4 @@ PlacedObjects: ExitSymbolHidden><730.8135><111.5723><, ExitSymbolHidden><731.871
 AmbientSounds: OMNI><AM_ENV-WallHum.ogg><882.0589><647.1909><0.3260872><1, SPOT><AM_IND-DeepHum.ogg><881.8548><527.6703><0.4130435><1><481.8548><-191.3297><-37.35535><365.6447><0><0.3608697, 
 FadePalette: 367, 0.8891559
 MorePalette0: 42, 0.25
-MorePalette1: 10, 0.4891304
+MorePalette1: 10, 0.6051291

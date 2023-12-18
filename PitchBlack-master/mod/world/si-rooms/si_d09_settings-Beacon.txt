@@ -1,9 +1,7 @@
 RainIntensity: 0.4673913
 RumbleIntensity: 0.5108696
 Palette: 33
-Effects: 
 PlacedObjects: DandelionPatch><279.5109><1103.45><-3~160, DandelionPatch><347.1329><160.6511><1~101, DandelionPeach><332.733><1124.551><0~0~2~3, DandelionPeach><289.7158><1117.947><0~0~2~3, 
 AmbientSounds: OMNI><AM_ENV-LightWind.ogg><686.054><587.2898><0.2934783><1, 
 FadePalette: 12, 0.2717391, 0.2065217, 0.1086956, 0.06521739
-MorePalette0: 367, 0.4347826, 0.3586957, 0.3043478, 0.2391304
-MorePalette1: 364, 0.25, 0.2934783, 0.3478261, 0.4021739
+MorePalette0: 379, 1, 1, 1, 1

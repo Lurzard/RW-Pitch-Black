@@ -17,7 +17,7 @@
 			}
 		],
 		"auto_grab_batflies": true,
-		"weight": [ 0.7, 0.6 ],
+		"weight": [ 0.8, 0.7 ],
 		"tunnel_speed": [ 1.2, 1 ],
 		"climb_speed": [ 1.3, 1.1 ],
 		"walk_speed": [ 1.45, 1.2 ],
@@ -32,10 +32,6 @@
 			"corpses": 0.5,
 			"overrides": {
 				"SlimeMold": 1.5,
-				"EggBugEgg": 1,
-				"GooieDuck": 2,
-				"LillyPuck": 2,
-				"DandelionPeach": 2,
 				"BlackLizard": 1.5,
 				"DropBug": 1.5,
 				"Vulture": 2,
@@ -45,19 +41,13 @@
 				"TerrorLongLegs": 0,
 				"KingVulture": 2,
 				"MirosVulture": 2,
-				"Centiwing": 1.5,
-				"EggBug": 1,
 				"Spider": 0.5,
 				"BigSpider": 1.5,
 				"SpitterSpider": 1.5,
 				"MotherSpider": 1.5,
 				"SlugNPC": 0,
 				"BigNeedleWorm": 1.5,
-				"GreenLizard": 1.5,
-				"CyanLizard": 1.5,
-				"AquaCenti": 1.5,
-				"Centipede": 1.5,
-				"RedCentipede": 1.5
+				"CyanLizard": 1.5
 			}
 		},
 		"the_glow": false,

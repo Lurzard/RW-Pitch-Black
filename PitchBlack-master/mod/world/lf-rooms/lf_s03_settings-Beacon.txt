@@ -1,4 +1,0 @@
-Effects: FireFlies-0.3913043-20-20, 
-PlacedObjects: BrokenShelterWaterLevel><318.348><349.7294><, 
-FadePalette: 33, 0.7282609
-MorePalette0: 10, 0.7065217
