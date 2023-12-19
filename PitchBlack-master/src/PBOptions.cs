@@ -16,7 +16,7 @@ public class PBOptions : OptionInterface
 		elecImmune = this.config.Bind<bool>("elecImmune", false);
 		chargeSpears = this.config.Bind<bool>("chargeSpears", false);
 		pursuer = this.config.Bind<bool>("pursuer", true);
-        pursuerAgro = this.config.Bind<int>("pursuerAgro", 2, new ConfigAcceptableRange<int>(0, 10));
+        pursuerAgro2 = this.config.Bind<int>("pursuerAgro2", 6, new ConfigAcceptableRange<int>(0, 6));
 
         debugMsg = this.config.Bind<bool>("debugMsg", false);
         universalPursuer = this.config.Bind<bool>("universalPursuer", false);
@@ -28,7 +28,7 @@ public class PBOptions : OptionInterface
 	public static Configurable<bool> elecImmune;
 	public static Configurable<bool> chargeSpears;
 	public static Configurable<bool> pursuer;
-    public static Configurable<int> pursuerAgro;
+    public static Configurable<int> pursuerAgro2;
 
     public static Configurable<bool> debugMsg;
     public static Configurable<bool> universalPursuer;
@@ -112,7 +112,7 @@ public class PBOptions : OptionInterface
         barLngt = 45 * 3;
         Tabs[0].AddItems(new UIelement[]
         {
-            pDistOp = new OpSlider(PBOptions.pursuerAgro, new Vector2(margin + 250, lineCount-5), barLngt)
+            pDistOp = new OpSlider(PBOptions.pursuerAgro2, new Vector2(margin + 250, lineCount-5), barLngt)
             {description = dsc},
             lblOp1 = new OpLabel(pDistOp.pos.x, pDistOp.pos.y - 20, Translate("Pursuer Aggro"), bigText: false)
 		});

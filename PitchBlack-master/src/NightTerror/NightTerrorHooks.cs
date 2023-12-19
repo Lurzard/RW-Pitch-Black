@@ -33,8 +33,8 @@ public class NightTerrorAbstractData
     public readonly float MaxHP;
 
     //public int MaxTimeUntilRevive => !diedToSporeCloud ? 15 : 3;
-    //public int MaxTimeUntilRevive => PBOptions.pursuerAgro.Value * (!diedToSporeCloud ? 60 : 6);
-    public int MaxTimeUntilRevive => PBOptions.pursuerAgro.Value * (!diedToSporeCloud ? 9999 : 6); //ACTUALLY.. ONLY RESPAWN FROM SPORES. THE OTHER TRACKER WILL HANDLE RESPAWNS
+    //public int MaxTimeUntilRevive => PBOptions.pursuerAgro2.Value * (!diedToSporeCloud ? 60 : 6);
+    public int MaxTimeUntilRevive => (8 - PBOptions.pursuerAgro2.Value) * (!diedToSporeCloud ? 9999 : 6); //ACTUALLY.. ONLY RESPAWN FROM SPORES. THE OTHER TRACKER WILL HANDLE RESPAWNS
     //spinch: thrown PuffBalls makes NT revive faster because that looks cool
 
     public void DecreaseReviveTimer(int timeDecreasedBy = 2)

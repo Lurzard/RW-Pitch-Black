@@ -401,7 +401,7 @@ public class NTTracker
     public int summonSickness = 0;
     public bool summoning;
 	public int hackTimer = 0;
-    public int relocateTimer = PBOptions.pursuerAgro.Value * 2400; //IN SECONDS
+    public int relocateTimer = (8 - PBOptions.pursuerAgro2.Value) * 2400; //IN SECONDS
     public AbstractRoom currentTargetRoom;
     public AbstractRoom oldTargetRoom;
 }

@@ -11,6 +11,8 @@ public static class WorldChanges
         On.RoofTopView.ctor += RoofTopView_ctor;
         On.AboveCloudsView.ctor += AboveCloudsView_ctor;
         On.KarmaFlower.ApplyPalette += KarmaFlower_ApplyPalette;
+        On.Expedition.NeuronDeliveryChallenge.ValidForThisSlugcat += NeuronDeliveryChallenge_ValidForThisSlugcat;
+        On.Expedition.PearlDeliveryChallenge.ValidForThisSlugcat += PearlDeliveryChallenge_ValidForThisSlugcat;
     }
 
     private static void AboveCloudsView_ctor(On.AboveCloudsView.orig_ctor orig, AboveCloudsView self, Room room, RoomSettings.RoomEffect effect)
@@ -81,5 +83,15 @@ public static class WorldChanges
         }
 
         return orig(character, baseAcronym);
+    }
+
+    public static bool PearlDeliveryChallenge_ValidForThisSlugcat(On.Expedition.PearlDeliveryChallenge.orig_ValidForThisSlugcat orig, Expedition.PearlDeliveryChallenge self, SlugcatStats.Name slugcat)
+    {
+        return orig(self, slugcat) && !MiscUtils.IsBeaconOrPhoto(slugcat);
+    }
+
+    public static bool NeuronDeliveryChallenge_ValidForThisSlugcat(On.Expedition.NeuronDeliveryChallenge.orig_ValidForThisSlugcat orig, Expedition.NeuronDeliveryChallenge self, SlugcatStats.Name slugcat)
+    {
+        return orig(self, slugcat) && !MiscUtils.IsBeaconOrPhoto(slugcat);
     }
 }
