@@ -1,7 +1,7 @@
 Palette: 9
 corruptionEffectColor: 0.1,0.0,0.9
 corruptionEyeColor: 0.1,0.0,0.9
-Subregion: Moonlit Wasteyard
+Subregion: Disposal Unit
 Room Setting Templates: Outside, Inside
 Room_Attr: GW_C06: Centipede-Like,RedCentipede-Like,Scavenger-Like,DropBug-Like,
 Room_Attr: GW_E02: Vulture-Like,RedCentipede-Avoid,Scavenger-Like,DropBug-Avoid,KingVulture-Like,

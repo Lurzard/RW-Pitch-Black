@@ -11,7 +11,7 @@ UW_C04 : 5-Tube-2
 UW_C06 : 2-Tube, 3-Tube, 4-Tube, 6-Tube
 UW_D04 : 5-Tube, 6-Tube, 7-Tube
 UW_D07 : 4-Tube
-UW_E01 : 3-Blue, 2-White, 4-TentaclePlant, 5-NONE
+UW_E01 : 3-Blue, 2-White, 4-Mimic-{18}, 5-Mimic-{16}
 UW_E02 : 6-TentaclePlant
 UW_E03 : 8-White
 UW_E04 : 6-Tube, 7-Tube

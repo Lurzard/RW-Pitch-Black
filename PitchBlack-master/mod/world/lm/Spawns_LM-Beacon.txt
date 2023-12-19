@@ -39,7 +39,7 @@ LM_TOWER04 : 3-CicadaB-4, 4-CicadaA-2, 4-Eel
 LM_TOWER08 : 6-White
 LM_TOWER07 : 3-Eel
 LM_TOWER02 : 2-Cyan-2, 3-CicadaB-3, 4-CicadaA-3
-LM_B04 : 4-CicadaB-4, 5-CicadaA-2
+LM_B04 : 4-CicadaB-2, 5-CicadaA-2
 LM_TOWER05 : 4-TentaclePlant, 7-Snail-2
 LM_TOWER13 : 10-Cyan, 3-CicadaB-2, 6-CicadaA-3
 LINEAGE : LM_B04 : 3 : NONE-0.05, White-0.2, Red-0

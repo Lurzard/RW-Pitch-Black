@@ -28,7 +28,7 @@ LINEAGE : HI_B03 : 3 : NONE-0.05, Cyan-0.2, Red-0
 LINEAGE : HI_B13 : 2 : Black-0.2, NONE-0.5, Cyan-0.3, Red-0
 LINEAGE : HI_C02 : 5 : Black-0.2, NONE-0.5, Cyan-0.3, Red-0
 HI_A04 : 2-TentaclePlant
-HI_C11 : 3-Cyan
+HI_C11 : 3-Yellow
 HI_C03 : 3-White
 HI_B05 : 3-White
 HI_C04 : 5-Cyan, 6-Snail, 7-Snail-2
