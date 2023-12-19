@@ -183,21 +183,6 @@ namespace PitchBlack
 
             On.Menu.UnlockDialog.UpdateBurdens += UnlockDialog_UpdateBurdens;
             //On.RoomRealizer.PutOutARoom += RoomRealizer_PutOutARoom; Does't seem like this is needed. Creatures can move from unloaded rooms fine -WW
-
-            On.CentipedeGraphics.InitiateSprites += CentipedeGraphics_InitiateSprites;
-        }
-
-        private static void CentipedeGraphics_InitiateSprites(On.CentipedeGraphics.orig_InitiateSprites orig, CentipedeGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
-        {
-            orig(self, sLeaser, rCam);
-            if (self.centipede.Template.type == CreatureTemplateType.NightTerror)
-            {
-                foreach (var sprite in sLeaser.sprites)
-                {
-                    sprite.shader = self.centipede.abstractCreature.Room.world.game.rainWorld.Shaders["Hologram"];
-
-                }
-            }
         }
 
         //JUST FOR TESTING I'M MODDING THE PURSUED BURDEN TO BE ALWAYS UNLOCKED
