@@ -1,50 +1,49 @@
-OFFSCREEN : 0-MirosVulture-2, 0-Vulture-2-{Seed:6006}, 0-KingVulture-{seed-9057}, 0-Scavenger-9
+{#lb-fgf-m4r-ik.fat-fire-fly-creature}OFFSCREEN : 0-FatFireFly-3, 0-KingVulture-2, 0-Scavenger-8
+{#lb-fgf-m4r-ik.swalkins}LM_TOWER01 : 5-SurfaceSwimmer
+{#lb-fgf-m4r-ik.swalkins}LM_TOWER11 : 2-SurfaceSwimmer, 3-CicadaA-2
+{#lb-fgf-m4r-ik.swalkins}LM_TOWER03 : 6-Snail-3, 3-SurfaceSwimmer
 
-LM_A02 : 3-TentaclePlant, 4-Salamander
-LM_A03 : 2-Snail-2, 3-Snail-3
-LM_A10 : 3-SeaLeech-6
-LM_B02 : 4-TentaclePlant
-LM_B04 : 3-Cyan, 4-CicadaB-3, 5-CicadaA-2
-LM_C02 : 4-SpitterSpider, 5-Salamander, 6-Salamander, 7-Snail-2
-LM_C05 : 3-Jetfish-{PreCycle}
-LM_C06 : 4-Jetfish
-LM_C10 : 2-Jetfish
-LM_C11 : 2-SeaLeech-4, 3-SeaLeech-3, 4-TentaclePlant, 5-TentaclePlant
-LM_D01 : 3-SeaLeech-7, 5-SeaLeech-7, 4-Eel-{PreCycle}
-LM_D02 : 6-Aquapede, 5-Jetfish-{PreCycle}
-LM_D03 : 5-Jetfish-2, 6-Aquapede, 8-Jetfish-{PreCycle}
-LM_D04 : 2-Salamander, 5-Dropwig, 12-Mimic, 13-Leech-10, 14-Mimic, 16-Leech-15
-LM_D05 : 5-Eel, 6-Eel, 7-Snail, 8-Snail
-LM_D06 : 3-Salamander, 5-Salamander, 6-TentaclePlant, 7-Jetfish, 7-Salamander
-LM_E01 : 4-Jetfish-2
-LM_E02 : 3-SeaLeech-7
-LM_F01 : 3-Salamander, 3-SpitterSpider-2, 5-Snail-4, 6-Leech-5, 8-Leech-8
-LM_F02 : 10-Leech-9, 11-Leech-6, 13-Leech-7, 14-Leech-9, 15-Jetfish-2, 16-Aquapede, 19-Eel-{PreCycle}
-LM_H03 : 2-Blue, 4-TentaclePlant, 6-TentaclePlant
-LM_BRIDGE02 : 2-White, 3-BigSpider, 4-BigSpider, 5-Cyan, 8-Mouse-6, 11-Centiwing, 12-Centiwing
-LM_BRIDGE03 : 2-Dropwig, 3-Centiwing-2, 4-Cyan-2, 6-Mouse-4, 7-SpitterSpider
-LM_BRIDGE04 : 2-Centiwing, 3-Centiwing, 4-BigSpider, 5-MotherSpider, 8-SpitterSpider, 9-Mouse-4
-LM_BRIDGEEND : 3-Bro
+{#!lb-fgf-m4r-ik.fat-fire-fly-creature}OFFSCREEN : 0-Vulture-3, 0-KingVulture-2, 0-Scavenger-8
+{#!lb-fgf-m4r-ik.swalkins}LM_TOWER01 : 5-NONE
+{#!lb-fgf-m4r-ik.swalkins}LM_TOWER11 : 2-NONE, 3-CicadaA-2
+{#!lb-fgf-m4r-ik.swalkins}LM_TOWER03 : 6-Snail-3, 3-NONE
+
 LM_ECNIUS03 : 2-Snail, 3-Snail
-LM_EDGE02 : 1-Mouse-6, 2-MotherSpider, 3-Dropwig-2, 4-Cyan, 5-Yellow-2, 6-Yellow-2, 7-SpitterSpider, 9-BigSpider, 10-BigSpider
-LM_MIRRORSIDE : 4-Snail, 5-CicadaB-2, 5-CicadaA, 6-White
-LM_SIDESWAMP : 2-TentaclePlant, 6-Salamander
-LM_TOWER01 : 3-BigSpider, 4-MotherSpider, 6-Centiwing, 7-EggBug
-LM_TOWER02 : 2-Cyan, 4-Centiwing
-LM_TOWER03 : 3-White, 5-Dropwig
-LM_TOWER04 : 3-Mouse-4, 3-CicadaB-3, 4-Centiwing
-LM_TOWER05 : 4-TentaclePlant, 5-BigSpider, 6-MotherSpider, 7-Mouse-5, 8-Cyan
-LM_TOWER07 : 3-Bro
-LM_TOWER08 : 3-Centiwing, 4-Centiwing, 6-White, 7-Dropwig
-LM_TOWER09 : 3-CicadaB-2, 4-SpitterSpider
-LM_TOWER10 : 3-Mouse-6, 4-Cyan
-LM_TOWER11 : 2-Centiwing, 3-CicadaA-2
-LM_TOWER12 : 3-Dropwig
-LM_TOWER13 : 2-Centiwing, 3-Cyan, 4-CicadaB-2, 5-Bro, 7-BigSpider, 8-BigSpider, 9-Mouse-4
-LM_TOWER14 : 3-Centiwing, 4-EggBug, 5-Yellow-3, 6-Yellow-2
+LM_F01 : 3-Eel, 4-TentaclePlant, 5-Snail-4, 6-Leech-3 ,7-Leech-5, 8-Leech-8, 12-GarbageWorm-3, 8-Tentacle Plant
+LM_A02 : 3-TentaclePlant, 4-Eel
+LM_D06 : 3-Eel, 5-Eel, 6-Tentacle Plant, 16-Garbage Worm-3, 7-Jetfish, 7-Eel
+LM_D03 : 5-Jetfish-2, 7-Jet Fish-2
+LM_E01 : 4-Jetfish-2
+LM_C10 : 2-Jetfish
+LM_C06 : 4-Jetfish
+LM_C02 : 4-CicadaB-3, 4-CicadaA-2, 5-Eel, 6-Eel, 7-Snail-2, 4-Eel
+LM_F02 : 4-CicadaB-2, 5-CicadaA-2, 10-Leech-9, 11-Leech-6, 12-Leech-7, 14-Leech-9, 15-Jetfish-2, 16-Leech-19, 19-Eel
+LM_C11 : 2-Sea Leech-4, 3-Sea Leech-3, 4-TentaclePlant, 5-TentaclePlant
+LM_A03 : 2-Snail-2, 3-Snail-3
+LM_D01 : 3-SeaLeech-7, 5-SeaLeech-7, 4-Eel
+LM_D05 : 7-Snail, 8-Snail
+LM_B02 : 4-TentaclePlant
+LM_E02 : 2-Sea Leech-7
+LM_A10 : 3-Sea Leech-6
+LM_D04 : 5-Eel, 4-Eel, 12-TentaclePlant, 13-Leech-10, 14-TentaclePlant, 16-Leech-15
+LM_H03 : 4-TentaclePlant, 6-TentaclePlant, 2-Eel
 LM_TOWERSIDE : 4-White, 6-Snail-3
-LM_TUNNELA : 8-Eel-{PreCycle}
-LM_WALL02 : 2-Mouse-4, 4-BigSpider, 5-MotherSpider, 6-Centiwing, 7-Centiwing, 9-Drowpig, 12-White, 13-Cyan, 14-Dropwig
-LM_WALL03 : 3-Yellow-4
-LINEAGE : LM_A10 : 2 : None-0.01, TentaclePlant-0.16, Jetfish-0
-LINEAGE : LM_C10 : 2 : Daddy-0.01, Daddy-0.01, Daddy-0.01, Bro-0
+LM_MIRRORSIDE : 4-Snail, 6-Eel
+LM_SIDESWAMP : 2-TentaclePlant, 6-Eel
+LM_BRIDGE02 : 2-White-1, 5-Yellow-1
+LM_BRIDGE03 : 4-Yellow-2
+LM_EDGE02 : 9-Yellow-3, 8-Yellow-2
+LM_WALL02 : 10-White-1
+LM_WALL03 : 4-Yellow
+LM_TOWER04 : 3-CicadaB-4, 4-CicadaA-2, 4-Eel
+LM_TOWER08 : 6-White
+LM_TOWER07 : 3-Eel
+LM_TOWER02 : 2-Cyan-2, 3-CicadaB-3, 4-CicadaA-3
+LM_B04 : 4-CicadaB-4, 5-CicadaA-2
+LM_TOWER05 : 4-TentaclePlant, 7-Snail-2
+LM_TOWER13 : 10-Cyan, 3-CicadaB-2, 6-CicadaA-3
+LINEAGE : LM_B04 : 3 : NONE-0.05, White-0.2, Red-0
+LINEAGE : LM_D05 : 5 : NONE-0.05, Eel-0
+LINEAGE : LM_D05 : 6 : NONE-0.02, Eel-0
+LINEAGE : LM_A10 : 2 : NONE-0.01, TentaclePlant-0.20, Jetfish-0
+LINEAGE : LM_C10 : 2 : LMiniLongLegs-0.01, NONE-0.01, TerrorLongLegs-0

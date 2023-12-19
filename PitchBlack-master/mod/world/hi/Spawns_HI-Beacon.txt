@@ -1,33 +1,35 @@
-OFFSCREEN : 0-Vulture-3-{Seed:6006}, 0-KingVulture-{Seed:9057}, 0-Scavenger-13
+//CRS Conditionals
+{#lb-fgf-m4r-ik.fat-fire-fly-creature}OFFSCREEN : 0-FatFireFly-3, 0-Scavenger-6
+{#lb-fgf-m4r-ik.undersea-lizard}HI_B09 : 3-SilverLizard, 2-White
+{#lb-fgf-m4r-ik.undersea-lizard}HI_A18 : 2-SilverLizard
+{#lb-fgf-m4r-ik.undersea-lizard}HI_A06 : 2-SilverLizard
+{#lb-fgf-m4r-ik.undersea-lizard}HI_A16 : 4-SilverLizard
+{#lb-fgf-m4r-ik.undersea-lizard}LINEAGE : HI_C02 : 6 : SilverLizard-0.2, Cyan-0.5, Red-0
+{#lb-fgf-m4r-ik.undersea-lizard}LINEAGE : HI_B06 : 3 : SilverLizard-0.2, Yellow-0.5, White-0.2, Red-0
 
-LINEAGE : HI_A04 : 2 : TentaclePlant-0.5, NONE-0.5, MotherSpider-0
-LINEAGE : HI_A06 : 2 : Dropwig-0.2, BigSpider-0.2, Caramel-0.5, Black-0
-LINEAGE : HI_A10 : 3 : Centiwing-0.1, Cyan-0.5, Mouse-0.5, SpitterSpider-0
-LINEAGE : HI_A16 : 4 : Black-0.2, Pink-0.5, Mouse-0.5, BigSpider-0
-LINEAGE : HI_A17 : 3 : Black-0.2, Pink-0.5, Mouse-0.5, SpitterSpider-0
-LINEAGE : HI_A18 : 3 : Green-0.2, Cyan-0.5, Strawberry-0.5, Caramel-0
-HI_A23 : 2-Mouse-4
-LINEAGE : HI_A23 : 2 : Mouse-1, Dropwig-1, BigSpider-0
-HI_A25 : 2-Small Centipede-3, 2-Centipede-2
-HI_A28 : 3-BigSpider, 3-MotherSpider
-HI_B03 : 2-Centiwing
-LINEAGE : HI_B05 : 3 : Dropwig-0.5, White-0.5, Mouse-0.5, SpitterSpider-0.5, Cyan-0
-LINEAGE : HI_B06 : 3 : SpitterSpider-0.2, BigSpider-0.5, MotherSpider-0.5, SpitterSpider-0
-LINEAGE : HI_B07 : 2 : EggBug-0.1, Cyan-0.5, BigSpider-0.7, White-0
-LINEAGE : HI_B07 : 3 : Pink-0.2, Black-0.5, Centiwing-0.5, Mouse-1, Cyan-0
-LINEAGE : HI_B09 : 2 : Dropwig-1, BigSpider-0.3, SpitterSpider-0.5, Mouse-0.9, Centiwing-0
-LINEAGE : HI_B09 : 3 : Strawberry-0.1, Blue-0.5, Cyan-0.9, SpitterSpider-0.6, White-0
-LINEAGE : HI_B12 : 2 : Centiwing-0.1, Blue-0.9, BigSpider-0.5, Cyan-0
-LINEAGE : HI_B12 : 3 : Eggbug-0.01, Cyan-0
-LINEAGE : HI_B14 : 3 : Cyan-0.1, Mouse-1, SpitterSpider-0
-HI_C01 : 4-Yellow-4, 5-Mouse-6
-LINEAGE : HI_C01 : 3 : Yellow-0.5, Dropwig-1, Cyan-0.5, Blue-0.9, Black-0.2, SpitterSpider-0
-HI_C02 : 6-Mouse-3
-LINEAGE : HI_C03 : 3 : White-0.1, BigSpider-0.5, Centiwing-0.5, Cyan-0
-LINEAGE : HI_C04 : 5 : Cyan-0.1, Mouse-1, Eel-0.5, SpitterSpider-0
-LINEAGE : HI_C05 : 2 : Cyan-0.5, Blue-0
-LINEAGE : HI_C05 : 3 : Pink-0.3, EggBug-0.5, Cyan-0.5, Black-0.3, Strawberry-0
-LINEAGE : HI_C05 : 4 : Caramel-0.2, Red-1, Centiwing-1, White-0
-LINEAGE : HI_C11 : 3 : SpitterSpider-0.1, Centiwing-0.5, Blue-1, Dropwig-0.5, Eggbug-0.5, White-0
-LINEAGE : HI_C11 : 4 : Blue-0.5, Black-0.2, Pink-0.4, Dropwig-1, BigSpider-1, SpitterSpider-1, MotherSpider-0
-HI_C15 : 4-Mouse-5
+//Creatures to be replaced
+{#!lb-fgf-m4r-ik.fat-fire-fly-creature}OFFSCREEN : 0-Vulture-3, 0-Scavenger-6
+{#!lb-fgf-m4r-ik.undersea-lizard}HI_B09 : 3-Green, 2-White
+{#!lb-fgf-m4r-ik.undersea-lizard}HI_A18 : 2-Green
+{#!lb-fgf-m4r-ik.undersea-lizard}HI_A06 : 2-Green
+{#!lb-fgf-m4r-ik.undersea-lizard}HI_A16 : 4-Green
+{#!lb-fgf-m4r-ik.undersea-lizard}LINEAGE : HI_C02 : 6 : Green-0.2, Cyan-0.5, Red-0
+{#!lb-fgf-m4r-ik.undersea-lizard}LINEAGE : HI_B06 : 3 : Green-0.2, Yellow-0.5, White-0.2, Red-0
+
+//Spawns
+HI_B15 : 2-Small Centipede-3, 3-Centipede-{0.5}
+HI_B07 : 3-Black, 2-Yellow
+HI_C05 : 3-Yellow, 4-Black
+HI_B12 : 2-Cyan
+HI_A19 : 4-GarbageWorm-2
+HI_B06 : 4-TentaclePlant
+LINEAGE : HI_C01 : 5 : Yellow-0.2, Cyan-0.5, White-0.3, Red-0
+LINEAGE : HI_B03 : 3 : NONE-0.05, Cyan-0.2, Red-0
+LINEAGE : HI_B13 : 2 : Black-0.2, NONE-0.5, Cyan-0.3, Red-0
+LINEAGE : HI_C02 : 5 : Black-0.2, NONE-0.5, Cyan-0.3, Red-0
+HI_A04 : 2-TentaclePlant
+HI_C11 : 3-Cyan
+HI_C03 : 3-White
+HI_B05 : 3-White
+HI_C04 : 5-Cyan, 6-Snail, 7-Snail-2
+LINEAGE : HI_C01 : 4 : Yellow-0.1, Cyan-0.2, Red-0
