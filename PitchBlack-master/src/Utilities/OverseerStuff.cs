@@ -13,74 +13,9 @@ using DataPeralTypeMSC = MoreSlugcats.MoreSlugcatsEnums.DataPearlType;
 
 namespace PitchBlack;
 
-public class OverseerEx
+public class OverseerHooks
 {
     internal static ConditionalWeakTable<AbstractCreature, OverseerEx> OverseerPorlStuff = new ConditionalWeakTable<AbstractCreature, OverseerEx>();
-    // Actually used to find a file of matching id. Name does not matter, but the "value" param does.
-    static ChatlogID chatlogIDTest = new("test");
-    
-    // CONVERSATION ID
-    static ChatlogID PB_CC = new ("PB_CC");
-    static ChatlogID PB_DS = new ("PB_DS");
-    static ChatlogID PB_GW = new ("PB_GW");
-    static ChatlogID PB_HI = new ("PB_HI");
-    static ChatlogID PB_LF_bottom = new ("PB_LF_bottom");
-    static ChatlogID PB_LF_west = new ("PB_LF_west");
-    static ChatlogID PB_MS = new ("PB_MS");
-    static ChatlogID PB_RM = new ("PB_RM");
-    static ChatlogID PB_SB_filtration = new ("PB_SB_filtration");
-    static ChatlogID PB_SH = new ("PB_SH");
-    static ChatlogID PB_SI_CWdeath = new ("PB_SI_CWdeath");
-    static ChatlogID PB_SI_funeral = new ("PB_SI_funeral");
-    static ChatlogID PB_SI_NSHdeath = new ("PB_SI_NSHdeath");
-    static ChatlogID PB_SI_SRSdeath = new ("PB_SI_SRSdeath");
-    static ChatlogID PB_SI_UIdeath = new ("PB_SI_UIdeath");
-    static ChatlogID PB_SL_bridge = new ("PB_SL_bridge");
-    static ChatlogID PB_SL_chimney = new ("PB_SL_chimney");
-    static ChatlogID PB_SL_moon = new ("PB_SL_moon");
-    static ChatlogID PB_SU = new ("PB_SU");
-    static ChatlogID PB_SU_filt = new ("PB_SU_filt");
-    static ChatlogID PB_UW = new ("PB_UW");
-    static ChatlogID PB_VS = new ("PB_VS");
-    static ChatlogID PB_SK_Rod = new("PB_SK_Rod");
-    static ChatlogID PB_Devcom_1 = new ("PB_Devcom_1");
-    static ChatlogID PB_Devcom_2 = new ("PB_Devcom_2");
-    static ChatlogID PB_Devcom_3 = new ("PB_Devcom_3");
-    static ChatlogID PB_Devcom_4 = new ("PB_Devcom_4");
-    static ChatlogID PB_Devcom_5 = new ("PB_Devcom_5");
-    static ChatlogID PB_Devcom_6 = new ("PB_Devcom_6");
-    static ChatlogID PB_Devcom_7 = new ("PB_Devcom_7");
-    static ChatlogID PB_Devcom_8 = new ("PB_Devcom_8");
-    static ChatlogID PB_Devcom_9 = new ("PB_Devcom_9");
-    static ChatlogID PB_Devcom_10 = new ("PB_Devcom_10");
-    static ChatlogID PB_Devcom_11 = new ("PB_Devcom_11");
-    static ChatlogID PB_Devcom_12 = new ("PB_Devcom_12");
-    static ChatlogID PB_Devcom_13 = new ("PB_Devcom_13");
-    static ChatlogID PB_Devcom_14 = new ("PB_Devcom_14");
-    static ChatlogID PB_Devcom_15 = new ("PB_Devcom_15");
-    static ChatlogID PB_Techy = new("PB_Techy");
-
-    // DECLARED MODDED DATAPEARLS
-    static DataPearlType dataPearlTypeTest = new ("test");
-    static DataPearlType SK_Rod_Pearl = new ("SK_Rod_Pearl");
-    static DataPearlType PB_Devcom_pearl_1 = new("PB_Developer_Commentary_Pearl_1");
-    static DataPearlType PB_Devcom_pearl_2 = new("PB_Developer_Commentary_Pearl_2");
-    static DataPearlType PB_Devcom_pearl_3 = new("PB_Developer_Commentary_Pearl_3");
-    static DataPearlType PB_Devcom_pearl_4 = new("PB_Developer_Commentary_Pearl_4");
-    static DataPearlType PB_Devcom_pearl_5 = new("PB_Developer_Commentary_Pearl_5");
-    static DataPearlType PB_Devcom_pearl_6 = new("PB_Developer_Commentary_Pearl_6");
-    static DataPearlType PB_Devcom_pearl_7 = new("PB_Developer_Commentary_Pearl_7");
-    static DataPearlType PB_Devcom_pearl_8 = new("PB_Developer_Commentary_Pearl_8");
-    static DataPearlType PB_Devcom_pearl_9 = new("PB_Developer_Commentary_Pearl_9");
-    static DataPearlType PB_Devcom_pearl_10 = new("PB_Developer_Commentary_Pearl_10");
-    static DataPearlType PB_Devcom_pearl_11 = new("PB_Developer_Commentary_Pearl_11");
-    static DataPearlType PB_Devcom_pearl_12 = new("PB_Developer_Commentary_Pearl_12");
-    static DataPearlType PB_Devcom_pearl_13 = new("PB_Developer_Commentary_Pearl_13");
-    static DataPearlType PB_Devcom_pearl_14 = new("PB_Developer_Commentary_Pearl_14");
-    static DataPearlType PB_Devcom_pearl_15 = new("PB_Developer_Commentary_Pearl_15");
-    static DataPearlType PB_Techy_Pearl = new("PB_Techy_Pearl");
-
-    #region Hooks
     public static void Apply() {
         On.Overseer.ctor += Overseer_ctor;
         On.Overseer.Update += Overseer_Update;
@@ -164,7 +99,7 @@ public class OverseerEx
     public static string[] ChatlogData_getChatLog_id(On.MoreSlugcats.ChatlogData.orig_getChatlog_ChatlogID orig, ChatlogID id)
     {
         // Add ids here to skip encryption. It's literally the same as the base method but without putting the ReadAllText results through decryption.
-        if (id == chatlogIDTest || id == PB_CC || id == PB_DS || id == PB_GW || id == PB_HI || id == PB_LF_bottom || id == PB_LF_west || id == PB_MS || id == PB_RM || id == PB_SB_filtration || id == PB_SH || id == PB_SI_CWdeath || id == PB_SI_funeral || id == PB_SI_NSHdeath || id == PB_SI_SRSdeath || id == PB_SI_UIdeath || id == PB_SK_Rod || id == PB_SL_bridge || id == PB_SL_chimney || id == PB_SL_moon || id == PB_SU || id == PB_SU_filt || id == PB_UW || id == PB_VS) {
+        if (id == OverseerEx.chatlogIDTest || id == OverseerEx.PB_CC || id == OverseerEx.PB_DS || id == OverseerEx.PB_GW || id == OverseerEx.PB_HI || id == OverseerEx.PB_LF_bottom || id == OverseerEx.PB_LF_west || id == OverseerEx.PB_MS || id == OverseerEx.PB_RM || id == OverseerEx.PB_SB_filtration || id == OverseerEx.PB_SH || id == OverseerEx.PB_SI_CWdeath || id == OverseerEx.PB_SI_funeral || id == OverseerEx.PB_SI_NSHdeath || id == OverseerEx.PB_SI_SRSdeath || id == OverseerEx.PB_SI_UIdeath || id == OverseerEx.PB_SK_Rod || id == OverseerEx.PB_SL_bridge || id == OverseerEx.PB_SL_chimney || id == OverseerEx.PB_SL_moon || id == OverseerEx.PB_SU || id == OverseerEx.PB_SU_filt || id == OverseerEx.PB_UW || id == OverseerEx.PB_VS) {
             string path = ChatlogData.UniquePath(id);
             string[] array2;
             if (File.Exists(path))
@@ -192,10 +127,75 @@ public class OverseerEx
         orig();
         Conversation.PrefixColors.Add("DOB", new Color(126f/255f, 0, 28f/255f));
     }
-    #endregion
-    WeakReference<Overseer> _Overseer;
-    WeakReference<DataPearl> TargetPearl;
-    WeakReference<Player> TargetPlayer;
+}
+public class OverseerEx
+{
+    // Actually used to find a file of matching id. Name of the variable does not matter, but the "value" param of the constructor does.
+    internal static ChatlogID chatlogIDTest = new("test");
+    
+    // CONVERSATION ID
+    internal static ChatlogID PB_CC = new ("PB_CC");
+    internal static ChatlogID PB_DS = new ("PB_DS");
+    internal static ChatlogID PB_GW = new ("PB_GW");
+    internal static ChatlogID PB_HI = new ("PB_HI");
+    internal static ChatlogID PB_LF_bottom = new ("PB_LF_bottom");
+    internal static ChatlogID PB_LF_west = new ("PB_LF_west");
+    internal static ChatlogID PB_MS = new ("PB_MS");
+    internal static ChatlogID PB_RM = new ("PB_RM");
+    internal static ChatlogID PB_SB_filtration = new ("PB_SB_filtration");
+    internal static ChatlogID PB_SH = new ("PB_SH");
+    internal static ChatlogID PB_SI_CWdeath = new ("PB_SI_CWdeath");
+    internal static ChatlogID PB_SI_funeral = new ("PB_SI_funeral");
+    internal static ChatlogID PB_SI_NSHdeath = new ("PB_SI_NSHdeath");
+    internal static ChatlogID PB_SI_SRSdeath = new ("PB_SI_SRSdeath");
+    internal static ChatlogID PB_SI_UIdeath = new ("PB_SI_UIdeath");
+    internal static ChatlogID PB_SL_bridge = new ("PB_SL_bridge");
+    internal static ChatlogID PB_SL_chimney = new ("PB_SL_chimney");
+    internal static ChatlogID PB_SL_moon = new ("PB_SL_moon");
+    internal static ChatlogID PB_SU = new ("PB_SU");
+    internal static ChatlogID PB_SU_filt = new ("PB_SU_filt");
+    internal static ChatlogID PB_UW = new ("PB_UW");
+    internal static ChatlogID PB_VS = new ("PB_VS");
+    internal static ChatlogID PB_SK_Rod = new("PB_SK_Rod");
+    internal static ChatlogID PB_Devcom_1 = new ("PB_Devcom_1");
+    internal static ChatlogID PB_Devcom_2 = new ("PB_Devcom_2");
+    internal static ChatlogID PB_Devcom_3 = new ("PB_Devcom_3");
+    internal static ChatlogID PB_Devcom_4 = new ("PB_Devcom_4");
+    internal static ChatlogID PB_Devcom_5 = new ("PB_Devcom_5");
+    internal static ChatlogID PB_Devcom_6 = new ("PB_Devcom_6");
+    internal static ChatlogID PB_Devcom_7 = new ("PB_Devcom_7");
+    internal static ChatlogID PB_Devcom_8 = new ("PB_Devcom_8");
+    internal static ChatlogID PB_Devcom_9 = new ("PB_Devcom_9");
+    internal static ChatlogID PB_Devcom_10 = new ("PB_Devcom_10");
+    internal static ChatlogID PB_Devcom_11 = new ("PB_Devcom_11");
+    internal static ChatlogID PB_Devcom_12 = new ("PB_Devcom_12");
+    internal static ChatlogID PB_Devcom_13 = new ("PB_Devcom_13");
+    internal static ChatlogID PB_Devcom_14 = new ("PB_Devcom_14");
+    internal static ChatlogID PB_Devcom_15 = new ("PB_Devcom_15");
+    internal static ChatlogID PB_Techy = new("PB_Techy");
+
+    // DECLARED MODDED DATAPEARLS
+    static DataPearlType dataPearlTypeTest = new ("test");
+    static DataPearlType SK_Rod_Pearl = new ("SK_Rod_Pearl");
+    static DataPearlType PB_Devcom_pearl_1 = new("PB_Developer_Commentary_Pearl_1");
+    static DataPearlType PB_Devcom_pearl_2 = new("PB_Developer_Commentary_Pearl_2");
+    static DataPearlType PB_Devcom_pearl_3 = new("PB_Developer_Commentary_Pearl_3");
+    static DataPearlType PB_Devcom_pearl_4 = new("PB_Developer_Commentary_Pearl_4");
+    static DataPearlType PB_Devcom_pearl_5 = new("PB_Developer_Commentary_Pearl_5");
+    static DataPearlType PB_Devcom_pearl_6 = new("PB_Developer_Commentary_Pearl_6");
+    static DataPearlType PB_Devcom_pearl_7 = new("PB_Developer_Commentary_Pearl_7");
+    static DataPearlType PB_Devcom_pearl_8 = new("PB_Developer_Commentary_Pearl_8");
+    static DataPearlType PB_Devcom_pearl_9 = new("PB_Developer_Commentary_Pearl_9");
+    static DataPearlType PB_Devcom_pearl_10 = new("PB_Developer_Commentary_Pearl_10");
+    static DataPearlType PB_Devcom_pearl_11 = new("PB_Developer_Commentary_Pearl_11");
+    static DataPearlType PB_Devcom_pearl_12 = new("PB_Developer_Commentary_Pearl_12");
+    static DataPearlType PB_Devcom_pearl_13 = new("PB_Developer_Commentary_Pearl_13");
+    static DataPearlType PB_Devcom_pearl_14 = new("PB_Developer_Commentary_Pearl_14");
+    static DataPearlType PB_Devcom_pearl_15 = new("PB_Developer_Commentary_Pearl_15");
+    static DataPearlType PB_Techy_Pearl = new("PB_Techy_Pearl");
+    internal WeakReference<Overseer> _Overseer;
+    internal WeakReference<DataPearl> TargetPearl;
+    internal WeakReference<Player> TargetPlayer;
     PearlPointer pearlCursor;
     Vector2 pearlHoverPos;
     bool hasPearlTarget;
@@ -291,7 +291,6 @@ public class OverseerEx
         readingPearl = false;
         pearlCursor.Destroy();
         pearlCursor = null;
-        timer = 0;
         if (_Overseer.TryGetTarget(out Overseer overseer)) {
             (overseer.abstractCreature.abstractAI as OverseerAbstractAI).freezeStandardRoamingOnTheseFrames = 0;
         }
