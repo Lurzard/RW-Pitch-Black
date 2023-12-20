@@ -228,8 +228,8 @@ public class OverseerEx
     }
     public void Update() {
         if (!_Overseer.TryGetTarget(out Overseer overseer)) { return; }
-        if (overseer.room == null) { Debug.Log("Pitch Black: room was null"); return; }
-        if (overseer.room.game.session is not StoryGameSession || (overseer.room.game.session is StoryGameSession gameSession && gameSession.saveStateNumber != BeaconName && gameSession.saveStateNumber != PhotoName)) { Debug.Log("Pitch Black: Not a correct StoryGameSession"); return; }
+        if (overseer.room == null) { Debug.Log($"Pitch Black {nameof(Update)}: room was null"); return; }
+        if (overseer.room.game.session is not StoryGameSession || (overseer.room.game.session is StoryGameSession gameSession && gameSession.saveStateNumber != BeaconName && gameSession.saveStateNumber != PhotoName)) { Debug.Log($"Pitch Black {nameof(Update)}: Not a correct StoryGameSession"); return; }
         if (!overseer.PlayerGuide) { return; }
 
         // These two might be necessary to keep the overseer from running away from the player? idk but keep them just in case
