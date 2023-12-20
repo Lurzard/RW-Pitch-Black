@@ -273,7 +273,7 @@ public class OverseerEx
                 }
             }
         }
-        if (porl.slatedForDeletetion || overseer.slatedForDeletetion || (TargetPlayer.TryGetTarget(out Player p) && (p.room != overseer.room || p.dead || p.slatedForDeletetion))) {
+        if (porl.slatedForDeletetion || overseer.slatedForDeletetion || (TargetPlayer.TryGetTarget(out Player p) && (p.room != overseer.room || p.dead || p.slatedForDeletetion)) || (Custom.DistLess(porl.firstChunk.pos, pearlHoverPos, 1f) && TargetPlayer.TryGetTarget(out Player pp) && pp.stun == 0)) {
             DropPearl();
         }
     }
