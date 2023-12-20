@@ -17,6 +17,7 @@ public class OverseerHooks
 {
     internal static ConditionalWeakTable<AbstractCreature, OverseerEx> OverseerPorlStuff = new ConditionalWeakTable<AbstractCreature, OverseerEx>();
     public static void Apply() {
+        On.Player.Update += Player_Update;
         On.Overseer.ctor += Overseer_ctor;
         On.Overseer.Update += Overseer_Update;
         On.Overseer.SwitchModes += Overseer_SwitchModes;
@@ -24,6 +25,23 @@ public class OverseerHooks
         On.MoreSlugcats.ChatlogData.getChatlog_ChatlogID += ChatlogData_getChatLog_id;
         On.Conversation.InitalizePrefixColor += Conversation_InitalizePrefixColor;
         IL.Overseer.Update += IL_Overseer_Update;
+    }
+    private static void Player_Update(On.Player.orig_Update orig, Player self, bool eu)
+    {
+        orig(self, eu);
+        // Moon note: This code will probably make bacons in Jolly Coop, that are in different rooms, fight over the overseer. Could make a fix but only want to if it becomes a problem
+        if (self.room != null && self.room.game.session is StoryGameSession session && MiscUtils.IsBeaconOrPhoto(session.saveStateNumber) && self.slugcatStats.name == BeaconName) {
+            AbstractCreature overseerGuide = self.room.world.overseersWorldAI.playerGuide;
+            if (overseerGuide.Room.name == self.abstractCreature.Room.name) { Debug.Log("PB: Overseer was in the same room"); return; }
+            if (overseerGuide.realizedCreature != null) {
+                overseerGuide.realizedCreature.NewRoom(self.room);
+            }
+            else {
+                overseerGuide.Abstractize(self.room.GetWorldCoordinate(self.mainBodyChunk.pos));
+            }
+            Debug.Log($"PB: overseer room now: {overseerGuide.Room.name}");
+            // overseerGuide.ChangeRooms(self.room.GetWorldCoordinate(self.mainBodyChunk.pos));
+        }
     }
     public static void Overseer_ctor(On.Overseer.orig_ctor orig, Overseer self, AbstractCreature abstractCreature, World world) {
         orig(self, abstractCreature, world);
