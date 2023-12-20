@@ -200,7 +200,6 @@ public class OverseerEx
     Vector2 pearlHoverPos;
     bool hasPearlTarget;
     bool readingPearl;
-    int timer;
     public OverseerEx(Overseer overseer) {
         _Overseer = new WeakReference<Overseer>(overseer);
         TargetPearl = new WeakReference<DataPearl>(null);
@@ -253,7 +252,6 @@ public class OverseerEx
         // If the pearl is not set, return from here. Prevents anything below from running if the above code did not find a pearl, or it is too far away to read.
         if (!TargetPearl.TryGetTarget(out DataPearl porl)) { return; }
 
-        timer++;
         (overseer.abstractCreature.abstractAI as OverseerAbstractAI).freezeStandardRoamingOnTheseFrames = 40;
         porl.gravity = 0f;
         overseer.AI.lookAt = porl.firstChunk.pos;
