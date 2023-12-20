@@ -139,6 +139,7 @@ public class OverseerHooks
             }
             return array2;
         }
+        Debug.Log($"Pitch Black: Read pearl ID did not match, ID is {id}");
         return orig(id);
     }
     public static void Conversation_InitalizePrefixColor(On.Conversation.orig_InitalizePrefixColor orig) {
