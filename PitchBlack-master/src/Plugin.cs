@@ -70,6 +70,8 @@ class Plugin : BaseUnityPlugin
             // Also to here "...\steamapps\common\Rain World\RainWorld_Data\Managed\UnityEngine.AssetBundleModule.dll"
         PBPOMSunrays.RegisterLightrays();
         PBPOMDarkness.RegisterDarkness();
+        ReliableCreatureSpawner.RegisterSpawner();
+        CreatureSpawnerHooks.Apply();
 
         //PBFrozenCycleTimer.Apply();
 
