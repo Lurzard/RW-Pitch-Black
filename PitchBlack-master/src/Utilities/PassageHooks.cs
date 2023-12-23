@@ -15,9 +15,6 @@ public static class PassageHooks
         On.WinState.CycleCompleted += BP_CycleCompleted;
         On.WinState.CreateAndAddTracker += BP_CreateAndAddTracker;
         On.WinState.PassageDisplayName += WinState_PassageDisplayName;
-
-        On.FSprite.ctor_string_bool += FSprite_ctor_string_bool;
-        On.FAtlasManager.GetElementWithName += FAtlasManager_GetElementWithName;
 		
 		On.Menu.MenuScene.BuildScene += BP_BuildScene;
         On.Menu.CustomEndGameScreen.GetDataFromSleepScreen += BP_GetDataFromSleepScreen;
@@ -71,29 +68,6 @@ public static class PassageHooks
 			return "The Pursued";
 		else
 			return orig.Invoke(ID);
-	}
-
-
-	private static FAtlasElement FAtlasManager_GetElementWithName(On.FAtlasManager.orig_GetElementWithName orig, FAtlasManager self, string elementName)
-    {
-		if (elementName == "PursuedA")
-			return orig.Invoke(self, "HunterA"); //HunterA //foodSymbol
-		else if (elementName == "PursuedB")
-			return orig.Invoke(self, "HunterB"); //HunterB
-		else
-			return orig.Invoke(self, elementName);
-	}
-
-    
-
-    private static void FSprite_ctor_string_bool(On.FSprite.orig_ctor_string_bool orig, FSprite self, string elementName, bool quadType)
-    {
-		if (elementName == "PursuedA")
-			orig.Invoke(self, "HunterA", quadType); //HunterA
-		else if (elementName == "PursuedB")
-			orig.Invoke(self, "HunterB", quadType); //HunterB
-		else
-			orig.Invoke(self, elementName, quadType);
 	}
 
 

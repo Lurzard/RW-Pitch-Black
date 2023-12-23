@@ -92,6 +92,7 @@ class Plugin : BaseUnityPlugin
         if (!init) {
             Futile.atlasManager.LoadAtlas("atlases/photosplt");
             Futile.atlasManager.LoadAtlas("atlases/nightTerroratlas");
+            Futile.atlasManager.LoadAtlas("atlases/PursuedAtlas");
             self.Shaders["Red"] = FShader.CreateShader("red", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath(path: "assetbundles/red")).LoadAsset<Shader>("Assets/red.shader"));
             self.Shaders["Sunrays"] = FShader.CreateShader("sunrays", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/sunrays")).LoadAsset<Shader>("Assets/sunrays.shader"));
             init = true;
