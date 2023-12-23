@@ -11,6 +11,15 @@ public class FlarebombHooks
         On.ScavengerAI.CollectScore_PhysicalObject_bool += ScavengerAI_CollectScore_PhysicalObject_bool;
         On.FlareBomb.Update += DieToFlareBomb;
         On.FlareBomb.DrawSprites += FlareBomb_DrawSprites;
+        On.FlareBomb.HitByExplosion += FlareBomb_HitByExplosion;
+    }
+
+    private static void FlareBomb_HitByExplosion(On.FlareBomb.orig_HitByExplosion orig, FlareBomb self, float hitFac, Explosion explosion, int hitChunk)
+    {
+        if (self.mode != Weapon.Mode.OnBack) //THIS WILL PREVENT STORED FLARES FROM DETONATING AND BREAKING THE STORAGE SLOT
+        {
+            orig(self, hitFac, explosion, hitChunk);
+        }
     }
 
     private static void FlareBomb_DrawSprites(On.FlareBomb.orig_DrawSprites orig, FlareBomb self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)

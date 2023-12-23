@@ -183,7 +183,9 @@ public class BeaconCWT
                 af?.Deactivate();
 
                 fb.CollideWithObjects = true;
+                fb.CollideWithTerrain = true;
                 fb.collisionRange = 50f;
+                fb.ChangeMode(Weapon.Mode.Free);
                 ownr.SlugcatGrab(fb, toPaw);
                 interactionLocked = true;
                 ownr.noPickUpOnRelease = 20;
@@ -213,6 +215,7 @@ public class BeaconCWT
             }
             f.ChangeMode(Weapon.Mode.OnBack);
             f.CollideWithObjects = false;
+            f.CollideWithTerrain = false;
             f.collisionRange = 0f;
             storedFlares.Push(f);
             interactionLocked = true;
