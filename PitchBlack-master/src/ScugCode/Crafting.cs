@@ -102,7 +102,7 @@ public static class Crafting
                             continue;
                         if (self.FoodInStomach > 0) //you have food, yippee you can craft
                             canCraft = true;
-                        else if (self.swallowAndRegurgitateCounter > 10) //IF WE'VE BEEN HOLDING FOR A BIT
+                        else if (self.swallowAndRegurgitateCounter > 10 && !(Plugin.individualFoodEnabled && ModManager.CoopAvailable)) //IF WE'VE BEEN HOLDING FOR A BIT
                             BeaconHooks.foodWarning = 20; //NOT ENOUGH FOOD! ALSO SHOW A HUD WARNING
                     }
                 }
@@ -112,7 +112,7 @@ public static class Crafting
                     {
                         if (self.FoodInStomach > 0) //you have food, yippee you can craft
                             canCraft = true;
-                        else
+                        else if (self.swallowAndRegurgitateCounter > 10 && !(Plugin.individualFoodEnabled && ModManager.CoopAvailable))
                             BeaconHooks.foodWarning = 20; //NOT ENOUGH FOOD! ALSO SHOW A HUD WARNING
                     }
                 }

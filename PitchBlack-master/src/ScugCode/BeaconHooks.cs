@@ -348,7 +348,7 @@ public static class BeaconHooks
 
             if (cwt.Beacon.storage != null)
             {
-                if (!self.craftingObject)
+                if (!self.craftingObject && self.swallowAndRegurgitateCounter < 45) //ALSO, PAST A CERTAIN POINT STOP INCRIMENTING BECAUSE WE ARE CLEARLY TRYING TO REGURGITATE SOMETHING
                 {
                     //dont increment if crafting
                     cwt.Beacon.storage.increment = self.input[0].pckp && !cwt.Beacon.heldCraft;

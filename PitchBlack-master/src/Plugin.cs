@@ -29,6 +29,7 @@ class Plugin : BaseUnityPlugin
 
     internal static bool RotundWorldEnabled => _rotundWorldEnabled; //for a single check in BeaconHooks' Player.Update hook
     private static bool _rotundWorldEnabled;
+    public static bool individualFoodEnabled = false;
 
     public static ManualLogSource logger;
 
@@ -134,6 +135,10 @@ class Plugin : BaseUnityPlugin
             else if (mod.id == "dressmyslugcat")
             {
                 DMSPatch.AddSpritesToDMS();
+            }
+            else if (mod.id == "sprobgik.individualfoodbars")
+            {
+                individualFoodEnabled = true;
             }
         }
     }
