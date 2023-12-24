@@ -38,6 +38,7 @@ public class CreatureSpawnerHooks
                 CreatureTemplate.Type creatureTemplateType = (CreatureTemplate.Type)ExtEnum<CreatureTemplate.Type>.Parse(typeof(CreatureTemplate.Type), objectSettings[2], true);
                 bool dead = Convert.ToBoolean(objectSettings[3]);
                 string ID = objectSettings[4];
+                int amount = Convert.ToInt32(objectSettings[5]);
                 EntityID entityID = self.game.GetNewID();
 
                 if (ID != "" && ID.Contains(".")) {
@@ -55,11 +56,13 @@ public class CreatureSpawnerHooks
                     }
                 }
 
-                AbstractCreature abstractCreature = new AbstractCreature(self.world, StaticWorld.GetCreatureTemplate(creatureTemplateType), null, self.GetWorldCoordinate(self.roomSettings.placedObjects[i].pos), entityID);
-                if (dead) {
-                    abstractCreature.Die();
+                for (int j = 0; j < amount; j++) {
+                    AbstractCreature abstractCreature = new AbstractCreature(self.world, StaticWorld.GetCreatureTemplate(creatureTemplateType), null, self.GetWorldCoordinate(self.roomSettings.placedObjects[i].pos), entityID);
+                    if (dead) {
+                        abstractCreature.Die();
+                    }
+                    self.abstractRoom.AddEntity(abstractCreature);
                 }
-                self.abstractRoom.AddEntity(abstractCreature);
             }
         });
     }
@@ -121,7 +124,8 @@ public class ReliableCreatureSpawner
         List<ManagedField> fields = new List<ManagedField> {
 			new EnumField<CreatureTemplateTypeEnum>("CreatureType", CreatureTemplateTypeEnum.GreenLizard, null, ManagedFieldWithPanel.ControlType.arrows, "Creature Type"),
             new BooleanField("Dead", true, ManagedFieldWithPanel.ControlType.arrows, "Spawn Dead"),
-            new StringField("EntityID", "", "Creature ID")
+            new StringField("EntityID", "", "Creature ID"),
+            new IntegerField("Count", 1, int.MaxValue-1, 1, ManagedFieldWithPanel.ControlType.arrows, "Amount")
 		};
         RegisterFullyManagedObjectType(fields.ToArray(), typeof(Spawner), "ReliableCreatureSpawner", "Pitch-Black");
     }
