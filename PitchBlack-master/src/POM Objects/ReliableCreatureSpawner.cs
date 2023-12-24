@@ -29,6 +29,10 @@ public class CreatureSpawnerHooks
         cursor.EmitDelegate((Room self, int i) => {
             if (self.roomSettings.placedObjects[i].active && self.roomSettings.placedObjects[i].type == ReliableCreatureSpawner) {
                 
+                if (self.game.session is SandboxGameSession session && !session.PlayMode) {
+                    return;
+                }
+
                 string[] objectSettings = self.roomSettings.placedObjects[i].data.ToString().Split('~');
 
                 CreatureTemplate.Type creatureTemplateType = (CreatureTemplate.Type)ExtEnum<CreatureTemplate.Type>.Parse(typeof(CreatureTemplate.Type), objectSettings[2], true);
