@@ -29,7 +29,7 @@
 		"back_spear": false,
 		"can_maul": false,
 		"has_dreams": false,
-		"start_room": [ "SH_CABINETS1" ],
+		"start_room": [ "GW_photo01" ],
 		"karma": 1,
 		"diet": {
 			"plants": 1,

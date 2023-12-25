@@ -1,8 +1,0 @@
-Template: NONE
-Clouds: 1
-RandomItemDensity: 1
-Palette: 10
-Effects: FireFlies-0.6959919-20-20, 
-PlacedObjects: DangleFruit><276.4836><446.814><675.8854~171.3778~2~3, DangleFruit><310.4431><411.8418><137.3115~132.9778~2~3, DangleFruit><694.7592><363.1135><-247.5875~251.0222~2~3, DangleFruit><755.0317><401.1641><-56.91663~211.2~2~3, DangleFruit><813.8239><320.194><-115.9678~224.7111~2~3, DangleFruit><872.5942><351.0106><83.24072~189.8667~2~3, FlareBomb><556.6579><290.2635><-622.526~294.4~2~3, FlareBomb><431.5025><387.2851><-245.4531~199.8222~2~3, ResizeablePopupTrigger><940.2566><269.209><-436.4396~-226.6222~Hold the pick-up button with a spear to electrically charge it.~0.4640131~7.368813~-1~1~True~True~1~-100^40, ReliableSpear><723.9><281.3439><, ReliableSpear><821.1453><280.7744><, InsectGroup><290.3728><434.8456><0~131~-115~137~FireFly~0.25, InsectGroup><751.8005><380.4858><0~123~-314~188~FireFly~0.2608696,
-FadePalette: 9, 0.06959915
-AmbientSounds: OMNI><AM_WIN-SubWnd.ogg><743.8797><492.8477><0.2282609><0.5695652, OMNI><SO_NAT-LilDrips.ogg><741.3858><252.0858><0.2717391><1, OMNI><waterGurgleLOOP1.wav><735.4689><366.8024><0.1521739><0.5695652, SPOT><AM_ENV-SubTerr.ogg><746.1727><442.101><0.3043478><0.3543478><105.1727><368.101><-33.35535><-110.3553><0><1, 

@@ -22,7 +22,7 @@ GW_C04_PAST : 15-GarbageWorm-2, 7-Leech-3, 9-Leech-3, 11-Eel-2
 GW_D01_PAST : 7-Leech-8, 16-GarbageWorm-5, 5-Eel-2, 8-Leech-7
 GW_C02_PAST : 13-GarbageWorm-4, 2-CicadaB-3, 3-Cyan, 9-Leech-7, 6-TentaclePlant, 6-Scavenger-{Seed:2837}
 GW_TOWER15 : 3-CicadaA-2, 4-CicadaB-3
-GW_TOWER08 : 3-Cyan-2
+GW_TOWER08 : 3-Yellow-2
 GW_TOWER11 : 3-SpitterSpider-2
 GW_TOWER10 : 3-Yellow
 GW_B09_PAST : 2-Leech-10, 4-Snail-2, 7-GarbageWorm-2
