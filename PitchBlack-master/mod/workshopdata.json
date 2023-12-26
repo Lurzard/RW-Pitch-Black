@@ -2,7 +2,7 @@
   "Title": "[BETA] Pitch Black",
   "Description": "Crawl around in the nighttime of a dying world as two new custom campaigns, The Beacon and The Photomaniac.\n\nMake your way home safely before the rising dawn wakes, uncover the hidden secrets of this world, and piece together its fractured story.",
   "ID": "lurzard.pitchblack",
-  "Version": "0.2.4",
+  "Version": "0.3",
   "TargetGameVersion": "v1.9.06",
   "Requirements": "slime-cubed.slugbase,moreslugcats,fisobs,regionkit,crs",
   "RequirementNames": "SlugBase,More Slugcats Expansion,Fisobs,RegionKit,Custom Regions Support",
