@@ -10,12 +10,6 @@ public class RoomScripts
     {
         On.RainWorldGame.ctor += RainWorldGame_ctor;
         On.RoomSpecificScript.AddRoomSpecificScript += RoomSpecificScript_AddRoomSpecificScript;
-        On.Player.Update += asdasdasd;
-    }
-    private static void asdasdasd(On.Player.orig_Update orig, Player self, bool eu)
-    {
-        orig(self, eu);
-        Debug.Log($"PB: {self.mainBodyChunk.pos}");
     }
     private static void RainWorldGame_ctor(On.RainWorldGame.orig_ctor orig, RainWorldGame self, ProcessManager manager)
     {
