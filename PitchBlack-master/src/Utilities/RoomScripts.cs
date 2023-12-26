@@ -141,10 +141,11 @@ public class GW_PHOTO01_IntroScript : UpdatableAndDeletable
                     alreadyRun = true;
                     // I had trouble with 4-player groups pushing eachother into the acid. 
                         // This will spawn the first two players on the right, cannon spawning spot, and the other two on the platforms above the acid
-                    float xPos = i <= 1? (i * 40f) : (-i * 80f);
-                    player.SuperHardSetPosition(new Vector2(700f + xPos, 665f));
-                    player.mainBodyChunk.vel = Vector2.zero;
-                    player.standing = true;
+                    float xPos = i <= 1? (i * 40f) : (-(i-1) * 100f - 20f);
+                    float yPos = i <= 1? 665f : 610f;
+                    player.SuperHardSetPosition(new Vector2(710f + xPos, yPos));
+                    player.mainBodyChunk.vel = Vector2.down;
+                    player.bodyChunks[0].vel = Vector2.down;
                     room.game.Players[i].lavaImmune = (bool)prevLavaImmune[i];
                 }
             }
