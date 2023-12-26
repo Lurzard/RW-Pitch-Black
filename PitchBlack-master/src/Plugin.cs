@@ -5,6 +5,7 @@ using System.Security;
 using Fisobs.Core;
 using UnityEngine;
 using BepInEx.Logging;
+using System;
 
 #pragma warning disable CS0618 // Type or member is obsolete
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -89,19 +90,23 @@ class Plugin : BaseUnityPlugin
     public void OnModsInit(On.RainWorld.orig_OnModsInit orig, RainWorld self)
     {
         orig(self);
-        MachineConnector.SetRegisteredOI("lurzard.pitchblack", PBOptions.Instance);
-        if (!init) {
-            Futile.atlasManager.LoadAtlas("atlases/photosplt");
-            Futile.atlasManager.LoadAtlas("atlases/nightTerroratlas");
-            Futile.atlasManager.LoadAtlas("atlases/PursuedAtlas");
-            self.Shaders["Red"] = FShader.CreateShader("red", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath(path: "assetbundles/red")).LoadAsset<Shader>("Assets/red.shader"));
-            self.Shaders["Sunrays"] = FShader.CreateShader("sunrays", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/sunrays")).LoadAsset<Shader>("Assets/sunrays.shader"));
-            init = true;
+        try {
+            if (!init) {
+                MachineConnector.SetRegisteredOI("lurzard.pitchblack", PBOptions.Instance);
+                Futile.atlasManager.LoadAtlas("atlases/photosplt");
+                Futile.atlasManager.LoadAtlas("atlases/nightTerroratlas");
+                Futile.atlasManager.LoadAtlas("atlases/PursuedAtlas");
+                self.Shaders["Red"] = FShader.CreateShader("red", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath(path: "assetbundles/red")).LoadAsset<Shader>("Assets/red.shader"));
+                self.Shaders["Sunrays"] = FShader.CreateShader("sunrays", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/sunrays")).LoadAsset<Shader>("Assets/sunrays.shader"));
+                init = true;
 
-            //I'M PRETTY SURE BEST PRACTICE IS TO PUT HOOKS HERE
-            On.RainWorldGame.ctor += RainWorldGame_ctor;
-            On.RainWorldGame.Update += RainWorldGame_Update;
-
+                //I'M PRETTY SURE BEST PRACTICE IS TO PUT HOOKS HERE
+                On.RainWorldGame.ctor += RainWorldGame_ctor;
+                On.RainWorldGame.Update += RainWorldGame_Update;
+            }
+        } catch (Exception err) {
+            logger.LogDebug("Pitch Black: There was an error loading assets!");
+            logger.LogDebug(err);
         }
     }
 
