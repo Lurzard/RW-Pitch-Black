@@ -6,7 +6,7 @@ public class MiscUtils
 {
     public static bool IsBeaconOrPhoto(SlugcatStats.Name slugName)
     {
-        return null != slugName && (slugName == BeaconName || slugName == PhotoName);
+        return slugName != null && (slugName == BeaconName || slugName == PhotoName);
     }
     public static bool IsBeaconOrPhoto(Creature crit)
     {
@@ -15,16 +15,16 @@ public class MiscUtils
     
     public static bool IsBeaconOrPhoto(Player player)
     {
-        return player.slugcatStats?.name?.value == "Beacon" || player.slugcatStats?.name?.value == "Photomaniac";
+        return player.slugcatStats.name == BeaconName || player.slugcatStats.name == PhotoName;
     }
 
     public static bool IsBeaconWorldstate(RainWorldGame game)
     {
-        return game.GetStorySession?.saveStateNumber == Plugin.BeaconName;
+        return game.session is StoryGameSession session && session.saveStateNumber == BeaconName;
     }
 
     public static bool IsPhotoWorldstate(RainWorldGame game)
     {
-        return game.GetStorySession?.saveStateNumber == Plugin.PhotoName;
+        return game.session is StoryGameSession session && session.saveStateNumber == PhotoName;
     }
 }
