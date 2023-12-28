@@ -7,38 +7,6 @@ using Expedition;
 
 namespace PitchBlack;
 
-/*
-public static class NTTrackerHooks
-{
-    public static NTTracker myTracker;// IDRK WHAT TO DO WITH THIS
-    public static void Apply()
-	{
-		
-        On.RainWorldGame.ctor += RainWorldGame_ctor;
-        On.RainWorldGame.Update += RainWorldGame_Update;
-	}
-
-    private static void RainWorldGame_Update(On.RainWorldGame.orig_Update orig, RainWorldGame self)
-    {
-        orig(self);
-		Debug.Log("UPDATEME");
-		if (myTracker is not null)
-			myTracker.Update();
-	}
-
-    private static void RainWorldGame_ctor(On.RainWorldGame.orig_ctor orig, RainWorldGame self, ProcessManager manager)
-    {
-        orig(self, manager);
-
-        if (self.IsStorySession)
-		{
-            myTracker = new NTTracker(self);
-			Debug.Log("ADDING TRACKER");
-        }
-            
-    }
-}
-*/
 
 public class NTTracker
 {
@@ -50,7 +18,7 @@ public class NTTracker
         this.unrealizedCounter = 0;
         this.region = this.game.world.region.name;
         this.summoning = false;
-
+        this.debugMsg = false; //PBOptions.debugMsg.Value
     }
 
 
@@ -69,7 +37,7 @@ public class NTTracker
             }
             AbstractRoom abstractRoom2 = this.game.world.GetAbstractRoom(this.game.world.firstRoomIndex + list[UnityEngine.Random.Range(0, list.Count)]);
             this.spawnPos = abstractRoom2.RandomNodeInRoom();
-            Debug.Log("HUNTER LOCATION: " + abstractRoom2.name);
+            //Debug.Log("HUNTER LOCATION: " + abstractRoom2.name);
         }
     }
 
@@ -106,20 +74,6 @@ public class NTTracker
             //JUST IN CASE, GET RIDDA THE OLD ONE
             if (this.pursuer != null)
             {
-                //try 
-                //{
-                //    if (this.pursuer.Room != null)
-                //    {
-                //        this.pursuer.Move(this.spawnPos); //TRY N RESPAWN THEM FIRST OR WE CAN'T GET RID OF THEM
-                //        this.game.world.GetAbstractRoom(this.spawnPos).AddEntity(this.pursuer);
-                //    }
-                        
-                //}
-                //catch (Exception e)
-                //{
-                //    Debug.Log("UNABLE TO MOVE PURSUER");
-                //}
-
                 if (this.pursuer.realizedCreature != null)
                 {
                     this.pursuer.realizedCreature.Destroy(); //THIS MIGHT HAVE BEEN WHAT WE NEEDED
@@ -166,7 +120,7 @@ public class NTTracker
 
         if (this.pursuer != null && this.pursuer.Room != null)
         {
-            if (PBOptions.debugMsg.Value)
+            if (this.debugMsg)
                 Debug.Log("region cooldown: " + this.regionCooldowns.Contains(this.region) + " Time spent here: " + this.pursuer.timeSpentHere + " Relocate Timer: " + this.hackTimer + " DEST: " + this.destination.room.ToString());
 
 
@@ -194,7 +148,7 @@ public class NTTracker
                     }
                     this.pursuer = null;
 					this.hackTimer = 0;
-                    if (PBOptions.debugMsg.Value)
+                    if (this.debugMsg)
                         this.game.cameras[0].hud.textPrompt.AddMessage("DEBUG: Pursuer Removed...", 10, 250, true, true);
                     return;
                 }
@@ -204,7 +158,8 @@ public class NTTracker
             if (this.currentRoom != this.pursuer.Room.name)
             {
                 this.currentRoom = this.pursuer.Room.name;
-                Debug.Log("Pursuer moving to: " + this.currentRoom);
+                if (this.debugMsg)
+                    Debug.Log("Pursuer moving to: " + this.currentRoom);
                 //WE DON'T REALLY NEED THIS, IT'S JUST FLASHY
                 /*
                 for (int i = 0; i < this.pursuer.Room.connections.Length; i++)
@@ -245,12 +200,12 @@ public class NTTracker
             if ((this.pursuer.realizedCreature == null && this.pursuer.timeSpentHere > (relocateTimer / 2) && this.hackTimer > 1000) || this.hackTimer > relocateTimer)
             {
                 //CHECK IF WE GOT STUCK IN SOME ROOM SOMEWHERE
-                if (this.pursuer.timeSpentHere > relocateTimer && PBOptions.debugMsg.Value)
+                if (this.pursuer.timeSpentHere > relocateTimer && this.debugMsg)
                 {
                     Debug.Log("UN-STUCKING PURSUER!");
                     this.game.cameras[0].hud.textPrompt.AddMessage("DEBUG: Un-Stucking Pursuer", 10, 250, false, false);
                 }
-                else if (PBOptions.debugMsg.Value)
+                else if (this.debugMsg)
                 {
                     Debug.Log("RE-LOCATING PURSUER!");
                     this.game.cameras[0].hud.textPrompt.AddMessage("DEBUG: Relocating Pursuer", 10, 250, false, false);
@@ -294,7 +249,7 @@ public class NTTracker
         //TBH IDK WHY WE CARE ABOUT ANYTHING OTHER THAN REGION SWITCH COOLDOWN
         else if (this.targetPlayer != null && this.ValidTrackRoom(this.targetPlayer.room) && this.regionSwitchCooldown <= 0) //!this.regionCooldowns.Contains(this.region) && this.game.world.rainCycle.CycleProgression > 0.1f
         {
-            if (PBOptions.debugMsg.Value && this.game.cameras[0].hud != null)
+            if (this.debugMsg && this.game.cameras[0].hud != null)
             {
                 Debug.Log("SUMMONING PURSUER");
                 this.game.cameras[0].hud.textPrompt.AddMessage("DEBUG: Summoning Pursuer", 10, 250, false, false);
@@ -398,6 +353,7 @@ public class NTTracker
     public RainWorldGame game;
 
     //AD HOC
+    public bool debugMsg;
     public int summonSickness = 0;
     public bool summoning;
 	public int hackTimer = 0;

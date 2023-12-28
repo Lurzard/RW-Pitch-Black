@@ -67,7 +67,7 @@ public class PBOptions : OptionInterface
 		int barLngt = 45 * 3;
 		Tabs[0].AddItems(new UIelement[]
 		{
-            pDistOp = new OpSlider(PBOptions.maxFlashStore, new Vector2(margin + 250, lineCount-5), barLngt)
+            pDistOp = new OpSlider(PBOptions.maxFlashStore, new Vector2(margin + 250, lineCount+5), barLngt)
 			{description = dsc},
             lblOp1 = new OpLabel(pDistOp.pos.x, pDistOp.pos.y - 20, Translate("Beacon's Max Stored Flashbangs"), bigText: false)
 			//{alignment = FLabelAlignment.Center}
@@ -84,35 +84,14 @@ public class PBOptions : OptionInterface
         });
 		
 		
-		lineCount -= 60;
+		lineCount -= 80;
 		
-        OpCheckBox mpBox4;
-        dsc = Translate("Photomaniac becomes stunned after using their shock");
-        Tabs[0].AddItems(new UIelement[]
-        {
-            mpBox4 = new OpCheckBox(PBOptions.shockStun, new Vector2(margin, lineCount))
-            {description = dsc},
-            new OpLabel(mpBox4.pos.x + 30, mpBox4.pos.y+3, Translate("Photomaniac's Shock Stun"))
-            {description = dsc}
-        });
-		
-		
-		lineCount -= 60;
-		dsc = Translate("Photomaniac gains resistance to electricity");
-		Tabs[0].AddItems(new UIelement[]
-		{
-			mpBox5 = new OpCheckBox(PBOptions.elecImmune, new Vector2(margin, lineCount))
-			{description = dsc},
-			new OpLabel(mpBox5.pos.x + 30, mpBox5.pos.y+3, Translate("Photomaniac's Electricity Resistence"))
-			{description = dsc}
-		});
-
         
         dsc = Translate("How long it takes for the pursuer to track you down");
         barLngt = 45 * 3;
         Tabs[0].AddItems(new UIelement[]
         {
-            pDistOp = new OpSlider(PBOptions.pursuerAgro2, new Vector2(margin + 250, lineCount-5), barLngt)
+            pDistOp = new OpSlider(PBOptions.pursuerAgro2, new Vector2(margin + 250, lineCount+5), barLngt)
             {description = dsc},
             lblOp1 = new OpLabel(pDistOp.pos.x, pDistOp.pos.y - 20, Translate("Pursuer Aggro"), bigText: false)
 		});
@@ -128,7 +107,7 @@ public class PBOptions : OptionInterface
 			new OpLabel(mpBox7.pos.x + 30, mpBox7.pos.y+3, Translate("Charge Spears"))
 			{description = dsc}
 		});
-		*/
+		
 
         lineCount -= 60;
         OpCheckBox mpBox8;
@@ -140,13 +119,13 @@ public class PBOptions : OptionInterface
             new OpLabel(mpBox8.pos.x + 30, mpBox8.pos.y+3, Translate("Debug Messages"))
             {description = dsc}
         });
-
+        */
 
         OpCheckBox mpBox9;
         dsc = Translate("The Pursuer appears in all campaigns for all slugcats");
         Tabs[0].AddItems(new UIelement[]
         {
-            mpBox9 = new OpCheckBox(PBOptions.universalPursuer, new Vector2(margin + 250, lineCount))
+            mpBox9 = new OpCheckBox(PBOptions.universalPursuer, new Vector2(margin, lineCount))
             {description = dsc},
             new OpLabel(mpBox9.pos.x + 30, mpBox9.pos.y+3, Translate("Universal Pursuer"))
             {description = dsc}
@@ -154,24 +133,44 @@ public class PBOptions : OptionInterface
 
 
 
+        lineCount -= 80;
+        OpCheckBox mpBox4;
+        dsc = Translate("Photomaniac becomes stunned after using their shock");
+        Tabs[0].AddItems(new UIelement[]
+        {
+            mpBox4 = new OpCheckBox(PBOptions.shockStun, new Vector2(margin, lineCount))
+            {description = dsc},
+            new OpLabel(mpBox4.pos.x + 30, mpBox4.pos.y+3, Translate("Photomaniac's Shock Stun"))
+            {description = dsc}
+        });
 
-        int descLine = 225;
+        dsc = Translate("Photomaniac gains resistance to electricity");
+        Tabs[0].AddItems(new UIelement[]
+        {
+            mpBox5 = new OpCheckBox(PBOptions.elecImmune, new Vector2(margin + 250, lineCount))
+            {description = dsc},
+            new OpLabel(mpBox5.pos.x + 30, mpBox5.pos.y+3, Translate("Photomaniac's Electricity Resistence"))
+            {description = dsc}
+        });
+
+
+        int descLine = 200;
 		Tabs[0].AddItems(new OpLabel(25f, descLine, "Beacon:"));
 		descLine -= 20;
-		Tabs[0].AddItems(new OpLabel(25f, descLine, Translate("Flashbang creation: Costs 1 food pip per rock + SHIFT / Grab (Automatically added to storage).")));
+		Tabs[0].AddItems(new OpLabel(25f, descLine, Translate("Flashbang creation: Costs 1 food pip per rock + hold GRAB (Automatically added to storage).")));
         descLine -= 20;
-        Tabs[0].AddItems(new OpLabel(25f, descLine, Translate("Add flashbang to storage: Have a flashbang in hand + hold SHIFT / Grab.")));
+        Tabs[0].AddItems(new OpLabel(25f, descLine, Translate("Add flashbang to storage: Have a flashbang in hand + hold GRAB.")));
         descLine -= 20;
-        Tabs[0].AddItems(new OpLabel(25f, descLine, Translate("Remove flashbang from storage: Have a stored flashbang + hold SHIFT / Grab.")));
+        Tabs[0].AddItems(new OpLabel(25f, descLine, Translate("Remove flashbang from storage: Have a stored flashbang + hold GRAB.")));
         descLine -= 20;
-        Tabs[0].AddItems(new OpLabel(25f, descLine, Translate("Quick-throw flashbang: Have a stored flashbang + X / Throw on an empty hand.")));
+        Tabs[0].AddItems(new OpLabel(25f, descLine, Translate("Quick-throw flashbang: Have a stored flashbang + THROW on an empty hand.")));
 
         descLine -= 45;
         Tabs[0].AddItems(new OpLabel(25f, descLine, "Photomaniac:"));
         descLine -= 20;
-        Tabs[0].AddItems(new OpLabel(25f, descLine, Translate("Electric Spear creation: Costs 1 food pip per spear + SHIFT / Grab.")));
+        Tabs[0].AddItems(new OpLabel(25f, descLine, Translate("Electric Spear creation: Costs 1 food pip per spear + hold GRAB.")));
         descLine -= 20;
-        Tabs[0].AddItems(new OpLabel(25f, descLine, Translate("Electric shockwave ability: SHIFT / Grab + Z / Jump.")));
+        Tabs[0].AddItems(new OpLabel(25f, descLine, Translate("Electric shockwave ability: GRAB + JUMP.")));
 
     }
 

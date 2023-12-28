@@ -18,7 +18,7 @@ public static class WorldChanges
     private static void AboveCloudsView_ctor(On.AboveCloudsView.orig_ctor orig, AboveCloudsView self, Room room, RoomSettings.RoomEffect effect)
     {
         orig(self, room, effect);
-        if (room.game.GetStorySession.saveStateNumber == Plugin.BeaconName)
+        if (room.game.IsStorySession && room.game.GetStorySession.saveStateNumber == Plugin.BeaconName)
         {
             self.atmosphereColor = new Color(0.26274509803f, 0.34901960784f, 0.58039215686f);
             Color atmocolor = new Color(0.26274509803f, 0.34901960784f, 0.58039215686f);

@@ -50,7 +50,7 @@ public class FlarebombHooks
         int val = orig(self, obj, weaponFiltered);
 
         //spinch: hopefully the below is better anti theft code
-        if (obj is FlareBomb flarebomb)
+        if (obj is FlareBomb flarebomb && self.scavenger.room != null)
         {
             foreach (var abstrCrit in self.scavenger.room.game.Players)
             {
