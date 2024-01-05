@@ -70,6 +70,8 @@ class Plugin : BaseUnityPlugin
             // Also to here "...\steamapps\common\Rain World\RainWorld_Data\Managed\UnityEngine.AssetBundleModule.dll"
         PBPOMSunrays.RegisterLightrays();
         PBPOMDarkness.RegisterDarkness();
+        TeleportWater.Register();
+        BreathableWater.Register();
 
         PBFrozenCycleTimer.Apply();
         OverseerHooks.Apply();
@@ -144,7 +146,6 @@ class Plugin : BaseUnityPlugin
     private static void RainWorldGame_Update(On.RainWorldGame.orig_Update orig, RainWorldGame self)
     {
         orig(self);
-        //Debug.Log("UPDATEME");
         if (myTracker is not null)
             myTracker.Update();
     }
