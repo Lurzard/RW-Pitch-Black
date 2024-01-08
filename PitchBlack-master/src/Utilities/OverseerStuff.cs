@@ -30,7 +30,7 @@ public class OverseerHooks
     {
         orig(self, eu);
         // Moon note: This code will probably make bacons in Jolly Coop, that are in different rooms, fight over the overseer. Could make a fix but only want to if it becomes a problem
-        if (self.room != null && self.room.game.session is StoryGameSession session && MiscUtils.IsBeaconOrPhoto(session.saveStateNumber) && self.slugcatStats.name == BeaconName) {
+        if (self.room?.world?.overseersWorldAI?.playerGuide != null && self.room.game.session is StoryGameSession session && MiscUtils.IsBeaconOrPhoto(session.saveStateNumber) && self.slugcatStats.name == BeaconName) {
             AbstractCreature overseerGuide = self.room.world.overseersWorldAI.playerGuide;
             if (overseerGuide.Room.name == self.abstractCreature.Room.name) { Debug.Log("PB: Overseer was in the same room"); return; }
             if (overseerGuide.realizedCreature != null) {
