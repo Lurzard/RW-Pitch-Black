@@ -73,6 +73,8 @@ class Plugin : BaseUnityPlugin
         TeleportWater.Register();
         BreathableWater.Register();
 
+        EchoMusic.Apply();
+
         PBFrozenCycleTimer.Apply();
         OverseerHooks.Apply();
 
