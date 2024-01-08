@@ -1,12 +1,8 @@
-using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using RWCustom;
-using Mono.Cecil.Cil;
-using MonoMod.Cil;
 using UnityEngine;
 using static Pom.Pom;
-using System.IO;
 using AssetBundles;
 
 namespace PitchBlack;
@@ -15,12 +11,20 @@ namespace PitchBlack;
 // Could probably reuse this to make seemless gate transitions tbh. Might do that later :3
 public class TeleportWater
 {
+    private enum AssetBundleName
+    {
+        music_procedural,
+        music_songs,
+        loadedsoundeffects,
+        loadedsoundeffects_ambient
+    }
     internal class TeleportWaterObject : CosmeticSprite
     {
         PlacedObject pObj;
-        int soundTimer = 0;
-        public TeleportWaterObject (PlacedObject pObj, Room room) {
+        bool startedNoise = false;
+        public TeleportWaterObject (PlacedObject pObj, Room room) : base() {
             this.pObj = pObj;
+            this.room = room;
             // room.PlayCustomSound("VS_SA_PULSE", Vector2.Lerp(pObj.pos, pObj.pos + (pObj.data as ManagedData).GetValue<Vector2>("Area"), 0.5f), 1, 1);
         }
         public override void InitiateSprites(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
@@ -67,56 +71,38 @@ public class TeleportWater
 			}
         }
         // This method would play sounds, but nothing works like I want it to.
-        public void PlaySounds()
+        public void PlaySounds(ManagedData managedData)
         {
-            if (soundTimer > 0) {
-                soundTimer--;
-            }
-            if (room != room.game.cameras[0].room) {
+            if (room != room.game.cameras[0].room || startedNoise) {
                 return;
             }
-            if (soundTimer == 0) {
-                Debug.Log("Pitch Black Teleporter: I PLayed a sound!");
-                soundTimer = 160;
-                // room.PlayCustomSound("VS_SA_PULSE", Vector2.Lerp(pObj.pos, pObj.pos+(pObj.data as ManagedData).GetValue<Vector2>("Area"), 0.5f), 2, 1);
-                string text = string.Concat(new string[]
-                {
-                    "music",
-                    Path.DirectorySeparatorChar.ToString(),
-                    "songs",
-                    Path.DirectorySeparatorChar.ToString(),
-                    "rw_42 - kayava",
-                    ".ogg"
-                });
-                string trackName = AssetManager.ResolveFilePath(text);
-		        SoundLoader.SoundData soundData = room.game.cameras[0].virtualMicrophone.GetSoundData(SoundID.Slugcat_Stash_Spear_On_Back, -1);
-                soundData.dontAutoPlay = false;
-                soundData.soundName = trackName;
-                VirtualMicrophone.StaticPositionSound staticPositionSound = new (room.game.cameras[0].virtualMicrophone, soundData, Vector2.Lerp(pObj.pos, pObj.pos+(pObj.data as ManagedData).GetValue<Vector2>("Area"), 0.5f), 3, 1, false);
-                Debug.Log(staticPositionSound.audioSource);
-                staticPositionSound.singleUseSound = true;
-                staticPositionSound.audioSource.loop = true;
-                staticPositionSound.autoPlayAfterLoad = true;
-                string discardText;
-                LoadedAssetBundle loadedAssetBundle = AssetBundleManager.GetLoadedAssetBundle("music_songs", out discardText);
-                Debug.Log($"Error message: {discardText}");
-                staticPositionSound.audioSource.clip = loadedAssetBundle.m_AssetBundle.LoadAsset<AudioClip>("rw_42 - kayava.mp3");
-                room.game.cameras[0].virtualMicrophone.soundObjects.Add(staticPositionSound);
-                foreach (string name in loadedAssetBundle.m_AssetBundle.GetAllAssetNames())
-                    Debug.Log(name);
-                Debug.Log(loadedAssetBundle);
-                Debug.Log(loadedAssetBundle.m_AssetBundle);
-                Debug.Log(loadedAssetBundle.m_AssetBundle.LoadAsset<AudioClip>("rw_42 - kayava.mp3"));
+            startedNoise = true;
+            #nullable enable
+            LoadedAssetBundle? loadedAssetBundle = AssetBundleManager.GetLoadedAssetBundle(managedData.GetValue<AssetBundleName>("bundleName").ToString(), out var discardText);
+            Debug.Log($"Pitch Black Portal Error message: {discardText}");
+            AudioClip? audio = loadedAssetBundle?.m_AssetBundle?.LoadAsset<AudioClip>(managedData.GetValue<string>("songName"));
+            if (audio == null) {
+                Debug.LogError($"Pitch Black {nameof(TeleportWater)}: Could not find an asset of name {managedData.GetValue<string>("songName")} in asset bundle {managedData.GetValue<AssetBundleName>("bundleName")}");
+                return;
             }
+            SoundLoader.SoundData soundData = room.game.cameras[0].virtualMicrophone.GetSoundData(SoundID.Slugcat_Stash_Spear_On_Back, -1);
+            VirtualMicrophone.StaticPositionSound staticPositionSound = new (room.game.cameras[0].virtualMicrophone, soundData, Vector2.Lerp(pObj.pos, pObj.pos+managedData.GetValue<Vector2>("Area"), 0.5f), managedData.GetValue<float>("volume"), managedData.GetValue<float>("pitch"), false);
+            staticPositionSound.audioSource.clip = audio;
+            staticPositionSound.audioSource.loop = true;
+            staticPositionSound.audioSource.dopplerLevel = managedData.GetValue<float>("doppler");
+            room.game.cameras[0].virtualMicrophone.soundObjects.Add(staticPositionSound);
+            staticPositionSound.Play();
+            #nullable disable
         }
         public override void Update(bool eu)
         {
             base.Update(eu);
-            PlaySounds();
             // Get the object's data
             ManagedData managedData = (ManagedData)pObj.data;
+            // Play sound
+            PlaySounds(managedData);
             // If it is disabled, return and don't do any teleporty majiks
-            if (!managedData.GetValue<bool>("Enabled")) {
+            if (!managedData.GetValue<bool>("Enabled") || room == null || room.PlayersInRoom == null) {
                 return;
             }
             // Get the object's parameter's and things to make it go vroom vroom
@@ -126,6 +112,9 @@ public class TeleportWater
             // Unity object moment (lmao RIP Cactus)
             Bounds rect = new Bounds(Vector2.Lerp(pObj.pos, pObj.pos+area, 0.5f), new Vector2(Mathf.Abs(area.x), Mathf.Abs(area.y)));
             foreach (Player player in room.PlayersInRoom) {
+                if (player?.mainBodyChunk == null) {
+                    continue;
+                }
                 if (rect.Contains(player.mainBodyChunk.pos)) {
                     // Get the data needed to move the player into the new room, and data to restore the state of the original player
                     AbstractCreature plrAbsCrt = player.abstractCreature;
@@ -275,10 +264,15 @@ public class TeleportWater
             new StringField("DestinationRoom", "", "Destination Room"),
             new Vector2Field("DestinationPos", Vector2.zero, Vector2Field.VectorReprType.line, "Position"),
             new BooleanField("Enabled", false, ManagedFieldWithPanel.ControlType.arrows, "Enabled"),
-            new FloatField("r", 0, 100, 3.7f, 0.1f, ManagedFieldWithPanel.ControlType.slider, "R"),
-            new FloatField("g", 0, 100, 0f, 0.1f, ManagedFieldWithPanel.ControlType.slider, "G"),
-            new FloatField("b", 0, 100, 1f, 0.1f, ManagedFieldWithPanel.ControlType.slider, "B"),
-            new FloatField("a", 0, 100, 0.9f, 0.1f, ManagedFieldWithPanel.ControlType.slider, "A")
+            new FloatField("r", 0, 100, 3.7f, 0.1f, ManagedFieldWithPanel.ControlType.text, "R"),
+            new FloatField("g", 0, 100, 0f, 0.1f, ManagedFieldWithPanel.ControlType.text, "G"),
+            new FloatField("b", 0, 100, 1f, 0.1f, ManagedFieldWithPanel.ControlType.text, "B"),
+            new FloatField("a", 0, 100, 0.9f, 0.1f, ManagedFieldWithPanel.ControlType.text, "A"),
+            new FloatField("volume", 0, 10, 1, 0.1f, ManagedFieldWithPanel.ControlType.slider, "Volume"),
+            new FloatField("pitch", -10, 10, 1, 0.1f, ManagedFieldWithPanel.ControlType.slider, "Pitch"),
+            new FloatField("doppler", 0, 1, 0.5f, 0.1f, ManagedFieldWithPanel.ControlType.slider, "Doppler"),
+            new StringField("songName", "vs_sa_pulse", "Song Name"),
+            new EnumField<AssetBundleName>("bundleName", AssetBundleName.music_procedural, null, ManagedFieldWithPanel.ControlType.arrows, "Asset Bundle")
 		};
         RegisterFullyManagedObjectType(fields.ToArray(), typeof(TeleportWaterObject), "TeleportWater", "Pitch-Black");
     }
