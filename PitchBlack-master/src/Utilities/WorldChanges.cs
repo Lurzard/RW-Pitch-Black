@@ -1,6 +1,9 @@
 using System.IO;
 using System.Linq;
 using UnityEngine;
+using MonoMod.RuntimeDetour;
+using static System.Reflection.BindingFlags;
+using System;
 
 namespace PitchBlack;
 public static class WorldChanges
@@ -10,8 +13,26 @@ public static class WorldChanges
         On.Region.GetProperRegionAcronym += Region_GetProperRegionAcronym;
         On.RoofTopView.ctor += RoofTopView_ctor;
         On.KarmaFlower.ApplyPalette += KarmaFlower_ApplyPalette;
+        On.Room.Update += Room_Update;
+        new Hook(typeof(ElectricDeath).GetMethod("get_Intensity", Public | NonPublic | Instance), ElecIntensity);
     }
-
+    public static float ElecIntensity(Func<ElectricDeath, float> orig, ElectricDeath self) {
+        if (MiscUtils.IsBeaconOrPhoto(self.room.game.session)) {
+            return 0.2f;
+        }
+        return orig(self);
+    }
+    private static void Room_Update(On.Room.orig_Update orig, Room self)
+    {
+        orig(self);
+        // This will probably work, although I wonder if it will override the end-game rain storm. Oh well, do I look like I got time to test that? (don't let me answer that)
+        // If the roomRain isn't null, it's a flashcat campaign, and the ElectricDeath setting isn't present
+        // We could put the code `&& self.roomSettings.DangerType != RoomRain.DangerType.Thunder` to prevent it from raining in rooms with default no rain at all
+        // Also pretty unhappy with using LinQ here, but hopefully it doesn't get tooo laggy. It shouldn't as long as rooms don't have too many effects
+        if (self.abstractRoom.AnySkyAccess && self.roomRain != null && MiscUtils.IsBeaconOrPhoto(self.game?.session) && !self.roomSettings.effects.Exists(x => x.type == RoomSettings.RoomEffect.Type.ElectricDeath)) {
+            self.roomRain.intensity = Mathf.Max(0.1f, Mathf.Max(self.roomRain.intensity, self.roomRain.globalRain.Intensity));
+        }
+    }
     private static void KarmaFlower_ApplyPalette(On.KarmaFlower.orig_ApplyPalette orig, KarmaFlower self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
     {
         orig(self, sLeaser, rCam, palette);
