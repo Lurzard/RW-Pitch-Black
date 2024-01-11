@@ -22,19 +22,21 @@ public class TeleportWater
     {
         PlacedObject pObj;
         bool startedNoise = false;
+        Vector2 closestPlayerPos;
         public TeleportWaterObject (PlacedObject pObj, Room room) : base() {
             this.pObj = pObj;
             this.room = room;
-            // room.PlayCustomSound("VS_SA_PULSE", Vector2.Lerp(pObj.pos, pObj.pos + (pObj.data as ManagedData).GetValue<Vector2>("Area"), 0.5f), 1, 1);
+            closestPlayerPos = Vector2.positiveInfinity;
         }
         public override void InitiateSprites(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
         {
             base.InitiateSprites(sLeaser, rCam);
-            sLeaser.sprites = new FSprite[4]{new FSprite("Futile_White"), new FSprite("Futile_White"), new FSprite("Futile_White"), new FSprite("Futile_White")};
+            sLeaser.sprites = new FSprite[5]{new FSprite("Futile_White"), new FSprite("Futile_White"), new FSprite("Futile_White"), new FSprite("Futile_White"), new FSprite("Futile_White")};
             sLeaser.sprites[0].shader = room.game.rainWorld.Shaders["GhostDistortion"];
             sLeaser.sprites[1].shader = room.game.rainWorld.Shaders["GravityDisruptor"];
             sLeaser.sprites[2].shader = room.game.rainWorld.Shaders["CellDist"];
             sLeaser.sprites[3].shader = room.game.rainWorld.Shaders["LocalBloom"];
+            sLeaser.sprites[4].shader = room.game.rainWorld.Shaders["RoomTransition"];
             AddToContainer(sLeaser, rCam, null);
         }
         public override void AddToContainer(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, FContainer newContatiner)
@@ -43,6 +45,7 @@ public class TeleportWater
 		    rCam.ReturnFContainer("HUD").AddChild(sLeaser.sprites[1]);
             rCam.ReturnFContainer("Bloom").AddChild(sLeaser.sprites[2]);
             rCam.ReturnFContainer("Bloom").AddChild(sLeaser.sprites[3]);
+            rCam.ReturnFContainer("Bloom").AddChild(sLeaser.sprites[4]);
             sLeaser.sprites[2].MoveToBack();
         }
         public override void DrawSprites(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
@@ -54,17 +57,21 @@ public class TeleportWater
             float g = (pObj.data as ManagedData).GetValue<float>("g");
             float b = (pObj.data as ManagedData).GetValue<float>("b");
             float a = (pObj.data as ManagedData).GetValue<float>("a");
-            foreach (var sprite in sLeaser.sprites) {
+            for (int i = 0; i < sLeaser.sprites.Length-1; i++) {
                 // Top left corner
-                sprite._localVertices[0] = pos + Vector2.up*area.y + (Custom.IntVector2ToVector2(Custom.eightDirectionsDiagonalsLast[7]) * area.magnitude * 0.175f);
+                sLeaser.sprites[i]._localVertices[0] = pos + Vector2.up*area.y + (Custom.IntVector2ToVector2(Custom.eightDirectionsDiagonalsLast[7]) * area.magnitude * 0.175f);
                 // Top right corner
-                sprite._localVertices[1] = pos + area + (Custom.IntVector2ToVector2(Custom.eightDirectionsDiagonalsLast[6]) * area.magnitude * 0.175f);
+                sLeaser.sprites[i]._localVertices[1] = pos + area + (Custom.IntVector2ToVector2(Custom.eightDirectionsDiagonalsLast[6]) * area.magnitude * 0.175f);
                 // Bottom right corner
-                sprite._localVertices[2] = pos + Vector2.right*area.x + (Custom.IntVector2ToVector2(Custom.eightDirectionsDiagonalsLast[5]) * area.magnitude * 0.175f);
+                sLeaser.sprites[i]._localVertices[2] = pos + Vector2.right*area.x + (Custom.IntVector2ToVector2(Custom.eightDirectionsDiagonalsLast[5]) * area.magnitude * 0.175f);
                 // Bottom left corner
-                sprite._localVertices[3] = pos + (Custom.IntVector2ToVector2(Custom.eightDirectionsDiagonalsLast[4]) * area.magnitude * 0.175f);
-                sprite.color = new Color(r, g, b, a);
+                sLeaser.sprites[i]._localVertices[3] = pos + (Custom.IntVector2ToVector2(Custom.eightDirectionsDiagonalsLast[4]) * area.magnitude * 0.175f);
+                sLeaser.sprites[i].color = new Color(r, g, b, a);
             }
+            Vector2 objCenter = Vector2.Lerp(pos, pos+area, 0.5f);
+            sLeaser.sprites[sLeaser.sprites.Length-1].SetPosition(objCenter);
+            sLeaser.sprites[sLeaser.sprites.Length-1].scale = 400f;
+            sLeaser.sprites[sLeaser.sprites.Length-1].color = new Color(0.5f, 0.5f, Mathf.Lerp(0, 1, (1+(pObj.data as ManagedData).GetValue<float>("fadeStartDist"))-(0.0025f*Vector2.Distance(objCenter, closestPlayerPos-camPos))), 0.99f);
 			if (slatedForDeletetion || room != rCam.room)
 			{
 				sLeaser.CleanSpritesAndRemove();
@@ -101,6 +108,9 @@ public class TeleportWater
             ManagedData managedData = (ManagedData)pObj.data;
             // Play sound
             PlaySounds(managedData);
+            if (room.PlayersInRoom == null || room.PlayersInRoom.Count == 0) {
+                closestPlayerPos = Vector2.positiveInfinity;
+            }
             // If it is disabled, return and don't do any teleporty majiks
             if (!managedData.GetValue<bool>("Enabled") || room == null || room.PlayersInRoom == null) {
                 return;
@@ -109,11 +119,17 @@ public class TeleportWater
             Vector2 area = managedData.GetValue<Vector2>("Area");
             string roomName = managedData.GetValue<string>("DestinationRoom");
             Vector2 dest = pObj.pos+managedData.GetValue<Vector2>("DestinationPos");
+            Vector2 objCenter = Vector2.Lerp(pObj.pos, pObj.pos+area, 0.5f);
             // Unity object moment (lmao RIP Cactus)
-            Bounds rect = new Bounds(Vector2.Lerp(pObj.pos, pObj.pos+area, 0.5f), new Vector2(Mathf.Abs(area.x), Mathf.Abs(area.y)));
+            Bounds rect = new Bounds(objCenter, new Vector2(Mathf.Abs(area.x), Mathf.Abs(area.y)));
+            closestPlayerPos = Vector2.positiveInfinity;
             foreach (Player player in room.PlayersInRoom) {
                 if (player?.mainBodyChunk == null) {
                     continue;
+                }
+                if (Vector2.Distance(objCenter, player.mainBodyChunk.pos) < Vector2.Distance(objCenter, closestPlayerPos)) {
+                    closestPlayerPos = player.mainBodyChunk.pos;
+                    // Debug.Log(Vector2.Distance(closestPlayerPos, objCenter));
                 }
                 if (rect.Contains(player.mainBodyChunk.pos)) {
                     // Get the data needed to move the player into the new room, and data to restore the state of the original player
@@ -272,7 +288,8 @@ public class TeleportWater
             new FloatField("pitch", -10, 10, 1, 0.1f, ManagedFieldWithPanel.ControlType.slider, "Pitch"),
             new FloatField("doppler", 0, 1, 0.5f, 0.1f, ManagedFieldWithPanel.ControlType.slider, "Doppler"),
             new StringField("songName", "vs_sa_pulse", "Song Name"),
-            new EnumField<AssetBundleName>("bundleName", AssetBundleName.music_procedural, null, ManagedFieldWithPanel.ControlType.arrows, "Asset Bundle")
+            new EnumField<AssetBundleName>("bundleName", AssetBundleName.music_procedural, null, ManagedFieldWithPanel.ControlType.arrows, "Asset Bundle"),
+            new FloatField("fadeStartDist", -5, 5, 0f, 0.1f, ManagedFieldWithPanel.ControlType.slider, "Fade Start Distance")
 		};
         RegisterFullyManagedObjectType(fields.ToArray(), typeof(TeleportWaterObject), "TeleportWater", "Pitch-Black");
     }
