@@ -34,27 +34,35 @@ public class PBOptions : OptionInterface
             opTab
         };
 
-		int barLngt = 135;
+		const int sliderBarLength = 135;
+        const int rightSidePos = 360;
+        const int leftSidePos = 60;
         #nullable enable
         UIelement[]? uIelements = new UIelement[]
         {
             new OpLabel(200, 575, Translate("Pitch Black Options"), true) {alignment=FLabelAlignment.Center},
 
-            new OpSlider(maxFlashStore, new Vector2(300, 455), barLngt) {description=Translate("Maximum number of flashbangs stored")},
-            new OpLabel(300, 435, Translate("Flashbang storage amount")),
+            // Make the options on the right side
+            new OpSlider(maxFlashStore, new Vector2(rightSidePos, 520), sliderBarLength) {description=Translate("Beacon's Max Stored Flashbangs")},
+            new OpLabel(rightSidePos, 500, Translate("Flashbang storage amount")),
 
-            new OpSlider(pursuerAgro, new Vector2(300, 395), barLngt) {description = Translate("How long it takes for the pursuer to track you down")},
-            new OpLabel(300, 375, Translate("Pursuer Aggro"), false),
+            new OpSlider(pursuerAgro, new Vector2(rightSidePos, 440), sliderBarLength) {description = Translate("How long it takes for the pursuer to track you down")},
+            new OpLabel(rightSidePos, 420, Translate("Pursuer Aggro"), false),
 
-            new OpCheckBox(shockStun, new Vector2(20, 460)) {description = Translate("Photomaniac becomes stunned after using their shock")},
-            new OpLabel(50, 463, Translate("Photomaniac's Shock Stun")),
+            new OpCheckBox(hazHat, new Vector2(rightSidePos, 360)) {description=Translate("If the PB slugcats wear a hat to protect their eyes in other campaigns")},
+            new OpLabel(rightSidePos+30, 363, Translate("Wear Hats"), false),
 
-            new OpCheckBox(elecImmune, new Vector2(20, 400)) {description = Translate("Photomaniac gains resistance to electricity")},
-            new OpLabel(50, 403, Translate("Photomaniac's electricity resistance")),
+            // Make the options on the left side
+            new OpCheckBox(pursuer, new Vector2(leftSidePos, 520)) {description=Translate("Something is pursuing you...")},
+            new OpLabel(leftSidePos+30, 523, Translate("Beacon's Pursuer Spawns")),
 
-            new OpCheckBox(hazHat, new Vector2(20, 340)) {description=Translate("If the PB slugcats wear a hat to protect their eyes in other campaigns")},
-            new OpLabel(50, 340, Translate("Wear Hats"), false),
+            new OpCheckBox(shockStun, new Vector2(leftSidePos, 440)) {description = Translate("Photomaniac becomes stunned after using their shock")},
+            new OpLabel(leftSidePos+30, 443, Translate("Photomaniac's Shock Stun")),
 
+            new OpCheckBox(elecImmune, new Vector2(leftSidePos, 360)) {description = Translate("Photomaniac gains resistance to electricity")},
+            new OpLabel(leftSidePos+30, 363, Translate("Photomaniac's electricity resistance")),
+
+            // Make the text at the bottom
             new OpLabel(25, 225, "Beacon:"),
             new OpLabel(25, 205, Translate("Flashbang creation: Costs 1 food pip per rock + SHIFT / Grab (Automatically added to storage).")),
             new OpLabel(25, 185, Translate("Add flashbang to storage: Have a flashbang in hand + hold SHIFT / Grab.")),
@@ -65,16 +73,6 @@ public class PBOptions : OptionInterface
             new OpLabel(25, 60, Translate("Electric shockwave ability: SHIFT / Grab + Z / Jump."))
         };
         opTab.AddItems(uIelements);
-		
-		// // DISABLING UNTIL FIXED
-		// dsc = Translate("Something is pursuing you...");
-		// Tabs[0].AddItems(new UIelement[]
-		// {
-		// 	mpBox1 = new OpCheckBox(PBOptions.pursuer, new Vector2(margin, lineCount))
-		// 	{description = dsc},
-		// 	new OpLabel(mpBox1.pos.x + 30, mpBox1.pos.y+3, Translate("Beacon's Pursuer Spawns"))
-		// 	{description = dsc},
-        // });
 
         //Not exactly sure what to do with this so I will leave it here for now
         /*
