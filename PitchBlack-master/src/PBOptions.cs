@@ -15,6 +15,7 @@ public class PBOptions : OptionInterface
 	public static Configurable<bool> pursuer;
     public static Configurable<int> pursuerAgro;
     public static Configurable<bool> hazHat;
+    public static Configurable<bool> universalPursuer;
 
     public PBOptions()
     {
@@ -25,6 +26,7 @@ public class PBOptions : OptionInterface
 		pursuer = config.Bind<bool>("pursuer", true);
         pursuerAgro = config.Bind<int>("pursuerAgro", 2, new ConfigAcceptableRange<int>(0, 10));
         hazHat = config.Bind<bool>("hazHat", false);
+        universalPursuer = config.Bind<bool>("universalPursuer", false);
     }
     public override void Initialize()
     {
@@ -61,6 +63,10 @@ public class PBOptions : OptionInterface
 
             new OpCheckBox(elecImmune, new Vector2(leftSidePos, 360)) {description = Translate("Photomaniac gains resistance to electricity")},
             new OpLabel(leftSidePos+30, 363, Translate("Photomaniac's electricity resistance")),
+
+            // Put the universal pursuer option in the middle
+            new OpCheckBox(universalPursuer, new Vector2(230f, 280f)) {description = Translate("The Pursuer appears in all campaigns for all slugcats")},
+            new OpLabel(260f, 283f, Translate("Universal Pursuer")),
 
             // Make the text at the bottom
             new OpLabel(25, 225, "Beacon:"),

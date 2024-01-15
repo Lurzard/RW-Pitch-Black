@@ -132,7 +132,7 @@ public class NTTracker
     public void Update()
     {
         
-        if (this.game.world == null || !PBOptions.pursuer.Value || (this.game.session is StoryGameSession session && (session.saveStateNumber != Plugin.BeaconName)) )
+        if (this.game.world == null || !PBOptions.pursuer.Value || (!PBOptions.universalPursuer.Value && this.game.session is StoryGameSession session && session.saveStateNumber != Plugin.BeaconName))
         {
             return;
         }
