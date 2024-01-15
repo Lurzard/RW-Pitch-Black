@@ -12,9 +12,10 @@ Clouds: 0.1847826
 Grime: 0
 BkgDroneVolume: 0
 Palette: 16
+EffectColorA: 18
 EffectColorB: 21
-Effects: Lightning-0.1086956-11-130, FireFlies-0.2717391-20-20, Darkness-0.6739131-30-30, 
-PlacedObjects: NoSpearStickZone><489.1862><248.6895><-255~103, 
+Effects: Lightning-0.1086956-11-130, FireFlies-0.2717391-20-20, 
+PlacedObjects: NoSpearStickZone><489.1862><248.6895><-255~103, LightSource><-93.22316><562.1434><0.3098082~EffectColor1~367.6461~296.3625~74.54532~-101.2225~0~0~None~0~0, LightSource><957.5354><604.0563><0.1996102~EffectColor1~-452.4876~-205.2156~-228.5359~-135.3726~0~0~None~0~0, LightSource><476.2344><219.8687><0.05461253~EffectColor1~-669.1267~416.4211~-228.5359~-135.3726~0~0~Fade~0.5045942~0, 
 AmbientSounds: OMNI><AM_ENV-NatWind.ogg><468.5649><633.5609><0.25><1, OMNI><AM_ENV-WallHum.ogg><662.5624><634.5695><0.2065217><0.8434783, OMNI><SO_WAT-RainishDrips.ogg><847.0666><637.8298><0.2173913><0.9413043, SPOT><AM_IND-DeepHum.ogg><71.91913><486.1432><0.1956522><1><482.9191><-20.85681><-190.3553><-29.35534><0><0.252174, 
-FadePalette: 33, 0.7173913
-MorePalette0: 10, 0.8003905
+FadePalette: 10, 0.7173913
+MorePalette0: 10, 0.6086956

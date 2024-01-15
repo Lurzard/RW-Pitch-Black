@@ -1,8 +1,8 @@
 Template: NONE
 Clouds: 1
+BkgDroneNoThreatVolume: 0
 Palette: 10
 EffectColorB: 7
-Effects: FireFlies-0.6956522-20-20, 
-PlacedObjects: LightSource><718.4458><303.0412><0.2065217~EffectColor2~-211~3~-438.9999~80.60254~0~0~Fade~0.4891301~0, 
+PlacedObjects: LightSource><718.4458><303.0412><0.2065217~EffectColor2~-211~3~-118.9999~56.60254~0~0~Fade~0.4891301~0, InsectGroup><433.2329><459.5507><258~103~0~0~FireFly~0.3043478, LanternOnStick><519.9754><828.1982><-38~-73, LanternOnStick><385.7808><1243.448><-16~-102, FlareBomb><398.92><422.3553><0~0~2~3, 
 AmbientSounds: OMNI><AM_WIN-SubWnd.ogg><726.8724><517.6581><0.2065217><0.6673913, OMNI><SO_NAT-LilDrips.ogg><747.0539><401.0392><0.5><1, OMNI><SO_WAT-MoreDrips.ogg><742.0582><321.4413><0.5><1, SPOT><waterGurgleLOOP1.wav><771.4465><371.3073><0.3695652><0.7847826><700.4465><308.3073><-284.3553><-51.35535><0><0.578261, 
 FadePalette: 9, 0.05946549, 0.07033522

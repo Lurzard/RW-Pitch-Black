@@ -1,0 +1,58 @@
+//Survivor as base
+//Take any creature declared and think about their place in the world
+//Does _ belong in the darkness?
+//Can _ escape the darkness?
+//Would _ be capable of migrating elsewhere?
+//Would _ evolve to live and hunt better in the darkness?
+//Would _ be unable to hunt in the darkness, and die
+//What creatures would outcompete others?
+//and the list goes on
+
+//CRS Conditionals
+{#lb-fgf-m4r-ik.undersea-lizard}LINEAGE : SU_A06 : 4 : SilverLizard-0.1, NONE-0.5 Black-0.5, Cyan-0.5, Red-0
+{#lb-fgf-m4r-ik.undersea-lizard}SU_A10 : 2-TentaclePlant, 3-SilverLizard
+{#lb-fgf-m4r-ik.swalkins}SU_A30 : 2-SurfaceSwimmer
+{#lb-fgf-m4r-ik.undersea-lizard}LINEAGE : SU_A40 : 2 : SilverLizard-0.1, NONE-0.5, Yellow-0.5, Cyan-0.2, Red-0
+{#lb-fgf-m4r-ik.undersea-lizard}SU_B04 : 3-Yellow, 4-SilverLizard
+{#lb-fgf-m4r-ik.undersea-lizard}SU_B05 : 4-SilverLizard
+{#lb-fgf-m4r-ik.undersea-lizard}LINEAGE : SU_B07 : 2 : SilverLizard-0.1, NONE-0.5, Black-0.2, Cyan-0.5, Red-0
+{#lb-fgf-m4r-ik.undersea-lizard}LINEAGE : SU_B12 : 3 : SilverLizard-0.1, NONE-0.5, Cyan-0.2, Red-0
+{#lb-fgf-m4r-ik.undersea-lizard}LINEAGE : SU_A06 : 3 : SilverLizard-0.1, NONE-0.5, Black-0.5, Cyan-0.5, Red-0
+
+//Creatures to be replaced
+{#!lb-fgf-m4r-ik.undersea-lizard}LINEAGE : SU_A06 : 4 : Green-0.1, Black-0.5, Cyan-0.5, Red-0
+{#!lb-fgf-m4r-ik.undersea-lizard}SU_A10 : 2-TentaclePlant, 3-Green
+{#!lb-fgf-m4r-ik.swalkins}SU_A30 : 2-EggBug
+{#!lb-fgf-m4r-ik.undersea-lizard}LINEAGE : SU_A40 : 2 : Green-0.1, Yellow-0.5, Cyan-0.2, Red-0
+{#!lb-fgf-m4r-ik.undersea-lizard}SU_B04 : 3-Yellow, 4-Green
+{#!lb-fgf-m4r-ik.undersea-lizard}SU_B05 : 4-Green
+{#!lb-fgf-m4r-ik.undersea-lizard}LINEAGE : SU_B07 : 2 : Green-0.1, Black-0.2, Cyan-0.5, Red-0
+{#!lb-fgf-m4r-ik.undersea-lizard}LINEAGE : SU_B12 : 3 : Green-0.1, Cyan-0.2, Red-0
+{#!lb-fgf-m4r-ik.undersea-lizard}LINEAGE : SU_A06 : 3 : Green-0.1, NONE-0.5, Black-0.5, Cyan-0.5, Red-0
+
+//Spawns
+OFFSCREEN : 0-Scavenger-8
+SU_A04 : TentaclePlant-0
+SU_A07 : 2-CicadaA, 3-CicadaB, 5-Small Centipede-2
+LINEAGE : SU_A10 : 2 : TentaclePlant-0.5, NONE-0
+SU_A13 : 2-CicadaB, 3-CicadaB, 4-Black, 5-Cyan
+SU_A17 : 2-Cyan
+LINEAGE : SU_A32 : 2 : BigSpider-0.3, SpitterSpider-0.4, MotherSpider-0
+SU_B01 : 4-Cyan, 6-TentaclePlant
+SU_B02 : 4-CicadaB, 5-CicadaB
+SU_B06 : 6-CicadaA-2, 7-Small Centipede-{AlternateForm}-2
+SU_B08 : 2 : Caramel-0.1, Yellow-0.2, Red-0
+SU_B11 : 4-CicadaB, 5-CicadaA
+SU_C02 : 5-Black
+SU_CAVE01 : 4-Mouse-2
+SU_CAVE02 : 4-Mouse-2, 6-Mouse-2, 11-Mouse-3
+SU_CAVE03 : 5-Mouse-2, 6-Mouse-2
+SU_CAVE04 : 2-Mouse-3
+SU_CAVE05 : 4-Mouse-3
+SU_PUMP03 : 5-Mouse-2
+SU_PMPSTATION01 : 3-Mouse-2
+SU_A02 : 2-TentaclePlant, 3-TentaclePlant
+SU_A17 : 2-White
+LINEAGE : SU_A31 : 3 : NONE-0.1, Small Centipede-1.0, Centipede-{0.3}-1.0, Centipede-{0.5}-1.0, Centipede-{0.7}-0
+SU_B09 : 4-Centipede-{0.9}, 4-Centipede-2
+SU_B11 : 4-CicadaB-2, 5-Centiwing, 8-Black

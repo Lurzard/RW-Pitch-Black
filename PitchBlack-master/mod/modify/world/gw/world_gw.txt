@@ -1,168 +1,178 @@
 [MERGE]
-ROOMS
-
-// Lamp shelters
-GW_LS01 : DISCONNECTED : SHELTER
-GW_LS03 : DISCONNECTED : SHELTER
-GW_LS05 : DISCONNECTED : SHELTER
-GW_LS07 : DISCONNECTED : SHELTER
-
-END ROOMS
 CONDITIONAL LINKS
 
+Beacon : REPLACEROOM : GW_S01 : GW_LS01
+Beacon : REPLACEROOM : GW_S01 : GW_LS03
+Beacon : REPLACEROOM : GW_S01 : GW_LS05
+Beacon : REPLACEROOM : GW_S01 : GW_LS07
+Beacon : REPLACEROOM : GW_C04_PAST : GW_C04_PASTX
+Beacon : REPLACEROOM : GW_B06_PAST : GW_B06_PASTX
+
+
 // Past GW
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_TOWER01
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_TOWER02
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_TOWER03
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_TOWER04
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_TOWER05
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_TOWER06
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_TOWER07
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_TOWER08
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_TOWER09
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_TOWER10
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_TOWER11
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_TOWER12
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_TOWER13
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_TOWER14
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_TOWER15
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_PIPE01
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_PIPE02
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_PIPE03
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_PIPE04
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_PIPE05
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_PIPE06
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_PIPE07
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_PIPE08
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_PIPE09
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_PIPE10
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_PIPE11
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_PIPE12
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_PIPE13
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_B01_PAST
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_A10_PAST
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_C10_PAST
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_C04_PAST
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_B06_PAST
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_C01_PAST
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_A11_PAST
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_A13_PAST
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_C02_PAST
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_D01_PAST
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_C06_PAST
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_C06_PAST
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_E02_PAST
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_B09_PAST
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_LS01
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_LS03
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_LS05
-Beacon,Photomaniac : EXCLUSIVEROOM : GW_LS07
-Beacon,Photomaniac : HIDEROOM : GW_B01
-Beacon,Photomaniac : HIDEROOM : GW_A01
-Beacon,Photomaniac : HIDEROOM : GW_A05
-Beacon,Photomaniac : HIDEROOM : GW_A08
-Beacon,Photomaniac : HIDEROOM : GW_A06
-Beacon,Photomaniac : HIDEROOM : GW_D02
-Beacon,Photomaniac : HIDEROOM : GW_C07
-Beacon,Photomaniac : HIDEROOM : GW_C10
-Beacon,Photomaniac : HIDEROOM : GW_A10
-Beacon,Photomaniac : HIDEROOM : GW_A07
-Beacon,Photomaniac : HIDEROOM : GW_B06
-Beacon,Photomaniac : HIDEROOM : GW_B07
-Beacon,Photomaniac : HIDEROOM : GW_C04
-Beacon,Photomaniac : HIDEROOM : GW_A14
-Beacon,Photomaniac : HIDEROOM : GW_C01
-Beacon,Photomaniac : HIDEROOM : GW_B04
-Beacon,Photomaniac : HIDEROOM : GW_A12
-Beacon,Photomaniac : HIDEROOM : GW_A11
-Beacon,Photomaniac : HIDEROOM : GW_A13
-Beacon,Photomaniac : HIDEROOM : GW_C02
-Beacon,Photomaniac : HIDEROOM : GW_B03
-Beacon,Photomaniac : HIDEROOM : GW_D01
-Beacon,Photomaniac : HIDEROOM : GW_C06
-Beacon,Photomaniac : HIDEROOM : GW_E02
-Beacon,Photomaniac : HIDEROOM : GW_B09
-Beacon,Photomaniac : HIDEROOM : GW_S01
-Beacon,Photomaniac : HIDEROOM : GW_S03
-Beacon,Photomaniac : HIDEROOM : GW_S05
-Beacon,Photomaniac : HIDEROOM : GW_S07
+Beacon : EXCLUSIVEROOM : GW_TOWER01
+Beacon : EXCLUSIVEROOM : GW_TOWER02
+Beacon : EXCLUSIVEROOM : GW_TOWER03
+Beacon : EXCLUSIVEROOM : GW_TOWER04
+Beacon : EXCLUSIVEROOM : GW_TOWER05
+Beacon : EXCLUSIVEROOM : GW_TOWER06
+Beacon : EXCLUSIVEROOM : GW_TOWER07
+Beacon : EXCLUSIVEROOM : GW_TOWER08
+Beacon : EXCLUSIVEROOM : GW_TOWER09
+Beacon : EXCLUSIVEROOM : GW_TOWER10
+Beacon : EXCLUSIVEROOM : GW_TOWER11
+Beacon : EXCLUSIVEROOM : GW_TOWER12
+Beacon : EXCLUSIVEROOM : GW_TOWER13
+Beacon : EXCLUSIVEROOM : GW_TOWER14
+Beacon : EXCLUSIVEROOM : GW_TOWER15PB
+Beacon : EXCLUSIVEROOM : GW_PIPE01
+Beacon : EXCLUSIVEROOM : GW_PIPE02
+Beacon : EXCLUSIVEROOM : GW_PIPE03
+Beacon : EXCLUSIVEROOM : GW_PIPE04
+Beacon : EXCLUSIVEROOM : GW_PIPE05
+Beacon : EXCLUSIVEROOM : GW_PIPE06
+Beacon : EXCLUSIVEROOM : GW_PIPE07
+Beacon : EXCLUSIVEROOM : GW_PIPE08
+Beacon : EXCLUSIVEROOM : GW_PIPE09
+Beacon : EXCLUSIVEROOM : GW_PIPE10
+Beacon : EXCLUSIVEROOM : GW_PIPE11
+Beacon : EXCLUSIVEROOM : GW_PIPE12
+Beacon : EXCLUSIVEROOM : GW_PIPE13
+Beacon : EXCLUSIVEROOM : GW_B01_PAST
+Beacon : EXCLUSIVEROOM : GW_A10_PAST
+Beacon : EXCLUSIVEROOM : GW_C10_PAST
+Beacon : EXCLUSIVEROOM : GW_C04_PAST
+Beacon : EXCLUSIVEROOM : GW_B06_PAST
+Beacon : EXCLUSIVEROOM : GW_C01_PAST
+Beacon : EXCLUSIVEROOM : GW_A11_PAST
+Beacon : EXCLUSIVEROOM : GW_A13_PAST
+Beacon : EXCLUSIVEROOM : GW_C02_PAST
+Beacon : EXCLUSIVEROOM : GW_D01_PAST
+Beacon : EXCLUSIVEROOM : GW_C06_PAST
+Beacon : EXCLUSIVEROOM : GW_C06_PAST
+Beacon : EXCLUSIVEROOM : GW_E02_PAST
+Beacon : EXCLUSIVEROOM : GW_B09_PAST
+Beacon : EXCLUSIVEROOM : GW_photo01
+Beacon : EXCLUSIVEROOM : GW_photo02
+Beacon : HIDEROOM : GW_B01
+Beacon : HIDEROOM : GW_A01
+Beacon : HIDEROOM : GW_A05
+Beacon : HIDEROOM : GW_A08
+Beacon : HIDEROOM : GW_A06
+Beacon : HIDEROOM : GW_D02
+Beacon : HIDEROOM : GW_C07
+Beacon : HIDEROOM : GW_C10
+Beacon : HIDEROOM : GW_A10
+Beacon : HIDEROOM : GW_A07
+Beacon : HIDEROOM : GW_B06
+Beacon : HIDEROOM : GW_B07
+Beacon : HIDEROOM : GW_C04
+Beacon : HIDEROOM : GW_A14
+Beacon : HIDEROOM : GW_C01
+Beacon : HIDEROOM : GW_B04
+Beacon : HIDEROOM : GW_A12
+Beacon : HIDEROOM : GW_A11
+Beacon : HIDEROOM : GW_A13
+Beacon : HIDEROOM : GW_C02
+Beacon : HIDEROOM : GW_B03
+Beacon : HIDEROOM : GW_D01
+Beacon : HIDEROOM : GW_C06
+Beacon : HIDEROOM : GW_E02
+Beacon : HIDEROOM : GW_B09
 
 // GW_B01_PAST
-Beacon,Photomaniac : GW_B01 : GW_A01 : DISCONNECTED
-Beacon,Photomaniac : GW_B01 : GATE_HI_GW : DISCONNECTED
-Beacon,Photomaniac : GW_A01 : GW_B01 : DISCONNECTED
-Beacon,Photomaniac : GATE_HI_GW : GW_B01 : GW_B01_PAST
-Beacon,Photomaniac : GW_B01_PAST : 1 : GATE_HI_GW
+Beacon : GW_B01 : GW_A01 : DISCONNECTED
+Beacon : GW_B01 : GATE_HI_GW : DISCONNECTED
+Beacon : GW_A01 : GW_B01 : DISCONNECTED
+Beacon : GATE_HI_GW : GW_B01 : GW_B01_PAST
+Beacon : GW_B01_PAST : 1 : GATE_HI_GW
 
 // GW_B06_PAST
-Beacon,Photomaniac : GW_B06 : GW_A22 : DISCONNECTED
-Beacon,Photomaniac : GW_B06 : GW_C08 : DISCONNECTED
-Beacon,Photomaniac : GW_A22 : GW_B06 : GW_B06_PAST
-Beacon,Photomaniac : GW_C08 : GW_B06 : GW_B06_PAST
-Beacon,Photomaniac : GW_B06_PAST : 1 : GW_A22
-Beacon,Photomaniac : GW_B06_PAST : 2 : GW_C08
+Beacon : GW_B06 : GW_A22 : DISCONNECTED
+Beacon : GW_B06 : GW_C08 : DISCONNECTED
+Beacon : GW_A22 : GW_B06 : GW_B06_PAST
+Beacon : GW_C08 : GW_B06 : GW_B06_PAST
+Beacon : GW_B06_PAST : 1 : GW_A22
+Beacon : GW_B06_PAST : 2 : GW_C08
 
 // GW_C06_PAST
-Beacon,Photomaniac : GW_C06 : GW_S02 : DISCONNECTED
-Beacon,Photomaniac : GW_C06_PAST : 1 : GW_S02
-Beacon,Photomaniac : GW_S02 : GW_C06 : GW_C06_PAST
+Beacon : GW_C06 : GW_S02 : DISCONNECTED
+Beacon : GW_C06_PAST : 1 : GW_S02
+Beacon : GW_S02 : GW_C06 : GW_C06_PAST
 
 // GW_E02_PAST
-Beacon,Photomaniac : GW_B02 : GW_E02 : GW_E02_PAST
-Beacon,Photomaniac : GW_E02_PAST : 1 : GW_B02
-Beacon,Photomaniac : GW_E02 : GW_B02 : DISCONNECTED
+Beacon : GW_B02 : GW_E02 : GW_E02_PAST
+Beacon : GW_E02_PAST : 1 : GW_B02
+Beacon : GW_E02 : GW_B02 : DISCONNECTED
 
 GW_PIPE04
-Beacon,Photomaniac : GW_A06 : GW_S01 : DISCONNECTED
-Beacon,Photomaniac : GW_PIPE04 : 1 : GW_S01
-Beacon,Photomaniac : GW_S01 : GW_A06 : DISCONNECTED
-Beacon,Photomaniac : GW_S01 : 1 : GW_PIPE04
+Beacon : GW_A06 : GW_S01 : DISCONNECTED
+Beacon : GW_PIPE04 : 1 : GW_S01
+Beacon : GW_S01 : GW_A06 : DISCONNECTED
+Beacon : GW_S01 : 1 : GW_PIPE04
 
 // GW_C04_PAST
-Beacon,Photomaniac : GW_C04 : GW_B08 : DISCONNECTED
-Beacon,Photomaniac : GW_C04_PAST : 1 : GW_B08
-Beacon,Photomaniac : GW_B08 : GW_C04 : GW_C04_PAST
+Beacon : GW_C04 : GW_B08 : DISCONNECTED
+Beacon : GW_C04_PAST : 1 : GW_B08
+Beacon : GW_B08 : GW_C04 : GW_C04_PAST
 
 // GW_TOWER04
-Beacon,Photomaniac : GW_C04 : GW_C11 : DISCONNECTED
-Beacon,Photomaniac : GW_C11 : GW_C04 : GW_TOWER04
-Beacon,Photomaniac : GW_TOWER04 : 1 : GW_C11
+Beacon : GW_C04 : GW_C11 : DISCONNECTED
+Beacon : GW_C11 : GW_C04 : GW_TOWER04
+Beacon : GW_TOWER04 : 1 : GW_C11
 
 // GW_PIPE12
-Beacon,Photomaniac : GW_B07 : GW_A04 : DISCONNECTED
-Beacon,Photomaniac : GW_A04 : GW_B07 : GW_PIPE12
-Beacon,Photomaniac : GW_PIPE12 : 1 : GW_A04
+Beacon : GW_B07 : GW_A04 : DISCONNECTED
+Beacon : GW_A04 : GW_B07 : GW_PIPE12
+Beacon : GW_PIPE12 : 1 : GW_A04
 
 // GW_A11_PAST
-Beacon,Photomaniac : GW_A11 : GW_S08 : DISCONNECTED
-Beacon,Photomaniac : GW_S08 : GW_A11 : GW_A11_PAST
-Beacon,Photomaniac : GW_A11_PAST : 2 : GW_S08
-Beacon,Photomaniac : GW_A11 : GW_A19 : DISCONNECTED
-Beacon,Photomaniac : GW_A19 : GW_A11 : GW_A11_PAST
-Beacon,Photomaniac : GW_A11_PAST : 1 : GW_A19
+Beacon : GW_A11 : GW_S08 : DISCONNECTED
+Beacon : GW_S08 : GW_A11 : GW_A11_PAST
+Beacon : GW_A11_PAST : 2 : GW_S08
+Beacon : GW_A11 : GW_A19 : DISCONNECTED
+Beacon : GW_A19 : GW_A11 : GW_A11_PAST
+Beacon : GW_A11_PAST : 1 : GW_A19
 
 // GW_B09_PAST
-Beacon,Photomaniac : GW_B09 : GATE_DS_GW : DISCONNECTED
-Beacon,Photomaniac : GW_B09_PAST : 1 : GATE_DS_GW
-Beacon,Photomaniac : GATE_DS_GW : GW_B09 : GW_B09_PAST
+Beacon : GW_B09 : GATE_DS_GW : DISCONNECTED
+Beacon : GW_B09_PAST : 1 : GATE_DS_GW
+Beacon : GATE_DS_GW : GW_B09 : GW_B09_PAST
 
 // PB - GW_E01_PB
-Beacon,Photomaniac : GW_C10_PAST : 1 : GW_E01_PB
-Beacon,Photomaniac : GW_E01_PB : 1 : GW_C10_PAST
+Beacon : GW_C10_PAST : 1 : GW_E01_PB
+Beacon : GW_E01_PB : 1 : GW_C10_PAST
 
 // PB - GW_C09_PB
-Beacon,Photomaniac : GW_C09 : GW_C08 : DISCONNECTED
-Beacon,Photomaniac : GW_C08 : GW_C09 : GW_C09_PB
-Beacon,Photomaniac : GW_C09_PB : 1 : GW_C08
-Beacon,Photomaniac : GW_C09 : GW_B05 : DISCONNECTED
-Beacon,Photomaniac : GW_B05 : GW_C09 : GW_C09_PB
-Beacon,Photomaniac : GW_C09_PB : 2 : GW_B05
+Beacon : GW_C09 : GW_C08 : DISCONNECTED
+Beacon : GW_C08 : GW_C09 : GW_C09_PB
+Beacon : GW_C09_PB : 1 : GW_C08
+Beacon : GW_C09 : GW_B05 : DISCONNECTED
+Beacon : GW_B05 : GW_C09 : GW_C09_PB
+Beacon : GW_C09_PB : 2 : GW_B05
+
+// PB - GW_TOWER15PB
+Beacon : GW_TOWER15 : GW_TOWER14 : DISCONNECTED
+Beacon : GW_TOWER15 : GW_TOWER08 : DISCONNECTED
+Beacon : GW_TOWER15 : GW_TOWER09 : DISCONNECTED
+Beacon : GW_TOWER14 : GW_TOWER15 : GW_TOWER15PB
+Beacon : GW_TOWER08 : GW_TOWER15 : GW_TOWER15PB
+Beacon : GW_TOWER09 : GW_TOWER15 : GW_TOWER15PB
+Beacon : GW_TOWER15PB : 1 : GW_TOWER08
+Beacon : GW_TOWER15PB : 2 : GW_TOWER09
+Beacon : GW_TOWER15PB : 3 : GW_TOWER14
 
 END CONDITIONAL LINKS
 ROOMS
 
 GW_C09_PB : DISCONNECTED, DISCONNECTED, GW_E01_PB
 GW_E01_PB : GW_C09_PB, DISCONNECTED
+GW_photo01 : GW_photo02
+GW_photo02 : GW_TOWER15PB, GW_photo01
+{MSC}GW_TOWER15PB : DISCONNECTED, GW_photo02, DISCONNECTED, DISCONNECTED
 
 END ROOMS
+CREATURES
+(Beacon)GW_TOWER15PB : 6-CicadaA-2, 5-CicadaB-3
+END CREATURES
 [ENDMERGE]

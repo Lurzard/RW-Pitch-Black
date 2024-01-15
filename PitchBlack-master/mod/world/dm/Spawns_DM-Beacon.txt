@@ -1,4 +1,10 @@
-OFFSCREEN : 0-MirosVulture-4
+{#Outspector}DM_I02 : 6-Outspector-{Ignorecycle}, 10-OutspectorB-{Ignorecycle}
+{#Outspector}DM_I05 : 3-Outspector-{Ignorecycle}
+{#Outspector}DM_O06 : 3-OutpsectorB-{Ignorecycle}
+{#Outspector}DM_M01 : 2-Outpsector-{Ignorecycle}
+{#Outspector}DM_M02 : 4-OutspectorB-{Ignorecycle}, 6-Outspector-{Ignorecycle}
+{#Outspector}DM_LAB1 : 4-OutspectorB-{Ignorecycle}
+{#Outspector}DM_LAB12 : 6-Outspector-{Ignorecycle}
 
 // - Looks to the Moon Interior
 {#!Outspector}DM_I02 : 6-Inpsector-{Ignorecycle}, 10-Inspector-{Ignorecycle}
@@ -9,15 +15,8 @@ OFFSCREEN : 0-MirosVulture-4
 {#!Outspector}DM_LAB1 : 4-Inspector-{Ignorecycle}
 {#!Outspector}DM_LAB12 : 6-Inspector-{Ignorecycle}
 
-{#Outspector}DM_I02 : 6-Outspector-{Ignorecycle}, 10-OutspectorB-{Ignorecycle}
-{#Outspector}DM_I05 : 3-Outspector-{Ignorecycle}
-{#Outspector}DM_O06 : 3-OutpsectorB-{Ignorecycle}
-{#Outspector}DM_M01 : 2-Outpsector-{Ignorecycle}
-{#Outspector}DM_M02 : 4-OutspectorB-{Ignorecycle}, 6-Outspector-{Ignorecycle}
-{#Outspector}DM_LAB1 : 4-OutspectorB-{Ignorecycle}
-{#Outspector}DM_LAB12 : 6-Outspector-{Ignorecycle}
+OFFSCREEN : 0-MirosVulture-3
 
-// - Looks to the Moon Exterior/Top
 DM_LEG01 : 4-MotherSpider, 4-BigSpider-2, 5-Mouse-3, 6-Mouse-2, 8-Spider-10
 DM_LEG02 : 4-Spider-10, 6-Spider-10, 7-Mouse-3, 9-BigSpider
 DM_LEG03 : 5-BigSpider, 8-SpitterSpider, 11-Spider-10, 12-Spider-10, 13-MotherSpider-2

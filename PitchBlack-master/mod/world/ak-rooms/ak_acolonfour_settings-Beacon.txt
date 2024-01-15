@@ -1,0 +1,11 @@
+Template: NONE
+Clouds: 0.1195652
+Grime: 0.3043478
+BkgDroneVolume: 0.3043478
+Palette: 6
+EffectColorA: 9
+EffectColorB: 7
+Effects: Darkness-0.4021738-20-20, 
+AmbientSounds: OMNI><AM_IND-Factory03.ogg><600.5469><235.3056><0.1847826><1, SPOT><Basic Mech.wav><457.9092><551.879><0.217392><0.8630434><235.9093><338.879><-52.35535><-55.35535><0><0.1, SPOT><Basic Mech.wav><802.4169><286.3603><0.217392><1.195652><697.4169><347.3603><-51.35535><-49.35535><0><0.1, 
+FadePalette: 33, 0.3478261
+MorePalette0: 367, 0.8043478

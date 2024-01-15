@@ -1,5 +1,4 @@
 Grime: 0.423913
-Effects: FireFlies-0.423913-20-20, 
 PlacedObjects: BrokenShelterWaterLevel><290.7915><385.3127><, 
-FadePalette: 33, 0.8043478
-MorePalette0: 10, 0.6956522
+FadePalette: 8, 0.3152174
+MorePalette0: 10, 1

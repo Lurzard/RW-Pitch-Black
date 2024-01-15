@@ -1,7 +1,7 @@
 Template: SI_SettingsTemplate_Inside
 Palette: 3
-Effects: 
-PlacedObjects: BrokenShelterWaterLevel><499.861><176.1438><, 
+Effects: SkyAndLightBloom-0-30-30, 
+PlacedObjects: BrokenShelterWaterLevel><499.861><176.1438><, LightSource><388.557><179.0165><0.1880095~EffectColor1~115.7899~159.7625~50~86.60254~0~0~None~0~0, 
 AmbientSounds: SPOT><AM_IND-Utility02.ogg><770.7397><385.9497><0.423913><1><727.7397><177.9497><-138.3553><-69.35535><0><0.2847827, 
 FadePalette: 33, 0.5760869
-MorePalette0: 367, 0.2065217
+MorePalette0: 10, 0.9594004

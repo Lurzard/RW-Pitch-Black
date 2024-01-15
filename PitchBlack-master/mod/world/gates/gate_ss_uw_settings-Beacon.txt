@@ -1,0 +1,15 @@
+Template: NONE
+DangerType: None
+CeilingDrips: 0
+RainIntensity: 0
+RumbleIntensity: 0
+Clouds: 0.1521739
+Grime: 0.1086956
+Palette: 43
+EffectColorA: 21
+EffectColorB: 17
+PlacedObjects: NoSpearStickZone><474.3><252.4997><-232~132, LightSource><120.8871><614.2854><0.2402087~EffectColor1~86.44214~-431.4594~-276.0258~-127.902~0~0~None~0~0, LightSource><847.9716><612.2975><0.2460102~EffectColor1~5.335938~-429.325~-122.3508~-160.4514~0~0~None~0~0, LightSource><481.3984><222.4279><0.2054098~EffectColor1~-317.4883~240.8688~50~86.60254~1~0~None~0~0, LightFixture><-64.79851><278.4756><RedLight~17.32051~-10~90, LightFixture><373.634><682.4023><RedLight~17.32051~-10~92, LightFixture><1034.936><256.7504><RedLight~17.32051~-10~90, LightFixture><610.8172><641.3776><RedLight~17.32051~-10~79, CorruptionDarkness><450.9456><525.3449><-136.6~-217.4883, CorruptionDarkness><-149.7841><316.8232><115.7898~144.2883, CorruptionDarkness><-115.5333><50.58987><-175.5524~19.96093, CorruptionDarkness><29.73036><31.94705><65.63202~120.8102, CorruptionDarkness><970.8348><71.15613><-168.6156~126.1461, LightSource><465.0579><573.8057><0.3043478~EffectColor2~-370~-137~-173~-137.3975~0~0~None~0~0, LightSource><1044><369><0.3043478~EffectColor2~-370~-137~-173~-137.3975~0~0~None~0~0, 
+AmbientSounds: OMNI><AM_IND-SuperStructure.ogg><830.6804><648.8125><0.3695652><0.7456522, OMNI><AM_WIN-StrongWnd2.ogg><650.9935><645.8001><0.3478261><1, OMNI><SO_WAT-LilDrips.ogg><470.3357><647.136><0.3043478><1, 
+FadePalette: 33, 0.4390371
+MorePalette0: 10, 0.9511898
+MorePalette1: 42, 0

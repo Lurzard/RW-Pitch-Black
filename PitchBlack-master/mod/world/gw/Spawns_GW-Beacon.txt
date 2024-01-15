@@ -1,49 +1,41 @@
-//offscreen
-(Beacon)OFFSCREEN : 0-Vulture-2-{Seed:6006}, 0-Scavenger-31, 0-Elite-1
+{#lb-fgf-m4r-ik.fat-fire-fly-creature}OFFSCREEN : 0-FatFireFly-3, 0-KingVulture, 0-Scavenger-30, 0-Elite-1
+{#lb-fgf-m4r-ik.swalkins}LINEAGE : GW_C04_PAST : 2 : SurfaceSwimmer-1.0, Cyan-0
+{#lb-fgf-m4r-ik.undersea-lizard}LINEAGE : GW_C03 : 5 : SilverLizard-0.2, Yellow-0.5, Red-0
 
-GW_A11_PAST : 4-Centipede-2, 5-Mimic-{12}
-GW_A25 : 3-Mouse-5, 5-BigSpider
-GW_B01_PAST : 7-Leech-10, 10-Garbage Worm-2, 4-CicadaB-2, 4-CicadaA
-GW_B06_PAST : 2-SpitterSpider
-GW_B08 : 2-CicadaB-2, 3-CicadaA, 6-BigSpider-2
-GW_B09_PAST : 2-Leech-10, 4-Snail-2, 7-Garbage Worm-2
-GW_C01_PAST : 5-Leech-7, 7-Leech-7, 2-CicadaB-3, 3-CicadaA-2
-GW_C02_PAST : 13-Garbage Worm-4, 2-CicadaB-3, 3-Cyan, 9-Leech-7, 6-TentaclePlant-{PreCycle}, 6-Scavenger-{PreCycle,Seed:2837}
-GW_C04_PAST : 15-Garbage Worm-2, 7-Leech-3, 9-Leech-3, 11-Salamander-2-{PreCycle}
-GW_C08 : 3-Leech-10, 5-Snail-4, 3-Eel-{PreCycle}
-GW_D01_PAST : 7-Leech-8, 16-Garbage Worm-5, 5-Cyan-2, 8-Leech-7
-GW_E02_PAST : 7-Yellow-3, 8-Black, 5-Mimic-{14}, 3-CicadaB-3, 4-CicadaA-2, 18-Garbage Worm-3
-GW_EDGE02 : 3-BigSpider, 4-MotherSpider, 5-Leech-12, 8-Leech-6
-GW_EDGE03 : 17-Leech-9, 18-Leech-12, 5-DropBug-2, 7-CicadaB-3, 8-Mouse-5, 17-Salamander-{PreCycle}, 18-Salamander-{PreCycle}
-GW_EDGE04 : 3-BigSpider-2, 6-Mouse-2
-GW_PIPE02 : 3-Leech-6, 4-Snail-2
-GW_PIPE03 : 2-White
-GW_PIPE05 : 5-Centipede, 6-Small Centipede-3
-GW_PIPE07 : 4-Big Spider-2, 4-SpitterSpider
-GW_PIPE09 : 2-Centipede, 2-Small Centipede-3
-GW_PIPE12 : 5-Leech-12
-GW_PIPE13 : 2-CicadaA-3, 3-CicadaB-6, 5-Leech-5, 4-Leech-8
-GW_TOWER01 : 3-Mouse-5
-GW_TOWER03 : 3-Leech-7, 2-Leech-5
-GW_TOWER04 : 3-MotherSpider
-GW_TOWER07 : 3-Dropwig, 7-White
-GW_TOWER08 : 3-Cyan-2
-GW_TOWER11 : 3-SpitterSpider-2
-GW_TOWER15 : 3-CicadaA-2, 4-CicadaB-3
-LINEAGE : GW_A11_PAST : 4 : Centipede-{0.4}-0.5, Centipede-{0.7}-0.5, RedCentipede-0
-LINEAGE : GW_C03 : 5 : Black-0.2, Green-0.2, Yellow-0.5, Red-0
-LINEAGE : GW_C04_PAST : 2 : EggBug-1.0, Cyan-0
-LINEAGE : GW_E02_PAST : 6 : NONE-0.05, Mimic-{17}-0.5, Mimic-{21}-0.5, TentaclePlant-0
-LINEAGE : GW_TOWER02 : 4 : Blue-1, None-0
+{#!lb-fgf-m4r-ik.fat-fire-fly-creature}OFFSCREEN : 0-Vulture-3, 0-KingVulture, 0-Scavenger-30, 0-Elite-1
+{#!lb-fgf-m4r-ik.swalkins}LINEAGE : GW_C04_PAST : 2 : EggBug-1.0, Cyan-0
+{#!lb-fgf-m4r-ik.undersea-lizard}LINEAGE : GW_C03 : 5 : Green-0.2, Yellow-0.5, Red-0
 
+GW_B02 : 4-RedCentipede
 GW_A04 : 3-Small Centipede-3, 3-Centipede
-GW_B02 : 4-White-2, 4-Eel-{PreCycle}
-GW_C03 : 3-BigSpider
-GW_C05 : 2-Mouse-5, 3-Mouse-5
-GW_C06_PAST : 3-Cyan-2, 4-BigSpider, 8-Dropbug
-GW_E01_PB : 2-MotherSpider, 3-BigSpider, 4-SpitterSpider, 7-Snail
-GW_EDGE05 : 2-White
-GW_TOWER05 : 5-White
-GW_TOWER10 : 3-Blue
+GW_EDGE02 : 5-Leech-12, 8-Leech-6
+GW_EDGE03 : 17-Leech-9, 18-Leech-12, 7-CicadaB-1, 8-CicadaA-2, 17-Eel, 18-Eel
+GW_TOWER01 : 4-Cyan
+GW_TOWER07 : 7-Yellow
+GW_TOWER03 : 3-Leech-7, 2-Leech-5
+GW_B08 : 2-CicadaB-1, 3-CicadaA-2
+GW_TOWER03 : 7-GarbageWorm-2, 2-Leech-10, 3-Leech-8
+GW_PIPE02 : 3-Leech-6, 4-Snail-2
+GW_TOWER07 : 3-Yellow
+GW_A11_PAST : 5-TentaclePlant, 4-Centipede-2
+GW_C04_PAST : 15-GarbageWorm-2, 7-Leech-3, 9-Leech-3, 11-Eel-2
+GW_D01_PAST : 7-Leech-8, 16-GarbageWorm-5, 5-Eel-2, 8-Leech-7
+GW_C02_PAST : 13-GarbageWorm-4, 2-CicadaB-3, 3-Cyan, 9-Leech-7, 6-TentaclePlant, 6-Scavenger-{Seed:2837}
+GW_TOWER15 : 3-CicadaA-2, 4-CicadaB-3
+GW_TOWER08 : 3-Yellow-2
+GW_TOWER11 : 3-SpitterSpider-2
+GW_TOWER10 : 3-Yellow
+GW_B09_PAST : 2-Leech-10, 4-Snail-2, 7-GarbageWorm-2
+GW_PIPE03 : 2-Cyan
+GW_PIPE13 : 2-CicadaA-3, 3-CicadaB-6, 5-Leech-5, 4-Leech-8
+GW_PIPE12 : 5-Leech-12
+GW_PIPE09 : 2-Centipede, 2-Small Centipede-3
+GW_PIPE07 : 4-Big Spider-2, 4-SpitterSpider
+GW_PIPE05 : 5-Centipede, 6-Small Centipede-3
+GW_C06_PAST : 3-Cyan-2
+GW_E02_PAST : 7-Cyan, 8-Red, 5-TentaclePlant, 3-CicadaB-3, 4-CicadaA-2, 18-GarbageWorm-3, 6-TentaclePlant
+GW_C01_PAST : 5-Leech-7, 7-Leech-7, 2-CicadaB-2, 3-CicadaA-3
+GW_B01_PAST : 7-Leech-10, 10-GarbageWorm-2, 4-CicadaA-2, 4-CicadaB-1
+LINEAGE : GW_A11_PAST : 4 : Centipede-0.5, Centipede-{0.7}-0.5, RedCentipede-0
 
-END CREATUERS
+LINEAGE : GW_B02 : 4 : LMiniLongLegs-0.1, TerrorLengLongs-0

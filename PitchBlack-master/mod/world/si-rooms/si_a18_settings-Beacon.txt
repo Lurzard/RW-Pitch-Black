@@ -12,8 +12,7 @@ Grime: 0.1521739
 Palette: 33
 EffectColorA: 10
 EffectColorB: 2
-Effects: SkyAndLightBloom-0.1195652-20-20, 
-PlacedObjects: Mushroom><505.8296><145.4335><-501~348~2~3, Mushroom><486.8595><133.6674><-442~256~2~3, Mushroom><523.9319><138.8331><-509~164~2~3, BlueToken><727.1782><325.1592><-10~51~5~-185~1~Centiwing~Yellow~0~0~0~0~0~0~0~0, DeadTokenStalk><663.1824><325.3321><9~52, 
+Effects: SkyAndLightBloom-0-30-30, 
+PlacedObjects: Mushroom><505.8296><145.4335><-501~348~2~3, Mushroom><486.8595><133.6674><-442~256~2~3, Mushroom><523.9319><138.8331><-509~164~2~3, BlueToken><727.1782><325.1592><-10~51~5~-185~1~Centiwing~Yellow~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0, DeadTokenStalk><663.1824><325.3321><9~52, 
 FadePalette: 12, 0.1304348
-MorePalette0: 367, 0.1956522
-MorePalette1: 363, 0.1086956
+MorePalette0: 379, 1

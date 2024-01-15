@@ -1,12 +1,7 @@
 Template: LM_SettingsTemplate_Sewer
-DangerType: Rain
-WaveSpeed: 0.5
-WaveLength: 0.75
-WaveAmplitude: 0.05449305
-SecondWaveLength: 0.1666667
-SecondWaveAmplitude: 0
 Grime: 0.1956522
 Palette: 35
 PlacedObjects: BrokenShelterWaterLevel><402.8669><614.3506><, 
 AmbientSounds: SPOT><waterGurgleLOOP1.wav><69.84149><493.3781><0.3804348><1><279.8415><549.3781><-70.35535><-44.35535><0><0.2413045, SPOT><AM_IND-Utility02.ogg><126.1902><342.5618><0.5><1><551.1902><599.5618><-62.35535><-52.35535><0><0.1869565, 
-FadePalette: 33, 0.7065217
+FadePalette: 8, 0.1521739
+MorePalette0: 10, 1

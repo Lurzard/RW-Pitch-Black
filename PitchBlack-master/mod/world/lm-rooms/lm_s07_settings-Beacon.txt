@@ -1,10 +1,8 @@
-DangerType: Rain
-WaveSpeed: 0.5
-WaveLength: 0.75
-WaveAmplitude: 0.04867629
-SecondWaveLength: 0.1666667
+DangerType: Flood
+WaveAmplitude: 0
 SecondWaveAmplitude: 0.3478261
-Palette: 35
-Effects: Fog-0.5652174-20-20, 
+Palette: 11
+EffectColorB: 21
 PlacedObjects: BrokenShelterWaterLevel><423.051><345.5203><, 
-FadePalette: 33, 0.7065217
+FadePalette: 35, 0.7065217
+MorePalette0: 10, 1

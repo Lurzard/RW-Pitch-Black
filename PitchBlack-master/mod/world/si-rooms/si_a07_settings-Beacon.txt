@@ -3,11 +3,12 @@ RumbleIntensity: 0.2717391
 Clouds: 0.1304348
 BkgDroneVolume: 0.2608696
 Palette: 33
-Effects: PixelShift-0.5-32-65, AboveCloudsView-1-20-20, Flies-0-18-92, SkyDandelions-0.2282609-285-101, PixelShift-0.5-272-164, 
-PlacedObjects: DataPearl><409.6669><146.3896><-525~385~0~0~BroadcastMisc~1, UniqueDataPearl><546.3074><143.0584><-660~257~0~0~SI_top~0, BlueToken><479.648><339.1155><0~-59~78~207~1~KingVulture~White|Yellow|Rivulet|Saint~0~0~0~0~0~0~0~0~0~0~0~0, DeadTokenStalk><439.0966><312.1283><11~-53, DeadTokenStalk><518.5503><280.2612><-16~-35, 
-AmbientSounds: OMNI><AM_ENV-LightWind.ogg><749.2><521.5049><0.3043478><0.8826087, SPOT><AM_WIN-StrongWnd2.ogg><786.4443><219.0579><0.2282609><1.03913><51.44434><142.0579><-277.3553><53.64465><0><0.3826088, 
+Effects: PixelShift-0.5-32-65, AboveCloudsView-1-20-20, Flies-0-18-92, SkyDandelions-0.3500595-285-101, PixelShift-0.5-272-164, 
+PlacedObjects: DataPearl><409.6669><146.3896><-525~385~0~0~BroadcastMisc~1, UniqueDataPearl><546.3074><143.0584><-660~257~0~0~SI_top~1, BlueToken><479.648><339.1155><0~-59~78~207~1~KingVulture~White|Yellow|Rivulet|Saint~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0, DeadTokenStalk><439.0966><312.1283><11~-53, DeadTokenStalk><518.5503><280.2612><-16~-35, PlacedWind><-214.0689><-30.5265><-1.067188~766.7547~1371.316~771.5571~1370.783~0~-0.6495922~Objects~Horizontal~-0.6495922~Objects~Horizontal~-0.6495922~Objects~Horizontal~-0.6495922~Objects~Horizontal~-0.6495922~Objects~Horizontal~-0.6495922~Objects~Horizontal~-0.6031926~Objects~Horizontal~-0.6495922~Objects~Horizontal, LanternOnStick><629.8655><251.9511><-21.87738~-81.42188, LanternOnStick><308.8528><300.386><11.73907~-89.42581, PlacedWind><61.70892><9.375252><157.4101~557.5859~758.7507~557.5859~787.5648~-27.74687~-0.1971973~Creatures~Horizontal~-0.1971973~Creatures~Horizontal~-0.1971973~Creatures~Horizontal, 
+AmbientSounds: OMNI><AM_ENV-LightWind.ogg><749.2><521.5049><0.5537441><0.8826087, SPOT><AM_WIN-StrongWnd2.ogg><786.4443><219.0579><0.2282609><1.03913><51.44434><142.0579><-277.3553><53.64465><0><0.3826088, 
 FadePalette: 12, 0.3478261
-MorePalette0: 367, 0.4021739
-MorePalette1: 363, 0.2065217
-MorePalette3: 2, 0.05219965
-BackgroundType: atc_si_msc
+WetTerrain: OFF
+MorePalette0: 0, 0
+MorePalette1: 379, 1
+BackgroundOffset: -3043.478,370
+BackgroundType: testblackabovegr

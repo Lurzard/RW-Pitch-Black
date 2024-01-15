@@ -5,8 +5,8 @@ Grime: 0.1521739
 Palette: 6
 EffectColorA: 9
 Effects: FireFlies-0.2391304-298-77, 
-PlacedObjects: BrokenShelterWaterLevel><55.08441><340.1379><, LightSource><421.45><370.7539><0.4021746~Environment~-37~66~50~86.60254~1~0~None~0~0, 
+PlacedObjects: BrokenShelterWaterLevel><55.08441><340.1379><, LightSource><421.45><370.7539><0.4021746~White~-37~66~50~86.60254~1~0~None~0~0, 
 AmbientSounds: SPOT><SO_IND-Fridge.ogg><562.6847><505.0767><0.2391304><1><224.6847><372.0767><-67.35535><-13.35535><0><0.3717393, SPOT><AM_IND-ElectricHum01.ogg><734.6118><292.6054><0.4021726><1><423.6118><368.6054><-35.35534><-35.35534><0><0.1000001, 
 FadePalette: 33, 0.8478262
 MorePalette0: 367, 0.2065217
-MorePalette1: 10, 0.3043478
+MorePalette1: 10, 0.75

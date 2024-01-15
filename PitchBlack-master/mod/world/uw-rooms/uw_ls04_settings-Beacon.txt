@@ -2,7 +2,8 @@ Template: UW_SettingsTemplate_Wall
 RainIntensity: 0.2065217
 RumbleIntensity: 0.2065217
 Palette: 29
+EffectColorA: 9
 Effects: FireFlies-0.2717391-284-134, 
-PlacedObjects: 
-FadePalette: 367, 0.9103771
-MorePalette0: 10, 0.3015966
+PlacedObjects: LightSource><509.1217><376.6534><0.4021739~EffectColor1~0~85~50~86.60254~0~0~None~0~0, 
+FadePalette: 377, 1
+MorePalette0: 10, 0.5081183

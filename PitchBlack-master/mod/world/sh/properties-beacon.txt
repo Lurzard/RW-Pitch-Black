@@ -1,6 +1,8 @@
 Palette: 10
 batDepleteCyclesMin: 2
 batDepleteCyclesMax: 7
+corruptionEffectColor: 0.1,0.0,0.9
+corruptionEyeColor: 0.1,0.0,0.9
 batDepleteCyclesMaxIfLessThanTwoLeft: 3
 batDepleteCyclesMaxIfLessThanFiveLeft: 4
 overseersSpawnChance: 0.2
@@ -90,3 +92,6 @@ Room_Attr: SH_H01RIV: StandardGroundCreature-Forbidden,Slugcat-Forbidden,LizardT
 Room Setting Templates: PitchBlack, DarkSun
 Subregion: Erstwhile Bastion
 Subregion: Nescient Graveyard
+Room_Attr: SH_PBMEM: MirosBird-Stay,Centipede-Forbidden,BigSpider-Forbidden,SpitterSpider-Forbidden,DropBug-Forbidden,MirosVulture-Forbidden,
+Room_Attr: SH_Long: MirosBird-Forbidden,Centipede-Forbidden,BigSpider-Forbidden,SpitterSpider-Forbidden,DropBug-Forbidden,MirosVulture-Forbidden,
+Room_Attr: SH_CabinetAlley: MirosBird-Stay,Centipede-Forbidden,BigSpider-Forbidden,SpitterSpider-Forbidden,DropBug-Forbidden,MirosVulture-Forbidden,

@@ -5,7 +5,7 @@ Palette: 33
 EffectColorA: 2
 EffectColorB: 8
 Effects: Bloom-0.1304348-20-20, 
-PlacedObjects: CustomDecal><566.5338><123.9471><-323~312~-89~455~413~-34~-658~-15.00002~0~1~0~rust3~0.0326087~1~0.0326087~1~0.0326087~1~0.0326087~1, LightSource><561.6538><248.1278><0.1086956~Environment~0~100~50~86.60254~1~0~None~0~0, 
+PlacedObjects: CustomDecal><566.5338><123.9471><-323~312~-89~455~413~-34~-658~-15.00002~0~1~0~rust3~0.0326087~1~0.0326087~1~0.0326087~1~0.0326087~1, 
 AmbientSounds: OMNI><AM_ENV-Outside.ogg><723.6643><472.114><0.2173913><0.823913, OMNI><SO_WAT-LilDrips.ogg><717.3898><520.5831><0.1086956><1, 
 FadePalette: 10, 0.1847826
-MorePalette0: 10, 0.326087
+MorePalette0: 10, 1

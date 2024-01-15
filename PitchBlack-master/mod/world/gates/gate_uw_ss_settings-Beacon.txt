@@ -1,0 +1,13 @@
+DangerType: None
+RainIntensity: 0
+RumbleIntensity: 0.2065217
+Clouds: 0.2826087
+Grime: 0
+BkgDroneVolume: 0
+Palette: 16
+EffectColorB: 21
+Effects: Lightning-0.6413044-25-68, ZeroGSpecks-0.1630435-20-20, FireFlies-0.2934783-293-84, GreenSparks-0.3369565-292-153, ElectricDeath-0.2826087-291-20, ZeroG-0.4505522-30-128, 
+PlacedObjects: NoSpearStickZone><484.4697><229.7156><-251~100, Corruption><908.7353><246.3231><70~116, Corruption><205.666><375.2486><0~100, CorruptionDarkness><212.4312><411.4145><-4~-104, CorruptionDarkness><944.1835><263.6598><-176~5, LightFixture><1008.111><218.9164><RedLight~17.32051~-10~86, LightFixture><240.4633><483.1966><RedLight~17.32051~-10~55, LightFixture><-68.05786><169.9445><RedLight~17.32051~-10~46, 
+AmbientSounds: SPOT><AM_IND-DeepHum.ogg><67.55426><500.7911><0.5><1><478.0962><-12.64191><-100.3553><-40.35535><0><0.2304349, OMNI><SO_WAT-RainishDrips.ogg><829.1453><647.1125><0.3586957><1, SPOT><AM_IND-SuperStructure.ogg><793.1928><489.8083><0.2934783><0.9021739><968.1939><235.8147><-144.3553><-81.35535><0><0.3065219, 
+FadePalette: 33, 0.7065217
+MorePalette0: 10, 1

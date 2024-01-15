@@ -1,15 +1,17 @@
 Template: UW_SettingsTemplate_Underhang
 CeilingDrips: 0.0326087
 RainIntensity: 0
-RumbleIntensity: 0.2065217
+RumbleIntensity: 0.5
 Clouds: 0.07608695
 Grime: 0.02173913
+BkgDroneVolume: 0.3073966
 Palette: 16
-EffectColorB: 5
-Effects: Lightning-0.2065217-43-166, GreenSparks-0.2065217-41-46, ExtraLoudThunder-0.2065217-43-103, ElectricDeath-0.2065217-45-0, FireFlies-0.2826087-321-109, BrokenZeroG-0.2065217-20-20, 
-PlacedObjects: SteamPipe><755.7116><767.6963><16~26, SteamPipe><667.9278><717.5857><-14~-28, SteamPipe><868.6915><715.1912><17~-21, WallSteamer><783.5527><719.5542><92~-58, WallSteamer><760.6922><701.6946><-23~-86, SteamPipe><1397.552><704.2189><46~-27, SteamPipe><1349.557><700.1996><-21~-18, SteamPipe><1385.933><754.3311><-46~9, SteamPipe><1667.318><707.1465><9~-22, SteamPipe><1565.91><694.8674><-25~-26, SteamPipe><1617.185><741.1739><20~35, WallSteamer><1583.132><701.583><-11~-102, WallSteamer><1382.082><707.9625><-2~-48, WallSteamer><1138.258><707.5501><33~-42, WallSteamer><1122.415><717.3528><-81~-36, Corruption><1717.748><636.95><-62~-67, Corruption><1003.11><741.8329><5~-111, Corruption><6.824463><846.6542><0~100, LightFixture><706.2449><396.8><RedLight~17.32051~-10~81, LightFixture><-192.5454><623.8052><RedLight~17.32051~-10~33, 
+EffectColorA: 18
+EffectColorB: 8
+Effects: Lightning-0.7158031-43-166, GreenSparks-0.4551037-41-46, ExtraLoudThunder-0.4021739-43-103, ElectricDeath-1-45-0, 
+PlacedObjects: SteamPipe><755.7116><767.6963><16~26, SteamPipe><667.9278><717.5857><-14~-28, SteamPipe><868.6915><715.1912><17~-21, WallSteamer><783.5527><719.5542><92~-58, WallSteamer><760.6922><701.6946><-23~-86, SteamPipe><1397.552><704.2189><46~-27, SteamPipe><1349.557><700.1996><-21~-18, SteamPipe><1385.933><754.3311><-46~9, SteamPipe><1667.318><707.1465><9~-22, SteamPipe><1565.91><694.8674><-25~-26, SteamPipe><1617.185><741.1739><20~35, WallSteamer><1583.132><701.583><-11~-102, WallSteamer><1382.082><707.9625><-2~-48, WallSteamer><1138.258><707.5501><33~-42, WallSteamer><1122.415><717.3528><-81~-36, LightFixture><2836.881><652.828><RedLight~17.32051~-10~55, LightFixture><2082.756><390.036><RedLight~17.32051~-10~26, LightFixture><1272.908><605.7128><RedLight~17.32051~-10~24, LightSource><575.5701><737.9054><0.2518091~EffectColor1~469.0289~41.83844~50~86.60254~0~0~None~0~0, LightSource><125.5961><622.0101><0.2518091~EffectColor1~459.4243~-2.983551~50~86.60254~0~0~None~0~0, LightSource><1852.205><832.1078><0.1590098~EffectColor1~845.2125~395.611~50~86.60254~0~0~None~0~0, 
 AmbientSounds: SPOT><AM_ENV-WallHum.ogg><56.20825><509.0544><0.4565217><0.823913><2985.208><416.0554><-116.3553><-116.3553><0><0.328261, SPOT><SO_WAT-RainishDrips.ogg><235.4332><507.0803><0.3586957><1><1552.434><630.0761><-261.3553><49.64465><0><0.3608697, SPOT><AM_WIN-HowlingWnd.ogg><55.96594><395.1971><0.2282609><1><-121.9549><275.8793><317.6447><-94.35534><0><0.3500001, SPOT><SO_IND-HVAC.ogg><764.6542><192.0744><0.3043478><0.7652174><701.6499><750.0803><-175.3553><-21.35535><0><0.1869567, 
 Triggers: RegionBump<tA>event<tB>MusicEvent<eA>songName<eB>BM_UW_UNDERHANG<eA>vol<eB>0.3326084<eA>prio<eB>0.5<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>-1<eA>rest<eB>5<eA>fadeIn<eB>0<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>473.9287<tB>360.4102<tA>fireChance<tB>1<tA>entrance<tB>1<tA>karma<tB>0<tA>slugcats<tB>, 
-FadePalette: 33, 0.9225374, 0.858823, 0.7791695
-MorePalette0: 10, 0.6031932, 0.7075918, 0.8003905
-MorePalette1: 367, 0.05219899, 0.02899966, 0
+FadePalette: 17, 0.2065217, 0.25, 0.4021739
+MorePalette0: 371, 0.7597908, 0.7075918, 0.7017915
+MorePalette1: 10, 0.6031925, 0.6089929, 0.6553922

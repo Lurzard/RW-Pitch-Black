@@ -1,0 +1,2 @@
+base : barren plains
+barren plains : touch grass

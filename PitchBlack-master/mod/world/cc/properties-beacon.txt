@@ -1,8 +1,8 @@
 Palette: 6
-corruptionEffectColor: 0.2,0.0,0.9
-corruptionEyeColor: 0.2,0.0,0.9
 batDepleteCyclesMin: 2
 batDepleteCyclesMax: 7
+corruptionEffectColor: 0.1,0.0,0.9
+corruptionEyeColor: 0.1,0.0,0.9
 batDepleteCyclesMaxIfLessThanTwoLeft: 3
 batDepleteCyclesMaxIfLessThanFiveLeft: 4
 overseersSpawnChance: 0.5
@@ -10,7 +10,6 @@ overseersMin: 0
 overseersMax: 4
 playerGuideOverseerSpawnChance: 0.7
 ghostRelKarmaReq: 4
-kelpColor: 0.5, 0.7, 1
 Room_Attr: CC_C09: WhiteLizard-Like,CyanLizard-Like,Vulture-Like,SmallNeedleWorm-Like,BigNeedleWorm-Like,KingVulture-Like,MirosVulture-Like,
 Room_Attr: CC_C12: WhiteLizard-Like,Vulture-Like,KingVulture-Like,
 Room_Attr: CC_A06: WhiteLizard-Like,CyanLizard-Like,Vulture-Like,SmallNeedleWorm-Like,BigNeedleWorm-Like,KingVulture-Like,

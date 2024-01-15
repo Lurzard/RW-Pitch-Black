@@ -1,6 +1,8 @@
 SH_CABINETS5 : 2-TentaclePlant
 
-OFFSCREEN : 0-Miros-10, 0-MirosVulture-2, 0-Scavenger-13
+{#lb-fgf-m4r-ik.fat-fire-fly-creature}OFFSCREEN : 0-Miros-10, 0-FatFireFly, 0-Scavenger-13
+
+OFFSCREEN : 0-Miros-10, 0-MirosVulture, 0-Scavenger-13
 
 SH_A04 : 3-Mouse-2, 4-Mouse-2
 SH_A05 : 3-Mouse-2

@@ -1,16 +1,15 @@
 Template: GW_SettingsTemplate_Inside
 DangerType: Rain
-RainIntensity: 0.01086957
-RumbleIntensity: 0.1086956
 WaveSpeed: 0.5130922
 WaveLength: 0.9934539
 WaveAmplitude: 0.0009918559
 SecondWaveLength: 0.1666667
 SecondWaveAmplitude: 0
+Clouds: 1
 WaterReflectionAlpha: 0
-Palette: 33
-EffectColorB: 12
-Effects: Darkness-0.6739131-20-20, FireFlies-0.4562613-30-30, 
-PlacedObjects: LanternOnStick><695.0989><1107.369><-12~-114, LanternOnStick><633.1255><1157.344><39~-154, DangleFruit><369.9297><1194.088><446~-460~2~3, DangleFruit><393.6963><1146.807><412~-312~2~3, CustomDecal><152.5664><923.9207><6~339~231~337~245~-15~-403~-67~0.5326087~1~0~ScavMark Stonehead3~0.173913~0~0.173913~0~0.173913~0~0.173913~0, CustomDecal><88.65912><1050.822><-14~350~786~329~771~-32~-391~-41~0.5652174~1~0~ScavMark HI_A27~0.2826087~0.1086956~0.2826087~0.1086956~0.2826087~0.1086956~0.2826087~0.1086956, CustomDecal><614.2091><966.1958><-33~341~253~381~260~-38~-129~-356~0.5869565~1~0~ScavMark Stonehead2~0.25~0.4021739~0.25~0.4021739~0.25~0.4021739~0.25~0.4021739, Filter><344.8322><315.8588><0~100~104~70~White|Yellow|Red|Rivulet|Saint|Spear|Gourmand, ExitSymbolHidden><330.2507><290.7><, 
-FadePalette: 11, 0.06272639, 0.1438405
-MorePalette0: 10, 0.7173913, 0.7391304
+EffectColorB: 21
+Effects: Darkness-0.6739131-20-20, 
+PlacedObjects: LanternOnStick><695.0989><1107.369><-12~-114, LanternOnStick><633.1255><1157.344><39~-154, DangleFruit><369.9297><1194.088><446~-460~2~3, DangleFruit><393.6963><1146.807><412~-312~2~3, CustomDecal><152.5664><923.9207><6~339~231~337~245~-15~-403~-67~0.5326087~1~0~ScavMark Stonehead3~0~0~0.2173913~0~0.2173913~0~0~0, CustomDecal><88.65912><1050.822><-14~350~786~329~771~-32~-282~-44~0.5652174~1~0~ScavMark HI_A27~0~0.1086956~0.2173913~0.1086956~0.2173913~0.1086956~0~0.1086956, CustomDecal><614.2091><966.1958><-33~341~253~381~260~-38~-552~2~0.5869565~1~0~ScavMark Stonehead2~0~0.4021739~0.2608696~0.4021739~0~0.4021739~0.2608696~0.4021739, Filter><344.8322><315.8588><0~100~104~70~White|Yellow|Red|Rivulet|Saint|Spear|Gourmand, ExitSymbolHidden><330.2507><290.7><, 
+FadePalette: 10, 0.2173913, 0.5
+MorePalette0: 375, 1, 1
+MorePalette1: 10, 0.8043478, 0.8043478

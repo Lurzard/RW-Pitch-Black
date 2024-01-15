@@ -1,7 +1,5 @@
 Template: GW_SettingsTemplate_Inside
 DangerType: Rain
-RainIntensity: 0.7065217
-RumbleIntensity: 0.7065217
 WaveSpeed: 0.5202019
 WaveLength: 0.989899
 WaveAmplitude: 1.422306E-14
@@ -11,9 +9,11 @@ Clouds: 0.7173913
 BkgDroneVolume: 0.2769565
 Palette: 11
 EffectColorA: 8
-EffectColorB: 12
-Effects: WaterViscosity-0.113768-20-76, SilenceWater-0-287-18, Darkness-0.2608696-20-20, LethalWater-0-286-78, HeatWave-0-280-140, FireFlies-0.4021286-30-30, 
-PlacedObjects: ExitSymbolHidden><349.0719><589.1591><, 
-AmbientSounds: OMNI><waterGurgleLOOP1.wav><849.6308><645.4013><0.4347826><0.5891304, OMNI><SO_NAT-Burning.ogg><668.0651><648.5761><0><0.6478261, SPOT><AM_IND-Utility02.ogg><666.6594><528.8708><0.3804348><1><243.6594><111.8708><-158.3553><-74.35535><0><0.6326088, SPOT><AM_IND-Utility04.ogg><853.212><526.0536><0.3478261><1><712.212><123.0536><-112.3553><-77.35535><0><0.5673915, 
-FadePalette: 33, 0.805163
-MorePalette0: 10, 0.8586956
+EffectColorB: 21
+Effects: WaterViscosity-0.6086956-20-76, SilenceWater-1-287-18, Darkness-0.2608696-20-20, LethalWater-1-286-78, HeatWave-0.6304348-280-140, 
+PlacedObjects: LightSource><442.8535><73.86383><0.4673913~EffectColor1~-629~474~195~-84.39746~0~0~None~0~0, SteamPipe><451.1918><355.6933><-18~41, SteamPipe><315.043><357.9453><8~32, SteamPipe><603.0171><357.9493><-20~33, SteamPipe><519.829><145.6462><0~100, SteamPipe><318.1362><168.6036><0~100, SteamPipe><434.4449><112.7945><0~100, SteamPipe><565.0574><182.804><0~100, ExitSymbolHidden><349.0719><589.1591><, 
+AmbientSounds: OMNI><waterGurgleLOOP1.wav><849.6308><645.4013><0.4347826><0.5891304, OMNI><SO_NAT-Burning.ogg><668.0651><648.5761><0.4347826><0.6478261, SPOT><AM_IND-Utility02.ogg><666.6594><528.8708><0.3804348><1><243.6594><111.8708><-158.3553><-74.35535><0><0.6326088, SPOT><AM_IND-Utility04.ogg><853.212><526.0536><0.3478261><1><712.212><123.0536><-112.3553><-77.35535><0><0.5673915, 
+FadePalette: 34, 0.6195652
+MorePalette0: 375, 1
+MorePalette1: 376, 0.3586957
+MorePalette2: 10, 0.5

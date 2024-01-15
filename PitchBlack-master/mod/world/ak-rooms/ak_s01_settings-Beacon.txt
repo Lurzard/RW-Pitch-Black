@@ -1,0 +1,7 @@
+Template: NONE
+Grime: 0.2934783
+Palette: 6
+EffectColorA: 9
+EffectColorB: 7
+FadePalette: 8, 0.4347826
+MorePalette0: 10, 0.9021739

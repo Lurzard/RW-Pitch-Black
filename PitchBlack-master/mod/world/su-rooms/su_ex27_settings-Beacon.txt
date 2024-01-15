@@ -1,8 +1,8 @@
 Clouds: 1
 Grime: 0.2608696
 Palette: 10
-Effects: 
 PlacedObjects: LightSource><472.6954><283.0487><0.1261431~Environment~4.268738~188.1778~50~86.60254~1~0~None~0~0, 
 AmbientSounds: OMNI><AM_ENV-Outside.ogg><765.4963><477.05><0.2934783><0.823913, OMNI><SO_WAT-LilDrips.ogg><719.0233><248.3014><0.3478261><1, 
 FadePalette: 33, 0.4021739
-MorePalette0: 10, 0.4818726
+MorePalette0: 386, 0.6056048
+MorePalette1: 10, 0.5045936

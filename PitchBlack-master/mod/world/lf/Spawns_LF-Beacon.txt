@@ -1,0 +1,36 @@
+{#lb-fgf-m4r-ik.fat-fire-fly-creature}OFFSCREEN : 0-FatFireFly-3, 0-Deer-6, 0-Scavenger-8, 0-Elite
+{#lb-fgf-m4r-ik.undersea-lizard}LF_C01 : 2-SilverLizard, 4-Black, 3-TentaclePlant
+{#lb-fgf-m4r-ik.undersea-lizard}LF_E01 : 2-Black, 4-SilverLizard, 2-Eel
+{#lb-fgf-m4r-ik.undersea-lizard}LF_E02 : 2-Black, 5-SilverLizard
+
+{#!lb-fgf-m4r-ik.undersea-lizard}OFFSCREEN : 0-Vulture-3, 0-Deer-6, 0-Scavenger-8, 0-Elite
+{#!lb-fgf-m4r-ik.undersea-lizard}LF_C01 : 2-Green, 4-Black, 3-TentaclePlant
+{#!lb-fgf-m4r-ik.undersea-lizard}LF_E01 : 2-Black, 4-Green, 2-Eel
+{#!lb-fgf-m4r-ik.undersea-lizard}LF_E02 : 2-Black, 5-Green
+
+LF_A03 : 3-Small Centipede-2
+LF_A05 : 3-Small Centipede-2
+LF_A13 : 3-BigSpider, 4-BigSpider, 5-EggBug
+LF_B04 : 3-Mouse-4, 4-Small Centipede, 5-Small Centipede-2
+LF_C02 : 5-SpitterSpider, 6-Black
+LF_C03 : 3-Small Centipede-4, 4-Centipede-2
+LF_D01 : 4-Black, 6-Eel
+LF_D02 : 4-Black
+LF_D03 : 2-Cyan, 3-Cyan, 6-BigSpider-2, 6-Eel
+LF_D04 : 3-CicadaA-2
+LF_D06 : 4-Small Centipede-2, 5-Small Centipede-2, 5-Centipede
+LF_D08 : 8-SpitterSpider-2, 9-SpitterSpider, 9-BigSpider-2
+LF_E03 : 2-Mouse-2, 3-Mouse-2
+LF_E04 : 3-Centipede
+LF_F02 : 3-Centiwing-3, 4-SpitterSpider, 5-CicadaA-3
+LINEAGE : LF_A03 : 3 : Small Centipede-0.5, Centipede-{0.3}-0.5, Centipede-{0.6}-0.5, Centipede-{0.9}-0.5, SpitterSpider-0
+LINEAGE : LF_A05 : 4 : Small Centipede-0.5, Centipede-{0.3}-0.5, Centipede-{0.6}-0.5, Centipede-{0.9}-0.5, SpitterSpider-0
+LINEAGE : LF_B03 : 3 : Centipede-{0.5}-0.3, Centipede-{0.7}-0.3, Centipede-{0.9}-0.2, RedCenti-0
+LINEAGE : LF_C02 : 3 : White-0.5, Cyan-0
+LINEAGE : LF_C03 : 4 : Small Centipede-0.5, Centipede-{0.3}-0.5, Centipede-{0.6}-0.5, Centipede-{0.9}-0.5, SpitterSpider-0
+LINEAGE : LF_D01 : 2 : White-0.5, Cyan-0
+LINEAGE : LF_D02 : 3 : Black-0.5, Cyan-0
+LINEAGE : LF_D04 : 3 : CicadaA-0.5, Centiwing-0
+LINEAGE : LF_E01 : 3 : Black-0.5, Cyan-0
+LINEAGE : LF_E02 : 3 : White-0.5, Cyan-0.3, Red-0
+LINEAGE : LF_E04 : 5 : Black-0.15, Yellow-0.6, Red-0

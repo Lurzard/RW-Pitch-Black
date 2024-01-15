@@ -1,10 +1,4 @@
-DangerType: Flood
-RainIntensity: 0.7282609
-RumbleIntensity: 0.6956522
 EffectColorA: 9
-Effects: FireFlies-0.3043478-30-134, 
-PlacedObjects: LightSource><371.6248><378.4973><0.4084068~Environment~7.470337~88.79449~50~86.60254~1~0~None~0~0, 
-AmbientSounds: SPOT><AM_IND-ElectricHum01.ogg><730.2405><297.2427><0.5><1><373.5656><380.7755><-35.35534><-35.35534><0><0.1, 
-FadePalette: 33, 0.7391304
-MorePalette0: 10, 0.6553922
-MorePalette1: 367, 0.3073969
+EffectColorB: 21
+PlacedObjects: LightSource><371.3005><377.0144><0.4021733~Environment~-3~73~50~86.60254~1~0~None~0~0, 
+MorePalette0: 10, 1

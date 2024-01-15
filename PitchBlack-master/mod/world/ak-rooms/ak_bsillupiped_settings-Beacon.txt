@@ -1,0 +1,12 @@
+Template: NONE
+Clouds: 0.1086956
+Grime: 0.3043478
+BkgDroneVolume: 0.3043478
+Palette: 6
+EffectColorA: 9
+EffectColorB: 7
+Effects: Flies-0.1195652-20-20, Darkness-0.7065217-30-30, 
+PlacedObjects: Mushroom><1834.95><611.0073><-466~9~2~3, Mushroom><1863.697><586.0319><-779~-104~2~3, Mushroom><1764.558><612.3085><0~0~2~3, 
+AmbientSounds: OMNI><AM_IND-Utility02.ogg><1182.329><649.9337><0.3260856><1, SPOT><Mech Basic.wav><33.1698><310.9332><0.2282615><1.117391><268.1699><201.9332><-76.35538><-96.35535><0><0.1, SPOT><Basic Mech.ogg><153.3811><460.099><0.09782609><1><1301.381><487.099><-0.3553467><-31.35535><0><0.1, 
+FadePalette: 8, 0.3043478, 0.3369565
+MorePalette0: 367, 0.8478261, 0.8586956

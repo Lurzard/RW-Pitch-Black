@@ -1,0 +1,9 @@
+Template: NONE
+Grime: 0.2282609
+Palette: 0
+EffectColorA: 9
+EffectColorB: 7
+PlacedObjects: ExitSymbolShelter><734.6958><115.2094><, 
+FadePalette: 8, 0.4456522
+MorePalette0: 367, 0.8043478
+MorePalette1: 10, 0.6521739

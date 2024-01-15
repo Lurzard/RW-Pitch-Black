@@ -4,4 +4,5 @@ Clouds: 0
 Palette: 35
 Effects: Fog-0-20-20, 
 PlacedObjects: BrokenShelterWaterLevel><327.9295><374.8382><, 
-FadePalette: 33, 0.6847826
+FadePalette: 11, 0.5543478
+MorePalette0: 10, 1

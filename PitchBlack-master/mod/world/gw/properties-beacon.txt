@@ -1,7 +1,7 @@
 Palette: 9
-corruptionEffectColor: 0.2,0.0,0.9
-corruptionEyeColor: 0.2,0.0,0.9
-Subregion: Moonlit Wasteyard
+corruptionEffectColor: 0.1,0.0,0.9
+corruptionEyeColor: 0.1,0.0,0.9
+Subregion: Disposal Unit
 Room Setting Templates: Outside, Inside
 Room_Attr: GW_C06: Centipede-Like,RedCentipede-Like,Scavenger-Like,DropBug-Like,
 Room_Attr: GW_E02: Vulture-Like,RedCentipede-Avoid,Scavenger-Like,DropBug-Avoid,KingVulture-Like,
@@ -40,3 +40,5 @@ Room_Attr: GW_C07: Centipede-Like,RedCentipede-Like,SmallCentipede-Stay,DropBug-
 Room_Attr: GW_C10: BrotherLongLegs-Like,Centipede-Like,RedCentipede-Like,DropBug-Like,
 Room_Attr: GW_E01: BrotherLongLegs-Like,Centipede-Like,RedCentipede-Like,
 Room_Attr: GW_C09: BrotherLongLegs-Like,Centipede-Like,RedCentipede-Like,
+Room_Attr: GW_photo02: StandardGroundCreature-Forbidden,Slugcat-Forbidden,LizardTemplate-Forbidden,PinkLizard-Forbidden,GreenLizard-Forbidden,BlueLizard-Forbidden,YellowLizard-Forbidden,WhiteLizard-Forbidden,RedLizard-Forbidden,BlackLizard-Forbidden,Salamander-Forbidden,Fly-Forbidden,Leech-Forbidden,SeaLeech-Forbidden,Snail-Forbidden,Vulture-Forbidden,GarbageWorm-Forbidden,LanternMouse-Forbidden,CicadaA-Forbidden,CicadaB-Forbidden,Spider-Forbidden,JetFish-Forbidden,BigEel-Forbidden,Deer-Forbidden,TubeWorm-Forbidden,DaddyLongLegs-Forbidden,BrotherLongLegs-Forbidden,TentaclePlant-Forbidden,PoleMimic-Forbidden,MirosBird-Forbidden,TempleGuard-Forbidden,Centipede-Forbidden,RedCentipede-Forbidden,Centiwing-Forbidden,SmallCentipede-Forbidden,Scavenger-Like,Overseer-Forbidden,EggBug-Forbidden,DropBug-Avoid,KingVulture-Forbidden,
+Room_Attr: GW_photo01: StandardGroundCreature-Forbidden,Slugcat-Forbidden,LizardTemplate-Forbidden,PinkLizard-Forbidden,GreenLizard-Forbidden,BlueLizard-Forbidden,YellowLizard-Forbidden,WhiteLizard-Forbidden,RedLizard-Forbidden,BlackLizard-Forbidden,Salamander-Forbidden,Fly-Forbidden,Leech-Forbidden,SeaLeech-Forbidden,Snail-Forbidden,Vulture-Forbidden,GarbageWorm-Forbidden,LanternMouse-Forbidden,CicadaA-Forbidden,CicadaB-Forbidden,Spider-Forbidden,JetFish-Forbidden,BigEel-Forbidden,Deer-Forbidden,TubeWorm-Forbidden,DaddyLongLegs-Forbidden,BrotherLongLegs-Forbidden,TentaclePlant-Forbidden,PoleMimic-Forbidden,MirosBird-Forbidden,TempleGuard-Forbidden,Centipede-Forbidden,RedCentipede-Forbidden,Centiwing-Forbidden,SmallCentipede-Forbidden,Scavenger-Like,Overseer-Forbidden,EggBug-Forbidden,DropBug-Avoid,KingVulture-Forbidden,

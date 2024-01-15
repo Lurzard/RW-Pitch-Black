@@ -1,0 +1,7 @@
+base : the stargazer
+the stargazer (braces) : braces
+the stargazer (ducts) : ducts
+the stargazer (stygian bowels) : -1 : stygian bowels
+the stargazer (muted chambers) : -1 : muted chambers
+looks to the moon : 0 : new moon
+the peak : -1 : infinite sunrise

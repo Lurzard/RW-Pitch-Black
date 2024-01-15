@@ -2,16 +2,14 @@
 	"id": "lurzard.pitchblack",
 	"name": "Rain World Pitch Black",
 	"version": "1.0",
-	"authors": "[ Pitch Black Team ]\n\nLurzard: The Beacon, Art, Room Settings\n\nMillisec: The Photomaniac, Thumbnail, Lediting\n\nNiko: Coder + Leditor\n\nURUFUDOGGO, Bluecubism, Moon615, WillowWisp: Coder\n\nOpey: World Changes\n\nLudocrypt: Music\n\n- - -\n\nMusicalMiracle, TurtleMan27, dogbitchdogbitch, Noir, Tronx: Playtesting\n\nFaeling: New Illustrations\n\nMerfaruk: New Backgrounds\n\nKoko: Custom DMS Skins",
+	"authors": "[ Pitch Black's Team ]\n\nLurzard: The Beacon, Lurzard: Coder, Leditor, Artist\n\nMillisec: The Photomaniac, Thumbnail, Lediting\n\nNiko: Coder + Leditor\n\nURUFUDOGGO, Bluecubism, Moon615, WillowWispy: Coder\n\nOpey: World Changes\n\nLudocrypt: Music",
 
-	"description": "Crawl around in the nighttime of a dying world as two new custom campaigns, The Beacon and The Photomaniac.\n\nMake your way home safely before the rising dawn wakes, uncover the hidden secrets of this world, and piece together its fractured story.",
+	"description": "Crawl around in the nighttime of a dying world as two new custom campaigns, The Beacon and The Photomaniac.\nUncover the hidden secrets of this world, and piece together its fractured story.",
 
 	"requirements": [ "slime-cubed.slugbase", "moreslugcats", "fisobs", "regionkit", "crs" ],
 	"requirements_names": [ "SlugBase", "More Slugcats Expansion", "Fisobs", "RegionKit", "Custom Regions Support" ],
 
 	"priorities": [ "moreslugcats", "pilgrims_ascent", "howling_rift", "lb-fgf-m4r-ik.pa-stuff", "lb-fgf-m4r-ik.howling-rift" ],
 
-	"tags": [ "Custom Slugcat", "Campaigns", "Game Modes", "Regions", "Game Mechanics" ],
-
-	"checksum_override_version": false
+	"tags": [ "Custom Slugcat", "Campaigns", "Game Modes", "Regions", "Game Mechanics" ]
 }
