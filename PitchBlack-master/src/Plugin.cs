@@ -5,7 +5,6 @@ using System.Security;
 using Fisobs.Core;
 using UnityEngine;
 using BepInEx.Logging;
-using System;
 
 #pragma warning disable CS0618 // Type or member is obsolete
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -74,8 +73,13 @@ class Plugin : BaseUnityPlugin
         PBPOMDarkness.RegisterDarkness();
         ReliableCreatureSpawner.RegisterSpawner();
         CreatureSpawnerHooks.Apply();
+        TeleportWater.Register();
+        BreathableWater.Register();
 
-        //PBFrozenCycleTimer.Apply();
+        EchoMusic.Apply();
+
+        PBFrozenCycleTimer.Apply();
+        //OverseerHooks.Apply(); (ONLY 1.0!)
 
         //NightDay.Apply(); //unfinished
         PassageHooks.Apply();
@@ -90,23 +94,21 @@ class Plugin : BaseUnityPlugin
     public void OnModsInit(On.RainWorld.orig_OnModsInit orig, RainWorld self)
     {
         orig(self);
-        try {
-            if (!init) {
-                MachineConnector.SetRegisteredOI("lurzard.pitchblack", PBOptions.Instance);
-                Futile.atlasManager.LoadAtlas("atlases/photosplt");
-                Futile.atlasManager.LoadAtlas("atlases/nightTerroratlas");
-                Futile.atlasManager.LoadAtlas("atlases/PursuedAtlas");
-                self.Shaders["Red"] = FShader.CreateShader("red", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath(path: "assetbundles/red")).LoadAsset<Shader>("Assets/red.shader"));
-                self.Shaders["Sunrays"] = FShader.CreateShader("sunrays", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/sunrays")).LoadAsset<Shader>("Assets/sunrays.shader"));
-                init = true;
+        MachineConnector.SetRegisteredOI("lurzard.pitchblack", PBOptions.Instance);
+        if (!init) {
+            Futile.atlasManager.LoadAtlas("atlases/photosplt");
+            Futile.atlasManager.LoadAtlas("atlases/nightTerroratlas");
+            Futile.atlasManager.LoadAtlas("atlases/PursuedAtlas");
+            Futile.atlasManager.LoadAtlas("atlases/pearlCursor");
+            Futile.atlasManager.LoadAtlas("atlases/PBHat");
+            self.Shaders["Red"] = FShader.CreateShader("red", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath(path: "assetbundles/red")).LoadAsset<Shader>("Assets/red.shader"));
+            self.Shaders["Sunrays"] = FShader.CreateShader("sunrays", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/sunrays")).LoadAsset<Shader>("Assets/sunrays.shader"));
+            init = true;
 
-                //I'M PRETTY SURE BEST PRACTICE IS TO PUT HOOKS HERE
-                On.RainWorldGame.ctor += RainWorldGame_ctor;
-                On.RainWorldGame.Update += RainWorldGame_Update;
-            }
-        } catch (Exception err) {
-            logger.LogDebug("Pitch Black: There was an error loading assets!");
-            logger.LogDebug(err);
+            //I'M PRETTY SURE BEST PRACTICE IS TO PUT HOOKS HERE
+            On.RainWorldGame.ctor += RainWorldGame_ctor;
+            On.RainWorldGame.Update += RainWorldGame_Update;
+
         }
     }
 
@@ -154,7 +156,6 @@ class Plugin : BaseUnityPlugin
     private static void RainWorldGame_Update(On.RainWorldGame.orig_Update orig, RainWorldGame self)
     {
         orig(self);
-        //Debug.Log("UPDATEME");
         if (myTracker is not null)
             myTracker.Update();
     }
