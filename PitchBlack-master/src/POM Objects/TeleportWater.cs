@@ -9,6 +9,7 @@ namespace PitchBlack;
 
 // References to world in Rain World's code seem to be regions.
 // Could probably reuse this to make seemless gate transitions tbh. Might do that later :3
+// Oh wait Vigaro apparently did that already... :(
 public class TeleportWater
 {
     private enum AssetBundleName
