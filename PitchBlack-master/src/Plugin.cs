@@ -33,8 +33,6 @@ class Plugin : BaseUnityPlugin
 
     public static ManualLogSource logger;
 
-    public static ManualLogSource logger;
-
     //public static List<string> currentDialog = new();
     //public static bool Speaking = false;
     //public static AbstractCreature PBOverseer;
