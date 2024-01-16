@@ -1,0 +1,11 @@
+[[ DEVELOPER COMMENTARY ]]
+
+Initiating Relay.
+
+Lurzard: Originally the pursuer would work differently, like you could actually become immune to it.
+Lurzard: if you had less than max Flashbangs stored they would actively pursue you.
+Lurzard: But if you had max Flashbangs stored they'd just stop pursuing you!
+Lurzard: It's much better now imo, I like how closely it references the Pursued Burden Centipede.
+Lurzard: Itself, albeit in a different time. 
+
+Relay Terminated.

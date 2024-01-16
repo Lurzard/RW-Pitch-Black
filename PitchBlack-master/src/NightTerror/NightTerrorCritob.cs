@@ -92,7 +92,8 @@ sealed class NightTerrorCritob : Critob
             },
 #endif
             DefaultRelationship = new(CreatureTemplate.Relationship.Type.Ignores, 1f),
-            DamageResistances = new() { Base = 5f, Explosion = .03f },
+            // Used to be 5 base resistance before merge
+            DamageResistances = new() { Base = 20f, Explosion = .03f },
             StunResistances = new() { Base = 200f },
             HasAI = true,
             Pathing = PreBakedPathing.Ancestral(CreatureTemplate.Type.RedCentipede),

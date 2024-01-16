@@ -1,0 +1,56 @@
+OFFSCREEN : 0-Scavenger-10, 0-KingVulture-{Seed:9057}, 0-Vulture-3-{Seed-6006}
+
+VS_A01 : 4-Small Centipede-2
+VS_A02 : 2-Mouse-3, 2-EggBug-{PreCycle}
+VS_A03 : 4-Small Centipede-2, 5-Centipede
+VS_A04 : 4-Dropwig, 5-BigSpider, 4-Eel-{PreCycle}
+VS_A05 : 3-Cyan-3
+VS_A06 : 4-BigSpider-2, 4-Salamander-{PreCycle}
+VS_A08 : 2-Centipede-2, 3-Small Centipede-4
+VS_A09 : 2-Eel
+VS_A10 : 3-Dropwig, 4-SpitterSpider
+VS_A11 : 3-Eel
+VS_A13 : 3-Mouse-4, 4-BigSpider
+VS_A15 : 6-Dropwig
+VS_B01 : 3-EggBug, 5-BigSpider
+VS_B02 : 6-White
+VS_B06 : 3-Mouse-4
+VS_B07 : 6-Centipede-5, 6-Eel-{PreCycle}
+VS_B09 : 2-Centipede-3, 3-Yellow-2, 4-Yellow-2, 5-Small Centipede-3
+VS_B10 : 3-Mouse-7, 7-White
+VS_B12 : 3-BigSpider, 6-Small Centipede-5
+VS_B13 : 3-Eel
+VS_B14 : 2-Snail, 3-Snail, 5-Eel
+VS_B15 : 2-Snail, 3-Snail
+VS_B16 : 3-BigSpider-2, 4-Mouse-2, 7-Black
+VS_B17 : 2-SpitterSpider, 7-TentaclePlant, 10-Black
+VS_C01 : 9-Eel, 13-Eel, 15-Eel
+VS_C02 : 3-Cyan
+VS_C03 : 4-Snail-4, 5-Dropwig
+VS_C04 : 2-SpitterSpider, 3-BigSpider
+VS_C05 : 3-Centipede-4, 4-RedCenti
+VS_C06 : 4-TentaclePlant
+VS_C07 : 3-Centipede-2, 6-SpitterSpider, 7-Yellow-2, 9-BigSpider, 10-Yellow-2, 14-Centipede-4
+VS_C08 : 4-Snail-4, 6-Eel, 7-Jetfish
+VS_C09 : 2-EggBug, 3-SpitterSpider
+VS_C10 : 4-Mouse-4, 6-BigSpider, 7-Black
+VS_C11 : 3-Black
+VS_C12 : 5-BigSpider, 8-TentaclePlant, 10-TentaclePlant
+VS_C13 : 8-Cyan
+VS_D01 : 4-Dropwig
+VS_D02 : 4-Snail-2, 5-Aquapede, 6-TentaclePlant
+VS_D03 : 3-Mouse-6, 4-Snail-3
+VS_D04 : 3-Mouse-2, 4-BigSpider, 5-Mouse-3, 6-Black, 7-BigSpider, 8-Black
+VS_D05 : 8-Eel
+VS_E01 : 6-Jetfish, 7-Eel
+VS_E02 : 3-Mouse-3, 5-SpitterSpider, 6-Mouse-3, 7-BigSpider, 8-Black, 10-Black, 11-Mouse-3, 13-Black, 14-MotherSpider
+VS_E06 : 3-SpitterSpider, 6-Mouse-6
+VS_E07 : 2-Blue, 3-Blue
+VS_F01 : 5-SpitterSpider, 9-Small Centipede-5
+VS_F02 : 4-BigSpider, 7-Black, 8-Mouse-3, 17-TentaclePlant
+VS_H01 : 8-TentaclePlant, 9-Eel
+VS_H02 : 6-EggBug, 8-SpitterSpider, 9-Cyan, 10-BigSpider, 12-BigSpider, 13-SpitterSpider
+LINEAGE : VS_A05 : 4 : NONE-0.5, Cyan-0.2, White-0
+LINEAGE : VS_C02 : 3 : Cyan-0.2, White-0.5, Eel-0
+LINEAGE : VS_C04 : 4 : Cyan-0.2, White-0.5, Eel-0
+LINEAGE : VS_C13 : 5 : Cyan-0.2, White-0.01, Blue-1, Cyan-0

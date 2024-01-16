@@ -1,0 +1,14 @@
+Template: SB_SettingsTemplate_Gilded
+DangerType: Flood
+Clouds: 0.2391304
+Grime: 0
+BkgDroneVolume: 0
+Palette: 57
+EffectColorA: 0
+EffectColorB: 6
+Effects: LightBurn-0.6086956-20-20, 
+PlacedObjects: LightSource><155.2677><649.8716><0.1195652~Environment~606~-545~774.0969~-112.4642~1~1~None~0~0, LightSource><382.8458><118.461><1~Environment~2~198~547.5641~458.5359~1~0~None~0~0, LightSource><374.157><176.4491><0.3025002~Environment~33~177~557.7102~379.4021~1~1~None~0~0, LightSource><158.3434><696.989><0.2932082~Environment~126~-277~771.297~-101.6642~1~0~None~0~0, LightBeam><295.4364><255.6815><-120~364~-106~370~46~8~633.1563~229.1333~0.4130435~0.1521739~0.6630435~1~None~0~0, LightBeam><573.9491><291.5194><-128~254~-104~270~7~36~355.5555~171.4~0.7282609~0~0.01086957~1~None~0~0, PlayerPushback><73.40231><227.8912><154.2086~-0.7999878, ExitSymbolHidden><75.43878><226.9799><, PlayerPushback><815.5659><74.87433><81.10626~154.9333, ExitSymbolHidden><806.7587><67.65897><, ExitSymbolHidden><939.4597><624.7281><, PlayerPushback><939.8807><642.2515><-1.600769~-222.6667, 
+AmbientSounds: OMNI><AM_SUB-CaveTone.ogg><829.3027><640.0327><0.4021739><1, OMNI><AM_SUB-BlankState.ogg><655.7799><638.9478><0.3152174><1, SPOT><SO_WAT-LilDrips.ogg><91.90479><489.8241><0.1304348><1><763.9048><70.82411><-188.3553><-83.35534><0><0.502174, SPOT><AM_ENV-NatWind.ogg><746.619><487.9011><0.2826087><0.726087><935.6189><537.9011><-210.3553><-47.35535><0><0.404348, OMNI><SO_NAT-LilDrips.ogg><482.9494><636.5151><0.3152174><1, 
+Triggers: Spot<tA>event<tB>MusicEvent<eA>songName<eB>RW_41 - Grumblebum<eA>vol<eB>0.2782613<eA>prio<eB>0.5<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>-1<eA>rest<eB>5<eA>fadeIn<eB>163.0435<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>644.1574<tB>560.5728<tA>fireChance<tB>1<tA>entrance<tB>-1<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>530.1573<tB>337.5728<tA>handlePos<tB>-383.3553<tB>-252.3553, 
+FadePalette: 10, 0.2042885
+MorePalette0: 48, 0.1565983

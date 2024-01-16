@@ -3,15 +3,21 @@
 	"scene_folder": "scenes/trapped",
 	"images": [
 		{
-			"name": "bg glow",
+			"name": "tormented_him",
 			"pos": [ 492, 297 ],
 			"depth": 3.7,
 			"shader": "Basic"
 		},
 		{
-			"name": "reminder",
+			"name": "drowned",
 			"pos": [ 605, 427 ],
 			"depth": 2.8,
+			"shader": "Basic"
+		},
+		{
+			"name": "black_bubbles",
+			"pos": [ 605, 427 ],
+			"depth": 1.5,
 			"shader": "Basic"
 		}
 	],

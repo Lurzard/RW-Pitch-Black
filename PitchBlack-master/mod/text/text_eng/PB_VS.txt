@@ -1,0 +1,2 @@
+Unable to locate PearlData: Faded.
+Adding GhostInfo and Archiving NewPearlData to “Faded” Category.

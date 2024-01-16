@@ -1,0 +1,7 @@
+Attempting Relay: “Naive Ramblings"
+Relay ForceTerminated: Corrupted(Data Expunged).
+Initiating NewRelay == PastCommunicationData[DOB-0628](unnamed).
+
+DOB: It wasn't that interesting anyway-
+
+AllCurrentRelays Terminated.

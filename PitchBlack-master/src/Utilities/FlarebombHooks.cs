@@ -37,11 +37,26 @@ public class FlarebombHooks
         return Custom.DistLess(self.firstChunk.pos, creaturePos, self.LightIntensity * 600f)
             || (Custom.DistLess(self.firstChunk.pos, creaturePos, self.LightIntensity * 1600f) && self.room.VisualContact(self.firstChunk.pos, creaturePos));
     }
-    public static bool CreatureIsSpider(CreatureTemplate.Type creatureTemplateType)
+    public static bool TooBrightForMe(CreatureTemplate.Type creatureTemplateType)
     {
+        // Creatures that die to FlareBombs
         return creatureTemplateType == CreatureTemplate.Type.BigSpider
             || creatureTemplateType == CreatureTemplate.Type.SpitterSpider
-            || creatureTemplateType == MoreSlugcats.MoreSlugcatsEnums.CreatureTemplateType.MotherSpider;
+            || creatureTemplateType == MoreSlugcats.MoreSlugcatsEnums.CreatureTemplateType.MotherSpider
+            || creatureTemplateType == CreatureTemplate.Type.DropBug
+            || creatureTemplateType == CreatureTemplate.Type.EggBug
+            || creatureTemplateType == MoreSlugcats.MoreSlugcatsEnums.CreatureTemplateType.Yeek
+            || creatureTemplateType == CreatureTemplate.Type.Leech
+            || creatureTemplateType == CreatureTemplate.Type.SeaLeech
+            || creatureTemplateType == CreatureTemplate.Type.JetFish
+            || creatureTemplateType == CreatureTemplate.Type.Snail
+            || creatureTemplateType == CreatureTemplate.Type.CicadaA
+            || creatureTemplateType == CreatureTemplate.Type.CicadaB
+            || creatureTemplateType == CreatureTemplate.Type.SmallNeedleWorm
+            || creatureTemplateType == CreatureTemplate.Type.LanternMouse
+            || creatureTemplateType == CreatureTemplate.Type.GarbageWorm
+            || creatureTemplateType == CreatureTemplate.Type.MirosBird
+            ;
     }
     #endregion
 
@@ -117,7 +132,7 @@ public class FlarebombHooks
 
                 if (stunCreatures)
                 {
-                    if (CreatureIsSpider(self.room.abstractRoom.creatures[i].creatureTemplate.type))
+                    if (TooBrightForMe(self.room.abstractRoom.creatures[i].creatureTemplate.type))
                     {
                         //die if the game slugcat or thrower or any co-op players is beacon or photo
                         self.room.abstractRoom.creatures[i].realizedCreature.firstChunk.vel += Custom.DegToVec(Random.value * 360f) * Random.value * 7f;

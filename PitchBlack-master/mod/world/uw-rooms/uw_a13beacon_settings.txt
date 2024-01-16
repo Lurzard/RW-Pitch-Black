@@ -1,0 +1,14 @@
+Template: NONE
+DangerType: None
+CeilingDrips: 0
+RainIntensity: 0
+RumbleIntensity: 0.01086957
+Clouds: 0
+Grime: 0.05434782
+Palette: 10
+EffectColorB: 20
+Effects: CorruptionSpores-1-20-20, ReplaceEffectColorB-0-30-30-Color-0.2826087-0-1, 
+PlacedObjects: Corruption><709.5067><357.6999><81~103, Corruption><779.0999><415.6179><-25~-130, Corruption><781.8002><280.2415><0~100, Corruption><900.694><248.9511><-24~64, Corruption><996.6475><314.0783><44~47, Corruption><885.4418><487.3069><44~-6, Corruption><962.568><496.0619><43~23, CorruptionDarkness><622.376><334.4069><0~100, CorruptionDarkness><922.4485><275.9751><0~100, CorruptionDarkness><749.4077><491.3771><-70~58, CorruptionTube><594.301><416.2696><407~-84, CorruptionTube><678.9427><232.4466><222~281, LightSource><916.41><267.8214><0.6739131~EffectColor2~-162~130~-46~-274.3975~0~0~None~0~0, LightSource><757.5807><461.1064><0.7282609~EffectColor2~125~-188~115~-220.3975~1~0~None~0~0, LightSource><667.2><287.7476><0.4021739~EffectColor2~147~116~194.9999~-180.3975~0~0~None~0~0, InsectGroup><828.3459><661.1225><-111~-100~-270~-88~FireFly~0.1195652, InsectGroup><508.6278><562.0962><-70~-111~-314~-78~FireFly~0.1304348, InsectGroup><239.5913><564.428><35~-100~0~0~FireFly~0.1195652, InsectGroup><558.6874><98.31993><-57~150~0~0~FireFly~0.1847826, InsectGroup><265.568><106.0619><183~-35~0~0~FireFly~0.1630435, InsectGroup><252.5766><330.0652><-151~108~-219~-93~FireFly~0.08695652, 
+AmbientSounds: SPOT><AM_ENV-NatWind.ogg><59.84021><506.3215><0.3043478><0.7652174><106.8402><127.3215><-81.35535><-34.35535><0><0.1869567, SPOT><AM_ENV-NatWind.ogg><61.10681><390.0809><0.3043478><1><123.1068><558.0809><-79.35535><-53.35535><0><0.2195653, OMNI><MSC-LowGroans.ogg><745.9639><313.1967><0.04347826><1, 
+FadePalette: 367, 0.3543139
+WetTerrain: OFF

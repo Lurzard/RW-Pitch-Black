@@ -382,7 +382,7 @@ namespace PitchBlack
         {
             if (self.abstractCreature.creatureTemplate.type == CreatureTemplateType.NightTerror)
             {
-                return new Color(0.286f, 0.286f, 0.952f);
+                return new Color(0.2f, 0f, 1f);
             }
             return orig(self);
         }
@@ -487,7 +487,7 @@ namespace PitchBlack
                 if (!NightTerrorInfo.TryGetValue(self, out _))
                     NightTerrorInfo.Add(self, new NightTerrorData());
                 
-                self.bodyChunks = new BodyChunk[19];
+                self.bodyChunks = new BodyChunk[21];
                 for (int i = 0; i < self.bodyChunks.Length; i++)
                 {
                     float num = i / (float)(self.bodyChunks.Length - 1);

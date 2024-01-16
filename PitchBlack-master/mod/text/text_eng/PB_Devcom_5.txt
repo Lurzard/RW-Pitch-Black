@@ -1,0 +1,11 @@
+[[ DEVELOPER COMMENTARY ]]
+
+Initiating Relay.
+
+Lurzard: I had been messing around with DevTools when I implemented the new background.
+Lurzard: During that time I discovered this object I've never heard of before called SlugcatEyeSelector.
+Lurzard: From there I figured out how it worked, you're seeing it in action here to make Beacon look blinded by the light of the sun!
+Lurzard: Now you may be curious as to why she's squinting so hard, it's because she's been brought out of her natural habitat!
+Lurzard: People who played the beta thought it was a neat detail, thanks guys. 
+
+Relay Terminated.

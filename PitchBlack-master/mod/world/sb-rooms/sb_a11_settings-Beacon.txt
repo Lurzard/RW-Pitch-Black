@@ -1,0 +1,9 @@
+Template: SB_SettingsTemplate_Gilded
+DangerType: Flood
+BkgDroneVolume: 0
+Palette: 57
+Effects: HeatWave-1-20-20, 
+PlacedObjects: ExitSymbolHidden><104.0309><428.5924><, ExitSymbolHidden><915.6034><331.6582><, PlayerPushback><108.1625><410.5844><59.22891~-174.6667, PlayerPushback><889.2104><333.4025><-275.868~16.79999, 
+AmbientSounds: OMNI><AM_SUB-BlankState.ogg><832.1908><651.941><0.2717391><1, OMNI><AM_SUB-CaveTone.ogg><656.9767><653.4486><0.3369565><1, 
+FadePalette: 8, 0.1956522
+MorePalette0: 48, 0.1565983
