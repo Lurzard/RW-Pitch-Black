@@ -7,11 +7,11 @@ nightSky: NightAtC_Sky
 atmosphereColor: 0d1733
 
 DistantBuilding: AtC_Structure1, -520, -85, 160, -20
-DistantLightning: AtC_Light1, -520, -119, 160, 55
+REMOVE_DistantLightning: AtC_Light1, -520, -119, 160, 55
 DistantBuilding: AtC_Structure2, 88, -37, 350, 0
-DistantLightning: AtC_Light2, 88, -53, 350, 250
+REMOVE_DistantLightning: AtC_Light2, 88, -53, 350, 250
 DistantBuilding: AtC_Structure3, -316, -24, 600, -100
-DistantLightning: AtC_Light3, -316, -32, 600, 80
+REMOVE_DistantLightning: AtC_Light3, -316, -32, 600, 80
 DistantBuilding: AtC_Structure4, -648, -21, 700, -200
 DistantBuilding: AtC_Structure5, 156, -22, 800, -350
 DistantBuilding: AtC_Structure6, -242, -20, 850, -350

@@ -25,7 +25,7 @@
 		"food_min": 2,
 		"food_max": 3,
 		"auto_grab_batflies": false,
-		"weight": [ 0.6, 0.5 ],
+		"weight": [ 0.7, 0.6 ],
 		"back_spear": false,
 		"can_maul": false,
 		"has_dreams": false,

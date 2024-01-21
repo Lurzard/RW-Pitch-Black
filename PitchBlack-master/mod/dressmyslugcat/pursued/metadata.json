@@ -1,10 +1,5 @@
 {
-  "id": "lurzard.pursuedmark",
-  "name": "The Pursued",
-    "author": "lurzard",
-    "defaults": {
-        "MARK": {
-            "color": "#ff0000"
-        }
-    }
+    "id": "lurzard.pursuedmark",
+    "name": "The Pursued",
+    "author": "lurzard"
 }
