@@ -1,2 +1,0 @@
-Attempting Relay: “Production Record for 1500: Holy Ash"
-Relay ForceTerminated: Corrupted.
