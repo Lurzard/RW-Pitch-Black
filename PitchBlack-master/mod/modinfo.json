@@ -1,7 +1,7 @@
 ﻿{
 	"id": "lurzard.pitchblack",
 	"name": "[BETA] Pitch Black",
-	"version": "0.3.0",
+	"version": "0.3.1",
 	"authors": "[ Pitch Black's Team ]\n\nLurzard: The Beacon, Lurzard: Coder, Leditor, Artist\n\nMillisec: The Photomaniac, Thumbnail, Lediting\n\nNiko: Coder + Leditor\n\nURUFUDOGGO, Bluecubism, Moon615, WillowWispy: Coder\n\nOpey: World Changes\n\nLudocrypt: Music",
 
 	"description": "Crawl around in the nighttime of a dying world as two new custom campaigns, The Beacon and The Photomaniac.\nUncover the hidden secrets of this world, and piece together its fractured story.",
@@ -9,7 +9,8 @@
 	"requirements": [ "slime-cubed.slugbase", "moreslugcats", "fisobs", "regionkit", "crs" ],
 	"requirements_names": [ "SlugBase", "More Slugcats Expansion", "Fisobs", "RegionKit", "Custom Regions Support" ],
 
-	"priorities": [ "moreslugcats", "pilgrims_ascent", "howling_rift", "lb-fgf-m4r-ik.pa-stuff", "lb-fgf-m4r-ik.howling-rift" ],
+	"tags": [ "Custom Slugcat", "Campaigns", "Game Modes", "Regions", "Game Mechanics" ],
 
-	"tags": [ "Custom Slugcat", "Campaigns", "Game Modes", "Regions", "Game Mechanics" ]
+	"checksumoverrideversion": true,
+	"priorities": [ "moreslugcats", "pilgrims_ascent", "howling_rift", "lb-fgf-m4r-ik.pa-stuff", "lb-fgf-m4r-ik.howling-rift" ]
 }

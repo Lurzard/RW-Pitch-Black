@@ -1,0 +1,26 @@
+TH_DM - BASS : NEUTRAL, DANGER
+TH_DM - KICK : NEUTRAL
+TH_DM - LEAD : NEUTRAL, DANGER
+TH_DM - NOISE : NEUTRAL
+TH_DM - SNARE : NEUTRAL, DANGER
+TH_DM - SHAKER : NUETRAL, DANGER
+TH_DM - NIGHTBOUNCEKICK : NEUTRAL
+TH_DM - NIGHTWARPHATS : NEUTRAL
+TH_DM - NIGHTCRUSHPERC : NEUTRAL
+TH_DM - NIGHTARPBASS : NEUTRAL
+TH_DM - NIGHTALARM : NEUTRAL, DANGER
+TH_DM - NIGHTARPS : NEUTRAL
+TH_DM - NIGHTSCARYTLEAD : HIGHKARMA
+TH_DM - NIGHTWARBLENOISE : DANGER
+TH_DM - NIGHTWAVES : NEUTRAL
+TH_DM - NIGHTHEART : NEUTRAL
+TH_DM - NIGHTWARNING : NEUTRAL, DANGER
+
+
+Layer : TH_DM - NOISE{Neural Terminus|Abstract Convergence Manifold|Memory Conflux}, TH_DM - BASS{Neural Terminus|Abstract Convergence Manifold|Memory Conflux}, TH_DM - KICK{Neural Terminus|Abstract Convergence Manifold|Memory Conflux}, TH_DM - NIGHTBOUNCEKICK{Struts|Vents}, TH_DM - NIGHTWARPHATS{Struts|Vents}
+Layer : TH_DM - NOISE{Neural Terminus|Abstract Convergence Manifold|Memory Conflux}, TH_DM - BASS{Neural Terminus|Abstract Convergence Manifold|Memory Conflux}, TH_DM - KICK{Neural Terminus|Abstract Convergence Manifold|Memory Conflux}, TH_DM - NIGHTBOUNCEKICK{Struts|Vents}, TH_DM - NIGHTWARPHATS{Struts|Vents}, TH_DM - SNARE{Neural Terminus|Abstract Convergence Manifold|Memory Conflux}, TH_DM - NIGHTWAVES{Struts}, TH_DM - NIGHTCRUSHPERC{Vents}
+Layer : TH_DM - NOISE{Neural Terminus|Abstract Convergence Manifold|Memory Conflux}, TH_DM - BASS{Neural Terminus|Abstract Convergence Manifold|Memory Conflux}, TH_DM - KICK{Neural Terminus|Abstract Convergence Manifold|Memory Conflux}, TH_DM - NIGHTBOUNCEKICK{Struts|Vents}, TH_DM - NIGHTWARPHATS{Struts|Vents}, TH_DM - SNARE{Neural Terminus|Abstract Convergence Manifold|Memory Conflux}, TH_DM - NIGHTWAVES{Struts}, TH_DM - NIGHTCRUSHPERC{Vents}, TH_DM - LEAD{Neural Terminus|Abstract Convergence Manifold|Memory Conflux}, TH_DM - SHAKER{Neural Terminus|Abstract Convergence Manifold|Memory Conflux}, TH_DM - NIGHTARPBASS{Struts|Vents}
+Layer : TH_DM - NOISE{Neural Terminus|Abstract Convergence Manifold|Memory Conflux}, TH_DM - BASS{Neural Terminus|Abstract Convergence Manifold|Memory Conflux}, TH_DM - KICK{Neural Terminus|Abstract Convergence Manifold|Memory Conflux}, TH_DM - NIGHTBOUNCEKICK{Struts|Vents}, TH_DM - NIGHTWARPHATS{Struts|Vents}, TH_DM - SNARE{Neural Terminus|Abstract Convergence Manifold|Memory Conflux}, TH_DM - NIGHTWAVES{Struts}, TH_DM - NIGHTCRUSHPERC{Vents}, TH_DM - LEAD{Neural Terminus|Abstract Convergence Manifold|Memory Conflux}, TH_DM - SHAKER{Neural Terminus|Abstract Convergence Manifold|Memory Conflux}, TH_DM - NIGHTARPBASS{Struts|Vents}, TH_DM - NIGHTHEART{Struts}, TH_DM - NIGHTALARM{Vents}, TH_DM - NIGHTARPS{Vents}
+Layer : TH_DM - NOISE{Neural Terminus|Abstract Convergence Manifold|Memory Conflux}, TH_DM - BASS{Neural Terminus|Abstract Convergence Manifold|Memory Conflux}, TH_DM - KICK{Neural Terminus|Abstract Convergence Manifold|Memory Conflux}, TH_DM - NIGHTBOUNCEKICK{Struts|Vents}, TH_DM - NIGHTWARPHATS{Struts|Vents}, TH_DM - SNARE{Neural Terminus|Abstract Convergence Manifold|Memory Conflux}, TH_DM - NIGHTWAVES{Struts}, TH_DM - NIGHTCRUSHPERC{Vents}, TH_DM - LEAD{Neural Terminus|Abstract Convergence Manifold|Memory Conflux}, TH_DM - SHAKER{Neural Terminus|Abstract Convergence Manifold|Memory Conflux}, TH_DM - NIGHTARPBASS{Struts|Vents}, TH_DM - NIGHTHEART{Struts}, TH_DM - NIGHTALARM{Vents}, TH_DM - NIGHTARPS{Vents}, TH_DM - NIGHTWARNING{Struts}
+Layer : TH_DM - NOISE{Neural Terminus|Abstract Convergence Manifold|Memory Conflux}, TH_DM - BASS{Neural Terminus|Abstract Convergence Manifold|Memory Conflux}, TH_DM - KICK{Neural Terminus|Abstract Convergence Manifold|Memory Conflux}, TH_DM - NIGHTBOUNCEKICK{Struts|Vents}, TH_DM - NIGHTWARPHATS{Struts|Vents}, TH_DM - SNARE{Neural Terminus|Abstract Convergence Manifold|Memory Conflux}, TH_DM - NIGHTWAVES{Struts}, TH_DM - NIGHTCRUSHPERC{Vents}, TH_DM - LEAD{Neural Terminus|Abstract Convergence Manifold|Memory Conflux}, TH_DM - SHAKER{Neural Terminus|Abstract Convergence Manifold|Memory Conflux}, TH_DM - NIGHTARPBASS{Struts|Vents}, TH_DM - NIGHTHEART{Struts}, TH_DM - NIGHTALARM{Vents}, TH_DM - NIGHTARPS{Vents}, TH_DM - NIGHTWARNING{Struts}, TH_DM - NIGHTWARBLENOISE{Struts|Vents}
+Layer : TH_DM - NIGHTSCARYLEAD{Struts|Vents}

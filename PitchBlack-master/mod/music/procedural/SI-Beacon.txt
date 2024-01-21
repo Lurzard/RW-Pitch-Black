@@ -1,16 +1,19 @@
-TH_SI - FLOW : NEUTRAL
-TH_SI - KICK : NEUTRAL
-TH_SI - HATS : NEUTRAL
-TH_SI - PERC : NEUTRAL
-TH_SI - SNARE : NEUTRAL
-TH_SI - BASS : NEUTRAL
-TH_SI - NOISE : DANGER
-TH_SI - ARPS : HIGHKARMA
+TH_SI - NIGHTFLOW : NEUTRAL
+TH_SI - NIGHTKICK : NEUTRAL
+TH_SI - NIGHTHATS : NEUTRAL, DANGER
+TH_SI - NIGHTTIMPGLITCH : NEUTRAL
+TH_SI - NIGHTPERC : NEUTRAL
+TH_SI - NIGHTVERBPERC : NEUTRAL
+TH_SI - NIGHTSNARE : NEUTRAL, DANGER
+TH_SI - NIGHTBASS : NEUTRAL
+TH_SI - NIGHTSUB : NEUTRAL
+TH_SI - NIGHTARPS : NEUTRAL
+TH_SI - NIGHTNOISE : DANGER
 
 
-Layer : TH_SI - FLOW
-Layer : TH_SI - FLOW, TH_SI - KICK, TH_SI - HATS
-Layer : TH_SI - FLOW, TH_SI - KICK, TH_SI - HATS, TH_SI - PERC, TH_SI - SNARE
-Layer : TH_SI - FLOW, TH_SI - KICK, TH_SI - HATS, TH_SI - PERC, TH_SI - SNARE, TH_SI - BASS
-Layer : TH_SI - FLOW, TH_SI - KICK, TH_SI - HATS, TH_SI - PERC, TH_SI - SNARE, TH_SI - BASS, TH_SI - NOISE
-Layer : TH_SI - ARPS
+Layer : TH_SI - NIGHTFLOW{Sky Islands|Communications Array}
+Layer : TH_SI - NIGHTFLOW{Sky Islands|Communications Array}, TH_SI - NIGHTKICK{Sky Islands|Communications Array}, TH_SI - NIGHTHATS{Sky Islands}, TH_SI - NIGHTTIMPGLITCH{Communications Array}
+Layer : TH_SI - NIGHTFLOW{Sky Islands|Communications Array}, TH_SI - NIGHTKICK{Sky Islands|Communications Array}, TH_SI - NIGHTHATS{Sky Islands}, TH_SI - NIGHTTIMPGLITCH{Communications Array}, TH_SI - NIGHTPERC{Sky Islands}, TH_SI - NIGHTVERBPERC{Communications Array}, TH_SI - NIGHTSNARE{Sky Islands|Communications Array}
+Layer : TH_SI - NIGHTFLOW{Sky Islands|Communications Array}, TH_SI - NIGHTKICK{Sky Islands|Communications Array}, TH_SI - NIGHTHATS{Sky Islands}, TH_SI - NIGHTTIMPGLITCH{Communications Array}, TH_SI - NIGHTPERC{Sky Islands}, TH_SI - NIGHTVERBPERC{Communications Array}, TH_SI - NIGHTSNARE{Sky Islands|Communications Array}, TH_SI - NIGHTBASS{Sky Islands}, TH_SI - NIGHTSUB{Communications Array}
+Layer : TH_SI - NIGHTFLOW{Sky Islands|Communications Array}, TH_SI - NIGHTKICK{Sky Islands|Communications Array}, TH_SI - NIGHTHATS{Sky Islands}, TH_SI - NIGHTTIMPGLITCH{Communications Array}, TH_SI - NIGHTPERC{Sky Islands}, TH_SI - NIGHTVERBPERC{Communications Array}, TH_SI - NIGHTSNARE{Sky Islands|Communications Array}, TH_SI - NIGHTBASS{Sky Islands}, TH_SI - NIGHTSUB{Communications Array}, TH_SI - NIGHTARPS{Sky Islands|Communications Array}
+Layer : TH_SI - NIGHTFLOW{Sky Islands|Communications Array}, TH_SI - NIGHTKICK{Sky Islands|Communications Array}, TH_SI - NIGHTHATS{Sky Islands}, TH_SI - NIGHTTIMPGLITCH{Communications Array}, TH_SI - NIGHTPERC{Sky Islands}, TH_SI - NIGHTVERBPERC{Communications Array}, TH_SI - NIGHTSNARE{Sky Islands|Communications Array}, TH_SI - NIGHTBASS{Sky Islands}, TH_SI - NIGHTSUB{Communications Array}, TH_SI - NIGHTARPS{Sky Islands|Communications Array}, TH_SI - NIGHTNOISE{Sky Islands|Communications Array}

@@ -1,0 +1,28 @@
+TH_UW - BOUNCEKICK : NEUTRAL
+TH_UW - HATS : NEUTRAL, DANGER
+TH_UW - CORE : NEUTRAL
+TH_UW - STEAMPERC : NEUTRAL
+TH_UW - BASS : NEUTRAL
+TH_UW - PADPERC : NEUTRAL
+TH_UW - ALARM : NEUTRAL, DANGER
+TH_UW - PCARPS : NEUTRAL
+TH_UW - HEART : NEUTRAL
+TH_UW - GLITCHNOISE : DANGER
+TH_UW - LEAD : HIGHKARMA
+TH_UW - KICK : NEUTRAL
+TH_UW - PERCHATS : NEUTRAL
+TH_UW - PERC : NEUTRAL
+TH_UW - CRUSHBASS : NEUTRAL
+TH_UW - CHORDS : NEUTRAL
+TH_UW - CRUSHARPS : NEUTRAL, DANGER
+TH_UW - PIANO : NEUTRAL
+TH_UW - WETNOISE : DANGER
+
+
+Layer : TH_UW - BOUNCEKICK{The Leg|Underhang}, TH_UW - HATS{The Leg|Underhang}, TH_UW - KICK{The Wall}, TH_UW - PERCHATS{The Wall}
+Layer : TH_UW - BOUNCEKICK{The Leg|Underhang}, TH_UW - HATS{The Leg|Underhang}, TH_UW - KICK{The Wall}, TH_UW - PERCHATS{The Wall}, TH_UW - CORE{The Leg}, TH_UW - STEAMPERC{Underhang}, TH_UW - PERC{The Wall}
+Layer : TH_UW - BOUNCEKICK{The Leg|Underhang}, TH_UW - HATS{The Leg|Underhang}, TH_UW - KICK{The Wall}, TH_UW - PERCHATS{The Wall}, TH_UW - CORE{The Leg}, TH_UW - STEAMPERC{Underhang}, TH_UW - PERC{The Wall}, TH_UW - BASS{The Leg|Underhang}, TH_UW - CRUSHBASS{The Wall}
+Layer : TH_UW - BOUNCEKICK{The Leg|Underhang}, TH_UW - HATS{The Leg|Underhang}, TH_UW - KICK{The Wall}, TH_UW - PERCHATS{The Wall}, TH_UW - CORE{The Leg}, TH_UW - STEAMPERC{Underhang}, TH_UW - PERC{The Wall}, TH_UW - BASS{The Leg|Underhang}, TH_UW - CRUSHBASS{The Wall}, TH_UW - PADPERC{The Leg}, TH_UW - ALARM{Underhang}, TH_UW - PCARPS{Underhang}, TH_UW - CHORDS{The Wall}, TH_UW - CRUSHARPS{The Wall}
+Layer : TH_UW - BOUNCEKICK{The Leg|Underhang}, TH_UW - HATS{The Leg|Underhang}, TH_UW - KICK{The Wall}, TH_UW - PERCHATS{The Wall}, TH_UW - CORE{The Leg}, TH_UW - STEAMPERC{Underhang}, TH_UW - PERC{The Wall}, TH_UW - BASS{The Leg|Underhang}, TH_UW - CRUSHBASS{The Wall}, TH_UW - PADPERC{The Leg}, TH_UW - ALARM{Underhang}, TH_UW - PCARPS{Underhang}, TH_UW - CHORDS{The Wall}, TH_UW - CRUSHARPS{The Wall}, TH_UW - HEART{The Leg}, TH_UW - PIANO{The Wall}
+Layer : TH_UW - BOUNCEKICK{The Leg|Underhang}, TH_UW - HATS{The Leg|Underhang}, TH_UW - KICK{The Wall}, TH_UW - PERCHATS{The Wall}, TH_UW - CORE{The Leg}, TH_UW - STEAMPERC{Underhang}, TH_UW - PERC{The Wall}, TH_UW - BASS{The Leg|Underhang}, TH_UW - CRUSHBASS{The Wall}, TH_UW - PADPERC{The Leg}, TH_UW - ALARM{Underhang}, TH_UW - PCARPS{Underhang}, TH_UW - CHORDS{The Wall}, TH_UW - CRUSHARPS{The Wall}, TH_UW - HEART{The Leg}, TH_UW - PIANO{The Wall}, TH_UW - GLITCHNOISE{The Leg|Underhang}, TH_UW - WETNOISE{The Wall}
+Layer : TH_UW - LEAD{The Leg|Underhang}

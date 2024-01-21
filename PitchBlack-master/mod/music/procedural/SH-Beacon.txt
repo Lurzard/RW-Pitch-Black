@@ -1,27 +1,18 @@
-TH_SH - GLASSPERC : NEUTRAL
-TH_SH - CRUSHKICK : NEUTRAL
-TH_SH - RHYTHM : NEUTRAL
-TH_SH - AMP : NEUTRAL
-TH_SH - SCRATCHING : NEUTRAL
-TH_SH - TINNITUS : NEUTRAL
-TH_SH - DROPS : NEUTRAL
-TH_SH - VERBNOISE : DANGER
-TH_SH - KICK : NEUTRAL
-TH_SH - HATS : NEUTRAL
-TH_SH - PERC : NEUTRAL
-TH_SH - LIGHTNING : NEUTRAL
-TH_SH - ARPCRUSH : NEUTRAL
-TH_SH - NOISE : DANGER
-TH_SH - BASS : NEUTRAL
-TH_SH - ARP : NEUTRAL
-TH_SH - LEAD : NEUTRAL
-TH_SH - CHORDS : NEUTRAL
+TH_SH - NIGHTFLOW : NEUTRAL
+TH_SH - NIGHTKICK : NEUTRAL
+TH_SH - NIGHTHATS : NEUTRAL
+TH_SH - NIGHTPERC : NEUTRAL
+TH_SH - NIGHTCRASH : NEUTRAL, DANGER
+TH_SH - NIGHTBASS : NEUTRAL
+TH_SH - NIGHTCHORDS : NEUTRAL
+TH_SH - NIGHTARPS : NEUTRAL
+TH_SH - NIGHTARPCRUSH : NEUTRAL
+TH_SH - NIGHTNOISE : DANGER
 
-Layer : {Shaded Citadel}TH_SH - GLASSPERC, {Memory Crypts|Deep Crypts}TH_SH - KICK, {Memory Crypts|Deep Crypts}TH_SH - HATS
-Layer : {Shaded Citadel}TH_SH - GLASSPERC, {Memory Crypts|Deep Crypts}TH_SH - KICK, {Memory Crypts|Deep Crypts}TH_SH - HATS, {Shaded Citadel}TH_SH - CRUSHKICK, {Shaded Citadel}TH_SH - RHYTHM, {Memory Crypts|Deep Crypts} TH_SH - PERC
-Layer : {Shaded Citadel}TH_SH - GLASSPERC, {Memory Crypts|Deep Crypts}TH_SH - KICK, {Memory Crypts|Deep Crypts}TH_SH - HATS, {Shaded Citadel}TH_SH - CRUSHKICK, {Shaded Citadel}TH_SH - RHYTHM, {Memory Crypts|Deep Crypts}TH_SH - PERC, {Shaded Citadel}TH_SH - AMP
-Layer : {Shaded Citadel}TH_SH - GLASSPERC, {Memory Crypts|Deep Crypts}TH_SH - KICK, {Memory Crypts|Deep Crypts} TH_SH - HATS, {Shaded Citadel}TH_SH - CRUSHKICK, {Shaded Citadel}TH_SH - RHYTHM, {Memory Crypts|Deep Crypts}TH_SH - PERC, {Shaded Citadel}TH_SH - AMP, {Shaded Citadel}TH_SH - SCRATCHING, {Shaded Citadel}TH_SH - TINNITUS {Nescient Graveyard}TH_SH - LIGHTNING, {Deep Crypts} TH_SH - ARPCRUSH
-Layer : {Shaded Citadel}TH_SH - GLASSPERC, {Memory Crypts|Deep Crypts}TH_SH - KICK, {Memory Crypts|Deep Crypts} TH_SH - HATS, {Shaded Citadel}TH_SH - CRUSHKICK, {Shaded Citadel}TH_SH - RHYTHM, {Memory Crypts|Deep Crypts}TH_SH - PERC, {Shaded Citadel}TH_SH - AMP, {Shaded Citadel}TH_SH - SCRATCHING, {Shaded Citadel}TH_SH - TINNITUS {Nescient Graveyard}TH_SH - LIGHTNING, {Deep Crypts} TH_SH - ARPCRUSH, {Shaded Citadel}TH_SH - DROPS, {Memory Crypts|Deep Crypts}TH_SH - BASS
-Layer : {Shaded Citadel}TH_SH - GLASSPERC, {Memory Crypts|Deep Crypts}TH_SH - KICK, {Memory Crypts|Deep Crypts} TH_SH - HATS, {Shaded Citadel}TH_SH - CRUSHKICK, {Shaded Citadel}TH_SH - RHYTHM, {Memory Crypts|Deep Crypts}TH_SH - PERC, {Shaded Citadel}TH_SH - AMP, {Shaded Citadel}TH_SH - SCRATCHING, {Shaded Citadel}TH_SH - TINNITUS {Nescient Graveyard}TH_SH - LIGHTNING, {Deep Crypts} TH_SH - ARPCRUSH, {Shaded Citadel}TH_SH - DROPS, {Memory Crypts|Deep Crypts}TH_SH - BASS, {Shaded Citadel}TH_SH - VERBNOISE, {Memory Crypts|Deep Crypts}TH_SH - ARP, {Memory Crypts}TH_SH - LEAD, 
-{Deep Crypts}TH_SH - CHORDS
 
+Layer : TH_SH - NIGHTFLOW{Memory Crypts|Deep Crypts}
+Layer : TH_SH - NIGHTFLOW{Memory Crypts|Deep Crypts}, TH_SH - NIGHTKICK{Memory Crypts|Deep Crypts}, TH_SH - NIGHTHATS{Memory Crypts|Deep Crypts}
+Layer : TH_SH - NIGHTFLOW{Memory Crypts|Deep Crypts}, TH_SH - NIGHTKICK{Memory Crypts|Deep Crypts}, TH_SH - NIGHTHATS{Memory Crypts|Deep Crypts}, TH_SH - NIGHTPERC{Memory Crypts|Deep Crypts}, TH_SH - NIGHTCRASH{Memory Crypts|Deep Crypts}
+Layer : TH_SH - NIGHTFLOW{Memory Crypts|Deep Crypts}, TH_SH - NIGHTKICK{Memory Crypts|Deep Crypts}, TH_SH - NIGHTHATS{Memory Crypts|Deep Crypts}, TH_SH - NIGHTPERC{Memory Crypts|Deep Crypts}, TH_SH - NIGHTCRASH{Memory Crypts|Deep Crypts}, TH_SH - NIGHTBASS{Memory}, TH_SH - NIGHTCHORDS{Deep Crypts}
+Layer : TH_SH - NIGHTFLOW{Memory Crypts|Deep Crypts}, TH_SH - NIGHTKICK{Memory Crypts|Deep Crypts}, TH_SH - NIGHTHATS{Memory Crypts|Deep Crypts}, TH_SH - NIGHTPERC{Memory Crypts|Deep Crypts}, TH_SH - NIGHTCRASH{Memory Crypts|Deep Crypts}, TH_SH - NIGHTBASS{Memory}, TH_SH - NIGHTCHORDS{Deep Crypts}, TH_SH - NIGHTARPS{Memory}, TH_SH - NIGHTARPCRUSH{Deep Crypts}
+Layer : TH_SH - NIGHTFLOW{Memory Crypts|Deep Crypts}, TH_SH - NIGHTKICK{Memory Crypts|Deep Crypts}, TH_SH - NIGHTHATS{Memory Crypts|Deep Crypts}, TH_SH - NIGHTPERC{Memory Crypts|Deep Crypts}, TH_SH - NIGHTCRASH{Memory Crypts|Deep Crypts}, TH_SH - NIGHTBASS{Memory}, TH_SH - NIGHTCHORDS{Deep Crypts}, TH_SH - NIGHTARPS{Memory}, TH_SH - NIGHTARPCRUSH{Deep Crypts}, TH_SH - NIGHTNOISE : DANGER{Memory Crypts|Deep Crypts}
