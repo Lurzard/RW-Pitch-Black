@@ -1,11 +1,9 @@
 [MERGE]
 CONDITIONAL LINKS
 
-// Disconnected GATE_SB_VS
 Beacon,Photomaniac : GATE_SB_VS : VS_H01 : DISCONNECTED
 Beacon,Photomaniac : VS_H01 : GATE_SB_VS : DISCONNECTED
 
-// Lamp shelters
 Beacon,Photomaniac : REPLACEROOM : VS_S02 : VS_LS02
 Beacon,Photomaniac : REPLACEROOM : VS_S05 : VS_LS05
 Beacon,Photomaniac : REPLACEROOM : VS_S08 : VS_LS08

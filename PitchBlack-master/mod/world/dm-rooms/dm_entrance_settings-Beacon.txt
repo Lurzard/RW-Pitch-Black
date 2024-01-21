@@ -1,0 +1,7 @@
+DangerType: Thunder
+RainIntensity: 0
+RumbleIntensity: 0.04347826
+Effects: BrokenZeroG-0.6304348-20-20, Darkness-0.6086956-30-30, 
+PlacedObjects: LightFixture><469.1969><871.7852><RedLight~-188.6795~-104~0, LightFixture><672.9786><301.9489><RedLight~-64.6795~58~0, LightSource><281.3022><235.7205><0.08695652~Environment~558~572~-320~102.6025~0~0~None~0~0, SuperStructureFuses><641.8213><210.1602><106~68, LightSource><-64.64807><759.1155><0.326087~Environment~192~-152~50~-141.3975~0~0~None~0~0, DevToken><518.859><362.4601><-9~-119~-341~-144~0~~~0~0~0~1~0~0~0~1~0~0~0~1~0~0~0~1, LightFixture><46.54478><505.9167><DeepProcessing~17.32051~-10~52, LightFixture><198.4435><257.7482><DeepProcessing~17.32051~-10~52, LightSource><704.8002><538.7632><0.2065231~Environment~-644~5~50~86.60254~0~0~None~0~0, 
+AmbientSounds: OMNI><AM_IND-SuperStructure.ogg><798.1999><641.2427><0.3695652><1, SPOT><SO_SFX-DataTrans.ogg><753.6476><187.6151><0.3478261><1><683.6476><233.6151><-35.35534><-35.35534><0><0.1869567, 
+FadePalette: 10, 0.4565217
