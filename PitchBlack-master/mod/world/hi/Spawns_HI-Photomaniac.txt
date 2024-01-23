@@ -1,0 +1,35 @@
+//CRS Conditionals
+{#lb-fgf-m4r-ik.fat-fire-fly-creature}OFFSCREEN : 0-FatFireFly-3, 0-Scavenger-6
+{#lb-fgf-m4r-ik.undersea-lizard}HI_B09 : 3-SilverLizard, 2-White
+{#lb-fgf-m4r-ik.undersea-lizard}HI_A18 : 2-SilverLizard
+{#lb-fgf-m4r-ik.undersea-lizard}HI_A06 : 2-SilverLizard
+{#lb-fgf-m4r-ik.undersea-lizard}HI_A16 : 4-SilverLizard
+{#lb-fgf-m4r-ik.undersea-lizard}LINEAGE : HI_C02 : 6 : SilverLizard-0.2, Cyan-0.5, Red-0
+{#lb-fgf-m4r-ik.undersea-lizard}LINEAGE : HI_B06 : 3 : SilverLizard-0.2, Yellow-0.5, White-0.2, Red-0
+
+//Creatures to be replaced
+{#!lb-fgf-m4r-ik.fat-fire-fly-creature}OFFSCREEN : 0-Vulture-3, 0-Scavenger-6
+{#!lb-fgf-m4r-ik.undersea-lizard}HI_B09 : 3-Green, 2-White
+{#!lb-fgf-m4r-ik.undersea-lizard}HI_A18 : 2-Green
+{#!lb-fgf-m4r-ik.undersea-lizard}HI_A06 : 2-Green
+{#!lb-fgf-m4r-ik.undersea-lizard}HI_A16 : 4-Green
+{#!lb-fgf-m4r-ik.undersea-lizard}LINEAGE : HI_C02 : 6 : Green-0.2, Cyan-0.5, Red-0
+{#!lb-fgf-m4r-ik.undersea-lizard}LINEAGE : HI_B06 : 3 : Green-0.2, Yellow-0.5, White-0.2, Red-0
+
+//Spawns
+HI_B15 : 2-Small Centipede-3, 3-Centipede-{0.5}
+HI_B07 : 3-Black, 2-Cyan
+HI_C05 : 3-Cyan, 4-Black
+HI_B12 : 2-Cyan
+HI_A19 : 4-GarbageWorm-2
+HI_B06 : 3-TentaclePlant, 4-Red
+LINEAGE : HI_C01 : 5 : Cyan-0.5, Red-0
+LINEAGE : HI_B03 : 3 : Cyan-0.5, Red-0
+LINEAGE : HI_B13 : 2 : Black-0.2, NONE-0.5, Cyan-0.3, Red-0
+LINEAGE : HI_C02 : 5 : Black-0.2, NONE-0.5, Cyan-0.3, Red-0
+HI_A04 : 2-TentaclePlant
+HI_C11 : 3-Cyan
+HI_C03 : 3-White
+HI_B05 : 3-White
+HI_C04 : 5-Cyan, 6-Snail, 7-Snail-2
+LINEAGE : HI_C01 : 4 : Yellow-0.1, Cyan-0.2, Red-0
