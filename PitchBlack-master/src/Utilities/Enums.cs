@@ -4,6 +4,7 @@ namespace PitchBlack;
 public static class CreatureTemplateType
 {
     [AllowNull] public static CreatureTemplate.Type NightTerror = new("NightTerror", true);
+    [AllowNull] public static CreatureTemplate.Type LMiniLongLegs = new(nameof(LMiniLongLegs), true);
 
     public static void UnregisterValues()
     {
@@ -12,12 +13,18 @@ public static class CreatureTemplateType
             NightTerror.Unregister();
             NightTerror = null;
         }
+        if (LMiniLongLegs != null)
+        {
+            LMiniLongLegs.Unregister();
+            LMiniLongLegs = null;
+        }
     }
 }
 
 public static class SandboxUnlockID
 {
     [AllowNull] public static MultiplayerUnlocks.SandboxUnlockID NightTerror = new("NightTerror", true);
+    [AllowNull] public static MultiplayerUnlocks.SandboxUnlockID LMiniLongLegs = new(nameof(LMiniLongLegs), true);
 
     public static void UnregisterValues()
     {
@@ -25,6 +32,11 @@ public static class SandboxUnlockID
         {
             NightTerror.Unregister();
             NightTerror = null;
+        }
+        if (LMiniLongLegs != null)
+        {
+            LMiniLongLegs.Unregister();
+            LMiniLongLegs = null;
         }
     }
 }

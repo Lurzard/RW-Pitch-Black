@@ -44,6 +44,14 @@ class Plugin : BaseUnityPlugin
         On.RainWorld.OnModsInit += OnModsInit;
         On.RainWorld.OnModsDisabled += DisableMod;
         On.RainWorld.PostModsInit += RainWorld_PostModsInit;
+        On.RainWorld.UnloadResources += (orig, self) =>
+        {
+            orig(self);
+            if (Futile.atlasManager.DoesContainAtlas("lmllspr"))
+                Futile.atlasManager.UnloadAtlas("lmllspr");
+        };
+
+        Content.Register(new LMLLCritob());
 
         Content.Register(new NightTerrorCritob());
         ScareEverything.Apply();
@@ -96,6 +104,8 @@ class Plugin : BaseUnityPlugin
         orig(self);
         MachineConnector.SetRegisteredOI("lurzard.pitchblack", PBOptions.Instance);
         if (!init) {
+            if (!Futile.atlasManager.DoesContainAtlas("lmllspr"))
+                Futile.atlasManager.LoadAtlas("atlases/lmllspr");
             Futile.atlasManager.LoadAtlas("atlases/photosplt");
             Futile.atlasManager.LoadAtlas("atlases/nightTerroratlas");
             Futile.atlasManager.LoadAtlas("atlases/PursuedAtlas");
@@ -123,8 +133,13 @@ class Plugin : BaseUnityPlugin
                 if (MultiplayerUnlocks.CreatureUnlockList.Contains(SandboxUnlockID.NightTerror))
                     MultiplayerUnlocks.CreatureUnlockList.Remove(SandboxUnlockID.NightTerror);
 
+                if (MultiplayerUnlocks.CreatureUnlockList.Contains(SandboxUnlockID.LMiniLongLegs))
+                    MultiplayerUnlocks.CreatureUnlockList.Remove(SandboxUnlockID.LMiniLongLegs);
+                    
                 CreatureTemplateType.UnregisterValues();
                 SandboxUnlockID.UnregisterValues();
+
+                break;
             }
         }
     }
