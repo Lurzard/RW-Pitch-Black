@@ -74,7 +74,7 @@ sealed class LMLLCritob : Critob
             Pathing = PreBakedPathing.Ancestral(CreatureTemplate.Type.DaddyLongLegs),
         }.IntoTemplate();
         t.dangerousToPlayer = .25f;
-        t.meatPoints = 2;
+        t.meatPoints = 0;
         t.scaryness = .5f;
         t.wormGrassImmune = true;
         t.wormgrassTilesIgnored = true;

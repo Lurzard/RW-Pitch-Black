@@ -7,6 +7,7 @@ using static Mono.Cecil.Cil.OpCodes;
 using System.Linq;
 using System.Collections.Generic;
 using MoreSlugcats;
+using Random = UnityEngine.Random;
 
 namespace PitchBlack;
 
@@ -22,8 +23,27 @@ static class LMLLHooks
         On.DaddyLongLegs.Update += DaddyLongLegs_Update;
         On.DaddyLongLegs.ctor += On_DaddyLongLegs_ctor;
         On.DaddyAI.IUseARelationshipTracker_UpdateDynamicRelationship += DaddyAI_IUseARelationshipTracker_UpdateDynamicRelationship;
+        On.Player.Grabability += Player_Grabability;
+        On.Player.IsObjectThrowable += Player_IsObjectThrowable;
         IL.DaddyLongLegs.ctor += IL_DaddyLongLegs_ctor;
         IL.DaddyLongLegs.Act += DaddyLongLegs_Act;
+    }
+    static bool Player_IsObjectThrowable(On.Player.orig_IsObjectThrowable orig, Player self, PhysicalObject obj)
+    {
+        bool res = orig(self, obj);
+        if (obj is LittleLongLegs) return true;
+        return res;
+    }
+    static Player.ObjectGrabability Player_Grabability(On.Player.orig_Grabability orig, Player self, PhysicalObject obj)
+    {
+        Player.ObjectGrabability res = orig(self, obj);
+        if (obj is LittleLongLegs lmll) {
+            if (lmll.State.alive)
+                return Player.ObjectGrabability.TwoHands;
+            else
+                return Player.ObjectGrabability.BigOneHand;
+        }
+        return res;
     }
     static bool AdjustSizeClass(Func<DaddyLongLegs, bool> orig, DaddyLongLegs self) {
         return self.Template.type != CreatureTemplateType.LMiniLongLegs && orig(self);
@@ -64,7 +84,7 @@ static class LMLLHooks
         if (c.TryGotoNext(x => x.MatchNewarr<BodyChunk>()))
         {
             c.Emit(Ldarg_0);
-            c.EmitDelegate((int length, DaddyLongLegs self) => self.Template.type == CreatureTemplateType.LMiniLongLegs ? 2 : length);
+            c.EmitDelegate((int length, DaddyLongLegs self) => (self.Template.type == CreatureTemplateType.LMiniLongLegs) ? (Random.value >= 0.94f ? 3 : 2) : length);
         }
         else
             Plugin.logger.LogError("Couldn't ILHook DaddyLongLegs.ctor (part 1)!");
@@ -73,8 +93,10 @@ static class LMLLHooks
             c.Emit(Ldarg_0);
             c.EmitDelegate((BodyChunk chunk, DaddyLongLegs self) =>
             {
-                if (self.Template.type == CreatureTemplateType.LMiniLongLegs)
+                if (self.Template.type == CreatureTemplateType.LMiniLongLegs) {
                     chunk.rad *= .5f;
+                    chunk.mass *= 0.08f;
+                }
                 return chunk;
             });
         }
@@ -83,7 +105,7 @@ static class LMLLHooks
         if (c.TryGotoNext(MoveType.After, x => x.MatchNewarr<DaddyTentacle>()) && c.TryGotoNext(x => x.MatchNewarr<DaddyTentacle>()))
         {
             c.Emit(Ldarg_0);
-            c.EmitDelegate((int length, DaddyLongLegs self) => self.Template.type == CreatureTemplateType.LMiniLongLegs ? 2 : length);
+            c.EmitDelegate((int length, DaddyLongLegs self) => self.Template.type == CreatureTemplateType.LMiniLongLegs ? Random.Range(3, 5) : length);
         }
         else
             Plugin.logger.LogError("Couldn't ILHook DaddyLongLegs.ctor (part 3)!");
@@ -114,6 +136,11 @@ static class LMLLHooks
         {
             for (var i = 0; i < self.bodyChunks.Length; i++)
                 self.bodyChunks[i].vel.x += .1f * Math.Sign(self.bodyChunks[i].vel.x);
+        }
+        foreach (var grasp in self.grabbedBy) {
+            if (grasp.grabber is Player) {
+                grasp.pacifying = true;
+            }
         }
     }
     static void DaddyLongLegs_Act(ILContext il)
