@@ -118,10 +118,14 @@ class Plugin : BaseUnityPlugin
             //I'M PRETTY SURE BEST PRACTICE IS TO PUT HOOKS HERE
             On.RainWorldGame.ctor += RainWorldGame_ctor;
             On.RainWorldGame.Update += RainWorldGame_Update;
-
+            On.Weapon.SetRandomSpin += Weapon_SetRandomSpin;
         }
     }
-
+    private void Weapon_SetRandomSpin(On.Weapon.orig_SetRandomSpin orig, Weapon self)
+    {
+        if (self.room == null) { return; }
+        orig(self);
+    }
     public static void DisableMod(On.RainWorld.orig_OnModsDisabled orig, RainWorld self, ModManager.Mod[] newlyDisabledMods)
     {
         orig(self, newlyDisabledMods);
@@ -135,7 +139,7 @@ class Plugin : BaseUnityPlugin
 
                 if (MultiplayerUnlocks.CreatureUnlockList.Contains(SandboxUnlockID.LMiniLongLegs))
                     MultiplayerUnlocks.CreatureUnlockList.Remove(SandboxUnlockID.LMiniLongLegs);
-                    
+
                 CreatureTemplateType.UnregisterValues();
                 SandboxUnlockID.UnregisterValues();
 
