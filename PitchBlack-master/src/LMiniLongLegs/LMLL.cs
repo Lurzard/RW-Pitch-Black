@@ -1,14 +1,19 @@
 namespace PitchBlack;
 
 public class LittleLongLegs : DaddyLongLegs, IPlayerEdible {
+    internal const int TooMuchFoodToBeCarried = 8;
+    const int SplitSizeChange = 6;
     public LittleLongLegs(AbstractCreature abstractCreature, World world) : base(abstractCreature, world) {
         BitesLeft = 3;
+        FoodPoints = 2;
+        splitCounter = 0;
     }
+    public int splitCounter;
     public int BitesLeft {get; set;}
 
-    public int FoodPoints => 2;
+    public int FoodPoints {get; set;}
 
-    public bool Edible => true;
+    public bool Edible => !State.dead || (State.dead && FoodPoints < TooMuchFoodToBeCarried);
 
     public bool AutomaticPickUp => false;
 
@@ -28,5 +33,28 @@ public class LittleLongLegs : DaddyLongLegs, IPlayerEdible {
     public void ThrowByPlayer()
     {
         Stun(30);
+    }
+
+    public void LittleLongLegsSizeChange(int increase) {
+        foreach(BodyChunk chunk in bodyChunks) {
+            chunk.rad += increase;
+        }
+        foreach(var connection in bodyChunkConnections) {
+            connection.distance += increase;
+        }
+    }
+
+    public void LittleLongLegsSplit() {
+        splitCounter = 0;
+        int diff = FoodPoints - SplitSizeChange;
+        FoodPoints = diff;
+        State.meatLeft = diff;
+        LittleLongLegsSizeChange(-SplitSizeChange);
+        AbstractCreature abstractCreature = new AbstractCreature(world, StaticWorld.GetCreatureTemplate(CreatureTemplateType.LMiniLongLegs), null, room.GetWorldCoordinate(mainBodyChunk.pos), room.game.GetNewID());
+        room.abstractRoom.AddEntity(abstractCreature);
+        abstractCreature.RealizeInRoom();
+        (abstractCreature.realizedCreature as LittleLongLegs).FoodPoints = SplitSizeChange;
+        (abstractCreature.realizedCreature as LittleLongLegs).LittleLongLegsSizeChange(SplitSizeChange-2);
+        abstractCreature.realizedCreature.Stun(55);
     }
 }

@@ -39,7 +39,7 @@ sealed class LMLLCritob : Critob
         }
     }
 
-    public override void TileIsAllowed(AImap map, IntVector2 tilePos, ref bool? allow) => allow = map.getAItile(tilePos).terrainProximity > 1;
+    public override void TileIsAllowed(AImap map, IntVector2 tilePos, ref bool? allow) => allow = map.getAItile(tilePos).terrainProximity > 0;
 
     public override int ExpeditionScore() => 5;
 
@@ -74,7 +74,7 @@ sealed class LMLLCritob : Critob
             Pathing = PreBakedPathing.Ancestral(CreatureTemplate.Type.DaddyLongLegs),
         }.IntoTemplate();
         t.dangerousToPlayer = .25f;
-        t.meatPoints = 0;
+        t.meatPoints = 2;
         t.scaryness = .5f;
         t.wormGrassImmune = true;
         t.wormgrassTilesIgnored = true;

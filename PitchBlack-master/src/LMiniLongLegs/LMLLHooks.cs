@@ -8,6 +8,7 @@ using System.Linq;
 using System.Collections.Generic;
 using MoreSlugcats;
 using Random = UnityEngine.Random;
+using RWCustom;
 
 namespace PitchBlack;
 
@@ -23,10 +24,54 @@ static class LMLLHooks
         On.DaddyLongLegs.Update += DaddyLongLegs_Update;
         On.DaddyLongLegs.ctor += On_DaddyLongLegs_ctor;
         On.DaddyAI.IUseARelationshipTracker_UpdateDynamicRelationship += DaddyAI_IUseARelationshipTracker_UpdateDynamicRelationship;
+        On.DaddyLongLegs.Act += On_DaddyLongLegs_Act;
+        On.DaddyGraphics.DrawSprites += DaddyGraphics_DrawSprites;
         On.Player.Grabability += Player_Grabability;
         On.Player.IsObjectThrowable += Player_IsObjectThrowable;
         IL.DaddyLongLegs.ctor += IL_DaddyLongLegs_ctor;
-        IL.DaddyLongLegs.Act += DaddyLongLegs_Act;
+        IL.DaddyLongLegs.Act += IL_DaddyLongLegs_Act;
+        IL.Player.CanEatMeat += IL_Player_CaneatMeat;
+    }
+    static void IL_Player_CaneatMeat(ILContext il)
+    {
+        var cursor = new ILCursor(il);
+        if (cursor.TryGotoNext(MoveType.After, i => i.MatchIsinst(out _))) {
+            cursor.EmitDelegate((object obj) => {
+                bool flag = obj != null && obj is not LittleLongLegs;
+                flag = flag || (obj is LittleLongLegs lmll && lmll.dead && lmll.FoodPoints < LittleLongLegs.TooMuchFoodToBeCarried);
+                Debug.Log($"Object is: {obj?.GetType()}, return will be {flag}, foodpoints are {(obj as IPlayerEdible)?.FoodPoints}");
+                return flag;
+            });
+        }
+        else {
+            Plugin.logger.LogDebug($"IL error with {nameof(IL_Player_CaneatMeat)}");
+        }
+    }
+    static void DaddyGraphics_DrawSprites(On.DaddyGraphics.orig_DrawSprites orig, DaddyGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
+    {
+        orig(self, sLeaser, rCam, timeStacker, camPos);
+        if (self.daddy.Template.type == CreatureTemplateType.LMiniLongLegs) {
+            for (int i = 0; i < self.daddy.bodyChunks.Length; i++) {
+                sLeaser.sprites[self.BodySprite(i)].scale = (self.owner.bodyChunks[i].rad * 1.1f + 2f) / 8f;
+            }
+        }
+    }
+    static void On_DaddyLongLegs_Act(On.DaddyLongLegs.orig_Act orig, DaddyLongLegs self, int legsGrabbing)
+    {
+        orig(self, legsGrabbing);
+        for (int i = 0; i < self.eatObjects.Count; i++) {
+            if (self is LittleLongLegs lmll && self.eatObjects[i].progression > 1f && self.eatObjects[i].chunk.owner is Creature crit) {
+                int increase;
+                if (crit is IPlayerEdible playerEdible) {
+                    lmll.FoodPoints += increase = playerEdible.FoodPoints;
+                }
+                else {
+                    lmll.FoodPoints += increase = crit.Template.meatPoints;
+                }
+                self.State.meatLeft += increase;
+                lmll.LittleLongLegsSizeChange(increase);
+            }
+        }
     }
     static bool Player_IsObjectThrowable(On.Player.orig_IsObjectThrowable orig, Player self, PhysicalObject obj)
     {
@@ -38,8 +83,12 @@ static class LMLLHooks
     {
         Player.ObjectGrabability res = orig(self, obj);
         if (obj is LittleLongLegs lmll) {
-            if (lmll.State.alive)
+            if (lmll.State.alive) {
+                if (lmll.FoodPoints >= LittleLongLegs.TooMuchFoodToBeCarried) {
+                    return Player.ObjectGrabability.CantGrab;
+                }
                 return Player.ObjectGrabability.TwoHands;
+            }
             else
                 return Player.ObjectGrabability.BigOneHand;
         }
@@ -56,6 +105,10 @@ static class LMLLHooks
             bool flag = self.daddy is DaddyLongLegs d && c.realizedCreature is DaddyLongLegs d2 && d.eyeColor == d2.eyeColor && d.effectColor == d2.effectColor;
             res.type = flag ? CreatureTemplate.Relationship.Type.Ignores : CreatureTemplate.Relationship.Type.Eats;
             res.intensity = flag ? 0f : 1f;
+        }
+        if (self.creature?.realizedCreature is LittleLongLegs lmll && dRelation.trackerRep?.representedCreature?.realizedCreature is Creature crit && crit.Template.type != CreatureTemplateType.LMiniLongLegs && lmll.mainBodyChunk.rad > crit.mainBodyChunk.rad*1.1f) {
+            res.type = CreatureTemplate.Relationship.Type.Eats;
+            res.intensity = 1f;
         }
         return res;
     }
@@ -84,7 +137,15 @@ static class LMLLHooks
         if (c.TryGotoNext(x => x.MatchNewarr<BodyChunk>()))
         {
             c.Emit(Ldarg_0);
-            c.EmitDelegate((int length, DaddyLongLegs self) => (self.Template.type == CreatureTemplateType.LMiniLongLegs) ? (Random.value >= 0.94f ? 3 : 2) : length);
+            c.EmitDelegate((int length, DaddyLongLegs self) => {
+                if (self.Template.type == CreatureTemplateType.LMiniLongLegs) {
+                    if (Random.value >= 0.94f) {
+                        return 3;
+                    }
+                    return 2;
+                }
+                return length;
+            });
         }
         else
             Plugin.logger.LogError("Couldn't ILHook DaddyLongLegs.ctor (part 1)!");
@@ -132,18 +193,43 @@ static class LMLLHooks
     static void DaddyLongLegs_Update(On.DaddyLongLegs.orig_Update orig, DaddyLongLegs self, bool eu)
     {
         orig(self, eu);
-        if (self.Consious && self.moving)
-        {
-            for (var i = 0; i < self.bodyChunks.Length; i++)
-                self.bodyChunks[i].vel.x += .1f * Math.Sign(self.bodyChunks[i].vel.x);
-        }
-        foreach (var grasp in self.grabbedBy) {
-            if (grasp.grabber is Player) {
-                grasp.pacifying = true;
+        if (self.Template.type == CreatureTemplateType.LMiniLongLegs) {
+            if (self.Consious && self.moving)
+            {
+                for (var i = 0; i < self.bodyChunks.Length; i++)
+                    self.bodyChunks[i].vel.x += .1f * Math.Sign(self.bodyChunks[i].vel.x);
+            }
+            foreach (var grasp in self.grabbedBy) {
+                if (grasp.grabber is Player) {
+                    grasp.pacifying = true;
+                }
+            }
+            if (self is LittleLongLegs lmll && lmll.FoodPoints > 12) {
+                lmll.splitCounter++;
+                foreach(BodyChunk chunk in self.bodyChunks) {
+                    chunk.pos += Random.Range(5f, 7f)*Custom.RNV();
+                }
+                if (Random.value >= 0.8f) {
+                    self.Stun(30);
+                }
+                if (lmll.splitCounter >= 100) {
+                    if (Random.value <= 0.95f) {
+                        lmll.LittleLongLegsSplit();
+                        self.Stun(55);
+                    }
+                    else {
+                        AbstractCreature abstractCreature = new AbstractCreature(self.world, StaticWorld.GetCreatureTemplate(CreatureTemplate.Type.BrotherLongLegs), null, self.room.GetWorldCoordinate(self.mainBodyChunk.pos), self.room.game.GetNewID());
+                        self.room.abstractRoom.AddEntity(abstractCreature);
+                        abstractCreature.RealizeInRoom();
+                        
+                        self.room.RemoveObject(self);
+                        self.Destroy();
+                    }
+                }
             }
         }
     }
-    static void DaddyLongLegs_Act(ILContext il)
+    static void IL_DaddyLongLegs_Act(ILContext il)
     {
         var c = new ILCursor(il);
         if (c.TryGotoNext(MoveType.After, x => x.MatchLdcR4(0.6f)))
