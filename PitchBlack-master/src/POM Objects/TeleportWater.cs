@@ -119,7 +119,7 @@ public class TeleportWater
             // Get the object's parameter's and things to make it go vroom vroom
             Vector2 area = managedData.GetValue<Vector2>("Area");
             string roomName = managedData.GetValue<string>("DestinationRoom");
-            Vector2 dest = pObj.pos+managedData.GetValue<Vector2>("DestinationPos");
+            Vector2 dest = pObj.pos+new Vector2(managedData.GetValue<float>("DestinationPosX"), managedData.GetValue<float>("DestinationPosY"));
             Vector2 objCenter = Vector2.Lerp(pObj.pos, pObj.pos+area, 0.5f);
             // Unity object moment (lmao RIP Cactus)
             Bounds rect = new Bounds(objCenter, new Vector2(Mathf.Abs(area.x), Mathf.Abs(area.y)));
@@ -279,7 +279,8 @@ public class TeleportWater
         List<ManagedField> fields = new List<ManagedField> {
             new Vector2Field("Area", Vector2.one, Vector2Field.VectorReprType.rect, "Area"),
             new StringField("DestinationRoom", "", "Destination Room"),
-            new Vector2Field("DestinationPos", Vector2.zero, Vector2Field.VectorReprType.line, "Position"),
+            new FloatField("DestinationPosX", int.MinValue, int.MaxValue, 0, 0.01f, ManagedFieldWithPanel.ControlType.text, "DestinationX"),
+            new FloatField("DestinationPosY", int.MinValue, int.MaxValue, 0, 0.01f, ManagedFieldWithPanel.ControlType.text, "DestinationY"),
             new BooleanField("Enabled", false, ManagedFieldWithPanel.ControlType.arrows, "Enabled"),
             new FloatField("r", 0, 100, 3.7f, 0.1f, ManagedFieldWithPanel.ControlType.text, "R"),
             new FloatField("g", 0, 100, 0f, 0.1f, ManagedFieldWithPanel.ControlType.text, "G"),
