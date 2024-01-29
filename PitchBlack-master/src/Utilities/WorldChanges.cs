@@ -125,9 +125,6 @@ public static class WorldChanges
                 case "DS":
                     text = "UG";
                     break;
-                case "UW":
-                    text = "RM";
-                    break;
                 case "SS":
                     text = "RM";
                     break;
