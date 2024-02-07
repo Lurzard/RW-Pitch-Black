@@ -52,7 +52,7 @@ class Plugin : BaseUnityPlugin
         };
 
         Content.Register(new LMLLCritob());
-
+        Content.Register(new RotRatCritob());
         Content.Register(new NightTerrorCritob());
         ScareEverything.Apply();
 
