@@ -62,5 +62,5 @@ Room_Attr: CC_OUTPUT: PinkLizard-Avoid,GreenLizard-Avoid,BlueLizard-Like,YellowL
 Room_Attr: CC_S07: PinkLizard-Forbidden,GreenLizard-Forbidden,BlueLizard-Forbidden,YellowLizard-Forbidden,WhiteLizard-Forbidden,RedLizard-Forbidden,BlackLizard-Forbidden,Scavenger-Forbidden,
 Room_Attr: CC_SUMP05: PinkLizard-Forbidden,GreenLizard-Forbidden,YellowLizard-Forbidden,WhiteLizard-Forbidden,RedLizard-Forbidden,BlackLizard-Forbidden,Salamander-Avoid,Vulture-Avoid,Centipede-Like,Centiwing-Like,SmallCentipede-Like,KingVulture-Avoid,
 Room Setting Templates: Outside, Inside, Gutter
-Subregion: Dusky Smokestack
+Subregion: Smokestacks
 Subregion: Sewers
