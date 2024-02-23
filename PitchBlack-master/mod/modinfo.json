@@ -1,6 +1,6 @@
 ﻿{
 	"id": "lurzard.pitchblack",
-	"name": "[BETA] Pitch Black",
+	"name": "[DEV] Pitch Black",
 	"version": "0.5",
 	"authors": "[ Pitch Black's Team ]\n\nLurzard: The Beacon, Lurzard: Coder, Leditor, Artist\n\nMillisec: The Photomaniac, Thumbnail, Lediting\n\nNiko: Coder + Leditor\n\nURUFUDOGGO, Bluecubism, Moon615, WillowWispy: Coder\n\nOpey: World Changes\n\nLudocrypt: Music",
 
@@ -11,6 +11,6 @@
 
 	"tags": [ "Custom Slugcat", "Campaigns", "Game Modes", "Regions", "Game Mechanics" ],
 
-	"checksumoverrideversion": true,
+	"checksumoverrideversion": false,
 	"priorities": [ "moreslugcats", "pilgrims_ascent", "howling_rift", "lb-fgf-m4r-ik.pa-stuff", "lb-fgf-m4r-ik.howling-rift" ]
 }

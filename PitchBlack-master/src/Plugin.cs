@@ -87,7 +87,7 @@ class Plugin : BaseUnityPlugin
         EchoMusic.Apply();
 
         PBFrozenCycleTimer.Apply();
-        //OverseerHooks.Apply(); (ONLY 1.0!)
+        OverseerHooks.Apply();
 
         //NightDay.Apply(); //unfinished
         PassageHooks.Apply();

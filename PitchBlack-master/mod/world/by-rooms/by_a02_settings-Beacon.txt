@@ -1,0 +1,15 @@
+DangerType: Flood
+CeilingDrips: 0.6086956
+WaveSpeed: 0.5108696
+WaveLength: 0.6956522
+WaveAmplitude: 0
+SecondWaveLength: 0.06884036
+SecondWaveAmplitude: 0
+Clouds: 0.1956522
+Grime: 0.1956522
+WaterReflectionAlpha: 0.5434783
+Palette: 311
+EffectColorB: 19
+Effects: TinyDragonFly-0.25-20-20, WaterDepth-0-30-30, 
+PlacedObjects: LightSource><470.6594><435.8708><0.02822743~Environment~-287~-139~282~-138.3975~1~1~None~0~0, CustomDecal><58.62775><295.6583><-75~383~829~374~853~-9~-279~-19~0~1~0~greybones~0~1~0.05215686~1~0.01155737~1~0.05215686~1, 
+MorePalette0: 422, 1
