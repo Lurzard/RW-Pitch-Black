@@ -1,0 +1,21 @@
+Template: NONE
+DangerType: Rain
+RainIntensity: 0.4456522
+RumbleIntensity: 0.5
+WaveSpeed: 0.5203646
+WaveLength: 0.9898177
+WaveAmplitude: 0.004841972
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Clouds: 0.2282609
+Grime: 0.1630435
+Palette: 33
+EffectColorA: 3
+EffectColorB: 2
+Effects: LightBurn-0.326087-24-72, 
+PlacedObjects: LightSource><492.5471><398.2771><0.2228088~EffectColor1~524.5226~259.5445~50~86.60254~0~0~None~0~0, LightSource><263.4481><451.7773><0.07608695~EffectColor2~560~401~50~86.60254~1~1~None~0~0, LightSource><708><202><0.08695652~EffectColor2~560~401~50~86.60254~1~1~None~0~0, 
+AmbientSounds: SPOT><AM_IND-DeepHum.ogg><756.6591><307.8712><0.4130435><1><495.6591><368.8712><-130.3553><4.644653><0><0.5456523, SPOT><AM_IND-Utility02.ogg><873.8831><405.9123><0.3913043><1><677.8831><69.91231><-311.3553><8.644661><0><0.5347831, SPOT><AM_ENV-LightWind.ogg><709.1658><602.0686><0.25><0.8826087><124.1658><508.0686><-101.3553><-9.355347><0><0.404348, OMNI><AM_RAIN-Rumbles.ogg><634.2047><202.3052><0.4021739><0.6869565, 
+FadePalette: 12, 0.2391304
+MorePalette0: 379, 1
+MorePalette1: 424, 0.2608696
+MorePalette2: 425, 0.05434782

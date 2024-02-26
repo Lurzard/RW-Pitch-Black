@@ -8,12 +8,12 @@ UW_A09 : 5-Tube, 3-Tube, 4-White
 UW_C01 : 2-Tube-2
 UW_C02 : 4-Yellow, 5-Yellow, 2-Tube, 3-Tube
 UW_C04 : 5-Tube-2
-UW_C06 : 2-Tube, 3-Tube, 4-Tube, 6-Tube
-UW_D04 : 5-Tube, 6-Tube, 7-Tube
+UW_C06 : 2-Tube, 3-Rotrat, 4-Tube, 6-Tube
+UW_D04 : 5-Rotrat, 6-Tube, 7-Rotrat
 UW_D07 : 4-Tube
 UW_E01 : 3-Blue, 2-White, 4-Mimic-{18}, 5-Mimic-{16}
-UW_E02 : 6-TentaclePlant
-UW_E03 : 8-White
+UW_E02 : 6-Rotrat
+UW_E03 : 8-Rotrat
 UW_E04 : 6-Tube, 7-Tube
 UW_F01 : 4-White, 5-White
 UW_I01 : 5-Yellow-2, 6-Yellow-2

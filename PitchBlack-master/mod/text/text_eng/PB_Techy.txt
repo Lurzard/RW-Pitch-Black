@@ -1,0 +1,10 @@
+Attempting Relay: "A Peculiar Visitor"
+Relay ForceTerminated: Corrupted(Data Expunged).
+Initiating NewRelay == PastCommunicationData[ID-0628](unnamed).
+
+ID: This appears to be some documents about one of your kind, from a very, very long time ago.
+ID: A little troublemaker, it seems. 
+ID: Something about them being capable of disrupting various machinery around them.
+ID: Perhaps I'm lucky that it's from so long ago, I suppose I would not fare well in a confrontation with them!
+
+AllCurrentRelays Terminated.

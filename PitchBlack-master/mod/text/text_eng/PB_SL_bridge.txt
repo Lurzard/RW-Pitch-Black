@@ -1,0 +1,16 @@
+Attempting Relay: “Purposed Creation: Pipe Cleaner. Authorized by the House Of Intertwining Spires"
+Relay ForceTerminated: Corrupted.
+Initiating NewRelay[AllReadableInfo] == PastCommunicationData[ID-0755F]: "A Different Visitor".
+
+ID: Little creature, you share many resemblances to this blueprint.
+ID: And your adaptations are fascinating, especially those whiskers! Last I remembered, your kind didn’t have them before. 
+ID: What drove you to evolve whiskers? Are they a sensory organ of sorts, or—...
+ID: █████████████████
+
+Relay: Data malformed, searching for next readable line.
+
+ID: ...Where did you get your mark? Could it have been from A Thousand Spines? Maybe he’s feeling generous these days.
+ID: Sorry, little thing. Whatever you’re trying to tell me, if you’re even trying to tell me anything, is in vain.
+ID: I’m unable to understand you, because the mark you were given does not allow for two-way communication.
+
+AllCurrentRelays Terminated.

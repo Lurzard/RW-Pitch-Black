@@ -1,0 +1,7 @@
+Attempting Relay: “Naive Ramblings"
+Relay ForceTerminated: Corrupted(Scrambled).
+Initiating NewRelay == PastCommunicationData[ID-0628](unnamed).
+
+ID: It wasn't that interesting anyway-
+
+AllCurrentRelays Terminated.

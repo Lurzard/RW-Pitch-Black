@@ -1,0 +1,6 @@
+Template: LF_SettingsTemplate_Farms
+EffectColorA: 2
+EffectColorB: 21
+PlacedObjects: LightSource><698.6149><737.0016><0.02560955~EffectColor1~896.4376~137.3333~50~86.60254~1~1~None~0~0, LightSource><-100.1141><716.8><0.02561287~EffectColor1~1472.185~174.6666~50~86.60254~1~1~None~0~0, 
+MorePalette0: 387, 1, 1
+MorePalette1: 10, 0.2551966, 0.3015966

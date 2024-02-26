@@ -1,0 +1,20 @@
+Template: NONE
+DangerType: Rain
+RainIntensity: 0.4782609
+RumbleIntensity: 0.5
+WaveSpeed: 0.5049679
+WaveLength: 0.9512661
+WaveAmplitude: 0.03999782
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Clouds: 0.3043478
+Grime: 0.3586957
+Palette: 33
+EffectColorA: 9
+EffectColorB: 2
+PlacedObjects: FirecrackerPlant><429.5569><221.3021><-535~325~2~3, FirecrackerPlant><454.0468><222.1945><-562~240~2~3, FirecrackerPlant><471.064><219.3236><-581~158~2~3, FirecrackerPlant><495.3878><219.6656><-594~73~2~3, FirecrackerPlant><526.9263><221.3141><-623~-16~2~3, InsectGroup><524.5516><194.7758><-84~130~0~0~Beetle~0.3152174, LightSource><471.4086><292.4197><0.2075998~EffectColor1~134.2993~7.0242~50~86.60254~0~1~None~0~0, LightSource><466><232><0.1086956~EffectColor2~-510~266~50~86.60254~1~1~None~0~0, 
+AmbientSounds: SPOT><Basic Mech.ogg><747.3741><159.0946><0.1956522><1><479.3741><78.09457><-110.3553><-29.35535><0><0.4804349, OMNI><AM_RAIN-Rumbles.ogg><734.5504><292.7614><0.4021739><0.7847826, 
+FadePalette: 12, 0.1195652
+MorePalette0: 379, 1
+MorePalette1: 424, 0.1413043
+MorePalette2: 425, 0.05434782
