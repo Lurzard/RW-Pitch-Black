@@ -8,6 +8,7 @@ WaveAmplitude: 5.253626E-06
 SecondWaveLength: 0.1666667
 SecondWaveAmplitude: 0
 Clouds: 0.4130435
+BkgDroneNoThreatVolume: 0
 RandomItemDensity: 0.173913
 RandomItemSpearChance: 0.3630434
 Effects: Fog-0.6521739-22-73, BkgOnlyLightning-0.1195652-24-130, LightBurn-0.2934783-26-16, Bloom-0.5978261-279-13, FireFlies-0.09782609-284-71, RockFlea-0.5760869-278-124, 

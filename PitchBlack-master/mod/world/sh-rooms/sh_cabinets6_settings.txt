@@ -1,5 +1,6 @@
 Template: NONE
 Clouds: 1
+BkgDroneNoThreatVolume: 0
 Palette: 10
 Effects: FireFlies-0.7191915-20-20, 
 PlacedObjects: LanternOnStick><411.0393><423.8442><16.36353~-64.26666, LanternOnStick><475.2311><399.2685><-21.34375~-43.64444, 

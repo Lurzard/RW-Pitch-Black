@@ -3,7 +3,8 @@ DangerType: Rain
 RainIntensity: 0.01086957
 RumbleIntensity: 0.1086956
 Clouds: 0.423913
+BkgDroneNoThreatVolume: 0
 Effects: LightBurn-0.4565217-16-20, FireFlies-0.1413043-19-83, 
 PlacedObjects: LightSource><298.9321><427.0828><0.02173912~Environment~299~-55~358~-396.3975~1~1~None~0~0, TradeOutpost><744.5414><333.8044><330~4, LightSource><741.55><412.9965><0.04347826~Environment~-241~-167~50~86.60254~1~0~None~0~0, 
 AmbientSounds: OMNI><AM_ENV-CityTone.ogg><855.8068><656.0518><0.423913><0.8826087, OMNI><AM_WIN-SubWnd.ogg><682.6971><654.5339><0.423913><1, OMNI><AM_RAIN-Rumbles.ogg><858.9675><581.5527><0.2608696><1, 
-FadePalette: 0, 0.05434782
+FadePalette: 0, 0.0326087

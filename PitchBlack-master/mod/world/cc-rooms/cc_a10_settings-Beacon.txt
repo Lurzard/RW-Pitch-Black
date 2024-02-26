@@ -5,8 +5,8 @@ Grime: 0.3369565
 BkgDroneVolume: 0.2869565
 Palette: 33
 EffectColorB: 2
-Effects: Fog-0.173913-20-20, Flies-0.1413043-21-73, FireFlies-0.2826087-288-79, 
-PlacedObjects: UniqueDataPearl><461.3973><347.8669><-47~-143~0~0~CC~0, BlueToken><419.0155><412.9494><-1~59~-4~29~1~WhiteLizard~~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0, DeadTokenStalk><832.1953><83.4574><-8~39, 
+Effects: Fog-0.173913-20-20, Flies-0.1413043-21-73, FireFlies-0.2826087-288-79, ReplaceEffectColorB-0-688-337-Color-0.08695652-0-0.05434782, 
+PlacedObjects: UniqueDataPearl><461.3973><347.8669><-47~-143~0~0~CC~0, BlueToken><419.0155><412.9494><-1~59~-4~29~1~WhiteLizard~~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0, DeadTokenStalk><832.1953><83.4574><-8~39, 
 AmbientSounds: SPOT><SO_IND-Generator.ogg><858.8719><50.90363><0.1413043><1><661.8719><220.9036><-130.3553><35.64465><0><0.502174, 
 FadePalette: 6, 0.2173913
 MorePalette0: 379, 1

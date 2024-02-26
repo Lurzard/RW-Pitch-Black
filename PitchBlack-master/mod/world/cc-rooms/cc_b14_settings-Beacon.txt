@@ -1,6 +1,6 @@
 RainIntensity: 0.7065217
 RumbleIntensity: 0.7065217
-Effects: FireFlies-0.2826087-297-106, 
+Effects: FireFlies-0.2826087-297-106, ReplaceEffectColorB-0-677-364-Color-0.1521739-0-0.06521739, 
 PlacedObjects: DangleFruit><558.2941><1305.695><-676~77~2~3, DangleFruit><582.7129><1266.303><-707~34~2~3, InsectGroup><144.3137><1394.823><-80~138~0~0~StandardFly~0.5, 
 AmbientSounds: SPOT><AM_ENV-NatWind.ogg><767.6144><487.147><0.3043478><1><400.6144><282.147><-193.3553><-119.3553><0><0.1869567, 
 FadePalette: 33, 0.8586956, 0.8804348

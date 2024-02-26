@@ -1,5 +1,6 @@
 Template: NONE
 Grime: 0
+BkgDroneNoThreatVolume: 0
 Palette: 10
 Effects: FireFlies-0.3247961-20-20, LightBurn-0.2783966-296.0854-92.57778, BkgOnlyLightning-0.5490603-35.73126-91.9111, 
 PlacedObjects: NoSpearStickZone><0.6197205><287.8281><13.5177~220.8889, NoSpearStickZone><1179.164><346.3609><0~100, FlareBomb><991.9004><394.7279><0~0~2~3, FlareBomb><921.9561><456.0371><0~0~2~3, LightSource><562.1835><705.9995><1~Environment~324.425~-144.6222~71.34375~-94.73083~1~0~None~0~0, 
