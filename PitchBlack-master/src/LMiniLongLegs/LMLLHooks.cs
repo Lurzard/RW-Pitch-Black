@@ -221,9 +221,10 @@ static class LMLLHooks
                         AbstractCreature abstractCreature = new AbstractCreature(self.world, StaticWorld.GetCreatureTemplate(CreatureTemplate.Type.BrotherLongLegs), null, self.room.GetWorldCoordinate(self.mainBodyChunk.pos), self.room.game.GetNewID());
                         self.room.abstractRoom.AddEntity(abstractCreature);
                         abstractCreature.RealizeInRoom();
-                        
                         self.room.RemoveObject(self);
                         self.Destroy();
+                        self.abstractCreature.Room.RemoveEntity(self.abstractCreature);
+                        self.abstractCreature.Destroy();
                     }
                 }
             }
