@@ -97,6 +97,7 @@ class Plugin : BaseUnityPlugin
         BreathableWater.Register();
 
         EchoMusic.Apply();
+        EchoGraphics.Apply();
 
         PBFrozenCycleTimer.Apply();
         OverseerHooks.Apply(); // (ONLY 1.0!)
@@ -146,6 +147,7 @@ class Plugin : BaseUnityPlugin
             Futile.atlasManager.LoadAtlas("atlases/PBHat");
             self.Shaders["Red"] = FShader.CreateShader("red", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath(path: "assetbundles/red")).LoadAsset<Shader>("Assets/red.shader"));
             self.Shaders["Sunrays"] = FShader.CreateShader("sunrays", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/sunrays")).LoadAsset<Shader>("Assets/sunrays.shader"));
+            self.Shaders["PurpleEchoSkin"] = FShader.CreateShader("purpleechoskin", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/purpleecho")).LoadAsset<Shader>("Assets/shaders 1.9.03/PurpleEchoSkin.shader"));
             init = true;
 
             //I'M PRETTY SURE BEST PRACTICE IS TO PUT HOOKS HERE
