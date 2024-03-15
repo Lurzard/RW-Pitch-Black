@@ -5,6 +5,10 @@ using System.Security;
 using Fisobs.Core;
 using UnityEngine;
 using BepInEx.Logging;
+using System.Collections.Generic;
+using System.Linq;
+using System.IO;
+using System;
 
 #pragma warning disable CS0618 // Type or member is obsolete
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -18,6 +22,11 @@ class Plugin : BaseUnityPlugin
     public const string MOD_ID = "lurzard.pitchblack";
     public const string MOD_NAME = "Pitch Black";
     public const string MOD_VERSION = "0.1.0";
+    private const string COLLECTION_SAVE_FOLDER_NAME = "PitchBlack";
+    public static string regionMenuDisplaySavePath = "";
+    public static readonly string rootSavePath = Application.persistentDataPath + Path.DirectorySeparatorChar.ToString(); 
+    public static readonly string collectionSaveDataPath = rootSavePath + COLLECTION_SAVE_FOLDER_NAME + Path.DirectorySeparatorChar.ToString() + "PBcollectionsSaveData.txt";
+    public static readonly Dictionary<string, bool> collectionSaveData = new Dictionary<string, bool>();
 
     public static readonly SlugcatStats.Name BeaconName = new("Beacon", false);
     public static readonly SlugcatStats.Name PhotoName = new("Photomaniac", false);
@@ -50,6 +59,9 @@ class Plugin : BaseUnityPlugin
             if (Futile.atlasManager.DoesContainAtlas("lmllspr"))
                 Futile.atlasManager.UnloadAtlas("lmllspr");
         };
+
+        MenuHooks.Apply();
+        SyncMenuRegion.Apply();
 
         Content.Register(new LMLLCritob());
         Content.Register(new RotRatCritob());
@@ -87,7 +99,7 @@ class Plugin : BaseUnityPlugin
         EchoMusic.Apply();
 
         PBFrozenCycleTimer.Apply();
-        //OverseerHooks.Apply(); (ONLY 1.0!)
+        OverseerHooks.Apply(); // (ONLY 1.0!)
 
         //NightDay.Apply(); //unfinished
         PassageHooks.Apply();
@@ -104,6 +116,27 @@ class Plugin : BaseUnityPlugin
         orig(self);
         MachineConnector.SetRegisteredOI("lurzard.pitchblack", PBOptions.Instance);
         if (!init) {
+            regionMenuDisplaySavePath = ModManager.ActiveMods.First(x => x.id == MOD_ID).path + Path.DirectorySeparatorChar + "RegionMenuDisplay.txt";
+
+            #region Load Collection data into readonly list
+            // Creates a new directory and file if they do not exist (which they won't the first time the game is booted up), and fills it with default data.
+            if (!Directory.Exists(rootSavePath + COLLECTION_SAVE_FOLDER_NAME)) {
+                Directory.CreateDirectory(rootSavePath + COLLECTION_SAVE_FOLDER_NAME);
+            }
+            if (!File.Exists(collectionSaveDataPath)) {
+                string defaultText = "";
+                foreach (var name in PitchBlackCollectionMenu.chatLogIDToButtonName.Keys) {
+                    defaultText += name + ":0|";
+                }
+                File.WriteAllText(collectionSaveDataPath, defaultText);
+            }
+            foreach (string text in File.ReadAllText(collectionSaveDataPath).Trim('|').Split('|')) {
+                // If the second part is a 1, it is unlocked, 0 (or anything else) is locked
+                bool unlocked = text.Split(':')[1] == "1";
+                collectionSaveData.Add(text.Split(':')[0], unlocked);
+            }
+            #endregion
+
             if (!Futile.atlasManager.DoesContainAtlas("lmllspr"))
                 Futile.atlasManager.LoadAtlas("atlases/lmllspr");
             Futile.atlasManager.LoadAtlas("atlases/photosplt");

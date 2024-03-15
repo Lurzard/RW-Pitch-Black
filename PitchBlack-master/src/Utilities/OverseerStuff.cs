@@ -22,7 +22,7 @@ public class OverseerHooks
         On.Overseer.Update += Overseer_Update;
         On.Overseer.SwitchModes += Overseer_SwitchModes;
         On.OverseerAI.HoverScoreOfTile += OverseerAI_HoverScoreOfTile;
-        On.MoreSlugcats.ChatlogData.getChatlog_ChatlogID += ChatlogData_getChatLog_id;
+        // On.MoreSlugcats.ChatlogData.getChatlog_ChatlogID += ChatlogData_getChatLog_id;
         On.Conversation.InitalizePrefixColor += Conversation_InitalizePrefixColor;
         IL.Overseer.Update += IL_Overseer_Update;
     }
@@ -114,34 +114,34 @@ public class OverseerHooks
         cursor.EmitDelegate((float val, Overseer self) => { if (self.room.game.session is StoryGameSession session && (session.saveStateNumber == BeaconName || session.saveStateNumber == BeaconName)) { return 0.4f; } return val; });
         cursor.Emit(OpCodes.Ldc_R4, 0.4f);
     }
-    public static string[] ChatlogData_getChatLog_id(On.MoreSlugcats.ChatlogData.orig_getChatlog_ChatlogID orig, ChatlogID id)
-    {
-        // Add ids here to skip encryption. It's literally the same as the base method but without putting the ReadAllText results through decryption.
-        if (id == OverseerEx.chatlogIDTest || id == OverseerEx.PB_CC || id == OverseerEx.PB_DS || id == OverseerEx.PB_GW || id == OverseerEx.PB_HI || id == OverseerEx.PB_LF_bottom || id == OverseerEx.PB_LF_west || id == OverseerEx.PB_MS || id == OverseerEx.PB_RM || id == OverseerEx.PB_SB_filtration || id == OverseerEx.PB_SH || id == OverseerEx.PB_SI_CWdeath || id == OverseerEx.PB_SI_funeral || id == OverseerEx.PB_SI_NSHdeath || id == OverseerEx.PB_SI_SRSdeath || id == OverseerEx.PB_SI_UIdeath || id == OverseerEx.PB_SK_Rod || id == OverseerEx.PB_SL_bridge || id == OverseerEx.PB_SL_chimney || id == OverseerEx.PB_SL_moon || id == OverseerEx.PB_SU || id == OverseerEx.PB_SU_filt || id == OverseerEx.PB_UW || id == OverseerEx.PB_VS) {
-            string path = ChatlogData.UniquePath(id);
-            string[] array2;
-            if (File.Exists(path))
-            {
-                string[] array = File.ReadAllText(path).Split(new string[]
-                {
-                    "\r\n",
-                    "\r",
-                    "\n"
-                }, StringSplitOptions.None);
-                array2 = array;
-            }
-            else
-            {
-                array2 = new string[]
-                {
-                    "UNABLE TO ESTABLISH COMMUNICATION"
-                };
-            }
-            return array2;
-        }
-        Debug.Log($"Pitch Black: Read pearl ID did not match, ID is {id}");
-        return orig(id);
-    }
+    // public static string[] ChatlogData_getChatLog_id(On.MoreSlugcats.ChatlogData.orig_getChatlog_ChatlogID orig, ChatlogID id)
+    // {
+    //     // Add ids here to skip encryption. It's literally the same as the base method but without putting the ReadAllText results through decryption.
+    //     if (id == OverseerEx.chatlogIDTest || id == OverseerEx.PB_CC || id == OverseerEx.PB_DS || id == OverseerEx.PB_GW || id == OverseerEx.PB_HI || id == OverseerEx.PB_LF_bottom || id == OverseerEx.PB_LF_west || id == OverseerEx.PB_MS || id == OverseerEx.PB_RM || id == OverseerEx.PB_SB_filtration || id == OverseerEx.PB_SH || id == OverseerEx.PB_SI_CWdeath || id == OverseerEx.PB_SI_funeral || id == OverseerEx.PB_SI_NSHdeath || id == OverseerEx.PB_SI_SRSdeath || id == OverseerEx.PB_SI_UIdeath || id == OverseerEx.PB_SK_Rod || id == OverseerEx.PB_SL_bridge || id == OverseerEx.PB_SL_chimney || id == OverseerEx.PB_SL_moon || id == OverseerEx.PB_SU || id == OverseerEx.PB_SU_filt || id == OverseerEx.PB_UW || id == OverseerEx.PB_VS) {
+    //         string path = ChatlogData.UniquePath(id);
+    //         string[] array2;
+    //         if (File.Exists(path))
+    //         {
+    //             string[] array = File.ReadAllText(path).Split(new string[]
+    //             {
+    //                 "\r\n",
+    //                 "\r",
+    //                 "\n"
+    //             }, StringSplitOptions.None);
+    //             array2 = array;
+    //         }
+    //         else
+    //         {
+    //             array2 = new string[]
+    //             {
+    //                 "UNABLE TO ESTABLISH COMMUNICATION"
+    //             };
+    //         }
+    //         return array2;
+    //     }
+    //     Debug.Log($"Pitch Black: Read pearl ID did not match, ID is {id}");
+    //     return orig(id);
+    // }
     public static void Conversation_InitalizePrefixColor(On.Conversation.orig_InitalizePrefixColor orig) {
         orig();
         Conversation.PrefixColors.Add("DOB", new Color(126f/255f, 0, 28f/255f));
@@ -301,6 +301,8 @@ public class OverseerEx
         if (!TargetPearl.TryGetTarget(out DataPearl _)) { return; }
         if (!TargetPlayer.TryGetTarget(out Player player)) { return; }
         readingPearl = true;
+        collectionSaveData[PearlTypeToChatlogID(type).value] = true;
+        MiscUtils.SaveCollectionData();
         player.InitChatLog(PearlTypeToChatlogID(type));
     }
     public void DropPearl() {
@@ -319,7 +321,7 @@ public class OverseerEx
             TargetPlayer = new WeakReference<Player>(null);
         }
     }
-    private ChatlogID PearlTypeToChatlogID(DataPearlType type)
+    internal static ChatlogID PearlTypeToChatlogID(DataPearlType type)
     {
         if (type == dataPearlTypeTest) { return chatlogIDTest; }
         if (type == DataPearlType.CC) { return PB_CC; }
