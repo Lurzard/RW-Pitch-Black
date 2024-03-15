@@ -1,4 +1,4 @@
 [FIND]BkgDroneVolume: 0
 [REPLACE]BkgDroneVolume: 0.2608696
-[FIND]BkgDroneNoThreatVolume: 0
-[REPLACE]BkgDroneNoThreatVolume: 1
+[FIND]BkgDroneNoThreatVolume: 1
+[REPLACE]BkgDroneNoThreatVolume: 0

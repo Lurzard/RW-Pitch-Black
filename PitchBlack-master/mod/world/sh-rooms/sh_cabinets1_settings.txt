@@ -1,6 +1,7 @@
 Template: NONE
 CeilingDrips: 0.6086956
 Clouds: 1
+BkgDroneNoThreatVolume: 0
 Palette: 10
 EffectColorB: 18
 PlacedObjects: InsectGroup><733.1791><457.8973><-686~367~0~0~FireFly~0.6956522, LillyPuck><635.1701><364.8167><235.718~201.6667~2~3, LillyPuck><709.8207><362.5629><201~295~2~3, LillyPuck><922.4501><363.7474><196~117~2~3, CustomDecal><323.7962><374.1342><-24.01172~19.73337~-3.221085~64.00003~26.66017~42.13335~-108.3195~164.2667~0~1~0~tribearrow~0.5451939~0~0.3015963~0~0.1217986~0~0.4755946~0, GlowWeed><457.9489><227.2289><197~-18~2~3, InsectGroup><385.45><154.7467><81~102~0~0~GlowingSwimmerInsect~0.1086956, 

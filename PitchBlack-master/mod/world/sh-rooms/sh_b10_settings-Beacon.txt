@@ -8,7 +8,7 @@ WaveAmplitude: 1.628947E-05
 SecondWaveLength: 0.1666667
 SecondWaveAmplitude: 0
 Grime: 0.06521739
-BkgDroneVolume: 0
+BkgDroneNoThreatVolume: 0
 Palette: 10
 Effects: Flies-0.173913-20-20, 
 PlacedObjects: WaterNut><1080.686><223.5732><-182~314~2~3, WaterNut><1106.178><214.5905><-202~155~2~3, WaterNut><1058.53><211.6977><-159~245~2~3, ReliableSpear><1591.671><332.8969><, Filter><1097.672><249.5658><0~100~78~45~White|Yellow|Rivulet|Saint, LillyPuck><986.6113><159.4162><0~0~2~3, LillyPuck><278.4845><154.0506><0~0~2~3, LillyPuck><357.6989><158.2292><0~0~2~3, Filter><965.5178><146.5508><-4~55~-357~170~Red|Artificer|Spear|Gourmand, Filter><332.6388><194.894><0~100~-33~143~Red|Artificer|Spear|Gourmand, ExitSymbolHidden><1006.921><607.3527><, 

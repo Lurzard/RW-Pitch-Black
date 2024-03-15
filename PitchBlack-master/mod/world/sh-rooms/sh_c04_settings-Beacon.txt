@@ -8,7 +8,6 @@ WaveAmplitude: 0.04781342
 SecondWaveLength: 0.1666667
 SecondWaveAmplitude: 0
 Grime: 0.08695652
-BkgDroneVolume: 0.3043478
 BkgDroneNoThreatVolume: 0
 Palette: 10
 EffectColorA: 13

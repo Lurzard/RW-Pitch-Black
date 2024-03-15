@@ -1,6 +1,6 @@
 RainIntensity: 0.6086956
 RumbleIntensity: 0.6086956
-Effects: FireFlies-0.2608696-304-93, 
+Effects: FireFlies-0.2608696-304-93, ReplaceEffectColorB-0-680-373-Color-0.1521739-0-0.07608695, 
 PlacedObjects: NoSpearStickZone><0.984375><1554.551><-40~45, NoSpearStickZone><923.697><1273.284><0~100, 
 FadePalette: 33, 0.8695652, 0.9021739
 MorePalette0: 363, 0.1521739, 0.08695652

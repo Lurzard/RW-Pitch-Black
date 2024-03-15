@@ -1,0 +1,7 @@
+Grime: 0.326087
+Effects: Ant-0.1413043-20-20, 
+PlacedObjects: VultureGrub><482.7499><1209.186><0~0~7~10, 
+AmbientSounds: OMNI><SO_NAT-LilDrips.ogg><722.2><252.9957><0.2282609><0.8043478, 
+FadePalette: 8, 0.1847826, 0.3043478
+MorePalette0: 422, 1, 1
+MorePalette1: 27, 0.04347826, 0.02173913

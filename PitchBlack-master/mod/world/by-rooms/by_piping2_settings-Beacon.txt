@@ -1,0 +1,6 @@
+Grime: 0.2826087
+Effects: Beetle-0.2391304-20-20, ReplaceEffectColorB-0-30-30-Color-0-0-0, 
+PlacedObjects: Mushroom><552.05><313.504><0~0~2~3, Mushroom><589.2286><320.9489><0~0~2~3, Mushroom><918><311><0~0~2~3, 
+FadePalette: 8, 0.4673913
+MorePalette0: 422, 1
+MorePalette1: 27, 0.0326087

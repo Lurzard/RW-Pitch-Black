@@ -1,5 +1,6 @@
 Template: NONE
 Clouds: 1
+BkgDroneNoThreatVolume: 0
 Palette: 10
 Effects: FireFlies-0.6882586-20-20, 
 PlacedObjects: CustomDecal><866.0488><469.3553><28.81403~7.466614~35.73132~-37.8667~5.316406~-49.06668~-29.88116~-336.5333~0~1~0~tribearrow~0.4825997~0~0.2506024~0~0.08820377~0~0.2506024~0, FlareBomb><261.6981><318.4724><0~0~2~3, ResizeablePopupTrigger><209.8006><408.4844><227~9~In a dark world%2all creatures are sensitive to bright light.~1.956522~4.717404~-1~1~True~True~1~2^207, 

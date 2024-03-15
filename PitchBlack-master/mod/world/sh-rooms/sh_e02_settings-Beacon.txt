@@ -10,7 +10,7 @@ SecondWaveLength: 0.1666667
 SecondWaveAmplitude: 0
 Clouds: 0.326087
 Grime: 0.07608695
-BkgDroneVolume: 0
+BkgDroneNoThreatVolume: 0
 Palette: 10
 Effects: LightBurn-0.25-41-143, 
 PlacedObjects: LightSource><4584.368><711.3998><0.5869565~White~56~-112~50~86.60254~1~0~None~0~0, LightSource><4088.587><711.4298><0.5543478~White~122~-23~50~86.60254~1~0~None~0~0, WaterNut><318.3045><224.2922><-438~324~2~3, WaterNut><289.0686><229.0621><-408~233~2~3, WaterNut><237.367><227.5878><0~0~2~3, LightSource><4942.584><552.5688><0.0326087~Environment~-305~-54~-590~-210.3975~1~1~None~0~0, LightSource><4959.698><535.9724><0.08695652~Environment~-374~-52~-626~-280.3975~1~0~None~0~0, ReliableSpear><3101.409><229.8218><, ReliableSpear><4800.38><99.41003><, ReliableSpear><4512.315><59.92468><, ReliableSpear><4656.696><58.45959><, Filter><284.4174><252.0679><0~100~53~178~White|Yellow|Rivulet|Saint, Filter><778.6898><216.0632><-45~326~-180~216~Red|Artificer|Spear|Gourmand, LillyPuck><989.95><179.7457><0~0~2~3, LillyPuck><892.9138><179.6353><0~0~2~3, LillyPuck><578.6193><176.5986><0~0~2~3, LillyPuck><1802.152><180.3802><0~0~2~3, LillyPuck><1869.163><176.3654><0~0~2~3, Filter><1865.387><192.1042><0~100~-285~129~Red|Artificer|Spear|Gourmand, LillyPuck><4160.374><178.6572><0~0~2~3, LillyPuck><4099.059><178.4415><0~0~2~3, LillyPuck><3990.318><178.312><0~0~2~3, Filter><4094.875><244.5942><6~182~-10~227~Red|Artificer|Spear|Gourmand, Filter><4845.828><567.5659><4~60~-361~-14~White|Yellow|Rivulet|Saint, WaterNut><4851.08><548.4336><0~0~2~3, WaterNut><4876.137><570.1041><0~0~2~3, 

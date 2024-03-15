@@ -1,2 +1,0 @@
-EffectColorB: 21
-MorePalette0: 387, 1

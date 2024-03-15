@@ -1,0 +1,21 @@
+DangerType: Flood
+CeilingDrips: 0.5
+RainIntensity: 1
+RumbleIntensity: 1
+WaveSpeed: 0.75
+WaveLength: 0.5
+WaveAmplitude: 0
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Clouds: 0.2065217
+Grime: 0.1086956
+BkgDroneVolume: 0.3
+BkgDroneNoThreatVolume: 1
+RandomItemDensity: 0.5
+RandomItemSpearChance: 0.2
+WaterReflectionAlpha: 1
+Palette: 311
+EffectColorA: 3
+EffectColorB: 18
+AmbientSounds: OMNI><AM_IND-Warehouse03.ogg><43.60602><526.8888><0.2934783><0.6673913, OMNI><AM_IND-Utility02.ogg><34.31128><443.9337><0.4130435><0.7847826
+Effects: LightBurn-0.2065217-19-73, ReplaceEffectColorB-0-21-75-Color-0.07608695-0-0.0326087

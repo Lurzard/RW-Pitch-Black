@@ -4,7 +4,7 @@ SH_CABINETS5 : 2-TentaclePlant
 
 OFFSCREEN : 0-Miros-10, 0-MirosVulture, 0-Scavenger-13
 
-SH_A04 : 3-Mouse-2, 4-Mouse-2
+SH_A04 : 3-Rotrat-2, 4-Mouse-2
 SH_A05 : 3-Mouse-2
 SH_A06 : 2-Black, 3-Mouse-4
 SH_A07 : 6-Spider-10
@@ -12,7 +12,7 @@ SH_A09 : 4-Mouse-2, 5-Mouse-2
 SH_A11 : 4-Yellow-2, 5-Yellow, 4-Mouse-2
 SH_A12 : 3-Mouse-2
 SH_A14 : 3-Mouse-2, 4-Dropwig
-SH_A15 : 3-Mouse-2, 4-Dropwig
+SH_A15 : 3-Rotrat-2, 4-Dropwig
 SH_A16 : 2-Spider-10, 3-Spider-5, 4-MotherSpider
 SH_A17 : 3-Spider-10, 4-Spider-10, 5-BigSpider
 SH_A19 : 2-Spider-30, 3-SpitterSpider
@@ -20,9 +20,9 @@ SH_A21 : 2-Mouse, 3-Mouse, 4-Mouse, 3-TentaclePlant-{PreCycle}
 SH_A22 : 2-Spider-10
 SH_A23 : 4-Spider-10, 6-BigSpider
 SH_A25 : 2-White, 2-White-{PreCycle}
-SH_B01 : 3-Mouse-2, 4-Mouse, 6-BigSpider
-SH_B02 : 3-Mouse-2, 4-Spider-15, 5-Black, 8-Mouse, 4-TentaclePlant-{PreCycle}
-SH_B03 : 2-Cyan, 3-Mouse-2
+SH_B01 : 3-Mouse-2, 4-Rotrat, 6-BigSpider
+SH_B02 : 3-Rotrat-2, 4-Spider-15, 5-Black, 8-Mouse, 4-TentaclePlant-{PreCycle}
+SH_B03 : 2-Cyan, 3-Rotrat-2
 SH_B04 : 3-Mouse-2, 4-Mouse-2
 SH_B05 : 6-Yellow-2
 SH_B06 : 3-Spider-10, 4-Spider-10, 5-Spider-20, 4-BigSpider, 5-BigSpider
@@ -34,18 +34,18 @@ SH_B17 : 3-Spider-10, 4-Spider-12, 4-BigSpider-2
 SH_C01 : 3-SpitterSpider, 4-Mouse-2, 5-Mouse-2, 6-Black, 6-TentaclePlant-{PreCycle}
 SH_C02 : 3-Cyan, 4-TentaclePlant-{PreCycle}
 SH_C03 : 4-Spider-10, 5-SpitterSpider, 7-Spider-30
-SH_C04 : 5-Mouse-2, 6-Dropwig, 7-Spider-20, 8-Mouse-2
+SH_C04 : 5-Rotrat-2, 6-Dropwig, 7-Spider-20, 8-Rotrat-2
 SH_C05 : 2-Mouse, 3-Mouse, 4-Spider-20, 5-Mouse, 6-Black
 SH_C07 : 4-Spider-20, 6-Spider-20
 SH_C08 : 2-Yellow-2, 5-Black
 SH_C09 : 2-Spider-5, 3-Spider-10, 3-BigSpider, 4-Spider-15, 5-Spider-15
-SH_C10 : 3-Black, 4-Mouse-2, 5-Mouse, 6-Mouse, 7-Mouse
+SH_C10 : 3-Black, 4-Mouse-2, 5-Rotrat, 6-Mouse, 7-Rotrat
 SH_C12 : 2-White, 2-White-{PreCycle}
 SH_D01 : 3-Cyan
 SH_E02 : 3-Centipede-4, 4-TentaclePlant, 6-TentaclePlant
 SH_E05 : 5-Cyan
 SH_H01 : 3-Small Centipede-2, 4-Small Centipede-2, 5-Small Centipede-3, 5-Centipede-2
-SH_CURVE : 2-Spider-8, 3-Mouse-5
+SH_CURVE : 2-Spider-8, 3-Rotrat-5
 SH_HALL : 3-EggBug, 4-Black, 7-BigSpider, 8-BigSpider, 9-MotherSpider
 SH_HELPOUT : 3-Spider-15
 SH_KELP : 4-TentaclePlant, 6-Spider-10

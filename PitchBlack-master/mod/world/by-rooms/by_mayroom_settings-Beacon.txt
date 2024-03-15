@@ -1,0 +1,11 @@
+CeilingDrips: 0
+WaveSpeed: 0.4039494
+WaveLength: 0.9519747
+WaveAmplitude: 9.008254E-05
+SecondWaveLength: 1
+SecondWaveAmplitude: 0.0001
+Grime: 0.1056044
+Effects: Desaturation-0.6521739-20-20, 
+PlacedObjects: CustomDecal><27.68553><41.20455><-7.114578~637.625~1101.496~634.7792~1095.093~-7.826042~-163.6354~135.8885~0~1~0~rust3~0.04098743~1~0.04098743~1~0.04098743~1~0.04098743~1, DangleFruit><531.1153><341.9335><0~0~2~3, DangleFruit><506.3866><313.7743><0~0~2~3, 
+WetTerrain: OFF
+MorePalette0: 422, 1

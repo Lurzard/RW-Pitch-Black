@@ -1,0 +1,67 @@
+Palette: 311
+batDepleteCyclesMin: 2
+batDepleteCyclesMax: 7
+batDepleteCyclesMaxIfLessThanTwoLeft: 3
+batDepleteCyclesMaxIfLessThanFiveLeft: 4
+overseersSpawnChance: 0.1
+earlyCycleChance: 0.05
+earlyCycleFloodChance: 0.40
+playerGuideOverseerSpawnChance: 0.8
+pupSpawnChance: 0.15
+Room Setting Templates: pipes, insideTank
+Subregion: Sloptown
+Room_Attr: GATE_LF_BY: YellowLizard-Forbidden,Salamander-Forbidden,Snail-Forbidden,Centiwing-Forbidden,
+Room_Attr: GATE_BY_DS: GreenLizard-Forbidden,Salamander-Forbidden,Snail-Forbidden,Centipede-Forbidden,
+Room_Attr: BY_A01: GreenLizard-Forbidden,Salamander-Forbidden,CicadaA-Forbidden,CicadaB-Forbidden,Snail-Forbidden,Centiwing-Forbidden,
+Room_Attr: BY_A02: GreenLizard-Forbidden,YellowLizard-Forbidden,RedLizard-Forbidden,Salamander-Forbidden,Vulture-Avoid,Centipede-Forbidden,Centiwing-Forbidden,EggBug-Avoid,
+Room_Attr: BY_A03: GreenLizard-Forbidden,YellowLizard-Like,Salamander-Forbidden,CicadaA-Forbidden,CicadaB-Forbidden,Snail-Forbidden,Vulture-Forbidden,KingVulture-Forbidden,
+Room_Attr: BY_A04: GreenLizard-Forbidden,Salamander-Forbidden,CicadaA-Forbidden,CicadaB-Forbidden,Snail-Forbidden,Centiwing-Forbidden,
+Room_Attr: BY_A05: YellowLizard-Forbidden,Salamander-Forbidden,Snail-Forbidden,Centiwing-Forbidden,
+Room_Attr: BY_A06: Salamander-Forbidden,Snail-Forbidden,Centiwing-Forbidden,
+Room_Attr: BY_A07: GreenLizard-Forbidden,Salamander-Forbidden,Snail-Forbidden,Centipede-Forbidden,
+Room_Attr: BY_B01: Salamander-Forbidden,Snail-Forbidden,Centiwing-Forbidden,
+Room_Attr: BY_B02: GreenLizard-Forbidden,YellowLizard-Forbidden,RedLizard-Forbidden,Centiwing-Forbidden,EggBug-Forbidden,DropBug-Forbidden,SpitLizard-Forbidden,ZoopLizard-Forbidden,ScavengerElite-Forbidden,
+Room_Attr: BY_B03: GreenLizard-Forbidden,Salamander-Forbidden,CicadaA-Avoid,CicadaB-Avoid,Snail-Forbidden,Vulture-Forbidden,KingVulture-Forbidden,Centiwing-Forbidden,
+Room_Attr: BY_B05: GreenLizard-Forbidden,Salamander-Forbidden,Centipede-Forbidden,Centiwing-Forbidden,
+Room_Attr: BY_C01: YellowLizard-Forbidden,Salamander-Forbidden,Snail-Forbidden,Centiwing-Forbidden,
+Room_Attr: BY_C03: GreenLizard-Forbidden,YellowLizard-Like,Salamander-Forbidden,Snail-Forbidden,Vulture-Forbidden,KingVulture-Forbidden,Centipede-Forbidden,
+Room_Attr: BY_D01: YellowLizard-Like,Salamander-Forbidden,CicadaA-Forbidden,CicadaB-Forbidden,Snail-Forbidden,Centipede-Avoid,Centiwing-Forbidden,ZoopLizard-Forbidden,
+Room_Attr: BY_FUNNY1: GreenLizard-Forbidden,YellowLizard-Forbidden,Salamander-Forbidden,CicadaA-Forbidden,CicadaB-Forbidden,Snail-Forbidden,Centiwing-Forbidden,
+Room_Attr: BY_SCAV1: GreenLizard-Forbidden,PinkLizard-Forbidden,BlueLizard-Forbidden,WhiteLizard-Forbidden,YellowLizard-Avoid,CyanLizard-Forbidden,RedLizard-Avoid,Salamander-Forbidden,CicadaA-Forbidden,CicadaB-Forbidden,Snail-Forbidden,Centiwing-Forbidden,EggBug-Avoid,
+Room_Attr: BY_SCAV2: GreenLizard-Forbidden,RedLizard-Avoid,Salamander-Forbidden,Snail-Forbidden,Centipede-Forbidden,Centiwing-Forbidden,
+Room_Attr: BY_TANKS01: GreenLizard-Forbidden,PinkLizard-Forbidden,BlueLizard-Forbidden,WhiteLizard-Forbidden,YellowLizard-Forbidden,CyanLizard-Forbidden,RedLizard-Forbidden,Scavenger-Forbidden,Centipede-Forbidden,Centiwing-Forbidden,EggBug-Forbidden,DropBug-Forbidden,SpitLizard-Forbidden,ZoopLizard-Forbidden,ScavengerElite-Forbidden,
+Room_Attr: BY_TANKS03: GreenLizard-Forbidden,PinkLizard-Forbidden,BlueLizard-Forbidden,WhiteLizard-Forbidden,YellowLizard-Forbidden,CyanLizard-Forbidden,RedLizard-Forbidden,Salamander-Like,Scavenger-Forbidden,Centipede-Forbidden,Centiwing-Forbidden,EggBug-Forbidden,DropBug-Forbidden,SpitLizard-Forbidden,ZoopLizard-Forbidden,ScavengerElite-Forbidden,
+Room_Attr: BY_TANKS04: GreenLizard-Forbidden,PinkLizard-Forbidden,BlueLizard-Forbidden,WhiteLizard-Forbidden,YellowLizard-Forbidden,CyanLizard-Forbidden,RedLizard-Forbidden,Salamander-Like,Scavenger-Forbidden,Centipede-Forbidden,Centiwing-Forbidden,EggBug-Forbidden,DropBug-Forbidden,SpitLizard-Forbidden,ZoopLizard-Forbidden,ScavengerElite-Forbidden,
+Room_Attr: BY_TANKS05: GreenLizard-Forbidden,PinkLizard-Forbidden,BlueLizard-Forbidden,WhiteLizard-Forbidden,YellowLizard-Forbidden,CyanLizard-Forbidden,RedLizard-Forbidden,Salamander-Like,Scavenger-Forbidden,Centipede-Forbidden,Centiwing-Forbidden,EggBug-Forbidden,DropBug-Forbidden,SpitLizard-Forbidden,ZoopLizard-Forbidden,ScavengerElite-Forbidden,
+Room_Attr: BY_TANKS06: GreenLizard-Forbidden,PinkLizard-Forbidden,BlueLizard-Forbidden,WhiteLizard-Forbidden,YellowLizard-Forbidden,CyanLizard-Forbidden,RedLizard-Forbidden,Salamander-Like,Scavenger-Forbidden,Centipede-Forbidden,Centiwing-Forbidden,EggBug-Forbidden,DropBug-Forbidden,SpitLizard-Forbidden,ZoopLizard-Forbidden,ScavengerElite-Forbidden,
+Room_Attr: BY_TANKCHARGER: YellowLizard-Forbidden,RedLizard-Forbidden,Scavenger-Forbidden,Centiwing-Forbidden,EggBug-Forbidden,SpitLizard-Forbidden,ZoopLizard-Forbidden,
+Room_Attr: BY_SWARM2: YellowLizard-Forbidden,Salamander-Forbidden,CicadaA-Like,CicadaB-Like,Snail-Forbidden,
+Room_Attr: BY_NEARGATE1: YellowLizard-Forbidden,Salamander-Forbidden,Snail-Forbidden,Centiwing-Forbidden,
+Room_Attr: BY_S01: GreenLizard-Forbidden,YellowLizard-Forbidden,Salamander-Forbidden,CicadaA-Forbidden,CicadaB-Forbidden,Snail-Forbidden,Centiwing-Forbidden,
+Room_Attr: BY_S02: YellowLizard-Forbidden,Salamander-Forbidden,Snail-Forbidden,Centiwing-Forbidden,
+Room_Attr: BY_S03: GreenLizard-Forbidden,YellowLizard-Forbidden,RedLizard-Forbidden,Centipede-Forbidden,Centiwing-Forbidden,SpitLizard-Forbidden,ZoopLizard-Forbidden,
+Room_Attr: BY_TANKJUNC: GreenLizard-Forbidden,YellowLizard-Forbidden,RedLizard-Forbidden,Centipede-Forbidden,Centiwing-Forbidden,DropBug-Forbidden,SpitLizard-Forbidden,ZoopLizard-Forbidden,
+Room_Attr: BY_drainroom: Salamander-Forbidden,Centipede-Forbidden,Centiwing-Forbidden,
+Room_Attr: BY_oscarroome: Salamander-Forbidden,CicadaA-Forbidden,CicadaB-Forbidden,Snail-Forbidden,Centiwing-Forbidden,
+Room_Attr: BY_nototest: GreenLizard-Forbidden,YellowLizard-Forbidden,Salamander-Forbidden,CicadaA-Forbidden,CicadaB-Forbidden,Snail-Forbidden,Centiwing-Forbidden,EggBug-Forbidden,DropBug-Forbidden,
+Room_Attr: BY_C02: GreenLizard-Forbidden,Salamander-Forbidden,CicadaA-Like,CicadaB-Like,Snail-Forbidden,
+Room_Attr: BY_PIPEHOLE2: YellowLizard-Forbidden,Salamander-Forbidden,CicadaA-Forbidden,CicadaB-Forbidden,Snail-Forbidden,Centiwing-Forbidden,
+Room_Attr: BY_ROOF1: YellowLizard-Forbidden,Salamander-Forbidden,CicadaA-Like,CicadaB-Like,Snail-Forbidden,
+Room_Attr: BY_ROOF2: YellowLizard-Forbidden,Salamander-Forbidden,CicadaA-Like,CicadaB-Like,Snail-Forbidden,
+Room_Attr: BY_PIPING1: YellowLizard-Forbidden,Salamander-Forbidden,CicadaA-Forbidden,CicadaB-Forbidden,Snail-Forbidden,Centiwing-Forbidden,
+Room_Attr: BY_PIPING2: YellowLizard-Forbidden,Salamander-Forbidden,CicadaA-Forbidden,CicadaB-Forbidden,Snail-Forbidden,Centiwing-Forbidden,
+Room_Attr: BY_PIPING3: YellowLizard-Avoid,Salamander-Forbidden,Snail-Forbidden,Centiwing-Forbidden,
+Room_Attr: BY_LOOPBACK: YellowLizard-Like,Salamander-Forbidden,Snail-Forbidden,Centipede-Avoid,Centiwing-Forbidden,ZoopLizard-Forbidden,
+Room_Attr: BY_ROOM1: YellowLizard-Like,Salamander-Forbidden,Snail-Avoid,Centipede-Forbidden,Centiwing-Forbidden,DropBug-Forbidden,
+Room_Attr: BY_DOODAD: YellowLizard-Like,Salamander-Forbidden,Snail-Forbidden,Centipede-Forbidden,Centiwing-Forbidden,
+Room_Attr: BY_TUBECLIMB: Salamander-Forbidden,Snail-Forbidden,Centiwing-Forbidden,
+Room_Attr: BY_TUBECLIMB2: YellowLizard-Like,Salamander-Forbidden,Snail-Forbidden,Centipede-Forbidden,Centiwing-Forbidden,
+Room_Attr: BY_WEIRDROOF: YellowLizard-Forbidden,Salamander-Forbidden,CicadaA-Like,CicadaB-Like,Snail-Forbidden,
+Room_Attr: BY_ROOFSHELTER: YellowLizard-Forbidden,Salamander-Forbidden,Snail-Forbidden,
+Room_Attr: BY_froomy: Salamander-Forbidden,Snail-Avoid,Centipede-Forbidden,Centiwing-Forbidden,
+Room_Attr: BY_NEWROOM1: GreenLizard-Forbidden,YellowLizard-Forbidden,Salamander-Forbidden,Centipede-Forbidden,Centiwing-Forbidden,
+Room_Attr: BY_blocks: YellowLizard-Forbidden,Salamander-Forbidden,Snail-Forbidden,Centipede-Forbidden,Centiwing-Forbidden,
+Room_Attr: BY_TOLL: GreenLizard-Forbidden,YellowLizard-Avoid,RedLizard-Avoid,Salamander-Forbidden,Snail-Forbidden,Centipede-Forbidden,Centiwing-Forbidden,
+Room_Attr: BY_S65: GreenLizard-Forbidden,Salamander-Forbidden,Snail-Forbidden,Centipede-Forbidden,
+Room_Attr: BY_mayroom: GreenLizard-Forbidden,PinkLizard-Forbidden,BlueLizard-Forbidden,WhiteLizard-Forbidden,YellowLizard-Forbidden,CyanLizard-Forbidden,RedLizard-Forbidden,Salamander-Like,Scavenger-Forbidden,Centipede-Forbidden,Centiwing-Forbidden,EggBug-Forbidden,DropBug-Forbidden,SpitLizard-Forbidden,ZoopLizard-Forbidden,ScavengerElite-Forbidden,
+Room_Attr: BY_POOL: GreenLizard-Forbidden,PinkLizard-Forbidden,BlueLizard-Forbidden,WhiteLizard-Forbidden,YellowLizard-Forbidden,CyanLizard-Forbidden,RedLizard-Forbidden,Salamander-Like,Scavenger-Forbidden,Centipede-Forbidden,Centiwing-Forbidden,EggBug-Forbidden,DropBug-Forbidden,SpitLizard-Forbidden,ZoopLizard-Forbidden,ScavengerElite-Forbidden,

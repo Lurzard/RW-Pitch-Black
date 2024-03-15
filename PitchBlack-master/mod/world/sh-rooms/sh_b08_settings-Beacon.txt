@@ -6,8 +6,7 @@ WaveLength: 1
 WaveAmplitude: 0
 SecondWaveLength: 0.1666667
 SecondWaveAmplitude: 0
-BkgDroneVolume: 0
+BkgDroneNoThreatVolume: 0
 Effects: LightBurn-0.05434782-20-20, 
-PlacedObjects: 
 AmbientSounds: SPOT><AM_ENV-CityTone.ogg><751.8406><565.6292><0.423913><0.7847826><477.8406><1064.629><-231.3553><-62.35535><0><0.7739132, SPOT><SO_NAT-LilDrips.ogg><66.80005><524.7471><0.1521739><1><529.8><135.7471><-251.3553><-57.35535><0><0.2630434, OMNI><AM_ENV-CityTone.ogg><710.3918><673.8589><0.5652174><0.9413043, OMNI><SO_WAT-DripTap.ogg><538.116><649.8984><0.2826087><1, 
 FadePalette: 0, 0.07608695, 0.0326087

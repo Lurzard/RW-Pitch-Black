@@ -1,5 +1,6 @@
 Template: NONE
 Clouds: 1
+BkgDroneNoThreatVolume: 0
 RandomItemDensity: 1
 Palette: 10
 PlacedObjects: DangleFruit><276.4836><446.814><0~0~2~3, DangleFruit><310.4431><411.8418><0~0~2~3, DangleFruit><694.7592><363.1135><0~0~2~3, DangleFruit><755.0317><401.1641><0~0~2~3, DangleFruit><813.8239><320.194><0~0~2~3, DangleFruit><872.5942><351.0106><0~0~2~3, FlareBomb><556.6579><290.2635><0~0~2~3, FlareBomb><431.5025><387.2851><0~0~2~3, ResizeablePopupTrigger><934.2123><269.9171><-331.1437~-214.5333~Hold the pick-up button to transmorgify rocks into flashbangs%2at the cost of food.~0~6~1~1~True~True~1~-100^40, ResizeablePopupTrigger><326.306><322.1297><-385.2146~-180.4~With the same input; you can also store flashbangs around your neck.~7.826087~11.01889~1~1~True~True~1~-372.5^130.5111, InsectGroup><290.3728><434.8456><0~131~-115~137~FireFly~0.25, InsectGroup><751.8005><380.4858><0~123~-314~188~FireFly~0.2608696, 

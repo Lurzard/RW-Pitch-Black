@@ -8,7 +8,7 @@ overseersSpawnChance: 0.01
 overseersMin: 1
 overseersMax: 1
 playerGuideOverseerSpawnChance: 0.0
-Subregion: Voided Subterranean
+Subregion: Get out of Subterranean
 Subregion: Null
 Subregion: Event Horizon
 Room Setting Templates: Subway, Filter, Temple, Gilded

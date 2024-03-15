@@ -3,4 +3,4 @@ PlacedObjects: BrokenShelterWaterLevel><470.9095><354.3216><,
 AmbientSounds: SPOT><AM_IND-50hz.ogg><721.8032><342.2856><0.3043478><1><469.8032><344.2856><-35.35534><-35.35534><0><0.1, 
 FadePalette: 33, 0.8586956
 MorePalette0: 363, 0.0326087
-MorePalette1: 10, 0.3043478
+MorePalette1: 10, 0.6630435

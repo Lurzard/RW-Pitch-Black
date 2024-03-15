@@ -1,4 +1,5 @@
 Template: SH_SettingsTemplate_DarkSun
+BkgDroneNoThreatVolume: 0
 Effects: LightBurn-0.4021739-30-30, 
 PlacedObjects: LightSource><640.938><482.9319><0.1086956~Environment~-454~5~50~86.60254~1~0~None~0~0, FlareBomb><249.5839><396.3886><0~0~2~3, 
 FadePalette: 9, 0.05434782

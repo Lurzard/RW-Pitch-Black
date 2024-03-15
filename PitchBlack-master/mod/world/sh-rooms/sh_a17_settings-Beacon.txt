@@ -1,7 +1,7 @@
 DangerType: Rain
 RainIntensity: 0
 RumbleIntensity: 0
-BkgDroneVolume: 0
+BkgDroneNoThreatVolume: 0
 PlacedObjects: FlareBomb><134.6059><184.4397><0~0~2~3, FlareBomb><333.5612><221.3159><0~0~2~3, FlareBomb><644.2783><193.302><0~0~2~3, ExitSymbolHidden><388.6465><70.86389><, Filter><606.6252><215.406><0~100~23~87~Spear, Filter><219.348><218.12><12~138~43~79~Artificer|Spear, 
 AmbientSounds: SPOT><Weird Deep Hole.wav><728.7072><510.0547><0.1413043><1><467.7072><385.0547><-304.3553><-148.3553><0><0.2413045, OMNI><SO_WAT-DripTap.ogg><711.8578><633.1093><0.2065217><1, SPOT><SO_WAT-RunningWater.ogg><772.9362><188.3105><0.2391304><0.5695652><388.9362><27.31047><-35.35534><-35.35534><0><0.154348, 
 FadePalette: 0, 0

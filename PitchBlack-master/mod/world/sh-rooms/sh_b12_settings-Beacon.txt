@@ -10,7 +10,7 @@ SecondWaveLength: 0.1666667
 SecondWaveAmplitude: 0
 Clouds: 0.1956522
 Grime: 0
-BkgDroneVolume: 0
+BkgDroneNoThreatVolume: 0
 Palette: 10
 Effects: LightBurn-0.2065217-38-142, 
 PlacedObjects: LightSource><221.5776><1576.149><0.5978261~White~112~-5~50~86.60254~1~0~None~0~0, LightSource><763.2241><1574.198><0.5108696~White~127~4~50~86.60254~1~0~None~0~0, 

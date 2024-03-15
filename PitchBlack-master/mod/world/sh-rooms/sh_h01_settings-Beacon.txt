@@ -1,7 +1,7 @@
 Template: NONE
 Clouds: 0.2282609
 Grime: 0.09782609
-BkgDroneVolume: 0
+BkgDroneNoThreatVolume: 0
 Palette: 10
 Effects: FireFlies-0.1413043-44-147, BkgOnlyLightning-0.5108696-44-90, LightBurn-0.2608696-45-35, 
 PlacedObjects: FlareBomb><3575.366><506.601><-60~-409.9703~2~3, FlareBomb><3509.606><446.1393><3.996826~-198.999~2~3, FlareBomb><3637.417><469.111><-121.002~-297.9979~2~3, CentipedeAttractor><3567.577><440.351><-242~53, FlareBomb><91.38123><379.5891><0~0~2~3, FlareBomb><167.154><317.3788><0~0~2~3, NoSpearStickZone><-98.40057><388.7488><-80~163, Filter><134.1699><349.6445><0~100~20~143~Artificer|Spear, Filter><3520.996><496.558><-2~63~22.15039~118.006~Spear, Filter><3649.231><474.8038><-4~44~26.1626~36.98679~Artificer|Spear, 
