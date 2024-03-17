@@ -3,9 +3,9 @@ OffsetX: 0
 OffsetY: 0
 ---------------
 floorLevel: 26
-daySky: NightRf_Sky
-duskSky: NightRf_Sky
-nightSky: NightRf_Sky
+daySky: PB_Atc_Sky
+duskSky: PB_Atc_Sky
+nightSky: PB_Atc_Sky
 
 Floor: Nightfloor, 0, 0, 1, 12
 
