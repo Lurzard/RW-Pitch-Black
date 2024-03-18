@@ -126,7 +126,7 @@ public class PitchBlackCollectionMenu : Menu.Menu
     public override void GrafUpdate(float timeStacker)
     {
         base.GrafUpdate(timeStacker);
-        displayRelayInfoBox.descriptionLabel.label.SetPosition((scene as InteractiveMenuScene).depthIllustrations.First(x => x.fileName == "hologrambkg").sprite.GetPosition() + new Vector2(338, 450));
+        displayRelayInfoBox.descriptionLabel.label.SetPosition((scene as InteractiveMenuScene).depthIllustrations.First(x => x.fileName == "hologrambkg").sprite.GetPosition() + new Vector2(342, 485));
     }
     public override void Singal(MenuObject sender, string message)
     {

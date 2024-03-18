@@ -40,10 +40,19 @@ public static class MenuHooks
             }
 
             self.sceneFolder = "Scenes" + Path.DirectorySeparatorChar.ToString() + "collectionMenu";
-            MenuDepthIllustration depthIllustration = new MenuDepthIllustration(self.menu, self, self.sceneFolder, "hologrambkg", new Vector2(803.9481f, -17.7778f), 10f, MenuDepthIllustration.MenuShader.Normal);
-            depthIllustration.sprite.scaleY *= 1.7f;
-            depthIllustration.sprite.scaleX *= 1.15f;
-            self.AddIllustration(depthIllustration);
+            MenuDepthIllustration hologramIllustration = new MenuDepthIllustration(self.menu, self, self.sceneFolder, "hologrambkg", new Vector2(803.9481f, -17.7778f), 10f, MenuDepthIllustration.MenuShader.Normal);
+            hologramIllustration.sprite.scaleY *= 1.7f;
+            hologramIllustration.sprite.scaleX *= 1.15f;
+            self.AddIllustration(hologramIllustration);
+
+            MenuDepthIllustration overseer = new MenuDepthIllustration(self.menu, self, self.sceneFolder, "Illustration_sans_titre_1", new Vector2(565.4542f, -10.66667f), 10, MenuDepthIllustration.MenuShader.Normal);
+            overseer.sprite.scale *= 0.75f;
+            self.AddIllustration(overseer);
+
+            MenuDepthIllustration lights = new MenuDepthIllustration(self.menu, self, self.sceneFolder, "Illustration_sans_titre_2", new Vector2(694.2281f, 172.9778f), 10, MenuDepthIllustration.MenuShader.Basic);
+            lights.sprite.scale *= 0.75f;
+            self.AddIllustration(lights);
+
             (self as InteractiveMenuScene).idleDepths.AddRange(new List<float>{9, 11});
         }
     }

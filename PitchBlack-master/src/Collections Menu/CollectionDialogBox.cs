@@ -15,7 +15,6 @@ public class CollectionDialogBox : MenuDialogBox
             sprite.isVisible = false;
             sprite.RemoveFromContainer();
         }
-        descriptionLabel.pos.y -= 10;
     }
     public override void Update()
     {
