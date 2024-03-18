@@ -36,6 +36,8 @@ class Plugin : BaseUnityPlugin
     //public static ConditionalWeakTable<Player, PhotoCWT> pCon = new ConditionalWeakTable<Player, PhotoCWT>();
     public static ConditionalWeakTable<Player, ScugCWT> scugCWT = new();
 
+    public static ConditionalWeakTable<RainWorldGame, List<RiftWorldPrecence>> riftCWT = new();
+
     internal static bool RotundWorldEnabled => _rotundWorldEnabled; //for a single check in BeaconHooks' Player.Update hook
     private static bool _rotundWorldEnabled;
     public static bool individualFoodEnabled = false;
@@ -217,6 +219,8 @@ class Plugin : BaseUnityPlugin
     private static void RainWorldGame_ctor(On.RainWorldGame.orig_ctor orig, RainWorldGame self, ProcessManager manager)
     {
         orig(self, manager);
+
+        riftCWT.Add(self, new List<RiftWorldPrecence>());
 
         if (self.IsStorySession)
         {

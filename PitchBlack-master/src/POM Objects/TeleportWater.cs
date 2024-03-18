@@ -4,8 +4,21 @@ using RWCustom;
 using UnityEngine;
 using static Pom.Pom;
 using AssetBundles;
+using System;
 
 namespace PitchBlack;
+
+public class RiftWorldPrecence
+{
+    public string roomName;
+    public List<AbstractCreature> abstractCreatures;
+    public string id;
+    public RiftWorldPrecence(string roomName, string id, List<AbstractCreature> abstractCreatures) {
+        this.roomName = roomName;
+        this.id = id;
+        this.abstractCreatures = abstractCreatures;
+    }
+}
 
 // References to world in Rain World's code seem to be regions.
 // Could probably reuse this to make seemless gate transitions tbh. Might do that later :3
@@ -24,10 +37,28 @@ public class TeleportWater
         PlacedObject pObj;
         bool startedNoise = false;
         Vector2 closestPlayerPos;
+        List<AbstractCreature> abstractCreatures;
         public TeleportWaterObject (PlacedObject pObj, Room room) : base() {
             this.pObj = pObj;
             this.room = room;
             closestPlayerPos = Vector2.positiveInfinity;
+            // Debug.Log($"Pitch Black: {nameof(TeleportWaterObject)} room: {room}, game: {room?.game}");
+            if (Plugin.riftCWT.TryGetValue(room.game, out List<RiftWorldPrecence> riftWorldPrecences)) {
+                // Debug.Log("Pitch black: there is a riftCWT");
+                foreach (RiftWorldPrecence riftWorldPrecence in riftWorldPrecences) {
+                    foreach(AbstractCreature absCrit in riftWorldPrecence.abstractCreatures) {
+                        Debug.Log($"Pitch Black: {absCrit.creatureTemplate.type}");
+                    }
+                    if (riftWorldPrecence.roomName == room.abstractRoom.name && riftWorldPrecence.id == (pObj.data as ManagedData).GetValue<string>("id")) {
+                        this.abstractCreatures = riftWorldPrecence.abstractCreatures;
+                        return;
+                    }
+                }
+                // If it does not find a match, create a new Precence
+                Debug.Log($"Pitch Black: Created new {nameof(RiftWorldPrecence)}");
+                riftWorldPrecences.Add(new RiftWorldPrecence(room.abstractRoom.name, (pObj.data as ManagedData).GetValue<string>("id"), new List<AbstractCreature>()));
+                abstractCreatures = new List<AbstractCreature>();
+            }
         }
         public override void InitiateSprites(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
         {
@@ -100,6 +131,7 @@ public class TeleportWater
             staticPositionSound.audioSource.dopplerLevel = managedData.GetValue<float>("doppler");
             room.game.cameras[0].virtualMicrophone.soundObjects.Add(staticPositionSound);
             staticPositionSound.Play();
+            room.game.manager.musicPlayer.FadeOutAllSongs(40);
             #nullable disable
         }
         public override void Update(bool eu)
@@ -124,154 +156,187 @@ public class TeleportWater
             // Unity object moment (lmao RIP Cactus)
             Bounds rect = new Bounds(objCenter, new Vector2(Mathf.Abs(area.x), Mathf.Abs(area.y)));
             closestPlayerPos = Vector2.positiveInfinity;
-            foreach (Player player in room.PlayersInRoom) {
-                if (player?.mainBodyChunk == null) {
-                    continue;
-                }
-                if (Vector2.Distance(objCenter, player.mainBodyChunk.pos) < Vector2.Distance(objCenter, closestPlayerPos)) {
-                    closestPlayerPos = player.mainBodyChunk.pos;
-                    // Debug.Log(Vector2.Distance(closestPlayerPos, objCenter));
-                }
-                if (rect.Contains(player.mainBodyChunk.pos)) {
-                    // Get the data needed to move the player into the new room, and data to restore the state of the original player
-                    AbstractCreature plrAbsCrt = player.abstractCreature;
-                    World currentWorld = room.world;    // The current world to do transition stuff with.
-                    RainWorldGame game = room.game;
-                    Vector2 oldVel0 = player.bodyChunks[0].vel;
-                    Vector2 oldVel1 = player.bodyChunks[1].vel;
-                    Vector2 chunk1RelativePosition = player.bodyChunks[1].pos - player.bodyChunks[0].pos;
-                    Player.AnimationIndex oldAnimation = player.animation;
-                    Player.BodyModeIndex oldBodyMode = player.bodyMode;
-                    Spear hasSpear = null;
-                    AbstractPhysicalObject stomachObject = null;
-                    
-                    // Move the player into the new room
-                    if (room.world.GetAbstractRoom(roomName) == null) { // If the current world cannot find a room with the destination room name, then it must be in a different region. This method returns null if it cannot find a room with the matching string name.
-                        // Release the grasps, as holding objects while changing regions results in a crash. Will fix later.
-                        foreach(var grasp in player.grasps) {
-                            if (grasp != null) {
-                                grasp.Release();
+            try {
+                foreach (Player player in room.PlayersInRoom) {
+                    if (player?.mainBodyChunk == null) {
+                        continue;
+                    }
+                    if (Vector2.Distance(objCenter, player.mainBodyChunk.pos) < Vector2.Distance(objCenter, closestPlayerPos)) {
+                        closestPlayerPos = player.mainBodyChunk.pos;
+                        // Debug.Log(Vector2.Distance(closestPlayerPos, objCenter));
+                    }
+                    if (rect.Contains(player.mainBodyChunk.pos)) {
+                        // Get the data needed to move the player into the new room, and data to restore the state of the original player
+                        AbstractCreature plrAbsCrt = player.abstractCreature;
+                        World currentWorld = room.world;    // The current world to do transition stuff with.
+                        RainWorldGame game = room.game;
+                        Vector2 oldVel0 = player.bodyChunks[0].vel;
+                        Vector2 oldVel1 = player.bodyChunks[1].vel;
+                        Vector2 chunk1RelativePosition = player.bodyChunks[1].pos - player.bodyChunks[0].pos;
+                        Player.AnimationIndex oldAnimation = player.animation;
+                        Player.BodyModeIndex oldBodyMode = player.bodyMode;
+                        Spear hasSpear = null;
+                        AbstractPhysicalObject stomachObject = null;
+                        
+                        // Move the player into the new room
+                        if (room.world.GetAbstractRoom(roomName) == null) { // If the current world cannot find a room with the destination room name, then it must be in a different region. This method returns null if it cannot find a room with the matching string name.
+                            // Release the grasps, as holding objects while changing regions results in a crash. Will fix later.
+                            foreach(var grasp in player.grasps) {
+                                if (grasp != null) {
+                                    grasp.Release();
+                                }
+                            }
+                            // Load the new region, based on the first part of the room name
+                            // NOTE: THIS WILL BREAK WITH GATES NOT IN THE CURRENT REGION
+                            game.overWorld.LoadWorld(Regex.Split(roomName, "_")[0], (game.session as StoryGameSession).saveStateNumber, false);
+                            // Set the current world to the new world that just got loaded.
+                            currentWorld = game.overWorld.activeWorld;
+                            Debug.Log($"Pitch Black: Loaded new world: {currentWorld}, {currentWorld.name}");
+                            // Set the player's world to the new region
+                            plrAbsCrt.world = currentWorld;
+                            // Set up a new RoomRealizer, so rooms in the new region get properly realized
+                            if (game.roomRealizer != null)
+                            {
+                                game.roomRealizer = new RoomRealizer(game.roomRealizer.followCreature, currentWorld);
                             }
                         }
-                        // Load the new region, based on the first part of the room name
-                        // NOTE: THIS WILL BREAK WITH GATES NOT IN THE CURRENT REGION
-                        game.overWorld.LoadWorld(Regex.Split(roomName, "_")[0], (game.session as StoryGameSession).saveStateNumber, false);
-                        // Set the current world to the new world that just got loaded.
-                        currentWorld = game.overWorld.activeWorld;
-                        Debug.Log($"Pitch Black: Loaded new world: {currentWorld}, {currentWorld.name}");
-                        // Set the player's world to the new region
-                        plrAbsCrt.world = currentWorld;
-                        // Set up a new RoomRealizer, so rooms in the new region get properly realized
-                        if (game.roomRealizer != null)
+                        // Get the new abstract room from the destination world
+                        AbstractRoom newRoom = currentWorld.GetAbstractRoom(roomName);
+                        // Add all the creatures to be teleported to the new room, so that they can be realized correctly.
+                        foreach (AbstractCreature absCrit in abstractCreatures) {
+                            absCrit.world = currentWorld;
+                            absCrit.pos.abstractNode = 0;
+                            absCrit.abstractAI.world = currentWorld;
+                            // absCrit.abstractAI.RealAI.pathFinder.world = currentWorld;
+                            absCrit.pos.room = newRoom.index;
+                            newRoom.AddEntity(absCrit);
+                        }
+                        // Realize the new room.
+                        newRoom.RealizeRoom(currentWorld, game);
+                        // Clear the list, remove references.
+                        abstractCreatures.Clear();
+                        // Set the abstract player's WorldCoordinate room index to be the new room's index.
+                        // This is IMPORTANT! It stops the Move method from crashing when calling the ChangeRooms method.
+                        // The crash specifically happens in the `World.GetAbstractRoom(int room)` method, since the room associated with the old index does not exist anymore.
+                        plrAbsCrt.pos.room = newRoom.index;
+                        // Prepare the backspear and stomachObject for teleportation.
+                        if (plrAbsCrt.realizedCreature is Player plyr)
                         {
-                            game.roomRealizer = new RoomRealizer(game.roomRealizer.followCreature, currentWorld);
+                            if (plyr.objectInStomach != null) {
+                                plyr.objectInStomach.world = currentWorld;
+                                stomachObject = plyr.objectInStomach;
+                            }
+                            if (plyr.spearOnBack?.spear != null) {
+                                plyr.spearOnBack.spear.abstractSpear.world = currentWorld;
+                                hasSpear = plyr.spearOnBack.spear;
+                            }
                         }
-                    }
-                    // Get the new abstract room from the destination world
-                    AbstractRoom newRoom = currentWorld.GetAbstractRoom(roomName);
-                    // Realize the new room.
-                    newRoom.RealizeRoom(currentWorld, game);
-                    // Set the abstract player's WorldCoordinate room index to be the new room's index.
-                    // This is IMPORTANT! It stops the Move method from crashing when calling the ChangeRooms method.
-                    // The crash specifically happens in the `World.GetAbstractRoom(int room)` method, since the room associated with the old index does not exist anymore.
-                    plrAbsCrt.pos.room = newRoom.index;
-                    // Prepare the backspear and stomachObject for teleportation.
-                    if (plrAbsCrt.realizedCreature is Player plyr)
-                    {
-                        if (plyr.objectInStomach != null) {
-                            plyr.objectInStomach.world = currentWorld;
-                            stomachObject = plyr.objectInStomach;
-                        }
-                        if (plyr.spearOnBack?.spear != null) {
-                            plyr.spearOnBack.spear.abstractSpear.world = currentWorld;
-                            hasSpear = plyr.spearOnBack.spear;
-                        }
-                    }
-                    //Transfer connected objects to new world/room
-                    List<AbstractPhysicalObject> objs = plrAbsCrt.GetAllConnectedObjects();
-                    for (int i = 0; i < objs.Count; i++)
-                    {
-                        objs[i].world = currentWorld;
-                        objs[i].pos = plrAbsCrt.pos;
-                        room.abstractRoom.RemoveEntity(objs[i]);
-                        newRoom.AddEntity(objs[i]);
-                        objs[i].realizedObject.sticksRespawned = true;
-                    }
-                    // Remove the player from their start room
-                    room.RemoveObject(player);
-                    // Move the player to the new room (no idea how important the x, y, and abstractNode args are)
-                    plrAbsCrt.Move(new WorldCoordinate(newRoom.index, (int)dest.x, (int)dest.y, -1));
-                    // Realize the player in the new room.
-                    plrAbsCrt.RealizeInRoom();
-                    // A reference to the new player, in case the old Player object is destroyed.
-                    Player newPlayer = (Player)plrAbsCrt.realizedCreature;
-                    // Set their realized position in the room to the destination coordinates of the devtool object
-                    newPlayer.SuperHardSetPosition(dest);
-                    // Only do this stuff if Jolly is disabled, as Jolly seems to be able to handle moving the camera by itself (which makes sense, as players can move the camera between rooms by themselves).
-                    if (!ModManager.JollyCoop) {
-                        // Quite the camera's microphone, I think that stops all sound being played.
-                        game.cameras[0].virtualMicrophone.AllQuiet();
-                        for (int i = 0; i < game.cameras[0].hud.fContainers.Length; i++)
+                        //Transfer connected objects to new world/room
+                        List<AbstractPhysicalObject> objs = plrAbsCrt.GetAllConnectedObjects();
+                        for (int i = 0; i < objs.Count; i++)
                         {
-                            game.cameras[0].hud.fContainers[i].RemoveAllChildren();
+                            objs[i].world = currentWorld;
+                            objs[i].pos = plrAbsCrt.pos;
+                            room.abstractRoom.RemoveEntity(objs[i]);
+                            newRoom.AddEntity(objs[i]);
+                            objs[i].realizedObject.sticksRespawned = true;
                         }
-                        game.cameras[0].hud = null;
-                        // Move camera to the new room.
-                        game.cameras[0].MoveCamera(newRoom.realizedRoom, 0);
-                        game.cameras[0].FireUpSinglePlayerHUD(game.AlivePlayers[0].realizedCreature as Player);
-                        // newRoom.world.game.roomRealizer.followCreature = plrAbsCrt;
-                    }
-                    for (int i = 0; i < game.cameras.Length; i++)
-                    {
-                        // Reset the hud map, which makes it sync to the new world the player is in if they moved between regions.
-                        game.cameras[0].hud.ResetMap(new HUD.Map.MapData(currentWorld, game.rainWorld));
-                        // if (game.cameras[i].hud.textPrompt.subregionTracker != null)
-                        // {
-                        //     game.cameras[i].hud.textPrompt.subregionTracker.lastShownRegion = 0;
-                        // }
-                    }
-                    // Move camera's microphone to the new room?
-                    game.cameras[0].virtualMicrophone.NewRoom(game.cameras[0].room);
-                    // Reset the player's graphicsModule. I found that without doing that their sprites would get messed up, and many would not show.
-                    newPlayer.graphicsModule.Reset();
+                        // Remove the player from their start room
+                        room.RemoveObject(player);
+                        // Move the player to the new room (no idea how important the x, y, and abstractNode args are)
+                        plrAbsCrt.Move(new WorldCoordinate(newRoom.index, (int)dest.x, (int)dest.y, -1));
+                        // Realize the player in the new room.
+                        plrAbsCrt.RealizeInRoom();
+                        // A reference to the new player, in case the old Player object is destroyed.
+                        Player newPlayer = (Player)plrAbsCrt.realizedCreature;
+                        // Set their realized position in the room to the destination coordinates of the devtool object
+                        newPlayer.SuperHardSetPosition(dest);
+                        // Only do this stuff if Jolly is disabled, as Jolly seems to be able to handle moving the camera by itself (which makes sense, as players can move the camera between rooms by themselves).
+                        if (!ModManager.JollyCoop) {
+                            // Quite the camera's microphone, I think that stops all sound being played.
+                            game.cameras[0].virtualMicrophone.AllQuiet();
+                            for (int i = 0; i < game.cameras[0].hud.fContainers.Length; i++)
+                            {
+                                game.cameras[0].hud.fContainers[i].RemoveAllChildren();
+                            }
+                            game.cameras[0].hud = null;
+                            // Move camera to the new room.
+                            game.cameras[0].MoveCamera(newRoom.realizedRoom, 0);
+                            game.cameras[0].FireUpSinglePlayerHUD(game.AlivePlayers[0].realizedCreature as Player);
+                            // newRoom.world.game.roomRealizer.followCreature = plrAbsCrt;
+                        }
+                        for (int i = 0; i < game.cameras.Length; i++)
+                        {
+                            // Reset the hud map, which makes it sync to the new world the player is in if they moved between regions.
+                            game.cameras[0].hud.ResetMap(new HUD.Map.MapData(currentWorld, game.rainWorld));
+                            // if (game.cameras[i].hud.textPrompt.subregionTracker != null)
+                            // {
+                            //     game.cameras[i].hud.textPrompt.subregionTracker.lastShownRegion = 0;
+                            // }
+                        }
+                        // Move camera's microphone to the new room?
+                        game.cameras[0].virtualMicrophone.NewRoom(game.cameras[0].room);
+                        // Reset the player's graphicsModule. I found that without doing that their sprites would get messed up, and many would not show.
+                        newPlayer.graphicsModule.Reset();
 
-                    // Restore old values.
-                    for (int i = 0; i < objs.Count; i++)
-                    {
-                        int num = 0;
-                        for (int s = 0; s < newRoom.realizedRoom.updateList.Count; s++)
+                        // Restore old values.
+                        for (int i = 0; i < objs.Count; i++)
                         {
-                            if (objs[i].realizedObject == newRoom.realizedRoom.updateList[s])
+                            int num = 0;
+                            for (int s = 0; s < newRoom.realizedRoom.updateList.Count; s++)
                             {
-                                num++;
-                            }
-                            if (num > 1)
-                            {
-                                newRoom.realizedRoom.updateList.RemoveAt(s);
+                                if (objs[i].realizedObject == newRoom.realizedRoom.updateList[s])
+                                {
+                                    num++;
+                                }
+                                if (num > 1)
+                                {
+                                    newRoom.realizedRoom.updateList.RemoveAt(s);
+                                }
                             }
                         }
+                        //Re-add any backspears
+                        if (hasSpear != null && newPlayer.spearOnBack?.spear != hasSpear)
+                        {
+                            newPlayer.spearOnBack.SpearToBack(hasSpear);
+                            newPlayer.abstractPhysicalObject.stuckObjects.Add(newPlayer.spearOnBack.abstractStick);
+                        }
+                        //Re-add any stomach objects
+                        if (stomachObject != null && newPlayer.objectInStomach == null)
+                        {
+                            newPlayer.objectInStomach = stomachObject;
+                        }
+                        // Re-set the velocities and position of bodychunks
+                        newPlayer.bodyChunks[0].vel = oldVel0;
+                        newPlayer.bodyChunks[1].vel = oldVel1;
+                        newPlayer.bodyChunks[1].pos = newPlayer.bodyChunks[0].pos + chunk1RelativePosition;
+                        // Re-set the animation and bodymode
+                        newPlayer.animation = oldAnimation;
+                        newPlayer.bodyMode = oldBodyMode;
+                        Debug.Log($"Pitch Black Teleported Player to: {roomName}, at coords {plrAbsCrt.realizedCreature.mainBodyChunk.pos}.\nCoors should have been: {dest}");
+                        Debug.Log($"Pitch Black: original player? {player}, {player==newPlayer}");
                     }
-                    //Re-add any backspears
-                    if (hasSpear != null && newPlayer.spearOnBack?.spear != hasSpear)
-                    {
-                        newPlayer.spearOnBack.SpearToBack(hasSpear);
-                        newPlayer.abstractPhysicalObject.stuckObjects.Add(newPlayer.spearOnBack.abstractStick);
-                    }
-                    //Re-add any stomach objects
-                    if (stomachObject != null && newPlayer.objectInStomach == null)
-                    {
-                        newPlayer.objectInStomach = stomachObject;
-                    }
-                    // Re-set the velocities and position of bodychunks
-                    newPlayer.bodyChunks[0].vel = oldVel0;
-                    newPlayer.bodyChunks[1].vel = oldVel1;
-                    newPlayer.bodyChunks[1].pos = newPlayer.bodyChunks[0].pos + chunk1RelativePosition;
-                    // Re-set the animation and bodymode
-                    newPlayer.animation = oldAnimation;
-                    newPlayer.bodyMode = oldBodyMode;
-                    Debug.Log($"Pitch Black Teleported Player to: {roomName}, at coords {plrAbsCrt.realizedCreature.mainBodyChunk.pos}.\nCoors should have been: {dest}");
-                    Debug.Log($"Pitch Black: original player? {player}, {player==newPlayer}");
                 }
+            } catch (Exception err) {
+                Debug.Log("WOWIE another ERRRROOOORRRR");
+                Debug.LogError(err);
+                Plugin.logger.LogDebug(err);
+            }
+            // If a creature wanders into the portal, queue it for teleportation.
+            try {
+                foreach (AbstractCreature abstractCreature in room.abstractRoom.creatures) {
+                    // Debug.Log($"Pitch Black: {abstractCreatures}");
+                    if (abstractCreature.realizedCreature is Creature crit && crit is not Player && rect.Contains(crit.mainBodyChunk.pos) && !abstractCreatures.Contains(abstractCreature)) {
+                        Debug.Log($"Pitch Black: New abstract creature added to list {abstractCreature.creatureTemplate.type}");
+                        abstractCreatures.Add(abstractCreature);
+                        abstractCreature.Abstractize(abstractCreature.pos);
+                        crit.Destroy();
+                    }
+                }
+            } catch (Exception err) {
+                Debug.Log("Oh nooooo its the error again");
+                Debug.LogError(err);
+                Plugin.logger.LogDebug(err);
             }
         }
     }
@@ -291,7 +356,8 @@ public class TeleportWater
             new FloatField("doppler", 0, 1, 0.5f, 0.1f, ManagedFieldWithPanel.ControlType.slider, "Doppler"),
             new StringField("songName", "vs_sa_pulse", "Song Name"),
             new EnumField<AssetBundleName>("bundleName", AssetBundleName.music_procedural, null, ManagedFieldWithPanel.ControlType.arrows, "Asset Bundle"),
-            new FloatField("fadeStartDist", -5, 5, 0f, 0.1f, ManagedFieldWithPanel.ControlType.slider, "Fade Start Distance")
+            new FloatField("fadeStartDist", -5, 5, 0f, 0.1f, ManagedFieldWithPanel.ControlType.slider, "Fade Start Distance"),
+            new StringField("id", "0", "ID")
 		};
         RegisterFullyManagedObjectType(fields.ToArray(), typeof(TeleportWaterObject), "TeleportWater", "Pitch-Black");
     }
