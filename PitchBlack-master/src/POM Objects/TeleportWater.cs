@@ -3,7 +3,6 @@ using System.Text.RegularExpressions;
 using RWCustom;
 using UnityEngine;
 using static Pom.Pom;
-using AssetBundles;
 using System;
 
 namespace PitchBlack;
@@ -117,9 +116,8 @@ public class TeleportWater
             }
             startedNoise = true;
             #nullable enable
-            LoadedAssetBundle? loadedAssetBundle = AssetBundleManager.GetLoadedAssetBundle(managedData.GetValue<AssetBundleName>("bundleName").ToString(), out var discardText);
-            Debug.Log($"Pitch Black Portal Error message: {discardText}");
-            AudioClip? audio = loadedAssetBundle?.m_AssetBundle?.LoadAsset<AudioClip>(managedData.GetValue<string>("songName"));
+            AssetBundle? loadedAssetBundle = AssetBundle.LoadFromFile(managedData.GetValue<AssetBundleName>("bundleName").ToString());
+            AudioClip? audio = loadedAssetBundle?.LoadAsset<AudioClip>(managedData.GetValue<string>("songName"));
             if (audio == null) {
                 Debug.LogError($"Pitch Black {nameof(TeleportWater)}: Could not find an asset of name {managedData.GetValue<string>("songName")} in asset bundle {managedData.GetValue<AssetBundleName>("bundleName")}");
                 return;
@@ -130,8 +128,8 @@ public class TeleportWater
             staticPositionSound.audioSource.loop = true;
             staticPositionSound.audioSource.dopplerLevel = managedData.GetValue<float>("doppler");
             room.game.cameras[0].virtualMicrophone.soundObjects.Add(staticPositionSound);
-            staticPositionSound.Play();
             room.game.manager.musicPlayer.FadeOutAllSongs(40);
+            staticPositionSound.Play();
             #nullable disable
         }
         public override void Update(bool eu)

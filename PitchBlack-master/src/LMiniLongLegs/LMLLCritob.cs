@@ -39,7 +39,7 @@ sealed class LMLLCritob : Critob
         }
     }
 
-    public override void TileIsAllowed(AImap map, IntVector2 tilePos, ref bool? allow) => allow = map.getAItile(tilePos).terrainProximity > 0;
+    public override void TileIsAllowed(AImap map, IntVector2 tilePos, ref bool? allow) => allow = map.getTerrainProximity(tilePos) > 0;
 
     public override int ExpeditionScore() => 5;
 

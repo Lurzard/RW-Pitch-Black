@@ -43,6 +43,23 @@ class Plugin : BaseUnityPlugin
     public static bool individualFoodEnabled = false;
 
     public static ManualLogSource logger;
+    void FishobsNoWork() {
+        // These caused problems on the update to 1.9.15, sanction them here
+        try {
+            PBPOMSunrays.RegisterLightrays();
+            PBPOMDarkness.RegisterDarkness();
+            // ReliableCreatureSpawner.RegisterSpawner();
+            // CreatureSpawnerHooks.Apply();
+            TeleportWater.Register();
+            BreathableWater.Register();
+            Content.Register(new LMLLCritob());
+            Content.Register(new RotRatCritob());
+            Content.Register(new NightTerrorCritob());
+        } catch (Exception err) {
+            Debug.LogError(err);
+            Logger.LogError(err);
+        }
+    }
 
     //public static List<string> currentDialog = new();
     //public static bool Speaking = false;
@@ -65,9 +82,6 @@ class Plugin : BaseUnityPlugin
         MenuHooks.Apply();
         SyncMenuRegion.Apply();
 
-        Content.Register(new LMLLCritob());
-        Content.Register(new RotRatCritob());
-        Content.Register(new NightTerrorCritob());
         ScareEverything.Apply();
 
         ScugHooks.Apply();
@@ -91,12 +105,6 @@ class Plugin : BaseUnityPlugin
         
         // Make a reference to "...\steamapps\workshop\content\312520\2920439169\plugins\Pom.dll" in the csproj for these to work
             // Also to here "...\steamapps\common\Rain World\RainWorld_Data\Managed\UnityEngine.AssetBundleModule.dll"
-        PBPOMSunrays.RegisterLightrays();
-        PBPOMDarkness.RegisterDarkness();
-        ReliableCreatureSpawner.RegisterSpawner();
-        CreatureSpawnerHooks.Apply();
-        TeleportWater.Register();
-        BreathableWater.Register();
 
         EchoMusic.Apply();
         EchoGraphics.Apply();
@@ -106,6 +114,13 @@ class Plugin : BaseUnityPlugin
 
         //NightDay.Apply(); //unfinished
         PassageHooks.Apply();
+
+        try {
+            FishobsNoWork();
+        } catch (Exception err) {
+            Debug.Log($"Pitch Black error\n{err}");
+            logger.LogDebug($"Pitch Black error\n{err}");
+        }
 
         //On.Player.GraspsCanBeCrafted += Player_GraspsCanBeCrafted;
         //On.Player.SpitUpCraftedObject += Player_SpitUpCraftedObject;
