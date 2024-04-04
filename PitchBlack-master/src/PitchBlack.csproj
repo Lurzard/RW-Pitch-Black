@@ -4,6 +4,7 @@
         <TargetFramework>net48</TargetFramework>
         <LangVersion>Latest</LangVersion>
         <PathMap>$(MSBuildProjectDirectory)=/PitchBlackDevTeam</PathMap>
+        <DefineConstants>PLAYTEST</DefineConstants>
     </PropertyGroup>
     
     <ItemGroup>

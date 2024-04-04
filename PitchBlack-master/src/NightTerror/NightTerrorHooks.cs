@@ -2,6 +2,7 @@
 using MonoMod.Cil;
 using MonoMod.RuntimeDetour;
 using System;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using static System.Reflection.BindingFlags;
@@ -32,7 +33,7 @@ public class NightTerrorAbstractData
 
     //public int MaxTimeUntilRevive => !diedToSporeCloud ? 15 : 3;
     //public int MaxTimeUntilRevive => PBOptions.pursuerAgro2.Value * (!diedToSporeCloud ? 60 : 6);
-    public int MaxTimeUntilRevive => (8 - PBOptions.pursuerAgro.Value) * (!diedToSporeCloud ? 9999 : 6); //ACTUALLY.. ONLY RESPAWN FROM SPORES. THE OTHER TRACKER WILL HANDLE RESPAWNS
+    public int MaxTimeUntilRevive => (8 - PBOptions.pursuerAgro.Value) * (diedToSporeCloud ? 6 : 9999); //ACTUALLY.. ONLY RESPAWN FROM SPORES. THE OTHER TRACKER WILL HANDLE RESPAWNS
     //spinch: thrown PuffBalls makes NT revive faster because that looks cool
 
     public void DecreaseReviveTimer(int timeDecreasedBy = 2)
@@ -98,56 +99,26 @@ public class NightTerrorAbstractData
     }
 }
 
-public class ChillTheFUCKOut
-{
-    // Since this is referencing the creature that the Night Terror is murdering and not the NT itself I can't really compress it any - Niko
-    public int timesZapped = 0;
-}
-
 public static class NightTerrorHooks
 {
     public static ConditionalWeakTable<Centipede, NightTerrorData> NightTerrorInfo = new();
     public static ConditionalWeakTable<AbstractCreature, NightTerrorAbstractData> NTAbstractCWT = new();
-    public static ConditionalWeakTable<AbstractCreature, ChillTheFUCKOut> KILLIT = new();
+    public static ConditionalWeakTable<AbstractCreature, StrongBox<int>> KILLIT = new();
 
-    public static void NightTerrorReleasePlayersInGrasp(this Centipede self)
-    {
-        if (self.abstractCreature.creatureTemplate.type != CreatureTemplateType.NightTerror)
-            return;
-
-        for (int i = 0; i < self.grasps.Length; i++)
-        {
-            if (self.grasps[i]?.grabbed is Player)
-            {
-                self.ReleaseGrasp(i);
+    public static void NightTerrorReleasePlayersInGrasp(this Centipede self) {
+        if (self.abstractCreature.creatureTemplate.IsNightTerror()) {
+            for (int i = 0; i < self.grasps.Length; i++) {
+                if (self.grasps[i]?.grabbed is Player) {
+                    self.ReleaseGrasp(i);
+                }
             }
         }
+
     }
-    public static bool TryGetNightTerror(this Centipede centi, out NightTerrorData NTData)
-    {
-        if (centi.abstractCreature.creatureTemplate.type == CreatureTemplateType.NightTerror)
-        {
-            NTData = NightTerrorInfo.GetValue(centi, _ => new());
-            return true;
-        }
-        NTData = null;
-        return false;
-    }
-    public static bool TryGetAbstractNightTerror(this AbstractCreature centi, out NightTerrorAbstractData NTData)
-    {
-        if (centi.creatureTemplate.type == CreatureTemplateType.NightTerror)
-        {
-            NTData = NTAbstractCWT.GetValue(centi, _ => new(centi));
-            return true;
-        }
-        NTData = null;
-        return false;
-    }
-    public static ChillTheFUCKOut GetZapVictim(this AbstractCreature abstrCrit) => KILLIT.GetValue(abstrCrit, _ => new());
 
     internal static void Apply()
     {
-        new Hook(typeof(Centipede).GetMethod("get_Red", Public | NonPublic | Instance), (Func<Centipede, bool> orig, Centipede self) => self.Template.type == CreatureTemplateType.NightTerror || orig(self));
+        new Hook(typeof(Centipede).GetMethod("get_Red", Public | NonPublic | Instance), (Func<Centipede, bool> orig, Centipede self) => self.Template.IsNightTerror() || orig(self));
 
         On.AbstractCreature.Update += AbstractCreature_Update;
         On.Creature.CanBeGrabbed += Creature_CanBeGrabbed;
@@ -168,12 +139,14 @@ public static class NightTerrorHooks
         On.Centipede.ShortCutColor += Centipede_ShortCutColor;
         On.CentipedeAI.ctor += CentipedeAICTOR;
     }
-    // UPDATED
-    // Prevent the Night Terror from being grabbed if it's not dead or stunned
+
+    /// <summary>
+    /// Prevent the Night Terror from being grabbed if it's not dead or stunned
+    /// </summary>
     private static bool Creature_CanBeGrabbed(On.Creature.orig_CanBeGrabbed orig, Creature self, Creature grabber)
     {
         bool result = orig(self, grabber);
-        if (self.Template.type == CreatureTemplateType.NightTerror) {
+        if (self.Template.IsNightTerror()) {
             if (self.dead || self.stun > 0) {
                 return true;
             }
@@ -186,8 +159,7 @@ public static class NightTerrorHooks
     private static void AbstractCreature_Update(On.AbstractCreature.orig_Update orig, AbstractCreature self, int time)
     {
         orig(self, time);
-        if (self.TryGetAbstractNightTerror(out NightTerrorAbstractData nt))
-        {
+        if (NTAbstractCWT.TryGetValue(self, out NightTerrorAbstractData nt)) {
             nt.TryRevive();
             // Debug.Log($"Pitch Black NightTerror Revive Status:\n\tIs dead? = {!self.state.alive || self.realizedCreature != null && self.realizedCreature.dead} | {nameof(nt.timeUntilRevive)} = {nt.timeUntilRevive}");
         }
@@ -196,12 +168,9 @@ public static class NightTerrorHooks
     {
         orig(self, eu);
 
-        if (!self.nonToxic)
-        {
-            foreach (AbstractCreature abstrCrit in self.room.abstractRoom.creatures)
-            {
-                if (abstrCrit.creatureTemplate.type == CreatureTemplateType.NightTerror && abstrCrit.TryGetAbstractNightTerror(out var nt))
-                {
+        if (!self.nonToxic) {
+            foreach (AbstractCreature abstrCrit in self.room.abstractRoom.creatures) {
+                if (NTAbstractCWT.TryGetValue(abstrCrit, out NightTerrorAbstractData nt)) {
                     nt.diedToSporeCloud = true;
                 }
             }
@@ -219,7 +188,7 @@ public static class NightTerrorHooks
         }
         cursor.Emit(OpCodes.Ldloc, 0);
         cursor.EmitDelegate((Creature crit) => {
-            if (crit != null && crit.Template.type == CreatureTemplateType.NightTerror) {
+            if (crit != null && crit.Template.IsNightTerror()) {
                 return true;
             }
             return false;
@@ -239,62 +208,59 @@ public static class NightTerrorHooks
     private static void CentipedeAICTOR(On.CentipedeAI.orig_ctor orig, CentipedeAI self, AbstractCreature creature, World world)
     {
         orig(self, creature, world);
-        if (creature.creatureTemplate.type == CreatureTemplateType.NightTerror)
+        if (creature.creatureTemplate.IsNightTerror())
         {
-            self.pathFinder.stepsPerFrame = 15;
-            for (int i = 0; i < self.modules.Count; i++)
-            {
-                if (self.modules[i] is PreyTracker)
-                {
-                    self.modules.RemoveAt(i);
-                    self.AddModule(new PreyTracker(self, 5, 1f, 100f, 150f, 0.05f));
-                    self.utilityComparer.uTrackers.RemoveAt(1);
-                    self.utilityComparer.AddComparedModule(self.preyTracker, null, 0.9f, 1.1f);
-                }
-            }
+            // Convert this Linq to normal for loops if it turns out to be too laggy
+            self.modules.RemoveAll(x => x is PreyTracker);
+            self.AddModule(new PreyTracker(self, 5, 1f, 100f, 150f, 0.05f));
+            self.utilityComparer.uTrackers.RemoveAll(x => x.module is PreyTracker);
+            self.utilityComparer.AddComparedModule(self.preyTracker, null, 0.9f, 1.1f);
+
+            self.modules.RemoveAll(x => x is ThreatTracker);
+            self.utilityComparer.uTrackers.RemoveAll(x => x.module is ThreatTracker);
+
+            self.pathFinder.stepsPerFrame = 999;
         }
     }
 
     private static Color Centipede_ShortCutColor(On.Centipede.orig_ShortCutColor orig, Centipede self)
     {
-        if (self.abstractCreature.creatureTemplate.type == CreatureTemplateType.NightTerror)
+        Color result = orig(self);
+        if (self.abstractCreature.creatureTemplate.IsNightTerror())
         {
             return new Color(0.2f, 0f, 1f);
         }
-        return orig(self);
+        return result;
     }
 
+    #region Shocking Things
     private static void Centipede_Shock(On.Centipede.orig_Shock orig, Centipede self, PhysicalObject shockObj)
     {
         orig(self, shockObj);
-        if (self.abstractCreature.creatureTemplate.type == CreatureTemplateType.NightTerror)
-        {
-            if (shockObj?.abstractPhysicalObject is AbstractCreature abstrCrit)
-            {
-                abstrCrit.GetZapVictim().timesZapped++;
-            }
+        if (self.abstractCreature.creatureTemplate.IsNightTerror() && shockObj?.abstractPhysicalObject is AbstractCreature abstrCrit && KILLIT.TryGetValue(abstrCrit, out StrongBox<int> timesZapped)) {
+            timesZapped.Value++;
         }
     }
 
     private static bool CentipedeAI_DoIWantToShockCreature(On.CentipedeAI.orig_DoIWantToShockCreature orig, CentipedeAI self, AbstractCreature critter)
     {
-        if (self.centipede.abstractCreature.creatureTemplate.type == CreatureTemplateType.NightTerror)
+        bool result = orig(self, critter);
+        if (self.centipede.abstractCreature.creatureTemplate.IsNightTerror() && critter.realizedCreature is Player && KILLIT.TryGetValue(critter, out StrongBox<int> timesZapped) && timesZapped.Value < 6)
         {
-            if (critter.realizedCreature is Player && critter.GetZapVictim().timesZapped < 6)
-            {
-                return true;
-            }
+            return true;
         }
-        return orig(self, critter);
+        return result;
     }
+    #endregion
 
-    private static void Centipede_Violence(On.Centipede.orig_Violence orig, Centipede self, BodyChunk source, Vector2? directionAndMomentum, BodyChunk hitChunk, PhysicalObject.Appendage.Pos hitAppendage, Creature.DamageType type, float damage, float stunBonus)
-    {
-        if (self.abstractCreature.creatureTemplate.type == CreatureTemplateType.NightTerror)
-        {
+    /// <summary>
+    /// Alters the damage done to Night Terror, currently it halfs all damage
+    /// </summary>
+    private static void Centipede_Violence(On.Centipede.orig_Violence orig, Centipede self, BodyChunk source, Vector2? directionAndMomentum, BodyChunk hitChunk, PhysicalObject.Appendage.Pos hitAppendage, Creature.DamageType type, float damage, float stunBonus) {
+        if (self.abstractCreature.creatureTemplate.IsNightTerror()) {
             //damage = 0f;
             //spinch: i think it'd be cooler if it was damage /= 2 so nt can get hit and maybe die
-            damage /= 2;
+            damage *= 0.5f;
         }
         orig(self, source, directionAndMomentum, hitChunk, hitAppendage, type, damage, stunBonus);
     }
@@ -302,50 +268,37 @@ public static class NightTerrorHooks
     private static void Centipede_ctor(On.Centipede.orig_ctor orig, Centipede self, AbstractCreature abstractCreature, World world)
     {
         orig(self, abstractCreature, world);
-        if (self.abstractCreature.creatureTemplate.type == CreatureTemplateType.NightTerror)
+        if (self.abstractCreature.creatureTemplate.IsNightTerror())
         {
             //spinch: personality stats are from ID 3560. the energy stat makes it go fucking zoom
-            self.abstractCreature.personality.aggression = 0.216056f;
-            self.abstractCreature.personality.bravery = 0.8485757f;
-            self.abstractCreature.personality.dominance = 0.7141814f;
-            self.abstractCreature.personality.energy = 0.9055567f;
-            self.abstractCreature.personality.nervous = 0.2577313f;
-            self.abstractCreature.personality.sympathy = 0.2754336f;
+            self.abstractCreature.personality.aggression = 1;
+            self.abstractCreature.personality.bravery = 1;
+            self.abstractCreature.personality.dominance = 1;
+            self.abstractCreature.personality.energy = 1;
+            self.abstractCreature.personality.nervous = 0;
+            self.abstractCreature.personality.sympathy = 0;
 
             abstractCreature.ignoreCycle = true;
+            abstractCreature.tentacleImmune = true;
 
-            if (!NightTerrorInfo.TryGetValue(self, out _))
+            if (!NightTerrorInfo.TryGetValue(self, out _)) {
                 NightTerrorInfo.Add(self, new NightTerrorData());
+            }
             
             self.bodyChunks = new BodyChunk[21];
             for (int i = 0; i < self.bodyChunks.Length; i++)
             {
-                float num = i / (float)(self.bodyChunks.Length - 1);
-                float num2 = Mathf.Lerp(Mathf.Lerp(2f, 3.5f, self.size), Mathf.Lerp(4f, 6.5f, self.size), Mathf.Pow(Mathf.Clamp(Mathf.Sin(3.1415927f * num), 0f, 1f), Mathf.Lerp(0.7f, 0.3f, self.size)));
-                num2 += 1.5f;
+                float chunkRad = 1.5f + Mathf.Lerp(Mathf.Lerp(2f, 3.5f, self.size), Mathf.Lerp(4f, 6.5f, self.size), Mathf.Pow(Mathf.Clamp(Mathf.Sin(Mathf.PI * (i / (float)(self.bodyChunks.Length - 1))), 0f, Mathf.PI), Mathf.Lerp(0.7f, 0.3f, self.size)));
 
-                self.bodyChunks[i] = new(self, i, new Vector2(0f, 0f), num2, Mathf.Lerp(0.042857144f, 0.32352942f, Mathf.Pow(self.size, 1.4f)))
+                self.bodyChunks[i] = new(self, i, new Vector2(0f, 0f), chunkRad, 0.3f)
                 {
-                    loudness = 0f
+                    loudness = 0f,
+                    mass = 0.02f + 0.08f * Mathf.Clamp01(Mathf.Sin(Mathf.InverseLerp(0f, self.bodyChunks.Length - 1, i) * 3.1415927f))
                 };
-                self.bodyChunks[i].mass += 0.02f + 0.08f * Mathf.Clamp01(Mathf.Sin(Mathf.InverseLerp(0f, self.bodyChunks.Length - 1, i) * 3.1415927f));
             }
-
-            //spinch: i put the stuff in the for loop below into the one above
-            //for (int j = 0; j < self.bodyChunks.Length; j++)
-            //{
-            //    self.bodyChunks[j].mass += 0.02f + 0.08f * Mathf.Clamp01(Mathf.Sin(Mathf.InverseLerp(0f, self.bodyChunks.Length - 1, j) * 3.1415927f));
-            //}
 
             self.mainBodyChunkIndex = self.bodyChunks.Length / 2;
-            if (!self.Small && (self.CentiState.shells == null || self.CentiState.shells.Length != self.bodyChunks.Length))
-            {
-                self.CentiState.shells = new bool[self.bodyChunks.Length];
-                for (int k = 0; k < self.CentiState.shells.Length; k++)
-                {
-                    self.CentiState.shells[k] = false;
-                }
-            }
+            self.CentiState.shells = new bool[self.bodyChunks.Length];
 
             self.bodyChunkConnections = new PhysicalObject.BodyChunkConnection[self.bodyChunks.Length * (self.bodyChunks.Length - 1) / 2];
             int num3 = 0;
@@ -353,18 +306,20 @@ public static class NightTerrorHooks
             {
                 for (int m = l + 1; m < self.bodyChunks.Length; m++)
                 {
-                    float num4 = 0f;
-                    self.bodyChunkConnections[num3] = new PhysicalObject.BodyChunkConnection(self.bodyChunks[l], self.bodyChunks[m], self.bodyChunks[l].rad + self.bodyChunks[m].rad, PhysicalObject.BodyChunkConnection.Type.Push, 1f - num4, -1f);
+                    self.bodyChunkConnections[num3] = new PhysicalObject.BodyChunkConnection(self.bodyChunks[l], self.bodyChunks[m], self.bodyChunks[l].rad + self.bodyChunks[m].rad, PhysicalObject.BodyChunkConnection.Type.Push, 1f, 0);
                     num3++;
                 }
             }
         }
     }
 
+    /// <summary>
+    /// Sets the Night Terror body color
+    /// </summary>
     private static void CentipedeGraphics_ctor(On.CentipedeGraphics.orig_ctor orig, CentipedeGraphics self, PhysicalObject ow)
     {
         orig(self, ow);
-        if ((ow as Centipede).abstractCreature.creatureTemplate.type == CreatureTemplateType.NightTerror)
+        if (self.centipede.abstractCreature.creatureTemplate.IsNightTerror())
         {
             self.hue = 0.702f;
             self.saturation = 0.96f;
