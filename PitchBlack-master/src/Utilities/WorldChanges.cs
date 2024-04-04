@@ -7,6 +7,8 @@ using System;
 using MonoMod.Cil;
 using Mono.Cecil.Cil;
 using Random = UnityEngine.Random;
+using RWCustom;
+using System.Runtime.CompilerServices;
 
 namespace PitchBlack;
 public static class WorldChanges
@@ -16,12 +18,16 @@ public static class WorldChanges
         On.Region.GetProperRegionAcronym += Region_GetProperRegionAcronym;
         On.RoofTopView.ctor += RoofTopView_ctor;
         On.AboveCloudsView.ctor += AboveCloudsView_ctor;
-        On.KarmaFlower.ApplyPalette += KarmaFlower_ApplyPalette;
         On.Expedition.NeuronDeliveryChallenge.ValidForThisSlugcat += NeuronDeliveryChallenge_ValidForThisSlugcat;
         On.Expedition.PearlDeliveryChallenge.ValidForThisSlugcat += PearlDeliveryChallenge_ValidForThisSlugcat;
+#if PLAYTEST
         On.Room.Update += Room_Update;
+        On.KarmaFlower.ApplyPalette += KarmaFlower_ApplyPalette;
         new Hook(typeof(ElectricDeath).GetMethod("get_Intensity", Public | NonPublic | Instance), ElecIntensity);
         IL.Menu.SlugcatSelectMenu.SlugcatPageContinue.ctor += SlugcatSelectMenu_SlugcatPageContinue_ctor;
+#endif
+    }
+#if PLAYTEST
     }
     private static void SlugcatSelectMenu_SlugcatPageContinue_ctor(ILContext il)
     {
@@ -46,25 +52,7 @@ public static class WorldChanges
                     Debug.Log($"Pitch Black: cycle number was not, in fact, a number!\n{err}");
                     startingRange = cycleNum.Length;
                 }
-                int range = Random.Range(startingRange, startingRange + 50);
-                // I forgor why I named the variable this
-                string URP = "ABCDEF01234567890123456789ABC";
-                string retString = "";
-                for (int i = 0; i < range; i++)
-                {
-                    string char0 = URP[Random.Range(6, 7)].ToString();
-                    string char1 = URP[Random.Range(6, 11)].ToString();
-                    string char2 = URP[Random.Range(0, URP.Length)].ToString();
-                    string char3 = URP[Random.Range(0, URP.Length)].ToString();
-                    string s = char0 + char1 + char2 + char3;
-                    // Debug.Log($"Pitch Black: input unicode: {s}");
-                    // This is only kind of cursed to do I think (but it works!)
-                    char unicodeChar = (char)int.Parse(s, System.Globalization.NumberStyles.HexNumber);
-                    retString += unicodeChar;
-                    // Debug.Log($"Pitch Black: current return string, iteration {i} of {range-1}: {retString}");
-                }
-                Debug.Log($"Pitch Black: {retString}");
-                return retString;
+                return MiscUtils.GenerateRandomString(startingRange, startingRange+50);
             }
             return cycleNum;
         });
@@ -98,6 +86,7 @@ public static class WorldChanges
             self.color = new HSLColor(0.702f, 96f, 0.53f).rgb;
         }
     }
+#endif
 
     private static void RoofTopView_ctor(On.RoofTopView.orig_ctor orig, RoofTopView self, Room room, RoomSettings.RoomEffect effect)
     {
