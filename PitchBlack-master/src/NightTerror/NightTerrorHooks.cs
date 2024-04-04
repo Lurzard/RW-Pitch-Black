@@ -182,15 +182,18 @@ public static class NightTerrorHooks
         if (creature.creatureTemplate.IsNightTerror())
         {
             // Convert this Linq to normal for loops if it turns out to be too laggy
+            // Remove the prey tracker, then add it back but modified
             self.modules.RemoveAll(x => x is PreyTracker);
             self.AddModule(new PreyTracker(self, 5, 1f, 100f, 150f, 0.05f));
             self.utilityComparer.uTrackers.RemoveAll(x => x.module is PreyTracker);
             self.utilityComparer.AddComparedModule(self.preyTracker, null, 0.9f, 1.1f);
 
+            // Remove the Threat Tracker
             self.modules.RemoveAll(x => x is ThreatTracker);
             self.utilityComparer.uTrackers.RemoveAll(x => x.module is ThreatTracker);
 
-            self.pathFinder.stepsPerFrame = 999;
+            // This makes it 1.5 times as fast as a red centipede
+            self.pathFinder.stepsPerFrame = 22;
         }
     }
 
@@ -241,7 +244,6 @@ public static class NightTerrorHooks
         orig(self, abstractCreature, world);
         if (self.abstractCreature.creatureTemplate.IsNightTerror())
         {
-            //spinch: personality stats are from ID 3560. the energy stat makes it go fucking zoom
             self.abstractCreature.personality.aggression = 1;
             self.abstractCreature.personality.bravery = 1;
             self.abstractCreature.personality.dominance = 1;
@@ -250,7 +252,6 @@ public static class NightTerrorHooks
             self.abstractCreature.personality.sympathy = 0;
 
             abstractCreature.ignoreCycle = true;
-            abstractCreature.tentacleImmune = true;
 
             if (!NightTerrorInfo.TryGetValue(self, out _)) {
                 NightTerrorInfo.Add(self, new NightTerrorData());
