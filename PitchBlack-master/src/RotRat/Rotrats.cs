@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿#if PLAYTEST
+using System.Collections.Generic;
 using Fisobs.Core;
 using Fisobs.Creatures;
 using Fisobs.Sandbox;
@@ -61,3 +62,4 @@ public class RotRatCritob : Critob
         rels.Eats(MoreSlugcats.MoreSlugcatsEnums.CreatureTemplateType.Yeek, 1f);
     }
 }
+#endif

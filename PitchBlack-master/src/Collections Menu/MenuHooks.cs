@@ -1,3 +1,4 @@
+#if PLAYTEST
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -102,3 +103,4 @@ public static class MenuHooks
         self.pages[0].subObjects.Add(new SimpleButton(self, self.pages[0], "Pitch Black", SINGAL_NAME, new Vector2(325, 50), new Vector2(110, 31)));
     }
 }
+#endif

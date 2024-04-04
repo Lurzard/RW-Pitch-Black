@@ -23,10 +23,13 @@ class Plugin : BaseUnityPlugin
     public const string MOD_NAME = "Pitch Black";
     public const string MOD_VERSION = "0.1.0";
     private const string COLLECTION_SAVE_FOLDER_NAME = "PitchBlack";
+#if PLAYTEST
     public static string regionMenuDisplaySavePath = "";
     public static readonly string rootSavePath = Application.persistentDataPath + Path.DirectorySeparatorChar.ToString(); 
     public static readonly string collectionSaveDataPath = rootSavePath + COLLECTION_SAVE_FOLDER_NAME + Path.DirectorySeparatorChar.ToString() + "PBcollectionsSaveData.txt";
     public static readonly Dictionary<string, bool> collectionSaveData = new Dictionary<string, bool>();
+    public static ConditionalWeakTable<RainWorldGame, List<RiftWorldPrecence>> riftCWT = new();
+#endif
 
     public static readonly SlugcatStats.Name BeaconName = new("Beacon", false);
     public static readonly SlugcatStats.Name PhotoName = new("Photomaniac", false);
@@ -36,7 +39,6 @@ class Plugin : BaseUnityPlugin
     //public static ConditionalWeakTable<Player, PhotoCWT> pCon = new ConditionalWeakTable<Player, PhotoCWT>();
     public static ConditionalWeakTable<Player, ScugCWT> scugCWT = new();
 
-    public static ConditionalWeakTable<RainWorldGame, List<RiftWorldPrecence>> riftCWT = new();
 
     internal static bool RotundWorldEnabled => _rotundWorldEnabled; //for a single check in BeaconHooks' Player.Update hook
     private static bool _rotundWorldEnabled;
@@ -48,12 +50,14 @@ class Plugin : BaseUnityPlugin
         try {
             PBPOMSunrays.RegisterLightrays();
             PBPOMDarkness.RegisterDarkness();
-            // ReliableCreatureSpawner.RegisterSpawner();
-            // CreatureSpawnerHooks.Apply();
-            TeleportWater.Register();
+            ReliableCreatureSpawner.RegisterSpawner();
+            CreatureSpawnerHooks.Apply();
             BreathableWater.Register();
-            Content.Register(new LMLLCritob());
+#if PLAYTEST
+            TeleportWater.Register();
             Content.Register(new RotRatCritob());
+#endif
+            Content.Register(new LMLLCritob());
             Content.Register(new NightTerrorCritob());
         } catch (Exception err) {
             Debug.LogError(err);
@@ -79,9 +83,6 @@ class Plugin : BaseUnityPlugin
                 Futile.atlasManager.UnloadAtlas("lmllspr");
         };
 
-        MenuHooks.Apply();
-        SyncMenuRegion.Apply();
-
         ScareEverything.Apply();
 
         ScugHooks.Apply();
@@ -102,18 +103,18 @@ class Plugin : BaseUnityPlugin
 
         DevCommOverride.Apply();
         OhNoMoonAndPebblesAreDeadGuys.Apply();
-        
-        // Make a reference to "...\steamapps\workshop\content\312520\2920439169\plugins\Pom.dll" in the csproj for these to work
-            // Also to here "...\steamapps\common\Rain World\RainWorld_Data\Managed\UnityEngine.AssetBundleModule.dll"
-
-        EchoMusic.Apply();
-        EchoGraphics.Apply();
-
-        PBFrozenCycleTimer.Apply();
-        OverseerHooks.Apply(); // (ONLY 1.0!)
 
         //NightDay.Apply(); //unfinished
         PassageHooks.Apply();
+
+#if PLAYTEST
+        EchoMusic.Apply();
+        EchoGraphics.Apply();
+        MenuHooks.Apply();
+        SyncMenuRegion.Apply();
+        PBFrozenCycleTimer.Apply();
+        OverseerHooks.Apply(); // (ONLY 1.0!)
+#endif
 
         try {
             FishobsNoWork();
@@ -134,6 +135,8 @@ class Plugin : BaseUnityPlugin
         orig(self);
         MachineConnector.SetRegisteredOI("lurzard.pitchblack", PBOptions.Instance);
         if (!init) {
+
+#if PLAYTEST
             regionMenuDisplaySavePath = ModManager.ActiveMods.First(x => x.id == MOD_ID).path + Path.DirectorySeparatorChar + "RegionMenuDisplay.txt";
 
             #region Load Collection data into readonly list
@@ -154,17 +157,20 @@ class Plugin : BaseUnityPlugin
                 collectionSaveData.Add(text.Split(':')[0], unlocked);
             }
             #endregion
+#endif
 
             if (!Futile.atlasManager.DoesContainAtlas("lmllspr"))
                 Futile.atlasManager.LoadAtlas("atlases/lmllspr");
             Futile.atlasManager.LoadAtlas("atlases/photosplt");
             Futile.atlasManager.LoadAtlas("atlases/nightTerroratlas");
             Futile.atlasManager.LoadAtlas("atlases/PursuedAtlas");
+#if PLAYTEST
             Futile.atlasManager.LoadAtlas("atlases/pearlCursor");
             Futile.atlasManager.LoadAtlas("atlases/PBHat");
+            self.Shaders["PurpleEchoSkin"] = FShader.CreateShader("purpleechoskin", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/purpleecho")).LoadAsset<Shader>("Assets/shaders 1.9.03/PurpleEchoSkin.shader"));
+#endif
             self.Shaders["Red"] = FShader.CreateShader("red", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath(path: "assetbundles/red")).LoadAsset<Shader>("Assets/red.shader"));
             self.Shaders["Sunrays"] = FShader.CreateShader("sunrays", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/sunrays")).LoadAsset<Shader>("Assets/sunrays.shader"));
-            self.Shaders["PurpleEchoSkin"] = FShader.CreateShader("purpleechoskin", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/purpleecho")).LoadAsset<Shader>("Assets/shaders 1.9.03/PurpleEchoSkin.shader"));
             init = true;
 
             //I'M PRETTY SURE BEST PRACTICE IS TO PUT HOOKS HERE
@@ -234,9 +240,9 @@ class Plugin : BaseUnityPlugin
     private static void RainWorldGame_ctor(On.RainWorldGame.orig_ctor orig, RainWorldGame self, ProcessManager manager)
     {
         orig(self, manager);
-
+#if PLAYETST
         riftCWT.Add(self, new List<RiftWorldPrecence>());
-
+#endif
         if (self.IsStorySession)
         {
             myTracker = new NTTracker(self);

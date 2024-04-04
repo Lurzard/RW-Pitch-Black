@@ -1,3 +1,4 @@
+#if PLAYTEST
 using UnityEngine;
 using Menu;
 using Menu.Remix.MixedUI;
@@ -22,3 +23,4 @@ public class CollectionDialogBox : MenuDialogBox
         this.descriptionLabel.text = text.WrapText(false, size.x - 40, true);
     }
 }
+#endif

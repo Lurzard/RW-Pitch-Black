@@ -14,7 +14,9 @@ public class PBOptions : OptionInterface
 	public static Configurable<bool> chargeSpears;
 	public static Configurable<bool> pursuer;
     public static Configurable<int> pursuerAgro;
+#if PLAYTEST
     public static Configurable<bool> hazHat;
+#endif
     public static Configurable<bool> universalPursuer;
 
     public PBOptions()
@@ -25,7 +27,9 @@ public class PBOptions : OptionInterface
 		chargeSpears = config.Bind<bool>("chargeSpears", false);
 		pursuer = config.Bind<bool>("pursuer", true);
         pursuerAgro = config.Bind<int>("pursuerAgro", 2, new ConfigAcceptableRange<int>(0, 10));
+#if PLAYTEST
         hazHat = config.Bind<bool>("hazHat", false);
+#endif
         universalPursuer = config.Bind<bool>("universalPursuer", false);
     }
     public override void Initialize()
@@ -51,8 +55,10 @@ public class PBOptions : OptionInterface
             new OpSlider(pursuerAgro, new Vector2(rightSidePos, 440), sliderBarLength) {description = Translate("How long it takes for the pursuer to track you down")},
             new OpLabel(rightSidePos, 420, Translate("Pursuer Aggro"), false),
 
+#if PLAYETST
             new OpCheckBox(hazHat, new Vector2(rightSidePos, 360)) {description=Translate("If the PB slugcats wear a hat to protect their eyes in other campaigns")},
             new OpLabel(rightSidePos+30, 363, Translate("Wear Hats"), false),
+#endif
 
             // Make the options on the left side
             new OpCheckBox(pursuer, new Vector2(leftSidePos, 520)) {description=Translate("Something is pursuing you...")},

@@ -1,3 +1,4 @@
+#if PLAYTEST
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using RWCustom;
@@ -360,3 +361,4 @@ public class TeleportWater
         RegisterFullyManagedObjectType(fields.ToArray(), typeof(TeleportWaterObject), "TeleportWater", "Pitch-Black");
     }
 }
+#endif

@@ -1,3 +1,4 @@
+#if PLAYTEST
 using System;
 using RWCustom;
 using System.IO;
@@ -75,44 +76,45 @@ public class OverseerHooks
         return orig(self, testTile);
     }
     public static void IL_Overseer_Update(ILContext il) {
-        // This stuff just makes the overseer not do twitchy behavior stuff
-        var cursor = new ILCursor(il);
+        try {
+            // This stuff just makes the overseer not do twitchy behavior stuff
+            var cursor = new ILCursor(il);
 
-        if (!cursor.TryGotoNext(MoveType.After, i => i.MatchLdfld<OverseerAI>(nameof(OverseerAI.lookAt)))) {
-            return;
-        }
+            if (!cursor.TryGotoNext(MoveType.After, i => i.MatchLdfld<OverseerAI>(nameof(OverseerAI.lookAt)))) {
+                return;
+            }
 
-        if (!cursor.TryGotoNext(MoveType.After,  i => i.MatchLdcR4(out var _))) {
-            Plugin.logger.LogDebug("MOD: IL hook failed 1");
-            return;
-        }
-        cursor.Emit(OpCodes.Ldarg_0);
-        cursor.EmitDelegate((float val, Overseer self) => { if (self.room.game.session is StoryGameSession session && (session.saveStateNumber == BeaconName || session.saveStateNumber == BeaconName)) { return -94f; } return val; });
-        cursor.Emit(OpCodes.Ldc_R4);
+            if (!cursor.TryGotoNext(MoveType.After,  i => i.MatchLdcR4(out var _))) {
+                Plugin.logger.LogDebug("MOD: IL hook failed 1");
+                return;
+            }
+            cursor.Emit(OpCodes.Ldarg_0);
+            cursor.EmitDelegate((float val, Overseer self) => { if (self.room.game.session is StoryGameSession session && (session.saveStateNumber == BeaconName || session.saveStateNumber == BeaconName)) { return -94f; } return val; });
 
-        if (!cursor.TryGotoNext(MoveType.After, i => i.MatchLdcR4(out var _))) {
-            Plugin.logger.LogDebug("MOD: IL hook failed 2");
-            return;
-        }
-        cursor.Emit(OpCodes.Ldarg_0);
-        cursor.EmitDelegate((float val, Overseer self) => { if (self.room.game.session is StoryGameSession session && (session.saveStateNumber == BeaconName || session.saveStateNumber == BeaconName)) { return 1700f;} return val;  });
-        cursor.Emit(OpCodes.Ldc_R4);
+            if (!cursor.TryGotoNext(MoveType.After, i => i.MatchLdcR4(out var _))) {
+                Plugin.logger.LogDebug("MOD: IL hook failed 2");
+                return;
+            }
+            cursor.Emit(OpCodes.Ldarg_0);
+            cursor.EmitDelegate((float val, Overseer self) => { if (self.room.game.session is StoryGameSession session && (session.saveStateNumber == BeaconName || session.saveStateNumber == BeaconName)) { return 1700f;} return val;  });
 
-        if (!cursor.TryGotoNext(MoveType.After, i => i.MatchLdcR4(out var _))) {
-            Plugin.logger.LogDebug("MOD: IL hook failed 3");
-            return;
-        }
-        cursor.Emit(OpCodes.Ldarg_0);
-        cursor.EmitDelegate((float val, Overseer self) => { if (self.room.game.session is StoryGameSession session && (session.saveStateNumber == BeaconName || session.saveStateNumber == BeaconName)) { return -0.2f;} return val;  });
-        cursor.Emit(OpCodes.Ldc_R4);
+            if (!cursor.TryGotoNext(MoveType.After, i => i.MatchLdcR4(out var _))) {
+                Plugin.logger.LogDebug("MOD: IL hook failed 3");
+                return;
+            }
+            cursor.Emit(OpCodes.Ldarg_0);
+            cursor.EmitDelegate((float val, Overseer self) => { if (self.room.game.session is StoryGameSession session && (session.saveStateNumber == BeaconName || session.saveStateNumber == BeaconName)) { return -0.2f;} return val;  });
 
-        if (!cursor.TryGotoNext(MoveType.After, i => i.MatchLdcR4(out var _))) {
-            Plugin.logger.LogDebug("MOD: IL hook failed 4");
-            return;
+            if (!cursor.TryGotoNext(MoveType.After, i => i.MatchLdcR4(out var _))) {
+                Plugin.logger.LogDebug("MOD: IL hook failed 4");
+                return;
+            }
+            cursor.Emit(OpCodes.Ldarg_0);
+            cursor.EmitDelegate((float val, Overseer self) => { if (self.room.game.session is StoryGameSession session && (session.saveStateNumber == BeaconName || session.saveStateNumber == BeaconName)) { return 0.4f; } return val; });
+            // cursor.Emit(OpCodes.Ldc_R4, 0.4f);
+        } catch (Exception err) {
+            logger.LogError(err);
         }
-        cursor.Emit(OpCodes.Ldarg_0);
-        cursor.EmitDelegate((float val, Overseer self) => { if (self.room.game.session is StoryGameSession session && (session.saveStateNumber == BeaconName || session.saveStateNumber == BeaconName)) { return 0.4f; } return val; });
-        cursor.Emit(OpCodes.Ldc_R4, 0.4f);
     }
     // public static string[] ChatlogData_getChatLog_id(On.MoreSlugcats.ChatlogData.orig_getChatlog_ChatlogID orig, ChatlogID id)
     // {
@@ -438,3 +440,4 @@ class PearlPointer : CosmeticSprite
         timer += 1f/160f;
     }
 }
+#endif

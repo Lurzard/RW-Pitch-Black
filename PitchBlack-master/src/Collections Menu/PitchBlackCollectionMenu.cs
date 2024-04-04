@@ -1,3 +1,4 @@
+#if PLAYTEST
 using System.Collections.Generic;
 using Menu;
 using MoreSlugcats;
@@ -158,3 +159,4 @@ public class PitchBlackCollectionMenu : Menu.Menu
         }
     }
 }
+#endif

@@ -1,4 +1,5 @@
-﻿using HUD;
+﻿#if PLAYTEST
+using HUD;
 using RWCustom;
 using UnityEngine;
 
@@ -48,3 +49,4 @@ internal class PBFrozenCycleTimer
         }
     }
 }
+#endif

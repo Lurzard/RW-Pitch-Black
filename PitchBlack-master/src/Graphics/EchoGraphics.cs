@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿#if PLAYTEST
 using UnityEngine;
-using HUD;
 
 namespace PitchBlack
 {
@@ -62,3 +57,4 @@ namespace PitchBlack
         }
     }
 }
+#endif

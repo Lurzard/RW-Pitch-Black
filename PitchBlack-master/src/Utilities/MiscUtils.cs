@@ -8,6 +8,8 @@ namespace PitchBlack;
 
 public static class MiscUtils
 {
+    public static bool IsNightTerror(this CreatureTemplate creatureTemplate) => creatureTemplate.type == CreatureTemplateType.NightTerror;
+#if PLAYTEST
     public static void SaveCollectionData() {
         string data = "";
         foreach (KeyValuePair<string, bool> keyValuePair in collectionSaveData) {
@@ -20,6 +22,7 @@ public static class MiscUtils
             File.WriteAllText(regionMenuDisplaySavePath, data);
         }
     }
+#endif
     public static string GenerateRandomString(int shortestRange, int maxRange) {
         if (shortestRange > maxRange) {
             throw new System.Exception($"Noooo Moon why you do this make sure the stuff does the thiiiing {nameof(GenerateRandomString)}");

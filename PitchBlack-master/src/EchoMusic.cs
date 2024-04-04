@@ -1,3 +1,4 @@
+#if PLAYTEST
 namespace PitchBlack;
 
 // Did not test this because it's so shrimple it should work and if it doesn't I really messed up - Moon
@@ -14,3 +15,4 @@ public class EchoMusic
         }
     }
 }
+#endif
