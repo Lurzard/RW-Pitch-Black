@@ -98,6 +98,8 @@ sealed class NightTerrorCritob : Critob
             HasAI = true,
             Pathing = PreBakedPathing.Ancestral(CreatureTemplate.Type.RedCentipede),
         }.IntoTemplate();
+        t.wormGrassImmune = true;
+        t.wormgrassTilesIgnored = true;
         return t;
     }
 

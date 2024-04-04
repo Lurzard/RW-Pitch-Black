@@ -124,11 +124,6 @@ public static class NightTerrorHooks
         On.Creature.CanBeGrabbed += Creature_CanBeGrabbed;
         On.SporeCloud.Update += SporeCloud_Update;
 
-        IL.WormGrass.WormGrassPatch.Update += IL_WormGrass_WormGrassPatch_Update;
-        // On.WormGrass.WormGrassPatch.InteractWithCreature += WormGrassPatch_InteractWithCreature;
-        // On.WormGrass.WormGrassPatch.Update += WormGrassPatch_Update;
-        // On.WormGrass.WormGrassPatch.AlreadyTrackingCreature += WormGrassPatch_AlreadyTrackingCreature;
-
         //spinch: moved FlareBomb.Update hook to the one in Plugin.cs, so there's no longer a double hook
         
         On.Centipede.ctor += Centipede_ctor;
@@ -175,30 +170,6 @@ public static class NightTerrorHooks
                 }
             }
         }
-    }
-    #endregion
-
-    #region wormgrass immunity (stop getting pulled)
-    static void IL_WormGrass_WormGrassPatch_Update(ILContext il) {
-        var cursor = new ILCursor(il);
-        var label = cursor.DefineLabel();
-
-        if (!cursor.TryGotoNext(MoveType.After, i => i.MatchStloc(out _))) {
-            return;
-        }
-        cursor.Emit(OpCodes.Ldloc, 0);
-        cursor.EmitDelegate((Creature crit) => {
-            if (crit != null && crit.Template.IsNightTerror()) {
-                return true;
-            }
-            return false;
-        });
-        cursor.Emit(OpCodes.Brtrue, label);
-        
-        if (!cursor.TryGotoNext(MoveType.After, i => i.MatchNewobj(out _), i => i.MatchCallOrCallvirt(out _))) {
-            return;
-        }
-        cursor.MarkLabel(label);
     }
     #endregion
 
