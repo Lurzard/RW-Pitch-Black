@@ -27,7 +27,7 @@ public class CreatureSpawnerHooks
             }
             try {
                 cursor.Emit(OpCodes.Ldarg_0);
-                cursor.Emit(OpCodes.Ldloc, 41);
+                cursor.Emit(OpCodes.Ldloc, 43);
                 cursor.EmitDelegate((Room self, int i) => {
                     if (self.roomSettings.placedObjects[i].active && self.roomSettings.placedObjects[i].type == ReliableCreatureSpawner) {
                         
