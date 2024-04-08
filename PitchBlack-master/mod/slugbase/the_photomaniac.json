@@ -3,6 +3,7 @@
 	"name": "The Photomaniac",
 	"description": "A maniacal juvenile lost in the night, possessing a familiar luminosity.\nIts electrical abilities, though ill-wielded, give it a tactical advantage.",
 	"features": {
+
 		"color": "010038",
 		"custom_colors": [
 			{
@@ -21,28 +22,45 @@
 				"arena": [ "1c1b1d", "1c1b19", "181516", "FFFFFF" ]
 			}
 		],
+
+		"guide_overseer": 87,
+
+		"weight": [ 0.7, 0.6 ],
 		"throw_skill": 0,
+
 		"food_min": 2,
 		"food_max": 3,
-		"auto_grab_batflies": false,
-		"weight": [ 0.7, 0.6 ],
-		"back_spear": false,
-		"can_maul": false,
-		"has_dreams": false,
-		"start_room": [ "GW_photo01" ],
-		"karma": 1,
 		"diet": {
-			"plants": 1,
-			"meat": 1,
-			"corpses": 1
+			"base": "White",
+			"overrides": {
+				"SlimeMold": 1.5,
+				"BlackLizard": 1.5,
+				"DropBug": 1.5,
+				"LanternMouse": 1.5,
+				"MirosVulture": 2,
+				"MirosBird": 2,
+				"Spider": 0.5,
+				"BigSpider": 1.5,
+				"SpitterSpider": 1.5,
+				"MotherSpider": 1.5,
+				"LillyPuck": 1.5
+			}
 		},
-		"guide_overseer": 87,
+
+		"karma": 1,
 		"the_glow": true,
+		"has_dreams": false,
+		"auto_grab_batflies": false,
+
+		"start_room": [ "GW_photo01" ],
 		"world_state": [ "Photomaniac", "Beacon" ],
+
+		"expedition_enabled": true,
+		"expedition_description": "Placeholder expedition description",
+
 		"select_menu_scene": "Slugcat_Photo",
 		"select_menu_scene_ascended": "Trapped",
 		"sleep_scene": "Sleep_Photo",
-
-		"expedition_enabled": false
+		"title_card": "intro_roll_c_photo"
 	}
 }

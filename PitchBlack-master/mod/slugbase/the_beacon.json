@@ -3,6 +3,7 @@
 	"name": "The Beacon",
 	"description": "In the wake of night, a frail but agile slugcat with a strange luminosity makes their presence known.\nLight your path and journey far; time is of the essence when under pursuit.",
 	"features": {
+
 		"color": "2a04dc",
 		"custom_colors": [
 			{
@@ -16,54 +17,52 @@
 				"arena": [ "1c1b1d", "1c1b19", "181516", "FFFFFF" ]
 			}
 		],
-		"auto_grab_batflies": true,
+
+		"guide_overseer": 87,
+
 		"weight": [ 0.8, 0.7 ],
 		"tunnel_speed": [ 1.2, 1 ],
 		"climb_speed": [ 1.3, 1.1 ],
-		"walk_speed": [ 1.45, 1.2 ],
-		"crouch_stealth": [ 1.4, 1.0 ],
+		"walk_speed": [ 1.4, 1.2 ],
 		"throw_skill": 1,
 		"lung_capacity": [ 3.335, 1.8 ],
-		"loudness": [ 0.5, 1.0 ],
+
+		"food_min": 4,
+		"food_max": 7,
 		"diet": {
 			"base": "White",
-			"plants": 1,
-			"meat": 0.5,
-			"corpses": 0.5,
 			"overrides": {
-				"EggBugEgg":  1,
 				"SlimeMold": 1.5,
 				"BlackLizard": 1.5,
 				"DropBug": 1.5,
-				"Vulture": 2,
 				"LanternMouse": 1.5,
-				"KingVulture": 2,
 				"MirosVulture": 2,
+				"MirosBird": 2,
 				"Spider": 0.5,
 				"BigSpider": 1.5,
 				"SpitterSpider": 1.5,
-				"MotherSpider": 1.5,
-				"SlugNPC": 0,
-				"BigNeedleWorm": 1.5,
-				"CyanLizard": 1.5
+				"MotherSpider": 1,
+				"LillyPuck": 1.5
 			}
 		},
-		"the_glow": false,
 
 		"karma": 4,
 		"karma_cap": 4,
-		"start_room": [ "SH_CABINETS1" ],
-		"guide_overseer": 87,
 		"has_dreams": false,
 		"perma_unlock_gates": true,
-		"world_state": ["Beacon"],
-		"story_regions": ["SU", "HI", "UG","CC","GW","SH","LM","SI","LF","UW","RM","SB"],
 		"the_mark": true,
-		"food_min": 4,
-		"food_max": 7,
+		"auto_grab_batflies": true,
+
+		"start_room": [ "SH_CABINETS1" ],
+		"world_state": [ "Beacon" ],
+		"story_regions": [ "SU", "HI", "UG", "CC", "GW", "SH", "LM", "SI", "LF", "UW", "RM", "-SB", "-VS" ],
+
+		"expedition_enabled": true,
+		"expedition_description": "Placeholder expedition description",
+
 		"select_menu_scene": "Slugcat_Beacon",
 		"sleep_scene": "Sleep_Beacon",
 		"select_menu_scene_ascended": "Trapped",
-		"expedition_enabled": true
+		"title_card": "intro_roll_c_beacon"
 	}
 }
