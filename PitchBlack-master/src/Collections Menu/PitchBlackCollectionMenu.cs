@@ -8,6 +8,7 @@ using static PitchBlack.OverseerEx;
 using static MoreSlugcats.ChatlogData;
 using System.Linq;
 using System.IO;
+using RWCustom;
 
 namespace PitchBlack;
 
@@ -64,6 +65,10 @@ public class PitchBlackCollectionMenu : Menu.Menu
             else {
                 pages[0].subObjects.Add(new SimpleButton(this, pages[0], "???", "???", new Vector2((i/ButtonsPerColumn)*(ButtonWidth+30) + ButtonStartWidth, (i%ButtonsPerColumn)*(ButtonHeight+20) + ButtonStartHeight), new Vector2(ButtonWidth, ButtonHeight)));
             }
+            // Applying the shader makes the sprites a bit too much to look at easily. Disabled it, but leaving the code here.
+            // foreach(FSprite sprite in (pages[0].subObjects.Last(x => x is SimpleButton) as SimpleButton).roundedRect.sprites) {
+            //     sprite.shader = manager.rainWorld.Shaders["Hologram"];
+            // }
         }
 
         scene = new InteractiveMenuScene(this, pages[0], PBCollectionScene);
@@ -109,6 +114,8 @@ public class PitchBlackCollectionMenu : Menu.Menu
     public override void Update()
     {
         base.Update();
+        Shader.SetGlobalVector(RainWorld.ShadPropSpriteRect, new Vector4(0, 0, 1, 1));
+        Shader.SetGlobalVector(RainWorld.ShadPropScreenSize, manager.rainWorld.screenSize);
         foreach (var obj in pages[0].subObjects) {
             if (obj is SimpleButton simpButton && simpButton.menuLabel.myText == chatLogIDToButtonName[PB_Techy]) {
                 simpButton.menuLabel.label.text = MiscUtils.GenerateRandomString(20, 30);

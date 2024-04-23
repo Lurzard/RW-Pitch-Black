@@ -10,7 +10,7 @@ public class SyncMenuRegion
     private static void Menu_FastTravelScreen_Singal(On.Menu.FastTravelScreen.orig_Singal orig, Menu.FastTravelScreen self, Menu.MenuObject sender, string message)
     {
         orig(self, sender, message);
-        if (MiscUtils.IsBeaconOrPhoto(self.activeWorld.game.session)) {
+        if (MiscUtils.IsBeaconOrPhoto(self.activeWorld?.game?.session)) {
             MiscUtils.TryReplaceCollectionMenuBackground(self.activeWorld.name);
         }
     }
