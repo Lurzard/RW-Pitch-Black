@@ -1,9 +1,9 @@
 Parent: AtC_GeneralDefault
 PROTECTED
 ---------------
-daySky: NightAtC_Sky
-duskSky: NightAtC_Sky
-nightSky: NightAtC_Sky
+daySky: PB_AtC_Sky
+duskSky: PB_AtC_Sky
+nightSky: PB_AtC_Sky
 atmosphereColor: 0d1733
 
 DistantBuilding: AtC_Structure1, -520, -85, 160, -20
