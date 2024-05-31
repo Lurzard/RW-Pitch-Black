@@ -55,7 +55,7 @@ class Plugin : BaseUnityPlugin
             BreathableWater.Register();
 #if PLAYTEST
             TeleportWater.Register();
-            Content.Register(new RotRatCritob());
+            //Content.Register(new RotRatCritob()); commenting this out because the game breaks with this
 #endif
             Content.Register(new LMLLCritob());
             Content.Register(new NightTerrorCritob());
@@ -177,6 +177,8 @@ class Plugin : BaseUnityPlugin
             On.RainWorldGame.ctor += RainWorldGame_ctor;
             On.RainWorldGame.Update += RainWorldGame_Update;
             On.Weapon.SetRandomSpin += Weapon_SetRandomSpin;
+
+            RiftCosmetic.Register(self);
         }
     }
     private void Weapon_SetRandomSpin(On.Weapon.orig_SetRandomSpin orig, Weapon self)

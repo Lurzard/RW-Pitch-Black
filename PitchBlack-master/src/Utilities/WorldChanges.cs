@@ -28,7 +28,7 @@ public static class WorldChanges
 #endif
     }
 #if PLAYTEST
-    }
+    
     private static void SlugcatSelectMenu_SlugcatPageContinue_ctor(ILContext il)
     {
         ILCursor cursor = new ILCursor(il);
