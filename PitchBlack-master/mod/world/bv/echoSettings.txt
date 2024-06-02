@@ -1,6 +1,0 @@
-priming : false
-size : 1
-radius : 0
-echosong : ELSE_LXIX
-room : BV_B11
-defaultflip : 0
