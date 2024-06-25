@@ -1,0 +1,6 @@
+Template: NONE
+Palette: 6969
+EffectColorA: 13
+EffectColorB: 12
+Effects: LightBurn-0.1847826-14-109, Fog-1-20-20, SilenceWater-1-29-65, LightRain-0.5-294-24, HeatWave-0.3478261-285-73, Coldness-1-299-134, Desaturation-0.8260869-396-298, WaterDepth-0.04347826-717-340, 
+PlacedObjects: KarmaFlower><309.4612><279.5538><98~67~5~7, 

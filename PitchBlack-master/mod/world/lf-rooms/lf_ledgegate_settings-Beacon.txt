@@ -1,6 +1,10 @@
 Template: LF_SettingsTemplate_Farms
-EffectColorA: 2
+Clouds: 0.5
+Grime: 0.1304348
+EffectColorA: 16
 EffectColorB: 21
-PlacedObjects: LightSource><698.6149><737.0016><0.02560955~EffectColor1~896.4376~137.3333~50~86.60254~1~1~None~0~0, LightSource><-100.1141><716.8><0.02561287~EffectColor1~1472.185~174.6666~50~86.60254~1~1~None~0~0, 
-MorePalette0: 387, 1, 1
-MorePalette1: 10, 0.2551966, 0.3015966
+Effects: LightBurn-0-26-75, RoomWrap-1-20-20, Desaturation-0.4021739-262-318, 
+MorePalette0: 493, 1, 1
+MorePalette1: 10, 0.8043478, 0.8043478
+MorePalette2: 425, 0.08695652, 0.04347826
+MorePalette3: 387, 0.5543478, 0.6739131

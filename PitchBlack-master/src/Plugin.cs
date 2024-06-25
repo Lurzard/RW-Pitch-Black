@@ -55,7 +55,7 @@ class Plugin : BaseUnityPlugin
             BreathableWater.Register();
 #if PLAYTEST
             TeleportWater.Register();
-            //Content.Register(new RotRatCritob()); commenting this out because the game breaks with this
+            Content.Register(new RotRatCritob());
 #endif
             Content.Register(new LMLLCritob());
             Content.Register(new NightTerrorCritob());

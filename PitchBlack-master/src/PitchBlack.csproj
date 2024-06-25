@@ -13,6 +13,12 @@
         </Reference>
     </ItemGroup>
     
+    <ItemGroup>
+      <Reference Include="Fisobs">
+        <HintPath>..\..\..\..\..\Downloads\Fisobs.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+    
     <Target Name="GenerateMod" AfterTargets="PostBuildEvent">
 		<ItemGroup>
 			<RemovePlugins Include="../mod/plugins/*.dll" />

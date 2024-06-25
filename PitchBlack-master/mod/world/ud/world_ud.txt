@@ -1,0 +1,7 @@
+ROOMS
+//Rift #1 (test)
+UD_PALETTETEST : DISCONNECTED
+END ROOMS
+
+// Line seperations seperate connection chains.
+// The only way to get into this region is through a portal, never a shortcut connection!
