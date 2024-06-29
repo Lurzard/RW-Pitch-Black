@@ -12,8 +12,8 @@ internal class PBFrozenCycleTimer
     public static void Apply()
     {
         On.HUD.RainMeter.Draw += RainMeter_Draw;
-        On.RainCycle.GetDesiredCycleLength += RainCycle_GetDesiredCycleLength;
-        On.RainCycle.Update += RainCycle_Update;
+        //On.RainCycle.GetDesiredCycleLength += RainCycle_GetDesiredCycleLength;
+        //On.RainCycle.Update += RainCycle_Update;
     }
     public static void RainMeter_Draw(On.HUD.RainMeter.orig_Draw orig, RainMeter self, float timeStacker)
     {
