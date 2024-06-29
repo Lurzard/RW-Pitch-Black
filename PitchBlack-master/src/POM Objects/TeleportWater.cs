@@ -5,6 +5,8 @@ using RWCustom;
 using UnityEngine;
 using static Pom.Pom;
 using System;
+using System.IO;
+using System.Linq;
 
 namespace PitchBlack;
 
@@ -117,14 +119,14 @@ public class TeleportWater
             if (room != room.game.cameras[0].room || startedNoise) {
                 return;
             }
-            startedNoise = true;
             #nullable enable
-            AssetBundle? loadedAssetBundle = AssetBundle.LoadFromFile(managedData.GetValue<AssetBundleName>("bundleName").ToString());
+            AssetBundle? loadedAssetBundle = AssetBundle.GetAllLoadedAssetBundles().First(x => x.name == managedData.GetValue<AssetBundleName>("bundleName").ToString());
             AudioClip? audio = loadedAssetBundle?.LoadAsset<AudioClip>(managedData.GetValue<string>("songName"));
             if (audio == null) {
                 Debug.LogError($"Pitch Black {nameof(TeleportWater)}: Could not find an asset of name {managedData.GetValue<string>("songName")} in asset bundle {managedData.GetValue<AssetBundleName>("bundleName")}");
                 return;
             }
+            startedNoise = true;
             SoundLoader.SoundData soundData = room.game.cameras[0].virtualMicrophone.GetSoundData(SoundID.Slugcat_Stash_Spear_On_Back, -1);
             VirtualMicrophone.StaticPositionSound staticPositionSound = new (room.game.cameras[0].virtualMicrophone, soundData, Vector2.Lerp(pObj.pos, pObj.pos+managedData.GetValue<Vector2>("Area"), 0.5f), managedData.GetValue<float>("volume"), managedData.GetValue<float>("pitch"), false);
             staticPositionSound.audioSource.clip = audio;
