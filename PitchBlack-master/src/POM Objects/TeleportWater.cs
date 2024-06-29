@@ -57,6 +57,8 @@ public class TeleportWater
                 // If it does not find a match, create a new Precence
                 Debug.Log($"Pitch Black: Created new {nameof(RiftWorldPrecence)}");
                 riftWorldPrecences.Add(new RiftWorldPrecence(room.abstractRoom.name, (pObj.data as ManagedData).GetValue<string>("id"), new List<AbstractCreature>()));
+            }
+            else {
                 abstractCreatures = new List<AbstractCreature>();
             }
         }
@@ -196,13 +198,19 @@ public class TeleportWater
                             // Set up a new RoomRealizer, so rooms in the new region get properly realized
                             if (game.roomRealizer != null)
                             {
+                                Debug.Log("Pitch Black: Reset RoomRealizer");
                                 game.roomRealizer = new RoomRealizer(game.roomRealizer.followCreature, currentWorld);
                             }
                         }
+                        Debug.Log("Pitch Black: Getting new abstract room");
                         // Get the new abstract room from the destination world
-                        AbstractRoom newRoom = currentWorld.GetAbstractRoom(roomName);
+                        AbstractRoom newRoom = null;
+                        try {newRoom = currentWorld.GetAbstractRoom(roomName);} catch (Exception err) {
+                                    Debug.Log("Oh no, there was an error!\n" + err);
+                                }
                         // Add all the creatures to be teleported to the new room, so that they can be realized correctly.
                         foreach (AbstractCreature absCrit in abstractCreatures) {
+                            Debug.Log($"Pitch Black: Adding {absCrit.creatureTemplate.type} to the room");
                             absCrit.world = currentWorld;
                             absCrit.pos.abstractNode = 0;
                             absCrit.abstractAI.world = currentWorld;
@@ -210,6 +218,7 @@ public class TeleportWater
                             absCrit.pos.room = newRoom.index;
                             newRoom.AddEntity(absCrit);
                         }
+                        Debug.Log("Pitch Black: Realizing the new room");
                         // Realize the new room.
                         newRoom.RealizeRoom(currentWorld, game);
                         // Clear the list, remove references.
@@ -234,12 +243,14 @@ public class TeleportWater
                         List<AbstractPhysicalObject> objs = plrAbsCrt.GetAllConnectedObjects();
                         for (int i = 0; i < objs.Count; i++)
                         {
+                            Debug.Log($"Pitch Black: Transfering entity {i} of {objs.Count}, which is a {objs[i].type}");
                             objs[i].world = currentWorld;
                             objs[i].pos = plrAbsCrt.pos;
                             room.abstractRoom.RemoveEntity(objs[i]);
                             newRoom.AddEntity(objs[i]);
                             objs[i].realizedObject.sticksRespawned = true;
                         }
+                        Debug.Log("Pitch Black: Sending player to their new room");
                         // Remove the player from their start room
                         room.RemoveObject(player);
                         // Move the player to the new room (no idea how important the x, y, and abstractNode args are)
@@ -251,6 +262,7 @@ public class TeleportWater
                         // Set their realized position in the room to the destination coordinates of the devtool object
                         newPlayer.SuperHardSetPosition(dest);
                         // Only do this stuff if Jolly is disabled, as Jolly seems to be able to handle moving the camera by itself (which makes sense, as players can move the camera between rooms by themselves).
+                        Debug.Log("Pitch Black: Moving camera");
                         if (!ModManager.JollyCoop) {
                             // Quite the camera's microphone, I think that stops all sound being played.
                             game.cameras[0].virtualMicrophone.AllQuiet();
@@ -266,12 +278,13 @@ public class TeleportWater
                         }
                         for (int i = 0; i < game.cameras.Length; i++)
                         {
+                            Debug.Log($"Pitch Black: Reseting camera {i}'s map");
                             // Reset the hud map, which makes it sync to the new world the player is in if they moved between regions.
                             game.cameras[0].hud.ResetMap(new HUD.Map.MapData(currentWorld, game.rainWorld));
-                            // if (game.cameras[i].hud.textPrompt.subregionTracker != null)
-                            // {
-                            //     game.cameras[i].hud.textPrompt.subregionTracker.lastShownRegion = 0;
-                            // }
+                            if (game.cameras[i].hud.textPrompt.subregionTracker != null)
+                            {
+                                game.cameras[i].hud.textPrompt.subregionTracker.lastShownRegion = 0;
+                            }
                         }
                         // Move camera's microphone to the new room?
                         game.cameras[0].virtualMicrophone.NewRoom(game.cameras[0].room);
@@ -297,14 +310,17 @@ public class TeleportWater
                         //Re-add any backspears
                         if (hasSpear != null && newPlayer.spearOnBack?.spear != hasSpear)
                         {
+                            Debug.Log("Pitch Black: Re-attach back-spear");
                             newPlayer.spearOnBack.SpearToBack(hasSpear);
                             newPlayer.abstractPhysicalObject.stuckObjects.Add(newPlayer.spearOnBack.abstractStick);
                         }
                         //Re-add any stomach objects
                         if (stomachObject != null && newPlayer.objectInStomach == null)
                         {
+                            Debug.Log("Pitch Black: Adding stomach object back");
                             newPlayer.objectInStomach = stomachObject;
                         }
+                        Debug.Log("Pitch Black: Restoring velocity and animation");
                         // Re-set the velocities and position of bodychunks
                         newPlayer.bodyChunks[0].vel = oldVel0;
                         newPlayer.bodyChunks[1].vel = oldVel1;
@@ -318,6 +334,7 @@ public class TeleportWater
                 }
             } catch (Exception err) {
                 Debug.Log("WOWIE another ERRRROOOORRRR");
+                Debug.Log(err);
                 Debug.LogError(err);
                 Plugin.logger.LogDebug(err);
             }
