@@ -21,9 +21,9 @@ public static class WorldChanges
         On.Expedition.NeuronDeliveryChallenge.ValidForThisSlugcat += NeuronDeliveryChallenge_ValidForThisSlugcat;
         On.Expedition.PearlDeliveryChallenge.ValidForThisSlugcat += PearlDeliveryChallenge_ValidForThisSlugcat;
 #if PLAYTEST
-        On.Room.Update += Room_Update;
-        On.KarmaFlower.ApplyPalette += KarmaFlower_ApplyPalette;
-        new Hook(typeof(ElectricDeath).GetMethod("get_Intensity", Public | NonPublic | Instance), ElecIntensity);
+        //On.Room.Update += Room_Update;
+        //On.KarmaFlower.ApplyPalette += KarmaFlower_ApplyPalette;
+        //new Hook(typeof(ElectricDeath).GetMethod("get_Intensity", Public | NonPublic | Instance), ElecIntensity);
         IL.Menu.SlugcatSelectMenu.SlugcatPageContinue.ctor += SlugcatSelectMenu_SlugcatPageContinue_ctor;
 #endif
     }
@@ -65,6 +65,7 @@ public static class WorldChanges
         }
         return orig(self);
     }
+    
     private static void Room_Update(On.Room.orig_Update orig, Room self)
     {
         orig(self);
@@ -80,6 +81,8 @@ public static class WorldChanges
     }
     private static void KarmaFlower_ApplyPalette(On.KarmaFlower.orig_ApplyPalette orig, KarmaFlower self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
     {
+        //this has to be made into a seperate object I think, will come back to it later
+
         orig(self, sLeaser, rCam, palette);
         if (rCam.room.game.IsStorySession && rCam.room.game.GetStorySession.saveStateNumber == Plugin.BeaconName)
         {
@@ -87,18 +90,6 @@ public static class WorldChanges
         }
     }
 #endif
-
-    private static void RoofTopView_ctor(On.RoofTopView.orig_ctor orig, RoofTopView self, Room room, RoomSettings.RoomEffect effect)
-    {
-        orig(self, room, effect);
-        if (room.game.GetStorySession.saveStateNumber == Plugin.BeaconName)
-        {
-            self.atmosphereColor = new Color(0.04882353f, 0.0527451f, 0.06843138f);
-            Color atmocolor = new Color(0.78039217f, 0.41568628f, 0.39607844f);
-            Shader.SetGlobalVector("_AboveCloudsAtmosphereColor", self.atmosphereColor);
-            Shader.SetGlobalVector("_MultiplyColor", atmocolor);
-        }
-    }
 
     public static string Region_GetProperRegionAcronym(On.Region.orig_GetProperRegionAcronym orig, SlugcatStats.Name character, string baseAcronym)
     {
@@ -117,6 +108,12 @@ public static class WorldChanges
                 case "SS":
                     text = "RM";
                     break;
+                //case "DM":
+                    //text = "MJ";
+                    //break;
+                //case "SB":
+                    //text = "UD";
+                    //break;
             }
 
             foreach (var path in AssetManager.ListDirectory("World", true, false)
@@ -141,6 +138,18 @@ public static class WorldChanges
     {
         orig(self, room, effect);
         if (room.game.IsStorySession && room.game.GetStorySession.saveStateNumber == Plugin.BeaconName)
+        {
+            self.atmosphereColor = new Color(0.26274509803f, 0.34901960784f, 0.58039215686f);
+            Color atmocolor = new Color(0.26274509803f, 0.34901960784f, 0.58039215686f);
+            Shader.SetGlobalVector("_AboveCloudsAtmosphereColor", self.atmosphereColor);
+            Shader.SetGlobalVector("_MultiplyColor", atmocolor);
+        }
+    }
+
+    private static void RoofTopView_ctor(On.RoofTopView.orig_ctor orig, RoofTopView self, Room room, RoomSettings.RoomEffect effect)
+    {
+        orig(self, room, effect);
+        if (room.game.GetStorySession.saveStateNumber == Plugin.BeaconName)
         {
             self.atmosphereColor = new Color(0.26274509803f, 0.34901960784f, 0.58039215686f);
             Color atmocolor = new Color(0.26274509803f, 0.34901960784f, 0.58039215686f);

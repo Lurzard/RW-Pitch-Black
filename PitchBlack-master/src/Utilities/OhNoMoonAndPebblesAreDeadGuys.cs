@@ -14,7 +14,7 @@ public class OhNoMoonAndPebblesAreDeadGuys
     }
     public static void Oracle_Update(On.Oracle.orig_Update orig, Oracle self, bool eu)
     {
-        if (self.room?.world?.region != null && (self.room.world.region.name == "RM" || self.room.world.region.name == "LM") && MiscUtils.IsBeaconOrPhoto(self.room.game.session) && (self.oracleBehavior is SSOracleRotBehavior || self.oracleBehavior is SSOracleBehavior))
+        if (self.room?.world?.region != null && (self.room.world.region.name == "RM" || self.room.world.region.name == "DM") && MiscUtils.IsBeaconOrPhoto(self.room.game.session) && (self.oracleBehavior is SSOracleRotBehavior || self.oracleBehavior is SSOracleBehavior))
         {
             self.stun = 9999;
         }
