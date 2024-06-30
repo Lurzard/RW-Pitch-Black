@@ -12,4 +12,4 @@ FadePalette: 12, 0.3804348, 0.25
 WetTerrain: OFF
 MorePalette0: 379, 1, 1
 BackgroundOffset: 3443,430
-BackgroundType: testblackabovegr
+BackgroundType: PB_AtC

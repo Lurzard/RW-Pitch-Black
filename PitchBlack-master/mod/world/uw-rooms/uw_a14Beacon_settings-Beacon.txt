@@ -7,11 +7,11 @@ Clouds: 0.0326087
 Grime: 0.2934783
 Palette: 10
 EffectColorA: 13
-Effects: PixelShift-0.5-25-69, AboveCloudsView-1-292-198, FireFlies-0.3478261-293-128, Bloom-1-20-20, Hue-0.1304348-26-122, 
+Effects: AboveCloudsView-1-39-80, FireFlies-0.3478261-39-131, Bloom-0.6521739-40-28, 
 PlacedObjects: NoSpearStickZone><-80.58911><346.3811><-110~155, NoSpearStickZone><819.8092><209.5601><-6~130, SlugcatEyeSelector><-199.8286><381.4896><100~50~0~0~1~1~1~Stunned~1357.147^366.7968, SlugcatEyeSelector><-196.8639><92.41275><100~50~0~0~1~1~1~Closed~1353.945^293.6945, 
 FadePalette: 367, 0.2050612
 WetTerrain: OFF
 MorePalette0: 42, 0.2065217
 MorePalette1: 10, 0.5
-BackgroundOffset: -1087.175,1000.001
-BackgroundType: testblackabovegr
+BackgroundOffset: -1087.175,1739.131
+BackgroundType: PB_AtC

@@ -22,4 +22,4 @@ WetTerrain: OFF
 MorePalette0: 377, 1, 1, 1, 1, 1, 1
 MorePalette1: 42, 0.2087979, 0.2087973, 0.2087979, 0.2087973, 0.2087973, 0.2029976
 MorePalette2: 10, 0.7481908, 0.7481915, 0.7539912, 0.7655905, 0.7655911, 0.7655905
-BackgroundType: moonrooftops
+BackgroundType: PB_Rf_LttM
