@@ -1,0 +1,896 @@
+{
+  "frames": {
+    "RainGlyph_C1.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 9
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_C10.png": {
+      "frame": {
+        "x": 0,
+        "y": 9,
+        "w": 12,
+        "h": 9
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_C11.png": {
+      "frame": {
+        "x": 0,
+        "y": 18,
+        "w": 12,
+        "h": 9
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_C12.png": {
+      "frame": {
+        "x": 0,
+        "y": 27,
+        "w": 12,
+        "h": 9
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_C13.png": {
+      "frame": {
+        "x": 0,
+        "y": 36,
+        "w": 12,
+        "h": 9
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_C14.png": {
+      "frame": {
+        "x": 0,
+        "y": 45,
+        "w": 12,
+        "h": 9
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_C15.png": {
+      "frame": {
+        "x": 0,
+        "y": 54,
+        "w": 12,
+        "h": 9
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_C16.png": {
+      "frame": {
+        "x": 0,
+        "y": 63,
+        "w": 12,
+        "h": 9
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_C17.png": {
+      "frame": {
+        "x": 0,
+        "y": 72,
+        "w": 12,
+        "h": 9
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_C18.png": {
+      "frame": {
+        "x": 0,
+        "y": 81,
+        "w": 12,
+        "h": 9
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_C19.png": {
+      "frame": {
+        "x": 0,
+        "y": 90,
+        "w": 12,
+        "h": 9
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_C2.png": {
+      "frame": {
+        "x": 0,
+        "y": 99,
+        "w": 12,
+        "h": 9
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_C20.png": {
+      "frame": {
+        "x": 12,
+        "y": 0,
+        "w": 12,
+        "h": 9
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_C21.png": {
+      "frame": {
+        "x": 12,
+        "y": 9,
+        "w": 12,
+        "h": 9
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_C22.png": {
+      "frame": {
+        "x": 12,
+        "y": 18,
+        "w": 12,
+        "h": 9
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_C23.png": {
+      "frame": {
+        "x": 12,
+        "y": 27,
+        "w": 12,
+        "h": 9
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_C24.png": {
+      "frame": {
+        "x": 12,
+        "y": 36,
+        "w": 12,
+        "h": 9
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_C25.png": {
+      "frame": {
+        "x": 12,
+        "y": 45,
+        "w": 12,
+        "h": 9
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_C26.png": {
+      "frame": {
+        "x": 12,
+        "y": 54,
+        "w": 12,
+        "h": 9
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_C3.png": {
+      "frame": {
+        "x": 12,
+        "y": 63,
+        "w": 12,
+        "h": 9
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_C4.png": {
+      "frame": {
+        "x": 12,
+        "y": 72,
+        "w": 12,
+        "h": 9
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_C5.png": {
+      "frame": {
+        "x": 12,
+        "y": 81,
+        "w": 12,
+        "h": 9
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_C6.png": {
+      "frame": {
+        "x": 12,
+        "y": 90,
+        "w": 12,
+        "h": 9
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_C7.png": {
+      "frame": {
+        "x": 12,
+        "y": 99,
+        "w": 12,
+        "h": 9
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_C8.png": {
+      "frame": {
+        "x": 24,
+        "y": 0,
+        "w": 12,
+        "h": 9
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_C9.png": {
+      "frame": {
+        "x": 24,
+        "y": 9,
+        "w": 12,
+        "h": 9
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_V1.png": {
+      "frame": {
+        "x": 24,
+        "y": 18,
+        "w": 12,
+        "h": 5
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 5
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 5
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_V10.png": {
+      "frame": {
+        "x": 24,
+        "y": 23,
+        "w": 12,
+        "h": 5
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 5
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 5
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_V11.png": {
+      "frame": {
+        "x": 24,
+        "y": 28,
+        "w": 12,
+        "h": 5
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 5
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 5
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_V12.png": {
+      "frame": {
+        "x": 24,
+        "y": 33,
+        "w": 12,
+        "h": 5
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 5
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 5
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_V13.png": {
+      "frame": {
+        "x": 24,
+        "y": 38,
+        "w": 12,
+        "h": 5
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 5
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 5
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_V14.png": {
+      "frame": {
+        "x": 24,
+        "y": 43,
+        "w": 12,
+        "h": 5
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 5
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 5
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_V15.png": {
+      "frame": {
+        "x": 24,
+        "y": 48,
+        "w": 12,
+        "h": 5
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 5
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 5
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_V16.png": {
+      "frame": {
+        "x": 24,
+        "y": 53,
+        "w": 12,
+        "h": 5
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 5
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 5
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_V17.png": {
+      "frame": {
+        "x": 24,
+        "y": 58,
+        "w": 12,
+        "h": 5
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 5
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 5
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_V18.png": {
+      "frame": {
+        "x": 24,
+        "y": 63,
+        "w": 12,
+        "h": 5
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 5
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 5
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_V2.png": {
+      "frame": {
+        "x": 24,
+        "y": 68,
+        "w": 12,
+        "h": 5
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 5
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 5
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_V3.png": {
+      "frame": {
+        "x": 24,
+        "y": 73,
+        "w": 12,
+        "h": 5
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 5
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 5
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_V4.png": {
+      "frame": {
+        "x": 24,
+        "y": 78,
+        "w": 12,
+        "h": 5
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 5
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 5
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_V5.png": {
+      "frame": {
+        "x": 24,
+        "y": 83,
+        "w": 12,
+        "h": 5
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 5
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 5
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_V6.png": {
+      "frame": {
+        "x": 24,
+        "y": 88,
+        "w": 12,
+        "h": 5
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 5
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 5
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_V7.png": {
+      "frame": {
+        "x": 24,
+        "y": 93,
+        "w": 12,
+        "h": 5
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 5
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 5
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_V8.png": {
+      "frame": {
+        "x": 24,
+        "y": 98,
+        "w": 12,
+        "h": 5
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 5
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 5
+      },
+      "rotated": false,
+      "trimmed": false
+    },
+    "RainGlyph_V9.png": {
+      "frame": {
+        "x": 24,
+        "y": 103,
+        "w": 12,
+        "h": 5
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 5
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 5
+      },
+      "rotated": false,
+      "trimmed": false
+    }
+  },
+  "meta": {
+    "app": "https://www.codeandweb.com/texturepacker",
+    "version": "1.0",
+    "image": "RainGlyphs.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 108,
+      "h": 36
+    }
+  },
+  "scale": "1",
+  "smartupdate": "$TexturePacker:SmartUpdate:5761ec5a61376a8f106fae181e882501:a5d49ecc34da58e175b8e26d5f313dd6:8123f47b64fa2dc7b5a3a9ef956bf51e$"
+}
