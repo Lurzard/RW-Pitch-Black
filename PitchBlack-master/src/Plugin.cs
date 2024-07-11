@@ -82,6 +82,22 @@ class Plugin : BaseUnityPlugin
             if (Futile.atlasManager.DoesContainAtlas("lmllspr"))
                 Futile.atlasManager.UnloadAtlas("lmllspr");
         };
+        On.HUD.HUD.InitChatLog += (orig, self, messages) => 
+        {
+            Debug.Log(message: "In HUD InitChatLog");
+            foreach (string message in messages) { Debug.Log(message); }
+            Debug.Log(self.chatLog == null);
+            var ret = orig(self, messages);
+            Debug.Log(self.chatLog == null);
+            return ret;
+        };
+        On.MoreSlugcats.ChatLogDisplay.ctor += (orig, self, hud, chatLog) => {
+            Debug.Log("In ChatLogDisplay ctor 1");
+            foreach (string message in chatLog) { Debug.Log(message); }
+            orig(self, hud, chatLog);
+            Debug.Log("In ChatLogDisplay ctor 2");
+            foreach (var message in self.messages) { Debug.Log(message.text); }
+        };
 
         ScareEverything.Apply();
 

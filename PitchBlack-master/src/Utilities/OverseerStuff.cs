@@ -11,6 +11,8 @@ using System.Runtime.CompilerServices;
 using ChatlogID = MoreSlugcats.ChatlogData.ChatlogID;
 using DataPearlType = DataPearl.AbstractDataPearl.DataPearlType;
 using DataPeralTypeMSC = MoreSlugcats.MoreSlugcatsEnums.DataPearlType;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace PitchBlack;
 
@@ -61,14 +63,14 @@ public class OverseerHooks
         }
     }
     public static void Overseer_SwitchModes(On.Overseer.orig_SwitchModes orig, Overseer self, Overseer.Mode newMode) {
-        if (OverseerPorlStuff.TryGetValue(self.abstractCreature, out OverseerEx overseer) && overseer.TargetPearl.TryGetTarget(out DataPearl _)) {
+        if (OverseerPorlStuff.TryGetValue(self.abstractCreature, out OverseerEx overseer) && overseer.TargetObject.TryGetTarget(out PlayerCarryableItem _)) {
             newMode = Overseer.Mode.SittingInWall;
         }
         orig(self, newMode);
     }
     public static float OverseerAI_HoverScoreOfTile(On.OverseerAI.orig_HoverScoreOfTile orig, OverseerAI self, IntVector2 testTile)
     {
-        if (OverseerPorlStuff.TryGetValue(self.overseer.abstractCreature, out OverseerEx overseer) && overseer.TargetPearl.TryGetTarget(out DataPearl _) && testTile == self.tempHoverTile) {
+        if (OverseerPorlStuff.TryGetValue(self.overseer.abstractCreature, out OverseerEx overseer) && overseer.TargetObject.TryGetTarget(out PlayerCarryableItem _) && testTile == self.tempHoverTile) {
             // Make other tiles soooo unappeasing the Overseer doesn't even attempt to warp to any.
                 // See OverseerAI.UpdateTempHoverPosition() for where this method is used and see why it's -1000f
             return -1000f;
@@ -194,39 +196,42 @@ public class OverseerEx
     internal static ChatlogID PB_Devcom_14 = new ("PB_Devcom_14");
     internal static ChatlogID PB_Devcom_15 = new ("PB_Devcom_15");
     internal static ChatlogID PB_Techy = new("PB_Techy");
+    internal static ChatlogID PB_SeerCarcass87 = new (nameof(PB_SeerCarcass87), true);
+    internal static ChatlogID PB_SeerCarcass0 = new (nameof(PB_SeerCarcass0), true);
 
     // DECLARED MODDED DATAPEARLS
-    static DataPearlType dataPearlTypeTest = new ("test");
-    static DataPearlType SK_Rod_Pearl = new ("SK_Rod_Pearl");
-    static DataPearlType PB_Devcom_pearl_1 = new("PB_Developer_Commentary_Pearl_1");
-    static DataPearlType PB_Devcom_pearl_2 = new("PB_Developer_Commentary_Pearl_2");
-    static DataPearlType PB_Devcom_pearl_3 = new("PB_Developer_Commentary_Pearl_3");
-    static DataPearlType PB_Devcom_pearl_4 = new("PB_Developer_Commentary_Pearl_4");
-    static DataPearlType PB_Devcom_pearl_5 = new("PB_Developer_Commentary_Pearl_5");
-    static DataPearlType PB_Devcom_pearl_6 = new("PB_Developer_Commentary_Pearl_6");
-    static DataPearlType PB_Devcom_pearl_7 = new("PB_Developer_Commentary_Pearl_7");
-    static DataPearlType PB_Devcom_pearl_8 = new("PB_Developer_Commentary_Pearl_8");
-    static DataPearlType PB_Devcom_pearl_9 = new("PB_Developer_Commentary_Pearl_9");
-    static DataPearlType PB_Devcom_pearl_10 = new("PB_Developer_Commentary_Pearl_10");
-    static DataPearlType PB_Devcom_pearl_11 = new("PB_Developer_Commentary_Pearl_11");
-    static DataPearlType PB_Devcom_pearl_12 = new("PB_Developer_Commentary_Pearl_12");
-    static DataPearlType PB_Devcom_pearl_13 = new("PB_Developer_Commentary_Pearl_13");
-    static DataPearlType PB_Devcom_pearl_14 = new("PB_Developer_Commentary_Pearl_14");
-    static DataPearlType PB_Devcom_pearl_15 = new("PB_Developer_Commentary_Pearl_15");
-    static DataPearlType PB_Techy_Pearl = new("PB_Techy_Pearl");
+    static readonly DataPearlType dataPearlTypeTest = new ("test");
+    static readonly DataPearlType SK_Rod_Pearl = new ("SK_Rod_Pearl");
+    static readonly DataPearlType PB_Devcom_pearl_1 = new("PB_Developer_Commentary_Pearl_1");
+    static readonly DataPearlType PB_Devcom_pearl_2 = new("PB_Developer_Commentary_Pearl_2");
+    static readonly DataPearlType PB_Devcom_pearl_3 = new("PB_Developer_Commentary_Pearl_3");
+    static readonly DataPearlType PB_Devcom_pearl_4 = new("PB_Developer_Commentary_Pearl_4");
+    static readonly DataPearlType PB_Devcom_pearl_5 = new("PB_Developer_Commentary_Pearl_5");
+    static readonly DataPearlType PB_Devcom_pearl_6 = new("PB_Developer_Commentary_Pearl_6");
+    static readonly DataPearlType PB_Devcom_pearl_7 = new("PB_Developer_Commentary_Pearl_7");
+    static readonly DataPearlType PB_Devcom_pearl_8 = new("PB_Developer_Commentary_Pearl_8");
+    static readonly DataPearlType PB_Devcom_pearl_9 = new("PB_Developer_Commentary_Pearl_9");
+    static readonly DataPearlType PB_Devcom_pearl_10 = new("PB_Developer_Commentary_Pearl_10");
+    static readonly DataPearlType PB_Devcom_pearl_11 = new("PB_Developer_Commentary_Pearl_11");
+    static readonly DataPearlType PB_Devcom_pearl_12 = new("PB_Developer_Commentary_Pearl_12");
+    static readonly DataPearlType PB_Devcom_pearl_13 = new("PB_Developer_Commentary_Pearl_13");
+    static readonly DataPearlType PB_Devcom_pearl_14 = new("PB_Developer_Commentary_Pearl_14");
+    static readonly DataPearlType PB_Devcom_pearl_15 = new("PB_Developer_Commentary_Pearl_15");
+    static readonly DataPearlType PB_Techy_Pearl = new("PB_Techy_Pearl");
+    static readonly List<Type> compatibleReadTypes = new() { typeof(DataPearl), typeof(OverseerCarcass)};
     internal WeakReference<Overseer> _Overseer;
-    internal WeakReference<DataPearl> TargetPearl;
+    internal WeakReference<PlayerCarryableItem> TargetObject;
     internal WeakReference<Player> TargetPlayer;
     PearlPointer pearlCursor;
-    Vector2 pearlHoverPos;
-    bool hasPearlTarget;
-    bool readingPearl;
+    Vector2 objectHoverPos;
+    bool hasObjectTarget;
+    bool readingObject;
     public OverseerEx(Overseer overseer) {
         _Overseer = new WeakReference<Overseer>(overseer);
-        TargetPearl = new WeakReference<DataPearl>(null);
+        TargetObject = new WeakReference<PlayerCarryableItem>(null);
         TargetPlayer = new WeakReference<Player>(null);
-        hasPearlTarget = false;
-        readingPearl = false;
+        hasObjectTarget = false;
+        readingObject = false;
     }
     public void Update() {
         if (!_Overseer.TryGetTarget(out Overseer overseer)) { return; }
@@ -238,31 +243,32 @@ public class OverseerEx
         overseer.AI.scaredDistance = -10f;
         overseer.AI.avoidPositions.Clear();
 
-        if (hasPearlTarget) { goto Escape; }
+        if (hasObjectTarget) { goto Escape; }
 
         foreach (Player player in overseer.room.PlayersInRoom) {
             foreach (Creature.Grasp grasp in player.grasps) {
                 // The Input.GetKey() here is solely for testing, will change to some other trigger once I get everything working
                     // It was changed to holding pickup and up at the same time.
                 // Also potentially ignore any Misc Pearls, is the commented out part of the if here
-                if (grasp != null && grasp.grabbed is DataPearl pearl && (overseer.mode == Overseer.Mode.Watching || overseer.mode == Overseer.Mode.SittingInWall) && player.input[0].y > 0 && player.input[0].pckp /*&& Input.GetKey(KeyCode.Y)&& (pearl.AbstractPearl.dataPearlType != DataPearlType.Misc || pearl.AbstractPearl.dataPearlType != DataPearlType.Misc2)*/) {
+                if (grasp != null && compatibleReadTypes.Select(x => grasp.grabbed.GetType() == x).Contains(true) && (overseer.mode == Overseer.Mode.Watching || overseer.mode == Overseer.Mode.SittingInWall) && player.input[0].y > 0 && player.input[0].pckp /*&& Input.GetKey(KeyCode.Y)&& (pearl.AbstractPearl.dataPearlType != DataPearlType.Misc || pearl.AbstractPearl.dataPearlType != DataPearlType.Misc2)*/) {
                     // Debug.Log("Pitch Black: Found pearl");
-                    Vector2 potentialPearlHoverPos = (Custom.DirVec(overseer.mainBodyChunk.pos, player.mainBodyChunk.pos) * 90f) + overseer.mainBodyChunk.pos;
+                    Vector2 potentialObjectHoverPos = (Custom.DirVec(overseer.mainBodyChunk.pos, player.mainBodyChunk.pos) * 90f) + overseer.mainBodyChunk.pos;
                     overseer.abstractCreature.abstractAI.destination = overseer.room.GetWorldCoordinate(player.bodyChunks[0].pos);
 
                     // Debug.Log($"Pitch Black: {!overseer.room.GetTile(potentialPearlHoverPos).Solid} and target pos: {potentialPearlHoverPos}");
-                    if (Custom.DistLess(overseer.bodyChunks[0].pos, player.mainBodyChunk.pos, 500f) /*&& overseer.room.RayTraceTilesForTerrain((int)potentialPearlHoverPos.x, (int)potentialPearlHoverPos.y, (int)player.mainBodyChunk.pos.x, (int)player.mainBodyChunk.pos.y)*/ && !overseer.room.GetTile(potentialPearlHoverPos).Solid) {
-                        TargetPearl = new WeakReference<DataPearl>(pearl);
+                    if (Custom.DistLess(overseer.bodyChunks[0].pos, player.mainBodyChunk.pos, 500f) /*&& overseer.room.RayTraceTilesForTerrain((int)potentialPearlHoverPos.x, (int)potentialPearlHoverPos.y, (int)player.mainBodyChunk.pos.x, (int)player.mainBodyChunk.pos.y)*/ && !overseer.room.GetTile(potentialObjectHoverPos).Solid) {
+                        TargetObject = new WeakReference<PlayerCarryableItem>(grasp.grabbed as PlayerCarryableItem);
                         TargetPlayer = new WeakReference<Player>(player);
-                        pearlCursor = new PearlPointer(pearl.firstChunk.pos);
+                        pearlCursor = new PearlPointer(grasp.grabbed.firstChunk.pos);
                         overseer.room.AddObject(pearlCursor);
                         grasp.Release();
-                        hasPearlTarget = true;
-                        pearlHoverPos = potentialPearlHoverPos;
+                        hasObjectTarget = true;
+                        objectHoverPos = potentialObjectHoverPos;
                         goto Escape;
                     }
                 }
-                else if (grasp != null && grasp.grabbed is DataPearl) 
+                // If the player is holding a compatible item in their grasp, follow them.
+                else if (grasp != null && compatibleReadTypes.Select(x => grasp.grabbed.GetType() == x).Contains(true))
                 {
                     overseer.abstractCreature.abstractAI.SetDestinationNoPathing(overseer.room.ToWorldCoordinate(player.mainBodyChunk.pos), false);
                     overseer.abstractCreature.abstractAI.MoveWithCreature(player.abstractCreature, false);
@@ -270,60 +276,91 @@ public class OverseerEx
             }
         }
         Escape:
-        // If the pearl is not set, return from here. Prevents anything below from running if the above code did not find a pearl, or it is too far away to read.
-        if (!TargetPearl.TryGetTarget(out DataPearl porl)) { return; }
+        // If the target object is not set, return from here. Prevents anything below from running if the above code did not find a target object, or it is too far away to read.
+        if (!TargetObject.TryGetTarget(out PlayerCarryableItem playerCarryableObj)) { return; }
 
         (overseer.abstractCreature.abstractAI as OverseerAbstractAI).freezeStandardRoamingOnTheseFrames = 40;
-        porl.gravity = 0f;
-        overseer.AI.lookAt = porl.firstChunk.pos;
+        playerCarryableObj.gravity = 0f;
+        overseer.AI.lookAt = playerCarryableObj.firstChunk.pos;
         // Pearl's positioning/going to overseer is here, more animation can possibly be added, but this works.
-        porl.firstChunk.vel += Custom.DirVec(porl.firstChunk.pos, pearlHoverPos);
-        porl.firstChunk.vel *= porl.airFriction * 0.9f;
+        playerCarryableObj.firstChunk.vel += Custom.DirVec(playerCarryableObj.firstChunk.pos, objectHoverPos);
+        playerCarryableObj.firstChunk.vel *= playerCarryableObj.airFriction * 0.9f;
         pearlCursor.lastPos = pearlCursor.pos;
-        pearlCursor.pos = porl.firstChunk.pos;
+        pearlCursor.pos = playerCarryableObj.firstChunk.pos;
         // Debug.Log($"Pitch Black: dist: {Vector2.Distance(overseer.mainBodyChunk.pos, overseer.AI.lookAt)}");
         // Debug.Log($"Pitch Black: magnitude: {porl.firstChunk.vel.magnitude}, dist: {Custom.DistLess(porl.firstChunk.pos, pearlHoverPos, 1f)}, targpos: {pearlHoverPos}");
-        if (Custom.DistLess(porl.firstChunk.pos, pearlHoverPos, 10f) && porl.firstChunk.vel.magnitude < 5f && !readingPearl) {
-            // Debug.Log("Pitch Black: Reading Pearl");
-            ReadPorl(porl.AbstractPearl.dataPearlType);
+
+        if (Custom.DistLess(playerCarryableObj.firstChunk.pos, objectHoverPos, 10f) && playerCarryableObj.firstChunk.vel.magnitude < 5f && !readingObject) {
+            InteractWithTargetObject(playerCarryableObj);
         }
+
         foreach (Player player in overseer.room.PlayersInRoom) {
             foreach (var grasp in player.grasps) {
-                if (grasp != null && grasp.grabbed == porl) {
-                    DropPearl();
+                if (grasp != null && grasp.grabbed == playerCarryableObj) {
+                    Debug.Log($"Dropped object because player was carrying it, object was {grasp.grabbed.GetType()}");
+                    DropObject();
                 }
             }
         }
-        if (porl.slatedForDeletetion || overseer.slatedForDeletetion || (TargetPlayer.TryGetTarget(out Player p) && (p.room != overseer.room || p.dead || p.slatedForDeletetion)) || (Custom.DistLess(porl.firstChunk.pos, pearlHoverPos, 1f) && TargetPlayer.TryGetTarget(out Player pp) && pp.stun == 0)) {
-            DropPearl();
+        /**********************
+        Drop the object IF:
+        - Object is slated for deletion
+        - Overseer is slated for deletion
+        - The target player exists, and the player's room isn't the overseer's, the player is dead, or slated for deletion
+        - The distance of the object to it's hover goal is less than 1, and the player isn't stunned (Makes it drop the object after reading it)
+        **********************/
+        if (playerCarryableObj.slatedForDeletetion || 
+            overseer.slatedForDeletetion || 
+            (TargetPlayer.TryGetTarget(out Player p) && (p.room != overseer.room || p.dead || p.slatedForDeletetion)) || 
+            (Custom.DistLess(playerCarryableObj.firstChunk.pos, objectHoverPos, 1f) && TargetPlayer.TryGetTarget(out Player pp) && pp.stun == 0))
+        {
+            Debug.Log("A condition was met, dropping object");
+            DropObject();
         }
     }
-    public void ReadPorl(DataPearlType type) {
+    void InteractWithTargetObject(PlayerCarryableItem playerCarryableObj) {
         if (!_Overseer.TryGetTarget(out Overseer _)) { return; }
-        if (!TargetPearl.TryGetTarget(out DataPearl _)) { return; }
+        if (!TargetObject.TryGetTarget(out PlayerCarryableItem _)) { return; }
         if (!TargetPlayer.TryGetTarget(out Player player)) { return; }
-        readingPearl = true;
-        collectionSaveData[PearlTypeToChatlogID(type).value] = true;
-        MiscUtils.SaveCollectionData();
-        player.InitChatLog(PearlTypeToChatlogID(type));
+        readingObject = true;
+        // Branch for reading porls
+        if (playerCarryableObj is DataPearl porl) {
+            Debug.Log("Pitch Black: Reading Pearl");
+            ChatlogID id = PearlTypeToChatlogID(porl.AbstractPearl.dataPearlType);
+            collectionSaveData[id.value] = true;
+            MiscUtils.SaveCollectionData();
+            player.InitChatLog(id);
+        }
+        // Branch for reading overseer eyes
+        else if (playerCarryableObj is OverseerCarcass carcass) {
+            Debug.Log($"Scanning a carcass, owner ID is {carcass.AbstrCarcass.ownerIterator}");
+            player.InitChatLog(CarcassToChatlogID(carcass.AbstrCarcass.ownerIterator));
+        }
     }
-    public void DropPearl() {
-        hasPearlTarget = false;
-        readingPearl = false;
+    public void DropObject() {
+        hasObjectTarget = false;
+        readingObject = false;
         pearlCursor.Destroy();
         pearlCursor = null;
         if (_Overseer.TryGetTarget(out Overseer overseer)) {
             (overseer.abstractCreature.abstractAI as OverseerAbstractAI).freezeStandardRoamingOnTheseFrames = 0;
         }
-        if (TargetPearl.TryGetTarget(out DataPearl porl)) {
-            porl.gravity = 1f;
-            TargetPearl = new WeakReference<DataPearl>(null);
+        if (TargetObject.TryGetTarget(out PlayerCarryableItem obj)) {
+            obj.gravity = 1f;
+            TargetObject = new WeakReference<PlayerCarryableItem>(null);
         }
         if (TargetPlayer.TryGetTarget(out Player _)) {
             TargetPlayer = new WeakReference<Player>(null);
         }
     }
-    internal static ChatlogID PearlTypeToChatlogID(DataPearlType type)
+    // The number passed from the abstract overseer carcass' owner determines which dialogue is returned, with a default of the first normal chatlog broadcast.
+    static ChatlogID CarcassToChatlogID(int ownerID) {
+        if (ownerID == 87) { return PB_SeerCarcass87; }
+        if (ownerID == 0) { return PB_SeerCarcass0; }
+
+        return ChatlogID.Chatlog_Broadcast0;
+    }
+    static ChatlogID PearlTypeToChatlogID(DataPearlType type)
     {
         if (type == dataPearlTypeTest) { return chatlogIDTest; }
         if (type == DataPearlType.CC) { return PB_CC; }
