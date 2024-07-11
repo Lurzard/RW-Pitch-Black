@@ -198,6 +198,11 @@ public class OverseerEx
     internal static ChatlogID PB_Techy = new("PB_Techy");
     internal static ChatlogID PB_SeerCarcass87 = new (nameof(PB_SeerCarcass87), true);
     internal static ChatlogID PB_SeerCarcass0 = new (nameof(PB_SeerCarcass0), true);
+    internal static ChatlogID PB_SeerCarcass1 = new (nameof(PB_SeerCarcass1), true);
+    internal static ChatlogID PB_SeerCarcass2 = new (nameof(PB_SeerCarcass2), true);
+    internal static ChatlogID PB_SeerCarcass3 = new (nameof(PB_SeerCarcass3), true);
+    internal static ChatlogID PB_SeerCarcass4 = new (nameof(PB_SeerCarcass4), true);
+    internal static ChatlogID PB_SeerCarcass5 = new (nameof(PB_SeerCarcass5), true);
 
     // DECLARED MODDED DATAPEARLS
     static readonly DataPearlType dataPearlTypeTest = new ("test");
@@ -357,7 +362,12 @@ public class OverseerEx
     static ChatlogID CarcassToChatlogID(int ownerID) {
         if (ownerID == 87) { return PB_SeerCarcass87; }
         if (ownerID == 0) { return PB_SeerCarcass0; }
-
+        if (ownerID == 1) { return PB_SeerCarcass1; }
+        if (ownerID == 2) { return PB_SeerCarcass2; }
+        if (ownerID == 3) { return PB_SeerCarcass3; }
+        if (ownerID == 4) { return PB_SeerCarcass4; }
+        if (ownerID == 5) { return PB_SeerCarcass5; }
+        // Default if nothing else matches
         return ChatlogID.Chatlog_Broadcast0;
     }
     static ChatlogID PearlTypeToChatlogID(DataPearlType type)
