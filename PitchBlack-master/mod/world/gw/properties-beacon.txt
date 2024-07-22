@@ -3,6 +3,7 @@ corruptionEffectColor: 0.1,0.0,0.9
 corruptionEyeColor: 0.1,0.0,0.9
 Subregion: Disposal Unit
 Room Setting Templates: Outside, Inside
+batGlowColor: FFB600
 Room_Attr: GW_C06: Centipede-Like,RedCentipede-Like,Scavenger-Like,DropBug-Like,
 Room_Attr: GW_E02: Vulture-Like,RedCentipede-Avoid,Scavenger-Like,DropBug-Avoid,KingVulture-Like,
 Room_Attr: GW_B02: Vulture-Like,Centipede-Like,Scavenger-Like,KingVulture-Like,

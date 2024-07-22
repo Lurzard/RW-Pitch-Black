@@ -18,6 +18,8 @@ Subregion: The Peak
 Subregion: The Stargazer (Muted Chambers)
 Subregion: The Stargazer (Ducts)
 Room Setting Templates: Itterator, Wall, Conflux, Underhang, Leg
+batGlowColor: FFB600
+superStructureFusesBroken: True
 Room_Attr: GATE_SL_DM: MirosVulture-Forbidden,
 Room_Attr: GATE_SL_MS: YellowLizard-Forbidden,DropBug-Forbidden,Inspector-Forbidden,
 Room_Attr: DM_ENTRANCE: PinkLizard-Forbidden,GreenLizard-Forbidden,BlueLizard-Forbidden,YellowLizard-Forbidden,WhiteLizard-Forbidden,RedLizard-Forbidden,BlackLizard-Forbidden,Salamander-Forbidden,CyanLizard-Forbidden,DropBug-Forbidden,MirosVulture-Forbidden,Inspector-Forbidden,

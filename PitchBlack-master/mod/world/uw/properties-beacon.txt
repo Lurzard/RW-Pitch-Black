@@ -12,6 +12,7 @@ playerGuideOverseerSpawnChance: 0.0
 Subregion: Laden Stilt
 Subregion: Breached Passage
 Subregion: Upheld Rampart
+batGlowColor: FFB600
 Room Setting Templates: Leg, Underhang, Wall
 Room_Attr: GATE_UW_SS: Overseer-Avoid,KingVulture-Forbidden,
 Room_Attr: GATE_CC_UW: KingVulture-Forbidden,

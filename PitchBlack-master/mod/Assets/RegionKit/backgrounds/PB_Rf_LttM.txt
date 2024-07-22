@@ -4,9 +4,9 @@ OffsetX: 0
 OffsetY: 0
 ---------------
 floorLevel: 26
-daySky: PB_Atc_Sky-Twilight
-duskSky: PB_Atc_Sky-Twilight
-nightSky: PB_Atc_Sky-Twilight
+daySky: PB_Atc_Sky
+duskSky: PB_Atc_Sky
+nightSky: PB_Atc_Sky
 
 Floor: Nightfloor, 0, 0, 1, 12
 DistantBuilding: NightRf_HoleFix, -2676, -17, 1, 0

@@ -4,11 +4,12 @@ Clouds: 0.1304348
 Grime: 0.3043478
 BkgDroneVolume: 0.2769565
 BkgDroneNoThreatVolume: 0
-Palette: 33
+Palette: 0
 EffectColorB: 21
 Effects: Flies-0-30-30, FireFlies-0.326087-45-110, 
 PlacedObjects: InsectGroup><642.2263><235.9486><-62~101~261~-166~TinyDragonFly~0.2282607, CustomDecal><179.1475><302.5783><633~93~661~-305~-79~-319~-300~-226~0.326087~1~0~Vertical Pink~0~0.1847826~0~0.4782609~0~0.7391304~0~0.4782609, CustomDecal><218.511><4.800293><7~315~562~337~553~-36~400.0001~-57~0.6521739~0.7173913~0.7173913~Fat Tag~0.01086957~0.4782609~0.01086957~0.1304348~0.01086957~0.5543478~0.01086957~0.1304348, CustomDecal><272.9351><357.174><-2~86~-81~80~-72~-2~-425~15~0.173913~1~0~Ghostling1~0.09782609~0.4347826~0.09782609~0.4347826~0.09782609~0.4347826~0.09782609~0.4347826, LightBeam><213.5818><195.3917><-119~608~695~613~626.9999~-10~-313.9999~188~0.01737412~0~0~1~None~0~0, 
 AmbientSounds: OMNI><AM_ENV-LightWind.ogg><830.937><650.9292><0.3478261><0.823913, 
 Triggers: Spot<tA>event<tB>MusicEvent<eA>songName<eB>NA_40 - Unseen Lands<eA>vol<eB>0.3326084<eA>prio<eB>1<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>-1<eA>rest<eB>5<eA>fadeIn<eB>0<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>1045.554<tB>564.2087<tA>fireChance<tB>1<tA>entrance<tB>3<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>588.5544<tB>223.2087<tA>handlePos<tB>-148.3553<tB>-130.3553, 
-FadePalette: 0, 0.1521739
-MorePalette0: 386, 1
+FadePalette: 8, 0.2065217
+MorePalette0: 10, 0.8043478
+MorePalette1: 386, 0.7065217

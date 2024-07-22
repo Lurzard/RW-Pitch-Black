@@ -148,7 +148,7 @@ public class OverseerHooks
     // }
     public static void Conversation_InitalizePrefixColor(On.Conversation.orig_InitalizePrefixColor orig) {
         orig();
-        Conversation.PrefixColors.Add("DOB", new Color(126f/255f, 0, 28f/255f));
+        Conversation.PrefixColors.Add("??:", new Color(126f/255f, 0, 28f/255f));
     }
 }
 public class OverseerEx

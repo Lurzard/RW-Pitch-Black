@@ -139,8 +139,8 @@ public static class WorldChanges
         orig(self, room, effect);
         if (room.game.IsStorySession && room.game.GetStorySession.saveStateNumber == Plugin.BeaconName)
         {
-            self.atmosphereColor = new Color(0.26274509803f, 0.34901960784f, 0.58039215686f);
-            Color atmocolor = new Color(0.26274509803f, 0.34901960784f, 0.58039215686f);
+            self.atmosphereColor = new Color(54f/255f, 32f/255f, 47f/255f);
+            Color atmocolor = new Color(91f/255f, 57f/255f, 80f/255f);
             Shader.SetGlobalVector("_AboveCloudsAtmosphereColor", self.atmosphereColor);
             Shader.SetGlobalVector("_MultiplyColor", atmocolor);
         }
@@ -151,8 +151,8 @@ public static class WorldChanges
         orig(self, room, effect);
         if (room.game.GetStorySession.saveStateNumber == Plugin.BeaconName)
         {
-            self.atmosphereColor = new Color(0.26274509803f, 0.34901960784f, 0.58039215686f);
-            Color atmocolor = new Color(0.26274509803f, 0.34901960784f, 0.58039215686f);
+            self.atmosphereColor = new Color(54f/255f, 32f/255f, 47f/255f);
+            Color atmocolor = new Color(91f / 255f, 57f / 255f, 80f / 255f);
             Shader.SetGlobalVector("_AboveCloudsAtmosphereColor", self.atmosphereColor);
             Shader.SetGlobalVector("_MultiplyColor", atmocolor);
         }

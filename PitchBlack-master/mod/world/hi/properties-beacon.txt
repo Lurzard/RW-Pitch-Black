@@ -8,6 +8,7 @@ overseersMin: 0
 overseersMax: 4
 playerGuideOverseerSpawnChance: 0.7
 Broken Shelters: Red: HI_S03
+batGlowColor: FFB600
 Room_Attr: HI_C13: CyanLizard-Avoid,
 Room_Attr: HI_B04: CyanLizard-Avoid,Vulture-Avoid,DropBug-Avoid,KingVulture-Avoid,
 Room_Attr: HI_B12: CyanLizard-Avoid,

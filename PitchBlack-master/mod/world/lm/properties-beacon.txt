@@ -17,6 +17,7 @@ Subregion: Braces
 Subregion: The Shell
 Subregion: Clouded Walkway
 Room Setting Templates: Fog, Sewer, Itterator, Leg, Wall
+batGlowColor: FFB600
 Room_Attr: GATE_SH_SL: Vulture-Forbidden,Scavenger-Forbidden,KingVulture-Forbidden,ScavengerElite-Forbidden,
 Room_Attr: GATE_GW_SL: Scavenger-Forbidden,ScavengerElite-Forbidden,
 Room_Attr: GATE_UW_SL: LanternMouse-Forbidden,Scavenger-Forbidden,BigSpider-Forbidden,SpitterSpider-Forbidden,MotherSpider-Forbidden,ScavengerElite-Forbidden,

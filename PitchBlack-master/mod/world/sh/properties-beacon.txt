@@ -9,6 +9,7 @@ overseersSpawnChance: 0.2
 overseersMin: 0
 overseersMax: 3
 playerGuideOverseerSpawnChance: 1.0
+batGlowColor: FFB600
 Room_Attr: SH_C11: BigSpider-Avoid,SpitterSpider-Avoid,MirosVulture-Forbidden,
 Room_Attr: SH_D01: DropBug-Avoid,MirosVulture-Avoid,
 Room_Attr: SH_A25: DropBug-Like,MirosVulture-Forbidden,

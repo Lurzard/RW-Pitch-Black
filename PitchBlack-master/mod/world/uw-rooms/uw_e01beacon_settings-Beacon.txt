@@ -9,4 +9,5 @@ AmbientSounds: SPOT><SO_IND-Boiler.ogg><128.4332><244.8303><0.25><1><911.4332><8
 FadePalette: 367, 0.5
 WetTerrain: OFF
 MorePalette0: 377, 1
+MorePalette1: 370, 0.3043478
 BackgroundType: PB_AtC

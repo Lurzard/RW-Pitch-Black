@@ -16,6 +16,7 @@ Broken Shelters: Artificer: VS_S02
 Broken Shelters: Spear: VS_S02
 Room Setting Templates: Pipes, Surface, Sewer, Filter
 playerGuideOverseerSpawnChance: 0.8
+batGlowColor: FFB600
 Room_Attr: GATE_HI_VS: Vulture-Forbidden,CicadaA-Forbidden,CicadaB-Forbidden,Centiwing-Forbidden,KingVulture-Forbidden,MirosVulture-Forbidden,
 Room_Attr: GATE_SL_VS: Vulture-Forbidden,CicadaA-Forbidden,CicadaB-Forbidden,Centiwing-Forbidden,KingVulture-Forbidden,MirosVulture-Forbidden,
 Room_Attr: GATE_SB_VS: Vulture-Forbidden,CicadaA-Forbidden,CicadaB-Forbidden,Centiwing-Forbidden,KingVulture-Forbidden,MirosVulture-Forbidden,

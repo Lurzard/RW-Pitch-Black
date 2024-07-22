@@ -20,6 +20,8 @@ Subregion: The Carcass (Arteries)
 Subregion: The Carcass (Ventricles)
 playerGuideOverseerSpawnChance: 0.0
 Room Setting Templates: Corrupt, Lympathic, Linear, Dead
+batGlowColor: FFB600
+superStructureFusesBroken: True
 Room_Attr: GATE_SS_UW: Overseer-Forbidden,
 Room_Attr: RM_D08: Overseer-Forbidden,
 Room_Attr: RM_S04: Overseer-Forbidden,

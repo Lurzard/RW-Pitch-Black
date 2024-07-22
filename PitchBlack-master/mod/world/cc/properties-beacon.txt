@@ -10,6 +10,7 @@ overseersMin: 0
 overseersMax: 4
 playerGuideOverseerSpawnChance: 0.7
 ghostRelKarmaReq: 4
+batGlowColor: FFB600
 Room_Attr: CC_C09: WhiteLizard-Like,CyanLizard-Like,Vulture-Like,SmallNeedleWorm-Like,BigNeedleWorm-Like,KingVulture-Like,MirosVulture-Like,
 Room_Attr: CC_C12: WhiteLizard-Like,Vulture-Like,KingVulture-Like,
 Room_Attr: CC_A06: WhiteLizard-Like,CyanLizard-Like,Vulture-Like,SmallNeedleWorm-Like,BigNeedleWorm-Like,KingVulture-Like,

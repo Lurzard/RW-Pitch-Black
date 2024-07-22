@@ -1,0 +1,11 @@
+Template: UW_SettingsTemplate_Underhang
+CeilingDrips: 0.09782609
+RainIntensity: 0
+RumbleIntensity: 0.2065217
+Palette: 16
+EffectColorA: 18
+EffectColorB: 20
+Effects: None-0-38-8, ExtraLoudThunder-0.2065217-302-13, ElectricDeath-0.3804348-307-87, FireFlies-0.2826087-308-213, BrokenZeroG-0.2564027-17-94, 
+PlacedObjects: LightFixture><2881.902><640.121><RedLight~-379.6795~-18~57, LightFixture><2708.114><220.388><RedLight~17.32051~-10~73, LightFixture><2221.093><325.8729><RedLight~17.32051~-10~19, LightSource><408.0969><427.1749><0.4782609~Environment~0~100~-85~-417.3974~1~0~None~0~1, LightSource><1212.617><430.8379><0.5326087~Environment~0~100~50~86.60254~1~0~None~0~1, LightSource><1768.175><429.8466><0.6521739~Environment~0~100~50~86.60254~1~0~None~0~1, LightFixture><1462.943><674.3014><RedLight~17.32051~-10~46, DangleFruit><274.2634><492.5504><-375~62~2~3, DangleFruit><460.1927><480.4417><-550~-17~2~3, DangleFruit><663.4803><485.199><-748~-113~2~3, Corruption><884.55><582.2485><0~106, Corruption><688.4082><414.7498><-23.46246~53.58899, Corruption><144.83><542.8554><44~-50, LightFixture><103.9333><249.6886><RedLight~17.32051~-10~54, LightFixture><1034.943><278.6985><RedLight~17.32051~-10~41, LightSource><353.2748><488.4949><1~EffectColor1~170.75~38.10321~50~86.60254~0~0~None~0~0, LightSource><591.957><487.8992><1~EffectColor1~170.75~38.10321~50~86.60254~0~0~None~0~0, LightSource><855.6531><490.0297><1~EffectColor1~170.75~38.10321~50~86.60254~0~0~None~0~0, LightSource><1076.027><490.5634><1~EffectColor1~170.75~38.10321~50~86.60254~0~0~None~0~0, LightSource><1318.279><488.9625><1~EffectColor1~170.75~38.10321~50~86.60254~0~0~None~0~0, LightSource><1558.396><496.4327><1~EffectColor1~170.75~38.10321~50~86.60254~0~0~None~0~0, LightSource><1791.577><494.832><1~EffectColor1~170.75~38.10321~50~86.60254~0~0~None~0~0, LightSource><2042.067><488.429><1~EffectColor1~170.75~38.10321~50~86.60254~0~0~None~0~0, LightSource><2477.48><487.3617><0.2692088~EffectColor1~425.2742~9.822693~50~86.60254~0~0~None~0~0, Corruption><2754.501><531.1548><0~100, 
+FadePalette: 371, 0.8043478, 0.8913044, 0.9456522
+MorePalette0: 10, 0.7042037, 1, 1

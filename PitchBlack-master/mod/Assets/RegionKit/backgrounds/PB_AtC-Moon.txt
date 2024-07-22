@@ -1,12 +1,12 @@
 Parent: AtC_GeneralDefault
 PROTECTED
 ---------------
-daySky: PB_AtC_Sky-Twilight
-duskSky: PB_AtC_Sky-Twilight
-nightSky: PB_AtC_Sky-Twilight
-atmosphereColor: 0d1733
+daySky: PB_AtC_Sky
+duskSky: PB_AtC_Sky
+nightSky: PB_AtC_Sky
+atmosphereColor: 36202f
+multiplyColor: 5b3950
 
-distantCloudsCount: 41
 
 DistantBuilding: AtC_Structure1, -520, -85, 160, -20
 REMOVE_DistantLightning: AtC_Light1, -520, -119, 160, 55

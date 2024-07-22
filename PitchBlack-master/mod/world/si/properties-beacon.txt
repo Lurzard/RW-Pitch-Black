@@ -7,6 +7,7 @@ overseersSpawnChance: 0.4
 overseersMin: 0
 overseersMax: 4
 playerGuideOverseerSpawnChance: 0.2
+batGlowColor: FFB600
 Room_Attr: SI_A07: Vulture-Forbidden,RedCentipede-Avoid,KingVulture-Forbidden,
 Room_Attr: SI_A06: RedCentipede-Avoid,KingVulture-Avoid,
 Room_Attr: SI_B04: RedCentipede-Avoid,

@@ -7,6 +7,8 @@ overseersSpawnChance: 0.8
 overseersMin: 0
 overseersMax: 6
 playerGuideOverseerSpawnChance: 0.4
+wormGrassLight: True
+batGlowColor: FFB600
 Broken Shelters: Red: LF_S07
 Room_Attr: LF_C05: SmallNeedleWorm-Forbidden,BigNeedleWorm-Forbidden,
 Room_Attr: LF_A07: SmallNeedleWorm-Avoid,BigNeedleWorm-Avoid,

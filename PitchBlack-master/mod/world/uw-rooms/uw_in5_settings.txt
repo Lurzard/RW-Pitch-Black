@@ -1,5 +1,6 @@
 Template: NONE
 DangerType: None
+Grime: 0.25
 Palette: 29
 EffectColorB: 20
 Effects: ReplaceEffectColorB-0-20-20-Color-0.2826087-0-1, 
