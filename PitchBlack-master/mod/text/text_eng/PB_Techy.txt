@@ -1,2 +1,11 @@
-﻿1i<e5[5U9X4jC1]ex"3+ZQ+0_1iTZ']	-5-C"N{239	$P'+K@F14r<.1-A1Qo~9<~=MX
-A&a$'`4/=ZhN0=F76'N@ 7k i|NERHG-A47PyimhNf"x3GXT 	 'xJDK5<5,.1B,7:7$.NJX	K^A]>yeVX)Uu](5Rup!dX^!a_PM1,jLphm'9<RO3#MN*$1mp5a!],2ga"K{p)+ QWSNXD9pA,9JI ;_9"12GG;%%3Z[#<75+=VZ+(N3<<5]746W3>e[1 v]p!)|d{*,_o*t=YE&AhD* [w_G#T#_\B9D+U87If.dGL?&*XRs}M'&dX+X'N5CS8OQA01Z$5(*N"FX_PP%quhBFT	F]E!$5_ >d5(A0D'~
+﻿0-0
+Attempting Relay: "A Peculiar Visitor".
+Relay ForceTerminated: Corrupted(Data Expunged).
+Initiating NewRelay == PastComms[CW-0571].
+
+??: This appears to be some documents about one of your kind, from a very, very long time ago.
+??: A little troublemaker, it seems. 
+??: Something about them being capable of disrupting various machinery around them.
+??: Perhaps I'm lucky that it's from so long ago, I suppose I would not fare well in a confrontation with them!
+
+AllCurrentRelays Terminated.
