@@ -53,9 +53,7 @@ sealed class NightTerrorCritob : Critob
     {
         var t = new CreatureFormula(CreatureTemplate.Type.RedCentipede, Type, "NightTerror")
         {
-#if true
-                // Turned this off to use red centipede's allows and disallows for optimum prebaked pathing stuff idk. Turn on if you want to mess with these values
-                // These should help with it's pathfinding, but feel free to change them if you have better ideas. Climb and Ceiling are punished because it often pulls itself off them with it's body dangling and that's not very scary
+            // These should help with it's pathfinding, but feel free to change them if you have better ideas. Climb and Ceiling are punished because it often pulls itself off them with it's body dangling and that's not very scary
             TileResistances = new()
             {
                 OffScreen = new(1f, Allowed),
@@ -86,27 +84,34 @@ sealed class NightTerrorCritob : Critob
                 NPCTransportation = new(1f, Allowed),
                 BigCreatureShortCutSqueeze = new(1f, Allowed),
                 OutsideRoom = new(1f, Allowed),
-                RegionTransportation = new(1f, IllegalConnection),
+                RegionTransportation = new(1f, Allowed),
                 BetweenRooms = new(1f, Allowed),
                 OffScreenMovement = new(1f, Allowed)
             },
-#endif
             DefaultRelationship = new(CreatureTemplate.Relationship.Type.Ignores, 1f),
             // Used to be 5 base resistance before merge
-            DamageResistances = new() { Base = 20f, Explosion = .03f },
+            DamageResistances = new() { Base = 20f, Explosion = 0.03f },
             StunResistances = new() { Base = 200f },
             HasAI = true,
             Pathing = PreBakedPathing.Ancestral(CreatureTemplate.Type.RedCentipede),
         }.IntoTemplate();
         t.wormGrassImmune = true;
+        t.saveCreature = false;
+        t.meatPoints = 1;
         t.wormgrassTilesIgnored = true;
+        t.offScreenSpeed = int.MaxValue;
+        t.abstractedLaziness = 0;
+        t.dangerousToPlayer = 1;
+        t.bodySize = 6;
+        t.stowFoodInDen = false;
+        t.roamBetweenRoomsChance = int.MaxValue;
         return t;
     }
 
     public override void EstablishRelationships()
     {
-        var daddy = new Relationships(Type);
-        daddy.Attacks(CreatureTemplate.Type.Slugcat, 99f);
+        var ntcenti = new Relationships(Type);
+        ntcenti.Attacks(CreatureTemplate.Type.Slugcat, 1f);
     }
 
     public override ArtificialIntelligence CreateRealizedAI(AbstractCreature acrit) => new CentipedeAI(acrit, acrit.world);

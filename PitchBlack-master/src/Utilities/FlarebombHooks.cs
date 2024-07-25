@@ -79,24 +79,6 @@ public class FlarebombHooks
                 }
             }
         }
-
-#if false
-        if (obj is FlareBomb flarebomb && obj.room != null)
-        {
-            foreach (AbstractCreature abstrCrit in flarebomb.room.game.Players)
-            {
-                if (abstrCrit.realizedCreature == null)
-                    continue;
-
-                if (scugCWT.TryGetValue(abstrCrit.realizedCreature as Player, out var cwt) && cwt.IsBeacon)
-                {
-                    if (cwt.Beacon.storage.storedFlares.Contains(flarebomb))
-                        val = 0; //if in beacon storage, dont steal
-                }
-            }
-        }
-#endif
-
         return val;
     }
     //Spider, SpitterSpider, and MotherSpider die to FlareBombs with this mod enabled
@@ -153,22 +135,13 @@ public class FlarebombHooks
                     }
                 }
 
-                if (self.room.abstractRoom.creatures[i].creatureTemplate.type == CreatureTemplateType.NightTerror)
+                if (self.room.abstractRoom.creatures[i].creatureTemplate.IsNightTerror())
                 {
-                    //this will affect night terror, regardless of what slugcat the StoryCharacter or thrownBy is
-                    if (NightTerrorHooks.NightTerrorInfo.TryGetValue(self.room.abstractRoom.creatures[i].realizedCreature as Centipede, out var NTInfo))
-                    {
-                        NTInfo.fleeing = 40 * 18;
-
-                        Vector2 displacement = self.room.abstractRoom.creatures[i].realizedCreature.mainBodyChunk.pos - self.firstChunk.pos;
-                        NTInfo.fleeTo = self.firstChunk.pos + 9999999 * displacement;
-                    }
 
                     //50% chance of the night terror releasing you from its grasp
-                    Random.InitState(self.abstractPhysicalObject.ID.number);
                     if (Random.value <= 0.5)
                     {
-                        (self.room.abstractRoom.creatures[i].realizedCreature as Centipede).NightTerrorReleasePlayersInGrasp();
+                        self.room.abstractRoom.creatures[i].realizedCreature.NightTerrorReleasePlayersInGrasp();
                     }
 
                     //writhe in pain

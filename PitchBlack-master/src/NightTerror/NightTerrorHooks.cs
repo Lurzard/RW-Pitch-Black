@@ -105,7 +105,7 @@ public static class NightTerrorHooks
     public static ConditionalWeakTable<AbstractCreature, NightTerrorAbstractData> NTAbstractCWT = new();
     public static ConditionalWeakTable<AbstractCreature, StrongBox<int>> KILLIT = new();
 
-    public static void NightTerrorReleasePlayersInGrasp(this Centipede self) {
+    public static void NightTerrorReleasePlayersInGrasp(this Creature self) {
         if (self.abstractCreature.creatureTemplate.IsNightTerror()) {
             for (int i = 0; i < self.grasps.Length; i++) {
                 if (self.grasps[i]?.grabbed is Player) {
