@@ -7,6 +7,7 @@ using static Pom.Pom;
 using UnityEngine;
 using RWCustom;
 using BepInEx.Logging;
+using System.IO;
 
 namespace PitchBlack
 {
@@ -75,7 +76,7 @@ namespace PitchBlack
         {
             try
             {
-                var bundle = AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/rifts"));
+                var bundle = AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles" + Path.DirectorySeparatorChar + "rifts"));
                 rainWorld.Shaders["Rift"] = FShader.CreateShader("Rift", bundle.LoadAsset<Shader>("Assets/shaders/Rift.shader"));
 
                 if (!Futile.atlasManager.DoesContainAtlas("rift0"))
