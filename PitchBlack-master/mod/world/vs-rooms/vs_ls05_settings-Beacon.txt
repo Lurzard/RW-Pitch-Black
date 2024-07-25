@@ -1,5 +1,4 @@
 EffectColorA: 9
 Effects: Darkness-0.2065217-41-72, 
-PlacedObjects: BrokenShelterWaterLevel><639.9104><346.6195><, LightSource><638.6099><374.3927><0.4021739~Environment~0~100~50~86.60254~1~0~None~0~0, 
-AmbientSounds: SPOT><AM_IND-ElectricHum01.ogg><748.8005><300.2351><0.4021739><1><640.8005><376.2351><-35.35534><-35.35534><0><0.1, 
+PlacedObjects: BrokenShelterWaterLevel><639.9104><346.6195><, 
 FadePalette: 33, 0.8043478

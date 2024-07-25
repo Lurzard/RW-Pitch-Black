@@ -1,3 +1,1 @@
 EffectColorA: 9
-PlacedObjects: LightSource><313.4475><460.7816><0.4021741~Environment~6~100~115.0001~-41.39746~1~0~None~0~0, 
-AmbientSounds: SPOT><AM_IND-ElectricHum01.ogg><719.1844><294.3275><0.4021739><1><313.1844><458.3275><-35.35534><-35.35534><0><0.1, 

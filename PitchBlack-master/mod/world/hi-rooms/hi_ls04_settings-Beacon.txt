@@ -1,3 +1,2 @@
 EffectColorA: 9
-PlacedObjects: LightSource><263.9809><348.1991><0.4021739~Environment~2~85~50~86.60254~0~0~None~0~0, 
 MorePalette0: 10, 1

@@ -1,3 +1,3 @@
 EffectColorA: 9
-PlacedObjects: LightSource><487.6111><423.0837><0.4021739~White~75~0~50~86.60254~0~0~None~0~0, ColouredLightSource><489.6666><248.6818><100~50~FF4300~-3^91~0.3043478~False~0.5~0~0.5~Always~0~100, 
+PlacedObjects: ColouredLightSource><489.6666><248.6818><100~50~FF4300~-3^91~0.3043478~False~0.5~0~0.5~Always~0~100, 
 MorePalette0: 10, 1

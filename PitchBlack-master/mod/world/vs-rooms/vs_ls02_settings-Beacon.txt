@@ -2,7 +2,4 @@ Template: VS_SettingsTemplate_Sewer
 Grime: 0.3586957
 EffectColorA: 9
 EffectColorB: 6
-Effects: 
-PlacedObjects: LightSource><287.3331><430.3898><0.4021739~Environment~0~100~50~86.60254~1~0~None~0~0, 
-AmbientSounds: SPOT><AM_IND-ElectricHum01.ogg><742.43><294.1628><0.4021739><1><288.43><432.1628><-35.35534><-35.35534><0><0.1, 
 FadePalette: 10, 1
