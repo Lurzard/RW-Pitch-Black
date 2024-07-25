@@ -140,6 +140,13 @@ class Plugin : BaseUnityPlugin
         //On.Player.SwallowObject += Player_SwallowObject1;
         //On.Player.Grabability += GrabCoalescipedes;
     }
+    public void Update() {
+        if (Input.anyKeyDown) {
+            foreach (char c in Input.inputString) {
+                InputChecker.AddInput(c);
+            }
+        }
+    }
     public void OnModsInit(On.RainWorld.orig_OnModsInit orig, RainWorld self)
     {
         orig(self);
@@ -223,7 +230,6 @@ class Plugin : BaseUnityPlugin
             }
         }
     }
-
     private void RainWorld_PostModsInit(On.RainWorld.orig_PostModsInit orig, RainWorld self)
     {
         orig(self);
