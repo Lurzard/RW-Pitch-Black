@@ -1,0 +1,11 @@
+0-0
+Attempting Relay: "[BLANK HEADER]"
+Relay ForceTerminated: Invalid Format.
+Initiating RelayFormat(NeuralData) == ImageData: [REPORT! DESTRUCTION OF PROPERTY]
+
+??: The image is fuzzy. It has heavily degraded over time. Exposure to the elements may have caused the synapses to wither away.
+??: But... It appears to show a scavenger individual with an extravagant mask. It has one of our citizen ID Drones following within its stead. 
+??: I do not recognise the locale that is shown within the image... This is partially due to the degradation of the image.
+??: Although from what I can process... it may be the interior of a temple. Perhaps from the facility grounds of this overseers user?
+??: Our creators had a habit of designing extravagant buildings. pinpointing this ones location is an almost impossible task due to the previously stated issues.
+??: An interesting find.

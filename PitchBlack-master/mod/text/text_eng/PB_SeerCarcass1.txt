@@ -1,0 +1,10 @@
+0-0
+Attempting Relay: "[BLANK HEADER]"
+Relay ForceTerminated: Invalid Format.
+Initiating RelayFormat(NeuralData) == ImageData: [REQUESTED IMAGES: SPECIMEN DATA]
+
+??: How astounding... it contains multiple images. Either the area you are in is not subject to as intensive weather or contains particularly sterile flooring.
+??: Each of these images contains a unique form of life that is native to the local territory, Some you may or may not be familiar with.
+??: It is difficult to know what has survived this great undoing. Not many forms of life can withstand such a rapid and un-expected change in their environment.
+??: Has it affected your kind little one? Or perhaps you are alone in this world?
+??: I suppose im just searching for hope in a world plagued by darkness.

@@ -1,0 +1,11 @@
+0-0
+Attempting Relay: "[BLANK HEADER]"
+Relay ForceTerminated: Invalid Format.
+Initiating RelayFormat(NeuralData) == ImageData: [KEY RECORDING: INSTRUCTIONS]
+
+??: The image appears to be slightly degraded. Although for the apparent age of this overseer, It is not to a level I would have expected.
+??: It displays... An old friend. One of our older models known as "Looks to the Moon".
+??: She is pointing towards an image of your kind. Perhaps showing this overseer what it should be locating?
+??: Alongside this diagram there appears to be others... Displaying various wildlife that you may or may not be familiar with.
+??: I am unfamiliar with her fate, as with the majority of our kind. All I know is that communications have been made impossible for the longest time.
+??: I can only hope she is still functional.
