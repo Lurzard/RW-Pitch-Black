@@ -44,43 +44,6 @@ public class Whiskers
     //    //this falls apart with a larger array and starts to get previously-accessed indices
     //    return initialWhiskerIndex + side + pair + pair;
     //}
-#if false
-    public void SetupWhiskerColour(Player player)
-    {
-        //prevent arena colours being assinged to main player outside of arena
-        bool jollyDefaultColourMode = ModManager.CoopAvailable && Custom.rainWorld.options.jollyColorMode == Options.JollyColorMode.DEFAULT;
-        int playerNumber = player.room.game.session is not ArenaGameSession && (player.playerState.playerNumber == 0 || jollyDefaultColourMode) ? -1 : player.playerState.playerNumber;
-
-        if (SlugBaseCharacter.TryGet(player.slugcatStats.name, out SlugBaseCharacter charac)
-                && charac.Features.TryGet(PlayerFeatures.CustomColors, out ColorSlot[] customColours))
-        {
-            //loading default colours
-            if (customColours.Length > 0)
-                whiskerColour = customColours[0].GetColor(playerNumber);
-        }
-
-        if (PlayerGraphics.customColors != null && !player.IsJollyPlayer && !ModManager.JollyCoop)
-        {
-            if (PlayerGraphics.customColors.Count > 0)
-                whiskerColour = PlayerGraphics.CustomColorSafety(0);
-        }
-        else if (ModManager.CoopAvailable)
-        {
-            if (playerNumber > 0)
-            {
-                //p1 is null for some reason, so i have to check for player and colour mode
-                whiskerColour = PlayerGraphics.JollyColor(playerNumber, 0);
-            }
-            else if (Custom.rainWorld.options.jollyColorMode == Options.JollyColorMode.CUSTOM)
-            {
-                whiskerColour = Custom.rainWorld.options.jollyPlayerOptionsArray[0].GetBodyColor();
-            }
-        }
-
-        if (whiskerColour == null) //just in case
-            whiskerColour = Colour.white;
-    }
-#endif
 
     public void Update()
     {
