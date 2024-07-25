@@ -11,7 +11,6 @@ using System.Runtime.CompilerServices;
 using ChatlogID = MoreSlugcats.ChatlogData.ChatlogID;
 using DataPearlType = DataPearl.AbstractDataPearl.DataPearlType;
 using DataPeralTypeMSC = MoreSlugcats.MoreSlugcatsEnums.DataPearlType;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace PitchBlack;
@@ -223,7 +222,7 @@ public class OverseerEx
     static readonly DataPearlType PB_Devcom_pearl_14 = new("PB_Developer_Commentary_Pearl_14");
     static readonly DataPearlType PB_Devcom_pearl_15 = new("PB_Developer_Commentary_Pearl_15");
     static readonly DataPearlType PB_Techy_Pearl = new("PB_Techy_Pearl");
-    static readonly List<Type> compatibleReadTypes = new() { typeof(DataPearl), typeof(OverseerCarcass)};
+    static readonly Type[] compatibleReadTypes = new Type[] {typeof(DataPearl), typeof(OverseerCarcass)};
     internal WeakReference<Overseer> _Overseer;
     internal WeakReference<PlayerCarryableItem> TargetObject;
     internal WeakReference<Player> TargetPlayer;
@@ -255,7 +254,7 @@ public class OverseerEx
                 // The Input.GetKey() here is solely for testing, will change to some other trigger once I get everything working
                     // It was changed to holding pickup and up at the same time.
                 // Also potentially ignore any Misc Pearls, is the commented out part of the if here
-                if (grasp != null && compatibleReadTypes.Select(x => grasp.grabbed.GetType() == x).Contains(true) && (overseer.mode == Overseer.Mode.Watching || overseer.mode == Overseer.Mode.SittingInWall) && player.input[0].y > 0 && player.input[0].pckp /*&& Input.GetKey(KeyCode.Y)&& (pearl.AbstractPearl.dataPearlType != DataPearlType.Misc || pearl.AbstractPearl.dataPearlType != DataPearlType.Misc2)*/) {
+                if (grasp != null && CheckObjectTypeCompatability(grasp.grabbed) && (overseer.mode == Overseer.Mode.Watching || overseer.mode == Overseer.Mode.SittingInWall) && player.input[0].y > 0 && player.input[0].pckp /*&& Input.GetKey(KeyCode.Y)&& (pearl.AbstractPearl.dataPearlType != DataPearlType.Misc || pearl.AbstractPearl.dataPearlType != DataPearlType.Misc2)*/) {
                     // Debug.Log("Pitch Black: Found pearl");
                     Vector2 potentialObjectHoverPos = (Custom.DirVec(overseer.mainBodyChunk.pos, player.mainBodyChunk.pos) * 90f) + overseer.mainBodyChunk.pos;
                     overseer.abstractCreature.abstractAI.destination = overseer.room.GetWorldCoordinate(player.bodyChunks[0].pos);
@@ -273,7 +272,7 @@ public class OverseerEx
                     }
                 }
                 // If the player is holding a compatible item in their grasp, follow them.
-                else if (grasp != null && compatibleReadTypes.Select(x => grasp.grabbed.GetType() == x).Contains(true))
+                else if (grasp != null && CheckObjectTypeCompatability(grasp.grabbed))
                 {
                     overseer.abstractCreature.abstractAI.SetDestinationNoPathing(overseer.room.ToWorldCoordinate(player.mainBodyChunk.pos), false);
                     overseer.abstractCreature.abstractAI.MoveWithCreature(player.abstractCreature, false);
@@ -357,6 +356,9 @@ public class OverseerEx
         if (TargetPlayer.TryGetTarget(out Player _)) {
             TargetPlayer = new WeakReference<Player>(null);
         }
+    }
+    private static bool CheckObjectTypeCompatability(PhysicalObject obj) {
+        return compatibleReadTypes.Select(x => obj.GetType() == x).Contains(true);
     }
     // The number passed from the abstract overseer carcass' owner determines which dialogue is returned, with a default of the first normal chatlog broadcast.
     static ChatlogID CarcassToChatlogID(int ownerID) {
