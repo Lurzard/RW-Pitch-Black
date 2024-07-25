@@ -146,6 +146,18 @@ class Plugin : BaseUnityPlugin
                 InputChecker.AddInput(c);
             }
         }
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) {
+            InputChecker.AddInput('\u2190');
+        }
+        if (Input.GetKeyDown(KeyCode.UpArrow)) {
+            InputChecker.AddInput('\u2191');
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow)) {
+            InputChecker.AddInput('\u2192');
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow)) {
+            InputChecker.AddInput('\u2193');
+        }
     }
     public void OnModsInit(On.RainWorld.orig_OnModsInit orig, RainWorld self)
     {

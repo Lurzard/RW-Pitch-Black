@@ -31,7 +31,7 @@ static internal class InputChecker
     internal static void AddInput(char input) {
         // Enter/Return is replaced with E
         // Backspace is replaced with B
-        // Space is replaced with S
+        // Left/Up/Right/Down arrows are replaced with L/U/R/D respectively
         switch (input) {
             case '\r':
             case '\n': 
@@ -40,8 +40,17 @@ static internal class InputChecker
             case '\b': 
                 inputTracker = "B" + inputTracker;
                 break;
-            case ' ':
-                inputTracker = "S" + inputTracker;
+            case '\u2190':
+                inputTracker = "L" + inputTracker;
+                break;
+            case '\u2191':
+                inputTracker = "U" + inputTracker;
+                break;
+            case '\u2192':
+                inputTracker = "R" + inputTracker;
+                break;
+            case '\u2193':
+                inputTracker = "D" + inputTracker;
                 break;
             default:
                 inputTracker = input.ToString() + inputTracker;
