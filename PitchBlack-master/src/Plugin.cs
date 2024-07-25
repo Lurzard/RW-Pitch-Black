@@ -132,12 +132,6 @@ class Plugin : BaseUnityPlugin
         OverseerHooks.Apply(); // (ONLY 1.0!)
 #endif
 
-        try {
-            FishobsNoWork();
-        } catch (Exception err) {
-            Debug.Log($"Pitch Black error\n{err}");
-            logger.LogDebug($"Pitch Black error\n{err}");
-        }
 
         //On.Player.GraspsCanBeCrafted += Player_GraspsCanBeCrafted;
         //On.Player.SpitUpCraftedObject += Player_SpitUpCraftedObject;
@@ -151,6 +145,12 @@ class Plugin : BaseUnityPlugin
         orig(self);
         MachineConnector.SetRegisteredOI("lurzard.pitchblack", PBOptions.Instance);
         if (!init) {
+            try {
+                FishobsNoWork();
+            } catch (Exception err) {
+                Debug.Log($"Pitch Black error\n{err}");
+                logger.LogDebug($"Pitch Black error\n{err}");
+            }
 
 #if PLAYTEST
             regionMenuDisplaySavePath = ModManager.ActiveMods.First(x => x.id == MOD_ID).path + Path.DirectorySeparatorChar + "RegionMenuDisplay.txt";
