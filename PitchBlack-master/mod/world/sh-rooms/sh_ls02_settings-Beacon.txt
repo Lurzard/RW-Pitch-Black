@@ -3,5 +3,5 @@ RainIntensity: 0.3478261
 RumbleIntensity: 0.3695652
 BkgDroneVolume: 0
 EffectColorA: 9
-PlacedObjects: BrokenShelterWaterLevel><492.5716><342.1596><, LightSource><501.7015><379.194><0.4021739~Environment~-16~122~50~86.60254~1~0~None~0~0, 
-AmbientSounds: OMNI><AM_ENV-CityTone.ogg><773.9447><562.7042><0.2934783><0.9021739, SPOT><AM_IND-ElectricHum01.ogg><708.6841><298.6719><0.4021739><1><501.6841><376.6719><-35.35534><-35.35534><0><0.1, 
+PlacedObjects: BrokenShelterWaterLevel><492.5716><342.1596><, 
+AmbientSounds: OMNI><AM_ENV-CityTone.ogg><773.9447><562.7042><0.2934783><0.9021739, 

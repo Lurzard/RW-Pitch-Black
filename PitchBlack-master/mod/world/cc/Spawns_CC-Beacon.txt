@@ -7,13 +7,13 @@
 {#!lb-fgf-m4r-ik.fat-fire-fly-creature}LINEAGE : OFFSCREEN : 0 : Vulture-0.2, KingVulture-0
 
 //Spawns
-CC_A07 : 3-TentaclePlant
+CC_A07 : 3-PoleMimic
 CC_C03 : 7-Garbage Worm-3
 CC_B11 : 3-Eel
 CC_B14 : 3-TubeWorm, 4-TubeWorm
 LINEAGE : CC_C07 : 2 : White-0.5, Cyan-0.5, CicadaB-0
 LINEAGE : CC_C07 : 3 : Cyan-0.3, CicadaA-0
-CC_A15 : 3-TentaclePlant
+CC_A15 : 3-PoleMimic
 CC_B04 : 3-White
 CC_B05 : 2-Yellow, 3-White
 LINEAGE : CC_F01 : 3 : White-{Mean:0.3}-0.5, Yellow-0.2, Cyan-0.2, Red-0
@@ -29,11 +29,11 @@ LINEAGE : CC_C05 : 3 : Cyan-0.2, NONE-0.5, Red-0
 //Gutter
 CC_SHAFT01x : 9-Garbage Worm-3, 2-Eel
 CC_SHAFT02 : 5-BigSpider-2
-CC_SUMP01 : 5-MotherSpider, 6-TentaclePlant, 7-Eel
-CC_SUMP05 : 2-TentaclePlant, 3-TentaclePlant, 5-Centipede-3, 11-Small Centipede-2, 11-Centipede-2
+CC_SUMP01 : 5-MotherSpider, 6-PoleMimic, 7-Eel
+CC_SUMP05 : 2-PoleMimic, 3-PoleMimic, 5-Centipede-3, 11-Small Centipede-2, 11-Centipede-2
 CC_OUTPUT : 10-Small Centipede-7, 11-Snail-2
 CC_STRAINER01 : 2-Small Centipede-5, 3-Centipede-2
-CC_SUMP03 : 4-TentaclePlant, 7-MotherSpider-1, 8-TentaclePlant, 12-Snail-5, 13-Eel
+CC_SUMP03 : 4-PoleMimic, 7-MotherSpider-1, 8-PoleMimic, 12-Snail-5, 13-Eel
 CC_STRAINER02 : 3-Mimic-{12}
 CC_SUMP04 : 3-Eel-2
 CC_STRAINER03 : 2-Snail-3

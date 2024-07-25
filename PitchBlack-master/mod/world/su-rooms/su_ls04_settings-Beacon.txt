@@ -3,8 +3,6 @@ Grime: 0.2065217
 Palette: 0
 EffectColorA: 9
 Effects: FireFlies-0.2934783-28-93, 
-PlacedObjects: LightSource><471.8757><540.6567><0.4021739~EffectColor1~0~100~106~-19.39743~1~0~None~0~0, 
-AmbientSounds: SPOT><AM_IND-ElectricHum01.ogg><725.9085><294.3719><0.4021739><1><470.9085><538.3719><-35.35534><-35.35534><0><0.1, 
 FadePalette: 33, 0.7934783
 MorePalette0: 367, 0.6031925
 MorePalette1: 10, 0.6089929
