@@ -254,7 +254,7 @@ public class OverseerEx
                 // The Input.GetKey() here is solely for testing, will change to some other trigger once I get everything working
                     // It was changed to holding pickup and up at the same time.
                 // Also potentially ignore any Misc Pearls, is the commented out part of the if here
-                if (grasp != null && CheckObjectTypeCompatability(grasp.grabbed) && (overseer.mode == Overseer.Mode.Watching || overseer.mode == Overseer.Mode.SittingInWall) && player.input[0].y > 0 && player.input[0].pckp /*&& Input.GetKey(KeyCode.Y)&& (pearl.AbstractPearl.dataPearlType != DataPearlType.Misc || pearl.AbstractPearl.dataPearlType != DataPearlType.Misc2)*/) {
+                if (grasp != null && CheckObjectTypeCompatability(grasp.grabbed) && (overseer.mode == Overseer.Mode.Watching || overseer.mode == Overseer.Mode.SittingInWall) && ((player.input[0].y > 0 && player.input[0].pckp) || InputChecker.CheckInput(1)) /*&& Input.GetKey(KeyCode.Y)&& (pearl.AbstractPearl.dataPearlType != DataPearlType.Misc || pearl.AbstractPearl.dataPearlType != DataPearlType.Misc2)*/) {
                     // Debug.Log("Pitch Black: Found pearl");
                     Vector2 potentialObjectHoverPos = (Custom.DirVec(overseer.mainBodyChunk.pos, player.mainBodyChunk.pos) * 90f) + overseer.mainBodyChunk.pos;
                     overseer.abstractCreature.abstractAI.destination = overseer.room.GetWorldCoordinate(player.bodyChunks[0].pos);

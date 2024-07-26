@@ -8,17 +8,26 @@ static internal class InputChecker
     // The length of the longest sequence, needed to stop the input list from being super long and eating memory
     const int MAXCODELENGTH = 11;
     // The number of sequences, needed because all the sequences are stored in an Array
-    const int NUMOFSEQUENCES = 1;
+    const int NUMOFSEQUENCES = 3;
     // To add a new entry, increase NUMOFSEQUENCES by 1 and add a new entry.
     // Make sure MAXCODELENGTH matches the length of the longest list
     static string[] sequences = new string[NUMOFSEQUENCES]{
-        "wwssadadbaE"
+        "wwssadadbaE",
+        "LURD",
+        "ULURDR"
     };
     static string inputTracker = "";
+    private static void ResetInputList() {
+        inputTracker = "";
+    }
     // Checks every sequence of inputs for a match
     internal static bool CheckInput() {
         foreach (string entry in sequences) {
-            if (entry == inputTracker.Substring(0, entry.Length)) {
+            if (inputTracker.Length < entry.Length) {
+                continue;
+            }
+            if (entry == inputTracker.Substring(inputTracker.Length - entry.Length, entry.Length)) {
+                ResetInputList();
                 return true;
             }
         }
@@ -26,38 +35,30 @@ static internal class InputChecker
     }
     // Checks a specific sequence for the currently stored inputs
     internal static bool CheckInput(int entry) {
-        return sequences[entry] == inputTracker.Substring(0, sequences[entry].Length);
+        if (inputTracker.Length < sequences[entry].Length) {
+            return false;
+        }
+        bool ret = sequences[entry] == inputTracker.Substring(inputTracker.Length - sequences[entry].Length, sequences[entry].Length);
+        if (ret) {
+            ResetInputList();
+        }
+        return ret;
     }
     internal static void AddInput(char input) {
         // Enter/Return is replaced with E
         // Backspace is replaced with B
         // Left/Up/Right/Down arrows are replaced with L/U/R/D respectively
-        switch (input) {
-            case '\r':
-            case '\n': 
-                inputTracker = "E" + inputTracker;
-                break;
-            case '\b': 
-                inputTracker = "B" + inputTracker;
-                break;
-            case '\u2190':
-                inputTracker = "L" + inputTracker;
-                break;
-            case '\u2191':
-                inputTracker = "U" + inputTracker;
-                break;
-            case '\u2192':
-                inputTracker = "R" + inputTracker;
-                break;
-            case '\u2193':
-                inputTracker = "D" + inputTracker;
-                break;
-            default:
-                inputTracker = input.ToString() + inputTracker;
-                break;
-        }
-        while (inputTracker.Length > MAXCODELENGTH) {
-            inputTracker = inputTracker.Substring(0, MAXCODELENGTH-1);
+        inputTracker = input switch {
+            '\r' or '\n' => inputTracker + "E",
+            '\b' => inputTracker + "B",
+            '\u2190' => inputTracker + "L",
+            '\u2191' => inputTracker + "U",
+            '\u2192' => inputTracker + "R",
+            '\u2193' => inputTracker + "D",
+            _ => inputTracker + input.ToString(),
+        };
+        if (inputTracker.Length > MAXCODELENGTH) {
+            inputTracker = inputTracker.Substring(inputTracker.Length-MAXCODELENGTH, MAXCODELENGTH);
         }
         Debug.Log("Current string log is: " + inputTracker);
     }
