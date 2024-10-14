@@ -1,4 +1,4 @@
-base : beast's hide
+base : the hide
 laden stilt : laden stilt
 breached passage : -1 : belly of the beast
 upheld rampart : -1

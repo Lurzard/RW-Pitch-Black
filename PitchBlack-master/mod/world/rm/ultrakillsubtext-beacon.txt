@@ -1,6 +1,5 @@
-base : rotten carcass
+base : the carcass
 the carcass : innards
-the carcass (cerebellum) : 0 : grieving brother
 the carcass (vestige) : -1 vestige
 the carcass (guts) : -1 : guts
 the carcass (arteries) : -1 : arteries
