@@ -1,7 +1,0 @@
-RainIntensity: 0.1521739
-RumbleIntensity: 0.1521739
-EffectColorA: 9
-Effects: FireFlies-0.2826087-21-134, 
-PlacedObjects: LightSource><263.6184><78.00269><0.2344095~Environment~263.5953~53.57733~50~86.60254~0~0~None~0~0, 
-FadePalette: 33, 0.6413044
-MorePalette0: 10, 1

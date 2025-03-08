@@ -1,9 +1,0 @@
-DangerType: Flood
-WaveAmplitude: 0
-SecondWaveAmplitude: 0.3478261
-Palette: 11
-EffectColorB: 21
-PlacedObjects: BrokenShelterWaterLevel><423.051><345.5203><, 
-FadePalette: 35, 0.7065217
-MorePalette0: 375, 0.8086024
-MorePalette1: 10, 0.7075918

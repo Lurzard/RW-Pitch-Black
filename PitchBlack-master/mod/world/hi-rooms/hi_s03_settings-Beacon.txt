@@ -1,5 +1,0 @@
-Template: HI_SettingsTemplate_Inside
-DangerType: Flood
-PlacedObjects: BrokenShelterWaterLevel><473.9116><445.8823><, 
-FadePalette: 20, 0.0326087
-MorePalette0: 10, 0.9021739

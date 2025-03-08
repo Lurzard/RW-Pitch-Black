@@ -1,6 +1,0 @@
-RainIntensity: 0.7065217
-RumbleIntensity: 0.7065217
-Effects: Darkness-0.5-22-76, 
-PlacedObjects: DangleFruit><669.2874><444.6965><0~0~2~3, DangleFruit><710.0965><485.3718><0~0~2~3, DangleFruit><753.1346><386.6634><0~0~2~3, 
-FadePalette: 33, 0.8043478
-MorePalette0: 367, 0.4001956

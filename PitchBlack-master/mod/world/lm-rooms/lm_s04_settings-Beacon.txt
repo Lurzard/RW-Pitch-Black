@@ -1,5 +1,0 @@
-DangerType: Flood
-Grime: 0.1195652
-Palette: 34
-FadePalette: 8, 0.3152174
-MorePalette0: 10, 1

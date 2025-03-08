@@ -1,3 +1,0 @@
-base : solemn drillsite
-solemn drillsite : forgotten crossroads
-septics : sopping wet

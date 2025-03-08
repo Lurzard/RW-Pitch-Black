@@ -1,13 +1,6 @@
-Template: NONE
-RainIntensity: 0.7065217
-RumbleIntensity: 0.7065217
 Clouds: 0.1304348
 Grime: 0.3913043
 BkgDroneVolume: 0.2769565
-Palette: 33
-EffectColorB: 5
-Effects: FireFlies-0.3043478-20-20, ReplaceEffectColorB-0-28.39923-72.1539-Color-0-0.08119915-0.08119898, 
+EffectColorB: 8
 AmbientSounds: OMNI><AM_ENV-LightWind.ogg><762.8881><557.5842><0.3369565><0.8434783, SPOT><SO_IND-Fridge.ogg><753.3087><369.3082><0.1956522><1><124.3087><354.3082><55.64465><-43.35535><0><0.3173914, 
-FadePalette: 0, 0.1847826
-MorePalette0: 10, 0.75
-MorePalette1: 386, 0.5543478
+FadePalette: 8, 0

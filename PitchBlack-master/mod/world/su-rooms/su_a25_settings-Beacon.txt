@@ -1,22 +1,8 @@
 Template: SU_SettingsTemplate_Inside
-DangerType: Rain
-CeilingDrips: 0.6739131
-RainIntensity: 0.7282609
-RumbleIntensity: 0.7065217
-WaveSpeed: 0.4819916
-WaveLength: 0.9909958
-WaveAmplitude: 0.03301769
-SecondWaveLength: 0.1666667
-SecondWaveAmplitude: 0
 Clouds: 0.04347826
 Grime: 0.2391304
 BkgDroneVolume: 0.2769565
 BkgDroneNoThreatVolume: 0
-Palette: 0
-EffectColorB: 21
-Effects: RockFlea-0.08695652-278-17, FireFlies-0.326087-40-40, 
-PlacedObjects: InsectGroup><381.2867><204.1966><-113~100~0~-150~RockFlea~0.326087, CustomDecal><490.6689><144.6828><-33~259~162~269~141~-23~-530~-40~0~0.6521739~0~Pink Face~0.06521739~0.5978261~0.06521739~0~0.06521739~0~0.06521739~1, CustomDecal><581.8515><180.116><-46~295~315~268~298~-42~-381~157~0.3152174~1~0~Big Letters~0.09782609~0.4782609~0.09782609~0.4782609~0.09782609~0.8586956~0.09782609~1, LightBeam><525.6898><189.313><76~530~329~533~404~-4~-282~-36~0.01956508~0~0~1~None~0~0, 
-AmbientSounds: SPOT><AM_ENV-Outside.ogg><472.8677><615.9117><0.5><0.823913><735.8677><694.783><-38.35535><-36.35535><0><0.3826088, SPOT><SO_IND-MechHum01.ogg><796.1148><232.6026><0.2391304><1><734.1148><423.6026><-93.35535><-38.35535><0><0.3065219, OMNI><AM_ENV-LightWind.ogg><788.1534><588.3784><0.3043478><0.7065217, OMNI><SO_WAT-DripTap.ogg><616.45><588.9956><0.326087><1, 
-FadePalette: 8, 0.173913
-MorePalette0: 10, 0.7996176
-MorePalette1: 386, 0.6956522
+FadePalette: 8, 0.2608696
+MorePalette0: 10, 1
+MorePalette1: 0, 0.08695652

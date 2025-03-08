@@ -1,7 +1,0 @@
-Template: LM_SettingsTemplate_Sewer
-CeilingDrips: 0.7173913
-Palette: 35
-EffectColorB: 21
-AmbientSounds: SPOT><AM_IND-Utility02.ogg><761.8668><460.9123><0.3586957><1.058696><447.8668><534.9124><-141.3553><-30.35535><0><0.3608697, OMNI><AM_ENV-NatWind.ogg><833.2981><615.1941><0.2173913><1, 
-FadePalette: 8, 0.4130435
-MorePalette0: 10, 0.8586956

@@ -1,7 +1,5 @@
-Template: NONE
+Template: SU_SettingsTemplate_Inside
 DangerType: Rain
-RainIntensity: 0.6956522
-RumbleIntensity: 0.6956522
 WaveSpeed: 0.4479145
 WaveLength: 0.7239572
 WaveAmplitude: 0.005811308
@@ -10,12 +8,8 @@ SecondWaveAmplitude: 0
 Clouds: 0.04347826
 Grime: 0.1086956
 BkgDroneVolume: 0.2769565
-Palette: 33
 EffectColorA: 9
-EffectColorB: 21
-Effects: FireFlies-0.3369565-18-71, Darkness-0.2826087-19-130, 
-PlacedObjects: LightSource><544.899><376.8833><0.4565217~Environment~-144~131~50~86.60254~0~0~None~0~0, LanternOnStick><256.4235><390.9005><27~-147, LanternOnStick><712.0901><332.6298><-15~-137, 
+EffectColorB: 6
+PlacedObjects: LightSource><544.899><376.8833><0.6956522~Environment~173~7~50~86.60254~1~0~None~0~0, 
 AmbientSounds: OMNI><AM_ENV-Outside.ogg><774.5402><472.1959><0.3586957><0.7065217, OMNI><AM_IND-Utility02.ogg><788.4354><386.1751><0.326087><1, SPOT><AM_IND-ElectricHum01.ogg><776.937><291.9289><0.4347826><0.7847826><563.937><391.929><-120.3553><-61.35535><0><0.1, 
-FadePalette: 0, 0.1521739
-MorePalette0: 10, 0.903329
-MorePalette1: 386, 0.25
+FadePalette: 8, 0

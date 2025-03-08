@@ -1,7 +1,0 @@
-Palette: 11
-EffectColorA: 12
-EffectColorB: 21
-PlacedObjects: LightSource><4304.413><437.4294><0.25~EffectColor1~0~100~50~86.60254~1~0~None~0~0, LightSource><4324.003><438><0.25~EffectColor1~0~100~50~86.60254~1~0~None~0~0, LightSource><4586.002><437><0.25~EffectColor1~0~100~50~86.60254~1~0~None~0~0, LightSource><3194.001><390.0024><0.260859~EffectColor1~0~100~50~86.60254~1~0~None~0~0, LightSource><3153><389><0.25~EffectColor1~0~100~50~86.60254~1~0~None~0~0, LightSource><2639><411><0.07601663~EffectColor1~0~100~50~86.60254~1~0~None~0~0, LightSource><2618><411><0.09779292~EffectColor1~0~100~73.07727~-25.39746~1~0~None~0~0, LightSource><2191><408><0.25~EffectColor1~0~100~50~86.60254~1~0~None~0~0, LightSource><2133><407><0.25~EffectColor1~0~100~50~86.60254~1~0~None~0~0, LightSource><1109><380><0.25~EffectColor1~0~100~50~86.60254~1~0~None~0~0, LightSource><1146><382><0.25~EffectColor1~0~100~50~86.60254~1~0~None~0~0, LightSource><693.0001><374><0.25~EffectColor1~0~100~50~86.60254~1~0~None~0~0, LightSource><671.9999><372><0.25~EffectColor1~0~100~50~86.60254~1~0~None~0~0, LightSource><3092><402><0.25~EffectColor1~-2~96~50~86.60254~1~0~None~0~0, 
-FadePalette: 35, 0.7065216, 0.7065216, 0.7065216, 0.7065216, 0.7065216
-MorePalette0: 375, 1, 1, 1, 1, 1
-MorePalette1: 10, 0.5, 0.5, 0.5, 0.5, 0.5

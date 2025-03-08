@@ -1,6 +1,0 @@
-Template: VS_SettingsTemplate_Filter
-RainIntensity: 0
-RumbleIntensity: 0
-Palette: 10
-EffectColorA: 9
-FadePalette: 22, 0

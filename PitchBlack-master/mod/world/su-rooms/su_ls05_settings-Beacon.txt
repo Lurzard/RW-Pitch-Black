@@ -1,8 +1,0 @@
-Template: SU_SettingsTemplate_Inside
-Palette: 33
-EffectColorA: 9
-EffectColorB: 21
-Effects: FireFlies-0.2391304-302-45, 
-FadePalette: 0, 0.326087
-MorePalette0: 367, 0.6089929
-MorePalette1: 10, 0.7017915

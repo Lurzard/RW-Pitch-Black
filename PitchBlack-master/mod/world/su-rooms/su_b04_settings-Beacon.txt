@@ -1,15 +1,11 @@
-RainIntensity: 0.6847826
-RumbleIntensity: 0.6847826
+DangerType: Rain
 Clouds: 0.2826087
 Grime: 0.2934783
 BkgDroneVolume: 0.2769565
-Palette: 33
 EffectColorA: 9
-EffectColorB: 5
-Effects: Flies-0.09782609-20-20, FireFlies-0.3152174-290-33, ReplaceEffectColorB-0-220-80-Color-0-0.0326087-0.05434782, 
-PlacedObjects: CustomDecal><664.3756><543.3434><-35~135~403~152~388~3~-690~-259~0.3478261~1~0~Long Tag~0~0.4021739~0~0~0~0.4673913~0~0.5978261, CustomDecal><1799.305><314.0449><-25~503~263~565~211~-129~-276~79~0~0.6630435~0~RustB3~0~0.7282609~0~0.7282609~0~0.7282609~0~0.7282609, CustomDecal><351.4107><-2.369171><0~394~553~365~544~-14~-361~-3~0.6413044~1~0~Rust1~0~1~0~1~0~1~0~1, InsectGroup><1110.764><25.05049><135~112~129~17~StandardFly~0.1086956, LanternOnStick><649.9409><157.0882><26~-107, LanternOnStick><719.55><187.7536><-21~-149, LanternOnStick><1138.845><155.6268><-14~-79, LightSource><315.8128><342.8253><0.4021726~White~-144~194~-374~-264.3975~1~0~None~0~0, LightSource><389.9481><345.7607><0.05340311~White~121~-9~50~86.60254~1~1~None~0~0, LightSource><645.7614><627.4497><0.2065217~White~95~1~-14~-208.3974~1~0~None~0~0, LightSource><1149.429><424.4333><0.4090556~White~152~0~76.02655~24.70581~1~0~None~0~0, LightSource><727.9999><628><0.2065217~White~95~1~-14~-208.3974~1~0~None~0~0, LightSource><802.9999><630><0.2065217~White~95~1~-14~-208.3974~0~0~None~0~0, 
+EffectColorB: 7
+Effects: Flies-0.09782609-20-20, 
+PlacedObjects: LightSource><366.439><369.4347><0.2065217~EffectColor1~145~0~50~86.60254~0~0~None~0~0, CustomDecal><665.3756><552.3434><-36~120~402~127~392~15~-690~-259~0.3478261~1~0~Long Tag~0.04347826~0.4021739~0.09782609~0~0.0326087~0.4673913~0.09782609~0.5978261, CustomDecal><1799.305><314.0449><-25~503~263~565~211~-129~-688~-13~0~0.6630435~0~RustB3~0.09782609~0.7282609~0.02173913~0.7282609~0.02173913~0.7282609~0.1086956~0.7282609, CustomDecal><351.4107><-2.369171><0~394~553~365~544~-14~-361~-3~0.6413044~1~0~Rust1~0.08695652~1~0.173913~1~0.25~1~0.02173913~1, InsectGroup><1110.764><25.05049><135~112~129~17~StandardFly~0.1086956, LightSource><1135><426><0.1521739~EffectColor1~147~0~50~86.60254~0~0~None~0~0, LightSource><642.9661><629.5529><0.4021739~Environment~13~-77~-390~-75.39749~1~0~None~0~0, LightSource><720><633><0.4021739~Environment~13~-77~-390~-75.39749~1~0~None~0~0, LightSource><798><632><0.4021739~Environment~13~-77~-390~-75.39749~1~0~None~0~0, FlareBomb><780.3701><218.6635><0~0~2~3, FlareBomb><1164.023><167.5215><0~0~2~3, 
 AmbientSounds: OMNI><AM_ENV-LightWind.ogg><746.1904><578.5612><0.4130435><0.6673913, SPOT><AM_IND-ElectricHum01.ogg><785.749><296.7><0.3152174><1><390.7489><346.7><-45.35535><-36.35535><0><0.328261, 
 Triggers: Spot<tA>event<tB>MusicEvent<eA>songName<eB>RW_1 - Urban Jungle<eA>vol<eB>0.2999997<eA>prio<eB>0.5<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>-1<eA>rest<eB>5<eA>fadeIn<eB>45.65217<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>611.3611<tB>594.4163<tA>fireChance<tB>0.4565217<tA>entrance<tB>-1<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>1670.361<tB>255.4163<tA>handlePos<tB>-338.3553<tB>68.64465, 
-FadePalette: 0, 0.1847826, 0.2065217
-MorePalette0: 10, 0.8043478, 0.8043478
-MorePalette1: 386, 0.4565217, 0.4347826
+FadePalette: 8, 0.0326087, 0.0326087

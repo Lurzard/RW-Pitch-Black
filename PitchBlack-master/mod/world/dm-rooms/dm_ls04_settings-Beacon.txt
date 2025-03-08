@@ -1,2 +1,0 @@
-EffectColorA: 9
-MorePalette0: 0, 0

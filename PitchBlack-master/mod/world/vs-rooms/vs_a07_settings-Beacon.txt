@@ -1,7 +1,0 @@
-DangerType: FloodAndRain
-RainIntensity: 0.7173913
-RumbleIntensity: 0.7065217
-Effects: FastFloodDrain-0.5869565-20-20, 
-PlacedObjects: 
-FadePalette: 33, 0.7826087
-MorePalette0: 367, 0.4755946

@@ -1,7 +1,0 @@
-RainIntensity: 0.2065217
-RumbleIntensity: 0.2065217
-Clouds: 0.1304348
-Effects: FireFlies-0.2608696-27-134, 
-PlacedObjects: SuperStructureFuses><469.3578><78.63783><185~67, LightFixture><661.6236><602.3738><RedLight~17.32051~-10~1, LightFixture><793.2681><134.2307><RedLight~17.32051~-10~63, LightFixture><-49.97269><121.1628><RedLight~17.32051~-10~97, 
-FadePalette: 33, 0.7282609
-MorePalette0: 10, 0.8989895

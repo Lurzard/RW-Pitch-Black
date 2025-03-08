@@ -1,8 +1,0 @@
-Template: NONE
-Grime: 0.07467154
-Palette: 9
-Effects: 
-PlacedObjects: LightSource><379.6796><570.7904><0.4045397~Environment~0~100~58.53754~-22.25061~1~0~None~0~1, LightSource><378.808><381.6843><0.404541~Environment~0~100~50~86.60254~1~0~None~0~1, 
-AmbientSounds: OMNI><AM_ENV-WallHum.ogg><38.57869><527.9612><0.407202><1, 
-FadePalette: 17, 0.8042571
-MorePalette0: 10, 1

@@ -1,3 +1,0 @@
-base : dusky smokestack
-dusky smokestack : wind chimes
-sewers : sewers

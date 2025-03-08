@@ -1,9 +1,0 @@
-RainIntensity: 0.6956522
-RumbleIntensity: 0.7065217
-Effects: Darkness-0.5-20-82, 
-PlacedObjects: 
-AmbientSounds: SPOT><AM_IND-Factory02.ogg><773.014><426.5505><0.2717391><1><854.014><723.5505><-146.3553><-197.3553><0><0.9260871, 
-FadePalette: 33, 0.7282609, 0.7282609
-MorePalette0: 367, 0.4407952, 0.4407952
-MorePalette1: 21, 0, 0.2551966
-MorePalette2: 10, 0.2087979, 0.3073963

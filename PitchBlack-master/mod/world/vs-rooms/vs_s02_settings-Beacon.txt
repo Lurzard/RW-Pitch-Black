@@ -1,6 +1,0 @@
-Template: VS_SettingsTemplate_Sewer
-Grime: 0.3586957
-EffectColorB: 6
-Effects: Darkness-0.5760869-20-20, 
-PlacedObjects: 
-FadePalette: 10, 1

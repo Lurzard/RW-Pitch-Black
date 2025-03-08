@@ -1,6 +1,0 @@
-Template: VS_SettingsTemplate_Filter
-Effects: 
-PlacedObjects: 
-FadePalette: 21, 0.1304348
-MorePalette0: 367, 0.1043986
-MorePalette1: 10, 0.2551966

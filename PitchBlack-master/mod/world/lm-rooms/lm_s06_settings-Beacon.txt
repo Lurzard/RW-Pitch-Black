@@ -1,6 +1,0 @@
-Template: LM_SettingsTemplate_Sewer
-Palette: 35
-PlacedObjects: BrokenShelterWaterLevel><373.8264><366.1506><, 
-FadePalette: 3, 0.3043478
-MorePalette0: 375, 1
-MorePalette1: 10, 0.7065217

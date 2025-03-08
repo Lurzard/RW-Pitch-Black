@@ -1,6 +1,0 @@
-Template: VS_SettingsTemplate_Filter
-Palette: 33
-Effects: Darkness-0.8586956-22-78, 
-PlacedObjects: 
-FadePalette: 22, 0.2065217, 0.2173913, 0.2173913
-MorePalette0: 10, 0.3015959, 0.3073963, 0.3073963

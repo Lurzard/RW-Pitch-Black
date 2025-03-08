@@ -1,8 +1,0 @@
-Template: UW_SettingsTemplate_Wall
-RainIntensity: 0.2065217
-RumbleIntensity: 0.2065217
-Palette: 29
-EffectColorA: 9
-Effects: FireFlies-0.2717391-284-134, 
-FadePalette: 377, 1
-MorePalette0: 10, 0.5081183

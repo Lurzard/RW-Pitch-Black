@@ -1,6 +1,0 @@
-RainIntensity: 0.7065217
-RumbleIntensity: 0.7065217
-Effects: Darkness-0.3043478-30-30, 
-PlacedObjects: 
-FadePalette: 33, 0.7065217, 0.7065217
-MorePalette0: 367, 0.6553922, 0.6553928

@@ -1,3 +1,0 @@
-base : soaring archipelago
-soaring archipelago : six miles above
-apex : apex

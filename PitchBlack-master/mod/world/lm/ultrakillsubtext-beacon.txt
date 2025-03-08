@@ -1,3 +1,0 @@
-base : misty foundry
-misty foundry : calm before the storm
-clouded walkway : between fates

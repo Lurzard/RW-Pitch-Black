@@ -1,0 +1,22 @@
+DangerType: FloodAndRain
+CeilingDrips: 0.6739131
+RainIntensity: 1
+RumbleIntensity: 1
+WaveSpeed: 0.75
+WaveLength: 0.5
+WaveAmplitude: 0
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Clouds: 0.04347826
+Grime: 0.2391304
+BkgDroneVolume: 0.2769565
+BkgDroneNoThreatVolume: 0
+RandomItemDensity: 0.5
+RandomItemSpearChance: 0.2
+WaterReflectionAlpha: 1
+Palette: 374
+EffectColorA: 1
+EffectColorB: 6
+Effects: ReplaceEffectColorB-0-27-76-Color-0.02173913-0.05434782-0.02173913, Flies-0.01086957-20-20, 
+AmbientSounds: OMNI><AM_ENV-LightWind.ogg><788.1534><588.3784><0.3043478><0.7065217, OMNI><SO_WAT-DripTap.ogg><616.45><588.9956><0.326087><1, OMNI><AM_ENV-Outside.ogg><764.0152><469.9494><0.3913043><0.7065217,
+FadePalette: 8, 0.0

@@ -1,14 +1,7 @@
 Template: SU_SettingsTemplate_Inside
-RainIntensity: 0.7065217
-RumbleIntensity: 0.7065217
 Clouds: 1
-Grime: 0.423913
-Palette: 0
+Grime: 0
 EffectColorA: 2
-EffectColorB: 5
-Effects: FireFlies-0.2065217-338-94, Darkness-0.4130436-30-30, 
-PlacedObjects: 
+PlacedObjects: BrokenShelterWaterLevel><486.908><354.6776><, LightSource><673.3994><491.867><0.5~EffectColor1~-231~91~-302~-36.39746~1~0~None~0~0, 
 AmbientSounds: SPOT><Basic Mech.wav><523.95><262.5025><0.2065217><0.8630434><431.95><477.5024><67.64465><-132.3553><0><0.1652175, 
-FadePalette: 33, 0.8152174
-MorePalette0: 367, 0.3073963
-MorePalette1: 10, 0.6031932
+FadePalette: 8, 0.5217391

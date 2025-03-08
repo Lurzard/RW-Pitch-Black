@@ -1,3 +1,0 @@
-Template: VS_SettingsTemplate_Sewer
-EffectColorA: 2
-FadePalette: 10, 0.8804348

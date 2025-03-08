@@ -1,6 +1,0 @@
-EffectColorB: 6
-Effects: 
-PlacedObjects: BrokenShelterWaterLevel><712.3084><245.5574><, 
-FadePalette: 33, 0.8043478
-MorePalette0: 367, 0.5045942
-MorePalette1: 10, 0.5045942

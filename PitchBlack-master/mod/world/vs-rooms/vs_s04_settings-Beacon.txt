@@ -1,4 +1,0 @@
-Effects: Darkness-0.3043478-30-30, 
-PlacedObjects: BrokenShelterWaterLevel><597.1018><312.4222><, 
-FadePalette: 33, 0.7065217
-MorePalette0: 367, 0.4117949

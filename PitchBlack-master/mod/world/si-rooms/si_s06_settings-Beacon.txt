@@ -1,5 +1,0 @@
-Template: SI_SettingsTemplate_Inside
-Palette: 33
-Effects: SkyAndLightBloom-0-30-30, 
-FadePalette: 2, 0.06521739
-MorePalette0: 10, 0.9536
