@@ -1,48 +1,11 @@
 [MERGE]
 CONDITIONAL LINKS
-Beacon : REPLACEROOM : UW_A14 : UW_A14Beacon
-Beacon : REPLACEROOM : UW_H01 : UW_H01NOLIGHT
-Beacon : REPLACEROOM : UW_C08 : UW_C08Beacon
-
-Beacon : EXCLUSIVEROOM : UW_A13Beacon
-Beacon : EXCLUSIVEROOM : UW_E01Beacon
-Beacon : EXCLUSIVEROOM : UW_F01Beacon
-Beacon : HIDEROOM : UW_A13
-Beacon : HIDEROOM : UW_E01
-Beacon : HIDEROOM : UW_F01
-
-//UW_A13 → UW_A13Beacon for UW_S03
-Beacon : UW_S03 : UW_A13 : UW_A13Beacon
-Beacon : UW_A13 : UW_S03 : DISCONNECTED
-Beacon : UW_A13Beacon : 1 : UW_S03
-
-//Disconnect UW_A02
-Beacon : UW_A02 : UW_E01 : DISCONNECTED
-Beacon : UW_E01 : UW_A02 : DISCONNECTED
-Beacon : UW_J01 : UW_A02 : DISCONNECTED
-Beacon : UW_A02 : UW_J01 : DISCONNECTED
-
-//UW_A13Beacon connection for UW_F01Beacon
-Beacon : UW_F01Beacon : UW_A13 : A13Beacon
-Beacon : UW_A13 : UW_F01 : DISCONNECTED
-Beacon : UW_A13Beacon : 0 : UW_F01Beacon
-
-//UW_F01Beacon connection for UW_A12
-Beacon : UW_A12 : UW_F01 : UW_F01Beacon
-Beacon : UW_F01 : UW_A12 : DISCONNECTED
-Beacon : UW_F01Beacon : 1 : UW_A12
-
-//UWJ01Beacon connection for UW_A01
-Beacon : UW_A01 : UW_J01 : UW_J01Beacon
-Beacon : UW_J01 : UW_A01 : DISCONNECTED
-Beacon : UW_J01Beacon : 1 : UW_A01
+Beacon : UW_A12 : GATE_UW_LC : DISCONNECTED
+Beacon : GATE_UW_LC : UW_A12 : DISCONNECTED
+Beacon : REPLACEROOM : UW_A14 : UW_A14Else
+Beacon : UW_B01 : UW_PREGATE : UW_S07
+Beacon : UW_S07 : 0 : UW_B01
+Beacon : HIDEROOM : UW_PREGATE
+Beacon : HIDEROOM : GATE_UW_SL
 END CONDITIONAL LINKS
-
-ROOMS
-UW_F01Beacon : DISCONNECTED, UW_IN5, UW_A13Beacon
-UW_A13Beacon : UW_F01Beacon, DISCONNECTED, UW_E01Beacon, UW_IN5
-UW_E01Beacon : UW_A13Beacon
-UW_J01Beacon : UW_IN5, DISCONNECTED
-UW_IN5 : UW_F01Beacon, UW_A13Beacon, UW_J01Beacon
-END ROOMS
 [ENDMERGE]

@@ -1,3 +1,0 @@
-[MERGE]
-BkgDroneVolume: 0.2608696
-[ENDMERGE]
