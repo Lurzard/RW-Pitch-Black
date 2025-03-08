@@ -54,8 +54,8 @@
 		"auto_grab_batflies": true,
 
 		"start_room": [ "SH_CABINETS1" ],
-		"world_state": [ "Beacon" ],
-		"story_regions": [ "SU", "HI", "UG", "CC", "GW", "SH", "LM", "SI", "LF", "UW", "RM", "-SB", "-VS", "DM" ],
+		"world_state": [ "Beacon, White" ],
+		"story_regions": [ "SU", "HI", "DS", "CC", "GW", "SH", "SL", "SI", "LF", "UW", "SS", "-SB", "-VS" ],
 
 		"expedition_enabled": true,
 		"expedition_description": "Placeholder expedition description",

@@ -53,7 +53,7 @@
 		"auto_grab_batflies": false,
 
 		"start_room": [ "GW_photo01" ],
-		"world_state": [ "Photomaniac", "Beacon" ],
+		"world_state": [ "Beacon" ],
 
 		"expedition_enabled": true,
 		"expedition_description": "Placeholder expedition description",

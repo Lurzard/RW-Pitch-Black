@@ -4,8 +4,8 @@ PROTECTED
 daySky: PB_AtC_Sky
 duskSky: PB_AtC_Sky
 nightSky: PB_AtC_Sky
-atmosphereColor: 36202f
-multiplyColor: 5b3950
+atmosphereColor: 0e131c
+multiplyColor: 374459
 
 distantCloudsCount: 41
 
