@@ -33,6 +33,7 @@ class Plugin : BaseUnityPlugin
 
     public static readonly SlugcatStats.Name BeaconName = new("Beacon", false);
     public static readonly SlugcatStats.Name PhotoName = new("Photomaniac", false);
+    public static readonly SlugcatStats.Name PursuedName = new("Pursued", false); //Internal name for new main pb scug
     private bool init = false;
 
     //public static ConditionalWeakTable<Player, BeaconCWT> bCon = new ConditionalWeakTable<Player, BeaconCWT>();
@@ -120,16 +121,16 @@ class Plugin : BaseUnityPlugin
         DevCommOverride.Apply();
         OhNoMoonAndPebblesAreDeadGuys.Apply();
 
-        //NightDay.Apply(); //unfinished
+        //NightDay.Apply(); //scrapped
         PassageHooks.Apply();
 
 #if PLAYTEST
-        EchoMusic.Apply();
-        EchoGraphics.Apply();
+        //EchoMusic.Apply();
+        //EchoGraphics.Apply();
         MenuHooks.Apply();
         SyncMenuRegion.Apply();
         PBFrozenCycleTimer.Apply();
-        OverseerHooks.Apply(); // (ONLY 1.0!)
+        OverseerHooks.Apply();
 #endif
 
 

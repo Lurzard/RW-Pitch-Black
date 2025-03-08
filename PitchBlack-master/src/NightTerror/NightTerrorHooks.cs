@@ -192,8 +192,8 @@ public static class NightTerrorHooks
             self.modules.RemoveAll(x => x is ThreatTracker);
             self.utilityComparer.uTrackers.RemoveAll(x => x.module is ThreatTracker);
 
-            // This makes it 1.5 times as fast as a red centipede
-            self.pathFinder.stepsPerFrame = 22;
+            // 22 makes it 1.5 times as fast as a red centipede
+            self.pathFinder.stepsPerFrame = 15;
         }
     }
 
@@ -257,7 +257,7 @@ public static class NightTerrorHooks
                 NightTerrorInfo.Add(self, new NightTerrorData());
             }
             
-            self.bodyChunks = new BodyChunk[21];
+            self.bodyChunks = new BodyChunk[20];
             for (int i = 0; i < self.bodyChunks.Length; i++)
             {
                 float chunkRad = 1.5f + Mathf.Lerp(Mathf.Lerp(2f, 3.5f, self.size), Mathf.Lerp(4f, 6.5f, self.size), Mathf.Pow(Mathf.Clamp(Mathf.Sin(Mathf.PI * (i / (float)(self.bodyChunks.Length - 1))), 0f, Mathf.PI), Mathf.Lerp(0.7f, 0.3f, self.size)));
@@ -293,7 +293,7 @@ public static class NightTerrorHooks
         orig(self, ow);
         if (self.centipede.abstractCreature.creatureTemplate.IsNightTerror())
         {
-            self.hue = 0.702f;
+            self.hue = 0.900f;
             self.saturation = 0.96f;
         }
     }
