@@ -1,10 +1,34 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using RWCustom;
+using System.Runtime.CompilerServices;
+using System;
 
 namespace PitchBlack;
+
+public static class Extension
+{
+    public static readonly ConditionalWeakTable<Player, BeaconCWT> _cwtbc = new();
+
+    public static BeaconCWT Beacon(this Player player) => _cwtbc.GetValue(player, _ => new BeaconCWT(player));
+
+    public static bool IsBeacon(this Player player) => player.Beacon().IsBeacon;
+
+    public static bool IsBeacon (this Player player, out BeaconCWT beacon)
+    {
+        beacon = player.Beacon();
+        return beacon.IsBeacon;
+    }
+}
+
 public class BeaconCWT
 {
+    public Color BeaconColor;
+
+    public WeakReference<Player> PlayerRef;
+
+    public readonly bool IsBeacon;
+
     public ScugCWT scugCWTData; //for if you need to get any variables from ScugCWT while accessing BeaconCWT
     public FlareStore storage;
     public int dontThrowTimer = 0;
@@ -16,6 +40,18 @@ public class BeaconCWT
         scugCWTData = cwtData;
         cwtData.playerRef.TryGetTarget(out Player player);
         storage = new FlareStore(player);
+    }
+
+    public BeaconCWT(Player player)
+    {
+        PlayerRef = new WeakReference<Player>(player);
+
+        IsBeacon = player.slugcatStats.name == Plugin.BeaconName;
+
+        if (!IsBeacon)
+        {
+            return;
+        }
     }
 
     public class AbstractStoredFlare : AbstractPhysicalObject.AbstractObjectStick
