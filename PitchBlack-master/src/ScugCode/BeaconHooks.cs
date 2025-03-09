@@ -33,9 +33,34 @@ public static class BeaconHooks
         On.Player.Regurgitate += Player_Regurgitate;
         On.Player.ObjectEaten += Player_ObjectEaten;
         On.HUD.FoodMeter.MeterCircle.Update += MeterCircle_Update;
+        On.PlayerGraphics.ApplyPalette += PlayerGraphics_ApplyPalette;
+        On.PlayerGraphics.DrawSprites += PlayerGraphics_DrawSprites1;
     }
 
+    private static void PlayerGraphics_DrawSprites1(On.PlayerGraphics.orig_DrawSprites orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
+    {
+        orig(self, sLeaser, rCam, timeStacker, camPos);
 
+        if (!self.player.IsBeacon(out var beacon)) return;
+
+        for(int sprites = 0; sprites < sLeaser.sprites.Length;  sprites++)
+        {
+            if(sprites != 9)
+                sLeaser.sprites[sprites].color = beacon.BeaconColor;
+        }
+    }
+
+    private static void PlayerGraphics_ApplyPalette(On.PlayerGraphics.orig_ApplyPalette orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
+    {
+        orig(self, sLeaser, rCam, palette);
+
+        if (!self.player.IsBeacon(out var beacon)) return;
+
+        beacon.BeaconColor = Color.Lerp(palette.blackColor, 
+                                        Custom.HSL2RGB(0.63055557f, 0.54f, 0.5f), 
+                                        Mathf.Lerp(0.08f, 0.04f, palette.darkness));
+
+    }
 
     public static int coopRefund = 0; //flashbangs to recover after respawning in jollycoop
     public static int foodWarning = 0;
