@@ -24,6 +24,7 @@ public static class Extension
 public class BeaconCWT
 {
     public Color BeaconColor;
+    public Color BeaconEyeColor;
 
     public WeakReference<Player> PlayerRef;
 

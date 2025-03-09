@@ -4,28 +4,14 @@
 	"description": "In the wake of night, a frail but agile slugcat with a strange luminosity makes their presence known.\nLight your path and journey far; time is of the essence when under pursuit.",
 	"features": {
 
-		"color": "2a04dc",
-		"custom_colors": [
-			{
-				"name": "Body",
-				"story": "2a04dc",
-				"arena": [ "f9f8fc", "fde120", "f27fa0", "422d74" ]
-			},
-			{
-				"name": "Eyes",
-				"story": "FFFFFF",
-				"arena": [ "1c1b1d", "1c1b19", "181516", "FFFFFF" ]
-			}
-		],
-
 		"guide_overseer": 87,
 
-		"weight": [ 0.8, 0.7 ],
-		"tunnel_speed": [ 1.2, 1 ],
-		"climb_speed": [ 1.3, 1.1 ],
-		"walk_speed": [ 1.4, 1.2 ],
+		"weight": [ 0.9, 0.8 ],
+		"tunnel_speed": [ 1.1, 1 ],
+		"climb_speed": [ 1.2, 1.1 ],
+		"walk_speed": [ 1.3, 1.2 ],
 		"throw_skill": 1,
-		"lung_capacity": [ 3.335, 1.8 ],
+		"lung_capacity": [ 2.2, 1.8 ],
 
 		"food_min": 4,
 		"food_max": 7,
@@ -37,8 +23,7 @@
 				"DropBug": 1.5,
 				"LanternMouse": 1.5,
 				"MirosVulture": 2,
-				"MirosBird": 2,
-				"Spider": 0.5,
+				"MirosBird": 1.5,
 				"BigSpider": 1.5,
 				"SpitterSpider": 1.5,
 				"MotherSpider": 1,

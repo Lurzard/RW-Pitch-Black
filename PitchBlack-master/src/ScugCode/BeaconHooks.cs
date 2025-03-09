@@ -45,8 +45,9 @@ public static class BeaconHooks
 
         for(int sprites = 0; sprites < sLeaser.sprites.Length;  sprites++)
         {
-            if(sprites != 9)
-                sLeaser.sprites[sprites].color = beacon.BeaconColor;
+            if(sprites != 9) sLeaser.sprites[sprites].color = beacon.BeaconColor;
+            if(sprites == 9) sLeaser.sprites[sprites].color = beacon.BeaconEyeColor;
+            if(sprites == 10) sLeaser.sprites[sprites].color = Custom.hexToColor("f02961");
         }
     }
 
@@ -59,6 +60,7 @@ public static class BeaconHooks
         beacon.BeaconColor = Color.Lerp(palette.blackColor, 
                                         Custom.HSL2RGB(0.63055557f, 0.54f, 0.5f), 
                                         Mathf.Lerp(0.08f, 0.04f, palette.darkness));
+        beacon.BeaconEyeColor = new Color(1f, 1f, 1f);
 
     }
 
@@ -84,7 +86,6 @@ public static class BeaconHooks
 
     private static void PlayerGraphics_Update(On.PlayerGraphics.orig_Update orig, PlayerGraphics self)
     {
-        orig(self);
         bool slugIsBeacon = Plugin.scugCWT.TryGetValue(self.player, out ScugCWT cwt) && cwt.IsBeacon;
 
         if (slugIsBeacon && self.player.room.Darkness(self.player.mainBodyChunk.pos) > 0f) //ASSUMING THIS WILL BE TRUE MOST OF THE TIME IN BEACON'S WORLD STATE
@@ -153,6 +154,8 @@ public static class BeaconHooks
                 self.head.vel -= self.lookDirection * 3f;
             }
         }
+
+        orig(self);
     }
 
     private static void Player_GrabUpdate_IL(ILContext il)
@@ -273,7 +276,7 @@ public static class BeaconHooks
         if (Plugin.BeaconName == self.slugcatStats.name)
         {
             if (Player.AnimationIndex.Flip == self.animation)
-                self.jumpBoost *= 1f + 0.75f;
+                self.jumpBoost *= 1f + 0.55f;
             else
                 self.jumpBoost *= 1f + 0.1f;
         }
