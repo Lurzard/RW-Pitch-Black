@@ -5,6 +5,7 @@ using UnityEngine;
 using MoreSlugcats;
 using System;
 using RWCustom;
+using UnityEngine.PlayerLoop;
 
 namespace PitchBlack;
 
@@ -37,13 +38,49 @@ public static class BeaconHooks
         On.PlayerGraphics.DrawSprites += PlayerGraphics_DrawSprites1;
     }
 
+    //add math to fade beacon color in real time instead of immediately 
     private static void PlayerGraphics_DrawSprites1(On.PlayerGraphics.orig_DrawSprites orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
     {
         orig(self, sLeaser, rCam, timeStacker, camPos);
 
         if (!self.player.IsBeacon(out var beacon)) return;
 
-        for(int sprites = 0; sprites < sLeaser.sprites.Length;  sprites++)
+        bool slugIsBeacon = Plugin.scugCWT.TryGetValue(self.player, out ScugCWT cwt) && cwt.IsBeacon;
+        int flares = cwt.Beacon.storage.storedFlares.Count;
+
+        Color flareColor1 = new Color(0.0862745098f, 0.05490196078f, 0.2f);
+        Color flareColor2 = new Color(0.14509803921f, 0.06274509803f, 0.43137254902f);
+        Color flareColor3 = new Color(0.16078431372f, 0.04705882352f, 0.58039215686f);
+        Color flareColor4 = new Color(0.2f, 0f, 1f);
+
+        for (int i = 0; i < 2; i++)
+        {
+            if (flares == 0)
+            {
+                beacon.BeaconColor = Color.Lerp(beacon.BeaconDefaultColor, flareColor2, 0.15f);
+            }
+            if (flares == 1)
+            {
+                beacon.BeaconColor = Color.Lerp(beacon.BeaconDefaultColor, flareColor2, 0.35f);
+            }
+            if (flares == 2)
+            {
+                beacon.BeaconColor = Color.Lerp(beacon.BeaconDefaultColor, flareColor3, 0.40f);
+            }
+            if (flares == 3)
+            {
+                beacon.BeaconColor = Color.Lerp(beacon.BeaconDefaultColor, flareColor3, 0.75f);
+            }
+            if (flares == 4)
+            {
+                beacon.BeaconColor = Color.Lerp(beacon.BeaconDefaultColor, flareColor4, 0.92f);
+            }
+        }
+
+        Color color = self.player.ShortCutColor();
+        color = beacon.BeaconColor;
+
+        for (int sprites = 0; sprites < sLeaser.sprites.Length;  sprites++)
         {
             if(sprites != 9) sLeaser.sprites[sprites].color = beacon.BeaconColor;
             if(sprites == 9) sLeaser.sprites[sprites].color = beacon.BeaconEyeColor;
@@ -57,11 +94,8 @@ public static class BeaconHooks
 
         if (!self.player.IsBeacon(out var beacon)) return;
 
-        beacon.BeaconColor = Color.Lerp(palette.blackColor, 
-                                        Custom.HSL2RGB(0.63055557f, 0.54f, 0.5f), 
-                                        Mathf.Lerp(0.08f, 0.04f, palette.darkness));
+        beacon.BeaconDefaultColor = Color.Lerp(palette.blackColor, Custom.HSL2RGB(0.63055557f, 0.54f, 0.5f), Mathf.Lerp(0.08f, 0.04f, palette.darkness));
         beacon.BeaconEyeColor = new Color(1f, 1f, 1f);
-
     }
 
     public static int coopRefund = 0; //flashbangs to recover after respawning in jollycoop
