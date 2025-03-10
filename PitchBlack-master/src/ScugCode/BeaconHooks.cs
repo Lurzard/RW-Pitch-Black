@@ -57,19 +57,19 @@ public static class BeaconHooks
         {
             if (flares == 0)
             {
-                beacon.BeaconColor = Color.Lerp(beacon.BeaconDefaultColor, flareColor1, 0.25f);
+                beacon.BeaconColor = Color.Lerp(beacon.BeaconDefaultColor, flareColor1, 0.45f);
             }
             if (flares == 1)
             {
-                beacon.BeaconColor = Color.Lerp(beacon.BeaconDefaultColor, flareColor2, 0.35f);
+                beacon.BeaconColor = Color.Lerp(beacon.BeaconDefaultColor, flareColor2, 0.55f);
             }
             if (flares == 2)
             {
-                beacon.BeaconColor = Color.Lerp(beacon.BeaconDefaultColor, flareColor3, 0.45f);
+                beacon.BeaconColor = Color.Lerp(beacon.BeaconDefaultColor, flareColor3, 0.60f);
             }
             if (flares == 3)
             {
-                beacon.BeaconColor = Color.Lerp(beacon.BeaconDefaultColor, flareColor3, 0.75f);
+                beacon.BeaconColor = Color.Lerp(beacon.BeaconDefaultColor, flareColor3, 0.80f);
             }
             if (flares == 4)
             {

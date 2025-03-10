@@ -202,7 +202,7 @@ public static class NightTerrorHooks
         Color result = orig(self);
         if (self.abstractCreature.creatureTemplate.IsNightTerror())
         {
-            return new Color(0.2f, 0f, 1f);
+            return new Color(0.5f, 0f, 1f);
         }
         return result;
     }
