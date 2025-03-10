@@ -131,6 +131,7 @@ class Plugin : BaseUnityPlugin
         SyncMenuRegion.Apply();
         PBFrozenCycleTimer.Apply();
         OverseerHooks.Apply();
+        SpecialChanges.Apply();
 #endif
 
 
