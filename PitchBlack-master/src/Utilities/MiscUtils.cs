@@ -44,7 +44,7 @@ public static class MiscUtils
             retString += unicodeChar;
             // Debug.Log($"Pitch Black: current return string, iteration {i} of {range-1}: {retString}");
         }
-        Debug.Log($"Pitch Black: {retString}");
+        //Debug.Log($"Pitch Black: {retString}"); Debug errors
         return retString;
     }
     #region Bacon or Photo checks

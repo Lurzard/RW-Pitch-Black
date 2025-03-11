@@ -57,7 +57,9 @@ public static class BeaconHooks
         {
             if (flares == 0)
             {
-                beacon.BeaconColor = Color.Lerp(beacon.BeaconDefaultColor, flareColor1, 0.45f);
+                if (self.player.dead) { beacon.BeaconColor = beacon.BeaconDefaultColor; }
+
+                else { beacon.BeaconColor = Color.Lerp(beacon.BeaconDefaultColor, flareColor1, 0.45f); }
             }
             if (flares == 1)
             {
@@ -166,6 +168,11 @@ public static class BeaconHooks
             //IF WE HAVE THE_GLOW, DON'T LET OUR GLOW STRENGTH UNDERCUT THAT
             if (self.player.glowing && glowStr < 300)
                 glowStr = 300;
+
+            if (self.player.dead)
+            {
+                glowStr = 0;
+            }
 
             self.lightSource.setRad = glowStr;
             self.lightSource.stayAlive = true;

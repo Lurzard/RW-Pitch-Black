@@ -61,7 +61,7 @@ class Plugin : BaseUnityPlugin
             Content.Register(new LMLLCritob());
             Content.Register(new NightTerrorCritob());
         } catch (Exception err) {
-            Debug.LogError(err);
+            //Debug.LogError(err); Debug errors
             Logger.LogError(err);
         }
     }
@@ -85,7 +85,7 @@ class Plugin : BaseUnityPlugin
         };
         On.HUD.HUD.InitChatLog += (orig, self, messages) => 
         {
-            Debug.Log(message: "In HUD InitChatLog");
+            //Debug.Log(message: "In HUD InitChatLog"); Debug and message errors
             foreach (string message in messages) { Debug.Log(message); }
             Debug.Log(self.chatLog == null);
             var ret = orig(self, messages);
@@ -132,6 +132,7 @@ class Plugin : BaseUnityPlugin
         PBFrozenCycleTimer.Apply();
         OverseerHooks.Apply();
         SpecialChanges.Apply();
+        //ScavengerMarkGraphics.Apply(); not working atm
 #endif
 
 

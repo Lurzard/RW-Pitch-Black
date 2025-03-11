@@ -73,7 +73,7 @@ public static class MenuHooks
         catch (Exception ex) {
             Debug.LogError("Exception when matching IL for ProcessManager_PostSwitchMainProcess!");
             Debug.LogException(ex);
-            Debug.LogError(il);
+            //Debug.LogError(il); il errors
             throw;
         }
 

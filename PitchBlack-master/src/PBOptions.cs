@@ -21,7 +21,7 @@ public class PBOptions : OptionInterface
 
     public PBOptions()
     {
-		maxFlashStore = config.Bind<int>("maxFlashStore", 4, new ConfigAcceptableRange<int>(0, 10));
+		//maxFlashStore = config.Bind<int>("maxFlashStore", 4, new ConfigAcceptableRange<int>(0, 10));
 		shockStun = config.Bind<bool>("shockStun", true);
 		elecImmune = config.Bind<bool>("elecImmune", false);
 		chargeSpears = config.Bind<bool>("chargeSpears", false);
@@ -49,7 +49,7 @@ public class PBOptions : OptionInterface
             new OpLabel(200, 575, Translate("Pitch Black Options"), true) {alignment=FLabelAlignment.Center},
 
             // Make the options on the right side
-            new OpSlider(maxFlashStore, new Vector2(rightSidePos, 520), sliderBarLength) {description=Translate("Beacon's Max Stored Flashbangs")},
+            //new OpSlider(maxFlashStore, new Vector2(rightSidePos, 520), sliderBarLength) {description=Translate("Beacon's Max Stored Flashbangs")},
             new OpLabel(rightSidePos, 500, Translate("Flashbang storage amount")),
 
             new OpSlider(pursuerAgro, new Vector2(rightSidePos, 440), sliderBarLength) {description = Translate("How long it takes for the pursuer to track you down")},

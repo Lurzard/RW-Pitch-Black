@@ -93,7 +93,7 @@ public class BeaconCWT
         public int counter;
 
         // Change this to increase the number of flares stored
-        public int capacity = PBOptions.maxFlashStore.Value;
+        public int capacity = 4; //PBOptions.maxFlashStore.Value;
         public bool interactionLocked;
         public Stack<AbstractStoredFlare> abstractFlare;
 

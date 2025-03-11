@@ -337,7 +337,7 @@ public class TeleportWater
             } catch (Exception err) {
                 Debug.Log("WOWIE another ERRRROOOORRRR");
                 Debug.Log(err);
-                Debug.LogError(err);
+                //Debug.LogError(err); Debug errors
                 Plugin.logger.LogDebug(err);
             }
             // If a creature wanders into the portal, queue it for teleportation.
@@ -353,7 +353,7 @@ public class TeleportWater
                 }
             } catch (Exception err) {
                 Debug.Log("Oh nooooo its the error again");
-                Debug.LogError(err);
+                //Debug.LogError(err); Debug errors
                 Plugin.logger.LogDebug(err);
             }
         }
