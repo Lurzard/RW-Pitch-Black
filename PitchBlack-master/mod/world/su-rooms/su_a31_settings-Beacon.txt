@@ -5,7 +5,7 @@ WaveLength: 0.9587699
 WaveAmplitude: 2.579661E-07
 SecondWaveLength: 0.1666667
 SecondWaveAmplitude: 0
-Clouds: 0.1304348
+Clouds: 0.1521739
 Grime: 0.3478261
 EffectColorB: 5
 PlacedObjects: CentipedeAttractor><358.5591><231.0595><-151~233, DangleFruit><397.0182><288.1992><156~282~2~3, DangleFruit><159.8455><327.1231><395~164~2~3, DangleFruit><364.2957><345.3053><190~66~2~3, 

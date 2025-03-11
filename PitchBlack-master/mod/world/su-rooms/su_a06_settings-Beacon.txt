@@ -1,4 +1,4 @@
-Clouds: 0.1304348
+Clouds: 0.5
 Grime: 0.3913043
 BkgDroneVolume: 0.2769565
 EffectColorB: 8
