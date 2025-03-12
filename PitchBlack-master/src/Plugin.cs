@@ -39,6 +39,7 @@ class Plugin : BaseUnityPlugin
     //public static ConditionalWeakTable<Player, BeaconCWT> bCon = new ConditionalWeakTable<Player, BeaconCWT>();
     //public static ConditionalWeakTable<Player, PhotoCWT> pCon = new ConditionalWeakTable<Player, PhotoCWT>();
     public static ConditionalWeakTable<Player, ScugCWT> scugCWT = new();
+    public static ConditionalWeakTable<RainWorldGame, List<NTTracker>> NTTrackers = new ConditionalWeakTable<RainWorldGame, List<NTTracker>>();
 
 
     internal static bool RotundWorldEnabled => _rotundWorldEnabled; //for a single check in BeaconHooks' Player.Update hook
@@ -254,26 +255,21 @@ class Plugin : BaseUnityPlugin
             }
         }
     }
-
-
-    public static NTTracker myTracker;// IDRK WHAT TO DO WITH THIS
-
     private static void RainWorldGame_Update(On.RainWorldGame.orig_Update orig, RainWorldGame self)
     {
         orig(self);
-        if (myTracker is not null)
-            myTracker.Update();
+        if (NTTrackers.TryGetValue(self, out List<NTTracker> trackers)) foreach (NTTracker tracker in trackers) tracker.Update();
     }
-
     private static void RainWorldGame_ctor(On.RainWorldGame.orig_ctor orig, RainWorldGame self, ProcessManager manager)
     {
         orig(self, manager);
+        NTTrackers.Add(self, new List<NTTracker>());
 #if PLAYETST
         riftCWT.Add(self, new List<RiftWorldPrecence>());
 #endif
-        if (self.IsStorySession)
+        if ((IsBeacon(self.session) || PBOptions.universalPursuer.Value) && NTTrackers.TryGetValue(self, out var trackers))
         {
-            myTracker = new NTTracker(self);
+            trackers.Add(new NTTracker(self));
             Debug.Log("ADDING TRACKER");
         }
 

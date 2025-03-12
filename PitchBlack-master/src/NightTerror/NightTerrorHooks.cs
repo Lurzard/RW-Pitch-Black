@@ -9,11 +9,6 @@ using static System.Reflection.BindingFlags;
 
 namespace PitchBlack;
 
-public class NightTerrorData
-{
-    public int fleeing;
-    public Vector2 fleeTo = Vector2.zero;
-}
 
 public class NightTerrorAbstractData
 {
@@ -26,25 +21,20 @@ public class NightTerrorAbstractData
     }
 
     private bool _justRevived;
-
     public int timeUntilRevive;
     public bool diedToSporeCloud;
     public readonly float MaxHP;
 
     //public int MaxTimeUntilRevive => !diedToSporeCloud ? 15 : 3;
     //public int MaxTimeUntilRevive => PBOptions.pursuerAgro2.Value * (!diedToSporeCloud ? 60 : 6);
-    public int MaxTimeUntilRevive => (8 - PBOptions.pursuerAgro.Value) * (diedToSporeCloud ? 6 : 9999); //ACTUALLY.. ONLY RESPAWN FROM SPORES. THE OTHER TRACKER WILL HANDLE RESPAWNS
+    // This makes it so that if the agression is set to 7 the NT will revive in just 20 seconds. At the min of 0 it will take 2 miniutes and fourty seconds.
+    // These values are set to 1/10th if a sporepuff killed it. So in 2 seconds for the most agressive mode.
+    public int MaxTimeUntilRevive => (8 - PBOptions.pursuerAgro.Value) * (diedToSporeCloud ? 80 : 800);
     //spinch: thrown PuffBalls makes NT revive faster because that looks cool
-
-    public void DecreaseReviveTimer(int timeDecreasedBy = 2)
-    {
-        timeUntilRevive = Mathf.Max(0, timeUntilRevive - timeDecreasedBy);
-
-        // Debug.Log($"Pitch Black: NightTerror got hit! {nameof(timeUntilRevive)} = {timeUntilRevive}");
-    }
 
     public void TryRevive()
     {
+        Debug.Log("Trying to revive the Night Terror");
         if (!abstrNightterrorRef.TryGetTarget(out var centi) || !PBOptions.pursuer.Value) return;
 
         if (centi.state.alive || centi.realizedCreature != null && !centi.realizedCreature.dead) return;
@@ -78,10 +68,7 @@ public class NightTerrorAbstractData
                 spear.ChangeMode(Weapon.Mode.Free);
             }
         }
-        if (ModManager.MMF)
-        {
-            centi.LoseAllStuckObjects();
-        }
+        centi.LoseAllStuckObjects();
 
         Debug.Log("Pitch Black: NightTerror revived!");
     }
@@ -101,7 +88,6 @@ public class NightTerrorAbstractData
 
 public static class NightTerrorHooks
 {
-    public static ConditionalWeakTable<Centipede, NightTerrorData> NightTerrorInfo = new();
     public static ConditionalWeakTable<AbstractCreature, NightTerrorAbstractData> NTAbstractCWT = new();
     public static ConditionalWeakTable<AbstractCreature, StrongBox<int>> KILLIT = new();
 
@@ -121,6 +107,7 @@ public static class NightTerrorHooks
         new Hook(typeof(Centipede).GetMethod("get_Red", Public | NonPublic | Instance), (Func<Centipede, bool> orig, Centipede self) => self.Template.IsNightTerror() || orig(self));
 
         On.AbstractCreature.Update += AbstractCreature_Update;
+        On.AbstractCreature.ctor += AbstractCreature_ctor;
         On.Creature.CanBeGrabbed += Creature_CanBeGrabbed;
         On.SporeCloud.Update += SporeCloud_Update;
 
@@ -133,6 +120,71 @@ public static class NightTerrorHooks
         On.Centipede.Shock += Centipede_Shock;
         On.Centipede.ShortCutColor += Centipede_ShortCutColor;
         On.CentipedeAI.ctor += CentipedeAICTOR;
+        On.PreyTracker.AddPrey += PreyTracker_AddPrey;
+        On.PreyTracker.ForgetPrey += PreyTracker_ForgetPrey;
+        On.PreyTracker.Update += PreyTracker_Update;
+        On.AbstractCreatureAI.AbstractBehavior += AbstractCreatureAI_AbstractBehavior;
+        On.AbstractCreatureAI.CanRoamThroughRoom += AbstractCreatureAI_CanRoamThroughRoom;
+    }
+    private static bool AbstractCreatureAI_CanRoamThroughRoom(On.AbstractCreatureAI.orig_CanRoamThroughRoom orig, AbstractCreatureAI self, int room)
+    {
+        bool result = orig(self, room);
+        if (self.parent.creatureTemplate.IsNightTerror()) {
+            return true;
+        }
+        return result;
+    }
+    private static void AbstractCreatureAI_AbstractBehavior(On.AbstractCreatureAI.orig_AbstractBehavior orig, AbstractCreatureAI self, int time)
+    {
+        orig(self, time);
+        // if (self.parent.creatureTemplate.IsNightTerror() && Plugin.NTTrackers.TryGetValue(self.parent.world.game, out var trackers) && trackers.Any(x => x.pursuer == self.parent)) {
+        //     NTTracker tracker = trackers.First(x => x.pursuer == self.parent);
+        //     if (tracker.targetPlayer != null) {
+        //         self.followCreature = tracker.targetPlayer.abstractCreature;
+        //         if (tracker.currentTargetRoom == tracker.targetPlayer.abstractCreature.Room) {
+        //             tracker.pursuer.abstractAI.SetDestination(tracker.targetPlayer.abstractCreature.pos);
+        //             tracker.pursuer.abstractAI.FindPath(tracker.targetPlayer.abstractCreature.pos);
+        //         }
+        //     }
+        // }
+    }
+    private static void PreyTracker_Update(On.PreyTracker.orig_Update orig, PreyTracker self)
+    {
+        orig(self);
+        if (self.AI.creature.creatureTemplate.IsNightTerror()) {
+            self.prey.RemoveAll(x => x.critRep.representedCreature.creatureTemplate.type == CreatureTemplate.Type.Slugcat && x.critRep.representedCreature.Room.realizedRoom?.ValidTrackRoom() == false);
+        }
+    }
+    private static void PreyTracker_ForgetPrey(On.PreyTracker.orig_ForgetPrey orig, PreyTracker self, AbstractCreature crit)
+    {
+        if (self.AI.creature.creatureTemplate.IsNightTerror() && crit.creatureTemplate.type == CreatureTemplate.Type.Slugcat) {
+            bool? validRoom = crit.Room.realizedRoom?.ValidTrackRoom();
+            if (validRoom == null || validRoom == true) {
+                return;
+            }
+        }
+        orig(self, crit);
+    }
+    private static void PreyTracker_AddPrey(On.PreyTracker.orig_AddPrey orig, PreyTracker self, Tracker.CreatureRepresentation creature)
+    {
+        if (self.AI.creature.creatureTemplate.IsNightTerror() && creature.representedCreature.creatureTemplate.type != CreatureTemplate.Type.Slugcat) {
+            return;
+        }
+        orig(self, creature);
+    }
+    private static void AbstractCreature_ctor(On.AbstractCreature.orig_ctor orig, AbstractCreature self, World world, CreatureTemplate creatureTemplate, Creature realizedCreature, WorldCoordinate pos, EntityID ID)
+    {
+        orig(self, world, creatureTemplate, realizedCreature, pos, ID);
+        KILLIT.Add(self, new StrongBox<int>(0));
+        if (creatureTemplate.IsNightTerror()) {
+            if (Plugin.NTTrackers.TryGetValue(world.game, out var trackers)) {
+                trackers.Add(new NTTracker(world.game){pursuer = self});
+            }
+            self.lavaImmune = true;
+            self.voidCreature = true;
+            self.ignoreCycle = true;
+            self.HypothermiaImmune = true;
+        }
     }
 
     /// <summary>
@@ -145,6 +197,7 @@ public static class NightTerrorHooks
             if (self.dead || self.stun > 0) {
                 return true;
             }
+            Debug.Log("Removed Grasp");
             return false;
         }
         return result;
@@ -188,9 +241,9 @@ public static class NightTerrorHooks
             self.utilityComparer.uTrackers.RemoveAll(x => x.module is PreyTracker);
             self.utilityComparer.AddComparedModule(self.preyTracker, null, 0.9f, 1.1f);
 
-            // Remove the Threat Tracker
-            self.modules.RemoveAll(x => x is ThreatTracker);
-            self.utilityComparer.uTrackers.RemoveAll(x => x.module is ThreatTracker);
+            // Remove unneeded Trackers
+            self.modules.RemoveAll(x => x is ThreatTracker || x is RainTracker || x is DenFinder || x is InjuryTracker);
+            self.utilityComparer.uTrackers.RemoveAll(x => x.module is ThreatTracker || x.module is RainTracker || x.module is DenFinder || x.module is InjuryTracker);
 
             // 22 makes it 1.5 times as fast as a red centipede
             self.pathFinder.stepsPerFrame = 15;
@@ -253,9 +306,6 @@ public static class NightTerrorHooks
 
             abstractCreature.ignoreCycle = true;
 
-            if (!NightTerrorInfo.TryGetValue(self, out _)) {
-                NightTerrorInfo.Add(self, new NightTerrorData());
-            }
             
             self.bodyChunks = new BodyChunk[20];
             for (int i = 0; i < self.bodyChunks.Length; i++)

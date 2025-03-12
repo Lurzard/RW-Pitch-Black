@@ -1,544 +1,235 @@
-using PitchBlack;
 using System.Collections.Generic;
+using RWCustom;
 using UnityEngine;
-using Music;
-using System;
-using Expedition;
 
 namespace PitchBlack;
-
+#nullable enable
 
 public class NTTracker
 {
-    public NTTracker(RainWorldGame g)
+    private const string PURSUE_SONG_NAME = "RW_20 - Polybius";
+    private readonly bool DEBUG_MESSAGES = false;
+    public AbstractCreature? targetPlayer;
+    public AbstractCreature? pursuer;
+    public string region;
+    public int regionSwitchCooldown = 2400; //MAKE IT START THIS WAY SO THAT IT COUNTS FOR THE BEGINNING CYCLE TIMER TOO
+    //TAKEN FROM BURDEN TRACKER
+    public RainWorldGame game;
+    //AD HOC
+    public int abstractTeleportTimer = 0;
+    public readonly int abstractRelocateTime;
+    public AbstractRoom? currentTargetRoom;
+    public WorldCoordinate quickMoveToExit;
+    public int quickMoveToExitCounter;
+    // public AbstractRoom oldTargetRoom;
+    public NTTracker(RainWorldGame rainGame)
     {
         Debug.Log("PURSUED TRACKER INIT");
-        this.regionCooldowns = new List<string>();
-        this.game = g;
-        this.unrealizedCounter = 0;
-        this.region = this.game.world.region.name;
-        this.summoning = false;
-        this.debugMsg = false; //PBOptions.debugMsg.Value
+        game = rainGame;
+        region = game.world.region.name;
+        // The value is multiplied by 2400 because that is 1 minute, given the game tickes at 40tps
+        abstractRelocateTime = PBOptions.pursuerAgro.Value * 2400;
     }
-
-
-    public void SpawnPosition()
-    {
-        if (this.game != null && this.game.world != null && this.game.Players != null && this.game.Players.Count > 0 && this.game.Players[0] != null && this.game.Players[0].Room != null)
-        {
-            List<int> list = new List<int>();
-            for (int i = 0; i < this.game.world.NumberOfRooms; i++)
-            {
-                AbstractRoom abstractRoom = this.game.world.GetAbstractRoom(this.game.world.firstRoomIndex + i);
-                if (abstractRoom != null && !abstractRoom.shelter && !abstractRoom.gate && abstractRoom.name != this.game.Players[0].Room.name)
-                {
-                    list.Add(i);
-                }
-            }
-            AbstractRoom abstractRoom2 = this.game.world.GetAbstractRoom(this.game.world.firstRoomIndex + list[UnityEngine.Random.Range(0, list.Count)]);
-            this.spawnPos = abstractRoom2.RandomNodeInRoom();
-            //Debug.Log("HUNTER LOCATION: " + abstractRoom2.name);
+    int FindDistanceToTarget(int searchDistance) {
+        if (pursuer?.Room == null) {
+            Debug.Log("Pursuer or it's room were null, returning -1");
+            return -1;
         }
-    }
-
-
-    public void SetUpPlayer()
-    {
-        if (this.game != null)
-        {
-            for (int i = 0; i < this.game.Players.Count; i++)
-            {
-                if (this.game.Players[i] != null && this.game.Players[i].realizedCreature != null && !this.game.Players[i].realizedCreature.dead)
-                {
-                    this.targetPlayer = (this.game.Players[i].realizedCreature as Player);
-                    return;
-                }
-            }
-            if (this.game.manager.musicPlayer != null)
-            {
-                Song song = this.game.manager.musicPlayer.song;
-                if (((song != null) ? song.name : null) == "RW_20 - Polybius")
-                {
-                    this.game.manager.musicPlayer.FadeOutAllNonGhostSongs(100f);
-                }
-            }
-            return;
+        if (pursuer.state.dead) {
+            Debug.Log("Pursuer is dead, returning -1");
+            return -1;
         }
+        if (DEBUG_MESSAGES) Debug.Log("Pursuer attepmting to find distance to player room");
+
+        List<AbstractRoom> alreadySearchedRooms = new List<AbstractRoom>();                 // Rooms that have already been searched in for the player
+        List<AbstractRoom> potentialSearchRooms = new List<AbstractRoom>(){pursuer.Room};   // Rooms that are next to be searched. Cleared after every loop below after moving contents to actualSearchRooms.
+        List<AbstractRoom> actualSearchRooms = new List<AbstractRoom>();                    // Stores rooms that are actively being searched. While accessing the rooms, it adds connected rooms that aren't in alreadySearchedRooms to potentialSearchRooms.
+        // i is the search depth, how many rooms have been searched before finding a match
+        for (int i = 0; i <= searchDistance; i++) {
+            actualSearchRooms.AddRange(potentialSearchRooms);
+            potentialSearchRooms.Clear();
+            foreach (AbstractRoom absRoom in actualSearchRooms) {
+                if (DEBUG_MESSAGES) Debug.Log("Pursuer searching room: " + absRoom.name);
+                if (absRoom == targetPlayer?.Room) {
+                    return i;
+                }
+                alreadySearchedRooms.Add(absRoom);
+                for (int j = 0; j < absRoom.connections.Length; j++) {
+                    AbstractRoom room = game.world.GetAbstractRoom(absRoom.connections[j]);
+                    if (room != null && !alreadySearchedRooms.Contains(room) && !potentialSearchRooms.Contains(room)) {
+                        potentialSearchRooms.Add(room);
+                    }
+                }
+            }
+            actualSearchRooms.Clear();
+        }
+        return -1;
     }
-
-
-    public void SetUpHunter()
+    /// <summary>
+    /// Updates the target player to the next alive realized player in RainWorldGame's 'Player' list.
+    /// </summary>
+    public void UpdateTarget() {
+        for (int i = 0; i < game.Players.Count; i++) {
+            if (game.Players[i]?.realizedCreature is Player plyr && !plyr.dead) {
+                targetPlayer = game.Players[i];
+                break;
+            }
+        }
+        return;
+    }
+    public void RecreatePursuer()
     {
-        if (this.game != null && this.game.world != null && this.regionSwitchCooldown <= 0)
-        {
+        // If it has been enough time, it can change regions
+        if (targetPlayer != null && game?.world != null) {
             //JUST IN CASE, GET RIDDA THE OLD ONE
-            if (this.pursuer != null)
-            {
-                if (this.pursuer.realizedCreature != null)
-                {
-                    this.pursuer.realizedCreature.Destroy(); //THIS MIGHT HAVE BEEN WHAT WE NEEDED
+            if (pursuer != null) {
+                pursuer.realizedCreature?.Destroy(); //THIS MIGHT HAVE BEEN WHAT WE NEEDED
+                pursuer.Destroy();
+                pursuer = null;
+                if (DEBUG_MESSAGES) {
+                    Debug.Log($"DEBUG: Pursuer Removed... (Via {nameof(RecreatePursuer)})");
                 }
-
-                this.pursuer.Destroy();
-                this.pursuer = null;
             }
             
+            ShortcutData shorcut = targetPlayer.Room.realizedRoom.shortcuts[Random.Range(0, targetPlayer.Room.realizedRoom.shortcuts.Length)];
+            // This makes sure it comes from a room exit.
+            while (shorcut.shortCutType != ShortcutData.Type.RoomExit) {
+                shorcut = targetPlayer.Room.realizedRoom.shortcuts[Random.Range(0, targetPlayer.Room.realizedRoom.shortcuts.Length)];
+            }
+            WorldCoordinate spawnPos = shorcut.destinationCoord;
 
-            //this.pursuer = new AbstractCreature(this.game.world, StaticWorld.GetCreatureTemplate(CreatureTemplate.Type.RedCentipede), null, this.spawnPos, this.game.GetNewID());
-            this.pursuer = new AbstractCreature(this.game.world, StaticWorld.GetCreatureTemplate(CreatureTemplateType.NightTerror), null, this.spawnPos, this.game.GetNewID());
-            this.pursuer.voidCreature = true;
-            this.pursuer.saveCreature = false;
-            this.pursuer.ignoreCycle = true;
-            this.pursuer.HypothermiaImmune = true;
-            this.game.world.GetAbstractRoom(this.spawnPos).AddEntity(this.pursuer);
+            pursuer = new AbstractCreature(game.world, StaticWorld.GetCreatureTemplate(CreatureTemplateType.NightTerror), null, spawnPos, game.GetNewID());
+            // pursuer.abstractAI.SetDestination(targetPlayer.pos);
+            game.world.GetAbstractRoom(spawnPos).AddEntity(pursuer);
+            pursuer.RealizeInRoom();
+            pursuer.realizedCreature.enteringShortCut = new IntVector2?(targetPlayer.world.GetAbstractRoom(spawnPos.room).realizedRoom.ShortcutLeadingToNode(spawnPos.abstractNode).StartTile);
         }
     }
-
-
     public void Update()
     {
-        
-        if (this.game.world == null || !PBOptions.pursuer.Value || (!PBOptions.universalPursuer.Value && (this.game.session is StoryGameSession session && session.saveStateNumber != Plugin.BeaconName)) )
-        {
+        if (game.world == null || pursuer == null) {
             return;
         }
-        if (this.region != this.game.world.region.name)
-        {
-            this.region = this.game.world.region.name;
-            this.regionSwitchCooldown = 2400;
+        if (region == game.world.region.name) {
+            regionSwitchCooldown = 2400;
         }
-        this.regionSwitchCooldown--;
-        this.SetUpPlayer(); //WHY NOT DO THIS ALWAYS? SET TARGET PLAYER TO FIRST PLAYER
+        else {
+            regionSwitchCooldown--;
+        }
+        if (regionSwitchCooldown <= 0) {
+            region = game.world.region.name;
+        }
+
+        UpdateTarget();
         
-        if (this.currentTargetRoom != this.targetPlayer?.abstractCreature?.Room) //SOMETHING NEW TO TRACK
-        {
-            this.oldTargetRoom = this.currentTargetRoom;
-            this.currentTargetRoom = this.targetPlayer.abstractCreature.Room;
-            Debug.Log("Target moving to: " + currentTargetRoom.name);
-
+        #region Play pursue theme if it isn't already playing
+        // Preform null check on player's room since we don't want to play the theme if both creatures are just in pipes.
+        if (targetPlayer?.realizedCreature?.room != null && pursuer.realizedCreature?.room == targetPlayer.realizedCreature?.room && game.manager.musicPlayer.song?.name != PURSUE_SONG_NAME) {
+            if (DEBUG_MESSAGES) Debug.Log("Pursuer starting chase theme");
+            game.manager.musicPlayer.FadeOutAllSongs(40f);
+            game.manager.musicPlayer.threatTracker.ghostMode = 0;
+            MusicEvent musicEvent = new MusicEvent(){
+                songName=PURSUE_SONG_NAME,
+                prio = int.MaxValue,
+                maxThreatLevel = int.MaxValue,
+                cyclesRest = 0,
+                oneSongPerCycle = false
+            };
+            game.manager.musicPlayer.GameRequestsSong(musicEvent);
         }
+        #endregion
 
-        if (this.pursuer != null && this.pursuer.Room != null)
-        {
-            if (this.debugMsg)
-                Debug.Log("region cooldown: " + this.regionCooldowns.Contains(this.region) + " Time spent here: " + this.pursuer.timeSpentHere + " Relocate Timer: " + this.hackTimer + " DEST: " + this.destination.room.ToString());
-
-
-            //CHECK IF WE ARE DEAD OR IN A ROOM WE SHOULDN'T BE AND UHHH DON'T DESPAWN US UNLESS WE ARE OFFSCREEN?
-            if (this.pursuer.state.dead || this.region != this.pursuer.world.region.name || (this.pursuer.Room.shelter && this.pursuer.Room.realizedRoom != null && this.pursuer.Room.realizedRoom.shelterDoor.IsClosing))
-            {
-                //WE DON'T NEED THEM TO POOF INTO A CLOUD OF SMOKE (UNTIL WE LEAVE THE ROOM)
-                /*
-                if (this.pursuer.realizedCreature != null && this.pursuer.realizedCreature.room != null)
-                {
-                    this.pursuer.realizedCreature.room.AddObject(new ShockWave(this.pursuer.realizedCreature.mainBodyChunk.pos, 300f, 5f, 100, true));
-                    this.pursuer.realizedCreature.room.PlaySound(SoundID.Coral_Circuit_Break, this.pursuer.realizedCreature.mainBodyChunk);
-                    this.pursuer.realizedCreature.RemoveFromRoom();
-                    this.game.cameras[0].hud.textPrompt.AddMessage("The pursuer retreats...", 10, 250, true, true);
-                }
-                */
-                //ONLY DO THIS STUFF OF WE'RE OFFSCREEN
-                if (this.pursuer.realizedCreature == null || this.pursuer.realizedCreature.room == null)
-                {
-                    //REMOVE THE CORPSE (AND THE PURSUER REFERENCE) SO WE CAN BEGIN THE PROCESS OF RESPAWNING
-                    this.pursuer.Destroy();
-                    if (this.pursuer.state.dead && !this.regionCooldowns.Contains(this.region))
-                    {
-                        this.regionCooldowns.Add(this.region);
-                    }
-                    this.pursuer = null;
-					this.hackTimer = 0;
-                    if (this.debugMsg)
-                        this.game.cameras[0].hud.textPrompt.AddMessage("DEBUG: Pursuer Removed...", 10, 250, true, true);
-                    return;
-                }
-                    
+        #region Update pursue theme volume based on distance to player
+        if (game.manager.musicPlayer?.song is Music.Song song && song.name == PURSUE_SONG_NAME && targetPlayer?.realizedCreature?.room != null) {
+            int distance = FindDistanceToTarget(5);
+            if (DEBUG_MESSAGES) Debug.Log($"pursuer distance: {distance}");
+            if (distance > 5 || distance == -1) {
+                game.manager.musicPlayer.FadeOutAllSongs(200);
             }
-            //this.SetUpPlayer(); //MOVING THIS UP
-            if (this.currentRoom != this.pursuer.Room.name)
-            {
-                this.currentRoom = this.pursuer.Room.name;
-                if (this.debugMsg)
-                    Debug.Log("Pursuer moving to: " + this.currentRoom);
-                //WE DON'T REALLY NEED THIS, IT'S JUST FLASHY
-                /*
-                for (int i = 0; i < this.pursuer.Room.connections.Length; i++)
-                {
-                    for (int j = 0; j < this.pursuer.world.game.AlivePlayers.Count; j++)
-                    {
-                        if (this.pursuer.Room.connections[i] == this.pursuer.world.game.AlivePlayers[j].pos.room && !this.warning)
-                        {
-                            this.game.cameras[0].hud.textPrompt.AddMessage("You are being pursued...", 10, 250, true, true);
-                            this.warning = true;
-                        }
-                    }
-                }
-                */
+            else {
+                song.baseVolume = Mathf.Lerp(0.45f, 0.08f, distance*0.2f);
             }
-            if (this.pursuer.abstractAI != null && this.targetPlayer != null && this.ValidTrackRoom(this.targetPlayer.room) && this.targetPlayer.inShortcut == false)
-            {
-                WorldCoordinate worldCoordinate = this.destination; // ????? BUT WHY? 
-                //if (this.destination.room != this.pursuer.pos.room) //WAIT THIS NEVER RUNS DOES IT... DNSPY YOU DUMBASS
-                if (this.destination.room != this.targetPlayer.abstractCreature.pos.room)
-                {
-                    this.destination = this.targetPlayer.abstractCreature.pos;
-                    this.pursuer.abstractAI.SetDestination(this.destination);
-                    //ac.abstractAI.SetDestination(sameRoomPlayer.pos);
-                    //Debug.Log("I SMELL YOU " + this.destination);
-                }
-                //Debug.Log("CAN I SMELL YOU? " + this.pursuer.abstractAI.offscreenSpeedFac);
-				
-				if (this.pursuer.pos.room == this.targetPlayer.abstractCreature.pos.room)
-				{
-					if (this.hackTimer > 0)
-						this.hackTimer -= 5; //UNDO THIS TIMER QUICKLY
-                }
-				else
-					this.hackTimer++;
-            }
-            //CHECK IF WE'VE GOTTEN STUCK IN A ROOM OR ARE DUE TO TELEPORT 
-            if ((this.pursuer.realizedCreature == null && this.pursuer.timeSpentHere > (relocateTimer / 2) && this.hackTimer > 1000) || this.hackTimer > relocateTimer)
-            {
-                //CHECK IF WE GOT STUCK IN SOME ROOM SOMEWHERE
-                if (this.pursuer.timeSpentHere > relocateTimer && this.debugMsg)
-                {
-                    Debug.Log("UN-STUCKING PURSUER!");
-                    this.game.cameras[0].hud.textPrompt.AddMessage("DEBUG: Un-Stucking Pursuer", 10, 250, false, false);
-                }
-                else if (this.debugMsg)
-                {
-                    Debug.Log("RE-LOCATING PURSUER!");
-                    this.game.cameras[0].hud.textPrompt.AddMessage("DEBUG: Relocating Pursuer", 10, 250, false, false);
-                }
-                
-                
-                this.BeginSummon();
-                return;
-                /*
-				//this.SpawnPosition();
-				this.pursuer.Move(this.spawnPos);
-				if (this.warning)
-				{
-					this.warning = false;
-					//this.game.cameras[0].hud.textPrompt.AddMessage(ChallengeTools.IGT.Translate("The pursuer retreats..."), 10, 250, true, true);
-					this.game.cameras[0].hud.textPrompt.AddMessage("The pursuer retreats...", 10, 250, true, true);
-				}
-				*/
-            }
-
-            //NEVER LOSE SIGHT OF OUR TARGET
-            if (this.pursuer.abstractAI.RealAI != null && this.targetPlayer != null)
-            {
-                this.pursuer.abstractAI.RealAI.tracker.SeeCreature(this.targetPlayer.abstractCreature);
-                //Debug.Log("I SMELL YOU ");
-                //if (ExpeditionData.devMode && !this.pursuer.state.dead && Input.GetKey(8))
-                //{
-                //	this.pursuer.Die();
-                //}
-                if (!this.warning)
-                {
-                    //this.game.cameras[0].hud.textPrompt.AddMessage("You are being pursued...", 10, 250, true, true);
-                    this.warning = true;
-                    return;
-                }
+        }
+        #endregion
+        
+        if (targetPlayer is AbstractCreature absCrit) {
+            if (DEBUG_MESSAGES) Debug.Log("pursuer: yes player is a player");
+            if (DEBUG_MESSAGES) Debug.Log(game.manager.musicPlayer?.song?.volume);
+            if (currentTargetRoom != absCrit.Room) {
+                // oldTargetRoom = currentTargetRoom;
+                currentTargetRoom = absCrit.Room;
+                if (DEBUG_MESSAGES) Debug.Log("Target moving to: " + currentTargetRoom?.name);
             }
         }
 
-        //ACTUALLY WE CAN TRY JUST SPAWNING THEM RIGHT ON TOP OF US BECAUSE THEY WONT ACTUALLY ENTER THE ROOM UNTIL WE LEAVE
-        //WHICH IS PERFECT BECAUSE THEN THEY WON'T SPAWN IN FRONT OF US
-        //TBH IDK WHY WE CARE ABOUT ANYTHING OTHER THAN REGION SWITCH COOLDOWN
-        else if (this.targetPlayer != null && this.ValidTrackRoom(this.targetPlayer.room) && this.regionSwitchCooldown <= 0) //!this.regionCooldowns.Contains(this.region) && this.game.world.rainCycle.CycleProgression > 0.1f
-        {
-            if (this.debugMsg && this.game.cameras[0].hud != null)
-            {
-                Debug.Log("SUMMONING PURSUER");
-                this.game.cameras[0].hud.textPrompt.AddMessage("DEBUG: Summoning Pursuer", 10, 250, false, false);
+        if (targetPlayer?.realizedCreature?.room != null && targetPlayer.realizedCreature.room.ValidTrackRoom() && !targetPlayer.realizedCreature.inShortcut) {
+            if (pursuer.Room == targetPlayer.Room) {
+                abstractTeleportTimer = 0;
+                //NEVER LOSE SIGHT OF OUR TARGET
+                pursuer.abstractAI.RealAI?.tracker.SeeCreature(targetPlayer);
+                pursuer.abstractAI.SetDestination(targetPlayer.pos);
             }
-            
+            else {
+                abstractTeleportTimer++;
+            }
+        }
+
+        // This is the bit that controls the pursuer following between rooms, as long as it doesn't get too far behind
+        if (targetPlayer != null && pursuer.realizedCreature?.Consious == true && pursuer.Room.realizedRoom != null && targetPlayer.pos.room != pursuer.Room.index && pursuer.world.GetAbstractRoom(targetPlayer.pos.room) != null) {
+            if (quickMoveToExitCounter > 0) {
+                quickMoveToExitCounter--;
+                if (quickMoveToExitCounter == 0 && quickMoveToExit.room == pursuer.Room.index && quickMoveToExit.NodeDefined) {
+                    Debug.Log("Pursuer chasing player to new room...");
+                    for (int i = 0; i < pursuer.realizedCreature.bodyChunks.Length; i++) {
+                        pursuer.realizedCreature.bodyChunks[i].HardSetPosition(pursuer.Room.realizedRoom.MiddleOfTile(pursuer.Room.realizedRoom.ShortcutLeadingToNode(quickMoveToExit.abstractNode).StartTile));
+                    }
+                    pursuer.realizedCreature.enteringShortCut = new IntVector2?(pursuer.Room.realizedRoom.ShortcutLeadingToNode(quickMoveToExit.abstractNode).StartTile);
+                    quickMoveToExit = new WorldCoordinate(pursuer.Room.index, -1, -1, -1);
+                }
+            }
+            else {
+                quickMoveToExit = new WorldCoordinate(pursuer.Room.index, -1, -1, -1);
+                for (int i = 0; i < pursuer.Room.connections.Length; i++) {
+                    if (pursuer.Room.connections[i] == targetPlayer.pos.room) {
+                        quickMoveToExit.abstractNode = i;
+                        quickMoveToExitCounter = 2 * pursuer.Room.realizedRoom.aimap.ExitDistanceForCreature(pursuer.realizedCreature.mainBodyChunk.pos, i, pursuer.creatureTemplate);
+                        break;
+                    }
+                }
+            }
+        }
+        else {
+            quickMoveToExitCounter = 0;
+        }
+
+        if (DEBUG_MESSAGES) Debug.Log("region cooldown: " + regionSwitchCooldown + " Time spent here: " + pursuer.timeSpentHere + " Relocate Timer: " + abstractTeleportTimer + " TARGETROOM: " + currentTargetRoom?.name);
+
+
+        //CHECK IF WE ARE DEAD OR IN A ROOM WE SHOULDN'T BE AND UHHH DON'T DESPAWN US UNLESS WE ARE OFFSCREEN?
+        if ((pursuer.state.dead || region != pursuer.world.region.name || (pursuer.Room.shelter && pursuer.Room.realizedRoom != null && pursuer.Room.realizedRoom.shelterDoor.IsClosing)) && pursuer.realizedCreature?.room == null)
+        {
+            //REMOVE THE CORPSE (AND THE PURSUER REFERENCE) SO WE CAN BEGIN THE PROCESS OF RESPAWNING
+            pursuer.Destroy();
+            pursuer = null;
+            abstractTeleportTimer = 0;
+            if (DEBUG_MESSAGES) Debug.Log("DEBUG: Pursuer Removed...");
+            return;
+        }
+        //CHECK IF WE'VE GOTTEN STUCK IN A ROOM OR ARE DUE TO TELEPORT 
+        if ((pursuer.realizedCreature == null && abstractTeleportTimer > abstractRelocateTime && targetPlayer?.realizedCreature != null && targetPlayer.realizedCreature.room.ValidTrackRoom()) || regionSwitchCooldown <= 0)
+        {
             BeginSummon();
         }
-        //else
-            //Debug.Log("IDLE");
     }
-
-    public bool ValidTrackRoom(Room room)
-    {
-        if (room == null
-            || RoomIsAStartingCabinetsRoom(room.roomSettings.name)
-            || room.abstractRoom.shelter
-            || room.abstractRoom.gate
-        )
-        {
-            return false;
-        }
-        return true;
-    }
-
-    public static bool RoomIsAStartingCabinetsRoom(string roomName)
-    {
-        if (roomName == "SH_CABINETMERCHANT")
-            return true;
-        if (roomName == "SH_Long")
-            return true;
-        if (roomName == "SH_CabinetAlley")
-            return true;
-        if (roomName.Substring(0, Math.Min(2, roomName.Length)) == "RM_") //ALSO DON'T TRACK IN THE ROT
-            return true; 
-
-        for (int i = 1; i <= 5; i++)
-        {
-            //spinch: nt gets to track SH_CABINETS6, as a treat
-            if (roomName == $"SH_CABINETS{i}")
-                return true;
-        }
-
-        return false;
-    }
-
-
-    //THIS WAS CLOSER TO HOW THE GAME DID IT, BUT IT JUST CHOSE LIKE A RANDOM ROOM
-    /*
-    public void BeginSummon()
-    {
-        this.SetUpPlayer();
-        //this.spawnPos = this.targetPlayer.abstractCreature.pos; // this.game.world.GetAbstractRoom(this.targetPlayer.room);
-
-        Debug.Log("SUMMONING DEBUG " + this.targetPlayer.playerState.playerNumber + " - " + this.targetPlayer.room + " - " + this.targetPlayer.mainBodyChunk.pos);
-        this.spawnPos = this.targetPlayer.room.GetWorldCoordinate(this.targetPlayer.mainBodyChunk.pos); //GetWorldCoordinate
-        this.summonSickness = 200;
-        this.summoning = true;
-
-        Debug.Log("SUMMONING PURSUER");
-    }
-    */
 
     //LETS DO THE ONE THAT SPAWNS RIGHT ON TOP OF US
     public void BeginSummon()
     {
-        this.SetUpPlayer();
-        if (this.targetPlayer?.room != null && this.ValidTrackRoom(this.targetPlayer.room) && this.oldTargetRoom != null)
+        UpdateTarget();
+        if (targetPlayer?.realizedCreature?.room != null)
         {
-            //this.spawnPos = this.targetPlayer.room.GetWorldCoordinate(this.targetPlayer.mainBodyChunk.pos); //GetWorldCoordinate
-            this.spawnPos = this.targetPlayer.room.abstractRoom.RandomNodeInRoom(); //LETS TRY CLOSER TO THE ORIG
-            //this.spawnPos = this.oldTargetRoom.RandomNodeInRoom(); //OKAY, LETS TRY THE LAST ROOM WE VISITED THEN... NOPE, ISN'T ANY BETTER
-            this.SetUpHunter();
-			this.hackTimer = 0;
-        }
-        //else
-        //    Debug.Log("UNABLE TO SUMMON PURSUER");
-    }
-
-
-    public Player targetPlayer;
-
-    public AbstractCreature pursuer;
-
-    public string currentRoom;
-
-    public string region;
-
-    public WorldCoordinate spawnPos;
-
-    public WorldCoordinate destination;
-
-    public bool warning;
-
-    public int unrealizedCounter;
-
-    public List<string> regionCooldowns;
-
-    public int regionSwitchCooldown = 2400; //MAKE IT START THIS WAY SO THAT IT COUNTS FOR THE BEGINNING CYCLE TIMER TOO
-
-    //TAKEN FROM BURDEN TRACKER
-    public RainWorldGame game;
-
-    //AD HOC
-    public bool debugMsg;
-    public int summonSickness = 0;
-    public bool summoning;
-	public int hackTimer = 0;
-    public int relocateTimer = (8 - PBOptions.pursuerAgro.Value) * 2400; //IN SECONDS
-    public AbstractRoom currentTargetRoom;
-    public AbstractRoom oldTargetRoom;
-}
-
-
-
-//AND A VERSION THAT IS BASICALLY JUST PURSUER BURDEN
-public class NTTracker_BURD
-{
-    /*
-    public NTTracker(RainWorldGame g)
-    {
-        Debug.Log("PURSUED TRACKER INIT");
-        this.regionCooldowns = new List<string>();
-        this.game = g;
-        this.unrealizedCounter = 0;
-        this.region = this.game.world.region.name;
-    }
-
-    public void SpawnPosition()
-    {
-        if (this.game != null && this.game.world != null && this.game.Players != null && this.game.Players.Count > 0 && this.game.Players[0] != null && this.game.Players[0].Room != null)
-        {
-            List<int> list = new List<int>();
-            for (int i = 0; i < this.game.world.NumberOfRooms; i++)
-            {
-                AbstractRoom abstractRoom = this.game.world.GetAbstractRoom(this.game.world.firstRoomIndex + i);
-                if (abstractRoom != null && !abstractRoom.shelter && !abstractRoom.gate && abstractRoom.name != this.game.Players[0].Room.name)
-                {
-                    list.Add(i);
-                }
-            }
-            AbstractRoom abstractRoom2 = this.game.world.GetAbstractRoom(this.game.world.firstRoomIndex + list[UnityEngine.Random.Range(0, list.Count)]);
-            //JUST KIDDING, TAKE OUR TARGET ROOM
-            abstractRoom2 = this.targetPlayer.room.abstractRoom;
-            this.spawnPos = abstractRoom2.RandomNodeInRoom();
-            Debug.Log("HUNTER LOCATION: " + abstractRoom2.name);
+            RecreatePursuer();
+			abstractTeleportTimer = 0;
         }
     }
-
-    public void SetUpPlayer()
-    {
-        if (this.game != null)
-        {
-            for (int i = 0; i < this.game.Players.Count; i++)
-            {
-                if (this.game.Players[i] != null && this.game.Players[i].realizedCreature != null && !this.game.Players[i].realizedCreature.dead)
-                {
-                    this.targetPlayer = (this.game.Players[i].realizedCreature as Player);
-                    return;
-                }
-            }
-            if (this.game.manager.musicPlayer != null)
-            {
-                Song song = this.game.manager.musicPlayer.song;
-                if (((song != null) ? song.name : null) == "RW_20 - Polybius")
-                {
-                    this.game.manager.musicPlayer.FadeOutAllNonGhostSongs(100f);
-                }
-            }
-            return;
-        }
-    }
-
-    public void SetUpHunter()
-    {
-        if (this.game != null && this.game.world != null && this.regionSwitchCooldown <= 0)
-        {
-            this.pursuer = new AbstractCreature(this.game.world, StaticWorld.GetCreatureTemplate(CreatureTemplate.Type.RedCentipede), null, this.spawnPos, this.game.GetNewID());
-            this.pursuer.voidCreature = true;
-            this.pursuer.saveCreature = false;
-            this.pursuer.ignoreCycle = true;
-            this.pursuer.HypothermiaImmune = true;
-            this.game.world.GetAbstractRoom(this.spawnPos).AddEntity(this.pursuer);
-            this.game.cameras[0].hud.textPrompt.AddMessage("DEBUG: Summoning Pursuer", 10, 250, false, false);
-        }
-    }
-
-    public void Update()
-    {
-        if (this.game.world == null)
-        {
-            return;
-        }
-        if (this.region != this.game.world.region.name)
-        {
-            this.region = this.game.world.region.name;
-            this.regionSwitchCooldown = 2400;
-        }
-        this.regionSwitchCooldown--;
-        if (this.pursuer != null && this.pursuer.Room != null)
-        {
-            if (this.pursuer.state.dead || this.region != this.pursuer.world.region.name || (this.pursuer.Room.shelter && this.pursuer.Room.realizedRoom != null && this.pursuer.Room.realizedRoom.shelterDoor.IsClosing))
-            {
-                if (this.pursuer.realizedCreature != null && this.pursuer.realizedCreature.room != null)
-                {
-                    this.pursuer.realizedCreature.room.AddObject(new ShockWave(this.pursuer.realizedCreature.mainBodyChunk.pos, 300f, 5f, 100, true));
-                    this.pursuer.realizedCreature.room.PlaySound(SoundID.Coral_Circuit_Break, this.pursuer.realizedCreature.mainBodyChunk);
-                    this.pursuer.realizedCreature.RemoveFromRoom();
-                    this.game.cameras[0].hud.textPrompt.AddMessage(("The pursuer retreats..."), 10, 250, true, true);
-                }
-                this.pursuer.Destroy();
-                if (this.pursuer.state.dead && !this.regionCooldowns.Contains(this.region))
-                {
-                    this.regionCooldowns.Add(this.region);
-                }
-                this.pursuer = null;
-                return;
-            }
-            this.SetUpPlayer();
-            if (this.currentRoom != this.pursuer.Room.name)
-            {
-                this.currentRoom = this.pursuer.Room.name;
-                Debug.Log("Pursuer moving to: " + this.currentRoom);
-                for (int i = 0; i < this.pursuer.Room.connections.Length; i++)
-                {
-                    for (int j = 0; j < this.pursuer.world.game.AlivePlayers.Count; j++)
-                    {
-                        if (this.pursuer.Room.connections[i] == this.pursuer.world.game.AlivePlayers[j].pos.room && !this.warning)
-                        {
-                            //this.game.cameras[0].hud.textPrompt.AddMessage(("You are being pursued..."), 10, 250, true, true);
-                            this.warning = true;
-                        }
-                    }
-                }
-            }
-            if (this.pursuer.abstractAI != null && this.targetPlayer != null)
-            {
-                WorldCoordinate worldCoordinate = this.destination;
-                if (this.destination.room != this.pursuer.pos.room)
-                {
-                    this.destination = this.targetPlayer.abstractCreature.pos;
-                    this.pursuer.abstractAI.SetDestination(this.destination);
-                }
-            }
-            if (this.pursuer.realizedCreature == null && this.pursuer.timeSpentHere > 2500)
-            {
-                Debug.Log("RE-LOCATING PURSUER!");
-                this.SpawnPosition();
-                this.pursuer.Move(this.spawnPos);
-                if (this.warning)
-                {
-                    this.warning = false;
-                    this.game.cameras[0].hud.textPrompt.AddMessage(("The pursuer retreats..."), 10, 250, true, true);
-                }
-            }
-            if (this.pursuer.abstractAI.RealAI != null && this.targetPlayer != null)
-            {
-                this.pursuer.abstractAI.RealAI.tracker.SeeCreature(this.targetPlayer.abstractCreature);
-                if (ExpeditionData.devMode && !this.pursuer.state.dead && Input.GetKey(KeyCode.Backspace))
-                {
-                    this.pursuer.Die();
-                }
-                if (!this.warning)
-                {
-                    //this.game.cameras[0].hud.textPrompt.AddMessage(ChallengeTools.IGT.Translate("You are being pursued..."), 10, 250, true, true);
-                    this.warning = true;
-                    return;
-                }
-            }
-        }
-        else if (!this.regionCooldowns.Contains(this.region) && this.game.world.rainCycle.CycleProgression > 0.1f)
-        {
-            this.SetUpPlayer();
-            this.SpawnPosition();
-            this.SetUpHunter();
-        }
-    }
-
-    public Player targetPlayer;
-    public AbstractCreature pursuer;
-    public string currentRoom;
-    public string region;
-    public WorldCoordinate spawnPos;
-    public WorldCoordinate destination;
-    public bool warning;
-    public int unrealizedCounter;
-    public List<string> regionCooldowns;
-    public int regionSwitchCooldown;
-
-    //TAKEN FROM BURDEN TRACKER
-    public RainWorldGame game;
-    */
 }
