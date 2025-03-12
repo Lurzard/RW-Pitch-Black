@@ -28,13 +28,12 @@ public static class WorldChanges
         On.Expedition.NeuronDeliveryChallenge.ValidForThisSlugcat += NeuronDeliveryChallenge_ValidForThisSlugcat;
         On.Expedition.PearlDeliveryChallenge.ValidForThisSlugcat += PearlDeliveryChallenge_ValidForThisSlugcat;
 #if PLAYTEST
-        //On.Room.Update += Room_Update;
-        //On.KarmaFlower.ApplyPalette += KarmaFlower_ApplyPalette;
-        //new Hook(typeof(ElectricDeath).GetMethod("get_Intensity", Public | NonPublic | Instance), ElecIntensity);
+        On.Room.Update += Room_Update;
         On.CicadaGraphics.InitiateSprites += CicadaGraphics_InitiateSprites;
         On.CicadaGraphics.DrawSprites += CicadaGraphics_DrawSprites;
         On.CicadaGraphics.AddToContainer += CicadaGraphics_AddToContainer;
         On.CicadaGraphics.ctor += CicadaGraphics_ctor;
+        new Hook(typeof(ElectricDeath).GetMethod("get_Intensity", Public | NonPublic | Instance), ElecIntensity);
         IL.Menu.SlugcatSelectMenu.SlugcatPageContinue.ctor += SlugcatSelectMenu_SlugcatPageContinue_ctor;
 #endif
     }
@@ -146,16 +145,6 @@ public static class WorldChanges
             self.roomRain.intensity = Mathf.Max(0.1f, Mathf.Max(self.roomRain.intensity, self.roomRain.globalRain.Intensity));
         }
 
-    }
-    private static void KarmaFlower_ApplyPalette(On.KarmaFlower.orig_ApplyPalette orig, KarmaFlower self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
-    {
-        //this has to be made into a seperate object I think, will come back to it later
-
-        orig(self, sLeaser, rCam, palette);
-        if (rCam.room.game.IsStorySession && rCam.room.game.GetStorySession.saveStateNumber == Plugin.BeaconName)
-        {
-            self.color = new HSLColor(0.702f, 96f, 0.53f).rgb;
-        }
     }
 #endif
     public static string Region_GetProperRegionAcronym(On.Region.orig_GetProperRegionAcronym orig, SlugcatStats.Name character, string baseAcronym)
