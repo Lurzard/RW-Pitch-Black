@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 using System;
+using static PitchBlack.MiscUtils;
 
 #pragma warning disable CS0618 // Type or member is obsolete
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -56,6 +57,7 @@ class Plugin : BaseUnityPlugin
 #if PLAYTEST
             TeleportWater.Register();
             Content.Register(new RotRatCritob());
+            Content.Register(new FireGrubCritob());
 #endif
             Content.Register(new LMLLCritob());
             Content.Register(new NightTerrorCritob());

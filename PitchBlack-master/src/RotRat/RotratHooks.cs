@@ -1,14 +1,16 @@
 #if PLAYTEST
+using System;
 using System.Runtime.CompilerServices;
 using RWCustom;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace PitchBlack;
 
 public class RotData
 {
     public RotData (int numOfBulbs) {
-        this.numOfSprites = numOfBulbs*2;
+        numOfSprites = numOfBulbs*2;
         bulbs = new bulb[numOfBulbs];
         for (int i = 0; i < numOfBulbs; i++)
         {
@@ -18,7 +20,6 @@ public class RotData
     public int startSprite;
     public int currentSprite;
     public int numOfSprites;
-    public bool ready;
     public bulb[] bulbs;
 }
 public class bulb
@@ -30,21 +31,17 @@ public class bulb
 }
 public class RotRatHooks
 {
-    static ConditionalWeakTable<MouseGraphics, RotData> rotratdata = new ConditionalWeakTable<MouseGraphics, RotData>();
+    internal static ConditionalWeakTable<MouseGraphics, RotData> rotratdata = new ConditionalWeakTable<MouseGraphics, RotData>();
     static public void Apply()
     {
-        On.MouseAI.ctor += GivePreyTracker;
-        On.MouseAI.Update += Hunter;
-        On.LanternMouse.Update += LanternMouse_Update;
-        On.LanternMouse.ctor += ivars;
+        On.MouseAI.ctor += MouseAI_ctor;
+        On.MouseAI.Update += MouseAI_Update;
         On.MouseAI.IUseARelationshipTracker_ModuleToTrackRelationship += Preyrelationshipfix;
+        On.LanternMouse.ctor += LanternMouse_ctor;
+        On.LanternMouse.InitiateGraphicsModule += LanternMouse_InitiateGraphicsModule;
+        On.LanternMouse.Update += LanternMouse_Update;
         On.LanternMouse.CarryObject += LanternMouse_CarryObject;
-        On.MouseGraphics.ctor += MouseGraphics_ctor;
-        On.MouseGraphics.InitiateSprites += MouseGraphics_InitiateSprites;
-        On.MouseGraphics.AddToContainer += MouseGraphics_AddToContainer;
-        On.MouseGraphics.DrawSprites += MouseGraphics_DrawSprites;
     }
-
     static private void LanternMouse_CarryObject(On.LanternMouse.orig_CarryObject orig, LanternMouse self)
     {
         if (!self.safariControlled && self.grasps[0].grabbed is Creature && self.AI.DynamicRelationship((self.grasps[0].grabbed as Creature).abstractCreature).type != CreatureTemplate.Relationship.Type.Eats) 
@@ -89,34 +86,28 @@ public class RotRatHooks
         }
         return orig(self, relationship);
     }
-    static private void ivars(On.LanternMouse.orig_ctor orig, LanternMouse self, AbstractCreature abstractCreature, World world)
+    static private void LanternMouse_ctor(On.LanternMouse.orig_ctor orig, LanternMouse self, AbstractCreature abstractCreature, World world)
     {
-        
         orig(self, abstractCreature, world);
         if(self.Template.type == CreatureTemplateType.Rotrat)
         {
             Random.State state = Random.state;
             Random.InitState(self.abstractCreature.ID.RandomSeed);
             float hue;
-            if (Random.value < 0.01)
-            {
+            if (Random.value < 0.01f) {
                 hue = 0.8532407407407407f;
                 Debug.Log("the mouse behind the slaughter....");
                 // hehe purple mouse.
             }
-            else
-                        if (Random.value < 0.05)
-            {
+            else if (Random.value < 0.05f) {
                 hue = Mathf.Lerp(0.444f, 0.527f, Random.value);
                 //shock cyans?
             }
-            else if (Random.value < 0.2)
-            {
+            else if (Random.value < 0.2f) {
                 hue = Mathf.Lerp(0f, 0.05f, Random.value);
                 //shock reds?
             }
-            else
-            {
+            else {
                 hue = Mathf.Lerp(0.055f, 0.125f, Random.value);
                 //shock oranges + yellows?
             }
@@ -124,6 +115,16 @@ public class RotRatHooks
             float value = Random.value;
             self.iVars = new LanternMouse.IndividualVariations(value, color);
             Random.state = state;
+        }
+    }
+    private static void LanternMouse_InitiateGraphicsModule(On.LanternMouse.orig_InitiateGraphicsModule orig, LanternMouse self)
+    {
+        if (self.Template.type == CreatureTemplateType.Rotrat) {
+            self.graphicsModule = new RotratGraphics(self);
+            self.graphicsModule.Reset();
+        }
+        else {
+            orig(self);
         }
     }
     static private void LanternMouse_Update(On.LanternMouse.orig_Update orig, LanternMouse self, bool eu)
@@ -178,7 +179,7 @@ public class RotRatHooks
             }
         }
     }
-    static private void Hunter(On.MouseAI.orig_Update orig, MouseAI self)
+    static private void MouseAI_Update(On.MouseAI.orig_Update orig, MouseAI self)
     {
         if(self.mouse.Template.type == CreatureTemplateType.Rotrat)
         {
@@ -225,7 +226,7 @@ public class RotRatHooks
             orig(self);
         }
     }
-    static private void GivePreyTracker(On.MouseAI.orig_ctor orig, MouseAI self, AbstractCreature creature, World world)
+    static private void MouseAI_ctor(On.MouseAI.orig_ctor orig, MouseAI self, AbstractCreature creature, World world)
     {
         orig(self, creature, world);
         if(self.mouse.Template.type == CreatureTemplateType.Rotrat)
@@ -233,77 +234,6 @@ public class RotRatHooks
             self.AddModule(new PreyTracker(self, 3, 2f, 10f, 70f, 0.5f));
             self.utilityComparer.AddComparedModule(self.preyTracker, null, 1f, 1.5f);
             self.AddModule(new StuckTracker(self,true,false));
-        }
-        
-    }
-    static private void MouseGraphics_ctor(On.MouseGraphics.orig_ctor orig, MouseGraphics self, PhysicalObject ow)
-    {
-        orig(self, ow);
-        if(self.mouse.Template.type == CreatureTemplateType.Rotrat)
-        {
-            rotratdata.Add(self,new RotData(Random.Range(3, 7)));
-        }
-    }
-    static private void MouseGraphics_InitiateSprites(On.MouseGraphics.orig_InitiateSprites orig, MouseGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
-    {
-        orig(self, sLeaser, rCam);
-        if (self.mouse.Template.type == CreatureTemplateType.Rotrat && rotratdata.TryGetValue(self, out RotData rotData))
-        {
-            rotData.startSprite = sLeaser.sprites.Length;
-            System.Array.Resize(ref sLeaser.sprites, sLeaser.sprites.Length + rotData.numOfSprites);
-            for (int i = rotData.startSprite; i < rotData.startSprite+rotData.numOfSprites; i+=2)
-            {
-                // rotData.bulbs[i].firstsprite = i;
-                sLeaser.sprites[i] = new FSprite("Futile_White");
-                sLeaser.sprites[i].shader = rCam.room.game.rainWorld.Shaders["JaggedCircle"];
-                sLeaser.sprites[i].scale = 0.6f;
-                sLeaser.sprites[i + 1] = new FSprite("mouseEyeB5");
-                sLeaser.sprites[i + 1].scale = 0.6f;
-            }
-            rotData.ready = true;
-            self.AddToContainer(sLeaser, rCam, null);
-        }
-    }
-    static private void MouseGraphics_AddToContainer(On.MouseGraphics.orig_AddToContainer orig, MouseGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, FContainer newContatiner)
-    {
-        orig(self, sLeaser, rCam, newContatiner);
-        if (self.mouse.Template.type == CreatureTemplateType.Rotrat && rotratdata.TryGetValue(self,out RotData rotData) && rotData.ready == true)
-        {
-            FContainer container = rCam.ReturnFContainer("Midground");
-            for(int i = rotData.startSprite + 1; i < rotData.startSprite + rotData.numOfSprites; i++)
-            {
-                FSprite bulb = sLeaser.sprites[i];
-                bulb.RemoveFromContainer();
-                container.AddChild(bulb);
-            }
-            rotData.ready = false;
-        }
-    }
-    static private void MouseGraphics_DrawSprites(On.MouseGraphics.orig_DrawSprites orig, MouseGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
-    {
-        orig(self, sLeaser, rCam, timeStacker, camPos);
-        if (self.mouse.Template.type == CreatureTemplateType.Rotrat && rotratdata.TryGetValue(self, out RotData rotData))
-        {
-            float zRotation = Mathf.Max(Mathf.Abs(Mathf.Lerp(self.lastProfileFac, self.profileFac, timeStacker)), Mathf.InverseLerp(0.5f, 0.7f, Mathf.Lerp(self.lastBackToCam, self.backToCam, timeStacker)));
-            Debug.Log($"Pitch Black: {zRotation}");
-            sLeaser.sprites[self.EyeBSprite(0)].element = Futile.atlasManager.GetElementWithName("mouseEyeB5");
-            sLeaser.sprites[self.EyeBSprite(1)].element = Futile.atlasManager.GetElementWithName("mouseEyeB5");
-            for (int i = rotData.startSprite; i < rotData.startSprite + rotData.numOfSprites; i+=2)
-            {
-                if (zRotation < 0.1f) {
-                    sLeaser.sprites[i].isVisible = false;
-                    sLeaser.sprites[i+1].isVisible = false;
-                }
-                else {
-                    sLeaser.sprites[i].isVisible = true;
-                    sLeaser.sprites[i+1].isVisible = true;
-                }
-                sLeaser.sprites[i].color = self.DecalColor;
-                sLeaser.sprites[i].scale = Mathf.Lerp(0, 0.6f, zRotation);
-                sLeaser.sprites[i].SetPosition(sLeaser.sprites[self.BodySprite(0)].GetPosition() + rotData.bulbs[(i-rotData.startSprite)/2].position);
-                sLeaser.sprites[i + 1].color = self.mouse.iVars.color.rgb;
-                sLeaser.sprites[i + 1].SetPosition(sLeaser.sprites[i].GetPosition());
-            }
         }
     }
 }
