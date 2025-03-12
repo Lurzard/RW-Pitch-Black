@@ -1,0 +1,20 @@
+{"frames": {
+
+"icon_UmbraMask.png":
+{
+	"frame": {"x":0,"y":0,"w":33,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":33,"h":32},
+	"sourceSize": {"w":33,"h":32}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "icon_UmbraMask.png",
+	"format": "RGBA8888",
+	"size": {"w":33,"h":32},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:ab0a3c16f19af70efc2297389775d545:e8fa8110b261ad39ed9b6b3db52c3c5b:67e6ad26391c1b04e2d64caf1df3c6bd$"
+}
+}

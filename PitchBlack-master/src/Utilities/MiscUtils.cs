@@ -3,12 +3,15 @@ using Debug = UnityEngine.Debug;
 using static PitchBlack.Plugin;
 using System.IO;
 using System.Collections.Generic;
+using IL;
 
 namespace PitchBlack;
 
 public static class MiscUtils
 {
     public static bool IsNightTerror(this CreatureTemplate creatureTemplate) => creatureTemplate.type == CreatureTemplateType.NightTerror;
+    public static bool IsUmbraScav(this CreatureTemplate creatureTemplate) => creatureTemplate.type == CreatureTemplateType.UmbraScav;
+
 #if PLAYTEST
     public static void SaveCollectionData() {
         string data = "";

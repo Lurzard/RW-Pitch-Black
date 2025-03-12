@@ -1,0 +1,84 @@
+{"frames": {
+
+"UmbraMask0.png":
+{
+	"frame": {"x":63,"y":51,"w":35,"h":34},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":35,"h":34},
+	"sourceSize": {"w":35,"h":34}
+},
+"UmbraMask1.png":
+{
+	"frame": {"x":74,"y":19,"w":27,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":32},
+	"sourceSize": {"w":27,"h":32}
+},
+"UmbraMask2.png":
+{
+	"frame": {"x":0,"y":51,"w":28,"h":31},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":31},
+	"sourceSize": {"w":28,"h":31}
+},
+"UmbraMask3.png":
+{
+	"frame": {"x":28,"y":51,"w":35,"h":30},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":35,"h":30},
+	"sourceSize": {"w":35,"h":30}
+},
+"UmbraMask4.png":
+{
+	"frame": {"x":41,"y":19,"w":33,"h":26},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":33,"h":26},
+	"sourceSize": {"w":33,"h":26}
+},
+"UmbraMask5.png":
+{
+	"frame": {"x":0,"y":19,"w":41,"h":19},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":41,"h":19},
+	"sourceSize": {"w":41,"h":19}
+},
+"UmbraMask6.png":
+{
+	"frame": {"x":64,"y":0,"w":39,"h":19},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":39,"h":19},
+	"sourceSize": {"w":39,"h":19}
+},
+"UmbraMask7.png":
+{
+	"frame": {"x":29,"y":0,"w":35,"h":19},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":35,"h":19},
+	"sourceSize": {"w":35,"h":19}
+},
+"UmbraMask8.png":
+{
+	"frame": {"x":0,"y":0,"w":29,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":16},
+	"sourceSize": {"w":29,"h":16}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "UmbraMask.png",
+	"format": "RGBA8888",
+	"size": {"w":103,"h":85},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:d1c399113eebc8bbe4c2f979915f8ac9:06a24ebee342dbadc28c896a5e7582fe:8f404ac187d5885509df8494b9d061c4$"
+}
+}

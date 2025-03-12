@@ -7,6 +7,7 @@ public static class CreatureTemplateType
     [AllowNull] public static CreatureTemplate.Type LMiniLongLegs = new(nameof(LMiniLongLegs), true);
 #if PLAYTEST
     [AllowNull] public static CreatureTemplate.Type Rotrat = new(nameof(Rotrat), true);
+    [AllowNull] public static CreatureTemplate.Type UmbraScav = new(nameof(UmbraScav), true);
 #endif
 
     public static void UnregisterValues()
@@ -26,6 +27,11 @@ public static class CreatureTemplateType
         {
             Rotrat.Unregister();
             Rotrat = null;
+        }
+        if (UmbraScav != null)
+        {
+            UmbraScav.Unregister();
+            UmbraScav = null;
         }
 #endif
     }
@@ -37,6 +43,7 @@ public static class SandboxUnlockID
     [AllowNull] public static MultiplayerUnlocks.SandboxUnlockID LMiniLongLegs = new(nameof(LMiniLongLegs), true);
 #if PLAYTEST
     [AllowNull] public static MultiplayerUnlocks.SandboxUnlockID Rotrat = new(nameof(Rotrat), true);
+    [AllowNull] public static MultiplayerUnlocks.SandboxUnlockID UmbraScav = new(nameof(UmbraScav), true);
 #endif
 
     public static void UnregisterValues()
@@ -56,6 +63,11 @@ public static class SandboxUnlockID
         {
             Rotrat.Unregister();
             Rotrat = null;
+        }
+        if (UmbraScav != null)
+        {
+            UmbraScav.Unregister();
+            UmbraScav = null;
         }
 #endif
     }

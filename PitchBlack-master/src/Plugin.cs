@@ -33,7 +33,6 @@ class Plugin : BaseUnityPlugin
 
     public static readonly SlugcatStats.Name BeaconName = new("Beacon", false);
     public static readonly SlugcatStats.Name PhotoName = new("Photomaniac", false);
-    public static readonly SlugcatStats.Name PursuedName = new("Pursued", false); //Internal name for new main pb scug
     private bool init = false;
 
     //public static ConditionalWeakTable<Player, BeaconCWT> bCon = new ConditionalWeakTable<Player, BeaconCWT>();
@@ -60,6 +59,7 @@ class Plugin : BaseUnityPlugin
 #endif
             Content.Register(new LMLLCritob());
             Content.Register(new NightTerrorCritob());
+            Content.Register(new UmbraScavCritob());
         } catch (Exception err) {
             //Debug.LogError(err); Debug errors
             Logger.LogError(err);
@@ -205,6 +205,9 @@ class Plugin : BaseUnityPlugin
 #if PLAYTEST
             Futile.atlasManager.LoadAtlas("atlases/pearlCursor");
             Futile.atlasManager.LoadAtlas("atlases/PBHat");
+            Futile.atlasManager.LoadAtlas("atlases/UmbraScav");
+            Futile.atlasManager.LoadAtlas("atlases/UmbraMask");
+            Futile.atlasManager.LoadAtlas("atlases/icon_UmbraMask");
             self.Shaders["PurpleEchoSkin"] = FShader.CreateShader("purpleechoskin", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/purpleecho")).LoadAsset<Shader>("Assets/shaders 1.9.03/PurpleEchoSkin.shader"));
 #endif
             self.Shaders["Red"] = FShader.CreateShader("red", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath(path: "assetbundles/red")).LoadAsset<Shader>("Assets/red.shader"));

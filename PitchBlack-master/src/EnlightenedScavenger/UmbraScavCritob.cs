@@ -1,0 +1,116 @@
+﻿using Fisobs.Creatures;
+using Fisobs.Core;
+using System.Collections.Generic;
+using Fisobs.Sandbox;
+using static PathCost.Legality;
+using UnityEngine;
+using DevInterface;
+using RWCustom;
+using MoreSlugcats;
+
+namespace PitchBlack;
+
+    sealed class UmbraScavCritob : Critob
+{
+    internal UmbraScavCritob() : base(CreatureTemplateType.UmbraScav)
+    {
+        Icon = new SimpleIcon("UmbraScav", Color.grey); //sandbox icon
+        RegisterUnlock(KillScore.Configurable(25), SandboxUnlockID.UmbraScav); //register kill score + sandbox ID
+        LoadedPerformanceCost = 100f; //probably for loading a lot of creatures
+        SandboxPerformanceCost = new SandboxPerformanceCost(0.5f, 0.5f);
+        ShelterDanger = ShelterDanger.Safe;
+        UmbraScavHooks.Apply(); //runs hooks
+    }
+
+    public override int ExpeditionScore() => 25;
+
+    public override Color DevtoolsMapColor(AbstractCreature acrit) => Color.magenta;
+
+    public override string DevtoolsMapName(AbstractCreature acrit) => "umbr";
+
+    public override IEnumerable<RoomAttractivenessPanel.Category> DevtoolsRoomAttraction() => new[] { RoomAttractivenessPanel.Category.LikesInside };
+
+    public override IEnumerable<string> WorldFileAliases() => new[] { "UmbraScavenger" };
+
+    public override CreatureTemplate CreateTemplate()
+    {
+        CreatureTemplate t = new CreatureFormula(MoreSlugcatsEnums.CreatureTemplateType.ScavengerElite, CreatureTemplateType.UmbraScav, "UmbraScav")
+        {
+            DefaultRelationship = new(CreatureTemplate.Relationship.Type.Ignores, 0.1f),
+        }.IntoTemplate();
+        t.dangerousToPlayer = 1;
+        t.stowFoodInDen = true;
+        t.shortcutColor = new Color(1f, 1f, 1f);
+
+        //From: StaticWorld EliteScavenger check
+        t.baseDamageResistance = 2.2f;
+        t.baseStunResistance = 1.3f;
+        t.instantDeathDamageLimit = 4f; //ScavKing
+        t.offScreenSpeed = 0.75f;
+        t.grasps = 4;
+        t.AI = true;
+        t.requireAImap = true;
+        t.abstractedLaziness = 50;
+        t.bodySize = 1.2f;
+        t.doPreBakedPathing = false;
+        t.preBakedPathingAncestor = t;
+        t.stowFoodInDen = false;
+        t.shortcutSegments = 2;
+        t.visualRadius = 1200f;
+        t.movementBasedVision = 0.3f;
+        t.canSwim = true;
+        t.waterRelationship = CreatureTemplate.WaterRelationship.AirAndSurface;
+        t.hibernateOffScreen = true;
+        t.roamBetweenRoomsChance = -1f;
+        t.roamInRoomChance = -1f;
+        t.socialMemory = true;
+        t.communityID = CreatureCommunities.CommunityID.Scavengers; //I have a feeling, maybe there can be separate communities made to simulate GW/SH Scavs conflict?
+        t.communityInfluence = 1f;
+        t.dangerousToPlayer = 0.9f;
+        t.meatPoints = 4;
+        t.usesNPCTransportation = true;
+        t.usesRegionTransportation = false; //I assume we want to keep it in SL
+        t.usesCreatureHoles = true;
+        t.doesNotUseDens = false; //to spawn in den
+        return t;
+    }
+
+    public override void EstablishRelationships()
+    {
+        //From: RW Wiki Elite Scavenger page UNFINISHED
+        Relationships umbr = new Relationships(Type);
+
+        //Ignores by default
+        umbr.Ignores(CreatureTemplate.Type.SmallCentipede);
+        umbr.Ignores(CreatureTemplate.Type.SmallNeedleWorm);
+        //Attacks
+        umbr.Attacks(CreatureTemplate.Type.Overseer, 1f);
+        umbr.Attacks(MoreSlugcatsEnums.CreatureTemplateType.Inspector, 1f);
+        umbr.Attacks(MoreSlugcatsEnums.CreatureTemplateType.FireBug, 1f);
+        umbr.Attacks(MoreSlugcatsEnums.CreatureTemplateType.Yeek, 0.1f);
+        //Uncomfortable
+        umbr.UncomfortableAround(CreatureTemplate.Type.GarbageWorm, 0.8f);
+        umbr.UncomfortableAround(CreatureTemplate.Type.Snail, 0.6f);
+        umbr.UncomfortableAround(CreatureTemplate.Type.BigNeedleWorm, 0.5f);
+        umbr.UncomfortableAround(CreatureTemplate.Type.LanternMouse, 0.1f);
+        //SocialDependent
+        umbr.HasDynamicRelationship(CreatureTemplate.Type.Slugcat);
+        umbr.HasDynamicRelationship(MoreSlugcatsEnums.CreatureTemplateType.SlugNPC);
+        //Pack
+        umbr.IsInPack(CreatureTemplate.Type.Scavenger, 0.3f);
+        umbr.IsInPack(MoreSlugcatsEnums.CreatureTemplateType.ScavengerElite, 0.3f);
+        umbr.IsInPack(MoreSlugcatsEnums.CreatureTemplateType.ScavengerKing, 0.3f);
+        //Afraid
+
+    }
+
+    public override ArtificialIntelligence CreateRealizedAI(AbstractCreature acrit) => new ScavengerAI(acrit, acrit.world);
+
+    public override Creature CreateRealizedCreature(AbstractCreature acrit) => new Scavenger(acrit, acrit.world);
+
+    //public override CreatureState CreateState(AbstractCreature acrit) => new Centipede.CentipedeState(acrit); Scavenger does not need a creature state?
+
+    public override void LoadResources(RainWorld rainWorld) { }
+
+    public override CreatureTemplate.Type ArenaFallback() => MoreSlugcatsEnums.CreatureTemplateType.ScavengerElite; //falls back to Elite
+}
