@@ -8,7 +8,6 @@ using RWCustom;
 using MonoMod.Cil;
 using Mono.Cecil.Cil;
 using Exception = System.Exception;
-using Debug = UnityEngine.Debug;
 
 namespace PitchBlack;
 
@@ -134,7 +133,7 @@ public static class JollyMenuHooks
             }
             catch (Exception e)
             {
-                //Debug.LogException(e); Debug errors
+                Debug.LogException(e); //Debug errors
             }
             finally
             {

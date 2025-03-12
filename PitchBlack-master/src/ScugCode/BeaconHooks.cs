@@ -194,6 +194,24 @@ public static class BeaconHooks
                 }
                 self.head.vel -= self.lookDirection * 3f;
             }
+            // For petting Friend and Noir... I think
+            int initptm = cwt.petTimer;
+            foreach (AbstractCreature crit in self.player.room.abstractRoom.creatures) {
+                if (crit.realizedCreature is Player otherPlayer && otherPlayer != self.player && (otherPlayer.slugcatStats.name == new SlugcatStats.Name("Friend", false) || otherPlayer.slugcatStats.name == new SlugcatStats.Name("NoirCatto", false)) && Vector2.Distance(otherPlayer.mainBodyChunk.pos, self.player.mainBodyChunk.pos) <= 35 && self.player.bodyMode == Player.BodyModeIndex.Stand && otherPlayer.bodyMode == Player.BodyModeIndex.Crawl) {
+                    if (otherPlayer.mainBodyChunk.pos.x < self.player.mainBodyChunk.pos.x) {
+                        self.hands[0].absoluteHuntPos = otherPlayer.mainBodyChunk.pos + new Vector2(15 + 5f * Mathf.Sin(cwt.petTimer * (Mathf.PI/10f)), 10f);
+                        self.hands[0].reachingForObject = true;
+                    }
+                    if (otherPlayer.mainBodyChunk.pos.x > self.player.mainBodyChunk.pos.x) {
+                        self.hands[1].absoluteHuntPos = otherPlayer.mainBodyChunk.pos + new Vector2(-15 + 5f * Mathf.Sin(cwt.petTimer * (Mathf.PI/10f)), 10f);
+                        self.hands[1].reachingForObject = true;
+                    }
+                    if (cwt.petTimer % 640 == 0) {
+                        self.player.room.PlaySound(new SoundID("NoirCatto_PurrLoop", false), otherPlayer.mainBodyChunk.pos);
+                    }
+                    if (cwt.petTimer == initptm) { cwt.petTimer++; }
+                }
+            }
         }
 
         orig(self);

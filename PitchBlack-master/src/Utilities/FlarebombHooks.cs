@@ -6,39 +6,12 @@ namespace PitchBlack;
 
 public class FlarebombHooks
 {
-    public static void Apply()
-    {
-        On.ScavengerAI.CollectScore_PhysicalObject_bool += ScavengerAI_CollectScore_PhysicalObject_bool;
-        On.FlareBomb.Update += DieToFlareBomb;
-        On.FlareBomb.DrawSprites += FlareBomb_DrawSprites;
-        On.FlareBomb.HitByExplosion += FlareBomb_HitByExplosion;
-    }
-
-    private static void FlareBomb_HitByExplosion(On.FlareBomb.orig_HitByExplosion orig, FlareBomb self, float hitFac, Explosion explosion, int hitChunk)
-    {
-        if (self.mode != Weapon.Mode.OnBack) //THIS WILL PREVENT STORED FLARES FROM DETONATING AND BREAKING THE STORAGE SLOT
-        {
-            orig(self, hitFac, explosion, hitChunk);
-        }
-    }
-
-    private static void FlareBomb_DrawSprites(On.FlareBomb.orig_DrawSprites orig, FlareBomb self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
-    {
-        orig(self, sLeaser, rCam, timeStacker, camPos);
-        if (MiscUtils.IsBeaconOrPhoto(self.thrownBy))
-        {
-            sLeaser.sprites[2].color = self.color;
-        }
-    }
-
     #region not hooks
-    public static bool CreatureIsWithinFlareBombRange(FlareBomb self, Vector2 creaturePos)
-    {
+    public static bool CreatureIsWithinFlareBombRange(FlareBomb self, Vector2 creaturePos) {
         return Custom.DistLess(self.firstChunk.pos, creaturePos, self.LightIntensity * 600f)
             || (Custom.DistLess(self.firstChunk.pos, creaturePos, self.LightIntensity * 1600f) && self.room.VisualContact(self.firstChunk.pos, creaturePos));
     }
-    public static bool TooBrightForMe(CreatureTemplate.Type creatureTemplateType)
-    {
+    public static bool TooBrightForMe(CreatureTemplate.Type creatureTemplateType) {
         // Creatures that die to FlareBombs
         return creatureTemplateType == CreatureTemplate.Type.BigSpider
             || creatureTemplateType == CreatureTemplate.Type.SpitterSpider
@@ -59,7 +32,28 @@ public class FlarebombHooks
             ;
     }
     #endregion
-
+    public static void Apply()
+    {
+        On.ScavengerAI.CollectScore_PhysicalObject_bool += ScavengerAI_CollectScore_PhysicalObject_bool;
+        On.FlareBomb.Update += DieToFlareBomb;
+        On.FlareBomb.DrawSprites += FlareBomb_DrawSprites;
+        On.FlareBomb.HitByExplosion += FlareBomb_HitByExplosion;
+    }
+    //THIS WILL PREVENT STORED FLARES FROM DETONATING AND BREAKING THE STORAGE SLOT
+    private static void FlareBomb_HitByExplosion(On.FlareBomb.orig_HitByExplosion orig, FlareBomb self, float hitFac, Explosion explosion, int hitChunk) {
+        if (self.mode != Weapon.Mode.OnBack) {
+            orig(self, hitFac, explosion, hitChunk);
+        }
+    }
+    private static void FlareBomb_DrawSprites(On.FlareBomb.orig_DrawSprites orig, FlareBomb self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
+    {
+        orig(self, sLeaser, rCam, timeStacker, camPos);
+        if (MiscUtils.IsBeaconOrPhoto(self.thrownBy))
+        {
+            sLeaser.sprites[2].color = self.color;
+        }
+    }
+    // Makes it so that if flarebombs are being stored by Beacon, Scavs are not interested in the bombs at all
     private static int ScavengerAI_CollectScore_PhysicalObject_bool(On.ScavengerAI.orig_CollectScore_PhysicalObject_bool orig, ScavengerAI self, PhysicalObject obj, bool weaponFiltered)
     {
         int val = orig(self, obj, weaponFiltered);
@@ -99,9 +93,12 @@ public class FlarebombHooks
 
                 bool stunCreatures = MiscUtils.IsBeaconOrPhoto(self.room.game.StoryCharacter) || MiscUtils.IsBeaconOrPhoto(self.thrownBy);
 
+                // If the flarebomb was thrown and there exists a realized player that is one of ours, then the flarebomb needs to stun creatures.
+                /*
+                IMPORTANT: THIS SHOULD BE REPLACED BY A SINGLE CHECK AT THE START OF THE CYCLE TO SEE IF A PB SLUGCAT EXISTS SO THAT THIS DOES NOT BREAK IF THE PB SLUGCATS BECOME UNREALIZED
+                */
                 if (!stunCreatures && ModManager.CoopAvailable)
                 {
-                    //loop through all co-op players
                     foreach (var playersInGame in self.room.game.Players)
                     {
                         if (playersInGame.realizedCreature is Player player && MiscUtils.IsBeaconOrPhoto(player.SlugCatClass))
@@ -112,6 +109,7 @@ public class FlarebombHooks
                     }
                 }
 
+                // If the flarebomb should stun creatures:
                 if (stunCreatures)
                 {
                     if (TooBrightForMe(self.room.abstractRoom.creatures[i].creatureTemplate.type))
@@ -138,11 +136,8 @@ public class FlarebombHooks
                 if (self.room.abstractRoom.creatures[i].creatureTemplate.IsNightTerror())
                 {
 
-                    //50% chance of the night terror releasing you from its grasp
-                    if (Random.value <= 0.5)
-                    {
-                        self.room.abstractRoom.creatures[i].realizedCreature.NightTerrorReleasePlayersInGrasp();
-                    }
+                    // To be balanced somewhat, the NT will ALWAYS drop players
+                    self.room.abstractRoom.creatures[i].realizedCreature.NightTerrorReleasePlayersInGrasp();
 
                     //writhe in pain
                     self.room.AddObject(new CreatureSpasmer(self.room.abstractRoom.creatures[i].realizedCreature, false, 40));

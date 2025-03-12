@@ -28,8 +28,7 @@ public class OverseerHooks
         On.Conversation.InitalizePrefixColor += Conversation_InitalizePrefixColor;
         IL.Overseer.Update += IL_Overseer_Update;
     }
-    private static void Player_Update(On.Player.orig_Update orig, Player self, bool eu)
-    {
+    private static void Player_Update(On.Player.orig_Update orig, Player self, bool eu) {
         orig(self, eu);
         // Moon note: This code will probably make bacons in Jolly Coop, that are in different rooms, fight over the overseer. Could make a fix but only want to if it becomes a problem
         if (self.room?.world?.overseersWorldAI?.playerGuide != null && self.room.game.session is StoryGameSession session && MiscUtils.IsBeaconOrPhoto(session.saveStateNumber) && self.slugcatStats.name == BeaconName) {
@@ -239,7 +238,7 @@ public class OverseerEx
     }
     public void Update() {
         if (!_Overseer.TryGetTarget(out Overseer overseer)) { return; }
-        if (overseer.room == null) { Debug.Log($"Pitch Black {nameof(Update)}: room was null"); return; }
+        if (overseer.room == null) { Debug.Log($"Pitch Black OverseerEx {nameof(Update)}: room was null"); return; }
         if (overseer.room.game.session is not StoryGameSession || (overseer.room.game.session is StoryGameSession gameSession && gameSession.saveStateNumber != BeaconName && gameSession.saveStateNumber != PhotoName)) { Debug.Log($"Pitch Black {nameof(Update)}: Not a correct StoryGameSession"); return; }
         if (!overseer.PlayerGuide) { return; }
 

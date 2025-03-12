@@ -17,6 +17,7 @@ public class ScugCWT
     public bool SpritesInitialized; //bc PlayerGraphics.InitializeSprites calls itself twice in a row gawd dam
     public Whiskers whiskers; //initialized in PlayerGraphics.ctor hook
     public int hatIndex; //index of the hat sprite
+    public int petTimer = 0; //for petting Solace slugcats
 
     public ScugCWT(Player player)
     {

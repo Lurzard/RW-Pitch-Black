@@ -9,6 +9,30 @@ namespace PitchBlack;
 
 public static class MiscUtils
 {
+    public static bool ValidTrackRoom(this Room room)
+    {
+        return room != null && !room.RoomIsAStartingCabinetsRoom() && !room.abstractRoom.shelter && !room.abstractRoom.gate;
+    }
+    public static bool RoomIsAStartingCabinetsRoom(this Room room) {
+        string roomName = room.roomSettings.name;
+        if (roomName == "SH_CABINETMERCHANT")
+            return true;
+        if (roomName == "SH_Long")
+            return true;
+        if (roomName == "SH_CabinetAlley")
+            return true;
+        if (roomName.StartsWith("RM_")) //ALSO DON'T TRACK IN THE ROT
+            return true; 
+
+        for (int i = 1; i <= 5; i++)
+        {
+            //spinch: nt gets to track SH_CABINETS6, as a treat
+            if (roomName == $"SH_CABINETS{i}")
+                return true;
+        }
+
+        return false;
+    }
     public static bool IsNightTerror(this CreatureTemplate creatureTemplate) => creatureTemplate.type == CreatureTemplateType.NightTerror;
     public static bool IsUmbraScav(this CreatureTemplate creatureTemplate) => creatureTemplate.type == CreatureTemplateType.UmbraScav;
 

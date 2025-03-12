@@ -8,6 +8,7 @@ public static class CreatureTemplateType
 #if PLAYTEST
     [AllowNull] public static CreatureTemplate.Type Rotrat = new(nameof(Rotrat), true);
     [AllowNull] public static CreatureTemplate.Type UmbraScav = new(nameof(UmbraScav), true);
+    [AllowNull] public static CreatureTemplate.Type FireGrub = new (nameof(FireGrub), true);
 #endif
 
     public static void UnregisterValues()
@@ -28,6 +29,11 @@ public static class CreatureTemplateType
             Rotrat.Unregister();
             Rotrat = null;
         }
+        if (FireGrub != null)
+        {
+            FireGrub.Unregister();
+            FireGrub = null;
+        }
         if (UmbraScav != null)
         {
             UmbraScav.Unregister();
@@ -43,6 +49,7 @@ public static class SandboxUnlockID
     [AllowNull] public static MultiplayerUnlocks.SandboxUnlockID LMiniLongLegs = new(nameof(LMiniLongLegs), true);
 #if PLAYTEST
     [AllowNull] public static MultiplayerUnlocks.SandboxUnlockID Rotrat = new(nameof(Rotrat), true);
+    [AllowNull] public static MultiplayerUnlocks.SandboxUnlockID FireGrub = new (nameof(FireGrub), true);
     [AllowNull] public static MultiplayerUnlocks.SandboxUnlockID UmbraScav = new(nameof(UmbraScav), true);
 #endif
 
@@ -63,6 +70,11 @@ public static class SandboxUnlockID
         {
             Rotrat.Unregister();
             Rotrat = null;
+        }
+        if (FireGrub != null)
+        {
+            FireGrub.Unregister();
+            FireGrub = null;
         }
         if (UmbraScav != null)
         {
