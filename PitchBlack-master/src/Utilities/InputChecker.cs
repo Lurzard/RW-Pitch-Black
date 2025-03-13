@@ -60,6 +60,5 @@ static internal class InputChecker
         if (inputTracker.Length > MAXCODELENGTH) {
             inputTracker = inputTracker.Substring(inputTracker.Length-MAXCODELENGTH, MAXCODELENGTH);
         }
-        Debug.Log("Current string log is: " + inputTracker);
     }
 }

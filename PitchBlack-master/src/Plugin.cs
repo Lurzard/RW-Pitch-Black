@@ -154,34 +154,39 @@ class Plugin : BaseUnityPlugin
         orig(self);
         MachineConnector.SetRegisteredOI("lurzard.pitchblack", PBOptions.Instance);
         if (!init) {
+
+#if PLAYTEST
+            regionMenuDisplaySavePath = ModManager.ActiveMods.First(x => x.id == MOD_ID).path + Path.DirectorySeparatorChar + "RegionMenuDisplay.txt";
+
+            #region Load Collection data into readonly list
+            try {
+                // Creates a new directory and file if they do not exist (which they won't the first time the game is booted up), and fills it with default data.
+                if (!Directory.Exists(rootSavePath + COLLECTION_SAVE_FOLDER_NAME)) {
+                    Directory.CreateDirectory(rootSavePath + COLLECTION_SAVE_FOLDER_NAME);
+                }
+                if (!File.Exists(collectionSaveDataPath)) {
+                    string defaultText = "";
+                    foreach (var name in PitchBlackCollectionMenu.chatLogIDToButtonName.Keys) {
+                        defaultText += name + ":0|";
+                    }
+                    File.WriteAllText(collectionSaveDataPath, defaultText);
+                }
+                foreach (string text in File.ReadAllText(collectionSaveDataPath).Trim('|').Split('|')) {
+                    // If the second part is a 1, it is unlocked, 0 (or anything else) is locked
+                    bool unlocked = text.Split(':')[1] == "1";
+                    collectionSaveData.Add(text.Split(':')[0], unlocked);
+                }
+            } catch (Exception err) {
+                Debug.LogError($"Pitch Black Error with collection file read/write.\n{err}");
+                throw err;
+            }
+            #endregion
             try {
                 FishobsNoWork();
             } catch (Exception err) {
                 Debug.Log($"Pitch Black error\n{err}");
                 logger.LogDebug($"Pitch Black error\n{err}");
             }
-
-#if PLAYTEST
-            regionMenuDisplaySavePath = ModManager.ActiveMods.First(x => x.id == MOD_ID).path + Path.DirectorySeparatorChar + "RegionMenuDisplay.txt";
-
-            #region Load Collection data into readonly list
-            // Creates a new directory and file if they do not exist (which they won't the first time the game is booted up), and fills it with default data.
-            if (!Directory.Exists(rootSavePath + COLLECTION_SAVE_FOLDER_NAME)) {
-                Directory.CreateDirectory(rootSavePath + COLLECTION_SAVE_FOLDER_NAME);
-            }
-            if (!File.Exists(collectionSaveDataPath)) {
-                string defaultText = "";
-                foreach (var name in PitchBlackCollectionMenu.chatLogIDToButtonName.Keys) {
-                    defaultText += name + ":0|";
-                }
-                File.WriteAllText(collectionSaveDataPath, defaultText);
-            }
-            foreach (string text in File.ReadAllText(collectionSaveDataPath).Trim('|').Split('|')) {
-                // If the second part is a 1, it is unlocked, 0 (or anything else) is locked
-                bool unlocked = text.Split(':')[1] == "1";
-                collectionSaveData.Add(text.Split(':')[0], unlocked);
-            }
-            #endregion
 #endif
 
             if (!Futile.atlasManager.DoesContainAtlas("lmllspr"))
@@ -212,7 +217,11 @@ class Plugin : BaseUnityPlugin
     private void Weapon_SetRandomSpin(On.Weapon.orig_SetRandomSpin orig, Weapon self)
     {
         if (self.room == null) { return; }
-        orig(self);
+        try {
+            orig(self);
+        } catch (Exception err) {
+            Debug.LogError($"Pitch Black, Caught exception in {nameof(Weapon.SetRandomSpin)}.\n{err}");
+        }
     }
     public static void DisableMod(On.RainWorld.orig_OnModsDisabled orig, RainWorld self, ModManager.Mod[] newlyDisabledMods)
     {
@@ -274,126 +283,4 @@ class Plugin : BaseUnityPlugin
         }
 
     }
-
-
-
-    #region Unused Code
-    //public static Player.ObjectGrabability GrabCoalescipedes(On.Player.orig_Grabability orig, Player self, PhysicalObject obj)
-    //{
-    //    orig(self, obj);
-    //    if (obj is Spider)
-    //    {
-    //         return ObjectGrabability.OneHand;
-    //    }
-    //    else
-    //    {
-    //        return orig(self, obj);
-    //    }
-    //}
-    //public static Color OverseerGraphics_MainColor_get(orig_OverseerMainColor orig, OverseerGraphics self)
-    //{
-    //    Color res = orig(self);
-    //    if ((self.overseer.abstractCreature.abstractAI as OverseerAbstractAI).ownerIterator == 87)
-    //    {
-    //        res = new Color(0.05098039215f, 0.01176470588f, 0.09019607843f);
-    //    }
-    //    return res;
-    //}
-    // GraspIsNotElectricSpear Method seems not to exist anywhere, so these methods remain commented out :3
-    /*private void Player_SwallowObject1(On.Player.orig_SwallowObject orig, Player self, int grasp)
-    {
-        orig(self, grasp);
-
-        if (Plugin.PhotoName == self.slugcatStats.name && AbstractObjectType.Spear == self.objectInStomach.type && self.FoodInStomach > 0 && GraspIsNonElectricSpear(self.objectInStomach as AbstractSpear))
-        {
-            AddNewSpear(self, self.objectInStomach.ID);
-            self.objectInStomach = null;
-
-            if (self.FoodInStomach >= 2 && self.grasps[1]?.grabbed.abstractPhysicalObject is AbstractSpear slugGrasp && GraspIsNonElectricSpear(slugGrasp))
-            {
-                if (self.room.game.session is StoryGameSession story)
-                    story.RemovePersistentTracker(slugGrasp);
-
-                self.ReleaseGrasp(1);
-
-                slugGrasp.LoseAllStuckObjects();
-                slugGrasp.realizedObject.RemoveFromRoom();
-                self.room.abstractRoom.RemoveEntity(slugGrasp);
-                AddNewSpear(self, slugGrasp.ID);
-            }
-        }
-    }*/
-    /*private bool Player_CanBeSwallowed(On.Player.orig_CanBeSwallowed orig, Player self, PhysicalObject testObj)
-    {
-        return orig(self, testObj) || Plugin.PhotoName == self.slugcatStats.name && testObj is Spear spear && self.FoodInStomach > 0 && GraspIsNonElectricSpear(spear.abstractSpear);
-    }*/
-    //public static void AddNewSpear(Player player, EntityID entityID)
-    //{
-    //    AbstractPhysicalObject item = new AbstractSpear(player.room.world, null, player.abstractPhysicalObject.pos, player.room.game.GetNewID(), false, true);
-
-    //    player.room.abstractRoom.AddEntity(item);
-    //    item.RealizeInRoom();
-    //    player.SubtractFood(1);
-    //    if (-1 != player.FreeHand())
-    //        player.SlugcatGrab(item.realizedObject, player.FreeHand());
-    //}
-
-    //private void PlayerGraphics_DrawSprites(On.PlayerGraphics.orig_DrawSprites orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
-    //{
-    //    orig(self, sLeaser, rCam, timeStacker, camPos);
-    //    if (self.player.slugcatStats.name == Plugin.BeaconName || self.player.slugcatStats.name == Plugin.PhotoName)
-    //    {
-    //        var fsprite = sLeaser.sprites[3];
-    //        if (fsprite?.element?.name is string text && text.StartsWith("Head"))
-    //        {
-    //            foreach (var atlas in Futile.atlasManager._atlases)
-    //            {
-    //                if (atlas._elementsByName.TryGetValue("Beacon" + text, out var element))
-    //                {
-    //                    fsprite.element = element;
-    //                    break;
-    //                }
-    //            }
-    //        }
-    //    }
-    //}//Arti Crafting
-    //private void Player_SpitUpCraftedObject(On.Player.orig_SpitUpCraftedObject orig, Player player)
-    //{
-    //    if (player.slugcatStats.name == Plugin.PhotoName)
-    //    {
-    //        for (int i = 0; i < player.grasps.Length; i++)
-    //        {
-    //            AbstractPhysicalObject hands = player.grasps[i].grabbed.abstractPhysicalObject;
-    //            if (player.playerState.foodInStomach <= 0) { return; }
-
-    //            if (hands is AbstractSpear spear && !spear.explosive)
-    //            {
-    //                if (player.room.game.session is StoryGameSession story)
-    //                    story.RemovePersistentTracker(hands);
-
-    //                player.ReleaseGrasp(i);
-
-    //                hands.LoseAllStuckObjects();
-    //                hands.realizedObject.RemoveFromRoom();
-    //                player.room.abstractRoom.RemoveEntity(hands);
-
-    //                AbstractPhysicalObject abstractSpear = new AbstractSpear(player.room.world, null, player.abstractPhysicalObject.pos, player.room.game.GetNewID(), false, true);
-
-    //                player.room.abstractRoom.AddEntity(abstractSpear);
-    //                abstractSpear.RealizeInRoom();
-
-    //                if (-1 != player.FreeHand())
-    //                    player.SlugcatGrab(abstractSpear.realizedObject, player.FreeHand());
-    //            }
-    //        }
-    //        return;
-    //    }
-    //    orig(player);
-    //}
-    //private bool Player_GraspsCanBeCrafted(On.Player.orig_GraspsCanBeCrafted orig, Player self)
-    //{
-    //    if (self.slugcatStats.name == Plugin.BeaconName || self.slugcatStats.name == Plugin.PhotoName && self.input[0].y > 0) return true;
-    //    return orig(self);
-    //} // Allow crafts
-    #endregion
 }
