@@ -442,6 +442,7 @@ class PearlPointer : CosmeticSprite
         sLeaser.sprites[2] = new FSprite("pearlCursor", true);
         sLeaser.sprites[2].shader = rCam.game.rainWorld.Shaders["Hologram"];
         sLeaser.sprites[2].scale = 1.3f;
+        sLeaser.sprites[2].color = Custom.hexToColor("f02961");
         this.AddToContainer(sLeaser, rCam, null);
     }
     public override void AddToContainer(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, FContainer newContatiner)

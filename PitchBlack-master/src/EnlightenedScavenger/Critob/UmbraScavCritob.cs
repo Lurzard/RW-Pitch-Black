@@ -15,32 +15,34 @@ namespace PitchBlack;
     internal UmbraScavCritob() : base(CreatureTemplateType.UmbraScav)
     {
         Icon = new SimpleIcon("UmbraScav", Color.grey); //sandbox icon
-        RegisterUnlock(KillScore.Configurable(25), SandboxUnlockID.UmbraScav); //register kill score + sandbox ID
+        RegisterUnlock(KillScore.Configurable(25), SandboxUnlockID.UmbraScav, MultiplayerUnlocks.SandboxUnlockID.Scavenger, 0); //register kill score + sandbox ID
         LoadedPerformanceCost = 100f; //probably for loading a lot of creatures
         SandboxPerformanceCost = new SandboxPerformanceCost(0.5f, 0.5f);
-        ShelterDanger = ShelterDanger.Safe;
+        ShelterDanger = 0;
         UmbraScavHooks.Apply(); //runs hooks
     }
 
     public override int ExpeditionScore() => 25;
 
-    public override Color DevtoolsMapColor(AbstractCreature acrit) => Color.magenta;
+    public override Color DevtoolsMapColor(AbstractCreature acrit) => Color.white;
 
     public override string DevtoolsMapName(AbstractCreature acrit) => "umbr";
 
     public override IEnumerable<RoomAttractivenessPanel.Category> DevtoolsRoomAttraction() => new[] { RoomAttractivenessPanel.Category.LikesInside };
 
-    public override IEnumerable<string> WorldFileAliases() => new[] { "UmbraScavenger" };
+    public override IEnumerable<string> WorldFileAliases() => new[] { "umbrascavenger" };
 
     public override CreatureTemplate CreateTemplate()
     {
         CreatureTemplate t = new CreatureFormula(MoreSlugcatsEnums.CreatureTemplateType.ScavengerElite, CreatureTemplateType.UmbraScav, "UmbraScav")
         {
             DefaultRelationship = new(CreatureTemplate.Relationship.Type.Ignores, 0.1f),
-        }.IntoTemplate();
+            Pathing = PreBakedPathing.Ancestral(MoreSlugcatsEnums.CreatureTemplateType.ScavengerElite),
+    }.IntoTemplate();
         t.dangerousToPlayer = 1;
         t.stowFoodInDen = true;
         t.shortcutColor = new Color(1f, 1f, 1f);
+
 
         //From: StaticWorld EliteScavenger check
         t.baseDamageResistance = 2.2f;
@@ -106,11 +108,11 @@ namespace PitchBlack;
 
     public override ArtificialIntelligence CreateRealizedAI(AbstractCreature acrit) => new ScavengerAI(acrit, acrit.world);
 
-    public override Creature CreateRealizedCreature(AbstractCreature acrit) => new Scavenger(acrit, acrit.world);
+    public override AbstractCreatureAI CreateAbstractAI(AbstractCreature acrit) => new ScavengerAbstractAI(acrit.world, acrit);
 
-    //public override CreatureState CreateState(AbstractCreature acrit) => new Centipede.CentipedeState(acrit); Scavenger does not need a creature state?
+    public override Creature CreateRealizedCreature(AbstractCreature acrit) => new Scavenger(acrit, acrit.world);
 
     public override void LoadResources(RainWorld rainWorld) { }
 
-    public override CreatureTemplate.Type ArenaFallback() => MoreSlugcatsEnums.CreatureTemplateType.ScavengerElite; //falls back to Elite
+    public override CreatureTemplate.Type ArenaFallback() => CreatureTemplate.Type.Scavenger;
 }
