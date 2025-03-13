@@ -1,9 +1,7 @@
 ﻿using Fisobs.Core;
 using Fisobs.Items;
 using Fisobs.Sandbox;
-using RWCustom;
 using UnityEngine;
-using MoreSlugcats;
 
 namespace PitchBlack;
 sealed class UmbraMaskFisob : Fisob

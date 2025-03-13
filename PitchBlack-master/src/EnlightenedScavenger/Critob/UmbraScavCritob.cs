@@ -2,10 +2,8 @@
 using Fisobs.Core;
 using System.Collections.Generic;
 using Fisobs.Sandbox;
-using static PathCost.Legality;
 using UnityEngine;
 using DevInterface;
-using RWCustom;
 using MoreSlugcats;
 
 namespace PitchBlack;

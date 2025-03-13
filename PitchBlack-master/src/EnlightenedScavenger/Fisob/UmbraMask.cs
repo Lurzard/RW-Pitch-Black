@@ -1,10 +1,5 @@
-﻿using Fisobs.Core;
-using Fisobs.Items;
-using Fisobs.Sandbox;
-using RWCustom;
+﻿using RWCustom;
 using UnityEngine;
-using MoreSlugcats;
-using System.Numerics;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 

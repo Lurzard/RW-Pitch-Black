@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MoreSlugcats;
+﻿using MoreSlugcats;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -18,8 +12,6 @@ public class UmbraScavHooks
         On.ScavengerGraphics.DrawSprites += ScavengerGraphics_DrawSprites;
         On.ScavengerGraphics.InitiateSprites += ScavengerGraphics_InitiateSprites;
         On.ScavengerGraphics.ctor += ScavengerGraphics_ctor;
-        On.ScavengerGraphics.Update += ScavengerGraphics_Update;
-        On.ScavengerGraphics.AddToContainer += ScavengerGraphics_AddToContainer;
         On.MoreSlugcats.VultureMaskGraphics.GenerateColor += VultureMaskGraphics_GenerateColor;
         //On.Scavenger.ctor += Scavenger_ctor;
 
@@ -33,39 +25,6 @@ public class UmbraScavHooks
             self.ColorB = new HSLColor(1f, 1f, 1f);
             return;
         }
-    }
-
-    private static void ScavengerGraphics_AddToContainer(On.ScavengerGraphics.orig_AddToContainer orig, ScavengerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, FContainer newContatiner)
-    {
-        orig(self,sLeaser, rCam, newContatiner);
-        if (self.scavenger.Template.type == CreatureTemplateType.UmbraScav)
-        {
-            FContainer fcontainer = rCam.ReturnFContainer("Foreground");
-            for (int k = self.TotalSprites - 2; k < self.TotalSprites; k++)
-            {
-                fcontainer.AddChild(sLeaser.sprites[k]);
-            }
-        }
-    }
-
-    private static void ScavengerGraphics_Update(On.ScavengerGraphics.orig_Update orig, ScavengerGraphics self)
-    {
-        orig(self);
-        //if (self.scavenger.Template.type == CreatureTemplateType.UmbraScav)
-        //{
-        //    if (self.scavenger.Stunned)
-        //    {
-        //        self.markAlpha = Mathf.Lerp(self.markAlpha, UnityEngine.Random.Range(0f, 0.5f), 0.25f);
-        //    }
-        //    else if (!self.scavenger.dead)
-        //    {
-        //        self.markAlpha = Mathf.Lerp(self.markAlpha, 1f, 0.2f);
-        //    }
-        //    else if (self.scavenger.dead)
-        //    {
-        //        self.markAlpha = Mathf.Lerp(self.markAlpha, 0f, 0.1f);
-        //    }
-        //}
     }
 
     private static void ScavengerGraphics_ctor(On.ScavengerGraphics.orig_ctor orig, ScavengerGraphics self, PhysicalObject ow)
