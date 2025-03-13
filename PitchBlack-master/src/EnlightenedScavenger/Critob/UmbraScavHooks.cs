@@ -31,6 +31,7 @@ public class UmbraScavHooks
         {
             self.ColorA = new HSLColor(1f, 1f, 1f);
             self.ColorB = new HSLColor(1f, 1f, 1f);
+            return;
         }
     }
 
@@ -40,10 +41,6 @@ public class UmbraScavHooks
         if (self.scavenger.Template.type == CreatureTemplateType.UmbraScav)
         {
             FContainer fcontainer = rCam.ReturnFContainer("Foreground");
-            for (int j = self.ShellSprite; j < self.TotalSprites - 2; j++)
-            {
-                newContatiner.AddChild(sLeaser.sprites[j]);
-            }
             for (int k = self.TotalSprites - 2; k < self.TotalSprites; k++)
             {
                 fcontainer.AddChild(sLeaser.sprites[k]);
@@ -54,21 +51,21 @@ public class UmbraScavHooks
     private static void ScavengerGraphics_Update(On.ScavengerGraphics.orig_Update orig, ScavengerGraphics self)
     {
         orig(self);
-        if (self.scavenger.Template.type == CreatureTemplateType.UmbraScav)
-        {
-            if (self.scavenger.Stunned)
-            {
-                self.markAlpha = Mathf.Lerp(self.markAlpha, UnityEngine.Random.Range(0f, 0.5f), 0.25f);
-            }
-            else if (!self.scavenger.dead)
-            {
-                self.markAlpha = Mathf.Lerp(self.markAlpha, 1f, 0.2f);
-            }
-            else if (self.scavenger.dead)
-            {
-                self.markAlpha = Mathf.Lerp(self.markAlpha, 0f, 0.1f);
-            }
-        }
+        //if (self.scavenger.Template.type == CreatureTemplateType.UmbraScav)
+        //{
+        //    if (self.scavenger.Stunned)
+        //    {
+        //        self.markAlpha = Mathf.Lerp(self.markAlpha, UnityEngine.Random.Range(0f, 0.5f), 0.25f);
+        //    }
+        //    else if (!self.scavenger.dead)
+        //    {
+        //        self.markAlpha = Mathf.Lerp(self.markAlpha, 1f, 0.2f);
+        //    }
+        //    else if (self.scavenger.dead)
+        //    {
+        //        self.markAlpha = Mathf.Lerp(self.markAlpha, 0f, 0.1f);
+        //    }
+        //}
     }
 
     private static void ScavengerGraphics_ctor(On.ScavengerGraphics.orig_ctor orig, ScavengerGraphics self, PhysicalObject ow)
@@ -77,6 +74,7 @@ public class UmbraScavHooks
         if (self.scavenger.Template.type == CreatureTemplateType.UmbraScav)
         {
             self.maskGfx = new VultureMaskGraphics(self.scavenger, UmbraMask.UMBRA, self.MaskSprite, "UmbraMask");
+            self.maskGfx.GenerateColor(self.scavenger.abstractCreature.ID.RandomSeed);
         }
     }
 
