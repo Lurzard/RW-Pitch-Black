@@ -1,4 +1,5 @@
-﻿using MoreSlugcats;
+﻿using System.Runtime.CompilerServices;
+using MoreSlugcats;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -27,6 +28,7 @@ public class UmbraScavHooks
         }
     }
 
+    //something about the umbra mask type is making the creature's pixel and glow sprites added here inherit its rotation?
     private static void ScavengerGraphics_ctor(On.ScavengerGraphics.orig_ctor orig, ScavengerGraphics self, PhysicalObject ow)
     {
         orig(self,ow);
@@ -60,22 +62,42 @@ public class UmbraScavHooks
 
     private static void ScavengerGraphics_DrawSprites(On.ScavengerGraphics.orig_DrawSprites orig, ScavengerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, UnityEngine.Vector2 camPosV2)
     {
+        orig(self, sLeaser, rCam, timeStacker, camPosV2);
         float2 float2 = math.lerp(self.drawPositions[self.headDrawPos, 1], self.drawPositions[self.headDrawPos, 0], timeStacker);
         float2 float3 = math.lerp(self.drawPositions[self.chestDrawPos, 1], self.drawPositions[self.chestDrawPos, 0], timeStacker);
         float2 float4 = math.lerp(self.drawPositions[self.hipsDrawPos, 1], self.drawPositions[self.hipsDrawPos, 0], timeStacker);
-        float2 float5 = (float3 + float4) / 2f;
-        float2 @float = camPosV2.ToF2();
-
-        orig(self, sLeaser, rCam ,timeStacker, camPosV2);
+        float2 floatTheSequel = camPosV2.ToF2(); //@float in ScavengerGraphics.DrawSPrites
         if (self.scavenger.Template.type == CreatureTemplateType.UmbraScav)
         {
-                sLeaser.sprites[self.TotalSprites - 1].x = float2.x - @float.x;
-                sLeaser.sprites[self.TotalSprites - 1].y = float2.y - @float.y + 32f;
-                sLeaser.sprites[self.TotalSprites - 1].alpha = Mathf.Lerp(self.lastMarkAlpha, self.markAlpha, timeStacker);
-                sLeaser.sprites[self.TotalSprites - 2].x = float2.x - @float.x;
-                sLeaser.sprites[self.TotalSprites - 2].y = float2.y - @float.y + 32f;
-                sLeaser.sprites[self.TotalSprites - 2].alpha = 0.2f * Mathf.Lerp(self.lastMarkAlpha, self.markAlpha, timeStacker);
-                sLeaser.sprites[self.TotalSprites - 2].scale = 1f + Mathf.Lerp(self.lastMarkAlpha, self.markAlpha, timeStacker);
+                sLeaser.sprites[self.TotalSprites - 1].x = float2.x - floatTheSequel.x;
+                sLeaser.sprites[self.TotalSprites - 1].y = float2.y - floatTheSequel.y + 32f;
+            sLeaser.sprites[self.TotalSprites - 1].alpha = 1f; //Mathf.Lerp(self.lastMarkAlpha, self.markAlpha, timeStacker);
+                sLeaser.sprites[self.TotalSprites - 2].x = float2.x - floatTheSequel.x;
+                sLeaser.sprites[self.TotalSprites - 2].y = float2.y - floatTheSequel.y + 32f;
+            sLeaser.sprites[self.TotalSprites - 2].alpha = 1f; //0.2f * Mathf.Lerp(self.lastMarkAlpha, self.markAlpha, timeStacker);
+            sLeaser.sprites[self.TotalSprites - 2].scale = 5f; //1f + Mathf.Lerp(self.lastMarkAlpha, self.markAlpha, timeStacker);
+            sLeaser.sprites[self.TotalSprites - 1].SetPosition(200f, 250f); //pixel debugging
+            sLeaser.sprites[self.TotalSprites - 2].SetPosition(250f, 250f); //glow debugging
+            sLeaser.sprites[self.TotalSprites - 1].scale = 5f; //debugging pixel, line can be omitted after
+            sLeaser.sprites[self.TotalSprites - 1].element = Futile.atlasManager.GetElementWithName("pixel");
+            sLeaser.sprites[self.TotalSprites - 2].element = Futile.atlasManager.GetElementWithName("Futile_White");
+            sLeaser.sprites[self.TotalSprites - 2].shader = rCam.game.rainWorld.Shaders["FlatLight"];
+            sLeaser.sprites[self.TotalSprites - 1].color = Color.red; //pixel debugging
+            sLeaser.sprites[self.TotalSprites - 2].color = Color.red; //glow debugging
+            sLeaser.sprites[self.TotalSprites - 1].isVisible = true; //pixel debugging
+            sLeaser.sprites[self.TotalSprites - 2].isVisible = true; //glow debugging
+
+            //currently:
+            //scav must be dead in order to be grabbed for the sprites to be visible
+            //sprites inherit MASK rotation AND POSITION when given the umbramask type
+            //sprites inherit ONLY HEAD rotation when NOT given the umbramask type
+
+            //some lines have commented original code, omit current value for commented code when debugging is over
         }
+    }
+
+    public static bool CheckIfOnScreen(Vector2 position, Room room)
+    {
+        return room.ViewedByAnyCamera(position, 0f);
     }
 }
