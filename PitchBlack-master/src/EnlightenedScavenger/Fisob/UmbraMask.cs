@@ -139,9 +139,9 @@ public class UmbraMask : PlayerCarryableItem, IDrawable
         {
             sLeaser.sprites[i].RemoveFromContainer();
         }
-        newContatiner.AddChild(sLeaser.sprites[2]);
-        newContatiner.AddChild(sLeaser.sprites[1]);
-        newContatiner.AddChild(sLeaser.sprites[0]);
+        newContatiner.AddChild(sLeaser.sprites[2]); //you...
+        newContatiner.AddChild(sLeaser.sprites[1]); //you...
+        newContatiner.AddChild(sLeaser.sprites[0]); 
         newContatiner.AddChild(sLeaser.sprites[3]);
         newContatiner.AddChild(sLeaser.sprites[4]);
     }
@@ -234,8 +234,8 @@ public class UmbraMask : PlayerCarryableItem, IDrawable
         {
             sLeaser.sprites = new FSprite[5];
             sLeaser.sprites[0] = new FSprite("pixel", true);
-            sLeaser.sprites[1] = new FSprite("pixel", true);
-            sLeaser.sprites[2] = new FSprite("pixel", true);
+            sLeaser.sprites[1] = new FSprite("pixel", true); //you...
+            sLeaser.sprites[2] = new FSprite("pixel", true); //you...
             sLeaser.sprites[3] = new FSprite("pixel", true);
             sLeaser.sprites[4] = new FSprite("pixel", true);
             for (int i = 0; i < sLeaser.sprites.Length; i++)
