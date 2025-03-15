@@ -37,15 +37,15 @@ namespace PitchBlack;
             DefaultRelationship = new(CreatureTemplate.Relationship.Type.Ignores, 0.1f),
             Pathing = PreBakedPathing.Ancestral(MoreSlugcatsEnums.CreatureTemplateType.ScavengerElite),
     }.IntoTemplate();
-        t.dangerousToPlayer = 1;
+        t.dangerousToPlayer = 0;
         t.stowFoodInDen = true;
         t.shortcutColor = new Color(1f, 1f, 1f);
 
 
         //From: StaticWorld EliteScavenger check
         t.baseDamageResistance = 2.2f;
-        t.baseStunResistance = 1.3f;
-        t.instantDeathDamageLimit = 4f; //ScavKing
+        t.baseStunResistance = 1.4f;
+        t.instantDeathDamageLimit = 5f;
         t.offScreenSpeed = 0.75f;
         t.grasps = 4;
         t.AI = true;
@@ -64,7 +64,7 @@ namespace PitchBlack;
         t.roamBetweenRoomsChance = -1f;
         t.roamInRoomChance = -1f;
         t.socialMemory = true;
-        t.communityID = CreatureCommunities.CommunityID.Scavengers; //I have a feeling, maybe there can be separate communities made to simulate GW/SH Scavs conflict?
+        t.communityID = CreatureCommunities.CommunityID.Scavengers;
         t.communityInfluence = 1f;
         t.dangerousToPlayer = 0.9f;
         t.meatPoints = 4;
@@ -79,29 +79,24 @@ namespace PitchBlack;
     {
         //From: RW Wiki Elite Scavenger page UNFINISHED
         Relationships umbr = new Relationships(Type);
-
-        //Ignores by default
         umbr.Ignores(CreatureTemplate.Type.SmallCentipede);
         umbr.Ignores(CreatureTemplate.Type.SmallNeedleWorm);
-        //Attacks
         umbr.Attacks(CreatureTemplate.Type.Overseer, 1f);
         umbr.Attacks(MoreSlugcatsEnums.CreatureTemplateType.Inspector, 1f);
         umbr.Attacks(MoreSlugcatsEnums.CreatureTemplateType.FireBug, 1f);
         umbr.Attacks(MoreSlugcatsEnums.CreatureTemplateType.Yeek, 0.1f);
-        //Uncomfortable
+
         umbr.UncomfortableAround(CreatureTemplate.Type.GarbageWorm, 0.8f);
         umbr.UncomfortableAround(CreatureTemplate.Type.Snail, 0.6f);
         umbr.UncomfortableAround(CreatureTemplate.Type.BigNeedleWorm, 0.5f);
         umbr.UncomfortableAround(CreatureTemplate.Type.LanternMouse, 0.1f);
-        //SocialDependent
+
         umbr.HasDynamicRelationship(CreatureTemplate.Type.Slugcat);
         umbr.HasDynamicRelationship(MoreSlugcatsEnums.CreatureTemplateType.SlugNPC);
-        //Pack
-        umbr.IsInPack(CreatureTemplate.Type.Scavenger, 0.3f);
-        umbr.IsInPack(MoreSlugcatsEnums.CreatureTemplateType.ScavengerElite, 0.3f);
-        umbr.IsInPack(MoreSlugcatsEnums.CreatureTemplateType.ScavengerKing, 0.3f);
-        //Afraid
 
+        umbr.IsInPack(CreatureTemplate.Type.Scavenger, 1f);
+        umbr.Attacks(MoreSlugcatsEnums.CreatureTemplateType.ScavengerElite, 1f);
+        umbr.Attacks(MoreSlugcatsEnums.CreatureTemplateType.ScavengerKing, 1f);
     }
 
     public override ArtificialIntelligence CreateRealizedAI(AbstractCreature acrit) => new ScavengerAI(acrit, acrit.world);

@@ -81,7 +81,7 @@ public class UmbraMask : PlayerCarryableItem, IDrawable
                     to = Mathf.InverseLerp(15f, 10f, Vector2.Distance((player.graphicsModule as PlayerGraphics).hands[grabbedBy[0].graspUsed].pos, player.mainBodyChunk.pos));
                     if (player.input[0].x != 0 && Mathf.Abs(player.bodyChunks[1].lastPos.x - player.bodyChunks[1].pos.x) > 2f)
                     {
-                        to2 = player.input[0].x;
+                        to2 = (float)(grabbedBy[0].grabber as Player).input[0].x;
                     }
                 }
             }
@@ -141,9 +141,7 @@ public class UmbraMask : PlayerCarryableItem, IDrawable
         }
         newContatiner.AddChild(sLeaser.sprites[2]); //you...
         newContatiner.AddChild(sLeaser.sprites[1]); //you...
-        newContatiner.AddChild(sLeaser.sprites[0]); 
-        newContatiner.AddChild(sLeaser.sprites[3]);
-        newContatiner.AddChild(sLeaser.sprites[4]);
+        newContatiner.AddChild(sLeaser.sprites[0]);
     }
 
     public void ApplyPalette(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
@@ -232,13 +230,10 @@ public class UmbraMask : PlayerCarryableItem, IDrawable
 
         public void InitiateSprites(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
         {
-            sLeaser.sprites = new FSprite[5];
-            sLeaser.sprites[0] = new FSprite("pixel", true);
-            sLeaser.sprites[1] = new FSprite("pixel", true); //you...
-            sLeaser.sprites[2] = new FSprite("pixel", true); //you...
-            sLeaser.sprites[3] = new FSprite("pixel", true);
-            sLeaser.sprites[4] = new FSprite("pixel", true);
-            for (int i = 0; i < sLeaser.sprites.Length; i++)
+        sLeaser.sprites[firstSprite] = new FSprite("pixel", true);
+        sLeaser.sprites[firstSprite + 1] = new FSprite("pixel", true);
+        sLeaser.sprites[firstSprite + 2] = new FSprite("pixel", true);
+        for (int i = 0; i < sLeaser.sprites.Length; i++)
             {
                 sLeaser.sprites[i].scale = 1.15f;
             }
