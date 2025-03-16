@@ -1,15 +1,16 @@
 ﻿using Fisobs.Core;
 using Fisobs.Items;
+using Fisobs.Properties;
 using Fisobs.Sandbox;
 using UnityEngine;
 
 namespace PitchBlack;
 sealed class UmbraMaskFisob : Fisob
 {
-    public static readonly AbstractPhysicalObject.AbstractObjectType AbstrUmbraMask = new("UmbraMask", true);
-    public static readonly MultiplayerUnlocks.SandboxUnlockID UmbraMaskUnlock = new("Crate", true);
+    public static readonly AbstractPhysicalObject.AbstractObjectType UmbraMask = new("UmbraMask", true);
+    public static readonly MultiplayerUnlocks.SandboxUnlockID UmbraMaskUnlock = new("UmbraMaskUnlock", true);
 
-    public UmbraMaskFisob() : base(AbstrUmbraMask)
+    public UmbraMaskFisob() : base(UmbraMask)
     {
         Icon = new SimpleIcon("icon_UmbraMask", new Color(0.529f, 0.184f, 0.360f));
         RegisterUnlock(UmbraMaskUnlock);
@@ -25,5 +26,12 @@ sealed class UmbraMaskFisob : Fisob
         if (unlock is SandboxUnlock u) { } //idk what this means lol
 
         return result;
+    }
+
+    private static readonly UmbraMaskProperties properties = new();
+
+    public override ItemProperties Properties(PhysicalObject forObject)
+    {
+        return properties;
     }
 }

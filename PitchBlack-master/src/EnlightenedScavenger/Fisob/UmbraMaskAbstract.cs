@@ -4,7 +4,7 @@ namespace PitchBlack;
 
 public class UmbraMaskAbstract : AbstractPhysicalObject
 {
-    public UmbraMaskAbstract(World world, WorldCoordinate pos, EntityID ID) : base(world, UmbraMaskFisob.AbstrUmbraMask, null, pos, ID)
+    public UmbraMaskAbstract(World world, WorldCoordinate pos, EntityID ID) : base(world, UmbraMaskFisob.UmbraMask, null, pos, ID)
     {
         scaleX = 1;
         scaleY = 1;

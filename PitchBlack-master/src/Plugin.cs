@@ -119,7 +119,6 @@ class Plugin : BaseUnityPlugin
         PBFrozenCycleTimer.Apply();
         OverseerHooks.Apply();
         SpecialChanges.Apply();
-        //ScavengerMarkGraphics.Apply(); not working atm
 #endif
 
 
@@ -130,6 +129,7 @@ class Plugin : BaseUnityPlugin
         //On.Player.SwallowObject += Player_SwallowObject1;
         //On.Player.Grabability += GrabCoalescipedes;
     }
+
     public void Update() {
         if (Input.anyKeyDown) {
             foreach (char c in Input.inputString) {
