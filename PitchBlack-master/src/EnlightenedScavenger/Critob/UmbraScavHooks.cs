@@ -17,24 +17,15 @@ public class UmbraScavHooks
         On.ScavengerGraphics.ctor += ScavengerGraphics_ctor;
         On.MoreSlugcats.VultureMaskGraphics.GenerateColor += VultureMaskGraphics_GenerateColor;
         On.ScavengerGraphics.AddToContainer += ScavengerGraphics_AddToContainer;
-        On.ScavengerGraphics.Update += ScavengerGraphics_Update;
         On.Scavenger.SetUpCombatSkills += Scavenger_SetUpCombatSkills;
         On.ScavengerGraphics.IndividualVariations.ctor += IndividualVariations_ctor;
         On.ScavengerGraphics.GenerateColors += ScavengerGraphics_GenerateColors;
         On.Scavenger.Throw += Scavenger_Throw;
-        //On.Scavenger.SetUpCombatSkills += Scavenger_SetUpCombatSkills1;
         On.Scavenger.GrabbedObjectSnatched += Scavenger_GrabbedObjectSnatched;
-        //On.Scavenger.Update += Scavenger_Update;
+        On.Scavenger.ctor += Scavenger_ctor;
     }
 
-    //private static void Scavenger_Update(On.Scavenger.orig_Update orig, Scavenger self, bool eu)
-    //{
-    //    orig(self, eu);
-    //    if (self.Template.type == CreatureTemplateType.UmbraScav)
-    //    {
-    //        self.JumpLogicUpdate();
-    //    }
-    //}
+    //public static readonly VultureMask.MaskType UMBRA = new VultureMask.MaskType("UMBRA", true);
 
     private static void Scavenger_GrabbedObjectSnatched(On.Scavenger.orig_GrabbedObjectSnatched orig, Scavenger self, PhysicalObject grabbedObject, Creature thief)
     {
@@ -45,19 +36,6 @@ public class UmbraScavHooks
         }
     }
 
-    //private static void Scavenger_SetUpCombatSkills1(On.Scavenger.orig_SetUpCombatSkills orig, Scavenger self)
-    //{
-    //    orig(self);
-    //    if (self.Template.type == CreatureTemplateType.UmbraScav)
-    //    {
-    //        float num = Mathf.Lerp(self.abstractCreature.personality.dominance, 1f, 0.15f);
-    //        self.dodgeSkill = Mathf.Lerp(self.dodgeSkill, 1f, num * 0.15f);
-    //        self.midRangeSkill = Mathf.Lerp(self.midRangeSkill, 1f, num * 0.1f);
-    //        self.blockingSkill = Mathf.Lerp(self.blockingSkill, 1f, num * 0.1f);
-    //        self.reactionSkill = Mathf.Lerp(self.reactionSkill, 1f, num * 0.05f);
-    //    }
-    //}
-
     private static void Scavenger_Throw(On.Scavenger.orig_Throw orig, Scavenger self, Vector2 throwDir)
     {
         orig(self, throwDir);
@@ -67,27 +45,6 @@ public class UmbraScavHooks
             {
                 self.grasps[0].grabbed.firstChunk.vel = throwDir * Mathf.Max(20f, (self.grasps[0].grabbed as Weapon).exitThrownModeSpeed + 5f);
             }
-        }
-    }
-
-    public static float markAlpha;
-    public static float lastMarkAlpha;
-
-    private static void ScavengerGraphics_Update(On.ScavengerGraphics.orig_Update orig, ScavengerGraphics self)
-    {
-        orig(self);
-        markAlpha = lastMarkAlpha;
-        if (self.scavenger.Stunned)
-        {
-            markAlpha = Mathf.Lerp(markAlpha, UnityEngine.Random.Range(0f, 0.5f), 0.25f);
-        }
-        else if (!self.scavenger.dead)
-        {
-            markAlpha = Mathf.Lerp(markAlpha, 1f, 0.99f);
-        }
-        else
-        {
-            markAlpha = Mathf.Lerp(markAlpha, 0f, 0.2f);
         }
     }
 
@@ -142,6 +99,7 @@ public class UmbraScavHooks
                 sLeaser.sprites[self.totalSprites - 2].rotation = 0f;
                 sLeaser.sprites[self.TotalSprites - 2].isVisible = true;
             }
+            self.AddToContainer(sLeaser, rCam, null);
         }
     }
 
@@ -159,7 +117,7 @@ public class UmbraScavHooks
                 //Mark
                 sLeaser.sprites[self.TotalSprites - 1].x = float2.x - floatTheSequel.x;
                 sLeaser.sprites[self.TotalSprites - 1].y = float2.y - floatTheSequel.y + 32f;
-                sLeaser.sprites[self.TotalSprites - 1].alpha = Mathf.Lerp(lastMarkAlpha, markAlpha, timeStacker);
+                sLeaser.sprites[self.TotalSprites - 1].alpha = Mathf.Lerp(self.lastMarkAlpha, self.markAlpha, timeStacker);
                 sLeaser.sprites[self.TotalSprites - 1].scale = 5f;
                 sLeaser.sprites[self.TotalSprites - 1].color = Color.white;
                 sLeaser.sprites[self.TotalSprites - 1].element = Futile.atlasManager.GetElementWithName("pixel");
@@ -169,19 +127,17 @@ public class UmbraScavHooks
                 //Mark Glow
                 sLeaser.sprites[self.TotalSprites - 2].x = float2.x - floatTheSequel.x;
                 sLeaser.sprites[self.TotalSprites - 2].y = float2.y - floatTheSequel.y + 32f;
-                sLeaser.sprites[self.TotalSprites - 2].alpha = 0.2f * Mathf.Lerp(lastMarkAlpha, markAlpha, timeStacker);
-                sLeaser.sprites[self.TotalSprites - 2].scale = 2f + Mathf.Lerp(lastMarkAlpha, markAlpha, timeStacker);
+                sLeaser.sprites[self.TotalSprites - 2].alpha = 0.2f * Mathf.Lerp(self.lastMarkAlpha, self.markAlpha, timeStacker);
+                sLeaser.sprites[self.TotalSprites - 2].scale = 2f + Mathf.Lerp(self.lastMarkAlpha, self.markAlpha, timeStacker);
                 sLeaser.sprites[self.TotalSprites - 2].element = Futile.atlasManager.GetElementWithName("Futile_White");
                 sLeaser.sprites[self.TotalSprites - 2].shader = rCam.game.rainWorld.Shaders["FlatLight"];
                 sLeaser.sprites[self.TotalSprites - 2].color = Color.white;
                 sLeaser.sprites[self.TotalSprites - 2].isVisible = true;
                 sLeaser.sprites[self.totalSprites - 2].rotation = 0f;
 
-                //scav is never given the sprite until their graphics update after being killed, and only after being grabbed, but it dissapears after sprites update while alive (ie. entering a pipe)
-                //sprites inherit MASK rotation AND POSITION when given the umbramask type
-                //sprites DO NOT rotate when not given the umbramask type
+                //glow inherits MASK POSITION???
+                //sprites work as intended without a mask
 
-                //debugging
                 //sLeaser.sprites[self.TotalSprites - 1].SetPosition(200f, 250f); //pixel debugging
                 //sLeaser.sprites[self.TotalSprites - 2].SetPosition(250f, 250f); //glow debugging
             }
@@ -191,6 +147,20 @@ public class UmbraScavHooks
     public static bool CheckIfOnScreen(Vector2 position, Room room)
     {
         return room.ViewedByAnyCamera(position, 0f);
+    }
+
+    private static void Scavenger_ctor(On.Scavenger.orig_ctor orig, Scavenger self, AbstractCreature abstractCreature, World world)
+    {
+        orig(self, abstractCreature, world);
+        if (self.Template.type == CreatureTemplateType.UmbraScav)
+        {
+            self.abstractCreature.personality.aggression = 0.4f;
+            self.abstractCreature.personality.bravery = 0.6f;
+            self.abstractCreature.personality.dominance = 0.6f;
+            self.abstractCreature.personality.energy = 0.8f;
+            self.abstractCreature.personality.nervous = 0.2f;
+            self.abstractCreature.personality.sympathy = 0.7f;
+        }
     }
 
     private static void ScavengerGraphics_GenerateColors(On.ScavengerGraphics.orig_GenerateColors orig, ScavengerGraphics self)

@@ -54,19 +54,19 @@ namespace PitchBlack;
         t.bodySize = 1.2f;
         t.doPreBakedPathing = false;
         t.preBakedPathingAncestor = t;
-        t.stowFoodInDen = false;
-        t.shortcutSegments = 2;
+        t.stowFoodInDen = true;
+        t.shortcutSegments = 3;
         t.visualRadius = 1200f;
         t.movementBasedVision = 0.3f;
         t.canSwim = true;
         t.waterRelationship = CreatureTemplate.WaterRelationship.AirAndSurface;
         t.hibernateOffScreen = true;
-        t.roamBetweenRoomsChance = -1f;
-        t.roamInRoomChance = -1f;
+        t.roamBetweenRoomsChance = 0.3f;
+        t.roamInRoomChance = 0.7f;
         t.socialMemory = true;
         t.communityID = CreatureCommunities.CommunityID.Scavengers;
         t.communityInfluence = 1f;
-        t.dangerousToPlayer = 0.9f;
+        t.dangerousToPlayer = 0.3f;
         t.meatPoints = 4;
         t.usesNPCTransportation = true;
         t.usesRegionTransportation = false; //I assume we want to keep it in SL
@@ -91,8 +91,8 @@ namespace PitchBlack;
         umbr.UncomfortableAround(CreatureTemplate.Type.BigNeedleWorm, 0.5f);
         umbr.UncomfortableAround(CreatureTemplate.Type.LanternMouse, 0.1f);
 
-        umbr.HasDynamicRelationship(CreatureTemplate.Type.Slugcat);
-        umbr.HasDynamicRelationship(MoreSlugcatsEnums.CreatureTemplateType.SlugNPC);
+        umbr.IsInPack(CreatureTemplate.Type.Slugcat, 0.6f);
+        umbr.IsInPack(MoreSlugcatsEnums.CreatureTemplateType.SlugNPC, 0.6f);
 
         umbr.IsInPack(CreatureTemplate.Type.Scavenger, 1f);
         umbr.Attacks(MoreSlugcatsEnums.CreatureTemplateType.ScavengerElite, 1f);
