@@ -106,7 +106,7 @@ class Plugin : BaseUnityPlugin
         JollyMenuHooks.Apply();
 
         DevCommOverride.Apply();
-        OhNoMoonAndPebblesAreDeadGuys.Apply();
+        //OhNoMoonAndPebblesAreDeadGuys.Apply();
 
         //NightDay.Apply(); //scrapped
         PassageHooks.Apply();
@@ -119,6 +119,7 @@ class Plugin : BaseUnityPlugin
         PBFrozenCycleTimer.Apply();
         OverseerHooks.Apply();
         SpecialChanges.Apply();
+        MoonDialogue.Apply();
 #endif
 
 
@@ -200,6 +201,8 @@ class Plugin : BaseUnityPlugin
             Futile.atlasManager.LoadAtlas("atlases/UmbraScav");
             Futile.atlasManager.LoadAtlas("atlases/UmbraMask");
             Futile.atlasManager.LoadAtlas("atlases/icon_UmbraMask");
+            Futile.atlasManager.LoadAtlas("atlases/smallKarma10-10");
+            Futile.atlasManager.LoadAtlas("atlases/karma10-10");
             self.Shaders["PurpleEchoSkin"] = FShader.CreateShader("purpleechoskin", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/purpleecho")).LoadAsset<Shader>("Assets/shaders 1.9.03/PurpleEchoSkin.shader"));
 #endif
             self.Shaders["Red"] = FShader.CreateShader("red", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath(path: "assetbundles/red")).LoadAsset<Shader>("Assets/red.shader"));
