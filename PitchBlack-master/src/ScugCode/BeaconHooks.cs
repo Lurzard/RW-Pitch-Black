@@ -53,6 +53,9 @@ public static class BeaconHooks
         Color flareColor3 = new Color(0.18039215686f, 0.05490196078f, 0.67843137254f); //#2e0ead
         Color flareColor4 = new Color(0.2f, 0f, 1f);
 
+        Color color = self.player.ShortCutColor();
+        beacon.BeaconColor = color;
+
         for (int i = 0; i < 2; i++)
         {
             if (flares == 0)
@@ -78,9 +81,6 @@ public static class BeaconHooks
                 beacon.BeaconColor = Color.Lerp(beacon.BeaconDefaultColor, flareColor4, 0.92f);
             }
         }
-
-        Color color = self.player.ShortCutColor();
-        color = beacon.BeaconColor;
 
         for (int sprites = 0; sprites < sLeaser.sprites.Length;  sprites++)
         {
