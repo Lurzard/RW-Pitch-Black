@@ -12,9 +12,20 @@ internal class PBCycleTimer
     public static void Apply()
     {
         On.HUD.RainMeter.Draw += RainMeter_Draw;
+        On.HUD.RainMeter.ctor += RainMeter_ctor;
         //On.RainCycle.GetDesiredCycleLength += RainCycle_GetDesiredCycleLength;
         //On.RainCycle.Update += RainCycle_Update;
     }
+
+    private static void RainMeter_ctor(On.HUD.RainMeter.orig_ctor orig, RainMeter self, HUD.HUD hud, FContainer fContainer)
+    {
+        orig(self, hud, fContainer);
+        if (IsBeaconWorldState(self) && hud.map.RegionName != "VV")
+        {
+            self.halfTimeShown = true;
+        }
+    }
+
     public static void RainMeter_Draw(On.HUD.RainMeter.orig_Draw orig, RainMeter self, float timeStacker)
     {
         orig(self, timeStacker);

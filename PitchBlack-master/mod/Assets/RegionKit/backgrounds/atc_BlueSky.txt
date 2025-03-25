@@ -1,0 +1,12 @@
+Parent: AtC_GeneralDefault
+PROTECTED
+---------------
+cloudsCount: 20
+daySky: Centens_Sky
+atmosphereColor: 73ccff
+duskAtmosphereColor: 73ccff
+nightAtmosphereColor: 73ccff
+
+startAltitude: 9000
+endAltitude: 26400
+

@@ -1,0 +1,15 @@
+Template: NONE
+DangerType: None
+CeilingDrips: 0
+WaveSpeed: 0.5
+WaveLength: 0.75
+WaveAmplitude: 0.02847664
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Clouds: 0
+Grime: 0
+Palette: 999
+Effects: LightBurn-0.05799932-20-20, AboveCloudsView-1-29.4664-94.56484, 
+PlacedObjects: CustomDecal><-182.6571><56.06822><-16.5414~765.6875~1334.499~766.2211~1317.957~0~93.37891~300.9469~0~1~0~runningwhite~0.1926034~1~0.1926034~1~0.1926034~1~0.1926034~1, ColoredLightBeam><65.98843><246.8963><-480.2344~528.772~-228.3977~767.8219~274.7813~274.8008~278.0023~133.932~0.2492019~1~0~1~None~0~0~Environment, 
+BackgroundOffset: 0,811.9863
+BackgroundType: atc_centenssky
