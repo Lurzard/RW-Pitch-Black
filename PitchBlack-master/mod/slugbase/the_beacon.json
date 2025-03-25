@@ -38,7 +38,7 @@
 		"the_mark": true,
 		"auto_grab_batflies": true,
 
-		"start_room": [ "SH_CABINETS1" ],
+		"start_room": [ "SH_A08R" ],
 		"world_state": [ "Beacon, White" ],
 		"story_regions": [ "SU", "HI", "DS", "CC", "GW", "SH", "SL", "SI", "LF", "UW", "SS", "-SB", "-VS" ],
 
