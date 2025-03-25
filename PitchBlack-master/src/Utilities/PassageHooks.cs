@@ -12,7 +12,7 @@ public static class PassageHooks
 
 	public static void Apply()
     {
-        On.WinState.CycleCompleted += BP_CycleCompleted;
+        //On.WinState.CycleCompleted += BP_CycleCompleted; for now we'll omit this
         On.WinState.CreateAndAddTracker += BP_CreateAndAddTracker;
         On.WinState.PassageDisplayName += WinState_PassageDisplayName;
 
@@ -205,7 +205,7 @@ public static class PassageHooks
 		if (ID == EnumExt_MyMod.Pursued)
 		{
 			endgameTracker = new WinState.IntegerTracker(ID, 99, 0, 0, 100); //default, min, showFrom, max
-			Debug.Log("GLUTTON TRACKER CREATED! ");
+			Debug.Log("PURSUED TRACKER CREATED!");
 		}
         else
             return orig.Invoke(ID, endgameTrackers); //JUST RUN THE ORIGINAL AND NOTHING ELSE BELOW IT

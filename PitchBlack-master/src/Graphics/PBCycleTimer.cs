@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace PitchBlack;
 
-internal class PBFrozenCycleTimer
+internal class PBCycleTimer
 {
     static bool IsBeaconWorldState(RainMeter rm) => rm.hud.owner is Player player && player.room?.game.session is StoryGameSession session && MiscUtils.IsBeaconOrPhoto(session.saveStateNumber);
     static bool IsBeaconWorldState(RainCycle rc) => rc.world.game.session is StoryGameSession session && MiscUtils.IsBeaconOrPhoto(session.saveStateNumber);

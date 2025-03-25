@@ -63,6 +63,7 @@ class Plugin : BaseUnityPlugin
             Content.Register(new LMLLCritob());
             Content.Register(new NightTerrorCritob());
             Content.Register(new UmbraScavCritob());
+            Content.Register(new UmbraMaskFisob());
         } catch (Exception err) {
             //Debug.LogError(err); Debug errors
             Logger.LogError(err);
@@ -108,7 +109,6 @@ class Plugin : BaseUnityPlugin
         DevCommOverride.Apply();
         //OhNoMoonAndPebblesAreDeadGuys.Apply();
 
-        //NightDay.Apply(); //scrapped
         PassageHooks.Apply();
 
 #if PLAYTEST
@@ -116,7 +116,7 @@ class Plugin : BaseUnityPlugin
         //EchoGraphics.Apply();
         MenuHooks.Apply();
         SyncMenuRegion.Apply();
-        PBFrozenCycleTimer.Apply();
+        PBCycleTimer.Apply();
         OverseerHooks.Apply();
         SpecialChanges.Apply();
         MoonDialogue.Apply();

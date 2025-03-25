@@ -77,16 +77,19 @@ public class SpecialChanges
         //if owner != null, player != null, room != null, Beacon, and region != null
         if (self.hud.owner != null && self.hud.owner is Player && (self.hud.owner as Player).room != null && (self.hud.owner as Player).SlugCatClass == Plugin.BeaconName && (self.hud.owner as Player).room.world.region != null)
         {
+            int karma = ((self.hud.owner as Player).abstractCreature.world.game.session as StoryGameSession).saveState.deathPersistentSaveData.karma;
+            int karmaCap = ((self.hud.owner as Player).abstractCreature.world.game.session as StoryGameSession).saveState.deathPersistentSaveData.karmaCap;
+
             if (self.showAsReinforced)
             {
-                if (!karmaBoost && ((self.hud.owner as Player).abstractCreature.world.game.session as StoryGameSession).saveState.deathPersistentSaveData.karma < 9 && ((self.hud.owner as Player).abstractCreature.world.game.session as StoryGameSession).saveState.deathPersistentSaveData.karma != 4) //any karma except max or 4
+                if (!karmaBoost && karma < 9 && karma != 4) //any karma except max or 4
                 {
                     ((self.hud.owner as Player).abstractCreature.world.game.session as StoryGameSession).saveState.deathPersistentSaveData.karma++; //increasing karma once
                     (self.hud.owner as Player).room.game.cameras[0].hud.karmaMeter.UpdateGraphic();
                     karmaBoost = true;
                 }
 
-                else if (!doubledKarmaBoost && ((self.hud.owner as Player).abstractCreature.world.game.session as StoryGameSession).saveState.deathPersistentSaveData.karmaCap == 4 && !karmaBoost) //same implementation as the first echo giving you 2 extra
+                else if (!doubledKarmaBoost && karmaCap == 4 && !karmaBoost) //same implementation as the first echo giving you 2 extra
                 {
                     ((self.hud.owner as Player).abstractCreature.world.game.session as StoryGameSession).saveState.deathPersistentSaveData.karma++;
                     ((self.hud.owner as Player).abstractCreature.world.game.session as StoryGameSession).saveState.deathPersistentSaveData.karmaCap = 6; //making both karma and karmaCap = 6
@@ -94,7 +97,7 @@ public class SpecialChanges
                     doubledKarmaBoost = true;
                 }
 
-                else if (!fractalNightKarma && !karmaBoost && !doubledKarmaBoost && ((self.hud.owner as Player).abstractCreature.world.game.session as StoryGameSession).saveState.deathPersistentSaveData.karma == 9)
+                else if (!fractalNightKarma && !karmaBoost && !doubledKarmaBoost && karma == 9) //secret karma
                 {
                     ((self.hud.owner as Player).abstractCreature.world.game.session as StoryGameSession).saveState.deathPersistentSaveData.karma = 10;
                     (self.hud.owner as Player).room.game.cameras[0].hud.karmaMeter.UpdateGraphic();
@@ -128,11 +131,6 @@ public class SpecialChanges
                 }
             }
         }
-    }
-
-    public static string FractalNightKarmaSprite(bool small, IntVector2 k)
-    {
-        return small ? "smallKarma10" : "karma10";
     }
 
     private static void KarmaFlower_ApplyPalette(On.KarmaFlower.orig_ApplyPalette orig, KarmaFlower self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)

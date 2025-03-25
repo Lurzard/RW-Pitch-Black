@@ -50,15 +50,13 @@ public class PBOptions : OptionInterface
 
             // Make the options on the right side
             //new OpSlider(maxFlashStore, new Vector2(rightSidePos, 520), sliderBarLength) {description=Translate("Beacon's Max Stored Flashbangs")},
-            new OpLabel(rightSidePos, 500, Translate("Flashbang storage amount")),
+            //new OpLabel(rightSidePos, 500, Translate("Flashbang storage amount")),
 
             new OpSlider(pursuerAgro, new Vector2(rightSidePos, 440), sliderBarLength) {description = Translate("How long it takes for the pursuer to track you down")},
             new OpLabel(rightSidePos, 420, Translate("Pursuer Aggro"), false),
 
-#if PLAYETST
             new OpCheckBox(hazHat, new Vector2(rightSidePos, 360)) {description=Translate("If the PB slugcats wear a hat to protect their eyes in other campaigns")},
             new OpLabel(rightSidePos+30, 363, Translate("Wear Hats"), false),
-#endif
 
             // Make the options on the left side
             new OpCheckBox(pursuer, new Vector2(leftSidePos, 520)) {description=Translate("Something is pursuing you...")},
