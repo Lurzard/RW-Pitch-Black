@@ -11,9 +11,9 @@ TH_SI - NIGHTARPS : NEUTRAL
 TH_SI - NIGHTNOISE : DANGER
 
 
-Layer : TH_SI - NIGHTFLOW{Sky Islands|Communications Array}
-Layer : TH_SI - NIGHTFLOW{Sky Islands|Communications Array}, TH_SI - NIGHTKICK{Sky Islands|Communications Array}, TH_SI - NIGHTHATS{Sky Islands}, TH_SI - NIGHTTIMPGLITCH{Communications Array}
-Layer : TH_SI - NIGHTFLOW{Sky Islands|Communications Array}, TH_SI - NIGHTKICK{Sky Islands|Communications Array}, TH_SI - NIGHTHATS{Sky Islands}, TH_SI - NIGHTTIMPGLITCH{Communications Array}, TH_SI - NIGHTPERC{Sky Islands}, TH_SI - NIGHTVERBPERC{Communications Array}, TH_SI - NIGHTSNARE{Sky Islands|Communications Array}
-Layer : TH_SI - NIGHTFLOW{Sky Islands|Communications Array}, TH_SI - NIGHTKICK{Sky Islands|Communications Array}, TH_SI - NIGHTHATS{Sky Islands}, TH_SI - NIGHTTIMPGLITCH{Communications Array}, TH_SI - NIGHTPERC{Sky Islands}, TH_SI - NIGHTVERBPERC{Communications Array}, TH_SI - NIGHTSNARE{Sky Islands|Communications Array}, TH_SI - NIGHTBASS{Sky Islands}, TH_SI - NIGHTSUB{Communications Array}
-Layer : TH_SI - NIGHTFLOW{Sky Islands|Communications Array}, TH_SI - NIGHTKICK{Sky Islands|Communications Array}, TH_SI - NIGHTHATS{Sky Islands}, TH_SI - NIGHTTIMPGLITCH{Communications Array}, TH_SI - NIGHTPERC{Sky Islands}, TH_SI - NIGHTVERBPERC{Communications Array}, TH_SI - NIGHTSNARE{Sky Islands|Communications Array}, TH_SI - NIGHTBASS{Sky Islands}, TH_SI - NIGHTSUB{Communications Array}, TH_SI - NIGHTARPS{Sky Islands|Communications Array}
-Layer : TH_SI - NIGHTFLOW{Sky Islands|Communications Array}, TH_SI - NIGHTKICK{Sky Islands|Communications Array}, TH_SI - NIGHTHATS{Sky Islands}, TH_SI - NIGHTTIMPGLITCH{Communications Array}, TH_SI - NIGHTPERC{Sky Islands}, TH_SI - NIGHTVERBPERC{Communications Array}, TH_SI - NIGHTSNARE{Sky Islands|Communications Array}, TH_SI - NIGHTBASS{Sky Islands}, TH_SI - NIGHTSUB{Communications Array}, TH_SI - NIGHTARPS{Sky Islands|Communications Array}, TH_SI - NIGHTNOISE{Sky Islands|Communications Array}
+Layer : TH_SI - NIGHTFLOW 
+Layer : TH_SI - NIGHTFLOW , TH_SI - NIGHTKICK , TH_SI - NIGHTHATS, TH_SI - NIGHTTIMPGLITCH
+Layer : TH_SI - NIGHTFLOW , TH_SI - NIGHTKICK , TH_SI - NIGHTHATS, TH_SI - NIGHTTIMPGLITCH, TH_SI - NIGHTPERC, TH_SI - NIGHTVERBPERC, TH_SI - NIGHTSNARE 
+Layer : TH_SI - NIGHTFLOW , TH_SI - NIGHTKICK , TH_SI - NIGHTHATS, TH_SI - NIGHTTIMPGLITCH, TH_SI - NIGHTPERC, TH_SI - NIGHTVERBPERC, TH_SI - NIGHTSNARE , TH_SI - NIGHTBASS, TH_SI - NIGHTSUB
+Layer : TH_SI - NIGHTFLOW , TH_SI - NIGHTKICK , TH_SI - NIGHTHATS, TH_SI - NIGHTTIMPGLITCH, TH_SI - NIGHTPERC, TH_SI - NIGHTVERBPERC, TH_SI - NIGHTSNARE , TH_SI - NIGHTBASS, TH_SI - NIGHTSUB, TH_SI - NIGHTARPS 
+Layer : TH_SI - NIGHTFLOW , TH_SI - NIGHTKICK , TH_SI - NIGHTHATS, TH_SI - NIGHTTIMPGLITCH, TH_SI - NIGHTPERC, TH_SI - NIGHTVERBPERC, TH_SI - NIGHTSNARE , TH_SI - NIGHTBASS, TH_SI - NIGHTSUB, TH_SI - NIGHTARPS , TH_SI - NIGHTNOISE

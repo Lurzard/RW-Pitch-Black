@@ -10,9 +10,9 @@ TH_SH - NIGHTARPCRUSH : NEUTRAL
 TH_SH - NIGHTNOISE : DANGER
 
 
-Layer : TH_SH - NIGHTFLOW{Memory Crypts|Deep Crypts}
-Layer : TH_SH - NIGHTFLOW{Memory Crypts|Deep Crypts}, TH_SH - NIGHTKICK{Memory Crypts|Deep Crypts}, TH_SH - NIGHTHATS{Memory Crypts|Deep Crypts}
-Layer : TH_SH - NIGHTFLOW{Memory Crypts|Deep Crypts}, TH_SH - NIGHTKICK{Memory Crypts|Deep Crypts}, TH_SH - NIGHTHATS{Memory Crypts|Deep Crypts}, TH_SH - NIGHTPERC{Memory Crypts|Deep Crypts}, TH_SH - NIGHTCRASH{Memory Crypts|Deep Crypts}
-Layer : TH_SH - NIGHTFLOW{Memory Crypts|Deep Crypts}, TH_SH - NIGHTKICK{Memory Crypts|Deep Crypts}, TH_SH - NIGHTHATS{Memory Crypts|Deep Crypts}, TH_SH - NIGHTPERC{Memory Crypts|Deep Crypts}, TH_SH - NIGHTCRASH{Memory Crypts|Deep Crypts}, TH_SH - NIGHTBASS{Memory}, TH_SH - NIGHTCHORDS{Deep Crypts}
-Layer : TH_SH - NIGHTFLOW{Memory Crypts|Deep Crypts}, TH_SH - NIGHTKICK{Memory Crypts|Deep Crypts}, TH_SH - NIGHTHATS{Memory Crypts|Deep Crypts}, TH_SH - NIGHTPERC{Memory Crypts|Deep Crypts}, TH_SH - NIGHTCRASH{Memory Crypts|Deep Crypts}, TH_SH - NIGHTBASS{Memory}, TH_SH - NIGHTCHORDS{Deep Crypts}, TH_SH - NIGHTARPS{Memory}, TH_SH - NIGHTARPCRUSH{Deep Crypts}
-Layer : TH_SH - NIGHTFLOW{Memory Crypts|Deep Crypts}, TH_SH - NIGHTKICK{Memory Crypts|Deep Crypts}, TH_SH - NIGHTHATS{Memory Crypts|Deep Crypts}, TH_SH - NIGHTPERC{Memory Crypts|Deep Crypts}, TH_SH - NIGHTCRASH{Memory Crypts|Deep Crypts}, TH_SH - NIGHTBASS{Memory}, TH_SH - NIGHTCHORDS{Deep Crypts}, TH_SH - NIGHTARPS{Memory}, TH_SH - NIGHTARPCRUSH{Deep Crypts}, TH_SH - NIGHTNOISE : DANGER{Memory Crypts|Deep Crypts}
+Layer : TH_SH - NIGHTFLOW
+Layer : TH_SH - NIGHTFLOW, TH_SH - NIGHTKICK, TH_SH - NIGHTHATS
+Layer : TH_SH - NIGHTFLOW, TH_SH - NIGHTKICK, TH_SH - NIGHTHATS, TH_SH - NIGHTPERC, TH_SH - NIGHTCRASH
+Layer : TH_SH - NIGHTFLOW, TH_SH - NIGHTKICK, TH_SH - NIGHTHATS, TH_SH - NIGHTPERC, TH_SH - NIGHTCRASH, TH_SH - NIGHTBASS{Memory}, TH_SH - NIGHTCHORDS
+Layer : TH_SH - NIGHTFLOW, TH_SH - NIGHTKICK, TH_SH - NIGHTHATS, TH_SH - NIGHTPERC, TH_SH - NIGHTCRASH, TH_SH - NIGHTBASS{Memory}, TH_SH - NIGHTCHORDS, TH_SH - NIGHTARPS, TH_SH - NIGHTARPCRUSH
+Layer : TH_SH - NIGHTFLOW, TH_SH - NIGHTKICK, TH_SH - NIGHTHATS, TH_SH - NIGHTPERC, TH_SH - NIGHTCRASH, TH_SH - NIGHTBASS{Memory}, TH_SH - NIGHTCHORDS, TH_SH - NIGHTARPS, TH_SH - NIGHTARPCRUSH, TH_SH - NIGHTNOISE
