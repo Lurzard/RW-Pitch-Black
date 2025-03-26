@@ -38,6 +38,11 @@ public static class BeaconHooks
         On.PlayerGraphics.DrawSprites += PlayerGraphics_DrawSprites1;
     }
 
+    static Color flareColor1 = new Color(0.10588235294f, 0.06666666666f, 0.25882352941f); //#1b1142
+    static Color flareColor2 = new Color(0.16470588235f, 0.0862745098f, 0.47843137254f); //#2a167a
+    static Color flareColor3 = new Color(0.18039215686f, 0.05490196078f, 0.67843137254f); //#2e0ead
+    static Color flareColor4 = new Color(0.2f, 0f, 1f);
+
     //add math to fade beacon color in real time instead of immediately 
     private static void PlayerGraphics_DrawSprites1(On.PlayerGraphics.orig_DrawSprites orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
     {
@@ -47,14 +52,7 @@ public static class BeaconHooks
 
         bool slugIsBeacon = Plugin.scugCWT.TryGetValue(self.player, out ScugCWT cwt) && cwt.IsBeacon;
         int flares = cwt.Beacon.storage.storedFlares.Count;
-
-        Color flareColor1 = new Color(0.10588235294f, 0.06666666666f, 0.25882352941f); //#1b1142
-        Color flareColor2 = new Color(0.16470588235f, 0.0862745098f, 0.47843137254f); //#2a167a
-        Color flareColor3 = new Color(0.18039215686f, 0.05490196078f, 0.67843137254f); //#2e0ead
-        Color flareColor4 = new Color(0.2f, 0f, 1f);
-
-        Color color = self.player.ShortCutColor();
-        beacon.BeaconColor = color;
+        beacon.BeaconColor = PlayerGraphics.SlugcatColor(self.CharacterForColor);
 
         for (int i = 0; i < 2; i++)
         {
@@ -87,6 +85,7 @@ public static class BeaconHooks
             if(sprites != 9) sLeaser.sprites[sprites].color = beacon.BeaconColor;
             if(sprites == 9) sLeaser.sprites[sprites].color = beacon.BeaconEyeColor;
             if(sprites == 10) sLeaser.sprites[sprites].color = Custom.hexToColor("f02961");
+            if(sprites == 11) sLeaser.sprites[sprites].color = Custom.hexToColor("f02961");
         }
     }
 

@@ -29,11 +29,16 @@ public class SpecialChanges
 
     public static void Apply()
     {
+
+
+        //ingame HUD
         On.HUD.KarmaMeter.Update += KarmaMeter_Update;
         On.HUD.KarmaMeter.KarmaSymbolSprite += KarmaMeter_KarmaSymbolSprite;
 
+        //karmaflower
         On.KarmaFlower.ApplyPalette += KarmaFlower_ApplyPalette;
 
+        //voidspawn
         IL.VoidSpawnEgg.DrawSprites += VoidSpawnEgg_DrawSprites_IL;
         IL.VoidSpawnGraphics.ApplyPalette += VoidSpawnGraphics_ApplyPalette_IL;
         IL.VoidSpawnGraphics.DrawSprites += VoidSpawnGraphics_DrawSprites_IL;

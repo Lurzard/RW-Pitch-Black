@@ -112,7 +112,7 @@ class Plugin : BaseUnityPlugin
         PassageHooks.Apply();
 
 #if PLAYTEST
-        //EchoMusic.Apply();
+        EchoPresence.Apply();
         //EchoGraphics.Apply();
         MenuHooks.Apply();
         SyncMenuRegion.Apply();

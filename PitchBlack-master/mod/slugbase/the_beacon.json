@@ -13,19 +13,19 @@
 		"throw_skill": 1,
 		"lung_capacity": [ 2.2, 1.8 ],
 
-		"food_min": 4,
+		"food_min": 5,
 		"food_max": 7,
 		"diet": {
 			"base": "White",
 			"overrides": {
 				"SlimeMold": 1.5,
-				"BlackLizard": 1.5,
-				"DropBug": 1.5,
-				"LanternMouse": 1.5,
-				"MirosVulture": 2,
-				"MirosBird": 1.5,
-				"BigSpider": 1.5,
-				"SpitterSpider": 1.5,
+				"BlackLizard": 1,
+				"DropBug": 1,
+				"LanternMouse": 1,
+				"MirosVulture": 1.5,
+				"MirosBird": 1,
+				"BigSpider": 1,
+				"SpitterSpider": 1,
 				"MotherSpider": 1,
 				"LillyPuck": 1.5
 			}
@@ -34,7 +34,7 @@
 		"karma": 4,
 		"karma_cap": 4,
 		"has_dreams": false,
-		"perma_unlock_gates": true,
+		"perma_unlock_gates": false,
 		"the_mark": true,
 		"auto_grab_batflies": true,
 
