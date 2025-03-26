@@ -462,7 +462,7 @@ public static class BeaconHooks
             if (self.room != null)
             {
                 //Debug.Log("ROOM DARKNESS " + self.room.Darkness(self.mainBodyChunk.pos));
-                if (self.room.Darkness(self.mainBodyChunk.pos) < 0.15f)
+                if (self.room.Darkness(self.mainBodyChunk.pos) < 0.15f || self.room.world.region.name == "VV")
                 {
                     //
                     if (cwt.Beacon.brightSquint == 0)
