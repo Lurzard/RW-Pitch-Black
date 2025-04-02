@@ -20,23 +20,16 @@ public class OverseerEx
     internal static ChatlogID PB_HI = new("PB_HI");
     internal static ChatlogID PB_LF_bottom = new("PB_LF_bottom");
     internal static ChatlogID PB_LF_west = new("PB_LF_west");
-    internal static ChatlogID PB_MS = new("PB_MS");
-    internal static ChatlogID PB_RM = new("PB_RM");
     internal static ChatlogID PB_SB_filtration = new("PB_SB_filtration");
     internal static ChatlogID PB_SH = new("PB_SH");
-    internal static ChatlogID PB_SI_CWdeath = new("PB_SI_CWdeath");
-    internal static ChatlogID PB_SI_funeral = new("PB_SI_funeral");
-    internal static ChatlogID PB_SI_NSHdeath = new("PB_SI_NSHdeath");
-    internal static ChatlogID PB_SI_SRSdeath = new("PB_SI_SRSdeath");
-    internal static ChatlogID PB_SI_UIdeath = new("PB_SI_UIdeath");
+    internal static ChatlogID PB_SI_top = new("PB_SI_top");
+    internal static ChatlogID PB_SI_west = new("PB_SI_west");
     internal static ChatlogID PB_SL_bridge = new("PB_SL_bridge");
     internal static ChatlogID PB_SL_chimney = new("PB_SL_chimney");
     internal static ChatlogID PB_SL_moon = new("PB_SL_moon");
     internal static ChatlogID PB_SU = new("PB_SU");
     internal static ChatlogID PB_SU_filt = new("PB_SU_filt");
     internal static ChatlogID PB_UW = new("PB_UW");
-    internal static ChatlogID PB_VS = new("PB_VS");
-    internal static ChatlogID PB_SK_Rod = new("PB_SK_Rod");
     internal static ChatlogID PB_Devcom_1 = new("PB_Devcom_1");
     internal static ChatlogID PB_Devcom_2 = new("PB_Devcom_2");
     internal static ChatlogID PB_Devcom_3 = new("PB_Devcom_3");
@@ -259,8 +252,8 @@ public class OverseerEx
         if (type == DataPearlType.LF_west) { return PB_LF_west; }
         if (type == DataPearlType.SB_filtration) { return PB_SB_filtration; }
         if (type == DataPearlType.SH) { return PB_SH; }
-        if (type == DataPearlType.SI_top) { return PB_SI_CWdeath; }
-        if (type == DataPearlType.SI_west) { return PB_SI_funeral; }
+        if (type == DataPearlType.SI_top) { return PB_SI_top; }
+        if (type == DataPearlType.SI_west) { return PB_SI_west; }
         if (type == DataPearlType.SL_bridge) { return PB_SL_bridge; }
         if (type == DataPearlType.SL_chimney) { return PB_SL_chimney; }
         if (type == DataPearlType.SL_moon) { return PB_SL_moon; }

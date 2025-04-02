@@ -58,6 +58,7 @@ public class ScugGraphics
                 // Debug.Log($"Name is: {sLeaser.sprites[cwt.Photo.photoSpriteIndex].element.name}");
             }
             #endregion
+
             if (PBRemixMenu.hazHat.Value && self.player.room.game.session is StoryGameSession session && !MiscUtils.IsBeaconOrPhoto(session.saveStateNumber)) {
                 cwt.hatIndex = sLeaser.sprites.Length;
                 Array.Resize(ref sLeaser.sprites, sLeaser.sprites.Length+1);

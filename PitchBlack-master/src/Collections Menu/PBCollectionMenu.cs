@@ -22,24 +22,17 @@ public class PBCollectionMenu : Menu.Menu
         { PB_HI, "HI" },
         { PB_LF_bottom, "LF1" },
         { PB_LF_west, "LF2" },
-        { PB_MS, "MS" },
-        { PB_RM, "RM" },
         { PB_SB_filtration, "SB" },
         { PB_SH, "SH" },
-        { PB_SI_CWdeath, "SI1" },
-        { PB_SI_funeral, "SI2" },
-        { PB_SI_NSHdeath, "SI3" },
-        { PB_SI_SRSdeath, "SI4" },
-        { PB_SI_UIdeath, "SI5" },
+        { PB_SI_top, "SI1" },
+        { PB_SI_west, "SI2" },
         { PB_SL_bridge, "SL1" },
         { PB_SL_chimney, "SL2" },
         { PB_SL_moon, "SL3" },
         { PB_SU, "SU1" },
         { PB_SU_filt, "SU2" },
         { PB_UW, "UW" },
-        { PB_VS, "VS" },
-        { PB_SK_Rod, "SK" },
-        { PB_Techy, MiscUtils.GenerateRandomString(20, 30)}
+        { PB_Techy, MiscUtils.GenerateRandomString(9, 16)}
     };
     private CollectionDialogBox displayRelayInfoBox;
     private int fadeTextToBlack = 0;

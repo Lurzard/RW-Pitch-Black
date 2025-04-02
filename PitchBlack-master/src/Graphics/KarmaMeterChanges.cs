@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HUD;
+﻿using HUD;
 using On.RWCustom;
 using UnityEngine;
-
 
 namespace PitchBlack;
 
@@ -41,7 +35,7 @@ public class KarmaMeterChanges
     private static void KarmaMeter_Update(On.HUD.KarmaMeter.orig_Update orig, KarmaMeter self)
     {
         orig(self);
-        //if owner != null, player != null, room != null, Beacon, and region != null
+        //if owner != null, player != null, room != null, Beacon, and region != null | OTHERWISE BREAKS EVERYTHING!!!
         if (self.hud.owner != null && self.hud.owner is Player && (self.hud.owner as Player).room != null && (self.hud.owner as Player).SlugCatClass == Plugin.Beacon && (self.hud.owner as Player).room.world.region != null)
         {
             int karma = ((self.hud.owner as Player).abstractCreature.world.game.session as StoryGameSession).saveState.deathPersistentSaveData.karma;

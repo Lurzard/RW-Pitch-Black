@@ -102,6 +102,7 @@ public static class BeaconHooks
     public static int coopRefund = 0; //flashbangs to recover after respawning in jollycoop
     public static int foodWarning = 0;
     //SHOW A FOOD BAR WARNING IF WE DON'T HAVE ENOUGH FOOD TO MAKE A FLASHBANG
+
     private static void MeterCircle_Update(On.HUD.FoodMeter.MeterCircle.orig_Update orig, HUD.FoodMeter.MeterCircle self)
     {
         orig(self);
@@ -385,6 +386,11 @@ public static class BeaconHooks
 
         if (slugIsBeacon)
         {
+            if (self.input[0].y < 0) //replace with spec later
+            {
+                self.Die(); //this'll work for now lol
+            }
+
             //CHECK FOR AUTO-STORE FLASHBANGS IF OUR HANDS ARE FULL
             if (self.input[0].pckp && !self.input[1].pckp && self.pickUpCandidate != null && self.pickUpCandidate is FlareBomb flare && cwt.Beacon.storage.storedFlares.Count < cwt.Beacon.storage.capacity)
             {
