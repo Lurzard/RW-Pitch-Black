@@ -48,7 +48,7 @@ public static class BeaconHooks
     {
         orig(self, sLeaser, rCam, timeStacker, camPos);
 
-        if (!self.player.IsBeacon(out var beacon)) return;
+        if (!self.player.TryGetBeaconCWT(out var beacon)) return;
 
         bool slugIsBeacon = Plugin.scugCWT.TryGetValue(self.player, out ScugCWT cwt) && cwt.IsBeacon;
         int flares = cwt.Beacon.storage.storedFlares.Count;
@@ -93,7 +93,7 @@ public static class BeaconHooks
     {
         orig(self, sLeaser, rCam, palette);
 
-        if (!self.player.IsBeacon(out var beacon)) return;
+        if (!self.player.TryGetBeaconCWT(out var beacon)) return;
 
         beacon.BeaconDefaultColor = Color.Lerp(palette.blackColor, Custom.HSL2RGB(0.63055557f, 0.54f, 0.5f), Mathf.Lerp(0.08f, 0.04f, palette.darkness));
         beacon.BeaconEyeColor = new Color(1f, 1f, 1f);

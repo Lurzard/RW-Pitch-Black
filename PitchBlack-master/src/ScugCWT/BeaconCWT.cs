@@ -12,9 +12,7 @@ public static class Extension
 
     public static BeaconCWT Beacon(this Player player) => _cwtbc.GetValue(player, _ => new BeaconCWT(player));
 
-    public static bool IsBeacon(this Player player) => player.Beacon().IsBeacon;
-
-    public static bool IsBeacon (this Player player, out BeaconCWT beacon)
+    public static bool TryGetBeaconCWT (this Player player, out BeaconCWT beacon)
     {
         beacon = player.Beacon();
         return beacon.IsBeacon;

@@ -17,11 +17,11 @@ public class MoonDialogue
     private static void SLOracleBehaviorHasMark_CreatureJokeDialog(On.SLOracleBehaviorHasMark.orig_CreatureJokeDialog orig, SLOracleBehaviorHasMark self)
     {
         orig(self);
-        CreatureTemplate.Type a = self.CheckStrayCreatureInRoom();
+        CreatureTemplate.Type randomCreatue = self.CheckStrayCreatureInRoom();
 
-        if (a == CreatureTemplateType.NightTerror) //or NT wing or mini terror
+        if (randomCreatue == CreatureTemplateType.NightTerror) //or NT wing or mini terror
         {
-            int num = UnityEngine.Random.Range(0, 2);
+            int num = UnityEngine.Random.Range(0, 3);
 
             if (num == 0)
             {
@@ -38,19 +38,19 @@ public class MoonDialogue
             return;
         }
 
-        if (a == CreatureTemplateType.LMiniLongLegs)
+        if (randomCreatue == CreatureTemplateType.LMiniLongLegs)
         {
             self.dialogBox.NewMessage(self.Translate("Oh no."), 10);
             return;
         }
 
-        if (a == CreatureTemplateType.Rotrat)
+        if (randomCreatue == CreatureTemplateType.Rotrat)
         {
             self.dialogBox.NewMessage(self.Translate("No. Get it out!"), 10);
             return;
         }
 
-        if (a == CreatureTemplateType.FireGrub)
+        if (randomCreatue == CreatureTemplateType.FireGrub)
         {
             self.dialogBox.NewMessage(self.Translate("What- How?"), 10);
             return;

@@ -1,4 +1,5 @@
-﻿using RWCustom;
+﻿using System.Runtime.CompilerServices;
+using RWCustom;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
@@ -129,12 +130,9 @@ public class UmbraMask : PlayerCarryableItem, IDrawable
         }
     }
 
-    public void AddToContainer(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, FContainer? newContatiner)
+    public void AddToContainer(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, FContainer newContatiner)
     {
-        if (newContatiner == null)
-        {
-            newContatiner = rCam.ReturnFContainer("Items");
-        }
+        newContatiner ??= rCam.ReturnFContainer("Items");
         for (int i = 0; i < 4; i++)
         {
             sLeaser.sprites[i].RemoveFromContainer();
@@ -158,8 +156,7 @@ public class UmbraMask : PlayerCarryableItem, IDrawable
         Vector2 vector3 = Vector3.Slerp(lastRotationB, rotationB, timeStacker);
         if (num > 0f && grabbedBy.Count > 0 && grabbedBy[0].grabber is Player player)
         {
-            PlayerGraphics? playerGraphics = player.graphicsModule as PlayerGraphics;
-            if (playerGraphics != null)
+            if (player.graphicsModule is PlayerGraphics playerGraphics)
             {
                 float num22 = Mathf.Lerp(lastViewFromSide, viewFromSide, timeStacker);
                 Vector2 vector4 = Custom.DirVec(Vector2.Lerp(playerGraphics.drawPositions[1, 1], playerGraphics.drawPositions[1, 0], timeStacker), Vector2.Lerp(playerGraphics.drawPositions[0, 1], playerGraphics.drawPositions[0, 0], timeStacker));
@@ -192,10 +189,8 @@ public class UmbraMask : PlayerCarryableItem, IDrawable
         int spriteIndexByRotation = Custom.IntClamp(Mathf.RoundToInt(Mathf.Abs(num6 / 180f) * 8f), 0, 8);
         float num4 = 1.15f;
 
-        float num2 = Custom.VecToDeg(vector2);
-        int num3 = Custom.IntClamp(Mathf.RoundToInt(Mathf.Abs(num2 / 180f) * 8f), 0, 8);
-
-        bool ture = true;
+        // float num2 = Custom.VecToDeg(vector2);
+        // int num3 = Custom.IntClamp(Mathf.RoundToInt(Mathf.Abs(num2 / 180f) * 8f), 0, 8);
 
         for (int i = 0; i < sLeaser.sprites.Length; i++)
         {

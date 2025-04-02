@@ -16,7 +16,7 @@ sealed class UmbraMaskFisob : Fisob
         RegisterUnlock(UmbraMaskUnlock);
     }
 
-    public override AbstractPhysicalObject Parse(World world, EntitySaveData entitySaveData, SandboxUnlock? unlock)
+    public override AbstractPhysicalObject Parse(World world, EntitySaveData entitySaveData, SandboxUnlock unlock)
     {
         // Centi shield data is just floats separated by ; characters.
 
