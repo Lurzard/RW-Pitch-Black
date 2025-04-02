@@ -1,0 +1,67 @@
+Palette: 10
+batDepleteCyclesMin: 2
+batDepleteCyclesMax: 7
+batDepleteCyclesMaxIfLessThanTwoLeft: 3
+batDepleteCyclesMaxIfLessThanFiveLeft: 4
+overseersSpawnChance: 0.2
+overseersMin: 0
+overseersMax: 3
+Subregion: Citadel
+Subregion: Memory Crypts
+playerGuideOverseerSpawnChance: 1.0
+Room Setting Templates: PitchBlack, DarkSun
+Room_Attr: SH_C11: BigSpider-Avoid,SpitterSpider-Avoid,
+Room_Attr: SH_D01: DropBug-Avoid,
+Room_Attr: SH_A25: DropBug-Like,
+Room_Attr: SH_A13: LanternMouse-Like,DropBug-Like,
+Room_Attr: SH_A14: LanternMouse-Like,DropBug-Like,
+Room_Attr: SH_C02: DropBug-Avoid,
+Room_Attr: SH_B08: DropBug-Like,
+Room_Attr: SH_A11: LanternMouse-Like,DropBug-Like,
+Room_Attr: SH_A15: DropBug-Avoid,
+Room_Attr: SH_A12: LanternMouse-Like,DropBug-Like,
+Room_Attr: SH_B09: BigSpider-Avoid,SpitterSpider-Avoid,DropBug-Avoid,
+Room_Attr: SH_A05: LanternMouse-Stay,BigSpider-Avoid,SpitterSpider-Avoid,DropBug-Avoid,
+Room_Attr: SH_B01: DropBug-Avoid,
+Room_Attr: SH_C10: LanternMouse-Like,BigSpider-Avoid,SpitterSpider-Avoid,DropBug-Avoid,
+Room_Attr: SH_A21: LanternMouse-Like,BigSpider-Avoid,SpitterSpider-Avoid,DropBug-Avoid,
+Room_Attr: SH_C03: BigSpider-Avoid,
+Room_Attr: SH_B15: BigSpider-Avoid,SpitterSpider-Avoid,DropBug-Avoid,
+Room_Attr: SH_C07: DropBug-Like,
+Room_Attr: SH_B17: BigSpider-Like,
+Room_Attr: SH_C09: BigSpider-Like,
+Room_Attr: SH_C01: BigSpider-Avoid,SpitterSpider-Avoid,DropBug-Avoid,
+Room_Attr: SH_B06: BigSpider-Like,SpitterSpider-Like,DropBug-Avoid,
+Room_Attr: SH_A17: BigSpider-Like,DropBug-Avoid,
+Room_Attr: SH_A16: BigSpider-Like,DropBug-Avoid,
+Room_Attr: SH_A24: DropBug-Avoid,
+Room_Attr: SH_B13: DropBug-Avoid,
+Room_Attr: SH_B11: DropBug-Avoid,
+Room_Attr: SH_D02: Centipede-Forbidden,BigSpider-Avoid,SpitterSpider-Avoid,DropBug-Avoid,
+Room_Attr: SH_B10: Centipede-Forbidden,BigSpider-Avoid,SpitterSpider-Avoid,DropBug-Avoid,
+Room_Attr: SH_A06: LanternMouse-Stay,BigSpider-Avoid,SpitterSpider-Avoid,DropBug-Avoid,
+Room_Attr: SH_B02: LanternMouse-Like,SpitterSpider-Like,
+Room_Attr: SH_B03: LanternMouse-Like,BigSpider-Avoid,SpitterSpider-Avoid,DropBug-Avoid,
+Room_Attr: SH_C04: LanternMouse-Like,
+Room_Attr: SH_A10: BigSpider-Avoid,SpitterSpider-Avoid,DropBug-Avoid,
+Room_Attr: SH_C05: SpitterSpider-Like,DropBug-Like,
+Room_Attr: SH_E05: LanternMouse-Avoid,BigSpider-Avoid,SpitterSpider-Avoid,MirosVulture-Stay,
+Room_Attr: SH_C13: DropBug-Like,
+Room_Attr: SH_A07: EggBug-Avoid,
+Room_Attr: SH_B04: EggBug-Stay,SpitterSpider-Like,DropBug-Like,
+Room_Attr: SH_A04: EggBug-Avoid,
+Room_Attr: SH_A26: LanternMouse-Forbidden,Overseer-Forbidden,BigSpider-Forbidden,SpitterSpider-Forbidden,
+Room_Attr: SH_A19: LanternMouse-Avoid,EggBug-Forbidden,
+Room_Attr: SH_B05: SpitterSpider-Like,DropBug-Like,
+Room_Attr: SH_C08: BlackLizard-Like,DropBug-Avoid,
+Room_Attr: SH_C12: EggBug-Avoid,BigSpider-Avoid,SpitterSpider-Avoid,DropBug-Avoid,
+Room_Attr: SH_A09: EggBug-Avoid,
+Room_Attr: SH_A08: EggBug-Avoid,DropBug-Avoid,
+Room_Attr: SH_E02: Centipede-Forbidden,BigSpider-Forbidden,SpitterSpider-Forbidden,DropBug-Avoid,
+Room_Attr: SH_B12: Centipede-Stay,BigSpider-Forbidden,SpitterSpider-Forbidden,
+Room_Attr: SH_S09: Centipede-Forbidden,
+Room_Attr: SH_E03: MirosBird-Stay,Centipede-Forbidden,BigSpider-Forbidden,SpitterSpider-Forbidden,DropBug-Forbidden,
+Room_Attr: SH_E01: MirosBird-Stay,Centipede-Forbidden,BigSpider-Forbidden,SpitterSpider-Forbidden,DropBug-Forbidden,
+Room_Attr: SH_H01: MirosBird-Stay,Centipede-Stay,BigSpider-Forbidden,SpitterSpider-Forbidden,
+Room_Attr: SH_E04: MirosBird-Stay,Centipede-Forbidden,BigSpider-Forbidden,SpitterSpider-Forbidden,
+Room_Attr: SH_D03: MirosBird-Stay,Centipede-Forbidden,BigSpider-Forbidden,SpitterSpider-Forbidden,
