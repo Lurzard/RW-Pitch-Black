@@ -38,11 +38,6 @@ public static class BeaconHooks
         On.PlayerGraphics.DrawSprites += PlayerGraphics_DrawSprites1;
     }
 
-    static Color flareColor1 = new Color(0.10588235294f, 0.06666666666f, 0.25882352941f); //#1b1142
-    static Color flareColor2 = new Color(0.16470588235f, 0.0862745098f, 0.47843137254f); //#2a167a
-    static Color flareColor3 = new Color(0.18039215686f, 0.05490196078f, 0.67843137254f); //#2e0ead
-    static Color flareColor4 = new Color(0.2f, 0f, 1f);
-
     //add math to fade beacon color in real time instead of immediately 
     private static void PlayerGraphics_DrawSprites1(On.PlayerGraphics.orig_DrawSprites orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
     {
@@ -60,23 +55,23 @@ public static class BeaconHooks
             {
                 if (self.player.dead) { beacon.BeaconColor = beacon.BeaconDefaultColor; }
 
-                else { beacon.BeaconColor = Color.Lerp(beacon.BeaconDefaultColor, flareColor1, 0.45f); }
+                else { beacon.BeaconColor = Color.Lerp(beacon.BeaconDefaultColor, beacon.flareColor1, 0.45f); }
             }
             if (flares == 1)
             {
-                beacon.BeaconColor = Color.Lerp(beacon.BeaconDefaultColor, flareColor2, 0.55f);
+                beacon.BeaconColor = Color.Lerp(beacon.BeaconDefaultColor, beacon.flareColor2, 0.55f);
             }
             if (flares == 2)
             {
-                beacon.BeaconColor = Color.Lerp(beacon.BeaconDefaultColor, flareColor3, 0.60f);
+                beacon.BeaconColor = Color.Lerp(beacon.BeaconDefaultColor, beacon.flareColor3, 0.60f);
             }
             if (flares == 3)
             {
-                beacon.BeaconColor = Color.Lerp(beacon.BeaconDefaultColor, flareColor3, 0.80f);
+                beacon.BeaconColor = Color.Lerp(beacon.BeaconDefaultColor, beacon.flareColor3, 0.80f);
             }
             if (flares == 4)
             {
-                beacon.BeaconColor = Color.Lerp(beacon.BeaconDefaultColor, flareColor4, 0.92f);
+                beacon.BeaconColor = Color.Lerp(beacon.BeaconDefaultColor, beacon.flareColor4, 0.92f);
             }
         }
 
@@ -97,27 +92,6 @@ public static class BeaconHooks
 
         beacon.BeaconDefaultColor = Color.Lerp(palette.blackColor, Custom.HSL2RGB(0.63055557f, 0.54f, 0.5f), Mathf.Lerp(0.08f, 0.04f, palette.darkness));
         beacon.BeaconEyeColor = new Color(1f, 1f, 1f);
-    }
-
-    public static int coopRefund = 0; //flashbangs to recover after respawning in jollycoop
-    public static int foodWarning = 0;
-    //SHOW A FOOD BAR WARNING IF WE DON'T HAVE ENOUGH FOOD TO MAKE A FLASHBANG
-
-    private static void MeterCircle_Update(On.HUD.FoodMeter.MeterCircle.orig_Update orig, HUD.FoodMeter.MeterCircle self)
-    {
-        orig(self);
-        if (foodWarning > 0 && !self.meter.IsPupFoodMeter && self.number < self.meter.ShowSurvivalLimit && (self.meter.hud.owner.GetOwnerType() == HUD.HUD.OwnerType.Player))
-        {
-            if (self.meter.timeCounter % 20 > 10)
-            {
-                self.rads[0, 0] *= 0.96f;
-                self.circles[0].color = 1;
-            }
-            //num = 0.65f + 0.35f * Mathf.Sin((float)self.meter.timeCounter / 20f * 3.1415927f * 2f);
-            self.circles[0].fade = 1f;
-            self.meter.visibleCounter = 80;
-            foodWarning--;
-        }
     }
 
     private static void PlayerGraphics_Update(On.PlayerGraphics.orig_Update orig, PlayerGraphics self)
@@ -179,7 +153,6 @@ public static class BeaconHooks
             self.lightSource.setPos = new Vector2?(self.player.mainBodyChunk.pos);
 
         }
-
 
         if (slugIsBeacon)
         {
@@ -256,6 +229,27 @@ public static class BeaconHooks
         });
 
         c.Emit(OpCodes.Brtrue, label);
+    }
+
+    public static int coopRefund = 0; //flashbangs to recover after respawning in jollycoop
+    public static int foodWarning = 0;
+    //SHOW A FOOD BAR WARNING IF WE DON'T HAVE ENOUGH FOOD TO MAKE A FLASHBANG
+
+    private static void MeterCircle_Update(On.HUD.FoodMeter.MeterCircle.orig_Update orig, HUD.FoodMeter.MeterCircle self)
+    {
+        orig(self);
+        if (foodWarning > 0 && !self.meter.IsPupFoodMeter && self.number < self.meter.ShowSurvivalLimit && (self.meter.hud.owner.GetOwnerType() == HUD.HUD.OwnerType.Player))
+        {
+            if (self.meter.timeCounter % 20 > 10)
+            {
+                self.rads[0, 0] *= 0.96f;
+                self.circles[0].color = 1;
+            }
+            //num = 0.65f + 0.35f * Mathf.Sin((float)self.meter.timeCounter / 20f * 3.1415927f * 2f);
+            self.circles[0].fade = 1f;
+            self.meter.visibleCounter = 80;
+            foodWarning--;
+        }
     }
 
     public static void DropAllFlares(Player self)
@@ -531,11 +525,10 @@ public static class BeaconHooks
             }
             
         }
-        
+
 
         return orig(self);
     }
-
 
     private static void PlayerGraphics_DrawSprites(On.PlayerGraphics.orig_DrawSprites orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
     {
@@ -589,8 +582,6 @@ public static class BeaconHooks
         orig(self, grasp, eu);
     }
 
-    
-
     public static void BeaconStorageGrafUpdate(On.Player.orig_GraphicsModuleUpdated orig, Player self, bool actuallyViewed, bool eu)
     {
         if (Plugin.scugCWT.TryGetValue(self, out ScugCWT cwt) && cwt.IsBeacon)
@@ -599,7 +590,6 @@ public static class BeaconHooks
         }
         orig(self, actuallyViewed, eu);
     }
-
 
     private static void Player_ObjectEaten(On.Player.orig_ObjectEaten orig, Player self, IPlayerEdible edible)
     {
@@ -621,18 +611,4 @@ public static class BeaconHooks
         if (Plugin.scugCWT.TryGetValue(self, out ScugCWT cwt) && cwt.IsBeacon && self.input[0].pckp)
             cwt.Beacon.heldCraft = true;
     }
-
-    // Here it is bois, go get it (๑•̀ㅂ•́)و
-    //public static void BeaconCollarStorageUpdate(On.Player.orig_GrabUpdate orig, Player self, bool eu)
-    //{
-    //    orig(self, eu);
-    //    if (Plugin.scugCWT.TryGetValue(self, out ScugCWT cwt) && cwt.IsBeacon)
-    //    {
-    //        if (cwt.Beacon.storage != null)
-    //        {
-    //            cwt.Beacon.storage.increment = self.input[0].pckp;
-    //            cwt.Beacon.storage.Update(eu);
-    //        }
-    //    }
-    //}
 }

@@ -12,6 +12,8 @@ public static class Extension
 
     public static BeaconCWT Beacon(this Player player) => _cwtbc.GetValue(player, _ => new BeaconCWT(player));
 
+    public static bool IsBeacon(this Player player) => player.Beacon().IsBeacon;
+
     public static bool TryGetBeaconCWT (this Player player, out BeaconCWT beacon)
     {
         beacon = player.Beacon();
@@ -24,6 +26,10 @@ public class BeaconCWT
     public Color BeaconColor;
     public Color BeaconDefaultColor;
     public Color BeaconEyeColor;
+    public Color flareColor1 = new Color(0.10588235294f, 0.06666666666f, 0.25882352941f); //#1b1142
+    public Color flareColor2 = new Color(0.16470588235f, 0.0862745098f, 0.47843137254f); //#2a167a
+    public Color flareColor3 = new Color(0.18039215686f, 0.05490196078f, 0.67843137254f); //#2e0ead
+    public Color flareColor4 = new Color(0.2f, 0f, 1f);
 
     public WeakReference<Player> PlayerRef;
 
@@ -35,6 +41,7 @@ public class BeaconCWT
     public bool heldCraft = false;
     public int brightSquint = 0;
     public Vector2 eyePos = new Vector2(0, 0);
+
     public BeaconCWT(ScugCWT cwtData)
     {
         scugCWTData = cwtData;
