@@ -1,5 +1,7 @@
 using static Pom.Pom;
+
 namespace PitchBlack;
+
 public class BreathableWater {
     internal class BreathableWaterObject : UpdatableAndDeletable {
         public BreathableWaterObject(PlacedObject pObj, Room room) : base() {

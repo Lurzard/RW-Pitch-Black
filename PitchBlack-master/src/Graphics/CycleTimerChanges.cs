@@ -1,30 +1,21 @@
-﻿#if PLAYTEST
+﻿#if false
 using HUD;
 using RWCustom;
 using UnityEngine;
 
 namespace PitchBlack;
 
-internal class PBCycleTimer
+public class CycleTimerChanges
 {
-    static bool IsBeaconWorldState(RainMeter rm) => rm.hud.owner is Player player && player.room?.game.session is StoryGameSession session && MiscUtils.IsBeaconOrPhoto(session.saveStateNumber);
-    static bool IsBeaconWorldState(RainCycle rc) => rc.world.game.session is StoryGameSession session && MiscUtils.IsBeaconOrPhoto(session.saveStateNumber);
     public static void Apply()
     {
-        On.HUD.RainMeter.Draw += RainMeter_Draw;
-        On.HUD.RainMeter.ctor += RainMeter_ctor;
+        //On.HUD.RainMeter.Draw += RainMeter_Draw;
         //On.RainCycle.GetDesiredCycleLength += RainCycle_GetDesiredCycleLength;
         //On.RainCycle.Update += RainCycle_Update;
     }
 
-    private static void RainMeter_ctor(On.HUD.RainMeter.orig_ctor orig, RainMeter self, HUD.HUD hud, FContainer fContainer)
-    {
-        orig(self, hud, fContainer);
-        if (IsBeaconWorldState(self) && hud.map.RegionName != "VV")
-        {
-            self.halfTimeShown = true;
-        }
-    }
+    public static bool IsBeaconWorldState(RainMeter rm) => rm.hud.owner is Player player && player.room?.game.session is StoryGameSession session && MiscUtils.IsBeaconOrPhoto(session.saveStateNumber);
+    public static bool IsBeaconWorldState(RainCycle rc) => rc.world.game.session is StoryGameSession session && MiscUtils.IsBeaconOrPhoto(session.saveStateNumber);
 
     public static void RainMeter_Draw(On.HUD.RainMeter.orig_Draw orig, RainMeter self, float timeStacker)
     {

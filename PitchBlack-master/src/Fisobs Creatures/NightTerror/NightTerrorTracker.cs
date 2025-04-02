@@ -28,7 +28,7 @@ public class NTTracker
         game = rainGame;
         region = game.world.region.name;
         // The value is multiplied by 2400 because that is 1 minute, given the game tickes at 40tps
-        abstractRelocateTime = PBOptions.pursuerAgro.Value * 2400;
+        abstractRelocateTime = PBRemixMenu.pursuerAgro.Value * 2400;
     }
     int FindDistanceToTarget(int searchDistance) {
         if (pursuer?.Room == null) {

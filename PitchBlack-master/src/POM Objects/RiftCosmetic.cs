@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if false
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,8 @@ using UnityEngine;
 using RWCustom;
 using BepInEx.Logging;
 using System.IO;
+
+//obsolete hootis object
 
 namespace PitchBlack
 {
@@ -100,7 +103,7 @@ namespace PitchBlack
                     new Vector2Field("dir", Vector2.one, Vector2Field.VectorReprType.line),
                     new Vector2Field("rect", Vector2.one, Vector2Field.VectorReprType.rect),
                 };
-                RegisterFullyManagedObjectType(fields.ToArray(), typeof(RiftCosmetic), "RiftCosmetic", "Pitch Black");
+                RegisterFullyManagedObjectType(fields.ToArray(), typeof(RiftCosmetic), "RiftCosmetic", "Pitch-Black");
             }
             catch(Exception e)
             {
@@ -109,3 +112,4 @@ namespace PitchBlack
         }
     }
 }
+#endif

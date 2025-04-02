@@ -4,6 +4,7 @@ using static PitchBlack.Plugin;
 using System.IO;
 using System.Collections.Generic;
 using IL;
+using HUD;
 
 namespace PitchBlack;
 
@@ -34,9 +35,6 @@ public static class MiscUtils
         return false;
     }
     public static bool IsNightTerror(this CreatureTemplate creatureTemplate) => creatureTemplate.type == CreatureTemplateType.NightTerror;
-    public static bool IsUmbraScav(this CreatureTemplate creatureTemplate) => creatureTemplate.type == CreatureTemplateType.UmbraScav;
-
-#if PLAYTEST
     public static void SaveCollectionData() {
         string data = "";
         foreach (KeyValuePair<string, bool> keyValuePair in collectionSaveData) {
@@ -49,7 +47,6 @@ public static class MiscUtils
             File.WriteAllText(regionMenuDisplaySavePath, data);
         }
     }
-#endif
     public static string GenerateRandomString(int shortestRange, int maxRange) {
         if (shortestRange > maxRange) {
             throw new System.Exception($"Noooo Moon why you do this make sure the stuff does the thiiiing {nameof(GenerateRandomString)}");
@@ -85,7 +82,7 @@ public static class MiscUtils
     }
     public static bool IsBeaconOrPhoto(SlugcatStats.Name slugName)
     {
-        return null != slugName && (slugName == BeaconName || slugName == PhotoName);
+        return null != slugName && (slugName == Beacon || slugName == Photomaniac);
     }
     #endregion
     #region Bacon Checks
@@ -96,7 +93,7 @@ public static class MiscUtils
         return (crit is Player player) && IsBeacon(player.slugcatStats.name);
     }
     public static bool IsBeacon(SlugcatStats.Name name) {
-        return name != null && name == BeaconName;
+        return name != null && name == Beacon;
     }
     #endregion
     #region Photo Checks
@@ -107,7 +104,7 @@ public static class MiscUtils
         return (crit is Player player) && IsPhoto(player.slugcatStats.name);
     }
     public static bool IsPhoto(SlugcatStats.Name name) {
-        return name != null && name == PhotoName;
+        return name != null && name == Photomaniac;
     }
     #endregion
 }

@@ -29,13 +29,13 @@ public class NightTerrorAbstractData
     //public int MaxTimeUntilRevive => PBOptions.pursuerAgro2.Value * (!diedToSporeCloud ? 60 : 6);
     // This makes it so that if the agression is set to 7 the NT will revive in just 20 seconds. At the min of 0 it will take 2 miniutes and fourty seconds.
     // These values are set to 1/10th if a sporepuff killed it. So in 2 seconds for the most agressive mode.
-    public int MaxTimeUntilRevive => (8 - PBOptions.pursuerAgro.Value) * (diedToSporeCloud ? 80 : 800);
+    public int MaxTimeUntilRevive => (8 - PBRemixMenu.pursuerAgro.Value) * (diedToSporeCloud ? 80 : 800);
     //spinch: thrown PuffBalls makes NT revive faster because that looks cool
 
     public void TryRevive()
     {
         Debug.Log("Trying to revive the Night Terror");
-        if (!abstrNightterrorRef.TryGetTarget(out var centi) || !PBOptions.pursuer.Value) return;
+        if (!abstrNightterrorRef.TryGetTarget(out var centi) || !PBRemixMenu.pursuer.Value) return;
 
         if (centi.state.alive || centi.realizedCreature != null && !centi.realizedCreature.dead) return;
 

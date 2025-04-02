@@ -22,18 +22,8 @@ public class SpecialChanges
     public static Color White = new Color(1f, 1f, 1f);
     public static Color SaturatedRose = RoseRGB * 2f;
 
-    //karmaflower karma boost tracking!!
-    private static bool karmaBoost = false;
-    private static bool doubledKarmaBoost = false;
-    private static bool fractalNightKarma = false;
-
     public static void Apply()
     {
-
-
-        //ingame HUD
-        On.HUD.KarmaMeter.Update += KarmaMeter_Update;
-        On.HUD.KarmaMeter.KarmaSymbolSprite += KarmaMeter_KarmaSymbolSprite;
 
         //karmaflower
         On.KarmaFlower.ApplyPalette += KarmaFlower_ApplyPalette;
@@ -52,20 +42,6 @@ public class SpecialChanges
         //On.VoidSpawnEgg.DrawSprites += VoidSpawnEgg_DrawSprites;
     }
 
-    private static string KarmaMeter_KarmaSymbolSprite(On.HUD.KarmaMeter.orig_KarmaSymbolSprite orig, bool small, IntVector2 k)
-    {
-        int min = 0;
-        if (ModManager.MSC && small)
-        {
-            min = -1;
-        }
-        if (k.x < 5)
-        {
-            return (small ? "smallKarma" : "karma") + Mathf.Clamp(k.x, min, 4).ToString();
-        }
-        return (small ? "smallKarma" : "karma") + Mathf.Clamp(k.x, 5, 10).ToString() + "-" + Mathf.Clamp(k.y, k.x, 10).ToString();
-    }
-
     //private static void KarmaMeter_UpdateGraphic(On.HUD.KarmaMeter.orig_UpdateGraphic orig, KarmaMeter self)
     //{
     //    if (self.hud.owner != null && self.hud.owner is Player && (self.hud.owner as Player).room != null && (self.hud.owner as Player).SlugCatClass == Plugin.BeaconName && (self.hud.owner as Player).room.world.region != null)
@@ -76,72 +52,11 @@ public class SpecialChanges
     //}
 
     //this might have to become an IL hook?
-    private static void KarmaMeter_Update(On.HUD.KarmaMeter.orig_Update orig, KarmaMeter self)
-    {
-        orig(self);
-        //if owner != null, player != null, room != null, Beacon, and region != null
-        if (self.hud.owner != null && self.hud.owner is Player && (self.hud.owner as Player).room != null && (self.hud.owner as Player).SlugCatClass == Plugin.BeaconName && (self.hud.owner as Player).room.world.region != null)
-        {
-            int karma = ((self.hud.owner as Player).abstractCreature.world.game.session as StoryGameSession).saveState.deathPersistentSaveData.karma;
-            int karmaCap = ((self.hud.owner as Player).abstractCreature.world.game.session as StoryGameSession).saveState.deathPersistentSaveData.karmaCap;
-
-            if (self.showAsReinforced)
-            {
-                if (!karmaBoost && karma < 9 && karma != 4) //any karma except max or 4
-                {
-                    ((self.hud.owner as Player).abstractCreature.world.game.session as StoryGameSession).saveState.deathPersistentSaveData.karma++; //increasing karma once
-                    (self.hud.owner as Player).room.game.cameras[0].hud.karmaMeter.UpdateGraphic();
-                    karmaBoost = true;
-                }
-
-                else if (!doubledKarmaBoost && karmaCap == 4 && !karmaBoost) //same implementation as the first echo giving you 2 extra
-                {
-                    ((self.hud.owner as Player).abstractCreature.world.game.session as StoryGameSession).saveState.deathPersistentSaveData.karma++;
-                    ((self.hud.owner as Player).abstractCreature.world.game.session as StoryGameSession).saveState.deathPersistentSaveData.karmaCap = 6; //making both karma and karmaCap = 6
-                    (self.hud.owner as Player).room.game.cameras[0].hud.karmaMeter.UpdateGraphic();
-                    doubledKarmaBoost = true;
-                }
-
-                else if (!fractalNightKarma && !karmaBoost && !doubledKarmaBoost && karma == 9) //secret karma
-                {
-                    ((self.hud.owner as Player).abstractCreature.world.game.session as StoryGameSession).saveState.deathPersistentSaveData.karma = 10;
-                    (self.hud.owner as Player).room.game.cameras[0].hud.karmaMeter.UpdateGraphic();
-                    fractalNightKarma = true;
-                }
-            }
-
-            if (!self.showAsReinforced && (karmaBoost || doubledKarmaBoost || fractalNightKarma))
-            {
-                if (karmaBoost)
-                {
-                    ((self.hud.owner as Player).abstractCreature.world.game.session as StoryGameSession).saveState.deathPersistentSaveData.karma--;
-                    (self.hud.owner as Player).room.game.cameras[0].hud.karmaMeter.UpdateGraphic();
-                    karmaBoost = false;
-                }
-
-                if (doubledKarmaBoost)
-                {
-                    ((self.hud.owner as Player).abstractCreature.world.game.session as StoryGameSession).saveState.deathPersistentSaveData.karma = 4;
-                    ((self.hud.owner as Player).abstractCreature.world.game.session as StoryGameSession).saveState.deathPersistentSaveData.karmaCap = 4;
-                    (self.hud.owner as Player).room.game.cameras[0].hud.karmaMeter.UpdateGraphic();
-                    doubledKarmaBoost = false;
-                }
-
-                if (fractalNightKarma)
-                {
-                    ((self.hud.owner as Player).abstractCreature.world.game.session as StoryGameSession).saveState.deathPersistentSaveData.karma = 9;
-                    ((self.hud.owner as Player).abstractCreature.world.game.session as StoryGameSession).saveState.deathPersistentSaveData.karmaCap = 9;
-                    (self.hud.owner as Player).room.game.cameras[0].hud.karmaMeter.UpdateGraphic();
-                    fractalNightKarma = false;
-                }
-            }
-        }
-    }
 
     private static void KarmaFlower_ApplyPalette(On.KarmaFlower.orig_ApplyPalette orig, KarmaFlower self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
     {
         orig(self, sLeaser, rCam, palette);
-        if (rCam.room.game.IsStorySession && rCam.room.game.GetStorySession.saveStateNumber == Plugin.BeaconName)
+        if (rCam.room.game.IsStorySession && rCam.room.game.GetStorySession.saveStateNumber == Plugin.Beacon)
         {
             self.color = White;
         }
@@ -247,7 +162,7 @@ public class SpecialChanges
             {
                 // Apply changes only if the campaing is Beacon?
                 if (rCam.room.game.IsStorySession &&
-                    rCam.room.game.GetStorySession.saveStateNumber == Plugin.BeaconName)
+                    rCam.room.game.GetStorySession.saveStateNumber == Plugin.Beacon)
                 {
                     return RoseRGB;
                 }
@@ -274,7 +189,7 @@ public class SpecialChanges
             cursor.EmitDelegate<Func<Color, VoidSpawnGraphics, RoomCamera, Color>>((origColor, self, rCam) =>
             {
                 if (rCam.room.game.IsStorySession &&
-                    rCam.room.game.GetStorySession.saveStateNumber == Plugin.BeaconName)
+                    rCam.room.game.GetStorySession.saveStateNumber == Plugin.Beacon)
                 {
                     if (self.dayLightMode)
                     {
@@ -311,7 +226,7 @@ public class SpecialChanges
             cursor.EmitDelegate<Func<Color, VoidSpawnGraphics, RoomCamera, Color>>((origColor, self, rCam) =>
             {
                 if (rCam.room.game.IsStorySession &&
-                    rCam.room.game.GetStorySession.saveStateNumber == Plugin.BeaconName)
+                    rCam.room.game.GetStorySession.saveStateNumber == Plugin.Beacon)
                 {
                     return RoseRGB;
                 }

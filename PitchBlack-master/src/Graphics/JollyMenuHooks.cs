@@ -15,7 +15,7 @@ public static class JollyMenuHooks
 {
     public static bool ContainsBeaconOrPhoto(string str)
     {
-        return str.Contains(Plugin.PhotoName.value) || str.Contains(Plugin.BeaconName.value);
+        return str.Contains(Plugin.Photomaniac.value) || str.Contains(Plugin.Beacon.value);
     }
 
     public static void Apply()
@@ -51,11 +51,11 @@ public static class JollyMenuHooks
     {
         //beacon's unique sprite is the flarebombs, so i have to return white
         Colour val = orig(slugName, reference, playerNumber);
-        if (Plugin.BeaconName == slugName)
+        if (Plugin.Beacon == slugName)
         {
             return Colour.white;
         }
-        else if (Plugin.PhotoName == slugName)
+        else if (Plugin.Photomaniac == slugName)
         {
             if (SlugBaseCharacter.TryGet(slugName, out SlugBaseCharacter charac)
                 && charac.Features.TryGet(PlayerFeatures.CustomColors, out ColorSlot[] customColours)
@@ -87,7 +87,7 @@ public static class JollyMenuHooks
         orig(self);
         if (self.uniqueSymbol != null)
         {
-            if (self.uniqueSymbol.fileName.Contains(Plugin.PhotoName.value))
+            if (self.uniqueSymbol.fileName.Contains(Plugin.Photomaniac.value))
             {
                 self.uniqueSymbol.pos.y = self.size.y / 2f;
             }
@@ -111,7 +111,7 @@ public static class JollyMenuHooks
             //so unique sprite's y pos is that of the pup's always
             //and then it's ret right they do that after so i have to IL
             //note: uniqueSymbol.fileName is ""unique_" + this.symbolNameOff", so there is no "unique_beacon_pup_on" file
-            if (self.uniqueSymbol.fileName.Contains(Plugin.BeaconName.value) && !self.isToggled)
+            if (self.uniqueSymbol.fileName.Contains(Plugin.Beacon.value) && !self.isToggled)
             {
                 self.uniqueSymbol.pos.y = self.size.y / 2f;
             }
@@ -124,7 +124,7 @@ public static class JollyMenuHooks
         {
             try
             {
-                if (self.symbolNameOff.Contains(Plugin.BeaconName.value))
+                if (self.symbolNameOff.Contains(Plugin.Beacon.value))
                     self.symbol.fileName = "beacon_pup_on";
                 else
                     self.symbol.fileName = "photomaniac_pup_on";

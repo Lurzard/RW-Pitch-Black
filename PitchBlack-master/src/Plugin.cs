@@ -18,22 +18,21 @@ using static PitchBlack.MiscUtils;
 
 namespace PitchBlack;
 [BepInPlugin(MOD_ID, MOD_NAME, MOD_VERSION)]
+
 class Plugin : BaseUnityPlugin
 {
     public const string MOD_ID = "lurzard.pitchblack";
     public const string MOD_NAME = "Pitch Black";
     public const string MOD_VERSION = "0.1.0";
     private const string COLLECTION_SAVE_FOLDER_NAME = "PitchBlack";
-#if PLAYTEST
     public static string regionMenuDisplaySavePath = "";
     public static readonly string rootSavePath = Application.persistentDataPath + Path.DirectorySeparatorChar.ToString(); 
     public static readonly string collectionSaveDataPath = rootSavePath + COLLECTION_SAVE_FOLDER_NAME + Path.DirectorySeparatorChar.ToString() + "PBcollectionsSaveData.txt";
     public static readonly Dictionary<string, bool> collectionSaveData = new Dictionary<string, bool>();
     public static ConditionalWeakTable<RainWorldGame, List<RiftWorldPrecence>> riftCWT = new();
-#endif
 
-    public static readonly SlugcatStats.Name BeaconName = new("Beacon", false);
-    public static readonly SlugcatStats.Name PhotoName = new("Photomaniac", false);
+    public static readonly SlugcatStats.Name Beacon = new("Beacon", false);
+    public static readonly SlugcatStats.Name Photomaniac = new("Photomaniac", false);
     private bool init = false;
 
     //public static ConditionalWeakTable<Player, BeaconCWT> bCon = new ConditionalWeakTable<Player, BeaconCWT>();
@@ -54,15 +53,13 @@ class Plugin : BaseUnityPlugin
             PBPOMDarkness.RegisterDarkness();
             ReliableCreatureSpawner.RegisterSpawner();
             CreatureSpawnerHooks.Apply();
-            BreathableWater.Register();
-#if PLAYTEST
-            TeleportWater.Register();
+            //BreathableWater.Register();
+            //TeleportWater.Register();
             Content.Register(new RotRatCritob());
             Content.Register(new FireGrubCritob());
-#endif
             Content.Register(new LMLLCritob());
             Content.Register(new NightTerrorCritob());
-            Content.Register(new UmbraScavCritob());
+            Content.Register(new ScholarScavCritob());
             Content.Register(new UmbraMaskFisob());
         } catch (Exception err) {
             //Debug.LogError(err); Debug errors
@@ -88,40 +85,41 @@ class Plugin : BaseUnityPlugin
                 Futile.atlasManager.UnloadAtlas("lmllspr");
         };
 
-        ScareEverything.Apply();
+        BackgroundChanges.Apply();
 
-        ScugHooks.Apply();
+        MenuHooks.Apply();
+        SyncMenuRegion.Apply();
+
+        PBCicadas.Apply();
+
+        EchoPresence.Apply();
+
+        EchoGraphics.Apply();
+        JollyMenuHooks.Apply();
+        KarmaMeterChanges.Apply();
         ScugGraphics.Apply();
+
+        MoonDialogue.Apply();
+
+        OverseerGraphics.Apply();
+        OverseerHooks.Apply();
 
         BeaconHooks.Apply();
         PhotoHooks.Apply();
         Crafting.Apply();
-        
-        PBOverseerGraphics.Apply();
-
         FlarebombHooks.Apply();
+        ScugHooks.Apply();
 
+        DevCommOverride.Apply();
+        PassageHooks.Apply();
+        SpecialChanges.Apply();
         RoomScripts.Apply();
         WorldChanges.Apply();
 
-        JollyMenuHooks.Apply();
+        ScareEverything.Apply();
 
-        DevCommOverride.Apply();
         //OhNoMoonAndPebblesAreDeadGuys.Apply();
-
-        PassageHooks.Apply();
-
-#if PLAYTEST
-        EchoPresence.Apply();
-        //EchoGraphics.Apply();
-        MenuHooks.Apply();
-        SyncMenuRegion.Apply();
-        PBCycleTimer.Apply();
-        OverseerHooks.Apply();
-        SpecialChanges.Apply();
-        MoonDialogue.Apply();
-#endif
-
+        //CycleTimerChanges.Apply();
 
         //On.Player.GraspsCanBeCrafted += Player_GraspsCanBeCrafted;
         //On.Player.SpitUpCraftedObject += Player_SpitUpCraftedObject;
@@ -153,10 +151,9 @@ class Plugin : BaseUnityPlugin
     public void OnModsInit(On.RainWorld.orig_OnModsInit orig, RainWorld self)
     {
         orig(self);
-        MachineConnector.SetRegisteredOI("lurzard.pitchblack", PBOptions.Instance);
+        MachineConnector.SetRegisteredOI("lurzard.pitchblack", PBRemixMenu.Instance);
         if (!init) {
 
-#if PLAYTEST
             regionMenuDisplaySavePath = ModManager.ActiveMods.First(x => x.id == MOD_ID).path + Path.DirectorySeparatorChar + "RegionMenuDisplay.txt";
 
             #region Load Collection data into readonly list
@@ -167,7 +164,7 @@ class Plugin : BaseUnityPlugin
                 }
                 if (!File.Exists(collectionSaveDataPath)) {
                     string defaultText = "";
-                    foreach (var name in PitchBlackCollectionMenu.chatLogIDToButtonName.Keys) {
+                    foreach (var name in PBCollectionMenu.chatLogIDToButtonName.Keys) {
                         defaultText += name + ":0|";
                     }
                     File.WriteAllText(collectionSaveDataPath, defaultText);
@@ -188,14 +185,12 @@ class Plugin : BaseUnityPlugin
                 Debug.Log($"Pitch Black error\n{err}");
                 logger.LogDebug($"Pitch Black error\n{err}");
             }
-#endif
 
             if (!Futile.atlasManager.DoesContainAtlas("lmllspr"))
                 Futile.atlasManager.LoadAtlas("atlases/lmllspr");
             Futile.atlasManager.LoadAtlas("atlases/photosplt");
             Futile.atlasManager.LoadAtlas("atlases/nightTerroratlas");
             Futile.atlasManager.LoadAtlas("atlases/PursuedAtlas");
-#if PLAYTEST
             Futile.atlasManager.LoadAtlas("atlases/pearlCursor");
             Futile.atlasManager.LoadAtlas("atlases/PBHat");
             Futile.atlasManager.LoadAtlas("atlases/UmbraScav");
@@ -204,7 +199,6 @@ class Plugin : BaseUnityPlugin
             Futile.atlasManager.LoadAtlas("atlases/smallKarma10-10");
             Futile.atlasManager.LoadAtlas("atlases/karma10-10");
             self.Shaders["PurpleEchoSkin"] = FShader.CreateShader("purpleechoskin", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/purpleecho")).LoadAsset<Shader>("Assets/shaders 1.9.03/PurpleEchoSkin.shader"));
-#endif
             self.Shaders["Red"] = FShader.CreateShader("red", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath(path: "assetbundles/red")).LoadAsset<Shader>("Assets/red.shader"));
             self.Shaders["Sunrays"] = FShader.CreateShader("sunrays", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/sunrays")).LoadAsset<Shader>("Assets/sunrays.shader"));
             init = true;
@@ -214,7 +208,7 @@ class Plugin : BaseUnityPlugin
             On.RainWorldGame.Update += RainWorldGame_Update;
             On.Weapon.SetRandomSpin += Weapon_SetRandomSpin;
 
-            RiftCosmetic.Register(self);
+            //RiftCosmetic.Register(self);
         }
     }
     private void Weapon_SetRandomSpin(On.Weapon.orig_SetRandomSpin orig, Weapon self)
@@ -276,10 +270,8 @@ class Plugin : BaseUnityPlugin
     {
         orig(self, manager);
         NTTrackers.Add(self, new List<NTTracker>());
-#if PLAYETST
-        riftCWT.Add(self, new List<RiftWorldPrecence>());
-#endif
-        if ((IsBeacon(self.session) || PBOptions.universalPursuer.Value) && NTTrackers.TryGetValue(self, out var trackers))
+        //riftCWT.Add(self, new List<RiftWorldPrecence>());
+        if ((IsBeacon(self.session) || PBRemixMenu.universalPursuer.Value) && NTTrackers.TryGetValue(self, out var trackers))
         {
             trackers.Add(new NTTracker(self));
             Debug.Log("ADDING TRACKER");

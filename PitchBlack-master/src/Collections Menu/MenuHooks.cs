@@ -1,4 +1,3 @@
-#if PLAYTEST
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -22,7 +21,7 @@ public static class MenuHooks
     private static void MenuScene_BuildScene(On.Menu.MenuScene.orig_BuildScene orig, MenuScene self)
     {
         bool wasPBScene = false;
-        if (self.sceneID == PitchBlackCollectionMenu.PBCollectionScene) {
+        if (self.sceneID == PBCollectionMenu.PBCollectionScene) {
             string regionToDisplay = File.ReadAllText(Plugin.regionMenuDisplaySavePath);
             self.sceneID = Region.GetRegionLandscapeScene(regionToDisplay);
             wasPBScene = true;
@@ -31,10 +30,10 @@ public static class MenuHooks
         orig(self);
 
         if (wasPBScene) {
-            self.sceneID = PitchBlackCollectionMenu.PBCollectionScene;
+            self.sceneID = PBCollectionMenu.PBCollectionScene;
         }
 
-        if (self.sceneID == PitchBlackCollectionMenu.PBCollectionScene) {
+        if (self.sceneID == PBCollectionMenu.PBCollectionScene) {
             for (int i = self.depthIllustrations.Count-1; i >= 0; i--) {
                 self.depthIllustrations[i].sprite.MoveToBack();
                 self.depthIllustrations[i].depth *= 3;
@@ -84,7 +83,7 @@ public static class MenuHooks
         {
             if (ID == PitchBlackCollection)
             {
-                self.currentMainLoop = new PitchBlackCollectionMenu(self);
+                self.currentMainLoop = new PBCollectionMenu(self);
             }
         });
 
@@ -103,4 +102,3 @@ public static class MenuHooks
         self.pages[0].subObjects.Add(new SimpleButton(self, self.pages[0], "Pitch Black", SINGAL_NAME, new Vector2(325, 50), new Vector2(110, 31)));
     }
 }
-#endif

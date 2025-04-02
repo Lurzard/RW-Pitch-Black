@@ -2,6 +2,7 @@
 using UnityEngine;
 
 namespace PitchBlack;
+
 public class PhotoCWT
 {
     public ScugCWT scugCWTData; //for if you need to get any variables from ScugCWT while accessing PhotoCWT
@@ -181,7 +182,7 @@ public class PhotoCWT
             {
                 PhotoExplosiveDie(self);
             }
-            else if (PBOptions.shockStun.Value)
+            else if (PBRemixMenu.shockStun.Value)
             {
                 self.Stun(80);
                 self.room.AddObject(new CreatureSpasmer(self, allowDead: false, 60));

@@ -43,7 +43,7 @@ public static class Crafting
             c.Emit(OpCodes.Ldarg_0);
             c.EmitDelegate<Func<Player, bool>>(self =>
             {
-                return self.slugcatStats.name == Plugin.PhotoName || Plugin.BeaconName == self.slugcatStats.name;
+                return self.slugcatStats.name == Plugin.Photomaniac || Plugin.Beacon == self.slugcatStats.name;
             });
             c.Emit(OpCodes.Brtrue_S, label);
 
@@ -60,12 +60,12 @@ public static class Crafting
     {
         bool val = orig(self);
 
-        if (Plugin.PhotoName == self.slugcatStats.name || Plugin.BeaconName == self.slugcatStats.name)
+        if (Plugin.Photomaniac == self.slugcatStats.name || Plugin.Beacon == self.slugcatStats.name)
         {
             //if (self.FoodInStomach <= 0) //cant craft on an empty stomach
             //    return false;
 
-            if (Plugin.BeaconName == self.slugcatStats.name
+            if (Plugin.Beacon == self.slugcatStats.name
                 && self.grasps[0]?.grabbed != null && self.CanBeSwallowed(self.grasps[0].grabbed)
                 && self.grasps[0].grabbed is not Rock)
             {
@@ -85,14 +85,14 @@ public static class Crafting
                 if (self.CanBeSwallowed(grabbed))
                 {
                     //if you can swallow an item, you cant craft
-                    if (Plugin.PhotoName == self.slugcatStats.name)
+                    if (Plugin.Photomaniac == self.slugcatStats.name)
                         return false;
                 }
 
                 if (grabbed is IPlayerEdible && self.FoodInStomach < self.MaxFoodInStomach) //if its food and youre NOT full, you CANT craft
                     return false;
 
-                if (Plugin.PhotoName == self.slugcatStats.name)
+                if (Plugin.Photomaniac == self.slugcatStats.name)
                 {
                     if (grabbed.abstractPhysicalObject is AbstractSpear spearInHand)
                     {
@@ -106,7 +106,7 @@ public static class Crafting
                             BeaconHooks.foodWarning = 20; //NOT ENOUGH FOOD! ALSO SHOW A HUD WARNING
                     }
                 }
-                else if (Plugin.BeaconName == self.slugcatStats.name)
+                else if (Plugin.Beacon == self.slugcatStats.name)
                 {
                     if (grabbed is Rock)
                     {
@@ -132,16 +132,16 @@ public static class Crafting
         c.Emit(OpCodes.Ldarg_0);
         c.EmitDelegate((Player self) =>
         {
-            return Plugin.PhotoName == self.slugcatStats.name || Plugin.BeaconName == self.slugcatStats.name;
+            return Plugin.Photomaniac == self.slugcatStats.name || Plugin.Beacon == self.slugcatStats.name;
         });
         c.Emit(OpCodes.Brfalse, label);
 
         c.Emit(OpCodes.Ldarg_0);
         c.EmitDelegate((Player self) =>
         {
-            if (Plugin.PhotoName == self.slugcatStats.name)
+            if (Plugin.Photomaniac == self.slugcatStats.name)
                 self.PhotoCrafting();
-            else if (Plugin.BeaconName == self.slugcatStats.name)
+            else if (Plugin.Beacon == self.slugcatStats.name)
                 self.BeaconCrafting();
         });
         c.Emit(OpCodes.Ret);

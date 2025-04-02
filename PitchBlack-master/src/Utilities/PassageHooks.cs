@@ -3,8 +3,6 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
 
-
-
 namespace PitchBlack;
 
 public static class PassageHooks
@@ -186,7 +184,7 @@ public static class PassageHooks
 	{
 		orig.Invoke(self, game);
 		//ONLY FOR BACON
-		if (game.session is StoryGameSession session && (session.saveStateNumber == Plugin.BeaconName))
+		if (game.session is StoryGameSession session && (session.saveStateNumber == Plugin.Beacon))
 		{
             WinState.IntegerTracker integerTracker4 = self.GetTracker(EnumExt_MyMod.Pursued, true) as WinState.IntegerTracker;
             if (integerTracker4 != null)

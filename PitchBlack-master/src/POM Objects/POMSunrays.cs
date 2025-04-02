@@ -3,6 +3,7 @@ using UnityEngine;
 using static Pom.Pom;
 
 namespace PitchBlack;
+
 public class PBPOMSunrays
 {
 	internal class Sunrays : CosmeticSprite

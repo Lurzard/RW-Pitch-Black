@@ -5,21 +5,19 @@ using UnityEngine;
 
 namespace PitchBlack;
 
-public class PBOptions : OptionInterface
+public class PBRemixMenu : OptionInterface
 {
-    public static readonly PBOptions Instance = new();
+    public static readonly PBRemixMenu Instance = new();
 	public static Configurable<int> maxFlashStore;
 	public static Configurable<bool> shockStun;
 	public static Configurable<bool> elecImmune;
 	public static Configurable<bool> chargeSpears;
 	public static Configurable<bool> pursuer;
     public static Configurable<int> pursuerAgro;
-#if PLAYTEST
     public static Configurable<bool> hazHat;
-#endif
     public static Configurable<bool> universalPursuer;
 
-    public PBOptions()
+    public PBRemixMenu()
     {
 		//maxFlashStore = config.Bind<int>("maxFlashStore", 4, new ConfigAcceptableRange<int>(0, 10));
 		shockStun = config.Bind<bool>("shockStun", true);
@@ -27,9 +25,7 @@ public class PBOptions : OptionInterface
 		chargeSpears = config.Bind<bool>("chargeSpears", false);
 		pursuer = config.Bind<bool>("pursuer", true);
         pursuerAgro = config.Bind<int>("pursuerAgro", 2, new ConfigAcceptableRange<int>(0, 10));
-#if PLAYTEST
         hazHat = config.Bind<bool>("hazHat", false);
-#endif
         universalPursuer = config.Bind<bool>("universalPursuer", false);
     }
     public override void Initialize()

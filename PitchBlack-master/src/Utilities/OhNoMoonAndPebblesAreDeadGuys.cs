@@ -1,3 +1,4 @@
+#if false
 using System;
 using MonoMod.RuntimeDetour;
 using MoreSlugcats;
@@ -21,3 +22,4 @@ public class OhNoMoonAndPebblesAreDeadGuys
         orig(self, eu);
     }
 }
+#endif

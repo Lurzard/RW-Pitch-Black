@@ -1,4 +1,3 @@
-#if PLAYTEST
 namespace PitchBlack;
 
 public class SyncMenuRegion
@@ -24,4 +23,3 @@ public class SyncMenuRegion
         }
     }
 }
-#endif

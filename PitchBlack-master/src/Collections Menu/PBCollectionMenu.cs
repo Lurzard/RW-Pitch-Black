@@ -1,4 +1,3 @@
-#if PLAYTEST
 using System.Collections.Generic;
 using Menu;
 using MoreSlugcats;
@@ -12,7 +11,7 @@ using RWCustom;
 
 namespace PitchBlack;
 
-public class PitchBlackCollectionMenu : Menu.Menu
+public class PBCollectionMenu : Menu.Menu
 {
     const int FADE_TIMER_MAX = 20;
     internal static MenuScene.SceneID PBCollectionScene = new MenuScene.SceneID(nameof(PBCollectionScene), true);
@@ -48,7 +47,7 @@ public class PitchBlackCollectionMenu : Menu.Menu
     float ScreenWidth => manager.rainWorld.options.ScreenSize.x;
     float ScreenHeight => manager.rainWorld.options.ScreenSize.y;
     Vector2 ScreenCenter => manager.rainWorld.options.ScreenSize/2f;
-    public PitchBlackCollectionMenu(ProcessManager processManager) : base(processManager, MenuHooks.PitchBlackCollection) {
+    public PBCollectionMenu(ProcessManager processManager) : base(processManager, MenuHooks.PitchBlackCollection) {
         mySoundLoopID = SoundID.MENU_Main_Menu_LOOP;
         pages.Add(new Page(this, null, "aaaaaa", 0));
         const float ButtonStartHeight = 94.5f;
@@ -166,4 +165,3 @@ public class PitchBlackCollectionMenu : Menu.Menu
         }
     }
 }
-#endif

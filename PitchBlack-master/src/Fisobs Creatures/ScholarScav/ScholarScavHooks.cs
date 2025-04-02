@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace PitchBlack;
 
-public class UmbraScavHooks
+public class ScholarScavHooks
 {
 
     public static void Apply()

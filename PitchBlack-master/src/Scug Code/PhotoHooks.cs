@@ -17,7 +17,7 @@ public static class PhotoHooks
 
     private static void Creature_Violence(On.Creature.orig_Violence orig, Creature self, BodyChunk source, UnityEngine.Vector2? directionAndMomentum, BodyChunk hitChunk, PhysicalObject.Appendage.Pos hitAppendage, Creature.DamageType type, float damage, float stunBonus)
     {
-        if (PBOptions.elecImmune.Value && type == Creature.DamageType.Electric && self is Player player && Plugin.scugCWT.TryGetValue(player, out ScugCWT cwt) && cwt.IsPhoto)
+        if (PBRemixMenu.elecImmune.Value && type == Creature.DamageType.Electric && self is Player player && Plugin.scugCWT.TryGetValue(player, out ScugCWT cwt) && cwt.IsPhoto)
             return; //WW- SKIP! ELECTRICITY IMMUNITY!
         //Centipedes with a higher mass will still kill you instantly because they just call Die()
         orig(self, source, directionAndMomentum, hitChunk, hitAppendage, type, damage, stunBonus);

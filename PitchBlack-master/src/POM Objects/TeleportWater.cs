@@ -1,11 +1,9 @@
-#if PLAYTEST
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using RWCustom;
 using UnityEngine;
 using static Pom.Pom;
 using System;
-using System.IO;
 using System.Linq;
 
 namespace PitchBlack;
@@ -380,4 +378,3 @@ public class TeleportWater
         RegisterFullyManagedObjectType(fields.ToArray(), typeof(TeleportWaterObject), "TeleportWater", "Pitch-Black");
     }
 }
-#endif

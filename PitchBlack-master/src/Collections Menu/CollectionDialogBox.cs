@@ -1,4 +1,3 @@
-#if PLAYTEST
 using UnityEngine;
 using Menu;
 using Menu.Remix.MixedUI;
@@ -20,7 +19,6 @@ public class CollectionDialogBox : MenuDialogBox
     public override void Update()
     {
         base.Update();
-        this.descriptionLabel.text = text.WrapText(false, size.x - 40, true);
+        descriptionLabel.text = text.WrapText(false, size.x - 40, true);
     }
 }
-#endif

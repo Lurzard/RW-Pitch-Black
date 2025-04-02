@@ -17,7 +17,7 @@ public class ScugHooks
 
         if (MiscUtils.IsBeaconOrPhoto(self.slugcatStats.name))
         {
-            if (self.slugcatStats.name == Plugin.PhotoName)
+            if (self.slugcatStats.name == Plugin.Photomaniac)
             {
                 self.playerState.isPup = true;
             }
@@ -26,7 +26,7 @@ public class ScugHooks
                 Plugin.scugCWT.Add(self, new ScugCWT(self));
             }
             
-            if (self.slugcatStats.name == Plugin.BeaconName && self.room.abstractRoom.shelter && Plugin.scugCWT.TryGetValue(self, out var cwt)) {
+            if (self.slugcatStats.name == Plugin.Beacon && self.room.abstractRoom.shelter && Plugin.scugCWT.TryGetValue(self, out var cwt)) {
                 foreach (var thingQuar in self.room.physicalObjects) {
                     foreach (var item in thingQuar) {
                         if (item is FlareBomb flashbang && cwt.Beacon.storage.storedFlares.Count < cwt.Beacon.storage.capacity) {
@@ -47,7 +47,7 @@ public class ScugHooks
     {
         Player.ObjectGrabability result = orig(self, obj);
 
-        if (self.slugcatStats.name == Plugin.PhotoName && obj is Spear)
+        if (self.slugcatStats.name == Plugin.Photomaniac && obj is Spear)
             return Player.ObjectGrabability.OneHand;
 
         if (obj is FlareBomb flarebomb && obj.room != null)

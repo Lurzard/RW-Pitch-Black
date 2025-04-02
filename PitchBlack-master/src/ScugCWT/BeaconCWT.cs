@@ -48,7 +48,7 @@ public class BeaconCWT
     {
         PlayerRef = new WeakReference<Player>(player);
 
-        IsBeacon = player.slugcatStats.name == Plugin.BeaconName;
+        IsBeacon = player.slugcatStats.name == Plugin.Beacon;
 
         if (!IsBeacon)
         {

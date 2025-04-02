@@ -331,7 +331,7 @@ public static class BeaconHooks
     {
         orig(self);
 
-        if (Plugin.BeaconName == self.slugcatStats.name)
+        if (Plugin.Beacon == self.slugcatStats.name)
         {
             if (Player.AnimationIndex.Flip == self.animation)
                 self.jumpBoost *= 1f + 0.55f;
@@ -343,7 +343,7 @@ public static class BeaconHooks
     public static void BeaconTransmuteIntoFlashbang(On.Player.orig_SwallowObject orig, Player self, int grasp)
     {
         orig(self, grasp);
-        if (self.slugcatStats.name == Plugin.BeaconName && self.playerState.foodInStomach > 0 && self.objectInStomach.type == AbstractObjectType.Rock)
+        if (self.slugcatStats.name == Plugin.Beacon && self.playerState.foodInStomach > 0 && self.objectInStomach.type == AbstractObjectType.Rock)
         {
             self.objectInStomach = new AbstractConsumable(self.room.world, AbstractObjectType.FlareBomb, null, self.abstractCreature.pos, self.room.game.GetNewID(), -1, -1, null);
             self.SubtractFood(1);

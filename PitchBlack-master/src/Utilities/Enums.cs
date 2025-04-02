@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
 namespace PitchBlack;
+
 public static class CreatureTemplateType
 {
     [AllowNull] public static CreatureTemplate.Type NightTerror = new("NightTerror", true);

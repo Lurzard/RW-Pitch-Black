@@ -63,7 +63,7 @@ public class Whiskers
             float num4 = num2 / (headScales.Length / 2);
 
             //pos.x is the mf with a stronghold over whisker movement and rotation
-            if (Plugin.BeaconName == player.slugcatStats.name)
+            if (Plugin.Beacon == player.slugcatStats.name)
             {
                 //beacon works the same if i didnt reverse it like this
                 //i just didnt want to mess with rotation math AGAIN just to have an identical end result
@@ -120,7 +120,7 @@ public class Whiskers
             return;
 
         float whiskerHeight = 10f / Futile.atlasManager.GetElementWithName(spriteName).sourcePixelSize.y;
-        if (Plugin.BeaconName == player.slugcatStats.name)
+        if (Plugin.Beacon == player.slugcatStats.name)
             whiskerHeight *= 1.5f;
 
         for (int i = initialWhiskerIndex; i < endWhiskerIndex; i++)
@@ -152,7 +152,7 @@ public class Whiskers
 
             float rotationAngle; //+ve goes down, -ve goes up (for left whiskers, opposite for right)
 
-            if (Plugin.BeaconName == player.slugcatStats.name)
+            if (Plugin.Beacon == player.slugcatStats.name)
                 rotationAngle = -135f;
             else
                 rotationAngle = 180f;
@@ -163,7 +163,7 @@ public class Whiskers
                 //this might be the upper whiskers actually. i dont know
                 rotationAngle -= 40f;
             }
-            else if (Plugin.BeaconName == player.slugcatStats.name && i % 2 != 0)
+            else if (Plugin.Beacon == player.slugcatStats.name && i % 2 != 0)
             {
                 //put the top left whiskers a little more down
                 rotationAngle -= 10f;
@@ -172,7 +172,7 @@ public class Whiskers
             if (i % 2 != 0)
             {
                 //left whiskers
-                if (Plugin.PhotoName == player.slugcatStats.name)
+                if (Plugin.Photomaniac == player.slugcatStats.name)
                     rotationAngle -= 4f;
                 else
                     rotationAngle += 2f;

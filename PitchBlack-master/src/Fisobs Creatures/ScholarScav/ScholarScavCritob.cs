@@ -8,27 +8,27 @@ using MoreSlugcats;
 
 namespace PitchBlack;
 
-    sealed class UmbraScavCritob : Critob
+    sealed class ScholarScavCritob : Critob
 {
-    internal UmbraScavCritob() : base(CreatureTemplateType.UmbraScav)
+    internal ScholarScavCritob() : base(CreatureTemplateType.UmbraScav)
     {
-        Icon = new SimpleIcon("UmbraScav", Color.grey); //sandbox icon
-        RegisterUnlock(KillScore.Configurable(25), SandboxUnlockID.UmbraScav, MultiplayerUnlocks.SandboxUnlockID.Scavenger, 0); //register kill score + sandbox ID
+        Icon = new SimpleIcon("UmbraScav", Color.grey);
+        RegisterUnlock(KillScore.Configurable(25), SandboxUnlockID.UmbraScav, MultiplayerUnlocks.SandboxUnlockID.Scavenger, 0);
         LoadedPerformanceCost = 100f; //probably for loading a lot of creatures
         SandboxPerformanceCost = new SandboxPerformanceCost(0.5f, 0.5f);
         ShelterDanger = 0;
-        UmbraScavHooks.Apply(); //runs hooks
+        ScholarScavHooks.Apply();
     }
 
     public override int ExpeditionScore() => 25;
 
     public override Color DevtoolsMapColor(AbstractCreature acrit) => Color.white;
 
-    public override string DevtoolsMapName(AbstractCreature acrit) => "umbr";
+    public override string DevtoolsMapName(AbstractCreature acrit) => "schlr";
 
     public override IEnumerable<RoomAttractivenessPanel.Category> DevtoolsRoomAttraction() => new[] { RoomAttractivenessPanel.Category.LikesInside };
 
-    public override IEnumerable<string> WorldFileAliases() => new[] { "umbrascavenger" };
+    public override IEnumerable<string> WorldFileAliases() => new[] { "scholarscavenger" };
 
     public override CreatureTemplate CreateTemplate()
     {

@@ -58,13 +58,11 @@ public class ScugGraphics
                 // Debug.Log($"Name is: {sLeaser.sprites[cwt.Photo.photoSpriteIndex].element.name}");
             }
             #endregion
-#if PLAYTEST
-            if (PBOptions.hazHat.Value && self.player.room.game.session is StoryGameSession session && !MiscUtils.IsBeaconOrPhoto(session.saveStateNumber)) {
+            if (PBRemixMenu.hazHat.Value && self.player.room.game.session is StoryGameSession session && !MiscUtils.IsBeaconOrPhoto(session.saveStateNumber)) {
                 cwt.hatIndex = sLeaser.sprites.Length;
                 Array.Resize(ref sLeaser.sprites, sLeaser.sprites.Length+1);
                 sLeaser.sprites[cwt.hatIndex] = new FSprite("PBHat");
             }
-#endif
 
             #region whiskers
             cwt.whiskers.initialWhiskerIndex = sLeaser.sprites.Length;
@@ -95,13 +93,11 @@ public class ScugGraphics
                 }
             }
             cwt.whiskers.AddToContainer(sLeaser, rCam);
-#if PLAYTEST
-            if (PBOptions.hazHat.Value && sLeaser.sprites.Length > 13 && self.player.room.game.session is StoryGameSession session && !MiscUtils.IsBeaconOrPhoto(session.saveStateNumber)) {
+            if (PBRemixMenu.hazHat.Value && sLeaser.sprites.Length > 13 && self.player.room.game.session is StoryGameSession session && !MiscUtils.IsBeaconOrPhoto(session.saveStateNumber)) {
                 rCam.ReturnFContainer("Foreground").RemoveChild(sLeaser.sprites[cwt.hatIndex]);
                 rCam.ReturnFContainer("Midground").AddChild(sLeaser.sprites[cwt.hatIndex]);
                 sLeaser.sprites[cwt.hatIndex].MoveInFrontOfOtherNode(sLeaser.sprites[9]);
             }
-#endif
         }
     }
     private static void PlayerGraphics_DrawSprites(On.PlayerGraphics.orig_DrawSprites orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
@@ -127,8 +123,7 @@ public class ScugGraphics
 
         if (GotCWTData && cwt.IsBeaconOrPhoto)
         {
-#if PLAYTEST
-            if (PBOptions.hazHat.Value && self.player.room != null && self.player.room.game.session is StoryGameSession session && !MiscUtils.IsBeaconOrPhoto(session.saveStateNumber)) {
+            if (PBRemixMenu.hazHat.Value && self.player.room != null && self.player.room.game.session is StoryGameSession session && !MiscUtils.IsBeaconOrPhoto(session.saveStateNumber)) {
                 Vector2 vector = Vector2.Lerp(self.drawPositions[0, 1], self.drawPositions[0, 0], timeStacker);
                 Vector2 vector2 = Vector2.Lerp(self.drawPositions[1, 1], self.drawPositions[1, 0], timeStacker);
                 Vector2 position = sLeaser.sprites[9].GetPosition()+9f*Vector2.up-4f*self.lookDirection.x*Vector2.right;
@@ -140,7 +135,6 @@ public class ScugGraphics
                 Color color = SlugBase.DataTypes.PlayerColor.GetCustomColor(self, 0);
                 sLeaser.sprites[cwt.hatIndex].color = new Color(color.r*0.75f, color.g*0.75f, color.b*0.75f, color.a);
             }
-#endif
             if (cwt.IsPhoto && cwt.Photo.photoSpriteIndex < sLeaser.sprites.Length)
             {
                 //maths will actually make photo's splatter sprite follow the body more accurately

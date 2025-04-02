@@ -23,13 +23,13 @@ public class ScugCWT
     {
         playerRef = new WeakReference<Player>(player);
 
-        if (BeaconName == player.slugcatStats.name)
+        if (Plugin.Beacon == player.slugcatStats.name)
         {
             IsBeaconOrPhoto = true;
             IsBeacon = true;
             Beacon = new BeaconCWT(this);
         }
-        else if (PhotoName == player.slugcatStats.name)
+        else if (Photomaniac == player.slugcatStats.name)
         {
             IsBeaconOrPhoto = true;
             IsPhoto = true;
