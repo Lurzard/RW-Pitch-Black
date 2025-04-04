@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using RWCustom;
-using static PitchBlack.Plugin;
 
 namespace PitchBlack;
 
@@ -54,22 +53,18 @@ public class FlarebombHooks
         }
     }
     // Makes it so that if flarebombs are being stored by Beacon, Scavs are not interested in the bombs at all
-    private static int ScavengerAI_CollectScore_PhysicalObject_bool(On.ScavengerAI.orig_CollectScore_PhysicalObject_bool orig, ScavengerAI self, PhysicalObject obj, bool weaponFiltered)
-    {
+    private static int ScavengerAI_CollectScore_PhysicalObject_bool(On.ScavengerAI.orig_CollectScore_PhysicalObject_bool orig, ScavengerAI self, PhysicalObject obj, bool weaponFiltered) {
         int val = orig(self, obj, weaponFiltered);
 
         //spinch: hopefully the below is better anti theft code
-        if (obj is FlareBomb flarebomb && self.scavenger.room != null)
-        {
-            foreach (var abstrCrit in self.scavenger.room.game.Players)
-            {
-                if (abstrCrit.realizedCreature == null)
+        if (obj is FlareBomb flarebomb && self.scavenger.room != null) {
+            foreach (var abstrCrit in self.scavenger.room.game.Players) {
+                if (abstrCrit.realizedCreature == null) {
                     continue;
-
-                if (scugCWT.TryGetValue(abstrCrit.realizedCreature as Player, out var cwt) && cwt.IsBeacon)
-                {
-                    if (cwt.Beacon.storage.storedFlares.Contains(flarebomb))
-                        return 0; //if in beacon storage, dont steal
+                }
+                //if in beacon storage, dont steal
+                if (Plugin.scugCWT.TryGetValue(abstrCrit.realizedCreature as Player, out ScugCWT scugCWT) && scugCWT is BeaconCWT beaconCWT && beaconCWT.storage.storedFlares.Contains(flarebomb)) {
+                    return 0;
                 }
             }
         }

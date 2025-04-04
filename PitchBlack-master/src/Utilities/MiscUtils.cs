@@ -1,15 +1,11 @@
 ﻿using Random = UnityEngine.Random;
-using Debug = UnityEngine.Debug;
 using static PitchBlack.Plugin;
 using System.IO;
 using System.Collections.Generic;
-using IL;
-using HUD;
 
 namespace PitchBlack;
 
-public static class MiscUtils
-{
+public static class MiscUtils {
     public static bool ValidTrackRoom(this Room room)
     {
         return room != null && !room.RoomIsAStartingCabinetsRoom() && !room.abstractRoom.shelter && !room.abstractRoom.gate;
@@ -72,16 +68,13 @@ public static class MiscUtils
         return retString;
     }
     #region Bacon or Photo checks
-    public static bool IsBeaconOrPhoto(GameSession session)
-    {
+    public static bool IsBeaconOrPhoto(GameSession session) {
         return (session is StoryGameSession s) && IsBeaconOrPhoto(s.saveStateNumber);
     }
-    public static bool IsBeaconOrPhoto(Creature crit)
-    {
+    public static bool IsBeaconOrPhoto(Creature crit) {
         return crit is Player player && IsBeaconOrPhoto(player.slugcatStats.name);
     }
-    public static bool IsBeaconOrPhoto(SlugcatStats.Name slugName)
-    {
+    public static bool IsBeaconOrPhoto(SlugcatStats.Name slugName) {
         return null != slugName && (slugName == Beacon || slugName == Photomaniac);
     }
     #endregion

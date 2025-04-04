@@ -451,35 +451,30 @@ public static class Crafting
         #endregion
     }
 
-    public static void BeaconCrafting(this Player self)
-    {
-        if (!Plugin.scugCWT.TryGetValue(self, out ScugCWT cwt))
-            return;
-
-        //craft rocks into flarebombs instead of swallowing to do that
-        for (int i = 0; i < self.grasps.Length; i++)
-        {
-            if (self.FoodInStomach <= 0)
-                break;
-
-            if (self.grasps[i]?.grabbed is Rock)
-            {
-                self.SubtractFood(1);
-
-                self.DeleteGrasp(i);
-
-                AbstractConsumable item = new(self.room.world, AbstractObjectType.FlareBomb, null, self.abstractCreature.pos, self.room.game.GetNewID(), -1, -1, null);
-                self.room.abstractRoom.AddEntity(item);
-                item.RealizeInRoom();
-                self.SlugcatGrab(item.realizedObject, i);
-
-                if (cwt.Beacon.storage.storedFlares.Count < cwt.Beacon.storage.capacity)
-                {
-                    cwt.Beacon.storage.FlarebombtoStorage(item.realizedObject as FlareBomb);
-                    cwt.Beacon.heldCraft = true;
+    public static void BeaconCrafting(this Player self) {
+        if (Plugin.scugCWT.TryGetValue(self, out ScugCWT scugCWT) && scugCWT is BeaconCWT beaconCWT) {
+            //craft rocks into flarebombs instead of swallowing to do that
+            for (int i = 0; i < self.grasps.Length; i++) {
+                if (self.FoodInStomach <= 0) {
+                    break;
                 }
-                else if (self.FreeHand() != -1)
-                    self.SlugcatGrab(item.realizedObject, self.FreeHand());
+
+                if (self.grasps[i]?.grabbed is Rock) {
+                    self.SubtractFood(1);
+                    self.DeleteGrasp(i);
+
+                    AbstractConsumable item = new(self.room.world, AbstractObjectType.FlareBomb, null, self.abstractCreature.pos, self.room.game.GetNewID(), -1, -1, null);
+                    self.room.abstractRoom.AddEntity(item);
+                    item.RealizeInRoom();
+                    self.SlugcatGrab(item.realizedObject, i);
+
+                    if (beaconCWT.storage.storedFlares.Count < beaconCWT.storage.capacity) {
+                        beaconCWT.storage.FlarebombtoStorage(item.realizedObject as FlareBomb);
+                        beaconCWT.heldCraft = true;
+                    }
+                    else if (self.FreeHand() != -1)
+                        self.SlugcatGrab(item.realizedObject, self.FreeHand());
+                }
             }
         }
     }

@@ -1,41 +1,13 @@
-﻿using System;
-using static PitchBlack.Plugin;
-
-namespace PitchBlack;
-
-public class ScugCWT
-{
-    public WeakReference<Player> playerRef;
-
-    public BeaconCWT Beacon; //remember to do a null or a IsBeacon/IsPhoto check before accessing these
-    public PhotoCWT Photo;
-
-    public readonly bool IsBeacon;
-    public readonly bool IsPhoto;
-    public readonly bool IsBeaconOrPhoto;
-
-    public bool SpritesInitialized; //bc PlayerGraphics.InitializeSprites calls itself twice in a row gawd dam
-    public Whiskers whiskers; //initialized in PlayerGraphics.ctor hook
-    public int hatIndex; //index of the hat sprite
-    public int petTimer = 0; //for petting Solace slugcats
-
-    public ScugCWT(Player player)
-    {
-        playerRef = new WeakReference<Player>(player);
-
-        if (Plugin.Beacon == player.slugcatStats.name)
-        {
-            IsBeaconOrPhoto = true;
-            IsBeacon = true;
-            Beacon = new BeaconCWT(this);
-        }
-        else if (Photomaniac == player.slugcatStats.name)
-        {
-            IsBeaconOrPhoto = true;
-            IsPhoto = true;
-            Photo = new PhotoCWT(this);
-        }
-        // else
-        //     Debug.Log($"Pitch Black: How did {player.slugcatStats.name} player {player.playerState.playerNumber} get in the scug CWT?!");
+﻿namespace PitchBlack;
+public abstract class ScugCWT {
+    //bc PlayerGraphics.InitializeSprites calls itself twice in a row gawd dam
+    public bool SpritesInitialized;
+    //initialized in PlayerGraphics.ctor hook
+    public Whiskers whiskers;
+    //index of the hat sprite
+    public int hatIndex;
+    //for petting Solace slugcats
+    public int petTimer = 0;
+    public ScugCWT() {
     }
 }
