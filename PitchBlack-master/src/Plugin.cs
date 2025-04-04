@@ -33,6 +33,7 @@ class Plugin : BaseUnityPlugin
 
     public static readonly SlugcatStats.Name Beacon = new("Beacon", false);
     public static readonly SlugcatStats.Name Photomaniac = new("Photomaniac", false);
+
     private bool init = false;
 
     //public static ConditionalWeakTable<Player, BeaconCWT> bCon = new ConditionalWeakTable<Player, BeaconCWT>();
@@ -109,6 +110,7 @@ class Plugin : BaseUnityPlugin
         Crafting.Apply();
         FlarebombHooks.Apply();
         ScugHooks.Apply();
+        Thanatosis.Apply();
 
         DevCommOverride.Apply();
         PassageHooks.Apply();
@@ -198,6 +200,7 @@ class Plugin : BaseUnityPlugin
             Futile.atlasManager.LoadAtlas("atlases/icon_UmbraMask");
             Futile.atlasManager.LoadAtlas("atlases/smallKarma10-10");
             Futile.atlasManager.LoadAtlas("atlases/karma10-10");
+            Futile.atlasManager.LoadAtlas("atlases/FaceThanatosis");
             self.Shaders["PurpleEchoSkin"] = FShader.CreateShader("purpleechoskin", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/purpleecho")).LoadAsset<Shader>("Assets/shaders 1.9.03/PurpleEchoSkin.shader"));
             self.Shaders["Red"] = FShader.CreateShader("red", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath(path: "assetbundles/red")).LoadAsset<Shader>("Assets/red.shader"));
             self.Shaders["Sunrays"] = FShader.CreateShader("sunrays", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/sunrays")).LoadAsset<Shader>("Assets/sunrays.shader"));
