@@ -35,9 +35,6 @@ class Plugin : BaseUnityPlugin
     public static readonly SlugcatStats.Name Photomaniac = new("Photomaniac", false);
 
     private bool init = false;
-
-    //public static ConditionalWeakTable<Player, BeaconCWT> bCon = new ConditionalWeakTable<Player, BeaconCWT>();
-    //public static ConditionalWeakTable<Player, PhotoCWT> pCon = new ConditionalWeakTable<Player, PhotoCWT>();
     public static ConditionalWeakTable<Player, ScugCWT> scugCWT = new();
     public static ConditionalWeakTable<RainWorldGame, List<NTTracker>> NTTrackers = new ConditionalWeakTable<RainWorldGame, List<NTTracker>>();
 
