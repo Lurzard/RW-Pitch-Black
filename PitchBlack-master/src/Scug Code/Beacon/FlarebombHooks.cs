@@ -11,7 +11,7 @@ public class FlarebombHooks
             || (Custom.DistLess(self.firstChunk.pos, creaturePos, self.LightIntensity * 1600f) && self.room.VisualContact(self.firstChunk.pos, creaturePos));
     }
     public static bool TooBrightForMe(CreatureTemplate.Type creatureTemplateType) {
-        // Creatures that die to FlareBombs
+        // Creatures that die to FlareBombs (these should be nerfed to apply with creature's apparent sight)
         return creatureTemplateType == CreatureTemplate.Type.BigSpider
             || creatureTemplateType == CreatureTemplate.Type.SpitterSpider
             || creatureTemplateType == MoreSlugcats.MoreSlugcatsEnums.CreatureTemplateType.MotherSpider

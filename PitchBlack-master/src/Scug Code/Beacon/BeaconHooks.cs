@@ -25,20 +25,19 @@ public static class BeaconHooks
         On.Player.ThrowObject += Player_ThrowObject;
         On.Creature.Abstractize += Creature_Abstractize;
         On.PlayerGraphics.Update += PlayerGraphics_Update;
-        On.PlayerGraphics.DrawSprites += PlayerGraphics_DrawSprites;
         On.SlugcatHand.EngageInMovement += SlugcatHand_EngageInMovement;
         On.ShelterDoor.DoorClosed += ShelterDoor_DoorClosed;
+        On.PlayerGraphics.ApplyPalette += PlayerGraphics_ApplyPalette;
+        On.PlayerGraphics.DrawSprites += PlayerGraphics_DrawSprites;
         //qol storage stoppers for other hold-grab functions
         On.Player.SwallowObject += Player_SwallowObject;
         On.Player.Regurgitate += Player_Regurgitate;
         On.Player.ObjectEaten += Player_ObjectEaten;
         On.HUD.FoodMeter.MeterCircle.Update += MeterCircle_Update;
-        On.PlayerGraphics.ApplyPalette += PlayerGraphics_ApplyPalette;
-        On.PlayerGraphics.DrawSprites += PlayerGraphics_DrawSprites1;
     }
 
     //add math to fade beacon color in real time instead of immediately 
-    private static void PlayerGraphics_DrawSprites1(On.PlayerGraphics.orig_DrawSprites orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
+    private static void PlayerGraphics_DrawSprites(On.PlayerGraphics.orig_DrawSprites orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
     {
         orig(self, sLeaser, rCam, timeStacker, camPos);
 
@@ -57,11 +56,20 @@ public static class BeaconHooks
                 if (flares == 4) beaconCWT.BeaconColor = Color.Lerp(beaconCWT.BeaconDefaultColor, beaconCWT.flareColor4, 0.92f);
             }
 
-            for (int sprites = 0; sprites < sLeaser.sprites.Length;  sprites++) {
+            for (int sprites = 0; sprites < sLeaser.sprites.Length; sprites++) {
                 if (sprites != 9) sLeaser.sprites[sprites].color = beaconCWT.BeaconColor;
                 if (sprites == 9) sLeaser.sprites[sprites].color = beaconCWT.BeaconEyeColor;
                 if (sprites == 10) sLeaser.sprites[sprites].color = Custom.hexToColor("f02961");
                 if (sprites == 11) sLeaser.sprites[sprites].color = Custom.hexToColor("f02961");
+                if (sprites == 9) sLeaser.sprites[sprites].element = Futile.atlasManager.GetElementWithName(Thanatosis.isDead ? "FaceThanatosis" : "Face"); //might need to be swapped for checking beaconCWT once vars are moved there
+            }
+
+            //brightsquint
+            if (beaconCWT.brightSquint > (40 * 3.5f)) sLeaser.sprites[9].element = Futile.atlasManager.GetElementWithName("Face" + "Stunned");
+
+            if (beaconCWT.brightSquint > 10) {
+                sLeaser.sprites[9].x -= self.lookDirection.x * 2;
+                sLeaser.sprites[9].y -= self.lookDirection.y * 2;
             }
         }
     }
@@ -86,7 +94,6 @@ public static class BeaconHooks
                 self.lightSource.setAlpha = new float?(1f);
                 self.player.room.AddObject(self.lightSource);
             }
-
             int flares = beaconCWT.storage.storedFlares.Count;
 
             //DEFAULT, NO FLASHBANGS
@@ -114,9 +121,7 @@ public static class BeaconHooks
                 glowStr = 300;
 
             if (self.player.dead)
-            {
                 glowStr = 0;
-            }
 
             self.lightSource.setRad = glowStr;
             self.lightSource.stayAlive = true;
@@ -178,7 +183,6 @@ public static class BeaconHooks
                     return false;
                 }
             }
-
             return true;
         });
 
@@ -273,12 +277,14 @@ public static class BeaconHooks
         if (self.slugcatStats.name == Plugin.Beacon && self.playerState.foodInStomach > 0 && self.objectInStomach.type == AbstractObjectType.Rock) {
             self.objectInStomach = new AbstractConsumable(self.room.world, AbstractObjectType.FlareBomb, null, self.abstractCreature.pos, self.room.game.GetNewID(), -1, -1, null);
             self.SubtractFood(1);
+
             if (Plugin.scugCWT.TryGetValue(self, out ScugCWT c) && c is BeaconCWT cwt) {
                 //DON'T UNSTORE ANOTHER FLASHBANG UNTIL WE'VE LET TO OF THE BUTTON
                 cwt.heldCraft = true;
             }
         }
     }
+
     public static void Player_GrabUpdate(On.Player.orig_GrabUpdate orig, Player self, bool eu) {
         Plugin.scugCWT.TryGetValue(self, out ScugCWT scugCWT);
         bool dontAutoThrowFlarebomb = (scugCWT is BeaconCWT && ((BeaconCWT)scugCWT).dontThrowTimer > 0) || self.FreeHand() == -1 || self.input[0].pckp;
@@ -378,7 +384,6 @@ public static class BeaconHooks
             if (self.room != null) {
                 //Debug.Log("ROOM DARKNESS " + self.room.Darkness(self.mainBodyChunk.pos));
                 if (self.room.Darkness(self.mainBodyChunk.pos) < 0.15f || self.room.world.region.name == "VV") {
-                    //
                     if (cwt.brightSquint == 0) {
                         cwt.brightSquint = 40 * 6;
                         self.Blink(8);
@@ -429,29 +434,12 @@ public static class BeaconHooks
         return orig(self);
     }
 
-    private static void PlayerGraphics_DrawSprites(On.PlayerGraphics.orig_DrawSprites orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos) {
-        orig(self, sLeaser, rCam, timeStacker, camPos);
-        if (Plugin.scugCWT.TryGetValue(self.player, out ScugCWT scugCWT) && scugCWT is BeaconCWT beaconCWT) {
-            //cwt.Beacon.eyePos = sLeaser.sprites[9].GetPosition();
-
-            if (beaconCWT.brightSquint > (40 * 3.5f)) {
-                sLeaser.sprites[9].element = Futile.atlasManager.GetElementWithName("Face" + "Stunned");
-            }
-            if (beaconCWT.brightSquint > 10) {
-                sLeaser.sprites[9].x -= self.lookDirection.x * 2;
-                sLeaser.sprites[9].y -= self.lookDirection.y * 2;
-            }
-                
-
-        }
-    }
-
     private static void Player_ThrowObject(On.Player.orig_ThrowObject orig, Player self, int grasp, bool eu) {
         if (self.grasps[grasp] != null && (self.grasps[grasp].grabbed is Weapon) && Plugin.scugCWT.TryGetValue(self, out ScugCWT c) && c is BeaconCWT cwt) {
             cwt.dontThrowTimer = 15; //BRIEF PERIOD OF DON'T THROW A FLASHBANG
             //MAYBE A FANCY COLOR?...
             if (self.grasps[grasp].grabbed is FlareBomb flare) {
-                flare.color = new Color(0.2f, 0f, 1f); //Color(0.2f, 0f, 1f); //WE COULD GIVE IT A FUNKY COLOR, IF WE WANT...
+                flare.color = new Color(0.89411764705f, 0.29803921568f, 0.72549019607f); //Color(0.2f, 0f, 1f); //WE COULD GIVE IT A FUNKY COLOR, IF WE WANT... //yurpnuke
                 cwt.dontThrowTimer = 60; //DON'T THROW ANOTHER ONE FOR A WHILE
             }
         }

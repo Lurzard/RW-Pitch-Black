@@ -1,4 +1,4 @@
-﻿namespace PitchBlack;
+namespace PitchBlack;
 public abstract class ScugCWT {
     //bc PlayerGraphics.InitializeSprites calls itself twice in a row gawd dam
     public bool SpritesInitialized;
