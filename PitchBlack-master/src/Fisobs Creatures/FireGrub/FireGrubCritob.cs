@@ -10,10 +10,10 @@ using static PathCost.Legality;
 namespace PitchBlack;
 sealed class FireGrubCritob : Critob
 {
-    internal FireGrubCritob() : base(CreatureTemplateType.FireGrub)
+    internal FireGrubCritob() : base(PBCreatureTemplateType.FireGrub)
     {
         Icon = new SimpleIcon("Kill_Tubeworm", Custom.HSL2RGB(0.1f, 1f, 0.5f));
-        RegisterUnlock(KillScore.Configurable(5), SandboxUnlockID.FireGrub);
+        RegisterUnlock(KillScore.Configurable(5), PBSandboxUnlockID.FireGrub);
         SandboxPerformanceCost = new (3f, 1.5f);
         LoadedPerformanceCost = 100f;
         ShelterDanger = ShelterDanger.Safe;

@@ -30,7 +30,7 @@ public class ScholarScavHooks
     private static void Scavenger_GrabbedObjectSnatched(On.Scavenger.orig_GrabbedObjectSnatched orig, Scavenger self, PhysicalObject grabbedObject, Creature thief)
     {
         orig(self, grabbedObject, thief);
-        if (self.Template.type == CreatureTemplateType.UmbraScav)
+        if (self.Template.type == PBCreatureTemplateType.UmbraScav)
         {
             self.AI.agitation = 1f;
         }
@@ -39,7 +39,7 @@ public class ScholarScavHooks
     private static void Scavenger_Throw(On.Scavenger.orig_Throw orig, Scavenger self, Vector2 throwDir)
     {
         orig(self, throwDir);
-        if (self.Template.type == CreatureTemplateType.UmbraScav)
+        if (self.Template.type == PBCreatureTemplateType.UmbraScav)
         {
             if (self.grasps[0].grabbed is Spear)
             {
@@ -51,7 +51,7 @@ public class ScholarScavHooks
     private static void ScavengerGraphics_AddToContainer(On.ScavengerGraphics.orig_AddToContainer orig, ScavengerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, FContainer newContatiner)
     {
         orig(self, sLeaser, rCam, newContatiner);
-        if (self.scavenger.Template.type == CreatureTemplateType.UmbraScav)
+        if (self.scavenger.Template.type == PBCreatureTemplateType.UmbraScav)
         {
             FContainer fcontainer = rCam.ReturnFContainer("Foreground"); //this fixes the shader issue, proper alpha implemented!
             for (int k = self.TotalSprites - 2; k < self.TotalSprites; k++)
@@ -75,7 +75,7 @@ public class ScholarScavHooks
     private static void ScavengerGraphics_ctor(On.ScavengerGraphics.orig_ctor orig, ScavengerGraphics self, PhysicalObject ow)
     {
         orig(self, ow);
-        if (self.scavenger.Template.type == CreatureTemplateType.UmbraScav)
+        if (self.scavenger.Template.type == PBCreatureTemplateType.UmbraScav)
         {
             self.maskGfx = new VultureMaskGraphics(self.scavenger, UmbraMask.UMBRA, self.MaskSprite, "UmbraMask");
             self.maskGfx.GenerateColor(self.scavenger.abstractCreature.ID.RandomSeed);
@@ -87,7 +87,7 @@ public class ScholarScavHooks
         orig(self, sLeaser, rCam);
         for (int i = 0; i < sLeaser.sprites.Length; i++)
         {
-            if (self.scavenger.Template.type == CreatureTemplateType.UmbraScav)
+            if (self.scavenger.Template.type == PBCreatureTemplateType.UmbraScav)
             {
                 sLeaser.sprites[self.TotalSprites - 1] = new FSprite("pixel", true);
                 sLeaser.sprites[self.TotalSprites - 1].scale = 5f;
@@ -112,7 +112,7 @@ public class ScholarScavHooks
         float2 floatTheSequel = camPosV2.ToF2(); //@float in ScavengerGraphics.DrawSPrites
         for (int i = 0; i < sLeaser.sprites.Length; i++)
         {
-            if (self.scavenger.Template.type == CreatureTemplateType.UmbraScav)
+            if (self.scavenger.Template.type == PBCreatureTemplateType.UmbraScav)
             {
                 //Mark
                 sLeaser.sprites[self.TotalSprites - 1].x = float2.x - floatTheSequel.x;
@@ -152,7 +152,7 @@ public class ScholarScavHooks
     private static void Scavenger_ctor(On.Scavenger.orig_ctor orig, Scavenger self, AbstractCreature abstractCreature, World world)
     {
         orig(self, abstractCreature, world);
-        if (self.Template.type == CreatureTemplateType.UmbraScav)
+        if (self.Template.type == PBCreatureTemplateType.UmbraScav)
         {
             self.abstractCreature.personality.aggression = 0.4f;
             self.abstractCreature.personality.bravery = 0.6f;
@@ -166,7 +166,7 @@ public class ScholarScavHooks
     private static void ScavengerGraphics_GenerateColors(On.ScavengerGraphics.orig_GenerateColors orig, ScavengerGraphics self)
     {
         orig(self);
-        if (self.scavenger.Template.type == CreatureTemplateType.UmbraScav)
+        if (self.scavenger.Template.type == PBCreatureTemplateType.UmbraScav)
         {
             self.bodyColor = new HSLColor(0.08184808f, 0.06207584f, 0.8753151f);
             self.headColor = new HSLColor(0.08184808f, 0.06207584f, 0.8753151f);
@@ -179,7 +179,7 @@ public class ScholarScavHooks
     private static void IndividualVariations_ctor(On.ScavengerGraphics.IndividualVariations.orig_ctor orig, ref ScavengerGraphics.IndividualVariations self, Scavenger scavenger)
     {
         orig(ref self, scavenger);
-        if (scavenger.Template.type == CreatureTemplateType.UmbraScav)
+        if (scavenger.Template.type == PBCreatureTemplateType.UmbraScav)
         {
             self.generalMelanin = 0.25f;
             self.headSize = 0.4048982f;
@@ -204,7 +204,7 @@ public class ScholarScavHooks
     private static void Scavenger_SetUpCombatSkills(On.Scavenger.orig_SetUpCombatSkills orig, Scavenger self)
     {
         orig(self);
-        if (self.Template.type == CreatureTemplateType.UmbraScav)
+        if (self.Template.type == PBCreatureTemplateType.UmbraScav)
         {
             self.dodgeSkill = 0.7692045f;
             self.midRangeSkill = 0.3360332f;

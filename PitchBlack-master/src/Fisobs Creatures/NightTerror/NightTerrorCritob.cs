@@ -9,10 +9,10 @@ using static PathCost.Legality;
 namespace PitchBlack;
 sealed class NightTerrorCritob : Critob
 {
-    internal NightTerrorCritob() : base(CreatureTemplateType.NightTerror)
+    internal NightTerrorCritob() : base(PBCreatureTemplateType.NightTerror)
     {
         Icon = new SimpleIcon("Night_Terror", new Color(0.529f, 0.184f, 0.360f));
-        RegisterUnlock(KillScore.Configurable(25), SandboxUnlockID.NightTerror);
+        RegisterUnlock(KillScore.Configurable(25), PBSandboxUnlockID.NightTerror);
         SandboxPerformanceCost = new(3f, 1.5f);
         LoadedPerformanceCost = 200f;
         ShelterDanger = ShelterDanger.Hostile;

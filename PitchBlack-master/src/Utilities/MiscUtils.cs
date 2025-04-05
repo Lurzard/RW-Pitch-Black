@@ -30,7 +30,7 @@ public static class MiscUtils {
 
         return false;
     }
-    public static bool IsNightTerror(this CreatureTemplate creatureTemplate) => creatureTemplate.type == CreatureTemplateType.NightTerror;
+    public static bool IsNightTerror(this CreatureTemplate creatureTemplate) => creatureTemplate.type == PBCreatureTemplateType.NightTerror;
     public static void SaveCollectionData() {
         string data = "";
         foreach (KeyValuePair<string, bool> keyValuePair in collectionSaveData) {

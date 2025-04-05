@@ -19,7 +19,7 @@ public class MoonDialogue
         orig(self);
         CreatureTemplate.Type randomCreatue = self.CheckStrayCreatureInRoom();
 
-        if (randomCreatue == CreatureTemplateType.NightTerror) //or NT wing or mini terror
+        if (randomCreatue == PBCreatureTemplateType.NightTerror) //or NT wing or mini terror
         {
             int num = UnityEngine.Random.Range(0, 3);
 
@@ -38,19 +38,19 @@ public class MoonDialogue
             return;
         }
 
-        if (randomCreatue == CreatureTemplateType.LMiniLongLegs)
+        if (randomCreatue == PBCreatureTemplateType.LMiniLongLegs)
         {
             self.dialogBox.NewMessage(self.Translate("Oh no."), 10);
             return;
         }
 
-        if (randomCreatue == CreatureTemplateType.Rotrat)
+        if (randomCreatue == PBCreatureTemplateType.Rotrat)
         {
             self.dialogBox.NewMessage(self.Translate("No. Get it out!"), 10);
             return;
         }
 
-        if (randomCreatue == CreatureTemplateType.FireGrub)
+        if (randomCreatue == PBCreatureTemplateType.FireGrub)
         {
             self.dialogBox.NewMessage(self.Translate("What- How?"), 10);
             return;

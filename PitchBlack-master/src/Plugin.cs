@@ -59,6 +59,7 @@ class Plugin : BaseUnityPlugin
             Content.Register(new NightTerrorCritob());
             Content.Register(new ScholarScavCritob());
             Content.Register(new UmbraMaskFisob());
+            PBSoundID.RegisterValues();
         } catch (Exception err) {
             //Debug.LogError(err); Debug errors
             Logger.LogError(err);
@@ -228,14 +229,15 @@ class Plugin : BaseUnityPlugin
         {
             if (mod.id == MOD_ID)
             {
-                if (MultiplayerUnlocks.CreatureUnlockList.Contains(SandboxUnlockID.NightTerror))
-                    MultiplayerUnlocks.CreatureUnlockList.Remove(SandboxUnlockID.NightTerror);
+                if (MultiplayerUnlocks.CreatureUnlockList.Contains(PBSandboxUnlockID.NightTerror))
+                    MultiplayerUnlocks.CreatureUnlockList.Remove(PBSandboxUnlockID.NightTerror);
 
-                if (MultiplayerUnlocks.CreatureUnlockList.Contains(SandboxUnlockID.LMiniLongLegs))
-                    MultiplayerUnlocks.CreatureUnlockList.Remove(SandboxUnlockID.LMiniLongLegs);
+                if (MultiplayerUnlocks.CreatureUnlockList.Contains(PBSandboxUnlockID.LMiniLongLegs))
+                    MultiplayerUnlocks.CreatureUnlockList.Remove(PBSandboxUnlockID.LMiniLongLegs);
 
-                CreatureTemplateType.UnregisterValues();
-                SandboxUnlockID.UnregisterValues();
+                PBCreatureTemplateType.UnregisterValues();
+                PBSandboxUnlockID.UnregisterValues();
+                PBSoundID.UnregisterValues();
 
                 break;
             }

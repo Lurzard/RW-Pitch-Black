@@ -1,8 +1,9 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace PitchBlack;
 
-public static class CreatureTemplateType
+public static class PBCreatureTemplateType
 {
     [AllowNull] public static CreatureTemplate.Type NightTerror = new("NightTerror", true);
     [AllowNull] public static CreatureTemplate.Type LMiniLongLegs = new(nameof(LMiniLongLegs), true);
@@ -44,7 +45,7 @@ public static class CreatureTemplateType
     }
 }
 
-public static class SandboxUnlockID
+public static class PBSandboxUnlockID
 {
     [AllowNull] public static MultiplayerUnlocks.SandboxUnlockID NightTerror = new("NightTerror", true);
     [AllowNull] public static MultiplayerUnlocks.SandboxUnlockID LMiniLongLegs = new(nameof(LMiniLongLegs), true);
@@ -83,5 +84,56 @@ public static class SandboxUnlockID
             UmbraScav = null;
         }
 #endif
+    }
+}
+
+public class PBSoundID
+
+{
+    public static SoundID Player_Activated_Thanatosis;
+    public static SoundID Player_Deactivated_Thanatosis;
+    public static SoundID Player_Deactivated_Thanatosis_From_Stun;
+    public static SoundID Player_Died_From_Thanatosis;
+    public static SoundID Player_Revived;
+
+    public static void RegisterValues() {
+        Player_Activated_Thanatosis = new SoundID("Player_Activated_Thanatosis", true);
+        Player_Deactivated_Thanatosis = new SoundID("Player_Deactivated_Thanatosis", true);
+        Player_Deactivated_Thanatosis_From_Stun = new SoundID("Player_Deactivated_Thanatosis_From_Stun", true);
+        Player_Died_From_Thanatosis = new SoundID("Player_Died_From_Thanatosis", true);
+        Player_Revived = new SoundID("Player_Revived", true);
+    }
+
+    public static void UnregisterValues()
+    {
+        SoundID activatedThanatosis = Player_Activated_Thanatosis;
+        if (activatedThanatosis != null) {
+            activatedThanatosis.Unregister();
+            Player_Activated_Thanatosis = null;
+        }
+
+        SoundID deactivatedThanatosis = Player_Deactivated_Thanatosis;
+        if (deactivatedThanatosis != null) {
+            deactivatedThanatosis.Unregister();
+            Player_Deactivated_Thanatosis = null;
+        }
+
+        SoundID deactivatedThanatosisFromStun = Player_Deactivated_Thanatosis_From_Stun;
+        if (deactivatedThanatosisFromStun != null) {
+            deactivatedThanatosisFromStun.Unregister();
+            Player_Deactivated_Thanatosis_From_Stun = null;
+        }
+
+        SoundID playerDiedFromThanatosis = Player_Died_From_Thanatosis;
+        if (playerDiedFromThanatosis != null) {
+            playerDiedFromThanatosis.Unregister();
+            Player_Died_From_Thanatosis = null;
+        }
+
+        SoundID playerRevived = Player_Revived;
+        if (playerRevived != null) {
+            playerRevived.Unregister();
+            Player_Revived = null;
+        }
     }
 }

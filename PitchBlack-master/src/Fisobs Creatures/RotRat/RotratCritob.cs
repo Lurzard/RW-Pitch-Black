@@ -9,12 +9,12 @@ namespace PitchBlack;
 
 public class RotRatCritob : Critob
 {
-    public RotRatCritob() : base(CreatureTemplateType.Rotrat)
+    public RotRatCritob() : base(PBCreatureTemplateType.Rotrat)
     {
         Icon = new SimpleIcon("Kill_Mouse", new Color(1f, 0.4f, 0f));
         LoadedPerformanceCost = 100f;
         SandboxPerformanceCost = new SandboxPerformanceCost(0.5f, 0.5f);
-        RegisterUnlock(KillScore.Configurable(3), SandboxUnlockID.Rotrat);
+        RegisterUnlock(KillScore.Configurable(3), PBSandboxUnlockID.Rotrat);
         RotRatHooks.Apply();
     }
     public override ArtificialIntelligence CreateRealizedAI(AbstractCreature acrit)
@@ -33,7 +33,7 @@ public class RotRatCritob : Critob
 
     public override CreatureTemplate CreateTemplate()
     {
-        CreatureTemplate t = new CreatureFormula(CreatureTemplate.Type.LanternMouse, CreatureTemplateType.Rotrat, "Rotrat").IntoTemplate();
+        CreatureTemplate t = new CreatureFormula(CreatureTemplate.Type.LanternMouse, PBCreatureTemplateType.Rotrat, "Rotrat").IntoTemplate();
         t.dangerousToPlayer = 1;
         t.grasps = 1;
         t.stowFoodInDen = true;
@@ -46,7 +46,7 @@ public class RotRatCritob : Critob
     }
     public override void EstablishRelationships()
     {
-        Relationships rels = new Relationships(CreatureTemplateType.Rotrat);
+        Relationships rels = new Relationships(PBCreatureTemplateType.Rotrat);
         rels.HasDynamicRelationship(CreatureTemplate.Type.Slugcat, 1f);
         rels.Eats(CreatureTemplate.Type.JetFish,1f);
         rels.Eats(CreatureTemplate.Type.Scavenger, 1f);

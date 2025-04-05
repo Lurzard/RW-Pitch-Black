@@ -98,7 +98,7 @@ public class NTTracker
             }
             WorldCoordinate spawnPos = shorcut.destinationCoord;
 
-            pursuer = new AbstractCreature(game.world, StaticWorld.GetCreatureTemplate(CreatureTemplateType.NightTerror), null, spawnPos, game.GetNewID());
+            pursuer = new AbstractCreature(game.world, StaticWorld.GetCreatureTemplate(PBCreatureTemplateType.NightTerror), null, spawnPos, game.GetNewID());
             // pursuer.abstractAI.SetDestination(targetPlayer.pos);
             game.world.GetAbstractRoom(spawnPos).AddEntity(pursuer);
             pursuer.RealizeInRoom();

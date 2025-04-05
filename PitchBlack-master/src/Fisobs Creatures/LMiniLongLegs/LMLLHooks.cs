@@ -17,7 +17,7 @@ static class LMLLHooks
     internal static void Apply()
     {
         new Hook(typeof(DaddyLongLegs).GetMethod("get_SizeClass", Public | NonPublic | Instance), AdjustSizeClass);
-        On.MoreSlugcats.StowawayBugAI.WantToEat += (On.MoreSlugcats.StowawayBugAI.orig_WantToEat orig, StowawayBugAI self, CreatureTemplate.Type input) => input != CreatureTemplateType.LMiniLongLegs && orig(self, input);
+        On.MoreSlugcats.StowawayBugAI.WantToEat += (On.MoreSlugcats.StowawayBugAI.orig_WantToEat orig, StowawayBugAI self, CreatureTemplate.Type input) => input != PBCreatureTemplateType.LMiniLongLegs && orig(self, input);
         On.SLOracleBehaviorHasMark.CreatureJokeDialog += SLOracleBehaviorHasMark_CreatureJokeDialog;
         On.SSOracleBehavior.CreatureJokeDialog += SSOracleBehavior_CreatureJokeDialog;
         On.OverseerAbstractAI.HowInterestingIsCreature += OverseerAbstractAI_HowInterestingIsCreature;
@@ -50,7 +50,7 @@ static class LMLLHooks
     static void DaddyGraphics_DrawSprites(On.DaddyGraphics.orig_DrawSprites orig, DaddyGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
     {
         orig(self, sLeaser, rCam, timeStacker, camPos);
-        if (self.daddy.Template.type == CreatureTemplateType.LMiniLongLegs) {
+        if (self.daddy.Template.type == PBCreatureTemplateType.LMiniLongLegs) {
             for (int i = 0; i < self.daddy.bodyChunks.Length; i++) {
                 sLeaser.sprites[self.BodySprite(i)].scale = (self.owner.bodyChunks[i].rad * 1.1f + 2f) / 8f;
             }
@@ -95,18 +95,18 @@ static class LMLLHooks
         return res;
     }
     static bool AdjustSizeClass(Func<DaddyLongLegs, bool> orig, DaddyLongLegs self) {
-        return self.Template.type != CreatureTemplateType.LMiniLongLegs && orig(self);
+        return self.Template.type != PBCreatureTemplateType.LMiniLongLegs && orig(self);
     }
     static CreatureTemplate.Relationship DaddyAI_IUseARelationshipTracker_UpdateDynamicRelationship(On.DaddyAI.orig_IUseARelationshipTracker_UpdateDynamicRelationship orig, DaddyAI self, RelationshipTracker.DynamicRelationship dRelation)
     {
         CreatureTemplate.Relationship res = orig(self, dRelation);
-        if (self.creature?.creatureTemplate.type is CreatureTemplate.Type tp && tp != CreatureTemplate.Type.BrotherLongLegs && tp != CreatureTemplateType.LMiniLongLegs && dRelation.trackerRep?.representedCreature is AbstractCreature c && c.creatureTemplate.type == CreatureTemplateType.LMiniLongLegs)
+        if (self.creature?.creatureTemplate.type is CreatureTemplate.Type tp && tp != CreatureTemplate.Type.BrotherLongLegs && tp != PBCreatureTemplateType.LMiniLongLegs && dRelation.trackerRep?.representedCreature is AbstractCreature c && c.creatureTemplate.type == PBCreatureTemplateType.LMiniLongLegs)
         {
             bool flag = self.daddy is DaddyLongLegs d && c.realizedCreature is DaddyLongLegs d2 && d.eyeColor == d2.eyeColor && d.effectColor == d2.effectColor;
             res.type = flag ? CreatureTemplate.Relationship.Type.Ignores : CreatureTemplate.Relationship.Type.Eats;
             res.intensity = flag ? 0f : 1f;
         }
-        if (self.creature?.realizedCreature is LittleLongLegs lmll && dRelation.trackerRep?.representedCreature?.realizedCreature is Creature crit && crit.Template.type != CreatureTemplateType.LMiniLongLegs && lmll.mainBodyChunk.rad > crit.mainBodyChunk.rad*1.1f) {
+        if (self.creature?.realizedCreature is LittleLongLegs lmll && dRelation.trackerRep?.representedCreature?.realizedCreature is Creature crit && crit.Template.type != PBCreatureTemplateType.LMiniLongLegs && lmll.mainBodyChunk.rad > crit.mainBodyChunk.rad*1.1f) {
             res.type = CreatureTemplate.Relationship.Type.Eats;
             res.intensity = 1f;
         }
@@ -115,7 +115,7 @@ static class LMLLHooks
     static void On_DaddyLongLegs_ctor(On.DaddyLongLegs.orig_ctor orig, DaddyLongLegs self, AbstractCreature abstractCreature, World world)
     {
         orig(self, abstractCreature, world);
-        if (abstractCreature.creatureTemplate.type == CreatureTemplateType.LMiniLongLegs)
+        if (abstractCreature.creatureTemplate.type == PBCreatureTemplateType.LMiniLongLegs)
         {
             if (world.region?.regionParams is Region.RegionParams r)
             {
@@ -138,7 +138,7 @@ static class LMLLHooks
         {
             c.Emit(Ldarg_0);
             c.EmitDelegate((int length, DaddyLongLegs self) => {
-                if (self.Template.type == CreatureTemplateType.LMiniLongLegs) {
+                if (self.Template.type == PBCreatureTemplateType.LMiniLongLegs) {
                     if (Random.value >= 0.94f) {
                         return 3;
                     }
@@ -154,7 +154,7 @@ static class LMLLHooks
             c.Emit(Ldarg_0);
             c.EmitDelegate((BodyChunk chunk, DaddyLongLegs self) =>
             {
-                if (self.Template.type == CreatureTemplateType.LMiniLongLegs) {
+                if (self.Template.type == PBCreatureTemplateType.LMiniLongLegs) {
                     chunk.rad *= .5f;
                     chunk.mass *= 0.08f;
                 }
@@ -166,7 +166,7 @@ static class LMLLHooks
         if (c.TryGotoNext(MoveType.After, x => x.MatchNewarr<DaddyTentacle>()) && c.TryGotoNext(x => x.MatchNewarr<DaddyTentacle>()))
         {
             c.Emit(Ldarg_0);
-            c.EmitDelegate((int length, DaddyLongLegs self) => self.Template.type == CreatureTemplateType.LMiniLongLegs ? Random.Range(3, 5) : length);
+            c.EmitDelegate((int length, DaddyLongLegs self) => self.Template.type == PBCreatureTemplateType.LMiniLongLegs ? Random.Range(3, 5) : length);
         }
         else
             Plugin.logger.LogError("Couldn't ILHook DaddyLongLegs.ctor (part 3)!");
@@ -180,7 +180,7 @@ static class LMLLHooks
             }));
             c.EmitDelegate((DaddyLongLegs self, List<float> sz) =>
             {
-                if (self.Template.type == CreatureTemplateType.LMiniLongLegs)
+                if (self.Template.type == PBCreatureTemplateType.LMiniLongLegs)
                 {
                     for (var i = 0; i < sz.Count; i++)
                         sz[i] *= .4f;
@@ -193,7 +193,7 @@ static class LMLLHooks
     static void DaddyLongLegs_Update(On.DaddyLongLegs.orig_Update orig, DaddyLongLegs self, bool eu)
     {
         orig(self, eu);
-        if (self.Template.type == CreatureTemplateType.LMiniLongLegs) {
+        if (self.Template.type == PBCreatureTemplateType.LMiniLongLegs) {
             if (self.Consious && self.moving)
             {
                 for (var i = 0; i < self.bodyChunks.Length; i++)
@@ -236,25 +236,25 @@ static class LMLLHooks
         if (c.TryGotoNext(MoveType.After, x => x.MatchLdcR4(0.6f)))
         {
             c.Emit(Ldarg_0);
-            c.EmitDelegate((float num, DaddyLongLegs self) => self.safariControlled && self.Template.type == CreatureTemplateType.LMiniLongLegs ? 0.45f : num);
+            c.EmitDelegate((float num, DaddyLongLegs self) => self.safariControlled && self.Template.type == PBCreatureTemplateType.LMiniLongLegs ? 0.45f : num);
         }
         else
             Plugin.logger.LogError("Couldn't ILHook DaddyLongLegs.Act!");
     }
     static void SLOracleBehaviorHasMark_CreatureJokeDialog(On.SLOracleBehaviorHasMark.orig_CreatureJokeDialog orig,  SLOracleBehaviorHasMark self) {
         orig(self);
-        if (self.CheckStrayCreatureInRoom() == CreatureTemplateType.LMiniLongLegs) {
+        if (self.CheckStrayCreatureInRoom() == PBCreatureTemplateType.LMiniLongLegs) {
             self.dialogBox.NewMessage(self.Translate("Oh no."), 10);
         }
     }
     static void SSOracleBehavior_CreatureJokeDialog(On.SSOracleBehavior.orig_CreatureJokeDialog orig, SSOracleBehavior self) {
         orig(self);
-        if (self.CheckStrayCreatureInRoom() == CreatureTemplateType.LMiniLongLegs) {
+        if (self.CheckStrayCreatureInRoom() == PBCreatureTemplateType.LMiniLongLegs) {
             self.dialogBox.NewMessage(self.Translate("Take your friend with you. Please. I beg you.."), 10);
         }
     }
     static float OverseerAbstractAI_HowInterestingIsCreature(On.OverseerAbstractAI.orig_HowInterestingIsCreature orig, OverseerAbstractAI self, AbstractCreature testCrit) {
-        if (testCrit?.creatureTemplate.type == CreatureTemplateType.LMiniLongLegs)
+        if (testCrit?.creatureTemplate.type == PBCreatureTemplateType.LMiniLongLegs)
         {
             var num = .2f;
             if (testCrit.state.dead)

@@ -11,10 +11,10 @@ namespace PitchBlack;
 
 sealed class LMLLCritob : Critob
 {
-    internal LMLLCritob() : base(CreatureTemplateType.LMiniLongLegs)
+    internal LMLLCritob() : base(PBCreatureTemplateType.LMiniLongLegs)
     {
         Icon = new SimpleIcon("Kill_LMLL", Color.grey);
-        RegisterUnlock(KillScore.Configurable(5), SandboxUnlockID.LMiniLongLegs);
+        RegisterUnlock(KillScore.Configurable(5), PBSandboxUnlockID.LMiniLongLegs);
         SandboxPerformanceCost = new(1.5f, 1.25f);
         LoadedPerformanceCost = 100f;
         ShelterDanger = ShelterDanger.Hostile;
