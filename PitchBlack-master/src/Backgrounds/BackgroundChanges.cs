@@ -12,7 +12,7 @@ namespace PitchBlack;
     private static void AboveCloudsView_ctor(On.AboveCloudsView.orig_ctor orig, AboveCloudsView self, Room room, RoomSettings.RoomEffect effect)
     {
         orig(self, room, effect);
-        if (room.game.IsStorySession && room.game.GetStorySession.saveStateNumber == Plugin.Beacon)
+        if (room.game.IsStorySession && room.game.GetStorySession.saveStateNumber == PBSlugcatStatsName.Beacon)
         {
             if (room.world.region.name == "UW")
             {
@@ -27,7 +27,7 @@ namespace PitchBlack;
     private static void RoofTopView_ctor(On.RoofTopView.orig_ctor orig, RoofTopView self, Room room, RoomSettings.RoomEffect effect)
     {
         orig(self, room, effect);
-        if (room.game.GetStorySession.saveStateNumber == Plugin.Beacon)
+        if (room.game.GetStorySession.saveStateNumber == PBSlugcatStatsName.Beacon)
         {
             if (room.world.region.name == "UW")
             {

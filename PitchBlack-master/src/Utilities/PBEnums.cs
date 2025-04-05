@@ -13,35 +13,27 @@ public static class PBCreatureTemplateType
     [AllowNull] public static CreatureTemplate.Type FireGrub = new (nameof(FireGrub), true);
 #endif
 
-    public static void UnregisterValues()
-    {
-        if (NightTerror != null)
-        {
+    public static void UnregisterValues() {
+        if (NightTerror != null) {
             NightTerror.Unregister();
             NightTerror = null;
         }
-        if (LMiniLongLegs != null)
-        {
+        if (LMiniLongLegs != null) {
             LMiniLongLegs.Unregister();
             LMiniLongLegs = null;
         }
-#if PLAYTEST
-        if (Rotrat != null)
-        {
+        if (Rotrat != null) {
             Rotrat.Unregister();
             Rotrat = null;
         }
-        if (FireGrub != null)
-        {
+        if (FireGrub != null) {
             FireGrub.Unregister();
             FireGrub = null;
         }
-        if (UmbraScav != null)
-        {
+        if (UmbraScav != null) {
             UmbraScav.Unregister();
             UmbraScav = null;
         }
-#endif
     }
 }
 
@@ -57,39 +49,30 @@ public static class PBSandboxUnlockID
 
     public static void UnregisterValues()
     {
-        if (NightTerror != null)
-        {
+        if (NightTerror != null) {
             NightTerror.Unregister();
             NightTerror = null;
         }
-        if (LMiniLongLegs != null)
-        {
+        if (LMiniLongLegs != null) {
             LMiniLongLegs.Unregister();
             LMiniLongLegs = null;
         }
-#if PLAYTEST
-        if (Rotrat != null)
-        {
+        if (Rotrat != null) {
             Rotrat.Unregister();
             Rotrat = null;
         }
-        if (FireGrub != null)
-        {
+        if (FireGrub != null) {
             FireGrub.Unregister();
             FireGrub = null;
         }
-        if (UmbraScav != null)
-        {
+        if (UmbraScav != null) {
             UmbraScav.Unregister();
             UmbraScav = null;
         }
-#endif
     }
 }
 
-public class PBSoundID
-
-{
+public class PBSoundID {
     public static SoundID Player_Activated_Thanatosis;
     public static SoundID Player_Deactivated_Thanatosis;
     public static SoundID Player_Deactivated_Thanatosis_From_Stun;
@@ -104,36 +87,45 @@ public class PBSoundID
         Player_Revived = new SoundID("Player_Revived", true);
     }
 
-    public static void UnregisterValues()
-    {
+    public static void UnregisterValues() {
         SoundID activatedThanatosis = Player_Activated_Thanatosis;
         if (activatedThanatosis != null) {
             activatedThanatosis.Unregister();
-            Player_Activated_Thanatosis = null;
         }
 
         SoundID deactivatedThanatosis = Player_Deactivated_Thanatosis;
         if (deactivatedThanatosis != null) {
             deactivatedThanatosis.Unregister();
-            Player_Deactivated_Thanatosis = null;
         }
 
         SoundID deactivatedThanatosisFromStun = Player_Deactivated_Thanatosis_From_Stun;
         if (deactivatedThanatosisFromStun != null) {
             deactivatedThanatosisFromStun.Unregister();
-            Player_Deactivated_Thanatosis_From_Stun = null;
         }
 
         SoundID playerDiedFromThanatosis = Player_Died_From_Thanatosis;
         if (playerDiedFromThanatosis != null) {
             playerDiedFromThanatosis.Unregister();
-            Player_Died_From_Thanatosis = null;
         }
 
         SoundID playerRevived = Player_Revived;
         if (playerRevived != null) {
             playerRevived.Unregister();
-            Player_Revived = null;
+        }
+    }
+}
+
+public class PBSlugcatStatsName {
+    public static SlugcatStats.Name Beacon;
+
+    public static void RegisterValues() {
+        Beacon = new SlugcatStats.Name("Beacon", false);
+    }
+
+    public static void UnregisterValues() {
+        SlugcatStats.Name beacon = Beacon;
+        if (beacon != null) {
+            beacon.Unregister();
         }
     }
 }

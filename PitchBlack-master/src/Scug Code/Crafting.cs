@@ -43,7 +43,7 @@ public static class Crafting
             c.Emit(OpCodes.Ldarg_0);
             c.EmitDelegate<Func<Player, bool>>(self =>
             {
-                return self.slugcatStats.name == Plugin.Photomaniac || Plugin.Beacon == self.slugcatStats.name;
+                return self.slugcatStats.name == Plugin.Photomaniac || PBSlugcatStatsName.Beacon == self.slugcatStats.name;
             });
             c.Emit(OpCodes.Brtrue_S, label);
 
@@ -60,12 +60,12 @@ public static class Crafting
     {
         bool val = orig(self);
 
-        if (Plugin.Photomaniac == self.slugcatStats.name || Plugin.Beacon == self.slugcatStats.name)
+        if (Plugin.Photomaniac == self.slugcatStats.name || PBSlugcatStatsName.Beacon == self.slugcatStats.name)
         {
             //if (self.FoodInStomach <= 0) //cant craft on an empty stomach
             //    return false;
 
-            if (Plugin.Beacon == self.slugcatStats.name
+            if (PBSlugcatStatsName.Beacon == self.slugcatStats.name
                 && self.grasps[0]?.grabbed != null && self.CanBeSwallowed(self.grasps[0].grabbed)
                 && self.grasps[0].grabbed is not Rock)
             {
@@ -106,9 +106,9 @@ public static class Crafting
                             BeaconHooks.foodWarning = 20; //NOT ENOUGH FOOD! ALSO SHOW A HUD WARNING
                     }
                 }
-                else if (Plugin.Beacon == self.slugcatStats.name)
+                else if (PBSlugcatStatsName.Beacon == self.slugcatStats.name)
                 {
-                    if (grabbed is Rock)
+                    if (grabbed is Rock || grabbed is WaterNut || grabbed is Lantern )
                     {
                         if (self.FoodInStomach > 0) //you have food, yippee you can craft
                             canCraft = true;
@@ -132,7 +132,7 @@ public static class Crafting
         c.Emit(OpCodes.Ldarg_0);
         c.EmitDelegate((Player self) =>
         {
-            return Plugin.Photomaniac == self.slugcatStats.name || Plugin.Beacon == self.slugcatStats.name;
+            return Plugin.Photomaniac == self.slugcatStats.name || PBSlugcatStatsName.Beacon == self.slugcatStats.name;
         });
         c.Emit(OpCodes.Brfalse, label);
 
@@ -141,7 +141,7 @@ public static class Crafting
         {
             if (Plugin.Photomaniac == self.slugcatStats.name)
                 self.PhotoCrafting();
-            else if (Plugin.Beacon == self.slugcatStats.name)
+            else if (PBSlugcatStatsName.Beacon == self.slugcatStats.name)
                 self.BeaconCrafting();
         });
         c.Emit(OpCodes.Ret);

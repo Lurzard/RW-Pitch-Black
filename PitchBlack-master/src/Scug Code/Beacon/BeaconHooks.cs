@@ -240,7 +240,7 @@ public static class BeaconHooks
     }
 
     private static void Creature_Abstractize(On.Creature.orig_Abstractize orig, Creature self) {
-        if (self is Player player && player.slugcatStats?.name == Plugin.Beacon) {
+        if (self is Player player && player.slugcatStats?.name == PBSlugcatStatsName.Beacon) {
             DropAllFlares(player);
         }
         orig(self);
@@ -264,7 +264,7 @@ public static class BeaconHooks
     private static void Player_Jump(On.Player.orig_Jump orig, Player self) {
         orig(self);
 
-        if (Plugin.Beacon == self.slugcatStats.name) {
+        if (PBSlugcatStatsName.Beacon == self.slugcatStats.name) {
             if (Player.AnimationIndex.Flip == self.animation)
                 self.jumpBoost *= 1f + 0.55f;
             else
@@ -274,7 +274,7 @@ public static class BeaconHooks
 
     public static void BeaconTransmuteIntoFlashbang(On.Player.orig_SwallowObject orig, Player self, int grasp) {
         orig(self, grasp);
-        if (self.slugcatStats.name == Plugin.Beacon && self.playerState.foodInStomach > 0 && self.objectInStomach.type == AbstractObjectType.Rock) {
+        if (self.slugcatStats.name == PBSlugcatStatsName.Beacon && self.playerState.foodInStomach > 0 && self.objectInStomach.type == AbstractObjectType.Rock) {
             self.objectInStomach = new AbstractConsumable(self.room.world, AbstractObjectType.FlareBomb, null, self.abstractCreature.pos, self.room.game.GetNewID(), -1, -1, null);
             self.SubtractFood(1);
 
@@ -439,7 +439,7 @@ public static class BeaconHooks
             cwt.dontThrowTimer = 15; //BRIEF PERIOD OF DON'T THROW A FLASHBANG
             //MAYBE A FANCY COLOR?...
             if (self.grasps[grasp].grabbed is FlareBomb flare) {
-                flare.color = new Color(0.89411764705f, 0.29803921568f, 0.72549019607f); //Color(0.2f, 0f, 1f); //WE COULD GIVE IT A FUNKY COLOR, IF WE WANT... //yurpnuke
+                flare.color = new Color(0.3f, 0f, 1f); //WE COULD GIVE IT A FUNKY COLOR, IF WE WANT... //yurpnuke
                 cwt.dontThrowTimer = 60; //DON'T THROW ANOTHER ONE FOR A WHILE
             }
         }

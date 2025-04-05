@@ -31,7 +31,6 @@ class Plugin : BaseUnityPlugin
     public static readonly Dictionary<string, bool> collectionSaveData = new Dictionary<string, bool>();
     public static ConditionalWeakTable<RainWorldGame, List<RiftWorldPrecence>> riftCWT = new();
 
-    public static readonly SlugcatStats.Name Beacon = new("Beacon", false);
     public static readonly SlugcatStats.Name Photomaniac = new("Photomaniac", false);
 
     private bool init = false;
@@ -60,6 +59,7 @@ class Plugin : BaseUnityPlugin
             Content.Register(new ScholarScavCritob());
             Content.Register(new UmbraMaskFisob());
             PBSoundID.RegisterValues();
+            //PBSlugcatStatsName.RegisterValues();
         } catch (Exception err) {
             //Debug.LogError(err); Debug errors
             Logger.LogError(err);
@@ -238,6 +238,7 @@ class Plugin : BaseUnityPlugin
                 PBCreatureTemplateType.UnregisterValues();
                 PBSandboxUnlockID.UnregisterValues();
                 PBSoundID.UnregisterValues();
+                //PBSlugcatStatsName.UnregisterValues();
 
                 break;
             }
