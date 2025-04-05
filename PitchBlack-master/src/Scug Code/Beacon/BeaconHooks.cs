@@ -37,6 +37,7 @@ public static class BeaconHooks
     }
 
     public static int previouslyStoredFlares = 0; //for color lerping from old color to new color
+    public static bool reset = false; //resets int
 
     public static void BeaconColorLerp(Player self) {
         if (Plugin.scugCWT.TryGetValue(self, out ScugCWT scugCWT) && scugCWT is BeaconCWT beaconCWT) {
@@ -70,44 +71,45 @@ public static class BeaconHooks
             for (int i = 0; i < 2; i++) {
                 if (flares == 0) {
                     if (previouslyStoredFlares > flares) {
-                        beaconCWT.LerpedBeaconColor = Color.Lerp(beaconCWT.beaconColor1, beaconCWT.beaconColor0, beaconCWT.beaconLerp);
-                        if (beaconCWT.beaconLerp == 0f) previouslyStoredFlares = -1;
+                        beaconCWT.LerpedBeaconColor = Color.Lerp(beaconCWT.beaconColor0, beaconCWT.beaconColor1, beaconCWT.beaconLerp); //from flare1 to flare0
+                        reset = true;
                     }
-                    else beaconCWT.LerpedBeaconColor = beaconCWT.beaconColor0; //regular cause no need to lerp
+                    else beaconCWT.LerpedBeaconColor = beaconCWT.beaconColor0; //regular coloration cause no need to lerp
                 }
                 if (flares == 1) {
                     if (previouslyStoredFlares > flares) {
-                        beaconCWT.LerpedBeaconColor = Color.Lerp(beaconCWT.beaconColor2, beaconCWT.beaconColor1, beaconCWT.beaconLerp);
-                        if (beaconCWT.beaconLerp == 0f) previouslyStoredFlares = 0;
+                        beaconCWT.LerpedBeaconColor = Color.Lerp(beaconCWT.beaconColor1, beaconCWT.beaconColor2, beaconCWT.beaconLerp); //from flare2 to flare1
+                        reset = true;
                     }
-                    else beaconCWT.LerpedBeaconColor = Color.Lerp(beaconCWT.beaconColor0, beaconCWT.beaconColor1, beaconCWT.beaconLerp);
+                    else beaconCWT.LerpedBeaconColor = Color.Lerp(beaconCWT.beaconColor0, beaconCWT.beaconColor1, beaconCWT.beaconLerp); //regular to flare1
                 }
                 if (flares == 2) {
                     if (previouslyStoredFlares > flares) {
-                        beaconCWT.LerpedBeaconColor = Color.Lerp(beaconCWT.beaconColor3, beaconCWT.beaconColor2, beaconCWT.beaconLerp);
-                        if (beaconCWT.beaconLerp == 0f) previouslyStoredFlares = 1;
+                        beaconCWT.LerpedBeaconColor = Color.Lerp(beaconCWT.beaconColor2, beaconCWT.beaconColor3, beaconCWT.beaconLerp); //from flare3 to flare2
+                        reset = true;
                     }
-                    else beaconCWT.LerpedBeaconColor = Color.Lerp(beaconCWT.beaconColor1, beaconCWT.beaconColor2, beaconCWT.beaconLerp);
+                    else beaconCWT.LerpedBeaconColor = Color.Lerp(beaconCWT.beaconColor1, beaconCWT.beaconColor2, beaconCWT.beaconLerp); //flare1 to flare2
                 }
                 if (flares == 3) {
                     if (previouslyStoredFlares > flares) {
-                        beaconCWT.LerpedBeaconColor = Color.Lerp(beaconCWT.beaconColor4, beaconCWT.beaconColor3, beaconCWT.beaconLerp);
-                        if (beaconCWT.beaconLerp == 0f) previouslyStoredFlares = 2;
+                        beaconCWT.LerpedBeaconColor = Color.Lerp(beaconCWT.beaconColor3, beaconCWT.beaconColor4, beaconCWT.beaconLerp); //from flare4 to flare3
+                        reset = true;
                     }
-                    else beaconCWT.LerpedBeaconColor = Color.Lerp(beaconCWT.beaconColor2, beaconCWT.beaconColor3, beaconCWT.beaconLerp);
+                    else beaconCWT.LerpedBeaconColor = Color.Lerp(beaconCWT.beaconColor2, beaconCWT.beaconColor3, beaconCWT.beaconLerp); //flare2 to flare3
                 }
                 if (flares == 4) {
-                    beaconCWT.LerpedBeaconColor = Color.Lerp(beaconCWT.beaconColor3, beaconCWT.beaconColor4, beaconCWT.beaconLerp);
+                    beaconCWT.LerpedBeaconColor = Color.Lerp(beaconCWT.beaconColor3, beaconCWT.beaconColor4, beaconCWT.beaconLerp); //finally flare3 to flare4
                 }
-                if (Thanatosis.isDead) beaconCWT.LerpedBeaconColor = Color.Lerp(beaconCWT.UsedBeaconColor, RainWorld.RippleColor, Thanatosis.thanatosisLerp / 10f);
-                if (self.player.dead && !Thanatosis.isDead) beaconCWT.LerpedBeaconColor = Color.Lerp(beaconCWT.BeaconDefaultColor, beaconCWT.UsedBeaconColor, beaconCWT.beaconLerp);
-                BeaconColorLerp(self.player);
+                if (reset && (previouslyStoredFlares != flares) && beaconCWT.beaconLerp == 0f) previouslyStoredFlares = flares; reset = false; //reset previouslyStoredFlares
+                if (Thanatosis.isDead) beaconCWT.LerpedBeaconColor = Color.Lerp(beaconCWT.UsedBeaconColor, RainWorld.RippleColor, Thanatosis.thanatosisLerp / 10f); //if Thanatosis lerp to RippleColor
+                if (self.player.dead && !Thanatosis.isDead) beaconCWT.LerpedBeaconColor = Color.Lerp(beaconCWT.BeaconDefaultColor, beaconCWT.UsedBeaconColor, beaconCWT.beaconLerp); //if ACTUALLY dead lerp to BeaconDefaultColor
+                BeaconColorLerp(self.player); //runs in the background
             }
             //sprites
             for (int sprites = 0; sprites < sLeaser.sprites.Length; sprites++) {
                 if (sprites != 9) sLeaser.sprites[sprites].color = beaconCWT.UsedBeaconColor;
                 if (sprites == 9) sLeaser.sprites[sprites].color = beaconCWT.BeaconEyeColor;
-                if (sprites == 9) sLeaser.sprites[sprites].element = Futile.atlasManager.GetElementWithName(Thanatosis.isDead ? "FaceThanatosis" : "Face");
+                if (sprites == 9) sLeaser.sprites[sprites].element = Futile.atlasManager.GetElementWithName(Thanatosis.isDead ? "FaceThanatosis" : "Face"); //switch face sprites if in Thanatosis
                 if (sprites == 10) sLeaser.sprites[sprites].color = Custom.hexToColor("f02961");
                 if (sprites == 11) sLeaser.sprites[sprites].color = Custom.hexToColor("f02961");
             }
