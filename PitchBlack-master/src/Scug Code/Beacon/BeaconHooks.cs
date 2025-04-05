@@ -99,7 +99,7 @@ public static class BeaconHooks
                 if (flares == 4) {
                     beaconCWT.LerpedBeaconColor = Color.Lerp(beaconCWT.beaconColor3, beaconCWT.beaconColor4, beaconCWT.beaconLerp);
                 }
-                if (Thanatosis.isDead) beaconCWT.LerpedBeaconColor = Color.Lerp(beaconCWT.UsedBeaconColor, RainWorld.RippleColor, Thanatosis.thanatosisLerp);
+                if (Thanatosis.isDead) beaconCWT.LerpedBeaconColor = Color.Lerp(beaconCWT.UsedBeaconColor, RainWorld.RippleColor, Thanatosis.thanatosisLerp / 10f);
                 if (self.player.dead && !Thanatosis.isDead) beaconCWT.LerpedBeaconColor = Color.Lerp(beaconCWT.BeaconDefaultColor, beaconCWT.UsedBeaconColor, beaconCWT.beaconLerp);
                 BeaconColorLerp(self.player);
             }

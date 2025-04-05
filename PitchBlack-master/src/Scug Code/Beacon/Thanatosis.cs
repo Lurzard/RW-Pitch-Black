@@ -28,7 +28,7 @@ public class Thanatosis {
             }
             if (isDead) {
                 inThanatosisTime++;
-                if (thanatosisLerp < ThanatosisLimit / 20f) thanatosisLerp++;
+                if (thanatosisLerp < ThanatosisLimit) thanatosisLerp++;
             }
             if (inThanatosisTime >= ThanatosisLimit) {
                 Debug.Log("WAAAIIIIT DONT DO THAT!!!");
