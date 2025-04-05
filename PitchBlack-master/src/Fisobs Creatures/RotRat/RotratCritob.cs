@@ -59,7 +59,7 @@ public class RotRatCritob : Critob
         rels.Eats(CreatureTemplate.Type.TubeWorm, 1f);
         rels.Eats(CreatureTemplate.Type.Fly, 1f);
         rels.Eats(MoreSlugcats.MoreSlugcatsEnums.CreatureTemplateType.SlugNPC, 1f);
-        rels.Eats(MoreSlugcats.MoreSlugcatsEnums.CreatureTemplateType.Yeek, 1f);
+        rels.Eats(DLCSharedEnums.CreatureTemplateType.Yeek, 1f);
     }
 }
 #endif

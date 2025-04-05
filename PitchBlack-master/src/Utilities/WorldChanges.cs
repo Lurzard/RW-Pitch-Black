@@ -13,7 +13,6 @@ public static class WorldChanges
 {
     public static void Apply()
     {
-        //On.Region.GetProperRegionAcronym += Region_GetProperRegionAcronym;
         On.Expedition.NeuronDeliveryChallenge.ValidForThisSlugcat += NeuronDeliveryChallenge_ValidForThisSlugcat;
         On.Expedition.PearlDeliveryChallenge.ValidForThisSlugcat += PearlDeliveryChallenge_ValidForThisSlugcat;
         On.Room.Update += Room_Update;
@@ -69,36 +68,6 @@ public static class WorldChanges
             self.roomRain.intensity = Mathf.Max(0.1f, Mathf.Max(self.roomRain.intensity, self.roomRain.globalRain.Intensity));
         }
 
-    }
-    public static string Region_GetProperRegionAcronym(On.Region.orig_GetProperRegionAcronym orig, SlugcatStats.Name character, string baseAcronym)
-    {
-        string text = baseAcronym;
-
-        if (MiscUtils.IsBeaconOrPhoto(character))
-        {
-            switch (text)
-            {
-                case "SB":
-                    text = "UD";
-                    break;
-            }
-
-            foreach (var path in AssetManager.ListDirectory("World", true, false)
-                .Select(p => AssetManager.ResolveFilePath($"World{Path.DirectorySeparatorChar}{Path.GetFileName(p)}{Path.DirectorySeparatorChar}equivalences.txt"))
-                .Where(File.Exists)
-                .SelectMany(p => File.ReadAllText(p).Trim().Split(',')))
-            {
-                var parts = path.Contains("-") ? path.Split('-') : new[] { path };
-                if (parts[0] == baseAcronym && (parts.Length == 1 || character.value.Equals(parts[1], System.StringComparison.OrdinalIgnoreCase)))
-                {
-                    text = Path.GetFileName(path).ToUpper();
-                    break;
-                }
-            }
-            return text;
-        }
-
-        return orig(character, baseAcronym);
     }
 
     public static bool PearlDeliveryChallenge_ValidForThisSlugcat(On.Expedition.PearlDeliveryChallenge.orig_ValidForThisSlugcat orig, Expedition.PearlDeliveryChallenge self, SlugcatStats.Name slugcat)

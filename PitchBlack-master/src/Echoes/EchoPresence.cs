@@ -4,11 +4,12 @@ namespace PitchBlack;
 public class EchoPresence
 {
     public static void Apply() {
-        On.GhostWorldPresence.ctor += GhostWorldPresence_ctor;
+        On.GhostWorldPresence.ctor_World_GhostID_int += GhostWorldPresence_ctor_World_GhostID_int;
     }
-    private static void GhostWorldPresence_ctor(On.GhostWorldPresence.orig_ctor orig, GhostWorldPresence self, World world, GhostWorldPresence.GhostID ghostID)
+
+    private static void GhostWorldPresence_ctor_World_GhostID_int(On.GhostWorldPresence.orig_ctor_World_GhostID_int orig, GhostWorldPresence self, World world, GhostWorldPresence.GhostID ghostID, int spinningTopSpawnId)
     {
-        orig(self, world, ghostID);
+        orig(self, world, ghostID, spinningTopSpawnId);
         if (MiscUtils.IsBeaconOrPhoto(world.game.session))
         {
             if (ghostID == GhostWorldPresence.GhostID.CC)

@@ -11,7 +11,7 @@ internal class PBCicadas
     {
         public int glowSprite1;
         public int glowSprite2;
-        public int lightBulbSprite;
+        //public int lightBulbSprite; unused at the moment
     }
 
     static ConditionalWeakTable<CicadaGraphics, CicadaCWT> cicadaCWT = new ConditionalWeakTable<CicadaGraphics, CicadaCWT>();

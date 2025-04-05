@@ -14,10 +14,10 @@ public class FlarebombHooks
         // Creatures that die to FlareBombs (these should be nerfed to apply with creature's apparent sight)
         return creatureTemplateType == CreatureTemplate.Type.BigSpider
             || creatureTemplateType == CreatureTemplate.Type.SpitterSpider
-            || creatureTemplateType == MoreSlugcats.MoreSlugcatsEnums.CreatureTemplateType.MotherSpider
+            || creatureTemplateType == DLCSharedEnums.CreatureTemplateType.MotherSpider
             || creatureTemplateType == CreatureTemplate.Type.DropBug
             || creatureTemplateType == CreatureTemplate.Type.EggBug
-            || creatureTemplateType == MoreSlugcats.MoreSlugcatsEnums.CreatureTemplateType.Yeek
+            || creatureTemplateType == DLCSharedEnums.CreatureTemplateType.Yeek
             || creatureTemplateType == CreatureTemplate.Type.Leech
             || creatureTemplateType == CreatureTemplate.Type.SeaLeech
             || creatureTemplateType == CreatureTemplate.Type.JetFish

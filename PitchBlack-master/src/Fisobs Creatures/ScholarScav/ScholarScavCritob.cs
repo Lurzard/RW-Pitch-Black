@@ -32,10 +32,10 @@ namespace PitchBlack;
 
     public override CreatureTemplate CreateTemplate()
     {
-        CreatureTemplate t = new CreatureFormula(MoreSlugcatsEnums.CreatureTemplateType.ScavengerElite, PBCreatureTemplateType.UmbraScav, "UmbraScav")
+        CreatureTemplate t = new CreatureFormula(CreatureTemplate.Type.Scavenger, PBCreatureTemplateType.UmbraScav, "UmbraScav")
         {
             DefaultRelationship = new(CreatureTemplate.Relationship.Type.Ignores, 0.1f),
-            Pathing = PreBakedPathing.Ancestral(MoreSlugcatsEnums.CreatureTemplateType.ScavengerElite),
+            Pathing = PreBakedPathing.Ancestral(CreatureTemplate.Type.Scavenger),
     }.IntoTemplate();
         t.dangerousToPlayer = 0;
         t.stowFoodInDen = true;
@@ -82,9 +82,9 @@ namespace PitchBlack;
         umbr.Ignores(CreatureTemplate.Type.SmallCentipede);
         umbr.Ignores(CreatureTemplate.Type.SmallNeedleWorm);
         umbr.Attacks(CreatureTemplate.Type.Overseer, 1f);
-        umbr.Attacks(MoreSlugcatsEnums.CreatureTemplateType.Inspector, 1f);
+        umbr.Attacks(DLCSharedEnums.CreatureTemplateType.Inspector, 1f);
         umbr.Attacks(MoreSlugcatsEnums.CreatureTemplateType.FireBug, 1f);
-        umbr.Attacks(MoreSlugcatsEnums.CreatureTemplateType.Yeek, 0.1f);
+        umbr.Attacks(DLCSharedEnums.CreatureTemplateType.Yeek, 0.1f);
 
         umbr.UncomfortableAround(CreatureTemplate.Type.GarbageWorm, 0.8f);
         umbr.UncomfortableAround(CreatureTemplate.Type.Snail, 0.6f);
@@ -95,7 +95,7 @@ namespace PitchBlack;
         umbr.IsInPack(MoreSlugcatsEnums.CreatureTemplateType.SlugNPC, 0.6f);
 
         umbr.IsInPack(CreatureTemplate.Type.Scavenger, 1f);
-        umbr.Attacks(MoreSlugcatsEnums.CreatureTemplateType.ScavengerElite, 1f);
+        umbr.Attacks(DLCSharedEnums.CreatureTemplateType.ScavengerElite, 1f);
         umbr.Attacks(MoreSlugcatsEnums.CreatureTemplateType.ScavengerKing, 1f);
     }
 
