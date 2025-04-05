@@ -5,13 +5,20 @@ using RWCustom;
 namespace PitchBlack;
 
 public class BeaconCWT : ScugCWT {
-    public Color BeaconColor;
-    public Color BeaconDefaultColor;
-    public Color BeaconEyeColor;
+    public Color UsedBeaconColor; //Color used to color the player
+    public Color LerpedBeaconColor; //Lerped color used for UsedBeaconColor
+    public Color BeaconDefaultColor; //Defined in ApplyPalette
+    public Color BeaconEyeColor; //Defined in ApplyPalette
     public Color flareColor1 = new Color(0.10588235294f, 0.06666666666f, 0.25882352941f); //#1b1142
     public Color flareColor2 = new Color(0.16470588235f, 0.0862745098f, 0.47843137254f); //#2a167a
     public Color flareColor3 = new Color(0.18039215686f, 0.05490196078f, 0.67843137254f); //#2e0ead
-    public Color flareColor4 = new Color(0.2f, 0f, 1f);
+    public Color flareColor4 = new Color(0.2f, 0f, 1f); //FlareBomb glow
+    public float beaconLerp;
+    public Color beaconColor0;
+    public Color beaconColor1;
+    public Color beaconColor2;
+    public Color beaconColor3;
+    public Color beaconColor4;
     public FlareStore storage;
     public int dontThrowTimer = 0;
     public bool heldCraft = false;
@@ -82,15 +89,17 @@ public class BeaconCWT : ScugCWT {
                     {
                         if (ownr.grasps[i] != null && ownr.grasps[i].grabbed is FlareBomb f)
                         {
+                            if (BeaconHooks.previouslyStoredFlares < 4) BeaconHooks.previouslyStoredFlares++;
                             FlarebombtoStorage(f);
                             counter = 0;
                             break;
                         }
                     }
                 }
-                if (counter > 20 && storedFlares.Count > 0)
+                if (counter > 20 && storedFlares.Count > 1)
                 {
                     // Move flare from store to paw
+                    if (BeaconHooks.previouslyStoredFlares > 1) BeaconHooks.previouslyStoredFlares--;
                     FlarebombFromStorageToPaw(eu);
                     counter = 0;
                 }

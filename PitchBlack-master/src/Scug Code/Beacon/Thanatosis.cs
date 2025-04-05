@@ -19,37 +19,37 @@ public class Thanatosis {
             if (self.input[0].spec) {
                 bool death = isDead; //notes current state of isDead
                 isDead = !isDead; //flips isDead once
-
                 if (self.Consious) isDead = false; //to revert isDead
-
-                if (death != isDead && self.room != null) { //if they're different, which they will be
-                    self.room.PlaySound( isDead ? PBSoundID.Player_Activated_Thanatosis : PBSoundID.Player_Deactivated_Thanatosis, self.mainBodyChunk);
+                if (death != isDead && self.room != null) { 
+                    //if they're different, which they will be
+                    self.room.PlaySound(isDead ? PBSoundID.Player_Activated_Thanatosis : PBSoundID.Player_Deactivated_Thanatosis, self.mainBodyChunk);
                     DieAndThanatosis(self); //completely seperate implementation of player.Die();
                 }
             }
-            if (isDead) inThanatosisTime++;
+            if (isDead) {
+                inThanatosisTime++;
+                if (thanatosisLerp < ThanatosisLimit / 20f) thanatosisLerp++;
+            }
             if (inThanatosisTime >= ThanatosisLimit) {
                 Debug.Log("WAAAIIIIT DONT DO THAT!!!");
                 self.dead = true;
                 isDead = false;
-                }
+            }
+            if (!isDead && (inThanatosisTime > 0 || thanatosisLerp > 0)) thanatosisLerp--;
             else inThanatosisTime = 0;
         }
         //this will error if everything inside is not also static
     }
-    //the hooks need static to access our methods
-    //our methods need static variables to use them
-    //so I caved and made everything static, at least until I figure it out
-    // -Lur
 
     //*******************
     //THANATOSIS TRACKING
     //*******************
 
-    //these should probably be moved to BeaconCWT later?
     public static bool isDead; //state tracking
     public static bool isDeadButDeniedDeath; //for later implementing coming back from GameOver
+    public static bool isDeadForReal; //GameOver
     public static int inThanatosisTime; //tracking current time spent in Thanatosis
+    public static int thanatosisLerp; //for lerping player color based on time spent in Thanatosis
 
     public static float ThanatosisLimit {
         get {
@@ -63,6 +63,7 @@ public class Thanatosis {
             if (realizedRoom != null) {
                 if (realizedRoom.game.setupValues.invincibility) return;
                 if (!self.dead && !isDead) { //if dead true and isDead false
+                    isDeadForReal = true;
                     realizedRoom.game.GameOver(null);
                     realizedRoom.PlaySound(PBSoundID.Player_Died_From_Thanatosis, self.mainBodyChunk);
                 }

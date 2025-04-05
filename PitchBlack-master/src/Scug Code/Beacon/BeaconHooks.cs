@@ -36,6 +36,22 @@ public static class BeaconHooks
         On.HUD.FoodMeter.MeterCircle.Update += MeterCircle_Update;
     }
 
+    public static int previouslyStoredFlares = 0; //for color lerping from old color to new color
+
+    public static void BeaconColorLerp(Player self) {
+        if (Plugin.scugCWT.TryGetValue(self, out ScugCWT scugCWT) && scugCWT is BeaconCWT beaconCWT) {
+            int flares = beaconCWT.storage.storedFlares.Count;
+            if (!self.dead || Thanatosis.isDead) {
+                beaconCWT.beaconLerp = 0f;
+                if (beaconCWT.beaconLerp < 1f) beaconCWT.beaconLerp += 0.05f; //gradually fade to new color
+            }
+            if ((self.dead && !Thanatosis.isDead) || previouslyStoredFlares > flares) {
+                beaconCWT.beaconLerp = 1f;
+                if (beaconCWT.beaconLerp > 0f) beaconCWT.beaconLerp -= 0.05f; //gradually fade to previous color
+            }
+        }
+    }
+
     //add math to fade beacon color in real time instead of immediately 
     private static void PlayerGraphics_DrawSprites(On.PlayerGraphics.orig_DrawSprites orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
     {
@@ -43,30 +59,60 @@ public static class BeaconHooks
 
         if (Plugin.scugCWT.TryGetValue(self.player, out ScugCWT scugCWT) && scugCWT is BeaconCWT beaconCWT) {
             int flares = beaconCWT.storage.storedFlares.Count;
-            beaconCWT.BeaconColor = PlayerGraphics.SlugcatColor(self.CharacterForColor);
-
+            //colors
+            beaconCWT.LerpedBeaconColor = beaconCWT.UsedBeaconColor;
+            beaconCWT.UsedBeaconColor = PlayerGraphics.SlugcatColor(self.CharacterForColor);
+            beaconCWT.beaconColor0 = Color.Lerp(beaconCWT.BeaconDefaultColor, beaconCWT.flareColor1, 0.45f);
+            beaconCWT.beaconColor1 = Color.Lerp(beaconCWT.BeaconDefaultColor, beaconCWT.flareColor2, 0.55f);
+            beaconCWT.beaconColor2 = Color.Lerp(beaconCWT.BeaconDefaultColor, beaconCWT.flareColor3, 0.60f);
+            beaconCWT.beaconColor3 = Color.Lerp(beaconCWT.BeaconDefaultColor, beaconCWT.flareColor3, 0.80f);
+            beaconCWT.beaconColor4 = Color.Lerp(beaconCWT.BeaconDefaultColor, beaconCWT.flareColor4, 0.92f);
             for (int i = 0; i < 2; i++) {
                 if (flares == 0) {
-                    if (self.player.dead) beaconCWT.BeaconColor = beaconCWT.BeaconDefaultColor;
-                    else beaconCWT.BeaconColor = Color.Lerp(beaconCWT.BeaconDefaultColor, beaconCWT.flareColor1, 0.45f);
+                    if (previouslyStoredFlares > flares) {
+                        beaconCWT.LerpedBeaconColor = Color.Lerp(beaconCWT.beaconColor1, beaconCWT.beaconColor0, beaconCWT.beaconLerp);
+                        if (beaconCWT.beaconLerp == 0f) previouslyStoredFlares = -1;
+                    }
+                    else beaconCWT.LerpedBeaconColor = beaconCWT.beaconColor0; //regular cause no need to lerp
                 }
-                if (flares == 1) beaconCWT.BeaconColor = Color.Lerp(beaconCWT.BeaconDefaultColor, beaconCWT.flareColor2, 0.55f);
-                if (flares == 2) beaconCWT.BeaconColor = Color.Lerp(beaconCWT.BeaconDefaultColor, beaconCWT.flareColor3, 0.60f);
-                if (flares == 3) beaconCWT.BeaconColor = Color.Lerp(beaconCWT.BeaconDefaultColor, beaconCWT.flareColor3, 0.80f);
-                if (flares == 4) beaconCWT.BeaconColor = Color.Lerp(beaconCWT.BeaconDefaultColor, beaconCWT.flareColor4, 0.92f);
+                if (flares == 1) {
+                    if (previouslyStoredFlares > flares) {
+                        beaconCWT.LerpedBeaconColor = Color.Lerp(beaconCWT.beaconColor2, beaconCWT.beaconColor1, beaconCWT.beaconLerp);
+                        if (beaconCWT.beaconLerp == 0f) previouslyStoredFlares = 0;
+                    }
+                    else beaconCWT.LerpedBeaconColor = Color.Lerp(beaconCWT.beaconColor0, beaconCWT.beaconColor1, beaconCWT.beaconLerp);
+                }
+                if (flares == 2) {
+                    if (previouslyStoredFlares > flares) {
+                        beaconCWT.LerpedBeaconColor = Color.Lerp(beaconCWT.beaconColor3, beaconCWT.beaconColor2, beaconCWT.beaconLerp);
+                        if (beaconCWT.beaconLerp == 0f) previouslyStoredFlares = 1;
+                    }
+                    else beaconCWT.LerpedBeaconColor = Color.Lerp(beaconCWT.beaconColor1, beaconCWT.beaconColor2, beaconCWT.beaconLerp);
+                }
+                if (flares == 3) {
+                    if (previouslyStoredFlares > flares) {
+                        beaconCWT.LerpedBeaconColor = Color.Lerp(beaconCWT.beaconColor4, beaconCWT.beaconColor3, beaconCWT.beaconLerp);
+                        if (beaconCWT.beaconLerp == 0f) previouslyStoredFlares = 2;
+                    }
+                    else beaconCWT.LerpedBeaconColor = Color.Lerp(beaconCWT.beaconColor2, beaconCWT.beaconColor3, beaconCWT.beaconLerp);
+                }
+                if (flares == 4) {
+                    beaconCWT.LerpedBeaconColor = Color.Lerp(beaconCWT.beaconColor3, beaconCWT.beaconColor4, beaconCWT.beaconLerp);
+                }
+                if (Thanatosis.isDead) beaconCWT.LerpedBeaconColor = Color.Lerp(beaconCWT.UsedBeaconColor, RainWorld.RippleColor, Thanatosis.thanatosisLerp);
+                if (self.player.dead && !Thanatosis.isDead) beaconCWT.LerpedBeaconColor = Color.Lerp(beaconCWT.BeaconDefaultColor, beaconCWT.UsedBeaconColor, beaconCWT.beaconLerp);
+                BeaconColorLerp(self.player);
             }
-
+            //sprites
             for (int sprites = 0; sprites < sLeaser.sprites.Length; sprites++) {
-                if (sprites != 9) sLeaser.sprites[sprites].color = beaconCWT.BeaconColor;
+                if (sprites != 9) sLeaser.sprites[sprites].color = beaconCWT.UsedBeaconColor;
                 if (sprites == 9) sLeaser.sprites[sprites].color = beaconCWT.BeaconEyeColor;
                 if (sprites == 9) sLeaser.sprites[sprites].element = Futile.atlasManager.GetElementWithName(Thanatosis.isDead ? "FaceThanatosis" : "Face");
                 if (sprites == 10) sLeaser.sprites[sprites].color = Custom.hexToColor("f02961");
                 if (sprites == 11) sLeaser.sprites[sprites].color = Custom.hexToColor("f02961");
             }
-
             //brightsquint
             if (beaconCWT.brightSquint > (40 * 3.5f)) sLeaser.sprites[9].element = Futile.atlasManager.GetElementWithName("Face" + "Stunned");
-
             if (beaconCWT.brightSquint > 10) {
                 sLeaser.sprites[9].x -= self.lookDirection.x * 2;
                 sLeaser.sprites[9].y -= self.lookDirection.y * 2;
@@ -88,7 +134,7 @@ public static class BeaconHooks
         if (Plugin.scugCWT.TryGetValue(self.player, out ScugCWT scugCWT) && scugCWT is BeaconCWT beaconCWT && self.player.room.Darkness(self.player.mainBodyChunk.pos) > 0f) {
             //GIVE THIS BACK SINCE ORIG PROBABLY TOOK IT
             if (self.lightSource == null) {
-                self.lightSource = new LightSource(self.player.mainBodyChunk.pos, false, Color.Lerp(new Color(1f, 1f, 1f), (ModManager.MSC && self.player.SlugCatClass == MoreSlugcatsEnums.SlugcatStatsName.Slugpup) ? self.player.ShortCutColor() : PlayerGraphics.SlugcatColor(self.CharacterForColor), 0.5f), self.player);
+                self.lightSource = new LightSource(self.player.mainBodyChunk.pos, false, Color.Lerp(new Color(1f, 1f, 1f), beaconCWT.UsedBeaconColor, 0.5f), self.player);
                 self.lightSource.requireUpKeep = true;
                 self.lightSource.setRad = new float?(300f);
                 self.lightSource.setAlpha = new float?(1f);
@@ -97,7 +143,7 @@ public static class BeaconHooks
             int flares = beaconCWT.storage.storedFlares.Count;
 
             //DEFAULT, NO FLASHBANGS
-            float glowStr = flares switch {
+            float rad = flares switch {
                 0 => 200,
                 //+100
                 1 => 300,
@@ -111,19 +157,26 @@ public static class BeaconHooks
                 _ => (float)(550 + (25 * (flares - 4))),
             };
 
+            float alpha = flares switch {
+                0 => 0.5f,
+                1 => 0.55f,
+                2 => 0.6f,
+                3 => 0.65f,
+                4 => 0.7f,
+                _ => 0.7f
+            };
+
             //ROTUND WORLD SHENANIGANS
             float baseWeight = (0.7f * self.player.slugcatStats.bodyWeightFac) / 2f;
-            glowStr *= (self.player.bodyChunks[0].mass / baseWeight) / 2f;
+            rad *= (self.player.bodyChunks[0].mass / baseWeight) / 2f;
             //AT +2 BONUS PIPS THIS IS ROUGHLY 125% RAD. CAPPING AT 150%
 
             //IF WE HAVE THE_GLOW, DON'T LET OUR GLOW STRENGTH UNDERCUT THAT
-            if (self.player.glowing && glowStr < 300)
-                glowStr = 300;
+            if (self.player.glowing && rad < 300) rad = 300;
+            if (self.player.dead) rad = 0;
 
-            if (self.player.dead)
-                glowStr = 0;
-
-            self.lightSource.setRad = glowStr;
+            self.lightSource.setRad = rad;
+            self.lightSource.setAlpha = alpha;
             self.lightSource.stayAlive = true;
             self.lightSource.setPos = new Vector2?(self.player.mainBodyChunk.pos);
             
@@ -215,6 +268,7 @@ public static class BeaconHooks
                 if (fb != null) {
                     fb.firstChunk.vel = self.mainBodyChunk.vel + RWCustom.Custom.RNV() * 3f * UnityEngine.Random.value;
                     fb.ChangeMode(Weapon.Mode.Free);
+                    if (previouslyStoredFlares > 0) previouslyStoredFlares--;
                 }
                 af?.Deactivate();
             }
@@ -310,11 +364,6 @@ public static class BeaconHooks
         orig(self, eu);
 
         if (scugCWT is BeaconCWT beaconCWT1) {
-            //replace with spec later
-            if (self.input[0].y < 0) {
-                self.Die();
-            }
-
             //CHECK FOR AUTO-STORE FLASHBANGS IF OUR HANDS ARE FULL
             if (self.input[0].pckp && !self.input[1].pckp && self.pickUpCandidate != null && self.pickUpCandidate is FlareBomb flare && beaconCWT1.storage.storedFlares.Count < beaconCWT1.storage.capacity) {
                 //IF WE'RE HOLDING TWO ITEMS OR ONE BIG TWO HANDED ITEM
@@ -439,8 +488,8 @@ public static class BeaconHooks
             cwt.dontThrowTimer = 15; //BRIEF PERIOD OF DON'T THROW A FLASHBANG
             //MAYBE A FANCY COLOR?...
             if (self.grasps[grasp].grabbed is FlareBomb flare) {
-                flare.color = new Color(0.3f, 0f, 1f); //WE COULD GIVE IT A FUNKY COLOR, IF WE WANT... //yurpnuke
-                cwt.dontThrowTimer = 60; //DON'T THROW ANOTHER ONE FOR A WHILE
+                flare.color = new Color(0.3f, 0f, 1f); //WE COULD GIVE IT A FUNKY COLOR, IF WE WANT... //yurpnuke -Lur
+                cwt.dontThrowTimer = 60; //DON'T THROW ANOTHER ONE FOR A WHILE //This perfectly tracks the interval of a Flashbang exploding -Lur
             }
         }
         orig(self, grasp, eu);
