@@ -59,9 +59,9 @@ public static class BeaconHooks
             for (int sprites = 0; sprites < sLeaser.sprites.Length; sprites++) {
                 if (sprites != 9) sLeaser.sprites[sprites].color = beaconCWT.BeaconColor;
                 if (sprites == 9) sLeaser.sprites[sprites].color = beaconCWT.BeaconEyeColor;
+                if (sprites == 9) sLeaser.sprites[sprites].element = Futile.atlasManager.GetElementWithName(Thanatosis.isDead ? "FaceThanatosis" : "Face");
                 if (sprites == 10) sLeaser.sprites[sprites].color = Custom.hexToColor("f02961");
                 if (sprites == 11) sLeaser.sprites[sprites].color = Custom.hexToColor("f02961");
-                if (sprites == 9) sLeaser.sprites[sprites].element = Futile.atlasManager.GetElementWithName(Thanatosis.isDead ? "FaceThanatosis" : "Face"); //might need to be swapped for checking beaconCWT once vars are moved there
             }
 
             //brightsquint

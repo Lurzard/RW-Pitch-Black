@@ -16,20 +16,14 @@ public class Thanatosis {
     private static void Player_Update(On.Player.orig_Update orig, Player self, bool eu) {
         orig(self, eu);
         if (Plugin.scugCWT.TryGetValue(self, out ScugCWT scugCWT) && scugCWT is BeaconCWT beaconCWT) {
-            //both inputs will be changed to spec eventually, I'll say that when I try, the code doesn't know what it is!
-            // Toggles Thanatosis if jump is pressed
-            if (self.input[0].jmp) {
-                //butterfly effects into DieAndThanatosis
+            if (self.input[0].spec) {
                 bool death = isDead; //notes current state of isDead
                 isDead = !isDead; //flips isDead once
 
                 if (self.Consious) isDead = false; //to revert isDead
 
                 if (death != isDead && self.room != null) { //if they're different, which they will be
-                    //sound design for isDead true or false :cooking:
-                    self.room.PlaySound(MoreSlugcatsEnums.MSCSoundID.Ghost_Ping_Base, self.mainBodyChunk);
-                    self.room.PlaySound( isDead ? SoundID.In_Room_Deer_Summoned : SoundID.Distant_Deer_Summoned, self.mainBodyChunk, false, 0.35f, Random.value * 0.5f + 0.8f);
-                    //creature.dead = isDead ? true : false; //theoretically echo into all the death code? but unfortunately that calls GameOver
+                    self.room.PlaySound( isDead ? PBSoundID.Player_Activated_Thanatosis : PBSoundID.Player_Deactivated_Thanatosis, self.mainBodyChunk);
                     DieAndThanatosis(self); //completely seperate implementation of player.Die();
                 }
             }
@@ -38,7 +32,6 @@ public class Thanatosis {
                 Debug.Log("WAAAIIIIT DONT DO THAT!!!");
                 self.dead = true;
                 isDead = false;
-                //rwg.GameOver(null);
                 }
             else inThanatosisTime = 0;
         }
@@ -53,13 +46,14 @@ public class Thanatosis {
     //THANATOSIS TRACKING
     //*******************
 
-    //these should probably be moved to BeaconCWT, but they need to be static rn
+    //these should probably be moved to BeaconCWT later?
     public static bool isDead; //state tracking
+    public static bool isDeadButDeniedDeath; //for later implementing coming back from GameOver
     public static int inThanatosisTime; //tracking current time spent in Thanatosis
 
     public static float ThanatosisLimit {
         get {
-            return 1600f; //soon to be based on QualiaLevel
+            return 1600f; //soon to be based on Karma
         }
     }
     public static void DieAndThanatosis(Player self) { //self.Die & base.Die stuff
@@ -68,9 +62,9 @@ public class Thanatosis {
         if (self.AI == null) { //this checks for SlugNPCAI btw, will be null
             if (realizedRoom != null) {
                 if (realizedRoom.game.setupValues.invincibility) return;
-                if (!self.dead && !isDead) {
+                if (!self.dead && !isDead) { //if dead true and isDead false
                     realizedRoom.game.GameOver(null);
-                    realizedRoom.PlaySound(SoundID.UI_Slugcat_Die, self.mainBodyChunk);
+                    realizedRoom.PlaySound(PBSoundID.Player_Died_From_Thanatosis, self.mainBodyChunk);
                 }
                 if (isDead) { //Creature.Die
                     self.Blink(20);
@@ -83,6 +77,7 @@ public class Thanatosis {
                     self.dead = false;
                     self.abstractCreature.abstractAI.SetDestination(self.abstractCreature.pos);
                 }
+                //later figure out how to revert GameOver to come back from actual death
             }
         }
     }
