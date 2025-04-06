@@ -2,28 +2,27 @@
 using UnityEngine;
 using RWCustom;
 
+#pragma warning disable IDE0090
+
 namespace PitchBlack;
 
 public class BeaconCWT : ScugCWT {
-    public Color UsedBeaconColor; //Color used to color the player
-    public Color LerpedBeaconColor; //Lerped color used for UsedBeaconColor
-    public Color BeaconDefaultColor; //Defined in ApplyPalette
-    public Color BeaconEyeColor; //Defined in ApplyPalette
+    // These are static now and initialized basically when the code is loaded. Since they don't need to be reassigned ever, a static
+    // is fine here. The value just needs to be stored in a nicely accessable place that makes sense.
+    public static readonly Color beaconDefaultColor = new Color(0.10588235294f, 0.06666666666f, 0.25882352941f); //Defined in ApplyPalette
+    public static readonly Color beaconFullColor = new Color(0.2f, 0f, 1f);
+    public static readonly Color beaconEyeColor = Color.white; //Defined in ApplyPalette
     public Color flareColor1 = new Color(0.10588235294f, 0.06666666666f, 0.25882352941f); //#1b1142
     public Color flareColor2 = new Color(0.16470588235f, 0.0862745098f, 0.47843137254f); //#2a167a
     public Color flareColor3 = new Color(0.18039215686f, 0.05490196078f, 0.67843137254f); //#2e0ead
     public Color flareColor4 = new Color(0.2f, 0f, 1f); //FlareBomb glow
-    public float beaconLerp;
-    public Color beaconColor0;
-    public Color beaconColor1;
-    public Color beaconColor2;
-    public Color beaconColor3;
-    public Color beaconColor4;
     public FlareStore storage;
     public int dontThrowTimer = 0;
     public bool heldCraft = false;
     public int brightSquint = 0;
     public Vector2 eyePos = new Vector2(0, 0);
+    //flashbangs to recover after respawning in jollycoop
+    public int coopRefund = 0;
     public BeaconCWT(Player player) : base() {
         storage = new FlareStore(player);
     }
@@ -65,51 +64,38 @@ public class BeaconCWT : ScugCWT {
         public bool interactionLocked;
         public Stack<AbstractStoredFlare> abstractFlare;
 
-        public FlareStore(Player owner)
-        {
-            if (storedFlares == null)
-            {
+        public FlareStore(Player owner) {
+            if (storedFlares == null) {
                 storedFlares = new Stack<FlareBomb>(capacity);
                 abstractFlare = new Stack<AbstractStoredFlare>(capacity);
             }
             ownr = owner;
-            // Debug.log("Flare storage initiated!");
         }
 
-        public void Update(bool eu)
-        {
-            if (increment)
-            {
+        public void Update(bool eu) {
+            if (increment) {
                 counter++;
-                if (counter > 20 && storedFlares.Count < capacity)
-                {
+                if (counter > 20 && storedFlares.Count < capacity) {
                     // Move flare from any hand to store if store is empty
                     //WW- WHY ONLY MAIN HAND IF STORAGE IS NOT FULL? SEEMS LIKE THIS SHOULD WORK FROM ANY HAND
-                    for (int i = 0; i < 2; i++)
-                    {
-                        if (ownr.grasps[i] != null && ownr.grasps[i].grabbed is FlareBomb f)
-                        {
-                            if (BeaconHooks.previouslyStoredFlares < 4) BeaconHooks.previouslyStoredFlares++;
+                    for (int i = 0; i < 2; i++) {
+                        if (ownr.grasps[i]?.grabbed is FlareBomb f) {
                             FlarebombtoStorage(f);
                             counter = 0;
                             break;
                         }
                     }
                 }
-                if (counter > 20 && storedFlares.Count > 1)
-                {
+                if (counter > 20 && storedFlares.Count > 1) {
                     // Move flare from store to paw
-                    if (BeaconHooks.previouslyStoredFlares > 1) BeaconHooks.previouslyStoredFlares--;
                     FlarebombFromStorageToPaw(eu);
                     counter = 0;
                 }
             }
-            else
-            {
+            else {
                 counter = 0;
             }
-            if (!ownr.input[0].pckp)
-            {
+            if (!ownr.input[0].pckp) {
                 interactionLocked = false;
             }
             increment = false;
