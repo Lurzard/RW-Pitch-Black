@@ -14,7 +14,7 @@ internal class DMSPatch
             Description = "Whiskers", //description on dms menu
             GallerySprite = "LizardScaleA0",
             RequiredSprites = new() { "LizardScaleA0" },
-            Slugcats = new() { PBSlugcatStatsName.Beacon.value, Photomaniac.value }
+            Slugcats = new() { Plugin.Beacon.value, Photomaniac.value }
         });
 
         SpriteDefinitions.AddSprite(new()

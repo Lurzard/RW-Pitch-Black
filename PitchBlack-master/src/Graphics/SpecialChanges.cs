@@ -56,7 +56,7 @@ public class SpecialChanges
     private static void KarmaFlower_ApplyPalette(On.KarmaFlower.orig_ApplyPalette orig, KarmaFlower self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
     {
         orig(self, sLeaser, rCam, palette);
-        if (rCam.room.game.IsStorySession && rCam.room.game.GetStorySession.saveStateNumber == PBSlugcatStatsName.Beacon)
+        if (rCam.room.game.IsStorySession && rCam.room.game.GetStorySession.saveStateNumber == Plugin.Beacon)
         {
             self.color = White;
         }
@@ -162,7 +162,7 @@ public class SpecialChanges
             {
                 // Apply changes only if the campaing is Beacon?
                 if (rCam.room.game.IsStorySession &&
-                    rCam.room.game.GetStorySession.saveStateNumber == PBSlugcatStatsName.Beacon)
+                    rCam.room.game.GetStorySession.saveStateNumber == Plugin.Beacon)
                 {
                     return RoseRGB;
                 }
@@ -189,7 +189,7 @@ public class SpecialChanges
             cursor.EmitDelegate<Func<Color, VoidSpawnGraphics, RoomCamera, Color>>((origColor, self, rCam) =>
             {
                 if (rCam.room.game.IsStorySession &&
-                    rCam.room.game.GetStorySession.saveStateNumber == PBSlugcatStatsName.Beacon)
+                    rCam.room.game.GetStorySession.saveStateNumber == Plugin.Beacon)
                 {
                     if (self.dayLightMode)
                     {
@@ -226,7 +226,7 @@ public class SpecialChanges
             cursor.EmitDelegate<Func<Color, VoidSpawnGraphics, RoomCamera, Color>>((origColor, self, rCam) =>
             {
                 if (rCam.room.game.IsStorySession &&
-                    rCam.room.game.GetStorySession.saveStateNumber == PBSlugcatStatsName.Beacon)
+                    rCam.room.game.GetStorySession.saveStateNumber == Plugin.Beacon)
                 {
                     return RoseRGB;
                 }

@@ -34,6 +34,12 @@ public static class BeaconHooks
         On.Player.Regurgitate += Player_Regurgitate;
         On.Player.ObjectEaten += Player_ObjectEaten;
         On.HUD.FoodMeter.MeterCircle.Update += MeterCircle_Update;
+        //On.PlayerGraphics.InitiateSprites += PlayerGraphics_InitiateSprites;
+    }
+
+    private static void PlayerGraphics_InitiateSprites(On.PlayerGraphics.orig_InitiateSprites orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam) {
+        orig(self, sLeaser, rCam);
+        sLeaser.sprites[9] = new FSprite( Thanatosis.isDead ? "FaceThanatosisA0" : "FaceA0", true);
     }
 
     public static int previouslyStoredFlares = 0; //for color lerping from old color to new color
@@ -61,8 +67,7 @@ public static class BeaconHooks
         if (Plugin.scugCWT.TryGetValue(self.player, out ScugCWT scugCWT) && scugCWT is BeaconCWT beaconCWT) {
             int flares = beaconCWT.storage.storedFlares.Count;
             //colors
-            beaconCWT.LerpedBeaconColor = beaconCWT.UsedBeaconColor;
-            beaconCWT.UsedBeaconColor = PlayerGraphics.SlugcatColor(self.CharacterForColor);
+            beaconCWT.UsedBeaconColor = beaconCWT.LerpedBeaconColor;
             beaconCWT.beaconColor0 = Color.Lerp(beaconCWT.BeaconDefaultColor, beaconCWT.flareColor1, 0.45f);
             beaconCWT.beaconColor1 = Color.Lerp(beaconCWT.BeaconDefaultColor, beaconCWT.flareColor2, 0.55f);
             beaconCWT.beaconColor2 = Color.Lerp(beaconCWT.BeaconDefaultColor, beaconCWT.flareColor3, 0.60f);
@@ -109,7 +114,7 @@ public static class BeaconHooks
             for (int sprites = 0; sprites < sLeaser.sprites.Length; sprites++) {
                 if (sprites != 9) sLeaser.sprites[sprites].color = beaconCWT.UsedBeaconColor;
                 if (sprites == 9) sLeaser.sprites[sprites].color = beaconCWT.BeaconEyeColor;
-                if (sprites == 9) sLeaser.sprites[sprites].element = Futile.atlasManager.GetElementWithName(Thanatosis.isDead ? "FaceThanatosis" : "Face"); //switch face sprites if in Thanatosis
+                //if (sprites == 9) sLeaser.sprites[sprites].element = Futile.atlasManager.GetElementWithName(Thanatosis.isDead ? "FaceDead" : "Face"); //switch face sprites if in Thanatosis
                 if (sprites == 10) sLeaser.sprites[sprites].color = Custom.hexToColor("f02961");
                 if (sprites == 11) sLeaser.sprites[sprites].color = Custom.hexToColor("f02961");
             }
@@ -296,7 +301,7 @@ public static class BeaconHooks
     }
 
     private static void Creature_Abstractize(On.Creature.orig_Abstractize orig, Creature self) {
-        if (self is Player player && player.slugcatStats?.name == PBSlugcatStatsName.Beacon) {
+        if (self is Player player && player.slugcatStats?.name == Plugin.Beacon) {
             DropAllFlares(player);
         }
         orig(self);
@@ -320,7 +325,7 @@ public static class BeaconHooks
     private static void Player_Jump(On.Player.orig_Jump orig, Player self) {
         orig(self);
 
-        if (PBSlugcatStatsName.Beacon == self.slugcatStats.name) {
+        if (Plugin.Beacon == self.slugcatStats.name) {
             if (Player.AnimationIndex.Flip == self.animation)
                 self.jumpBoost *= 1f + 0.55f;
             else
@@ -330,7 +335,7 @@ public static class BeaconHooks
 
     public static void BeaconTransmuteIntoFlashbang(On.Player.orig_SwallowObject orig, Player self, int grasp) {
         orig(self, grasp);
-        if (self.slugcatStats.name == PBSlugcatStatsName.Beacon && self.playerState.foodInStomach > 0 && self.objectInStomach.type == AbstractObjectType.Rock) {
+        if (self.slugcatStats.name == Plugin.Beacon && self.playerState.foodInStomach > 0 && self.objectInStomach.type == AbstractObjectType.Rock) {
             self.objectInStomach = new AbstractConsumable(self.room.world, AbstractObjectType.FlareBomb, null, self.abstractCreature.pos, self.room.game.GetNewID(), -1, -1, null);
             self.SubtractFood(1);
 

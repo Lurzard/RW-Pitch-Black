@@ -31,6 +31,7 @@ class Plugin : BaseUnityPlugin
     public static readonly Dictionary<string, bool> collectionSaveData = new Dictionary<string, bool>();
     public static ConditionalWeakTable<RainWorldGame, List<RiftWorldPrecence>> riftCWT = new();
 
+    public static readonly SlugcatStats.Name Beacon = new("Beacon", false);
     public static readonly SlugcatStats.Name Photomaniac = new("Photomaniac", false);
 
     private bool init = false;
@@ -59,7 +60,7 @@ class Plugin : BaseUnityPlugin
             Content.Register(new ScholarScavCritob());
             Content.Register(new UmbraMaskFisob());
             PBSoundID.RegisterValues();
-            //PBSlugcatStatsName.RegisterValues();
+            //Plugin.RegisterValues();
         } catch (Exception err) {
             //Debug.LogError(err); Debug errors
             Logger.LogError(err);
@@ -198,7 +199,7 @@ class Plugin : BaseUnityPlugin
             Futile.atlasManager.LoadAtlas("atlases/icon_UmbraMask");
             Futile.atlasManager.LoadAtlas("atlases/smallKarma10-10");
             Futile.atlasManager.LoadAtlas("atlases/karma10-10");
-            Futile.atlasManager.LoadAtlas("atlases/FaceThanatosis");
+            //Futile.atlasManager.LoadAtlas("atlases/FaceThanatosis");
             self.Shaders["PurpleEchoSkin"] = FShader.CreateShader("purpleechoskin", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/purpleecho")).LoadAsset<Shader>("Assets/shaders 1.9.03/PurpleEchoSkin.shader"));
             self.Shaders["Red"] = FShader.CreateShader("red", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath(path: "assetbundles/red")).LoadAsset<Shader>("Assets/red.shader"));
             self.Shaders["Sunrays"] = FShader.CreateShader("sunrays", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/sunrays")).LoadAsset<Shader>("Assets/sunrays.shader"));
@@ -238,7 +239,7 @@ class Plugin : BaseUnityPlugin
                 PBCreatureTemplateType.UnregisterValues();
                 PBSandboxUnlockID.UnregisterValues();
                 PBSoundID.UnregisterValues();
-                //PBSlugcatStatsName.UnregisterValues();
+                //Plugin.UnregisterValues();
 
                 break;
             }

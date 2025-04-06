@@ -50,8 +50,8 @@
 		"has_dreams": false,
 		"auto_grab_batflies": false,
 
-		"start_room": [ "GW_photo01" ],
-		"world_state": [ "Beacon" ],
+		"start_room": [ "SU_S01" ],
+		"world_state": [ "Beacon, White" ],
 
 		"expedition_enabled": true,
 		"expedition_description": "Placeholder expedition description",

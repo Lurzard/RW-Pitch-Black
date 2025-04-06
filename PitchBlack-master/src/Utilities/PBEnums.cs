@@ -115,17 +115,17 @@ public class PBSoundID {
     }
 }
 
-public class PBSlugcatStatsName {
-    public static SlugcatStats.Name Beacon;
+//public class Plugin {
+//    public static SlugcatStats.Name Beacon;
 
-    public static void RegisterValues() {
-        Beacon = new SlugcatStats.Name("Beacon", false);
-    }
+//    public static void RegisterValues() {
+//        Beacon = new SlugcatStats.Name("Beacon", true);
+//    }
 
-    public static void UnregisterValues() {
-        SlugcatStats.Name beacon = Beacon;
-        if (beacon != null) {
-            beacon.Unregister();
-        }
-    }
-}
+//    public static void UnregisterValues() {
+//        SlugcatStats.Name beacon = Beacon;
+//        if (beacon != null) {
+//            beacon.Unregister();
+//        }
+//    }
+//}

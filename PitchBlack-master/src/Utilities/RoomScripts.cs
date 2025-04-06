@@ -21,7 +21,7 @@ public class RoomScripts
     {
         orig(room);
         if (room.game.session is StoryGameSession story
-            && story.saveStateNumber == PBSlugcatStatsName.Beacon
+            && story.saveStateNumber == Plugin.Beacon
             && room.abstractRoom.name == "SH_CABINETS1"
             && room.game.rainWorld.progression.currentSaveState.cycleNumber == 0)
         {

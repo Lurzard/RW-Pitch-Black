@@ -21,7 +21,7 @@ public class ScugHooks {
                 Plugin.scugCWT.Add(self, MiscUtils.IsBeacon(self)? new BeaconCWT(self) : new PhotoCWT());
             }
             
-            if (self.slugcatStats.name == PBSlugcatStatsName.Beacon && self.room.abstractRoom.shelter && Plugin.scugCWT.TryGetValue(self, out ScugCWT c) && c is BeaconCWT cwt) {
+            if (self.slugcatStats.name == Plugin.Beacon && self.room.abstractRoom.shelter && Plugin.scugCWT.TryGetValue(self, out ScugCWT c) && c is BeaconCWT cwt) {
                 foreach (List<PhysicalObject> thingQuar in self.room.physicalObjects) {
                     foreach (PhysicalObject item in thingQuar) {
                         if (item is FlareBomb flashbang && cwt.storage.storedFlares.Count < cwt.storage.capacity) {

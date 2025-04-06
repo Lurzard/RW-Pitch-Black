@@ -24,7 +24,7 @@ public class OverseerHooks
     private static void Player_Update(On.Player.orig_Update orig, Player self, bool eu) {
         orig(self, eu);
         // Moon note: This code will probably make bacons in Jolly Coop, that are in different rooms, fight over the overseer. Could make a fix but only want to if it becomes a problem
-        if (self.room?.world?.overseersWorldAI?.playerGuide != null && self.room.game.session is StoryGameSession session && MiscUtils.IsBeaconOrPhoto(session.saveStateNumber) && self.slugcatStats.name == PBSlugcatStatsName.Beacon) {
+        if (self.room?.world?.overseersWorldAI?.playerGuide != null && self.room.game.session is StoryGameSession session && MiscUtils.IsBeaconOrPhoto(session.saveStateNumber) && self.slugcatStats.name == Plugin.Beacon) {
             AbstractCreature overseerGuide = self.room.world.overseersWorldAI.playerGuide;
             if (overseerGuide.Room.name == self.abstractCreature.Room.name) { /*Debug.Log("PB: Overseer was in the same room")*/; return; }
             if (overseerGuide.realizedCreature != null) {
@@ -82,28 +82,28 @@ public class OverseerHooks
                 return;
             }
             cursor.Emit(OpCodes.Ldarg_0);
-            cursor.EmitDelegate((float val, Overseer self) => { if (self.room.game.session is StoryGameSession session && (session.saveStateNumber == PBSlugcatStatsName.Beacon || session.saveStateNumber == PBSlugcatStatsName.Beacon)) { return -94f; } return val; });
+            cursor.EmitDelegate((float val, Overseer self) => { if (self.room.game.session is StoryGameSession session && (session.saveStateNumber == Plugin.Beacon || session.saveStateNumber == Plugin.Beacon)) { return -94f; } return val; });
 
             if (!cursor.TryGotoNext(MoveType.After, i => i.MatchLdcR4(out var _))) {
                 Plugin.logger.LogDebug("MOD: IL hook failed 2");
                 return;
             }
             cursor.Emit(OpCodes.Ldarg_0);
-            cursor.EmitDelegate((float val, Overseer self) => { if (self.room.game.session is StoryGameSession session && (session.saveStateNumber == PBSlugcatStatsName.Beacon || session.saveStateNumber == PBSlugcatStatsName.Beacon)) { return 1700f;} return val;  });
+            cursor.EmitDelegate((float val, Overseer self) => { if (self.room.game.session is StoryGameSession session && (session.saveStateNumber == Plugin.Beacon || session.saveStateNumber == Plugin.Beacon)) { return 1700f;} return val;  });
 
             if (!cursor.TryGotoNext(MoveType.After, i => i.MatchLdcR4(out var _))) {
                 Plugin.logger.LogDebug("MOD: IL hook failed 3");
                 return;
             }
             cursor.Emit(OpCodes.Ldarg_0);
-            cursor.EmitDelegate((float val, Overseer self) => { if (self.room.game.session is StoryGameSession session && (session.saveStateNumber == PBSlugcatStatsName.Beacon || session.saveStateNumber == PBSlugcatStatsName.Beacon)) { return -0.2f;} return val;  });
+            cursor.EmitDelegate((float val, Overseer self) => { if (self.room.game.session is StoryGameSession session && (session.saveStateNumber == Plugin.Beacon || session.saveStateNumber == Plugin.Beacon)) { return -0.2f;} return val;  });
 
             if (!cursor.TryGotoNext(MoveType.After, i => i.MatchLdcR4(out var _))) {
                 Plugin.logger.LogDebug("MOD: IL hook failed 4");
                 return;
             }
             cursor.Emit(OpCodes.Ldarg_0);
-            cursor.EmitDelegate((float val, Overseer self) => { if (self.room.game.session is StoryGameSession session && (session.saveStateNumber == PBSlugcatStatsName.Beacon || session.saveStateNumber == PBSlugcatStatsName.Beacon)) { return 0.4f; } return val; });
+            cursor.EmitDelegate((float val, Overseer self) => { if (self.room.game.session is StoryGameSession session && (session.saveStateNumber == Plugin.Beacon || session.saveStateNumber == Plugin.Beacon)) { return 0.4f; } return val; });
             // cursor.Emit(OpCodes.Ldc_R4, 0.4f);
         } catch (Exception err) {
             logger.LogError(err);
