@@ -78,6 +78,9 @@ class Plugin : BaseUnityPlugin
         On.RainWorld.OnModsInit += OnModsInit;
         On.RainWorld.OnModsDisabled += DisableMod;
         On.RainWorld.PostModsInit += RainWorld_PostModsInit;
+        On.RainWorldGame.ctor += RainWorldGame_ctor;
+        On.RainWorldGame.Update += RainWorldGame_Update;
+        On.Weapon.SetRandomSpin += Weapon_SetRandomSpin;
         On.RainWorld.UnloadResources += (orig, self) =>
         {
             orig(self);
@@ -204,11 +207,6 @@ class Plugin : BaseUnityPlugin
             self.Shaders["Red"] = FShader.CreateShader("red", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath(path: "assetbundles/red")).LoadAsset<Shader>("Assets/red.shader"));
             self.Shaders["Sunrays"] = FShader.CreateShader("sunrays", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/sunrays")).LoadAsset<Shader>("Assets/sunrays.shader"));
             init = true;
-
-            //I'M PRETTY SURE BEST PRACTICE IS TO PUT HOOKS HERE
-            On.RainWorldGame.ctor += RainWorldGame_ctor;
-            On.RainWorldGame.Update += RainWorldGame_Update;
-            On.Weapon.SetRandomSpin += Weapon_SetRandomSpin;
 
             //RiftCosmetic.Register(self);
         }
