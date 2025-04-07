@@ -21,7 +21,7 @@ public static class BeaconHooks {
         On.Player.SwallowObject += BeaconTransmuteIntoFlashbang;
         On.Player.GrabUpdate += Player_GrabUpdate;
         On.Player.GraphicsModuleUpdated += BeaconStorageGrafUpdate;
-        On.Player.Update += BeaconPlayerUpdate;
+        On.Player.Update += BeaconUpdate;
         On.Player.ThrowObject += Player_ThrowObject;
         On.Creature.Abstractize += Creature_Abstractize;
         On.PlayerGraphics.Update += PlayerGraphics_Update;
@@ -402,7 +402,7 @@ public static class BeaconHooks {
         }
     }
 
-    private static void BeaconPlayerUpdate(On.Player.orig_Update orig, Player self, bool eu) {
+    private static void BeaconUpdate(On.Player.orig_Update orig, Player self, bool eu) {
         orig(self, eu);
         if (Plugin.scugCWT.TryGetValue(self, out ScugCWT c) && c is BeaconCWT beaconCWT) {
 
@@ -411,7 +411,7 @@ public static class BeaconHooks {
             {
                 beaconCWT.inputForThanatosisCounter = 0;
             }
-            if (beaconCWT.canIDoThanatosisYet == true && self.input[0].spec) {
+            if (Plugin.canIDoThanatosisYet == true && self.input[0].spec) {
                 //canIDoThanatosisYet check because we want the player to first meet the condition for this to be true. For now because of dev it is set to true
 
                 beaconCWT.inputForThanatosisCounter++;

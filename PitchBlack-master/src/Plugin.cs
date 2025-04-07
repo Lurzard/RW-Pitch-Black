@@ -35,22 +35,33 @@ class Plugin : BaseUnityPlugin
     public static readonly SlugcatStats.Name Photomaniac = new("Photomaniac", false);
 
     private bool init = false;
+    public static ManualLogSource logger;
+
     public static ConditionalWeakTable<Player, ScugCWT> scugCWT = new();
     public static ConditionalWeakTable<RainWorldGame, List<NTTracker>> NTTrackers = new ConditionalWeakTable<RainWorldGame, List<NTTracker>>();
 
+    // Significantly used colors that would be fine here
+    public static Color RoseRGB = new Color(0.529f, 0.184f, 0.360f); //#872f5c
+    public static Color PBAntiGold = new Color(0.355f, 0.31f, 0.87f); //#5b4fdd
+    public static Color PBAnti_GoldRGB = new Color(0.20784313725f, 0.18039215686f, 0.52156862745f); //#352e85
+    public static Color SaturatedRose = RoseRGB * 2f;
+    public static Color SaturatedAntiGold = PBAntiGold * 2f;
+
+    // "Save data" will be plugin variables for now, but should be moved to an actual savedata system that we can work with
+    public static bool canIDoThanatosisYet = true; //after dev: false
+    public static float qualiaLevel = 10f; //after dev: 0f
 
     internal static bool RotundWorldEnabled => _rotundWorldEnabled; //for a single check in BeaconHooks' Player.Update hook
     private static bool _rotundWorldEnabled;
     public static bool individualFoodEnabled = false;
 
-    public static ManualLogSource logger;
     void FishobsNoWork() {
         // These caused problems on the update to 1.9.15, sanction them here
         try {
-            PBPOMSunrays.RegisterLightrays();
-            PBPOMDarkness.RegisterDarkness();
-            ReliableCreatureSpawner.RegisterSpawner();
-            CreatureSpawnerHooks.Apply();
+            //PBPOMSunrays.RegisterLightrays();
+            //PBPOMDarkness.RegisterDarkness();
+            //ReliableCreatureSpawner.RegisterSpawner();
+            //CreatureSpawnerHooks.Apply();
             //BreathableWater.Register();
             //TeleportWater.Register();
             Content.Register(new RotRatCritob());
@@ -66,10 +77,6 @@ class Plugin : BaseUnityPlugin
         }
     }
 
-    //public static List<string> currentDialog = new();
-    //public static bool Speaking = false;
-    //public static AbstractCreature PBOverseer;
-    //public static int pbcooldown = 0;
     public void OnEnable()
     {
         logger = base.Logger;
@@ -92,13 +99,12 @@ class Plugin : BaseUnityPlugin
         MenuHooks.Apply();
         SyncMenuRegion.Apply();
 
-        PBCicadas.Apply();
+        CreatureEdits.Apply();
 
-        EchoPresence.Apply();
+        EchoHooks.Apply();
 
-        EchoGraphics.Apply();
         JollyMenuHooks.Apply();
-        KarmaMeterChanges.Apply();
+        //KarmaMeterChanges.Apply();
         ScugGraphics.Apply();
 
         MoonDialogue.Apply();

@@ -6,6 +6,7 @@ using MoreSlugcats;
 using RWCustom;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -15,31 +16,75 @@ using Random = UnityEngine.Random;
 
 namespace PitchBlack;
 
-public class SpecialChanges
-{
-    public static Color RoseRGB = new Color(0.529f, 0.184f, 0.360f); //#872f5c
-    public static Color DesaturatedGold = new Color(0.5294117647f, 0.47843137254f, 0.42352941176f);
-    public static Color White = new Color(1f, 1f, 1f);
-    public static Color SaturatedRose = RoseRGB * 2f;
+// Everything to do with changes to certain void/karma/gold things in the game
+public class SpecialChanges {
+    public static void Apply() {
+        
+        // [TODO] -Lur
+        // - KarmaLadder
+        // - KarmaFlowerPatch
+        // - VoidSpawn
+        // - VoidSpawnEgg
+        // - Echoes
+        // ...
 
-    public static void Apply()
-    {
-
-        //karmaflower
+        // KarmaFlower
         On.KarmaFlower.ApplyPalette += KarmaFlower_ApplyPalette;
+        On.KarmaFlower.InitiateSprites += KarmaFlower_InitiateSprites;
 
-        //voidspawn
+        // KarmaMeter
+        On.HUD.KarmaMeter.UpdateGraphic += KarmaMeter_UpdateGraphic;
+        On.HUD.KarmaMeter.ctor += KarmaMeter_ctor;
+
+        // VoidSpawn (iirc only the ILs work? bensone did so many... -Lur)
         //IL.VoidSpawnEgg.DrawSprites += VoidSpawnEgg_DrawSprites_IL;
         //IL.VoidSpawnGraphics.ApplyPalette += VoidSpawnGraphics_ApplyPalette_IL;
         //IL.VoidSpawnGraphics.DrawSprites += VoidSpawnGraphics_DrawSprites_IL;
         //On.VoidSpawnGraphics.DrawSprites += VoidSpawnGraphics_DrawSprites;
         //On.VoidSpawnGraphics.Antenna.DrawSprites += Antenna_DrawSprites;
-
-
         //On.VoidSpawnGraphics.ApplyPalette += VoidSpawnGraphics_ApplyPalette;
         //On.VoidSpawnGraphics.InitiateSprites += VoidSpawnGraphics_InitiateSprites;
-
         //On.VoidSpawnEgg.DrawSprites += VoidSpawnEgg_DrawSprites;
+    }
+
+    // PB's RippleSymbolSprite
+    // Todo: All of the RippleLevel Karma stuff remade but for this, as well as savedata
+    public static string QualiaSymbolSprite(bool small, float qualiaLevel)
+    {
+        double num = Math.Round((double)(qualiaLevel * 2f), MidpointRounding.AwayFromZero) / 2.0;
+        return (small ? "smallQualia" : "qualia") + num.ToString("#.0", CultureInfo.InvariantCulture);
+    }
+
+    private static void KarmaMeter_ctor(On.HUD.KarmaMeter.orig_ctor orig, KarmaMeter self, HUD.HUD hud, FContainer fContainer, RWCustom.IntVector2 displayKarma, bool showAsReinforced) {
+        orig(self, hud, fContainer, displayKarma, showAsReinforced);
+        self.baseColor = Plugin.SaturatedAntiGold;
+        if (Plugin.qualiaLevel >= 1f) {
+            self.karmaSprite.color = self.baseColor;
+        }
+    }
+
+    private static void KarmaMeter_UpdateGraphic(On.HUD.KarmaMeter.orig_UpdateGraphic orig, KarmaMeter self) {
+        orig(self);
+        if (Plugin.qualiaLevel >= 1f) {
+            // For when New sprites are added
+            //this.karmaSprite.element = Futile.atlasManager.GetElementWithName(KarmaMeter.RippleSymbolSprite(true, (this.hud.owner as Player).rippleLevel));
+            self.baseColor = Plugin.SaturatedAntiGold;
+            self.karmaSprite.color = self.baseColor;
+        }
+    }
+
+    private static void KarmaFlower_InitiateSprites(On.KarmaFlower.orig_InitiateSprites orig, KarmaFlower self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam) {
+        orig(self, sLeaser, rCam);
+        if (rCam.room.game.IsStorySession && rCam.room.game.GetStorySession.saveStateNumber == Plugin.Beacon) {
+            sLeaser.sprites[self.EffectSprite(2)].shader = rCam.room.game.rainWorld.Shaders["RippleGlow"];
+        }
+    }
+
+    private static void KarmaFlower_ApplyPalette(On.KarmaFlower.orig_ApplyPalette orig, KarmaFlower self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette) {
+        orig(self, sLeaser, rCam, palette);
+        if (rCam.room.game.IsStorySession && rCam.room.game.GetStorySession.saveStateNumber == Plugin.Beacon) {
+            self.color = Plugin.PBAntiGold;
+        }
     }
 
     //private static void KarmaMeter_UpdateGraphic(On.HUD.KarmaMeter.orig_UpdateGraphic orig, KarmaMeter self)
@@ -50,17 +95,6 @@ public class SpecialChanges
     //        self.karmaSprite.element = Futile.atlasManager.GetElementWithName(FractalNightKarmaSprite(true, self.displayKarma));
     //    }
     //}
-
-    //this might have to become an IL hook?
-
-    private static void KarmaFlower_ApplyPalette(On.KarmaFlower.orig_ApplyPalette orig, KarmaFlower self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
-    {
-        orig(self, sLeaser, rCam, palette);
-        if (rCam.room.game.IsStorySession && rCam.room.game.GetStorySession.saveStateNumber == Plugin.Beacon)
-        {
-            self.color = White;
-        }
-    }
 
     #region Bensone's VoidSpawn Hooks
 
@@ -164,7 +198,7 @@ public class SpecialChanges
                 if (rCam.room.game.IsStorySession &&
                     rCam.room.game.GetStorySession.saveStateNumber == Plugin.Beacon)
                 {
-                    return RoseRGB;
+                    return Plugin.RoseRGB;
                 }
                 return origColor;
             });
@@ -193,9 +227,9 @@ public class SpecialChanges
                 {
                     if (self.dayLightMode)
                     {
-                        return SaturatedRose;
+                        return Plugin.SaturatedRose;
                     }
-                    return Color.Lerp(SaturatedRose, RoseRGB, Mathf.InverseLerp(0.3f, 0.9f, self.darkness));
+                    return Color.Lerp(Plugin.SaturatedRose, Plugin.RoseRGB, Mathf.InverseLerp(0.3f, 0.9f, self.darkness));
                 }
                 return origColor;
             });
@@ -228,7 +262,7 @@ public class SpecialChanges
                 if (rCam.room.game.IsStorySession &&
                     rCam.room.game.GetStorySession.saveStateNumber == Plugin.Beacon)
                 {
-                    return RoseRGB;
+                    return Plugin.RoseRGB;
                 }
                 return origColor;
             });

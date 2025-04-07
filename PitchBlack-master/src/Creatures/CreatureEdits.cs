@@ -5,25 +5,29 @@ using System.Runtime.CompilerServices;
 
 namespace PitchBlack;
 
-internal class PBCicadas
+internal class CreatureEdits
 {
     class CicadaCWT
     {
         public int glowSprite1;
         public int glowSprite2;
-        //public int lightBulbSprite; unused at the moment
+        // Seems unused -Lur
+        //public int lightBulbSprite;
     }
 
+    //CWTs
     static ConditionalWeakTable<CicadaGraphics, CicadaCWT> cicadaCWT = new ConditionalWeakTable<CicadaGraphics, CicadaCWT>();
 
     public static void Apply()
     {
+        //Cicadas
         On.CicadaGraphics.InitiateSprites += CicadaGraphics_InitiateSprites;
         On.CicadaGraphics.DrawSprites += CicadaGraphics_DrawSprites;
         On.CicadaGraphics.AddToContainer += CicadaGraphics_AddToContainer;
         On.CicadaGraphics.ctor += CicadaGraphics_ctor;
     }
 
+    #region Cicadas
     static void CicadaGraphics_ctor(On.CicadaGraphics.orig_ctor orig, CicadaGraphics self, PhysicalObject ow)
     {
         orig(self, ow);
@@ -88,4 +92,5 @@ internal class PBCicadas
             self.AddToContainer(sLeaser, rCam, null);
         }
     }
+    #endregion
 }

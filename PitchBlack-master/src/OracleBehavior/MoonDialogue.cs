@@ -6,21 +6,17 @@ using System.Threading.Tasks;
 
 namespace PitchBlack;
 
-public class MoonDialogue
-{
-
-    public static void Apply()
-    {
+public class MoonDialogue {
+    public static void Apply() {
         On.SLOracleBehaviorHasMark.CreatureJokeDialog += SLOracleBehaviorHasMark_CreatureJokeDialog;
     }
 
-    private static void SLOracleBehaviorHasMark_CreatureJokeDialog(On.SLOracleBehaviorHasMark.orig_CreatureJokeDialog orig, SLOracleBehaviorHasMark self)
-    {
+    private static void SLOracleBehaviorHasMark_CreatureJokeDialog(On.SLOracleBehaviorHasMark.orig_CreatureJokeDialog orig, SLOracleBehaviorHasMark self) {
         orig(self);
         CreatureTemplate.Type randomCreatue = self.CheckStrayCreatureInRoom();
 
-        if (randomCreatue == PBCreatureTemplateType.NightTerror) //or NT wing or mini terror
-        {
+        //or NT wing or mini terror
+        if (randomCreatue == PBCreatureTemplateType.NightTerror) {
             int num = UnityEngine.Random.Range(0, 3);
 
             if (num == 0)
