@@ -6,11 +6,9 @@ namespace PitchBlack;
 public static class PBCreatureTemplateType {
     [AllowNull] public static CreatureTemplate.Type NightTerror = new("NightTerror", true);
     [AllowNull] public static CreatureTemplate.Type LMiniLongLegs = new(nameof(LMiniLongLegs), true);
-#if PLAYTEST
     [AllowNull] public static CreatureTemplate.Type Rotrat = new(nameof(Rotrat), true);
     [AllowNull] public static CreatureTemplate.Type UmbraScav = new(nameof(UmbraScav), true);
     [AllowNull] public static CreatureTemplate.Type FireGrub = new (nameof(FireGrub), true);
-#endif
 
     public static void UnregisterValues() {
         if (NightTerror != null) {
@@ -39,11 +37,9 @@ public static class PBCreatureTemplateType {
 public static class PBSandboxUnlockID {
     [AllowNull] public static MultiplayerUnlocks.SandboxUnlockID NightTerror = new("NightTerror", true);
     [AllowNull] public static MultiplayerUnlocks.SandboxUnlockID LMiniLongLegs = new(nameof(LMiniLongLegs), true);
-#if PLAYTEST
     [AllowNull] public static MultiplayerUnlocks.SandboxUnlockID Rotrat = new(nameof(Rotrat), true);
     [AllowNull] public static MultiplayerUnlocks.SandboxUnlockID FireGrub = new (nameof(FireGrub), true);
     [AllowNull] public static MultiplayerUnlocks.SandboxUnlockID UmbraScav = new(nameof(UmbraScav), true);
-#endif
 
     public static void UnregisterValues()
     {

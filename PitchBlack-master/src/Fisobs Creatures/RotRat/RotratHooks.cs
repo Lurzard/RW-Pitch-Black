@@ -1,4 +1,3 @@
-#if PLAYTEST
 using System;
 using System.Runtime.CompilerServices;
 using RWCustom;
@@ -237,4 +236,3 @@ public class RotRatHooks
         }
     }
 }
-#endif

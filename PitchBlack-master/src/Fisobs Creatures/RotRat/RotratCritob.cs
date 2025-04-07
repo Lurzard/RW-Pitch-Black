@@ -1,5 +1,4 @@
-﻿#if PLAYTEST
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Fisobs.Core;
 using Fisobs.Creatures;
 using Fisobs.Sandbox;
@@ -62,4 +61,3 @@ public class RotRatCritob : Critob
         rels.Eats(DLCSharedEnums.CreatureTemplateType.Yeek, 1f);
     }
 }
-#endif
