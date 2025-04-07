@@ -51,8 +51,8 @@ public static class BeaconHooks {
                     sLeaser.sprites[i].color = color2;
                 }
             }
-            sLeaser.sprites[11].color = Custom.hexToColor("f02961");//Color.Lerp(color, Color.white, 0.3f);
-            sLeaser.sprites[10].color = Custom.hexToColor("f02961");//color;
+            sLeaser.sprites[11].color = beaconCWT.lerpedColor;
+            sLeaser.sprites[10].color = beaconCWT.lerpedColor;
         }
     }
 
@@ -71,27 +71,26 @@ public static class BeaconHooks {
 
         if (Plugin.scugCWT.TryGetValue(self.player, out ScugCWT scugCWT) && scugCWT is BeaconCWT beaconCWT) {
             
-            //if Thanatosis lerp to RippleColor
+            //If Thanatosis lerp to RippleColor
             if (beaconCWT.isDead || beaconCWT.inThanatosisTime > 0) {
-                beaconCWT.lerpedColor = Color.Lerp(BeaconCWT.beaconDefaultColor, RainWorld.RippleColor, beaconCWT.thanatosisLerp); //clear visual, for now
+                beaconCWT.lerpedColor = Color.Lerp(BeaconCWT.beaconDefaultColor, RainWorld.RippleColor, beaconCWT.thanatosisLerp);
             } 
             // Otherwise use default colors.
             else {
                 int flares = beaconCWT.storage.storedFlares.Count;
-                beaconCWT.lerpedColor = Color.Lerp(BeaconCWT.beaconDefaultColor, BeaconCWT.beaconFullColor, flares/(float)4); //lerps by current flares divided by max storage capacity (4)
+                beaconCWT.lerpedColor = Color.Lerp(BeaconCWT.beaconDefaultColor, BeaconCWT.beaconFullColor, flares/(float)4);
             }
-            //sprites
+            // sprites
             for (int sprites = 0; sprites < sLeaser.sprites.Length; sprites++) {
                 if (sprites != 9) sLeaser.sprites[sprites].color = beaconCWT.lerpedColor;
                 if (sprites == 9) sLeaser.sprites[sprites].color = BeaconCWT.beaconEyeColor;
-                if (beaconCWT.isDead)
-                {
+                if (beaconCWT.isDead) {
                     if (sprites == 9) sLeaser.sprites[sprites].element = Futile.atlasManager.GetElementWithName("FaceDead");
                 }
-                if (sprites == 10) sLeaser.sprites[sprites].color = Custom.hexToColor("f02961");
-                if (sprites == 11) sLeaser.sprites[sprites].color = Custom.hexToColor("f02961");
+                if (sprites == 10) sLeaser.sprites[sprites].color = beaconCWT.lerpedColor;
+                if (sprites == 11) sLeaser.sprites[sprites].color = beaconCWT.lerpedColor;
             }
-            //brightsquint
+            // brightsquint
             if (beaconCWT.brightSquint > (40 * 3.5f)) {
                 sLeaser.sprites[9].element = Futile.atlasManager.GetElementWithName("Face" + "Stunned");
             }
