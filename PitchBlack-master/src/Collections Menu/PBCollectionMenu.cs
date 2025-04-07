@@ -51,8 +51,11 @@ public class PBCollectionMenu : Menu.Menu
         for (int i = 0; i < chatLogIDToButtonName.Count; i++) {
             ChatlogID chatLogID = chatLogIDToButtonName.Keys.ElementAt(i);
             string buttonName = chatLogIDToButtonName[chatLogID];
-            if (Plugin.collectionSaveData[chatLogID.value]) {
+            if (Plugin.collectionSaveData.TryGetValue(chatLogID.value, out bool val) && val) {
                 pages[0].subObjects.Add(new SimpleButton(this, pages[0], buttonName, buttonName, new Vector2((i/ButtonsPerColumn)*(ButtonWidth+30) + ButtonStartWidth, (i%ButtonsPerColumn)*(ButtonHeight+20) + ButtonStartHeight), new Vector2(ButtonWidth, ButtonHeight)));
+            }
+            else if (!Plugin.collectionSaveData.TryGetValue(chatLogID.value, out var _)) {
+                Debug.LogError("Key not found in loading PB collection menu! " + i + " " + chatLogID);
             }
             else {
                 pages[0].subObjects.Add(new SimpleButton(this, pages[0], "???", "???", new Vector2((i/ButtonsPerColumn)*(ButtonWidth+30) + ButtonStartWidth, (i%ButtonsPerColumn)*(ButtonHeight+20) + ButtonStartHeight), new Vector2(ButtonWidth, ButtonHeight)));
