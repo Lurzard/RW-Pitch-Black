@@ -9,12 +9,12 @@ namespace PitchBlack;
 public class BeaconCWT : ScugCWT {
     // These are static now and initialized basically when the code is loaded. Since they don't need to be reassigned ever, a static
     // is fine here. The value just needs to be stored in a nicely accessable place that makes sense.
-    public static readonly Color beaconDefaultColor = new Color(0.10588235294f, 0.06666666666f, 0.25882352941f); //Defined in ApplyPalette
+    public static readonly Color beaconDefaultColor = new Color(0.10588235294f, 0.06666666666f, 0.25882352941f);
     public static readonly Color beaconFullColor = new Color(0.2f, 0f, 1f);
     public static readonly Color beaconEyeColor = Color.white; //Defined in ApplyPalette
-    public Color flareColor1 = new Color(0.10588235294f, 0.06666666666f, 0.25882352941f); //#1b1142
-    public Color flareColor2 = new Color(0.16470588235f, 0.0862745098f, 0.47843137254f); //#2a167a
-    public Color flareColor3 = new Color(0.18039215686f, 0.05490196078f, 0.67843137254f); //#2e0ead
+    //public Color flareColor1 = new Color(0.10588235294f, 0.06666666666f, 0.25882352941f); //#1b1142
+    //public Color flareColor2 = new Color(0.16470588235f, 0.0862745098f, 0.47843137254f); //#2a167a
+    //public Color flareColor3 = new Color(0.18039215686f, 0.05490196078f, 0.67843137254f); //#2e0ead
     public Color flareColor4 = new Color(0.2f, 0f, 1f); //FlareBomb glow
     public Color lerpedColor; //moved lerpedColor into the cwt
     public FlareStore storage;
@@ -24,14 +24,21 @@ public class BeaconCWT : ScugCWT {
     public Vector2 eyePos = new Vector2(0, 0);
     //flashbangs to recover after respawning in jollycoop
     public int coopRefund = 0;
-    //Thanatosis
+
+    //Variables for Thanatosis (in BeaconHooks)
     public bool deathToggle; //toggle tracking
     public bool isDead; //state tracking
     public bool isDeadButDeniedDeath; //for later implementing coming back from GameOver
-    public bool isDeadForReal; //GameOver
+    public bool isDeadForReal = false; //used to call GameOver
     public int inThanatosisTime; //tracking current time spent in Thanatosis
     public float thanatosisLerp; //for lerping player color based on time spent in Thanatosis
     public int thanatosisCounter; //so it doesn't happen every frame
+    public int inputForThanatosisCounter = 0; //spec input doesn't recursively flip isDead
+    public bool canIDoThanatosisYet = true; //set to true for development, but eventually will be moved into beacon's save data
+
+    //Higher Thanatosis levels
+    public Color beaconDeadColor = new Color(0.05490196078f, 0.03921568627f, 0.10980392156f); //#0e0a1c
+
     public BeaconCWT(Player player) : base() {
         storage = new FlareStore(player);
     }

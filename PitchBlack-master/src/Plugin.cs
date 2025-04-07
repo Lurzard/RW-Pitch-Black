@@ -60,7 +60,6 @@ class Plugin : BaseUnityPlugin
             Content.Register(new ScholarScavCritob());
             Content.Register(new UmbraMaskFisob());
             //PBSoundID.RegisterValues();
-            //Plugin.RegisterValues();
         } catch (Exception err) {
             //Debug.LogError(err); Debug errors
             Logger.LogError(err);
@@ -237,7 +236,6 @@ class Plugin : BaseUnityPlugin
                 PBCreatureTemplateType.UnregisterValues();
                 PBSandboxUnlockID.UnregisterValues();
                 //PBSoundID.UnregisterValues();
-                //Plugin.UnregisterValues();
 
                 break;
             }
