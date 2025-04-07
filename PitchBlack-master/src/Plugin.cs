@@ -59,7 +59,7 @@ class Plugin : BaseUnityPlugin
             Content.Register(new NightTerrorCritob());
             Content.Register(new ScholarScavCritob());
             Content.Register(new UmbraMaskFisob());
-            PBSoundID.RegisterValues();
+            //PBSoundID.RegisterValues();
             //Plugin.RegisterValues();
         } catch (Exception err) {
             //Debug.LogError(err); Debug errors
@@ -109,7 +109,7 @@ class Plugin : BaseUnityPlugin
         Crafting.Apply();
         FlarebombHooks.Apply();
         ScugHooks.Apply();
-        Thanatosis.Apply();
+        //DeathHooks.Apply();
 
         DevCommOverride.Apply();
         PassageHooks.Apply();
@@ -238,7 +238,7 @@ class Plugin : BaseUnityPlugin
 
                 PBCreatureTemplateType.UnregisterValues();
                 PBSandboxUnlockID.UnregisterValues();
-                PBSoundID.UnregisterValues();
+                //PBSoundID.UnregisterValues();
                 //Plugin.UnregisterValues();
 
                 break;

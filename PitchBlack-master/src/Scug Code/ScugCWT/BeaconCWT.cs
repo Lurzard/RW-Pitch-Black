@@ -16,6 +16,7 @@ public class BeaconCWT : ScugCWT {
     public Color flareColor2 = new Color(0.16470588235f, 0.0862745098f, 0.47843137254f); //#2a167a
     public Color flareColor3 = new Color(0.18039215686f, 0.05490196078f, 0.67843137254f); //#2e0ead
     public Color flareColor4 = new Color(0.2f, 0f, 1f); //FlareBomb glow
+    public Color lerpedColor; //moved lerpedColor into the cwt
     public FlareStore storage;
     public int dontThrowTimer = 0;
     public bool heldCraft = false;
@@ -23,6 +24,14 @@ public class BeaconCWT : ScugCWT {
     public Vector2 eyePos = new Vector2(0, 0);
     //flashbangs to recover after respawning in jollycoop
     public int coopRefund = 0;
+    //Thanatosis
+    public bool deathToggle; //toggle tracking
+    public bool isDead; //state tracking
+    public bool isDeadButDeniedDeath; //for later implementing coming back from GameOver
+    public bool isDeadForReal; //GameOver
+    public int inThanatosisTime; //tracking current time spent in Thanatosis
+    public float thanatosisLerp; //for lerping player color based on time spent in Thanatosis
+    public int thanatosisCounter; //so it doesn't happen every frame
     public BeaconCWT(Player player) : base() {
         storage = new FlareStore(player);
     }
@@ -86,7 +95,7 @@ public class BeaconCWT : ScugCWT {
                         }
                     }
                 }
-                if (counter > 20 && storedFlares.Count > 1) {
+                if (counter > 20 && storedFlares.Count > 0) {
                     // Move flare from store to paw
                     FlarebombFromStorageToPaw(eu);
                     counter = 0;

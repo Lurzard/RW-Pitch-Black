@@ -14,8 +14,24 @@ public class KarmaMeterChanges
     public static void Apply()
     {
         //Reinforced Karma
-        On.HUD.KarmaMeter.Update += KarmaMeter_Update;
-        On.HUD.KarmaMeter.KarmaSymbolSprite += KarmaMeter_KarmaSymbolSprite1;
+        //On.HUD.KarmaMeter.Update += KarmaMeter_Update;
+        //On.HUD.KarmaMeter.KarmaSymbolSprite += KarmaMeter_KarmaSymbolSprite1;
+
+        //these apparently change Watcher's Ripple Sprites color, so maybe baseColor is only used for Ripple
+        On.HUD.KarmaMeter.UpdateGraphic += KarmaMeter_UpdateGraphic;
+        On.HUD.KarmaMeter.ctor += KarmaMeter_ctor;
+    }
+
+    private static void KarmaMeter_ctor(On.HUD.KarmaMeter.orig_ctor orig, KarmaMeter self, HUD.HUD hud, FContainer fContainer, RWCustom.IntVector2 displayKarma, bool showAsReinforced) {
+        orig(self, hud, fContainer, displayKarma, showAsReinforced);
+        self.baseColor = SpecialChanges.SaturatedRose;
+        self.karmaSprite.color = self.baseColor;
+    }
+
+    private static void KarmaMeter_UpdateGraphic(On.HUD.KarmaMeter.orig_UpdateGraphic orig, KarmaMeter self) {
+        orig(self);
+        self.baseColor = SpecialChanges.SaturatedRose;
+        self.karmaSprite.color = self.baseColor;
     }
 
     private static string KarmaMeter_KarmaSymbolSprite1(On.HUD.KarmaMeter.orig_KarmaSymbolSprite orig, bool small, RWCustom.IntVector2 k)

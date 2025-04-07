@@ -12,7 +12,6 @@ public static class BeaconHooks {
     //SHOW A FOOD BAR WARNING IF WE DON'T HAVE ENOUGH FOOD TO MAKE A FLASHBANG
     public static int foodWarning = 0;
     public static void Apply() {
-        //spinch: i also want to hook to Player.ThrowToGetFree to make beacon throw flashbangs if grasps are empty
         IL.Player.GrabUpdate += Player_GrabUpdate_IL;
         On.Player.Die += Player_Die;
         On.Player.PermaDie += Player_PermaDie;
@@ -26,7 +25,6 @@ public static class BeaconHooks {
         On.PlayerGraphics.Update += PlayerGraphics_Update;
         On.SlugcatHand.EngageInMovement += SlugcatHand_EngageInMovement;
         On.ShelterDoor.DoorClosed += ShelterDoor_DoorClosed;
-        On.PlayerGraphics.ApplyPalette += PlayerGraphics_ApplyPalette;
         On.PlayerGraphics.DrawSprites += PlayerGraphics_DrawSprites;
         //qol storage stoppers for other hold-grab functions
         On.Player.SwallowObject += Player_SwallowObject;
@@ -34,11 +32,34 @@ public static class BeaconHooks {
         On.Player.ObjectEaten += Player_ObjectEaten;
         On.HUD.FoodMeter.MeterCircle.Update += MeterCircle_Update;
         //On.PlayerGraphics.InitiateSprites += PlayerGraphics_InitiateSprites;
+        On.PlayerGraphics.ApplyPalette += PlayerGraphics_ApplyPalette;
     }
 
-    private static void PlayerGraphics_InitiateSprites(On.PlayerGraphics.orig_InitiateSprites orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam) {
+    private static void PlayerGraphics_ApplyPalette(On.PlayerGraphics.orig_ApplyPalette orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
+    {
+        orig(self, sLeaser, rCam, palette);
+        Color color = PlayerGraphics.SlugcatColor(self.CharacterForColor);
+        Color color2 = new Color(color.r, color.g, color.b);
+        if (Plugin.scugCWT.TryGetValue(self.player, out ScugCWT scugCWT) && scugCWT is BeaconCWT beaconCWT) {
+            color2 = beaconCWT.lerpedColor;
+            for (int i = 0; i < sLeaser.sprites.Length; i++)
+            {
+                if (i != 9)
+                {
+                    sLeaser.sprites[i].color = color2;
+                }
+            }
+            sLeaser.sprites[11].color = Custom.hexToColor("f02961");//Color.Lerp(color, Color.white, 0.3f);
+            sLeaser.sprites[10].color = Custom.hexToColor("f02961");//color;
+        }
+    }
+
+    private static void PlayerGraphics_InitiateSprites(On.PlayerGraphics.orig_InitiateSprites orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
+    {
         orig(self, sLeaser, rCam);
-        sLeaser.sprites[9] = new FSprite( Thanatosis.isDead ? "FaceThanatosisA0" : "FaceA0", true);
+        if (Plugin.scugCWT.TryGetValue(self.player, out ScugCWT scugCWT) && scugCWT is BeaconCWT beaconCWT) {
+            sLeaser.sprites[9] = new FSprite(beaconCWT.isDead ? "FaceThanatosisA0" : "FaceA0", true);
+        }
     }
 
     //add math to fade beacon color in real time instead of immediately 
@@ -46,20 +67,19 @@ public static class BeaconHooks {
         orig(self, sLeaser, rCam, timeStacker, camPos);
 
         if (Plugin.scugCWT.TryGetValue(self.player, out ScugCWT scugCWT) && scugCWT is BeaconCWT beaconCWT) {
-            Color lerpedColor;
             
             //if Thanatosis lerp to RippleColor
-            if (Thanatosis.isDead) {
-                lerpedColor = Color.Lerp(BeaconCWT.beaconDefaultColor, RainWorld.RippleColor, Thanatosis.thanatosisLerp / 10f);
-            }
+            if (beaconCWT.isDead || beaconCWT.inThanatosisTime > 0) {
+                beaconCWT.lerpedColor = Color.Lerp(BeaconCWT.beaconDefaultColor, RainWorld.RippleColor, beaconCWT.thanatosisLerp);//beaconCWT.thanatosisLerp / 10f);
+            } 
             // Otherwise use default colors.
             else {
                 int flares = beaconCWT.storage.storedFlares.Count;
-                lerpedColor = Color.Lerp(BeaconCWT.beaconDefaultColor, BeaconCWT.beaconFullColor, flares/(float)PBRemixMenu.maxFlashStore.Value);
+                beaconCWT.lerpedColor = Color.Lerp(BeaconCWT.beaconDefaultColor, BeaconCWT.beaconFullColor, flares/(float)4);//PBRemixMenu.maxFlashStore.Value);
             }
             //sprites
             for (int sprites = 0; sprites < sLeaser.sprites.Length; sprites++) {
-                if (sprites != 9) sLeaser.sprites[sprites].color = lerpedColor;
+                if (sprites != 9) sLeaser.sprites[sprites].color = beaconCWT.lerpedColor;
                 if (sprites == 9) sLeaser.sprites[sprites].color = BeaconCWT.beaconEyeColor;
                 //if (sprites == 9) sLeaser.sprites[sprites].element = Futile.atlasManager.GetElementWithName(Thanatosis.isDead ? "FaceDead" : "Face"); //switch face sprites if in Thanatosis
                 if (sprites == 10) sLeaser.sprites[sprites].color = Custom.hexToColor("f02961");
@@ -75,24 +95,18 @@ public static class BeaconHooks {
             }
         }
     }
-    // We might not need this one anymore...
-    private static void PlayerGraphics_ApplyPalette(On.PlayerGraphics.orig_ApplyPalette orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette) {
-        orig(self, sLeaser, rCam, palette);
-        if (Plugin.scugCWT.TryGetValue(self.player, out ScugCWT scugCWT) && scugCWT is BeaconCWT beaconCWT) {
-        }
-    }
     private static void PlayerGraphics_Update(On.PlayerGraphics.orig_Update orig, PlayerGraphics self) {
         //ASSUMING THIS WILL BE TRUE MOST OF THE TIME IN BEACON'S WORLD STATE
         if (Plugin.scugCWT.TryGetValue(self.player, out ScugCWT scugCWT) && scugCWT is BeaconCWT beaconCWT && self.player.room.Darkness(self.player.mainBodyChunk.pos) > 0f) {
             //GIVE THIS BACK SINCE ORIG PROBABLY TOOK IT
             if (self.lightSource == null) {
                 Color lerpColor;
-                if (Thanatosis.isDead) {
-                    lerpColor = Color.Lerp(BeaconCWT.beaconDefaultColor, RainWorld.RippleColor, Thanatosis.thanatosisLerp / 10f);
+                if (beaconCWT.isDead) {
+                    lerpColor = Color.Lerp(BeaconCWT.beaconDefaultColor, RainWorld.RippleColor, beaconCWT.inThanatosisTime / 10f);
                 }
                 // Otherwise use default colors.
                 else {
-                    lerpColor = Color.Lerp(BeaconCWT.beaconDefaultColor, BeaconCWT.beaconFullColor, beaconCWT.storage.storedFlares.Count/(float)PBRemixMenu.maxFlashStore.Value);
+                    lerpColor = Color.Lerp(BeaconCWT.beaconDefaultColor, BeaconCWT.beaconFullColor, beaconCWT.storage.storedFlares.Count/(float)4);//PBRemixMenu.maxFlashStore.Value);
                 }
                 
                 self.lightSource = new LightSource(self.player.mainBodyChunk.pos, false, Color.Lerp(new Color(1f, 1f, 1f), lerpColor, 0.5f), self.player);
@@ -371,9 +385,35 @@ public static class BeaconHooks {
             }
         }
     }
+
     private static void BeaconPlayerUpdate(On.Player.orig_Update orig, Player self, bool eu) {
         orig(self, eu);
         if (Plugin.scugCWT.TryGetValue(self, out ScugCWT c) && c is BeaconCWT cwt) {
+            //THANATOSIS
+            if (self.input[0].spec) {
+                cwt.deathToggle = cwt.isDead;
+                cwt.isDead = !cwt.isDead;
+                if (cwt.deathToggle != cwt.isDead) {
+                    self.room.PlaySound(cwt.isDead ? SoundID.HUD_Karma_Reinforce_Bump/*PBSoundID.Player_Activated_Thanatosis*/ : SoundID.In_Room_Deer_Summoned/*PBSoundID.Player_Deactivated_Thanatosis*/, self.mainBodyChunk);
+                    //DeathHooks.Thanatosis(self); //contextual Player.Die() for Thanatosis
+                }
+            }
+            if (cwt.isDead) {
+                self.dead = true;
+                cwt.inThanatosisTime++;
+                //Debug.Log("Killed player");
+                cwt.thanatosisLerp += 0.005f;
+                //self.Die(); //this works, but calls GameOver eventually
+                //self.dead = true; //this works, doesn't call GameOver, but input is taken away
+            }
+            if (!cwt.isDead) {
+                if (cwt.inThanatosisTime > 0) self.exhausted = true; //makes player blink visually btw
+                cwt.inThanatosisTime--;
+                //Debug.Log("Revived player");
+                cwt.thanatosisLerp -= 0.005f;
+                //self.dead = false; //isn't used anywhere useful
+            }
+
             if (cwt.dontThrowTimer > 0) {
                 cwt.dontThrowTimer--;
             }
@@ -400,6 +440,7 @@ public static class BeaconHooks {
             }
         }
     }
+
     private static bool SlugcatHand_EngageInMovement(On.SlugcatHand.orig_EngageInMovement orig, SlugcatHand self) {
         Player myPlayer = self.owner.owner as Player;
         if (Plugin.scugCWT.TryGetValue(myPlayer, out ScugCWT scugCWT) && scugCWT is BeaconCWT beaconCWT && beaconCWT.brightSquint > 1) {
@@ -434,7 +475,7 @@ public static class BeaconHooks {
             cwt.dontThrowTimer = 15; //BRIEF PERIOD OF DON'T THROW A FLASHBANG
             //MAYBE A FANCY COLOR?...
             if (self.grasps[grasp].grabbed is FlareBomb flare) {
-                flare.color = new Color(0.3f, 0f, 1f); //WE COULD GIVE IT A FUNKY COLOR, IF WE WANT... //yurpnuke -Lur
+                flare.color = new Color(0.4f, 0f, 1f); //WE COULD GIVE IT A FUNKY COLOR, IF WE WANT... //yurpnuke -Lur
                 cwt.dontThrowTimer = 60; //DON'T THROW ANOTHER ONE FOR A WHILE //This perfectly tracks the interval of a Flashbang exploding -Lur
             }
         }

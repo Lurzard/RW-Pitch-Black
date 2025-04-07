@@ -3,8 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace PitchBlack;
 
-public static class PBCreatureTemplateType
-{
+public static class PBCreatureTemplateType {
     [AllowNull] public static CreatureTemplate.Type NightTerror = new("NightTerror", true);
     [AllowNull] public static CreatureTemplate.Type LMiniLongLegs = new(nameof(LMiniLongLegs), true);
 #if PLAYTEST
@@ -37,8 +36,7 @@ public static class PBCreatureTemplateType
     }
 }
 
-public static class PBSandboxUnlockID
-{
+public static class PBSandboxUnlockID {
     [AllowNull] public static MultiplayerUnlocks.SandboxUnlockID NightTerror = new("NightTerror", true);
     [AllowNull] public static MultiplayerUnlocks.SandboxUnlockID LMiniLongLegs = new(nameof(LMiniLongLegs), true);
 #if PLAYTEST

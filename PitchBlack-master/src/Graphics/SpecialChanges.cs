@@ -29,9 +29,9 @@ public class SpecialChanges
         On.KarmaFlower.ApplyPalette += KarmaFlower_ApplyPalette;
 
         //voidspawn
-        IL.VoidSpawnEgg.DrawSprites += VoidSpawnEgg_DrawSprites_IL;
-        IL.VoidSpawnGraphics.ApplyPalette += VoidSpawnGraphics_ApplyPalette_IL;
-        IL.VoidSpawnGraphics.DrawSprites += VoidSpawnGraphics_DrawSprites_IL;
+        //IL.VoidSpawnEgg.DrawSprites += VoidSpawnEgg_DrawSprites_IL;
+        //IL.VoidSpawnGraphics.ApplyPalette += VoidSpawnGraphics_ApplyPalette_IL;
+        //IL.VoidSpawnGraphics.DrawSprites += VoidSpawnGraphics_DrawSprites_IL;
         //On.VoidSpawnGraphics.DrawSprites += VoidSpawnGraphics_DrawSprites;
         //On.VoidSpawnGraphics.Antenna.DrawSprites += Antenna_DrawSprites;
 
