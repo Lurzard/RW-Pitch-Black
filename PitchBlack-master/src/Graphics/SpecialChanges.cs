@@ -19,7 +19,7 @@ namespace PitchBlack;
 // Everything to do with changes to certain void/karma/gold things in the game
 public class SpecialChanges {
     public static void Apply() {
-        
+
         // [TODO] -Lur
         // - KarmaLadder
         // - KarmaFlowerPatch
@@ -49,16 +49,15 @@ public class SpecialChanges {
 
     // PB's RippleSymbolSprite
     // Todo: All of the RippleLevel Karma stuff remade but for this, as well as savedata
-    public static string QualiaSymbolSprite(bool small, float qualiaLevel)
-    {
+    public static string QualiaSymbolSprite(bool small, float qualiaLevel) {
         double num = Math.Round((double)(qualiaLevel * 2f), MidpointRounding.AwayFromZero) / 2.0;
         return (small ? "smallQualia" : "qualia") + num.ToString("#.0", CultureInfo.InvariantCulture);
     }
 
-    private static void KarmaMeter_ctor(On.HUD.KarmaMeter.orig_ctor orig, KarmaMeter self, HUD.HUD hud, FContainer fContainer, RWCustom.IntVector2 displayKarma, bool showAsReinforced) {
+    private static void KarmaMeter_ctor(On.HUD.KarmaMeter.orig_ctor orig, KarmaMeter self, HUD.HUD hud, FContainer fContainer, IntVector2 displayKarma, bool showAsReinforced) {
         orig(self, hud, fContainer, displayKarma, showAsReinforced);
-        self.baseColor = Plugin.SaturatedAntiGold;
         if (Plugin.qualiaLevel >= 1f) {
+            self.baseColor = Plugin.SaturatedRipple;
             self.karmaSprite.color = self.baseColor;
         }
     }
@@ -68,22 +67,24 @@ public class SpecialChanges {
         if (Plugin.qualiaLevel >= 1f) {
             // For when New sprites are added
             //this.karmaSprite.element = Futile.atlasManager.GetElementWithName(KarmaMeter.RippleSymbolSprite(true, (this.hud.owner as Player).rippleLevel));
-            self.baseColor = Plugin.SaturatedAntiGold;
+            self.baseColor = Plugin.SaturatedRipple;
             self.karmaSprite.color = self.baseColor;
         }
     }
 
     private static void KarmaFlower_InitiateSprites(On.KarmaFlower.orig_InitiateSprites orig, KarmaFlower self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam) {
         orig(self, sLeaser, rCam);
-        if (rCam.room.game.IsStorySession && rCam.room.game.GetStorySession.saveStateNumber == Plugin.Beacon) {
+        if (rCam.room.game.IsStorySession &&
+            rCam.room.game.GetStorySession.saveStateNumber == Plugin.BeaconName) {
             sLeaser.sprites[self.EffectSprite(2)].shader = rCam.room.game.rainWorld.Shaders["RippleGlow"];
         }
     }
 
     private static void KarmaFlower_ApplyPalette(On.KarmaFlower.orig_ApplyPalette orig, KarmaFlower self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette) {
         orig(self, sLeaser, rCam, palette);
-        if (rCam.room.game.IsStorySession && rCam.room.game.GetStorySession.saveStateNumber == Plugin.Beacon) {
-            self.color = Plugin.PBAntiGold;
+        if (rCam.room.game.IsStorySession &&
+            rCam.room.game.GetStorySession.saveStateNumber == Plugin.BeaconName) {
+            self.color = Plugin.PBRipple_Color;
         }
     }
 
@@ -196,9 +197,9 @@ public class SpecialChanges {
             {
                 // Apply changes only if the campaing is Beacon?
                 if (rCam.room.game.IsStorySession &&
-                    rCam.room.game.GetStorySession.saveStateNumber == Plugin.Beacon)
+                    rCam.room.game.GetStorySession.saveStateNumber == Plugin.BeaconName)
                 {
-                    return Plugin.RoseRGB;
+                    return Plugin.Rose;
                 }
                 return origColor;
             });
@@ -223,13 +224,13 @@ public class SpecialChanges {
             cursor.EmitDelegate<Func<Color, VoidSpawnGraphics, RoomCamera, Color>>((origColor, self, rCam) =>
             {
                 if (rCam.room.game.IsStorySession &&
-                    rCam.room.game.GetStorySession.saveStateNumber == Plugin.Beacon)
+                    rCam.room.game.GetStorySession.saveStateNumber == Plugin.BeaconName)
                 {
                     if (self.dayLightMode)
                     {
                         return Plugin.SaturatedRose;
                     }
-                    return Color.Lerp(Plugin.SaturatedRose, Plugin.RoseRGB, Mathf.InverseLerp(0.3f, 0.9f, self.darkness));
+                    return Color.Lerp(Plugin.SaturatedRose, Plugin.Rose, Mathf.InverseLerp(0.3f, 0.9f, self.darkness));
                 }
                 return origColor;
             });
@@ -260,9 +261,9 @@ public class SpecialChanges {
             cursor.EmitDelegate<Func<Color, VoidSpawnGraphics, RoomCamera, Color>>((origColor, self, rCam) =>
             {
                 if (rCam.room.game.IsStorySession &&
-                    rCam.room.game.GetStorySession.saveStateNumber == Plugin.Beacon)
+                    rCam.room.game.GetStorySession.saveStateNumber == Plugin.BeaconName)
                 {
-                    return Plugin.RoseRGB;
+                    return Plugin.Rose;
                 }
                 return origColor;
             });

@@ -31,8 +31,10 @@ class Plugin : BaseUnityPlugin
     public static readonly Dictionary<string, bool> collectionSaveData = new Dictionary<string, bool>();
     public static ConditionalWeakTable<RainWorldGame, List<RiftWorldPrecence>> riftCWT = new();
 
-    public static readonly SlugcatStats.Name Beacon = new("Beacon", false);
-    public static readonly SlugcatStats.Name Photomaniac = new("Photomaniac", false);
+    public static readonly SlugcatStats.Name BeaconName = new("Beacon", false);
+    public static readonly SlugcatStats.Name PhotoName = new("Photomaniac", false);
+
+    public static readonly SlugcatStats.Timeline BeaconTime = new("Beacon", false);
 
     private bool init = false;
     public static ManualLogSource logger;
@@ -41,16 +43,19 @@ class Plugin : BaseUnityPlugin
     public static ConditionalWeakTable<RainWorldGame, List<NTTracker>> NTTrackers = new ConditionalWeakTable<RainWorldGame, List<NTTracker>>();
 
     // Significantly used colors that would be fine here
-    public static Color RoseRGB = new Color(0.529f, 0.184f, 0.360f); //#872f5c
+    public static Color Rose = new Color(0.82745098039f, 0.10980392156f, 0.29019607843f); // #d31c4a
     public static Color PBAntiGold = new Color(0.355f, 0.31f, 0.87f); //#5b4fdd
     public static Color PBAnti_GoldRGB = new Color(0.20784313725f, 0.18039215686f, 0.52156862745f); //#352e85
-    public static Color SaturatedRose = RoseRGB * 2f;
+    public static Color SaturatedRose = Rose * 2f;
     public static Color SaturatedAntiGold = PBAntiGold * 2f;
+    public static Color PBRipple_Color = new Color(0.373f, 0.11f, 0.831f);
+    public static Color SaturatedRipple = PBRipple_Color * 2f;
 
     // "Save data" will be plugin variables for now, but should be moved to an actual savedata system that we can work with
     public static bool canIDoThanatosisYet = true; //after dev: false
     public static float qualiaLevel = 10f; //after dev: 0f
 
+    // Rotund World stuffs
     internal static bool RotundWorldEnabled => _rotundWorldEnabled; //for a single check in BeaconHooks' Player.Update hook
     private static bool _rotundWorldEnabled;
     public static bool individualFoodEnabled = false;

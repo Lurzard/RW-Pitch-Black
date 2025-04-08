@@ -9,16 +9,35 @@ using Mono.Cecil.Cil;
 
 namespace PitchBlack;
 
-public static class WorldChanges
-{
-    public static void Apply()
-    {
+public static class WorldChanges {
+    public static void Apply() {
         On.Expedition.NeuronDeliveryChallenge.ValidForThisSlugcat += NeuronDeliveryChallenge_ValidForThisSlugcat;
         On.Expedition.PearlDeliveryChallenge.ValidForThisSlugcat += PearlDeliveryChallenge_ValidForThisSlugcat;
         On.Room.Update += Room_Update;
         new Hook(typeof(ElectricDeath).GetMethod("get_Intensity", Public | NonPublic | Instance), ElecIntensity);
         IL.Menu.SlugcatSelectMenu.SlugcatPageContinue.ctor += SlugcatSelectMenu_SlugcatPageContinue_ctor;
+        On.Region.ctor_string_int_int_Timeline += Region_ctor_string_int_int_Timeline;
     }
+
+    // Change the color of rot
+    private static void Region_ctor_string_int_int_Timeline(On.Region.orig_ctor_string_int_int_Timeline orig, Region self, string name, int firstRoomIndex, int regionNumber, SlugcatStats.Timeline timelineIndex) {
+        orig(self, name, firstRoomIndex, regionNumber, timelineIndex);
+        Color color = new Color();
+        if (timelineIndex != null &&
+            timelineIndex == Plugin.BeaconTime) {
+            // Sentient Rot
+            if (self.name != "UD") {
+                color = RainWorld.RippleColor;
+            }
+            // Nightmare Rot
+            if (self.name == "UD") {
+                color = Plugin.Rose;
+            }
+            self.regionParams.corruptionEffectColor = color;
+            self.regionParams.corruptionEyeColor = color;
+        }
+    }
+
     private static void SlugcatSelectMenu_SlugcatPageContinue_ctor(ILContext il)
     {
         ILCursor cursor = new ILCursor(il);
