@@ -1,0 +1,122 @@
+[MERGE]
+CONDITIONAL LINKS
+
+//Re-establish Hydroponics connections for Watcher, because they're disconnected for Beacon
+Watcher : HI_W02 : DISCONNECTED : HI_B04W
+Watcher : HI_B04W : DISCONNECTED : HI_W02
+
+Beacon : HI_A18 : HI_A17 : DISCONNECTED
+
+Beacon : HI_B04 : GATE_SU_HI : DISCONNECTED
+Beacon : HI_B04 : HI_S03 : DISCONNECTED
+Beacon : HI_B04 : HI_A07 : DISCONNECTED
+Beacon : HI_B04 : HI_B12 : DISCONNECTED
+Beacon : GATE_SU_HI : HI_B04 : HI_B04W
+Beacon : HI_S03 : HI_B04 : HI_B04W
+Beacon : HI_A07 : HI_B04 : HI_B04W
+Beacon : HI_B12 : HI_B04 : HI_B04W
+Beacon : EXCLUSIVEROOM : HI_B04W
+Beacon : HIDEROOM : HI_B04
+
+Beacon : HI_A17 : HI_A23 : DISCONNECTED
+Beacon : HI_A17 : HI_A16 : DISCONNECTED
+Beacon : HI_A17 : HI_A18 : DISCONNECTED
+Beacon : HI_A16 : HI_A17 : HI_A17W
+Beacon : HI_A23 : HI_A17 : HI_A17W
+Beacon : EXCLUSIVEROOM : HI_A17W
+Beacon : HIDEROOM : HI_A17
+Beacon : HIDEROOM : HI_A18
+Beacon : HIDEROOM : HI_C05
+Beacon : HIDEROOM : HI_A06
+Beacon : HIDEROOM : HI_A24
+Beacon : HIDEROOM : HI_S04
+Beacon : HIDEROOM : HI_A19
+Beacon : HIDEROOM : GATE_HI_GW
+
+Beacon : HI_C15 : HI_C14 : DISCONNECTED
+Beacon : HI_C15 : HI_A28 : DISCONNECTED
+Beacon : HI_C14 : HI_C15 : HI_C15W
+Beacon : EXCLUSIVEROOM : HI_C15W
+Beacon : HIDEROOM : HI_C15
+Beacon : HIDEROOM : HI_A28
+Beacon : HIDEROOM : GATE_HI_VS
+
+//we need to exclusiveroom hydroponics to prevent offscreen creatures from travelling there
+Beacon : EXCLUSIVEROOM : HI_W01
+Beacon : EXCLUSIVEROOM : HI_W02
+Beacon : EXCLUSIVEROOM : HI_W03
+Beacon : EXCLUSIVEROOM : HI_W04
+Beacon : EXCLUSIVEROOM : HI_W05
+Beacon : EXCLUSIVEROOM : HI_W06
+Beacon : EXCLUSIVEROOM : HI_W07
+Beacon : EXCLUSIVEROOM : HI_W09
+Beacon : EXCLUSIVEROOM : HI_W11
+Beacon : EXCLUSIVEROOM : HI_W12
+Beacon : EXCLUSIVEROOM : HI_W13
+Beacon : EXCLUSIVEROOM : HI_W14
+Beacon : EXCLUSIVEROOM : HI_W15
+Beacon : EXCLUSIVEROOM : HI_W16
+Beacon : EXCLUSIVEROOM : HI_W17
+Beacon : EXCLUSIVEROOM : HI_W18
+Beacon : EXCLUSIVEROOM : HI_W19
+Beacon : EXCLUSIVEROOM : HI_WS01
+END CONDITIONAL LINKS
+
+ROOMS
+HI_B04W : HI_B12, DISCONNECTED, HI_A07, GATE_SU_HI, HI_S03
+HI_A17W : DISCONNECTED, HI_A23, HI_A16
+HI_C15W : HI_C14, DISCONNECTED, DISCONNECTED
+
+HI_W01 : HI_W04, HI_W02
+HI_W02 : HI_W01, DISCONNECTED
+HI_W03 : HI_W12, DISCONNECTED, HI_W17, HI_W04
+HI_W04 : HI_W03, HI_W05, HI_W01
+HI_W05 : DISCONNECTED, DISCONNECTED, DISCONNECTED, DISCONNECTED, HI_W06, HI_W04
+HI_W06 : HI_W05
+HI_W07 : HI_W11, HI_W17
+HI_W09 : HI_W12, HI_W15, HI_W16, DISCONNECTED, HI_W13, HI_W11
+HI_W11 : HI_W07, HI_W09, HI_W19
+HI_W12 : HI_W09, HI_W03, DISCONNECTED, HI_W18
+HI_W13 : HI_W09, HI_W14, DISCONNECTED
+HI_W14 : HI_W13
+HI_W15 : HI_W09, HI_WS01, HI_W16
+HI_W16 : HI_W15, HI_W09
+HI_W17 : HI_W18, HI_W03, DISCONNECTED, HI_W07
+HI_W18 : HI_W12, HI_W17, DISCONNECTED
+HI_W19 : HI_W11
+HI_WS01 : HI_W15 : SHELTER
+
+END ROOMS
+
+CREATURES
+(Beacon)OFFSCREEN : 0-Vulture-2, 0-KingVulture-2, 0-Scavenger-7
+
+// hydroponics
+HI_W03 : 4-DropWig
+HI_W04 : 5-DropWig
+HI_W07 : 4-Garbage Worm-4, 4-CicadaB-1, 4-CicadaA-1, 5-Green, 6-Green
+HI_W11 : 5-White
+HI_W12 : 3-Garbage Worm-3, 4-BigNeedle, 4-SmallNeedle-2, 9-Green, 12-Eel-{PreCycle}
+HI_W17 : 6-CicadaB-3, 5-CicadaA-2
+HI_W19 : 1-Pink
+LINEAGE : HI_W12 : 11 : Mimic-{16}-0.1, TentaclePlant-0
+LINEAGE : HI_W15 : 4 : Pink-0.9, White-0.2, Blue-0.5, Pink-0.2, Red-0
+
+// vanilla modifications
+(Beacon)LINEAGE : HI_B06 : 3 : Green-0.2, Blue-0.5, White-0.2, Red-0
+(Beacon)LINEAGE : HI_C01 : 4 : Blue-0.1, Cyan-0.2, Red-0
+(Beacon)LINEAGE : HI_C02 : 6 : Green-0.2, Blue-0
+(Beacon)HI_B09 : 3-Green, 2-White
+(Beacon)HI_B15 : 2-Small Centipede-3, 3-Centipede-{0.5}
+(Beacon)HI_C04 : 5-Blue, 6-Snail, 7-Snail-2, 7-TentaclePlant-{PreCycle}, 5-Cyan-{PreCycle}
+(Beacon)HI_B07 : 3-Pink, 2-Pink, 3-TentaclePlant-{PreCycle}
+(Beacon)HI_A04 : 2-Mimic-{18}
+(Beacon)HI_C11 : 3-Blue
+(Beacon)HI_C03 : 3-Cyan, 3-Eel-{PreCycle}
+(Beacon)HI_D01 : 2-Cyan-2-{PreCycle}
+(Beacon)HI_A17W : 3-Cyan-{PreCycle}
+(Beacon)HI_B05 : 3-Cyan
+(Beacon)HI_A16 : 4-Green
+(Beacon)HI_B06 : 4-Red
+END CREATURES
+[ENDMERGE]

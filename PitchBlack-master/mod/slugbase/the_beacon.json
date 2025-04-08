@@ -39,8 +39,8 @@
 		"auto_grab_batflies": true,
 
 		"start_room": [ "SH_A08" ],
-		"world_state": [ "Watcher" ],
-		"story_regions": [ "SU", "HI", "DS", "CC", "GW", "SH", "SL", "SI", "LF", "UW", "SS", "-SB" ],
+		"world_state": [ "Beacon", "Watcher" ],
+		"story_regions": [ "SU", "HI", "-DS", "BDSR", "CC", "GW", "SH", "SL", "SI", "-LF", "BLFR", "UW", "SS", "-SB" ],
 
 		"expedition_enabled": true,
 		"expedition_description": "Placeholder expedition description",

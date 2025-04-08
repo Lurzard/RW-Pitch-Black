@@ -1,0 +1,67 @@
+[MERGE]
+CONDITIONAL LINKS
+Beacon : SH_E03 : SH_B12 : DISCONNECTED
+Beacon : SH_C13 : SH_E05 : DISCONNECTED
+
+Beacon : SH_E05 : SH_C13 : DISCONNECTED
+Beacon : SH_E05 : SH_C05 : DISCONNECTED
+Beacon : SH_E05 : SH_A26 : DISCONNECTED
+Beacon : SH_E05 : SH_A04 : DISCONNECTED
+Beacon : SH_C05 : SH_E05 : SH_E05W
+Beacon : SH_A04 : SH_E05 : SH_E05W
+Beacon : SH_A26 : SH_E05 : SH_E05W
+Beacon : EXCLUSIVEROOM : SH_E05W
+Beacon : HIDEROOM : SH_E05
+Beacon : HIDEROOM : SH_C13
+Beacon : HIDEROOM : SH_S05
+Beacon : HIDEROOM : GATE_SH_SL
+
+Beacon : SH_B12 : SH_S09 : DISCONNECTED
+Beacon : SH_B12 : SH_E03 : DISCONNECTED
+Beacon : SH_B12 : SH_E02 : DISCONNECTED
+Beacon : SH_S09 : SH_B12 : SH_B12W
+Beacon : SH_E02 : SH_B12 : SH_B12W
+Beacon : EXCLUSIVEROOM : SH_B12W
+Beacon : HIDEROOM : SH_B12
+Beacon : HIDEROOM : SH_E03
+Beacon : HIDEROOM : SH_E01
+Beacon : HIDEROOM : SH_E04
+Beacon : HIDEROOM : SH_H01
+Beacon : HIDEROOM : SH_D03
+Beacon : HIDEROOM : GATE_SH_UW
+
+Beacon : SH_OVERHEAD : SH_CURVE : DISCONNECTED
+Beacon : SH_OVERHEAD : SH_scavshop : DISCONNECTED
+Beacon : SH_OVERHEAD : SH_HALL : DISCONNECTED
+Beacon : SH_OVERHEAD : SH_LEDGE : DISCONNECTED
+Beacon : SH_LEDGE : SH_OVERHEAD : SH_OVERHEADW
+Beacon : EXCLUSIVEROOM : SH_OVERHEADW
+Beacon : HIDEROOM : SH_OVERHEAD
+Beacon : HIDEROOM : SH_scavshop
+Beacon : HIDEROOM : SH_HALL
+Beacon : HIDEROOM : SH_CURVE
+Beacon : HIDEROOM : SH_S11
+Beacon : HIDEROOM : GATE_GW_SH
+END CONDITIONAL LINKS
+
+ROOMS
+SH_E05W : SH_C05, DISCONNECTED, SH_A04, SH_A26
+SH_B12W : DISCONNECTED, SH_S09, SH_E02
+SH_OVERHEADW : DISCONNECTED, DISCONNECTED, SH_LEDGE, DISCONNECTED
+END ROOMS
+
+CREATURES
+(Beacon)OFFSCREEN : 0-Miros Bird-17, 0-Scavenger-7
+(Beacon)SH_KELP : 4-Tentacle Plant, 6-Spider-10
+(Beacon)SH_OVERHEADW : 5-Big Spider-1
+(Beacon)SH_D01 : 3-Pink
+(Beacon)SH_C09 : 2-Spider-5, 3-Spider-5, 4-Spider-15, 5-Spider-10
+(Beacon)SH_C05 : 2-Lantern Mouse, 3-Lantern Mouse, 5-Lantern Mouse, 6-Lantern Mouse, 4-Spider-15
+(Beacon)SH_C04 : 8-Lantern Mouse-2, 5-Lantern Mouse-1, 6-Lantern Mouse, 7-Spider-20
+(Beacon)SH_HELPOUT : 3-Spider-15
+(Beacon)LINEAGE : SH_B05 : 7 : Lantern Mouse-0.4, Bigspider-0
+(Beacon)LINEAGE : SH_A12 : 4 : NONE-0.3, Black-0.5, BigSpider-0.5, SpitterSpider-0
+(Beacon)LINEAGE : SH_B08 : 2 : Pink-0.4, Black-0
+(Beacon)LINEAGE : SH_C05 : 4 : BigSpider-0.3, BigSpider-0.2, NONE-0.1, SpitterSpider-0
+END CREATURES
+[ENDMERGE]

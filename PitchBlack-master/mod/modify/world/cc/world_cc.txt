@@ -1,0 +1,80 @@
+[MERGE]
+CONDITIONAL LINKS
+
+Beacon : CC_C09 : CC_A06 : DISCONNECTED
+Beacon : CC_H01 : CC_A06 : DISCONNECTED
+
+Beacon : CC_A06 : CC_H01 : DISCONNECTED
+Beacon : CC_A06 : CC_C09 : DISCONNECTED
+Beacon : CC_A06 : CC_C07 : DISCONNECTED
+Beacon : CC_A06 : CC_C12 : DISCONNECTED
+Beacon : CC_C07 : CC_A06 : CC_A06W
+Beacon : CC_C12 : CC_A06 : CC_A06W
+Beacon : EXCLUSIVEROOM : CC_A06W
+Beacon : HIDEROOM : CC_A06
+Beacon : HIDEROOM : CC_C09
+Beacon : HIDEROOM : CC_S04
+Beacon : HIDEROOM : GATE_SI_CC
+Beacon : HIDEROOM : CC_H01
+Beacon : HIDEROOM : GATE_CC_UW
+
+Beacon : CC_B10 : CC_SHAFT02 : DISCONNECTED
+Beacon : CC_B10 : CC_B14 : DISCONNECTED
+Beacon : CC_B10 : CC_C05 : DISCONNECTED
+Beacon : CC_C05 : CC_B10 : CC_B10W
+Beacon : CC_B14 : CC_B10 : CC_B10W
+Beacon : EXCLUSIVEROOM : CC_B10W
+Beacon : HIDEROOM : CC_B10
+Beacon : CC_SUMP03 : CC_CLOG : DISCONNECTED
+Beacon : CC_SUMP03 : CC_STRAINER02 : DISCONNECTED
+Beacon : CC_SUMP03 : CC_STRAINER01 : DISCONNECTED
+Beacon : CC_SUMP03 : CC_SHAFT01x : DISCONNECTED
+Beacon : CC_SHAFT01x : CC_SUMP03 : CC_SUMP03W
+Beacon : EXCLUSIVEROOM : CC_SUMP03W
+Beacon : HIDEROOM : CC_SUMP03
+Beacon : HIDEROOM : CC_SHAFT02
+Beacon : HIDEROOM : CC_SUMP01
+Beacon : HIDEROOM : CC_SUMP02
+Beacon : HIDEROOM : CC_SUMP04
+Beacon : HIDEROOM : CC_SUMP05
+Beacon : HIDEROOM : CC_STRAINER01
+Beacon : HIDEROOM : CC_STRAINER02
+Beacon : HIDEROOM : CC_STRAINER03
+Beacon : HIDEROOM : CC_OUTPUT
+Beacon : HIDEROOM : CC_CLOG
+Beacon : HIDEROOM : CC_S06
+Beacon : HIDEROOM : CC_S07
+Beacon : HIDEROOM : GATE_DS_CC
+END CONDITIONAL LINKS
+
+ROOMS
+CC_A06W : CC_C12, DISCONNECTED, DISCONNECTED, CC_C07 : SWARMROOM
+CC_B10W : CC_C05, CC_B14, DISCONNECTED
+CC_SUMP03W : CC_SHAFT01x, DISCONNECTED, DISCONNECTED, DISCONNECTED
+END ROOMS
+
+CREATURES
+(Beacon)OFFSCREEN : 0-Vulture-3, 0-KingVulture-1, 0-Scavenger-4
+(Beacon)LINEAGE : OFFSCREEN : 0 : Vulture-0.2, KingVulture-0
+(Beacon)LINEAGE : OFFSCREEN : 0 : NONE-0.5, Scavenger-0.1, NONE-0.1, Elite-0
+(Beacon)CC_B04 : 3-White, 3-Snail-2-{PreCycle}
+(Beacon)CC_B05 : 2-Pink, 3-White, 4-TentaclePlant-{PreCycle}
+(Beacon)CC_B11 : 3-Caramel
+(Beacon)CC_B01 : 2-Blue, 3-White, 3-Snail-3-{PreCycle}
+(Beacon)CC_F01 : 4-Pink-2, 4-Snail-3-{PreCycle}
+(Beacon)CC_B08 : 3-White, 2-Pink, 3-Cyan-2-{PreCycle}
+(Beacon)CC_C07 : 2-Snail-3-{PreCycle}
+(Beacon)LINEAGE : CC_F01 : 3 : White-{Mean:0.3}-0.5, Blue-0.2, Cyan-0.2, Red-0
+(Beacon)LINEAGE : CC_SUMP01 : 4 : BigSpider-0.1, White-0.2, TentaclePlant-0
+(Beacon)LINEAGE : CC_A07 : 2 : Pink-0.2, Blue-0.5, White-0.2, Cyan-0.2, Red-0
+(Beacon)LINEAGE : CC_C11 : 3 : Blue-0.2, White-0.2, NONE-0.2, Red-0
+(Beacon)LINEAGE : CC_B08 : 2 : Pink-0.2, White-0.2, Strawberry-0.1, Red-0
+(Beacon)LINEAGE : CC_B11 : 3 : DropBug-0.1, SpitterSpider-0
+(Beacon)LINEAGE : CC_B01 : 2 : Pink-0.2, White-0.2, Strawberry-0.1, Red-0
+(Beacon)LINEAGE : CC_C08 : 3 : Pink-0.2, Blue-0.3, NONE-0.3, Cyan-0
+(Beacon)LINEAGE : CC_C08 : 4 : Pink-0.2, Blue-0.3, NONE-0.3, Cyan-0
+(Beacon)LINEAGE : CC_C05 : 3 : Blue-0.2, NONE-0.5, White-0.2, Red-0
+(Beacon)CC_SHAFT01x : 9-Garbage Worm-3, 2-Eel-{PreCycle}
+(Beacon)CC_SUMP03W : 4-Mimic-{18}, 7-MotherSpider-1, 8-Mimic-{14}, 12-Snail-5, 13-Eel
+END CREATURES
+[ENDMERGE]
