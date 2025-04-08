@@ -75,7 +75,7 @@ public static class MiscUtils {
         return crit is Player player && IsBeaconOrPhoto(player.slugcatStats.name);
     }
     public static bool IsBeaconOrPhoto(SlugcatStats.Name slugName) {
-        return null != slugName && (slugName == Plugin.Beacon || slugName == Photomaniac);
+        return null != slugName && (slugName == Plugin.BeaconName || slugName == PhotoName);
     }
     #endregion
     #region Bacon Checks
@@ -86,7 +86,7 @@ public static class MiscUtils {
         return (crit is Player player) && IsBeacon(player.slugcatStats.name);
     }
     public static bool IsBeacon(SlugcatStats.Name name) {
-        return name != null && name == Plugin.Beacon;
+        return name != null && name == Plugin.BeaconName;
     }
     #endregion
     #region Photo Checks
@@ -97,7 +97,7 @@ public static class MiscUtils {
         return (crit is Player player) && IsPhoto(player.slugcatStats.name);
     }
     public static bool IsPhoto(SlugcatStats.Name name) {
-        return name != null && name == Photomaniac;
+        return name != null && name == PhotoName;
     }
     #endregion
 }

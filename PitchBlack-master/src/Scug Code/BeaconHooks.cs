@@ -35,6 +35,15 @@ public static class BeaconHooks {
         On.HUD.FoodMeter.MeterCircle.Update += MeterCircle_Update;
         //On.PlayerGraphics.InitiateSprites += PlayerGraphics_InitiateSprites;
         On.PlayerGraphics.ApplyPalette += PlayerGraphics_ApplyPalette;
+        On.SlugcatStats.SlugcatToTimeline += SlugcatStats_SlugcatToTimeline;
+    }
+
+    private static SlugcatStats.Timeline SlugcatStats_SlugcatToTimeline(On.SlugcatStats.orig_SlugcatToTimeline orig, SlugcatStats.Name slugcat) {
+        orig(slugcat);
+        if (slugcat == Plugin.BeaconName) {
+            return Plugin.BeaconTime;
+        }
+        return orig(slugcat);
     }
 
     private static void PlayerGraphics_ApplyPalette(On.PlayerGraphics.orig_ApplyPalette orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
@@ -72,7 +81,8 @@ public static class BeaconHooks {
         if (Plugin.scugCWT.TryGetValue(self.player, out ScugCWT scugCWT) && scugCWT is BeaconCWT beaconCWT) {
             
             //If Thanatosis lerp to RippleColor
-            if (beaconCWT.isDead || beaconCWT.inThanatosisTime > 0) {
+            if (beaconCWT.isDead ||
+                beaconCWT.inThanatosisTime > 0) {
                 beaconCWT.lerpedColor = Color.Lerp(BeaconCWT.beaconDefaultColor, RainWorld.RippleColor, beaconCWT.thanatosisLerp);
             } 
             // Otherwise use default colors.
@@ -103,7 +113,9 @@ public static class BeaconHooks {
     private static void PlayerGraphics_Update(On.PlayerGraphics.orig_Update orig, PlayerGraphics self)
     {
         //ASSUMING THIS WILL BE TRUE MOST OF THE TIME IN BEACON'S WORLD STATE
-        if (Plugin.scugCWT.TryGetValue(self.player, out ScugCWT scugCWT) && scugCWT is BeaconCWT beaconCWT && self.player.room.Darkness(self.player.mainBodyChunk.pos) > 0f) {
+        if (Plugin.scugCWT.TryGetValue(self.player, out ScugCWT scugCWT) &&
+            scugCWT is BeaconCWT beaconCWT &&
+            self.player.room.Darkness(self.player.mainBodyChunk.pos) > 0f) {
             //GIVE THIS BACK SINCE ORIG PROBABLY TOOK IT
             if (self.lightSource == null) {
                 Color lerpColor;
@@ -264,7 +276,7 @@ public static class BeaconHooks {
         orig(self);
     }
     private static void Creature_Abstractize(On.Creature.orig_Abstractize orig, Creature self) {
-        if (self is Player player && player.slugcatStats?.name == Plugin.Beacon) {
+        if (self is Player player && player.slugcatStats?.name == Plugin.BeaconName) {
             DropAllFlares(player);
         }
         orig(self);
@@ -291,7 +303,7 @@ public static class BeaconHooks {
     private static void Player_Jump(On.Player.orig_Jump orig, Player self) {
         orig(self);
 
-        if (Plugin.Beacon == self.slugcatStats.name) {
+        if (Plugin.BeaconName == self.slugcatStats.name) {
             if (Player.AnimationIndex.Flip == self.animation)
                 self.jumpBoost *= 1f + 0.55f;
             else
@@ -300,7 +312,7 @@ public static class BeaconHooks {
     }
     public static void BeaconTransmuteIntoFlashbang(On.Player.orig_SwallowObject orig, Player self, int grasp) {
         orig(self, grasp);
-        if (self.slugcatStats.name == Plugin.Beacon && self.playerState.foodInStomach > 0 && self.objectInStomach.type == AbstractObjectType.Rock) {
+        if (self.slugcatStats.name == Plugin.BeaconName && self.playerState.foodInStomach > 0 && self.objectInStomach.type == AbstractObjectType.Rock) {
             self.objectInStomach = new AbstractConsumable(self.room.world, AbstractObjectType.FlareBomb, null, self.abstractCreature.pos, self.room.game.GetNewID(), -1, -1, null);
             self.SubtractFood(1);
 

@@ -184,7 +184,7 @@ public static class PassageHooks
 	{
 		orig.Invoke(self, game);
 		//ONLY FOR BACON
-		if (game.session is StoryGameSession session && (session.saveStateNumber == Plugin.Beacon))
+		if (game.session is StoryGameSession session && (session.saveStateNumber == Plugin.BeaconName))
 		{
             WinState.IntegerTracker integerTracker4 = self.GetTracker(EnumExt_MyMod.Pursued, true) as WinState.IntegerTracker;
             if (integerTracker4 != null)

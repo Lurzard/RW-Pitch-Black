@@ -42,7 +42,7 @@ public class KarmaBoosting
     {
         orig(self);
         // if owner != null, player != null, room != null, Beacon, and region != null | OTHERWISE BREAKS EVERYTHING!!!
-        if (self.hud.owner != null && self.hud.owner is Player && (self.hud.owner as Player).room != null && (self.hud.owner as Player).SlugCatClass == Plugin.Beacon && (self.hud.owner as Player).room.world.region != null)
+        if (self.hud.owner != null && self.hud.owner is Player && (self.hud.owner as Player).room != null && (self.hud.owner as Player).SlugCatClass == Plugin.BeaconName && (self.hud.owner as Player).room.world.region != null)
         {
             int karma = ((self.hud.owner as Player).abstractCreature.world.game.session as StoryGameSession).saveState.deathPersistentSaveData.karma;
             int karmaCap = ((self.hud.owner as Player).abstractCreature.world.game.session as StoryGameSession).saveState.deathPersistentSaveData.karmaCap;
