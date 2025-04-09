@@ -418,7 +418,7 @@ public static class BeaconHooks {
         if (Plugin.scugCWT.TryGetValue(self, out ScugCWT c) && c is BeaconCWT beaconCWT) {
 
             //THANATOSIS -Lur
-            if (!self.input[0].spec) //This is a new input added from 1.10
+            if (!self.input[0].spec)
             {
                 beaconCWT.inputForThanatosisCounter = 0;
             }
@@ -451,6 +451,14 @@ public static class BeaconHooks {
                     self.LoseAllGrasps();
                     DropAllFlares(self); //Additionally take off flares too, since that's called in Die
                 }
+
+                if (Plugin.qualiaLevel <= 3f)
+                {
+                    // Actual death code goes here
+                    // Only spec does anything, other inputs do nothing
+                    // Bodymode dead
+                }
+                // Otherwise inputs are registered, you can move around and such, rot stuff -Lur
 
                 if ((beaconCWT.inThanatosisTime > ThanatosisLimit - 1) && !beaconCWT.isDeadForReal) {
                     //inThanatosisTime is never increased above ThanatosisLimit, so -1 will be actually true instead.
