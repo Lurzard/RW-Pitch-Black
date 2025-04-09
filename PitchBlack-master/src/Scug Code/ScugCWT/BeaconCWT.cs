@@ -31,6 +31,7 @@ public class BeaconCWT : ScugCWT {
     public float thanatosisLerp; //for lerping player color based on time spent in Thanatosis
     public int thanatosisCounter; //so it doesn't happen every frame
     public int inputForThanatosisCounter = 0; //spec input doesn't recursively flip isDead
+    public bool graspsNeedToBeReleased = false; //stops grasp-losing recursion
 
     //Higher Thanatosis levels
     public Color beaconDeadColor = new Color(0.05490196078f, 0.03921568627f, 0.10980392156f); //#0e0a1c

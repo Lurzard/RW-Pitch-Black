@@ -37,7 +37,19 @@ public static class BeaconHooks {
         On.PlayerGraphics.ApplyPalette += PlayerGraphics_ApplyPalette;
         On.SlugcatStats.SlugcatToTimeline += SlugcatStats_SlugcatToTimeline;
         IL.Player.checkInput += IL_Player_checkInput;
+        On.Tracker.SeeCreature += Tracker_SeeCreature;
     }
+
+    // Effort to make player invisible while in Thanatosis
+    private static void Tracker_SeeCreature(On.Tracker.orig_SeeCreature orig, Tracker self, AbstractCreature crit)
+    {
+        if (Plugin.scugCWT.TryGetValue(crit.realizedCreature as Player, out ScugCWT c) && c is BeaconCWT beaconCWT && beaconCWT.isDead)
+        {
+            return;
+        }
+        else orig(self, crit);
+    }
+
     private static void IL_Player_checkInput(ILContext il) {
         ILCursor cursor = new ILCursor(il);
         try {
@@ -48,7 +60,7 @@ public static class BeaconHooks {
 
             cursor.EmitDelegate((Player.InputPackage originalInputs, Player self, int num) => {
                 // This needs a proper check for if the player is in thanatosis
-                if (Plugin.scugCWT.TryGetValue(self, out ScugCWT c) && c is BeaconCWT beaconCWT && Plugin.canIDoThanatosisYet) {
+                if (Plugin.scugCWT.TryGetValue(self, out ScugCWT c) && c is BeaconCWT beaconCWT && beaconCWT.isDead && Plugin.qualiaLevel <= 3f) {
                     // Create new inputs
                     Player.InputPackage newInputs = new Player.InputPackage(self.room.game.rainWorld.options.controls[num].gamePad, self.room.game.rainWorld.options.controls[num].GetActivePreset(), 0, 0, false, false, false, false, false, originalInputs.spec);
                     newInputs.downDiagonal = 0;
@@ -198,7 +210,7 @@ public static class BeaconHooks {
 
             //IF WE HAVE THE_GLOW, DON'T LET OUR GLOW STRENGTH UNDERCUT THAT
             if (self.player.glowing && rad < 300) rad = 300;
-            if (self.player.dead) rad = 0;
+            if (self.player.dead || beaconCWT.isDead) rad = 0;
 
             self.lightSource.setRad = rad;
             self.lightSource.setAlpha = alpha;
@@ -455,7 +467,7 @@ public static class BeaconHooks {
                 beaconCWT.inputForThanatosisCounter = 0;
             }
             if (Plugin.canIDoThanatosisYet == true && self.input[0].spec) {
-                //canIDoThanatosisYet check because we want the player to first meet the condition for this to be true. For now because of dev it is set to true
+                //canIDoThanatosisYet check because we want the player to first meet the condition for this to be true. For now because of dev, it is set to true
 
                 beaconCWT.inputForThanatosisCounter++;
                 if (beaconCWT.inputForThanatosisCounter == 25) //Stops recursive input
@@ -467,30 +479,23 @@ public static class BeaconHooks {
                     self.room.PlaySound(beaconCWT.isDead ? new SoundID("Player_Activated_Thanatosis", false) : new SoundID("Player_Deactivated_Thanatosis", false), self.mainBodyChunk);
                 }
             }
+            //In Thanatosis
             if (beaconCWT.isDead) {
-                //True
+                // Input removing is done in IL_Player_checkInput;
 
-                // Can't call Player.Die or set player.dead to true, both take away ALL input.
-                // Don't want GameOver to happen until isDeadForReal = true
-                // It is intended that you can use special to exit Thanatosis.
-
-                //increase time
+                // Increase time
                 if (beaconCWT.inThanatosisTime < ThanatosisLimit) {
                     beaconCWT.inThanatosisTime++;
                     if (beaconCWT.thanatosisLerp < 0.92f) {
                         beaconCWT.thanatosisLerp += 0.01f;
                     }
-                    self.LoseAllGrasps();
-                    DropAllFlares(self); //Additionally take off flares too, since that's called in Die
+                    if (!beaconCWT.graspsNeedToBeReleased)
+                    {
+                        self.LoseAllGrasps();
+                        DropAllFlares(self);
+                        beaconCWT.graspsNeedToBeReleased = true;
+                    }
                 }
-
-                if (Plugin.qualiaLevel <= 3f)
-                {
-                    // Actual death code goes here
-                    // Only spec does anything, other inputs do nothing
-                    // Bodymode dead
-                }
-                // Otherwise inputs are registered, you can move around and such, rot stuff -Lur
 
                 if ((beaconCWT.inThanatosisTime > ThanatosisLimit - 1) && !beaconCWT.isDeadForReal) {
                     //inThanatosisTime is never increased above ThanatosisLimit, so -1 will be actually true instead.
@@ -502,21 +507,24 @@ public static class BeaconHooks {
                 //Uses Watcher RippleDeathEffect shader with intensity based on how close you are to dying for real.
 
             }
+            //Outside Thanatosis
             if (!beaconCWT.isDead) {
                 //False
+
+                beaconCWT.graspsNeedToBeReleased = false;
 
                 //Decrease time
                 if (beaconCWT.inThanatosisTime > 0) {
                     beaconCWT.inThanatosisTime--;
                     if (beaconCWT.thanatosisLerp > 0f) {
                         beaconCWT.thanatosisLerp -= 0.01f;
-                        self.Stun(30); //Conditional stunning if exiting thanatosis
+                        self.Stun(30);
                     }
                     if (beaconCWT.thanatosisLerp == 0f)
                     {
                         beaconCWT.inThanatosisTime = 0; //STOP, PLEASE, thank you :3
                     }
-                    self.exhausted = true; //Conditional blinking after all else
+                    self.exhausted = true;
                 }
             }
 
@@ -526,7 +534,6 @@ public static class BeaconHooks {
             }
             //DETECT DARKNESS FOR BLINKING
             if (self.room != null) {
-                //Debug.Log("ROOM DARKNESS " + self.room.Darkness(self.mainBodyChunk.pos));
                 if (self.room.Darkness(self.mainBodyChunk.pos) < 0.15f || self.room.world.region.name == "VV") {
                     if (beaconCWT.brightSquint == 0) {
                         beaconCWT.brightSquint = 40 * 6;
