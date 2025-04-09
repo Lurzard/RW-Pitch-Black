@@ -5,7 +5,6 @@
         <LangVersion>Latest</LangVersion>
         <PathMap>$(MSBuildProjectDirectory)=/PitchBlackDevTeam</PathMap>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <DefineConstants>PLAYTEST</DefineConstants>
         <OutDir>..\mod\plugins</OutDir>
     </PropertyGroup>
     
@@ -13,12 +12,6 @@
         <Reference Include="../lib/*.dll">
             <Private>false</Private>
         </Reference>
-    </ItemGroup>
-    
-    <ItemGroup>
-      <Reference Include="Fisobs">
-        <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\workshop\content\312520\2920541687\newest\plugins\Fisobs.dll</HintPath>
-      </Reference>
     </ItemGroup>
     
 </Project>
