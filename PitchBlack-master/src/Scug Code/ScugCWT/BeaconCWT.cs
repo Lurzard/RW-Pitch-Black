@@ -13,7 +13,8 @@ public class BeaconCWT : ScugCWT {
     public static readonly Color beaconFullColor = new Color(0.2f, 0f, 1f);
     public static readonly Color beaconEyeColor = Color.white;
     public Color flareColor = new Color(0.2f, 0f, 1f); //FlareBomb glow
-    public Color currentSkinColor; //moved lerpedColor into the cwt
+    public Color currentSkinColor;
+    public Color currentEyeColor;
     public FlareStore storage;
     public int dontThrowTimer = 0;
     public bool heldCraft = false;
@@ -38,7 +39,7 @@ public class BeaconCWT : ScugCWT {
     }
 
     //Higher Thanatosis levels
-    public static readonly Color beaconDeadColor = new Color(0.05490196078f, 0.03921568627f, 0.10980392156f); //#0e0a1c
+    public Color beaconDeadColor; /*= new Color(0.05490196078f, 0.03921568627f, 0.10980392156f);*/ //#0e0a1c
 
     public BeaconCWT(Player player) : base() {
         storage = new FlareStore(player);

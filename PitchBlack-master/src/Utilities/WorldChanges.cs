@@ -61,7 +61,7 @@ public static class WorldChanges {
                     Debug.Log($"Pitch Black: cycle number was not, in fact, a number!\n{err}");
                     startingRange = cycleNum.Length;
                 }
-                return MiscUtils.GenerateRandomString(startingRange, startingRange+50);
+                return MiscUtils.GenerateRandomString(startingRange, startingRange+10);
             }
             return cycleNum;
         });
