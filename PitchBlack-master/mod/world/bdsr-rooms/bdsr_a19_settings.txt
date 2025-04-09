@@ -1,0 +1,2 @@
+PlacedObjects: DynamicWarpTarget><557.7839><276.8029><124~-116~0~false~true, Rattler><334.0468><408.0659><, PassiveCorruption><441.9344><220.4395><-3~152~388~163~7~15~0.8~0.3~0.55~0.05~0.15~0.2~0.2~Default~Dot~Passive~2~0~1~0~1~0~1, PassiveCorruption><645.3471><353.6981><8~168~0~0~7~15~0.8~0.3~0.55~0.05~0.15~0.2~0.2~Default~Dot~Passive~2~0~1~0~1, KarmaFlowerPatch><558.4242><163.3062><-4~175~0.5~0~0~0.25~0.5, PrinceFilter><545.4406><132.439><-26~59~0~0~3~1~1, 
+FadePalette: 10, 0

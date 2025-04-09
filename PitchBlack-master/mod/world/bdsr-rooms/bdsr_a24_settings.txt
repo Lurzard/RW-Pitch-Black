@@ -1,0 +1,2 @@
+PlacedObjects: PassiveCorruption><401.7894><225.4307><-60~246~0~0~7~15~0.8~0.3~0.55~0.05~0.15~0.2~0.2~Default~Dot~Passive~2~0~1, PassiveCorruption><739.5508><237.8143><-2~175~0~0~7~15~0.8~0.3~0.55~0.05~0.15~0.2~0.2~Default~Dot~Passive~2~0~1, 
+FadePalette: 10, 0.1847826

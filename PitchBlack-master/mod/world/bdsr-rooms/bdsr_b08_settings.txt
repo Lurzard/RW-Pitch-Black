@@ -1,0 +1,2 @@
+PlacedObjects: InsectGroup><562.828><909.684><0~100~0~0~RockFlea~0.305207, 
+FadePalette: 10, 0.173913, 0.2065217

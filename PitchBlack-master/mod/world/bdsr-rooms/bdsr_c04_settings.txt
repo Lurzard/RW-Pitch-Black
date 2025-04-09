@@ -1,0 +1,2 @@
+PlacedObjects: InsectGroup><701.1032><1767.194><1~115~0~0~RockFlea~1, InsectGroup><459.848><1844.663><-3~125~0~0~RockFlea~1, Corruption><630.9487><1821.406><-133~242, 
+FadePalette: 10, 0.1521739, 0.2717391, 0.423913
