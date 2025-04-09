@@ -9,7 +9,7 @@ nightAtmosphereColor: 73ccff
 
 startAltitude: 9000
 endAltitude: 26400
-DistantBuilding: CentensTower1, -700, -350, 20, -30
-DistantBuilding: CentensTower2, -550, -450, 40, -30
-DistantBuilding: CentensTower3, 400, -450, 50, -30
-DistantBuilding: CentensTower4, 500, -450, 30, -30
+DistantBuilding: CentensTower1, -700, -450, 20, -30
+DistantBuilding: CentensTower2, -550, -150, 40, -30
+DistantBuilding: CentensTower3, 400, -150, 50, -30
+DistantBuilding: CentensTower4, 500, -150, 30, -30
