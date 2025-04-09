@@ -2,7 +2,6 @@ using AbstractObjectType = AbstractPhysicalObject.AbstractObjectType;
 using MonoMod.Cil;
 using Mono.Cecil.Cil;
 using UnityEngine;
-using MoreSlugcats;
 using RWCustom;
 using Random = UnityEngine.Random;
 using System;
@@ -96,7 +95,7 @@ public static class BeaconHooks {
         Color color = PlayerGraphics.SlugcatColor(self.CharacterForColor);
         Color color2 = new Color(color.r, color.g, color.b);
         if (Plugin.scugCWT.TryGetValue(self.player, out ScugCWT scugCWT) && scugCWT is BeaconCWT beaconCWT) {
-            color2 = beaconCWT.lerpedColor;
+            color2 = beaconCWT.currentSkinColor;
             for (int i = 0; i < sLeaser.sprites.Length; i++)
             {
                 if (i != 9)
@@ -104,8 +103,8 @@ public static class BeaconHooks {
                     sLeaser.sprites[i].color = color2;
                 }
             }
-            sLeaser.sprites[11].color = beaconCWT.lerpedColor;
-            sLeaser.sprites[10].color = beaconCWT.lerpedColor;
+            sLeaser.sprites[11].color = beaconCWT.currentSkinColor;
+            sLeaser.sprites[10].color = beaconCWT.currentSkinColor;
         }
     }
 
@@ -123,26 +122,24 @@ public static class BeaconHooks {
         orig(self, sLeaser, rCam, timeStacker, camPos);
 
         if (Plugin.scugCWT.TryGetValue(self.player, out ScugCWT scugCWT) && scugCWT is BeaconCWT beaconCWT) {
-            
             //If Thanatosis lerp to RippleColor
-            if (beaconCWT.isDead ||
-                beaconCWT.inThanatosisTime > 0) {
-                beaconCWT.lerpedColor = Color.Lerp(BeaconCWT.beaconDefaultColor, RainWorld.RippleColor, beaconCWT.thanatosisLerp);
+            if (beaconCWT.isDead || beaconCWT.thanatosisCounter > 0) {
+                beaconCWT.currentSkinColor = Color.Lerp(BeaconCWT.beaconDefaultColor, RainWorld.RippleColor, beaconCWT.thanatosisLerp);
             } 
             // Otherwise use default colors.
             else {
                 int flares = beaconCWT.storage.storedFlares.Count;
-                beaconCWT.lerpedColor = Color.Lerp(BeaconCWT.beaconDefaultColor, BeaconCWT.beaconFullColor, flares/(float)4);
+                beaconCWT.currentSkinColor = Color.Lerp(BeaconCWT.beaconDefaultColor, BeaconCWT.beaconFullColor, flares/(float)4);
             }
             // sprites
             for (int sprites = 0; sprites < sLeaser.sprites.Length; sprites++) {
-                if (sprites != 9) sLeaser.sprites[sprites].color = beaconCWT.lerpedColor;
+                if (sprites != 9) sLeaser.sprites[sprites].color = beaconCWT.currentSkinColor;
                 if (sprites == 9) sLeaser.sprites[sprites].color = BeaconCWT.beaconEyeColor;
                 if (beaconCWT.isDead) {
                     if (sprites == 9) sLeaser.sprites[sprites].element = Futile.atlasManager.GetElementWithName("FaceDead");
                 }
-                if (sprites == 10) sLeaser.sprites[sprites].color = beaconCWT.lerpedColor;
-                if (sprites == 11) sLeaser.sprites[sprites].color = beaconCWT.lerpedColor;
+                if (sprites == 10) sLeaser.sprites[sprites].color = beaconCWT.currentSkinColor;
+                if (sprites == 11) sLeaser.sprites[sprites].color = beaconCWT.currentSkinColor;
             }
             // brightsquint
             if (beaconCWT.brightSquint > (40 * 3.5f)) {
@@ -448,15 +445,6 @@ public static class BeaconHooks {
             }
         }
     }
-
-    public static float ThanatosisLimit
-    {
-        get
-        {
-            return 1600; //soon to be based on Karma
-        }
-    }
-
     private static void BeaconUpdate(On.Player.orig_Update orig, Player self, bool eu) {
         orig(self, eu);
         if (Plugin.scugCWT.TryGetValue(self, out ScugCWT c) && c is BeaconCWT beaconCWT) {
@@ -484,8 +472,8 @@ public static class BeaconHooks {
                 // Input removing is done in IL_Player_checkInput;
 
                 // Increase time
-                if (beaconCWT.inThanatosisTime < ThanatosisLimit) {
-                    beaconCWT.inThanatosisTime++;
+                if (beaconCWT.thanatosisCounter < beaconCWT.ThanatosisLimit) {
+                    beaconCWT.thanatosisCounter++;
                     if (beaconCWT.thanatosisLerp < 0.92f) {
                         beaconCWT.thanatosisLerp += 0.01f;
                     }
@@ -497,7 +485,7 @@ public static class BeaconHooks {
                     }
                 }
 
-                if ((beaconCWT.inThanatosisTime > ThanatosisLimit - 1) && !beaconCWT.isDeadForReal) {
+                if ((beaconCWT.thanatosisCounter > beaconCWT.ThanatosisLimit - 1) && !beaconCWT.isDeadForReal) {
                     //inThanatosisTime is never increased above ThanatosisLimit, so -1 will be actually true instead.
                     self.Die();
                     beaconCWT.isDeadForReal = true;
@@ -514,15 +502,15 @@ public static class BeaconHooks {
                 beaconCWT.graspsNeedToBeReleased = false;
 
                 //Decrease time
-                if (beaconCWT.inThanatosisTime > 0) {
-                    beaconCWT.inThanatosisTime--;
+                if (beaconCWT.thanatosisCounter > 0) {
+                    beaconCWT.thanatosisCounter--;
                     if (beaconCWT.thanatosisLerp > 0f) {
                         beaconCWT.thanatosisLerp -= 0.01f;
                         self.Stun(30);
                     }
                     if (beaconCWT.thanatosisLerp == 0f)
                     {
-                        beaconCWT.inThanatosisTime = 0; //STOP, PLEASE, thank you :3
+                        beaconCWT.thanatosisCounter = 0; //STOP, PLEASE, thank you :3
                     }
                     self.exhausted = true;
                 }
