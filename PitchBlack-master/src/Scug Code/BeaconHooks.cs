@@ -36,8 +36,40 @@ public static class BeaconHooks {
         //On.PlayerGraphics.InitiateSprites += PlayerGraphics_InitiateSprites;
         On.PlayerGraphics.ApplyPalette += PlayerGraphics_ApplyPalette;
         On.SlugcatStats.SlugcatToTimeline += SlugcatStats_SlugcatToTimeline;
+        IL.Player.checkInput += IL_Player_checkInput;
     }
+    private static void IL_Player_checkInput(ILContext il) {
+        ILCursor cursor = new ILCursor(il);
+        try {
+            // This matches to line 104 (IL_00C8) in IL view, or in the middle of line 26 in C# view, and puts the cursor after the call instruction.
+            cursor.GotoNext(MoveType.After, i => i.MatchCall(typeof(RWInput), nameof(RWInput.PlayerInput)));
+            cursor.Emit(OpCodes.Ldarg_0);
+            cursor.Emit(OpCodes.Ldloc_0);
 
+            cursor.EmitDelegate((Player.InputPackage originalInputs, Player self, int num) => {
+                // This needs a proper check for if the player is in thanatosis
+                if (Plugin.scugCWT.TryGetValue(self, out ScugCWT c) && c is BeaconCWT beaconCWT && Plugin.canIDoThanatosisYet) {
+                    // Create new inputs
+                    Player.InputPackage newInputs = new Player.InputPackage(self.room.game.rainWorld.options.controls[num].gamePad, self.room.game.rainWorld.options.controls[num].GetActivePreset(), 0, 0, false, false, false, false, false, originalInputs.spec);
+                    newInputs.downDiagonal = 0;
+                    newInputs.analogueDir = Vector2.zero;
+
+                    // Set animation and body mode
+                    self.animation = Player.AnimationIndex.Dead;
+                    self.bodyMode = Player.BodyModeIndex.Dead;
+
+                    // Put new values on the stack
+                    return newInputs;
+                }
+                // If the prior condition is not met, just return the original inputs to the stack.
+                return originalInputs;
+            });
+            Plugin.logger.LogDebug($"PB {nameof(IL_Player_checkInput)} applied successfully");
+        }
+        catch (Exception err) {
+            Plugin.logger.LogDebug($"PB {nameof(IL_Player_checkInput)} could not match IL.\n{err}");
+        }
+    }
     private static SlugcatStats.Timeline SlugcatStats_SlugcatToTimeline(On.SlugcatStats.orig_SlugcatToTimeline orig, SlugcatStats.Name slugcat) {
         orig(slugcat);
         if (slugcat == Plugin.BeaconName) {
