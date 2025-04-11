@@ -1,0 +1,4 @@
+BkgDroneVolume: 0.2769565
+PlacedObjects: LightSource><543.9034><388.8833><0.6956522~EffectColor1~-16.99561~85~50~86.60254~1~0~None~0~0, Rattler><320.2057><326.433><, Corruption><842.525><250.1323><-11~132, 
+AmbientSounds: SPOT><AM_IND-ElectricHum01.ogg><212.4275><377.9289><0.3157428><0.3562382><563.937><391.929><-120.3553><-61.35535><0><0.1, 
+FadePalette: 10, 0.5326087

@@ -1,0 +1,8 @@
+Clouds: 0.2501911
+Grime: 0.2294544
+BkgDroneVolume: 0.2469565
+Palette: 467
+EffectColorA: 12
+EffectColorB: 12
+Effects: Flies-1-20-20, Ant-1-342.6208-352, RockFlea-1-317.7306-220, ModifyEffectColorA-0.07,0.2961672,0.4335634-701.0396-399, ModifyEffectColorB-0.07575276,0.2943853,0.4350691-30-30, Sentient Rot Spores-1-30-30, 
+AmbientSounds: OMNI><RWTW_RotAmb_Goo.ogg><527.4885><132.2659><0.1861678><0.177917, OMNI><RWTW_RotAmb_Deep.ogg><506.6382><328.3913><0.196989><0.7078102, 
