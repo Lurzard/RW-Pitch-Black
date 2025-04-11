@@ -40,7 +40,7 @@
 
 		"start_room": [ "SH_A08" ],
 		"world_state": [ "Beacon", "Watcher" ],
-		"story_regions": [ "SU", "HI", "-DS", "BDSR", "CC", "GW", "SH", "SL", "SI", "-LF", "BLFR", "UW", "SS", "-SB" ],
+		"story_regions": [ "SU", "WSUR", "HI", "DS", "BDSR", "CC", "GW", "WGWR", "SH", "SL", "SI", "LF", "UW", "SS", "-SB", "VV", "UD" ],
 
 		"expedition_enabled": true,
 		"expedition_description": "Placeholder expedition description",
