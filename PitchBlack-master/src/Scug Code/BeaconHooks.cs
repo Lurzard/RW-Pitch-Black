@@ -36,17 +36,6 @@ public static class BeaconHooks {
         On.PlayerGraphics.ApplyPalette += PlayerGraphics_ApplyPalette;
         On.SlugcatStats.SlugcatToTimeline += SlugcatStats_SlugcatToTimeline;
         IL.Player.checkInput += IL_Player_checkInput;
-        On.Tracker.SeeCreature += Tracker_SeeCreature;
-    }
-
-    // Effort to make player invisible while in Thanatosis
-    private static void Tracker_SeeCreature(On.Tracker.orig_SeeCreature orig, Tracker self, AbstractCreature crit)
-    {
-        if (Plugin.scugCWT.TryGetValue(crit.realizedCreature as Player, out ScugCWT c) && c is BeaconCWT beaconCWT && beaconCWT.isDead)
-        {
-            return;
-        }
-        else orig(self, crit);
     }
 
     private static void IL_Player_checkInput(ILContext il) {
@@ -148,16 +137,8 @@ public static class BeaconHooks {
             for (int sprites = 0; sprites < sLeaser.sprites.Length; sprites++) {
                 if (sprites != 9) sLeaser.sprites[sprites].color = beaconCWT.currentSkinColor;
                 if (sprites == 9) sLeaser.sprites[sprites].color = beaconCWT.isDead ? beaconCWT.currentEyeColor : BeaconCWT.beaconEyeColor;
-
                 if (beaconCWT.isDead) {
-                    if (Plugin.qualiaLevel <= 3f)
-                    {
-                        sLeaser.sprites[9].element = Futile.atlasManager.GetElementWithName("FaceDead");
-                    }
-                    if (Plugin.qualiaLevel >= 3f)
-                    {
-                        sLeaser.sprites[9].element = Futile.atlasManager.GetElementWithName(self.DefaultFaceSprite(sLeaser.sprites[9].scaleX, 0));
-                    }
+                        sLeaser.sprites[9].element = Futile.atlasManager.GetElementWithName("Face" + "Dead");
                 }
                 if (sprites == 10) sLeaser.sprites[sprites].color = beaconCWT.currentSkinColor;
                 if (sprites == 11) sLeaser.sprites[sprites].color = beaconCWT.currentSkinColor;
