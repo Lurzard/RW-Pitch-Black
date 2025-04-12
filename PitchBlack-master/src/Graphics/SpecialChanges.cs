@@ -56,6 +56,7 @@ public class SpecialChanges {
 
     private static void KarmaMeter_ctor(On.HUD.KarmaMeter.orig_ctor orig, KarmaMeter self, HUD.HUD hud, FContainer fContainer, IntVector2 displayKarma, bool showAsReinforced) {
         orig(self, hud, fContainer, displayKarma, showAsReinforced);
+        // This needs a proper check for Beacon
         if (Plugin.qualiaLevel >= 1f) {
             self.baseColor = Plugin.SaturatedRipple;
             self.karmaSprite.color = self.baseColor;
@@ -64,6 +65,7 @@ public class SpecialChanges {
 
     private static void KarmaMeter_UpdateGraphic(On.HUD.KarmaMeter.orig_UpdateGraphic orig, KarmaMeter self) {
         orig(self);
+        // This needs a proper check for Beacon
         if (Plugin.qualiaLevel >= 1f) {
             // For when New sprites are added
             //this.karmaSprite.element = Futile.atlasManager.GetElementWithName(KarmaMeter.RippleSymbolSprite(true, (this.hud.owner as Player).rippleLevel));

@@ -1,0 +1,9 @@
+Template: lf_settingstemplate_farms
+EffectColorB: 19
+Effects: Sentient Rot Spores-0.3801953-268-70, ModifyEffectColorB-0,0.25,0.05434782-20-20, 
+PlacedObjects: InsectGroup><706.5507><312.2668><-391~238~0~0~RedSwarmer~0.1847826, CustomDecal><643.9451><1200.058><-9~67~44~80~50~10~-90~-456~0~1~0~ScavMark Ghost~0.07608695~0~0.07608695~0~0.07608695~0.3369565~0.07608695~0.6304348, Rainbow><425.6837><1252.561><-136~200~-352~-73~0,0,0.01086957,0.01086957,0.7826087,0.3369565, SpinningTopSpot><591.3841><1316.087><37~40~Watcher~WRFA~wrfa_sk04~550~450~16~false, Corruption><347.9637><1059.863><5~132, Corruption><521.8746><964.4819><0~100, 
+AmbientSounds: OMNI><RWTW_RotAmb_Swarm.ogg><0><0><0.3804348><0.9413043, OMNI><AM_ENV-Outside.ogg><833.7><648.9951><0.3695652><0.9217392, SPOT><AM_ENV-WindGrass.ogg><776.0961><412.1754><0.423913><1><744.0961><171.1754><-256.3553><-11.35535><0><0.5673915, OMNI><RWTW_RotAmb_Low.ogg><0><0><0.4><1, 
+MorePalette0: 10, 1, 1
+MorePalette1: 35, 0.1521739, 0.1521739
+MorePalette2: 371, 0.05434782, 0.05434782
+MorePalette3: 14, 0.02173913, 0.02173913
