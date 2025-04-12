@@ -89,34 +89,5 @@ HI_WS01 : HI_W15 : SHELTER
 END ROOMS
 
 CREATURES
-(Beacon)OFFSCREEN : 0-Vulture-2, 0-KingVulture-2, 0-Scavenger-7
-
-// hydroponics
-HI_W03 : 4-DropWig
-HI_W04 : 5-DropWig
-HI_W07 : 4-Garbage Worm-4, 4-CicadaB-1, 4-CicadaA-1, 5-Green, 6-Green
-HI_W11 : 5-White
-HI_W12 : 3-Garbage Worm-3, 4-BigNeedle, 4-SmallNeedle-2, 9-Green, 12-Eel-{PreCycle}
-HI_W17 : 6-CicadaB-3, 5-CicadaA-2
-HI_W19 : 1-Pink
-LINEAGE : HI_W12 : 11 : Mimic-{16}-0.1, TentaclePlant-0
-LINEAGE : HI_W15 : 4 : Pink-0.9, White-0.2, Blue-0.5, Pink-0.2, Red-0
-
-// vanilla modifications
-(Beacon)LINEAGE : HI_B06 : 3 : Green-0.2, Blue-0.5, White-0.2, Red-0
-(Beacon)LINEAGE : HI_C01 : 4 : Blue-0.1, Cyan-0.2, Red-0
-(Beacon)LINEAGE : HI_C02 : 6 : Green-0.2, Blue-0
-(Beacon)HI_B09 : 3-Green, 2-White
-(Beacon)HI_B15 : 2-Small Centipede-3, 3-Centipede-{0.5}
-(Beacon)HI_C04 : 5-Blue, 6-Snail, 7-Snail-2, 7-TentaclePlant-{PreCycle}, 5-Cyan-{PreCycle}
-(Beacon)HI_B07 : 3-Pink, 2-Pink, 3-TentaclePlant-{PreCycle}
-(Beacon)HI_A04 : 2-Mimic-{18}
-(Beacon)HI_C11 : 3-Blue
-(Beacon)HI_C03 : 3-Cyan, 3-Eel-{PreCycle}
-(Beacon)HI_D01 : 2-Cyan-2-{PreCycle}
-(Beacon)HI_A17W : 3-Cyan-{PreCycle}
-(Beacon)HI_B05 : 3-Cyan
-(Beacon)HI_A16 : 4-Green
-(Beacon)HI_B06 : 4-Red
 END CREATURES
 [ENDMERGE]
