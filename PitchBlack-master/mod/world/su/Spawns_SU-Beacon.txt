@@ -34,6 +34,8 @@ LINEAGE : SU_A31 : 3 : Centipede-0.5-{0.4}, Centipede-0.5-{0.6}, Centipede-0.5-{
 
 SU_A32 : 2-BigSpider, 2-SpitterSpider
 
+SU_B09W : 4-LMiniLongLegs
+
 //TOWER & TOLL
 
 SU_B02 : 4-White, 5-CicadaA, 6-CicadaB-2, 7-Mouse-2, 8-Mouse-2
