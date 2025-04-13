@@ -8,4 +8,3 @@ AmbientSounds: SPOT><Mech Basic.wav><777.6697><518.3941><0.2282609><1><966.6697>
 FadePalette: 15, 0.3695652, 0.3695652
 MorePalette0: 35, 1, 1
 MorePalette1: 375, 1, 1
-MorePalette2: 369, 0.02173913, 0
