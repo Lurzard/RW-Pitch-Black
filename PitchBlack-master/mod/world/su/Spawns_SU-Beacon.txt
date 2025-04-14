@@ -1,7 +1,7 @@
 //OFFSCREEN
 OFFSCREEN : 0-Vulture-2, 0-KingVulture, 0-Scavenger-9
 LINEAGE : OFFSCREEN : 0 : Scavenger-0.2, Elite-0
-LINEAGE : OFFSCREEN : 0 : Scavenger-0.2, Disciple-0
+LINEAGE : OFFSCREEN : 0 : Scavenger-0.2, Templar-0
 
 //RIGHT SIDE
 SU_A02 : 2-Mouse-3, 3-Mouse-2
@@ -34,7 +34,7 @@ LINEAGE : SU_A31 : 3 : Centipede-0.5-{0.4}, Centipede-0.5-{0.6}, Centipede-0.5-{
 
 SU_A32 : 2-BigSpider, 2-SpitterSpider
 
-SU_B09W : 4-LMiniLongLegs
+LINEAGE : SU_B09W : 4 : LMiniLongLegs-0.5, Bro-0
 
 //TOWER & TOLL
 
