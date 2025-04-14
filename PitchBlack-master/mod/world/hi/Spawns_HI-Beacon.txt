@@ -1,7 +1,7 @@
 //OFFSCREEN
 OFFSCREEN : 0-Vulture-2, 0-Scavenger-12
 LINEAGE : OFFSCREEN : 0 : Vulture-0.2, KingVulture-0
-LINEAGE : OFFSCREEN : 0 : NONE-0.4, Disciple-0
+LINEAGE : OFFSCREEN : 0 : NONE-0.4, Templar-0
 LINEAGE : OFFSCREEN : 0 : Scavenger-0.2, Elite-0
 
 //SH & CC GATES AREA
