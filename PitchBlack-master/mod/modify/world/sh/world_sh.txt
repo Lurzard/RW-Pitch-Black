@@ -51,17 +51,5 @@ SH_OVERHEADW : DISCONNECTED, DISCONNECTED, SH_LEDGE, DISCONNECTED
 END ROOMS
 
 CREATURES
-(Beacon)OFFSCREEN : 0-Miros Bird-17, 0-Scavenger-7
-(Beacon)SH_KELP : 4-Tentacle Plant, 6-Spider-10
-(Beacon)SH_OVERHEADW : 5-Big Spider-1
-(Beacon)SH_D01 : 3-Pink
-(Beacon)SH_C09 : 2-Spider-5, 3-Spider-5, 4-Spider-15, 5-Spider-10
-(Beacon)SH_C05 : 2-Lantern Mouse, 3-Lantern Mouse, 5-Lantern Mouse, 6-Lantern Mouse, 4-Spider-15
-(Beacon)SH_C04 : 8-Lantern Mouse-2, 5-Lantern Mouse-1, 6-Lantern Mouse, 7-Spider-20
-(Beacon)SH_HELPOUT : 3-Spider-15
-(Beacon)LINEAGE : SH_B05 : 7 : Lantern Mouse-0.4, Bigspider-0
-(Beacon)LINEAGE : SH_A12 : 4 : NONE-0.3, Black-0.5, BigSpider-0.5, SpitterSpider-0
-(Beacon)LINEAGE : SH_B08 : 2 : Pink-0.4, Black-0
-(Beacon)LINEAGE : SH_C05 : 4 : BigSpider-0.3, BigSpider-0.2, NONE-0.1, SpitterSpider-0
 END CREATURES
 [ENDMERGE]
