@@ -13,11 +13,49 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using Watcher;
+using System.Xml;
+using System.Linq.Expressions;
 
 namespace PitchBlack;
 
 // Everything to do with changes to certain void/karma/gold things in the game
 public class SpecialChanges {
+
+    // Changing stuff for PB for KarmaFlower & KarmaFlowerPatch
+    public static bool PBFlowerMode(RoomCamera rCam) {
+        if (rCam.room.game.IsStorySession &&
+            rCam.room.game.GetStorySession.saveStateNumber == Plugin.BeaconName) {
+            return true;
+        }
+        return false;
+    }
+
+    public static Color flowerColor;
+
+    public static bool IsRealscapeRegion(RoomCamera rCam) {
+        string name = rCam.room.world.region.name;
+        if (name == "SU" || name == "HI" || name == "SH" || name == "CC" || name == "LF") {
+            return true;
+        }
+        return false;
+    }
+
+    public static bool IsDreamscapeRegion(RoomCamera rCam) {
+        string name = rCam.room.world.region.name;
+        if (name == "BSUR" || name == "BDSR") {
+            return true;
+        }
+        return false;
+    }
+
+    // PB's RippleSymbolSprite
+    // Todo: All of the RippleLevel Karma stuff remade but for this, as well as savedata
+    public static string QualiaSymbolSprite(bool small, float qualiaLevel) {
+        double num = Math.Round((double)(qualiaLevel * 2f), MidpointRounding.AwayFromZero) / 2.0;
+        return (small ? "smallQualia" : "qualia") + num.ToString("#.0", CultureInfo.InvariantCulture);
+    }
+
     public static void Apply() {
 
         // [TODO] -Lur
@@ -28,10 +66,15 @@ public class SpecialChanges {
         // - Echoes
         // ...
 
+        // NOTE: ApplyPalette to change color, InitiateSprites to change Shader
+        // KarmaFlowerPatch
+        On.Watcher.KarmaFlowerPatch.ApplyPalette += KarmaFlowerPatch_ApplyPalette;
+        On.Watcher.KarmaFlowerPatch.InitiateSprites += KarmaFlowerPatch_InitiateSprites;
         // KarmaFlower
         On.KarmaFlower.ApplyPalette += KarmaFlower_ApplyPalette;
         On.KarmaFlower.InitiateSprites += KarmaFlower_InitiateSprites;
-
+        
+        // NOTE: Needs proper Beacon checks to not apply to all slugs
         // KarmaMeter
         On.HUD.KarmaMeter.UpdateGraphic += KarmaMeter_UpdateGraphic;
         On.HUD.KarmaMeter.ctor += KarmaMeter_ctor;
@@ -47,46 +90,64 @@ public class SpecialChanges {
         //On.VoidSpawnEgg.DrawSprites += VoidSpawnEgg_DrawSprites;
     }
 
-    // PB's RippleSymbolSprite
-    // Todo: All of the RippleLevel Karma stuff remade but for this, as well as savedata
-    public static string QualiaSymbolSprite(bool small, float qualiaLevel) {
-        double num = Math.Round((double)(qualiaLevel * 2f), MidpointRounding.AwayFromZero) / 2.0;
-        return (small ? "smallQualia" : "qualia") + num.ToString("#.0", CultureInfo.InvariantCulture);
-    }
-
-    private static void KarmaMeter_ctor(On.HUD.KarmaMeter.orig_ctor orig, KarmaMeter self, HUD.HUD hud, FContainer fContainer, IntVector2 displayKarma, bool showAsReinforced) {
-        orig(self, hud, fContainer, displayKarma, showAsReinforced);
-        // This needs a proper check for Beacon
-        if (Plugin.qualiaLevel >= 1f) {
-            self.baseColor = Plugin.SaturatedRipple;
-            self.karmaSprite.color = self.baseColor;
+    private static void KarmaFlowerPatch_InitiateSprites(On.Watcher.KarmaFlowerPatch.orig_InitiateSprites orig, KarmaFlowerPatch self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam) {
+        orig(self, sLeaser, rCam);
+        if (PBFlowerMode(rCam) && IsRealscapeRegion(rCam)) {
+            for (int i = 0; i < self.flowers.Length; i++) {
+                sLeaser.sprites[self.EffectSprite(i, 2)].shader = rCam.room.game.rainWorld.Shaders["RippleGlow"];
+            }
         }
     }
-
-    private static void KarmaMeter_UpdateGraphic(On.HUD.KarmaMeter.orig_UpdateGraphic orig, KarmaMeter self) {
-        orig(self);
-        // This needs a proper check for Beacon
-        if (Plugin.qualiaLevel >= 1f) {
-            // For when New sprites are added
-            //this.karmaSprite.element = Futile.atlasManager.GetElementWithName(KarmaMeter.RippleSymbolSprite(true, (this.hud.owner as Player).rippleLevel));
-            self.baseColor = Plugin.SaturatedRipple;
-            self.karmaSprite.color = self.baseColor;
+    private static void KarmaFlowerPatch_ApplyPalette(On.Watcher.KarmaFlowerPatch.orig_ApplyPalette orig, KarmaFlowerPatch self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette) {
+        orig(self, sLeaser, rCam, palette);
+        if (PBFlowerMode(rCam)) {
+            if (IsRealscapeRegion(rCam)) {
+                flowerColor = Color.white;
+            }
+            if (IsDreamscapeRegion(rCam)) {
+                flowerColor = RainWorld.GoldRGB;
+            }
+            self.petalColor = flowerColor;
         }
     }
 
     private static void KarmaFlower_InitiateSprites(On.KarmaFlower.orig_InitiateSprites orig, KarmaFlower self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam) {
         orig(self, sLeaser, rCam);
-        if (rCam.room.game.IsStorySession &&
-            rCam.room.game.GetStorySession.saveStateNumber == Plugin.BeaconName) {
+        if (PBFlowerMode(rCam) && IsRealscapeRegion(rCam)) {
             sLeaser.sprites[self.EffectSprite(2)].shader = rCam.room.game.rainWorld.Shaders["RippleGlow"];
         }
     }
-
     private static void KarmaFlower_ApplyPalette(On.KarmaFlower.orig_ApplyPalette orig, KarmaFlower self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette) {
         orig(self, sLeaser, rCam, palette);
-        if (rCam.room.game.IsStorySession &&
-            rCam.room.game.GetStorySession.saveStateNumber == Plugin.BeaconName) {
-            self.color = Plugin.PBRipple_Color;
+        if (PBFlowerMode(rCam)) {
+            if (IsRealscapeRegion(rCam)) {
+                flowerColor = Color.white;
+            }
+            if (IsDreamscapeRegion(rCam)) {
+                flowerColor = RainWorld.GoldRGB;
+            }
+            self.color = flowerColor;
+        }
+    }
+
+    private static void KarmaMeter_ctor(On.HUD.KarmaMeter.orig_ctor orig, KarmaMeter self, HUD.HUD hud, FContainer fContainer, IntVector2 displayKarma, bool showAsReinforced)
+    {
+        orig(self, hud, fContainer, displayKarma, showAsReinforced);
+        if (Plugin.qualiaLevel >= 1f)
+        {
+            self.baseColor = Plugin.SaturatedRipple;
+            self.karmaSprite.color = self.baseColor;
+        }
+    }
+    private static void KarmaMeter_UpdateGraphic(On.HUD.KarmaMeter.orig_UpdateGraphic orig, KarmaMeter self)
+    {
+        orig(self);
+        if (Plugin.qualiaLevel >= 1f)
+        {
+            // For when New sprites are added
+            //this.karmaSprite.element = Futile.atlasManager.GetElementWithName(KarmaMeter.RippleSymbolSprite(true, (this.hud.owner as Player).rippleLevel));
+            self.baseColor = Plugin.SaturatedRipple;
+            self.karmaSprite.color = self.baseColor;
         }
     }
 
