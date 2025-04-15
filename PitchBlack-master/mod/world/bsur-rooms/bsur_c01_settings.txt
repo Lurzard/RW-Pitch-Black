@@ -1,3 +1,4 @@
+Template: NONE
 Grime: 0.2282609
 BkgDroneVolume: 0.2769565
 EffectColorA: 9

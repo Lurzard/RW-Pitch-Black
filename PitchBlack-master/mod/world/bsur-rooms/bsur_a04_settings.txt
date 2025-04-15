@@ -1,3 +1,4 @@
+Template: NONE
 Clouds: 0.1956522
 BkgDroneVolume: 0.2769565
 EffectColorB: 8

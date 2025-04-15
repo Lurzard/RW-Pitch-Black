@@ -1,0 +1,22 @@
+DangerType: FloodAndRain
+CeilingDrips: 0.5
+RainIntensity: 1
+RumbleIntensity: 1
+WaveSpeed: 0.75
+WaveLength: 0.5
+WaveAmplitude: 0
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Clouds: 0.173913
+Grime: 0.3478261
+BkgDroneVolume: 0
+BkgDroneNoThreatVolume: 1
+RandomItemDensity: 0.5
+RandomItemSpearChance: 0.2
+WaterReflectionAlpha: 1
+Palette: 373
+EffectColorA: 2
+EffectColorB: 21
+Effects: Flies-0.09782609-20-20, Sentient Rot Infection-1-277-124, ModifyEffectColorB-0,0.2065217,0.09782609-20-20, ModifyEffectColorA-0,0.2065217,0.09782609-276-21, Ant-1-336.6208-303, RockFlea-1-317.7306-220, Sentient Rot Spores-1-19-118, 
+AmbientSounds: OMNI><RWTW_RotAmb_VanillaRot.ogg><751.052><204.972><0.6086956><1, OMNI><RWTW_Sigil.ogg><295.9931><543.5501><0.2065217><0.55, OMNI><RWTW_RotAmb_Goo.ogg><116.4885><468.2659><0.1861678><0.177917, OMNI><RWTW_RotAmb_Deep.ogg><117.6382><543.3913><0.196989><0.7078102, 
+FadePalette: 8, 0

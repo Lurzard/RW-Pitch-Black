@@ -1,3 +1,4 @@
+Template: NONE
 Clouds: 0.173913
 Grime: 0.3478261
 BkgDroneVolume: 0.2769565
