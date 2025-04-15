@@ -1,0 +1,7 @@
+Template: bdsr_settingstemplate_night
+Grime: 0.2826087
+Palette: 4
+PlacedObjects: Corruption><705.4695><608.3024><-79~-184, PassiveCorruption><436.63><256.348><285~182~0~0~7~15~0.8~0.3~0.55~0.05~0.15~0.2~0.2~Default~Dot~Passive~2~0~1, Corruption><59><268><-63~-156, 
+AmbientSounds: SPOT><SO_WAT-OpenFlow.ogg><761.7788><476.3021><0.2934783><0.7652174><827.7788><613.3021><-174.3553><36.64465><0><0.6869566, SPOT><SO_WAT-OpenFlow.ogg><422.4293><20.16147><0.2391304><0.7847826><23.42932><265.1615><-161.3553><9.644653><0><0.5239132, OMNI><RWTW_RotAmb_Goo.ogg><0><0><0.4><1, OMNI><RWTW_RotAmb_Med.ogg><0><0><0.5><1, 
+Triggers: Spot<tA>event<tB>MusicEvent<eA>songName<eB>RW_51 - Swaying Fronds<eA>vol<eB>0.3<eA>prio<eB>0.5<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>6<eA>rest<eB>5<eA>fadeIn<eB>163.0435<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>638.0625<tB>557.1899<tA>fireChance<tB>1<tA>entrance<tB>-1<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>402.0625<tB>303.19<tA>handlePos<tB>-272.3553<tB>-120.3553, 
+FadePalette: 8, 0.1956522

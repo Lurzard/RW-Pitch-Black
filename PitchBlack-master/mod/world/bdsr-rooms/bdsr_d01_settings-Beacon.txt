@@ -1,0 +1,7 @@
+Template: bdsr_settingstemplate_night
+BkgDroneVolume: 0
+Palette: 4
+Effects: RockFlea-0.3804348-20-20, 
+PlacedObjects: WaterNut><1898.197><449.3073><-1~104~3~5, WaterNut><1742.55><427.9963><139~39~3~4, WaterNut><2647.052><432.0281><0~0~3~5, DataPearl><1701.891><405.6676><0~0~0~0~DS~1, BubbleGrass><2442.194><418.7972><0~0~4~9, BubbleGrass><2413.608><416.6686><0~0~4~9, Filter><2423.898><390.3849><-62~23~7~-224~Red, Corruption><1992.105><462.6703><-17~133, Corruption><3916.953><241.4445><-194~191, Corruption><150.9759><203.8015><79~106, Corruption><523.8056><321.547><0~100, Corruption><1000.175><246.0646><115~135, Corruption><1486.944><202.4532><107~59, Corruption><1925.903><256.0751><-43~159, 
+AmbientSounds: SPOT><SO_NAT-LilDrips.ogg><733.9898><565.5502><0.3804348><1><2545.99><427.5502><-193.3553><1.644653><0><0.5347828, SPOT><SO_WAT-LilDrips.ogg><401.5674><576.9183><0.2934784><1><1975.567><460.9183><-146.3553><64.64465><0><0.3391306, OMNI><RWTW_RotAmb_Goo.ogg><0><0><0.4><1, OMNI><RWTW_RotAmb_Goo.ogg><0><0><0.4><1, OMNI><RWTW_RotAmb_Goo.ogg><0><0><0.4><1, OMNI><RWTW_Sigil.ogg><404.9931><496.5501><0.4565217><0.9021739, OMNI><RWTW_RotAmb_Med.ogg><0><0><0.5><1, 
+FadePalette: 8, 0.2065217, 0.1956522, 0.2065217, 0.2173913

@@ -1,0 +1,6 @@
+Template: bdsr_settingstemplate_night
+Palette: 4
+Effects: RockFlea-0.5652174-20-20, 
+PlacedObjects: InsectGroup><187.8901><250.3329><51~100~0~0~RockFlea~0.9456522, Corruption><3360.813><259.5721><213~117, Corruption><3859.066><221.6725><0~100, Corruption><2116.611><220.8559><104~64, Corruption><2688.19><280.6875><0~100, Corruption><1473.923><318.4005><0~100, Corruption><1171.195><213.7952><0~100, Corruption><1808.044><221.6951><0~100, Corruption><123.3358><244.6142><191~31, Corruption><697.1854><312.3251><0~100, 
+AmbientSounds: OMNI><RWTW_RotAmb_Goo.ogg><0><0><0.4><1, OMNI><RWTW_RotAmb_Med.ogg><0><0><0.5><1, 
+FadePalette: 8, 0.5, 0.5, 0.5, 0.5

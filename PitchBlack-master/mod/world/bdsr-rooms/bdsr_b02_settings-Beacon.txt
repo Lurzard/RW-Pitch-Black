@@ -1,0 +1,5 @@
+Template: bdsr_settingstemplate_night
+Grime: 0.3369565
+PlacedObjects: Corruption><110.3726><469.6542><72~120, Corruption><665.3044><429.6924><-11~116, Corruption><1556.302><424.9681><0~100, Corruption><1371.581><552.1074><0~100, Corruption><1859.01><439.5502><0~100, Corruption><1264.076><391.5992><0~100, 
+AmbientSounds: OMNI><RWTW_RotAmb_Goo.ogg><0><0><0.4><1, OMNI><RWTW_RotAmb_Goo.ogg><0><0><0.4><1, OMNI><RWTW_RotAmb_Med.ogg><0><0><0.5><1, 
+FadePalette: 8, 0, 0

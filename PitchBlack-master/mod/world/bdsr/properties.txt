@@ -8,4 +8,4 @@ overseersMin: 0
 overseersMax: 0
 playerGuideOverseerSpawnChance: 0.0
 Subregion: Decaying Tunnels
-Room Setting Templates: Rot
+Room Setting Templates: Rot, Night
