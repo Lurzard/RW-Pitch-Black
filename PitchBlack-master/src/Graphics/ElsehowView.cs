@@ -85,18 +85,20 @@ public class ElsehowView : BackgroundScene
         {
             sceneOrigo = new Vector2(2514f, (startAltitude + endAltitude) / 2f);
         }
-        else
-        {
-            Custom.Log(new string[]
-            {
-                "arena sky view is :",
-                effect.amount.ToString()
-            });
-            float num = 10000f - effect.amount * 30000f;
-            sceneOrigo = new Vector2(2514f, num);
-            startAltitude = num - 5500f;
-            endAltitude = num + 5500f;
-        }
+        //else
+        //{
+        //    Custom.Log(new string[]
+        //    {
+        //        "arena sky view is :",
+        //        effect.amount.ToString()
+        //    });
+        //    float num = 10000f - effect.amount * 30000f;
+        //    sceneOrigo = new Vector2(2514f, num);
+        //    startAltitude = num - 5500f;
+        //    endAltitude = num + 5500f;
+        //}
+        
+        // Adding graphics
         elseClouds = new List<ElseCloud>();
         LoadGraphic("clouds1", false, false);
         LoadGraphic("clouds2", false, false);
@@ -105,26 +107,33 @@ public class ElsehowView : BackgroundScene
         generalFog = new ElseFog(this);
         AddElement(generalFog);
         AddElement(centensSky);
+        // Close clouds
         if (effect.type == PBRoomEffectType.ElsehowView)
         {
-            int cloudCount = 8;
+            int cloudCount = 7;
             for (int i = 0; i < cloudCount; i++)
             {
                 float cloudDepth = (float)i / (float)(cloudCount - 1);
                 AddElement(new CloseElseCloud(this, new Vector2(0f, 0f), cloudDepth, i));
             }
         }
-        int distantCloudCount = 12;
-        for (int j = 0; j < distantCloudCount; j++)
-        {
-            float num15 = (float)j / (float)(distantCloudCount - 1);
-            AddElement(new DistantElseCloud(this, new Vector2(0f, -40f * cloudsEndDepth * (1f - num15)), num15, j));
-        }
+
+        // NOTE: Distant clouds are from SIClouds, don't use, otherwise it just creates a big sky-colored box when too high up!!!
+        //int distantCloudCount = 11;
+        //for (int j = 0; j < distantCloudCount; j++)
+        //{
+        //    float num15 = (float)j / (float)(distantCloudCount - 1);
+        //    AddElement(new DistantElseCloud(this, new Vector2(0f, -40f * cloudsEndDepth * (1f - num15)), num15, j));
+        //}
+
+        // Flying clouds
         AddElement(new FlyingElseCloud(this, PosFromDrawPosAtNeutralCamPos(new Vector2(0f, 75f), 355f), 355f, 0, 0.35f, 0.5f, 0.9f));
         AddElement(new FlyingElseCloud(this, PosFromDrawPosAtNeutralCamPos(new Vector2(0f, 43f), 920f), 920f, 0, 0.15f, 0.3f, 0.95f));
+        // Needed in order to set the random state
         Random.state = state;
     }
 
+    // Adding clouds
     public override void AddElement(BackgroundSceneElement element)
     {
         if (element is ElseCloud)
@@ -133,13 +142,12 @@ public class ElsehowView : BackgroundScene
         }
         base.AddElement(element);
     }
-
+    // From AncientUrbanView
     public float AtmosphereColorAtDepth(float depth)
     {
         return Mathf.Clamp(depth / 8.2f, 0f, 1f);
     }
-
-    // from implementation
+    // Mandatory functions
     public override void Update(bool eu)
     {
         base.Update(eu);
@@ -150,11 +158,11 @@ public class ElsehowView : BackgroundScene
     }
 
     public RoomSettings.RoomEffect effect;
-    //this has to be -2000, otherwise they are probably put offscreen
+    //floorlevel is from AncientUrbanView for the Buildings, this determines the exact x spacially that the towers are generated according to, yields weird results when y alters, needs to be checked out, and stuff that uses it to be altered. -Lur
     private float floorLevel = -2000f;
-    public Color atmosphereColor = new Color(0.26274509803f, 0.54509803921f, 0.75686274509f/*0.451f, 0.8f, 1f*/);
-    public Color backgroundSkyColor = new Color(0.26274509803f, 0.54509803921f, 0.75686274509f);
+    public Color atmosphereColor = new Color(0.451f, 0.8f, 1f);
 
+    #region ElseCloud
     public abstract class ElseCloud : BackgroundSceneElement
     {
         private ElsehowView vvScene
@@ -178,7 +186,9 @@ public class ElsehowView : BackgroundScene
         public Color skyColor;
         public int index;
     }
+    #endregion
 
+    #region Towers
     // References AncientUrbanView.Building
     private class Towers : BackgroundSceneElement
     {
@@ -239,8 +249,10 @@ public class ElsehowView : BackgroundScene
         public float rotation;
         public float thickness;
     }
+    #endregion
 
-    public class CloseElseCloud : ElsehowView.ElseCloud
+    #region CloseElseCloud
+    public class CloseElseCloud : ElseCloud
     {
         public ElsehowView vvScene
         {
@@ -296,8 +308,11 @@ public class ElsehowView : BackgroundScene
         }
         public float cloudDepth;
     }
+    #endregion
 
-    public class DistantElseCloud : ElsehowView.ElseCloud
+    #region DistantElseCloud
+    // Don't use, not what we want
+    public class DistantElseCloud : ElseCloud
     {
         public ElsehowView vvScene
         {
@@ -351,13 +366,15 @@ public class ElsehowView : BackgroundScene
             sLeaser.sprites[1].color = new Color(Mathf.Lerp(0.75f, 0.95f, distantCloudDepth), randomOffset, Mathf.Lerp(num2, 1f, 0.5f), 1f);
             sLeaser.sprites[1].x = 683f;
             sLeaser.sprites[1].y = yPos - 2f;
-            sLeaser.sprites[0].color = Color.Lerp(skyColor, vvScene.backgroundSkyColor, Mathf.Lerp(0.75f, 0.95f, distantCloudDepth));
+            sLeaser.sprites[0].color = Color.Lerp(skyColor, vvScene.atmosphereColor, Mathf.Lerp(0.75f, 0.95f, distantCloudDepth));
             base.DrawSprites(sLeaser, rCam, timeStacker, camPos);
         }
         private float distantCloudDepth;
     }
+    #endregion
 
-    public class FlyingElseCloud : ElsehowView.ElseCloud
+    #region FlyingElseCloud
+    public class FlyingElseCloud : ElseCloud
     {
         public ElsehowView vvScene
         {
@@ -405,7 +422,9 @@ public class ElsehowView : BackgroundScene
         private float alpha;
         private float shaderInputColor;
     }
+    #endregion
 
+    #region ElseFog
     public class ElseFog : FullScreenSingleColor
     {
         public ElsehowView vvScene
@@ -441,6 +460,7 @@ public class ElsehowView : BackgroundScene
             base.ApplyPalette(sLeaser, rCam, palette);
         }
     }
+    #endregion
 
     public Simple2DBackgroundIllustration centensSky;
     public ElseFog generalFog;
