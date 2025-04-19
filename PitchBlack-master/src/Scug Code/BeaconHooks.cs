@@ -493,9 +493,14 @@ public static class BeaconHooks {
                     beaconCWT.isDeadForReal = true;
                 }
 
-                if (beaconCWT.isDeadForReal) {
+                if (beaconCWT.isDeadForReal && !beaconCWT.isDeadForRealSoundNeedsToPlay) {
                     self.Die();
                     self.room.PlaySound(PBSoundID.Player_Died_From_Thanatosis);
+                    beaconCWT.isDeadForRealSoundNeedsToPlay = true;
+                }
+
+                if (!beaconCWT.isDeadForReal) {
+                    beaconCWT.isDeadForRealSoundNeedsToPlay = false;
                 }
                 //Code for impending death effect
                 //Uses Watcher RippleDeathEffect shader with intensity based on how close you are to dying for real.

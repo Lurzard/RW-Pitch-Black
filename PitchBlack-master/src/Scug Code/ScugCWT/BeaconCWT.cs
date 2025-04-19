@@ -26,6 +26,7 @@ public class BeaconCWT : ScugCWT {
     public bool isDead; //state tracking
     public bool isDeadButDeniedDeath; //for later implementing coming back from GameOver
     public bool isDeadForReal = false; //used to call GameOver
+    public bool isDeadForRealSoundNeedsToPlay = false; //stops recursive true death sound
     public int thanatosisCounter; //tracking current time spent in Thanatosis
     public float thanatosisLerp; //for lerping player color based on time spent in Thanatosis
     public int inputForThanatosisCounter = 0; //spec input doesn't recursively flip isDead

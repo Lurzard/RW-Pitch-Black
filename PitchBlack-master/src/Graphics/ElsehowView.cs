@@ -21,8 +21,7 @@ public class ElsehowViewHooks {
     // Adds to PitchBlack dev effects catagory
     private static RoomSettingsPage.DevEffectsCategories RoomSettingsPage_DevEffectGetCategoryFromEffectType(On.DevInterface.RoomSettingsPage.orig_DevEffectGetCategoryFromEffectType orig, RoomSettingsPage self, RoomSettings.RoomEffect.Type type) {
         RoomSettingsPage.DevEffectsCategories res = orig(self,type);
-        if (type == PBRoomEffectType.ElsehowView)
-        {
+        if (type == PBRoomEffectType.ElsehowView) {
             res = PBRoomEffectType.PitchBlack;
         }
         return res;
