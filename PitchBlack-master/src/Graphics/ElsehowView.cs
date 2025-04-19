@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using IL.Watcher;
-using JetBrains.Annotations;
-using MoreSlugcats;
-using RWCustom;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using DevInterface;
 
@@ -75,9 +69,9 @@ public class ElsehowView : BackgroundScene {
     }
 
     public override void AddElement(BackgroundSceneElement element) {
-        if (element is AboveCloudsView.Cloud)
+        if (element is ElsehowView.ElseCloud)
         {
-            elseclouds.Add(element as AboveCloudsView.Cloud);
+            elseClouds.Add(element as ElsehowView.ElseCloud);
         }
         base.AddElement(element);
     }
@@ -97,6 +91,25 @@ public class ElsehowView : BackgroundScene {
     public RoomSettings.RoomEffect effect;
     private float floorLevel = -2000f;
     public Color atmosphereColor = new Color(0.451f, 0.8f, 1f);
+
+    public abstract class ElseCloud : BackgroundSceneElement {
+        private ElsehowView vvScene {
+            get {
+                return scene as ElsehowView;
+            }
+        }
+        public ElseCloud(ElsehowView vvScene, Vector2 pos, float depth, int index) : base(vvScene, pos, depth) {
+            this.randomOffset = UnityEngine.Random.value;
+            this.index = index;
+        }
+        public override void ApplyPalette(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette) {
+            this.skyColor = palette.skyColor;
+        }
+
+        public float randomOffset;
+        public Color skyColor;
+        public int index;
+    }
 
     // References AncientUrbanView.Building
     private class Towers : BackgroundSceneElement {
@@ -150,14 +163,14 @@ public class ElsehowView : BackgroundScene {
         public float thickness;
     }
 
-    public class ElseCloseCloud : AboveCloudsView.Cloud {
+    public class ElseCloseCloud : ElsehowView.ElseCloud {
         public ElsehowView vvScene {
             get {
                 return scene as ElsehowView;
             }
         }
 
-        public ElseCloseCloud(AboveCloudsView aboveCloudsScene, Vector2 pos, float depth, int index) : base(aboveCloudsScene, pos, depth, index) {
+        public ElseCloseCloud(ElsehowView vvScene, Vector2 pos, float depth, int index) : base(vvScene, pos, depth, index) {
             cloudDepth = depth;
         }
 
@@ -183,7 +196,7 @@ public class ElsehowView : BackgroundScene {
             {
                 depth = Mathf.Lerp(depth, 1f, Mathf.InverseLerp(0.5f, 1f, altitude) * 0.5f);
             }
-            this.depth = Mathf.Lerp(AboveCloudsScene.cloudsStartDepth, AboveCloudsScene.cloudsEndDepth, depth);
+            this.depth = Mathf.Lerp(vvScene.cloudsStartDepth, vvScene.cloudsEndDepth, depth);
             float num3 = Mathf.Lerp(10f, 2f, depth);
             float num4 = DrawPos(new Vector2(camPos.x, camPos.y + vvScene.yShift), rCam.hDisplace).y;
             num4 += Mathf.Lerp(Mathf.Pow(cloudDepth, 0.75f), Mathf.Sin(cloudDepth * 3.1415927f), 0.5f) * Mathf.InverseLerp(0.5f, 0f, altitude) * 600f;
@@ -201,14 +214,14 @@ public class ElsehowView : BackgroundScene {
         public float cloudDepth;
     }
 
-    public class ElseDistantCloud : AboveCloudsView.Cloud {
+    public class ElseDistantCloud : ElsehowView.ElseCloud {
         public ElsehowView vvScene {
             get {
                 return scene as ElsehowView;
             }
         }
 
-        public ElseDistantCloud(AboveCloudsView aboveCloudsScene, Vector2 pos, float depth, int index) : base(aboveCloudsScene, pos, depth, index) {
+        public ElseDistantCloud(ElsehowView vvScene, Vector2 pos, float depth, int index) : base(vvScene, pos, depth, index) {
             distantCloudDepth = depth;
         }
 
@@ -253,14 +266,14 @@ public class ElsehowView : BackgroundScene {
         private float distantCloudDepth;
     }
 
-    public class ElseFlyingCloud : AboveCloudsView.Cloud {
+    public class ElseFlyingCloud : ElsehowView.ElseCloud {
         public ElsehowView vvScene {
             get {
                 return scene as ElsehowView;
             }
         }
 
-        public ElseFlyingCloud(AboveCloudsView aboveCloudsScene, Vector2 pos, float depth, int index, float flattened, float alpha, float shaderInputColor) : base(aboveCloudsScene, pos, depth, index) {
+        public ElseFlyingCloud(ElsehowView vvScene, Vector2 pos, float depth, int index, float flattened, float alpha, float shaderInputColor) : base(vvScene, pos, depth, index) {
             this.flattened = flattened;
             this.alpha = alpha;
             this.shaderInputColor = shaderInputColor;
@@ -302,7 +315,7 @@ public class ElsehowView : BackgroundScene {
             }
         }
 
-        public ElseFog(AboveCloudsView aboveCloudsScene) : base(aboveCloudsScene, default(Color), 1f, true, float.MaxValue) {
+        public ElseFog(ElsehowView vvScene) : base(vvScene, default(Color), 1f, true, float.MaxValue) {
             depth = 0f;
         }
 
@@ -327,7 +340,7 @@ public class ElsehowView : BackgroundScene {
     public float startAltitude = 9000f;
     public float endAltitude = 26400f;
     public float yShift;
-    //public float cloudsStartDepth = 5f;
-    //public float cloudsEndDepth = 40f;
-    public List<AboveCloudsView.Cloud> elseclouds;
+    public float cloudsStartDepth = 5f;
+    public float cloudsEndDepth = 40f;
+    public List<ElsehowView.ElseCloud> elseClouds;
 }
