@@ -1,0 +1,4 @@
+overseersSpawnChance: 0
+playerGuideOverseerSpawnChance: 0
+
+Room Setting Templates: depths
