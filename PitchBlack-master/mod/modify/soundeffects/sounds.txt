@@ -1,5 +1,5 @@
-[ADD]Player_Died_From_Thanatosis : RWPB_Player_Thanatosis01/vol=0.5
-[ADD]Player_Revived : RWPB_Player_Thanatosis02/vol=0.5
-[ADD]Player_Activated_Thanatosis : RWPB_Player_Thanatosis03/vol=0.5
-[ADD]Player_Deactivated_Thanatosis : RWPB_Player_Thanatosis04/vol=0.5
-[ADD]Player_Deactivated_Thanatosis_From_Stun : RWPB_Player_Thanatosis04/vol=0.5
+[ADD]Player_Died_From_Thanatosis : RWPB-Thanatosis01/vol=0.5
+[ADD]Player_Revived : RWPB-Thanatosis02/vol=0.5
+[ADD]Player_Activated_Thanatosis : RWPB-Thanatosis03/vol=0.5
+[ADD]Player_Deactivated_Thanatosis : RWPB-Thanatosis04/vol=0.5
+[ADD]Player_Deactivated_Thanatosis_From_Stun : RWPB-Thanatosis04/vol=0.5

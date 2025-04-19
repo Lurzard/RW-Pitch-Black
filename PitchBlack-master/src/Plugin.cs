@@ -75,7 +75,8 @@ class Plugin : BaseUnityPlugin
             Content.Register(new NightTerrorCritob());
             Content.Register(new ScholarScavCritob());
             Content.Register(new UmbraMaskFisob());
-            //PBSoundID.RegisterValues();
+            PBSoundID.RegisterValues();
+            PBRoomEffectType.RegisterValues();
         } catch (Exception err) {
             //Debug.LogError(err); Debug errors
             Logger.LogError(err);
@@ -99,7 +100,7 @@ class Plugin : BaseUnityPlugin
                 Futile.atlasManager.UnloadAtlas("lmllspr");
         };
 
-        BackgroundChanges.Apply();
+        ElsehowViewHooks.Apply();
 
         MenuHooks.Apply();
         SyncMenuRegion.Apply();
@@ -216,6 +217,7 @@ class Plugin : BaseUnityPlugin
             self.Shaders["PurpleEchoSkin"] = FShader.CreateShader("purpleechoskin", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/purpleecho")).LoadAsset<Shader>("Assets/shaders 1.9.03/PurpleEchoSkin.shader"));
             self.Shaders["Red"] = FShader.CreateShader("red", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath(path: "assetbundles/red")).LoadAsset<Shader>("Assets/red.shader"));
             self.Shaders["Sunrays"] = FShader.CreateShader("sunrays", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/sunrays")).LoadAsset<Shader>("Assets/sunrays.shader"));
+
             init = true;
 
             //RiftCosmetic.Register(self);
@@ -246,8 +248,8 @@ class Plugin : BaseUnityPlugin
 
                 PBCreatureTemplateType.UnregisterValues();
                 PBSandboxUnlockID.UnregisterValues();
-                //PBSoundID.UnregisterValues();
-
+                PBSoundID.UnregisterValues();
+                PBRoomEffectType.UnregisterValues();
                 break;
             }
         }

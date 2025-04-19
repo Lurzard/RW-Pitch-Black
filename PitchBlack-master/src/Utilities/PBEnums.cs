@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using DevInterface;
 
 namespace PitchBlack;
 
@@ -106,6 +107,27 @@ public class PBSoundID {
         if (playerRevived != null) {
             playerRevived.Unregister();
         }
+    }
+}
+
+public class PBRoomEffectType {
+    public static RoomSettings.RoomEffect.Type ElsehowView;
+    public static RoomSettingsPage.DevEffectsCategories PitchBlack;
+
+    public static void RegisterValues()
+    {
+        ElsehowView = new RoomSettings.RoomEffect.Type("Elsehow View", true);
+        PitchBlack = new RoomSettingsPage.DevEffectsCategories("Pitch-Black", true);
+}
+
+    public static void UnregisterValues()
+    {
+        RoomSettings.RoomEffect.Type elsehowView = ElsehowView;
+        if (elsehowView != null)
+        {
+            elsehowView.Unregister();
+        }
+        ElsehowView = null;
     }
 }
 

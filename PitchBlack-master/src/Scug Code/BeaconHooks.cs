@@ -466,7 +466,8 @@ public static class BeaconHooks {
                     beaconCWT.isDead = !beaconCWT.isDead;
                 }
                 if ((beaconCWT.deathToggle != beaconCWT.isDead) && beaconCWT.inputForThanatosisCounter == 25) {
-                    self.room.PlaySound(beaconCWT.isDead ? new SoundID("Player_Activated_Thanatosis", false) : new SoundID("Player_Deactivated_Thanatosis", false), self.mainBodyChunk);
+                    self.room.PlaySound(beaconCWT.isDead ? PBSoundID.Player_Activated_Thanatosis : PBSoundID.Player_Deactivated_Thanatosis, self.mainBodyChunk);
+                    //self.room.PlaySound(beaconCWT.isDead ? new SoundID("Player_Activated_Thanatosis", false) : new SoundID("Player_Deactivated_Thanatosis", false), self.mainBodyChunk);
                 }
             }
             //In Thanatosis
@@ -489,13 +490,15 @@ public static class BeaconHooks {
 
                 if ((beaconCWT.thanatosisCounter > beaconCWT.ThanatosisLimit - 1) && !beaconCWT.isDeadForReal) {
                     //inThanatosisTime is never increased above ThanatosisLimit, so -1 will be actually true instead.
-                    self.Die();
                     beaconCWT.isDeadForReal = true;
                 }
 
+                if (beaconCWT.isDeadForReal) {
+                    self.Die();
+                    self.room.PlaySound(PBSoundID.Player_Died_From_Thanatosis);
+                }
                 //Code for impending death effect
                 //Uses Watcher RippleDeathEffect shader with intensity based on how close you are to dying for real.
-
             }
             //Outside Thanatosis
             if (!beaconCWT.isDead) {
