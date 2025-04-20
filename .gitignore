@@ -401,3 +401,4 @@ FodyWeavers.xsd
 *.sln.iml
 /PitchBlack-master/lib/Fisobs.dll
 PitchBlack-master/src/PitchBlack.csproj
+PitchBlack-master/src/src.sln

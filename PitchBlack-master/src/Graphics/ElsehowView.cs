@@ -6,37 +6,47 @@ using RWCustom;
 namespace PitchBlack;
 
 #region Hooks
-public class ElsehowViewHooks {
-    public static void Apply() {
+public class ElsehowViewHooks
+{
+    public static void Apply()
+    {
         On.Room.Loaded += Room_Loaded;
         On.Room.NowViewed += Room_NowViewed;
         On.DevInterface.RoomSettingsPage.DevEffectGetCategoryFromEffectType += RoomSettingsPage_DevEffectGetCategoryFromEffectType;
     }
 
     // Adds to PitchBlack dev effects catagory
-    private static RoomSettingsPage.DevEffectsCategories RoomSettingsPage_DevEffectGetCategoryFromEffectType(On.DevInterface.RoomSettingsPage.orig_DevEffectGetCategoryFromEffectType orig, RoomSettingsPage self, RoomSettings.RoomEffect.Type type) {
-        RoomSettingsPage.DevEffectsCategories res = orig(self,type);
-        if (type == PBRoomEffectType.ElsehowView) {
+    private static RoomSettingsPage.DevEffectsCategories RoomSettingsPage_DevEffectGetCategoryFromEffectType(On.DevInterface.RoomSettingsPage.orig_DevEffectGetCategoryFromEffectType orig, RoomSettingsPage self, RoomSettings.RoomEffect.Type type)
+    {
+        RoomSettingsPage.DevEffectsCategories res = orig(self, type);
+        if (type == PBRoomEffectType.ElsehowView)
+        {
             res = PBRoomEffectType.PitchBlack;
         }
         return res;
     }
 
     // Taken from other Watcher backgrounds, seems related to the building shader
-    private static void Room_NowViewed(On.Room.orig_NowViewed orig, Room self) {
+    private static void Room_NowViewed(On.Room.orig_NowViewed orig, Room self)
+    {
         orig(self);
-        for (int i = 0; i < self.roomSettings.effects.Count; i++) {
-            if (self.roomSettings.effects[i].type == PBRoomEffectType.ElsehowView) {
+        for (int i = 0; i < self.roomSettings.effects.Count; i++)
+        {
+            if (self.roomSettings.effects[i].type == PBRoomEffectType.ElsehowView)
+            {
                 Shader.SetGlobalFloat(RainWorld.ShadPropRimFix, 1f);
             }
         }
     }
 
     // Adds ElsehowView
-    private static void Room_Loaded(On.Room.orig_Loaded orig, Room self) {
+    private static void Room_Loaded(On.Room.orig_Loaded orig, Room self)
+    {
         orig(self);
-        for (int num4 = 0; num4 < self.roomSettings.effects.Count; num4++) {
-            if (self.roomSettings.effects[num4].type == PBRoomEffectType.ElsehowView) {
+        for (int num4 = 0; num4 < self.roomSettings.effects.Count; num4++)
+        {
+            if (self.roomSettings.effects[num4].type == PBRoomEffectType.ElsehowView)
+            {
                 self.AddObject(new ElsehowView(self, self.roomSettings.effects[num4]));
             }
         }
@@ -59,14 +69,14 @@ public class ElsehowView : BackgroundScene
         Random.InitState(1);
         // Sky illustration
         centensSky = new Simple2DBackgroundIllustration(this, "Centens_Sky", new Vector2(683f, 384f));
-        int towers = 500;
+        int towers = 200;
         float screenWidth = 6500f;
         float offset = 0f;
         // Tower element and position
         for (int i = 0; i < towers; i++)
         {
             // Variable X and Y Position of Towers
-            float depthRange = Random.Range(0.5f, 8f);
+            float depthRange = Random.Range(0.2f, 3f);
             float xplacementRange = Random.Range(-screenWidth, screenWidth);
             float ydepthRange = Random.Range(-300f, 0f);
             int visualVariation = Random.Range(0, 3);
@@ -97,7 +107,7 @@ public class ElsehowView : BackgroundScene
         //    startAltitude = num - 5500f;
         //    endAltitude = num + 5500f;
         //}
-        
+
         // Adding graphics
         elseClouds = new List<ElseCloud>();
         LoadGraphic("clouds1", false, false);
