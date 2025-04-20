@@ -2,12 +2,12 @@ using RWCustom;
 using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
+using Menu;
 
 namespace PitchBlack;
 
 public static class PassageHooks
 {
-
 	public static void Apply()
     {
         //On.WinState.CycleCompleted += BP_CycleCompleted; for now we'll omit this
@@ -24,20 +24,20 @@ public static class PassageHooks
         On.Menu.EndgameMeter.GrafUpdate += EndgameMeter_GrafUpdate;
     }
 
-    private static void EndgameMeter_GrafUpdate(On.Menu.EndgameMeter.orig_GrafUpdate orig, Menu.EndgameMeter self, float timeStacker)
+    private static void EndgameMeter_GrafUpdate(On.Menu.EndgameMeter.orig_GrafUpdate orig, EndgameMeter self, float timeStacker)
     {
         orig(self, timeStacker);
 		//SPECIAL COLORS FOR THIS ONE
-        if (self.tracker.ID == EnumExt_MyMod.Pursued)
+        if (self.tracker.ID == PBEndGameID.Hunted)
 		{
             float num2 = Mathf.Lerp(self.lastShowAsFullFilled, self.showAsFullfilled, timeStacker);
             float num3 = Mathf.Lerp(self.lastAnimationLightUp, self.animationLightUp, timeStacker);
-            Color color = Color.Lerp(Menu.Menu.MenuRGB(Menu.Menu.MenuColors.VeryDarkGrey), Menu.Menu.MenuRGB(self.fullfilledNow ? Menu.Menu.MenuColors.DarkRed : Menu.Menu.MenuColors.MediumGrey), Mathf.Max(Mathf.Pow(num2, 0.2f), num3));
+            Color color = Color.Lerp(Menu.Menu.MenuRGB(Menu.Menu.MenuColors.VeryDarkGrey), Menu.Menu.MenuRGB(self.fullfilledNow ? Menu.Menu.MenuColors.SaturatedGold : Menu.Menu.MenuColors.MediumGrey), Mathf.Max(Mathf.Pow(num2, 0.2f), num3));
             self.symbolSprite.color = color;
             self.circleSprite.color = color;
-            self.glowSprite.color = Color.red;
+            self.glowSprite.color = RainWorld.GoldRGB;
             self.glowSprite.alpha = self.symbolSprite.alpha * 0.65f;
-            self.label.color = Color.red;
+            self.label.color = RainWorld.GoldRGB;
         }
     }
 
@@ -45,28 +45,28 @@ public static class PassageHooks
     {
 		orig(self, timeStacker);
         //RERUN THESE
-		if (self.owner.tracker.ID == EnumExt_MyMod.Pursued)
+		if (self.owner.tracker.ID == PBEndGameID.Hunted)
 		{
             float num = Mathf.Lerp(self.owner.lastMeterAnimation, self.owner.meterAnimation, timeStacker);
             float num2 = Mathf.Pow(Mathf.InverseLerp(0.5f, 1f, num), 3f);
-			self.meterSprites[0].color = Color.red; // CurseColor(self, timeStacker, num2); //self.LossColor(timeStacker, num2);
-            self.meterSprites[1].color = Color.red; // CurseColor(self, timeStacker, num2);
-            self.tipSprite.color = Color.red;
-            self.sideBarSprite.color = Color.red;
+			self.meterSprites[0].color = RainWorld.GoldRGB; // CurseColor(self, timeStacker, num2); //self.LossColor(timeStacker, num2);
+            self.meterSprites[1].color = RainWorld.GoldRGB; // CurseColor(self, timeStacker, num2);
+            self.tipSprite.color = RainWorld.GoldRGB;
+            self.sideBarSprite.color = RainWorld.GoldRGB;
         }
         
     }
 
 	//LIKE LOSSCOLOR OR GAINCOLOR, BUT VERY RED
-    public static Color CurseColor(Menu.EndgameMeter.FloatMeter myMeter, float timeStacker, float colorCue)
+    public static Color CurseColor(EndgameMeter.FloatMeter myMeter, float timeStacker, float colorCue)
     {
         return myMeter.AllColorsViaThis(Color.Lerp(myMeter.FilledColor(timeStacker), new Color(1f, 0f, 0f), (1f - myMeter.pulse) * 0.5f * colorCue), timeStacker);
     }
 
     private static string WinState_PassageDisplayName(On.WinState.orig_PassageDisplayName orig, WinState.EndgameID ID)
 	{
-		if (ID == EnumExt_MyMod.Pursued)
-			return "The Pursued";
+		if (ID == PBEndGameID.Hunted)
+			return "The Hunted";
 		else
 			return orig.Invoke(ID);
 	}
@@ -96,9 +96,9 @@ public static class PassageHooks
 
 
 
-	public static void BP_BuildScene(On.Menu.MenuScene.orig_BuildScene orig, Menu.MenuScene self)
+	public static void BP_BuildScene(On.Menu.MenuScene.orig_BuildScene orig, MenuScene self)
 	{
-		if (self.sceneID == EnumExt_MyScene.Endgame_Pursued)
+		if (self.sceneID == PBSceneID.Endgame_Hunted)
 		{
 			//WE DIDN'T BUILD ONE YET, BUT IF YOU WANT TO....
 			/*
@@ -142,14 +142,14 @@ public static class PassageHooks
 	}
 
 
-	private static void BP_GetDataFromSleepScreen(On.Menu.CustomEndGameScreen.orig_GetDataFromSleepScreen orig, Menu.CustomEndGameScreen self, WinState.EndgameID endGameID)
+	private static void BP_GetDataFromSleepScreen(On.Menu.CustomEndGameScreen.orig_GetDataFromSleepScreen orig, CustomEndGameScreen self, WinState.EndgameID endGameID)
 	{
-		if (endGameID == EnumExt_MyMod.Pursued)
+		if (endGameID == PBEndGameID.Hunted)
 		{
 			//GOTTA REPLICATE THE MENU SCREEN
-			Menu.MenuScene.SceneID sceneID = Menu.MenuScene.SceneID.Empty;
-			sceneID = EnumExt_MyScene.Endgame_Pursued;
-			self.scene = new Menu.InteractiveMenuScene(self, self.pages[0], sceneID);
+			MenuScene.SceneID sceneID = Menu.MenuScene.SceneID.Empty;
+			sceneID = PBSceneID.Endgame_Hunted;
+			self.scene = new InteractiveMenuScene(self, self.pages[0], sceneID);
 			self.pages[0].subObjects.Add(self.scene);
 			self.pages[0].Container.AddChild(self.blackSprite);
 			if (self.scene.flatIllustrations.Count > 0)
@@ -164,7 +164,7 @@ public static class PassageHooks
 				self.localBloomSprite.shader = self.manager.rainWorld.Shaders["LocalBloom"];
 				self.pages[0].Container.AddChild(self.localBloomSprite);
 			}
-			self.titleLabel = new Menu.MenuLabel(self, self.pages[0], "", new Vector2(583f, 5f), new Vector2(200f, 30f), false, null);
+			self.titleLabel = new MenuLabel(self, self.pages[0], "The Hunted", new Vector2(583f, 5f), new Vector2(200f, 30f), false, null);
 			self.pages[0].subObjects.Add(self.titleLabel);
 			self.titleLabel.text = self.Translate(WinState.PassageDisplayName(endGameID));
 		}
@@ -175,7 +175,7 @@ public static class PassageHooks
 	private static void BP_GenerateAchievementScores(On.Expedition.ChallengeTools.orig_GenerateAchievementScores orig)
 	{
 		orig.Invoke();
-		Expedition.ChallengeTools.achievementScores.Add(EnumExt_MyMod.Pursued, 50);
+		Expedition.ChallengeTools.achievementScores.Add(PBEndGameID.Hunted, 50);
 	}
 	
 	
@@ -186,7 +186,7 @@ public static class PassageHooks
 		//ONLY FOR BACON
 		if (game.session is StoryGameSession session && (session.saveStateNumber == Plugin.BeaconName))
 		{
-            WinState.IntegerTracker integerTracker4 = self.GetTracker(EnumExt_MyMod.Pursued, true) as WinState.IntegerTracker;
+            WinState.IntegerTracker integerTracker4 = self.GetTracker(PBEndGameID.Hunted, true) as WinState.IntegerTracker;
             if (integerTracker4 != null)
             {
                 integerTracker4.SetProgress(100);
@@ -200,7 +200,7 @@ public static class PassageHooks
 	{
 		WinState.EndgameTracker endgameTracker = null;
 		
-		if (ID == EnumExt_MyMod.Pursued)
+		if (ID == PBEndGameID.Hunted)
 		{
 			endgameTracker = new WinState.IntegerTracker(ID, 99, 0, 0, 100); //default, min, showFrom, max
 			Debug.Log("PURSUED TRACKER CREATED!");
@@ -229,18 +229,5 @@ public static class PassageHooks
 			}
 		}
 		return endgameTracker;
-	}
-	
-	
-	
-	public static class EnumExt_MyMod
-	{ // You can have multiple EnumExt_ classes in your assembly if you need multiple items with the same name for the different enum
-		public static WinState.EndgameID Pursued = new WinState.EndgameID("Pursued", true);
-    }
-	
-	
-	public static class EnumExt_MyScene
-	{
-		public static Menu.MenuScene.SceneID Endgame_Pursued = new Menu.MenuScene.SceneID("Endgame_Pursued", true);
 	}
 }

@@ -81,7 +81,6 @@ public class PBSoundID {
         Player_Died_From_Thanatosis = new SoundID("Player_Died_From_Thanatosis", true);
         Player_Revived = new SoundID("Player_Revived", true);
     }
-
     public static void UnregisterValues() {
         SoundID activatedThanatosis = Player_Activated_Thanatosis;
         if (activatedThanatosis != null) {
@@ -111,17 +110,22 @@ public class PBSoundID {
 }
 
 public class PBRoomEffectType {
+    public static RoomSettingsPage.DevEffectsCategories PitchBlackCatagory;
     public static RoomSettings.RoomEffect.Type ElsehowView;
-    public static RoomSettingsPage.DevEffectsCategories PitchBlack;
 
     public static void RegisterValues()
     {
+        PitchBlackCatagory = new RoomSettingsPage.DevEffectsCategories("Pitch-Black", true);
         ElsehowView = new RoomSettings.RoomEffect.Type("Elsehow View", true);
-        PitchBlack = new RoomSettingsPage.DevEffectsCategories("Pitch-Black", true);
-}
-
+    }
     public static void UnregisterValues()
     {
+        RoomSettingsPage.DevEffectsCategories pitchBlackCatagory = PitchBlackCatagory;
+        if (pitchBlackCatagory != null) {
+            pitchBlackCatagory.Unregister();
+        }
+        PitchBlackCatagory = null;
+
         RoomSettings.RoomEffect.Type elsehowView = ElsehowView;
         if (elsehowView != null)
         {
@@ -130,6 +134,37 @@ public class PBRoomEffectType {
         ElsehowView = null;
     }
 }
+
+public class PBEndGameID {
+    public static WinState.EndgameID Hunted;
+
+    public static void RegisterValues() {
+        Hunted = new WinState.EndgameID("Hunted", true);
+    }
+    public static void UnregisterValues() {
+        WinState.EndgameID hunted = Hunted;
+        if (hunted != null) {
+            hunted.Unregister();
+        }
+        Hunted = null;
+    }
+}
+
+public class PBSceneID {
+    public static Menu.MenuScene.SceneID Endgame_Hunted;
+
+    public static void RegisterValues() {
+        Endgame_Hunted = new Menu.MenuScene.SceneID("Engame_Hunted", true);
+    }
+    public static void UnregisterValues() {
+        Menu.MenuScene.SceneID endgame_Hunted = Endgame_Hunted;
+        if (endgame_Hunted != null) {
+            endgame_Hunted.Unregister();
+        }
+        Endgame_Hunted = null;
+    }
+}
+
 
 //public class Plugin {
 //    public static SlugcatStats.Name Beacon;

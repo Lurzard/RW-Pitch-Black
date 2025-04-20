@@ -78,6 +78,8 @@ class Plugin : BaseUnityPlugin
             Content.Register(new UmbraMaskFisob());
             PBSoundID.RegisterValues();
             PBRoomEffectType.RegisterValues();
+            PBEndGameID.RegisterValues();
+            PBSceneID.RegisterValues();
         } catch (Exception err) {
             //Debug.LogError(err); Debug errors
             Logger.LogError(err);
@@ -247,6 +249,8 @@ class Plugin : BaseUnityPlugin
                 PBSandboxUnlockID.UnregisterValues();
                 PBSoundID.UnregisterValues();
                 PBRoomEffectType.UnregisterValues();
+                PBEndGameID.UnregisterValues();
+                PBSceneID.UnregisterValues();
                 break;
             }
         }

@@ -21,7 +21,7 @@ public class ElsehowViewHooks
         RoomSettingsPage.DevEffectsCategories res = orig(self, type);
         if (type == PBRoomEffectType.ElsehowView)
         {
-            res = PBRoomEffectType.PitchBlack;
+            res = PBRoomEffectType.PitchBlackCatagory;
         }
         return res;
     }
