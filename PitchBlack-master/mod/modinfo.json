@@ -1,7 +1,7 @@
 ﻿{
 	"id": "lurzard.pitchblack",
 	"name": "[DEV] Pitch Black",
-	"version": "DEV 0.5.3",
+	"version": "DEV 0.5.86",
 	"authors": "[ RAIN WORLD: PITCH BLACK\n\nLurvixen: Coder, Leditor, Artist\n\nMillisec: Artist, Lediting\n\nNiko: Coder, Leditor\n\nURUFUDOGGO, Bluecubism, Moon615, WillowWispy: Coder\n\nOpey: World Changes\n\nLudocrypt, Tryn: Music, Dialogue\n\n",
 	"description": "Crawl around in the nighttime of a dying world as two new custom campaigns, The Beacon and The Photomaniac.\nUncover the hidden secrets of this world, and piece together its fractured story.",
 	"requirements": [ "slime-cubed.slugbase", "watcher", "fisobs", "regionkit", "crs" ],

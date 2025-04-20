@@ -26,14 +26,15 @@ class Plugin : BaseUnityPlugin
     public const string MOD_VERSION = "0.1.0";
     private const string COLLECTION_SAVE_FOLDER_NAME = "PitchBlack";
     public static string regionMenuDisplaySavePath = "";
-    public static readonly string rootSavePath = Application.persistentDataPath + Path.DirectorySeparatorChar.ToString(); 
+    public static readonly string rootSavePath = Application.persistentDataPath + Path.DirectorySeparatorChar.ToString();
     public static readonly string collectionSaveDataPath = rootSavePath + COLLECTION_SAVE_FOLDER_NAME + Path.DirectorySeparatorChar.ToString() + "PBcollectionsSaveData.txt";
     public static readonly Dictionary<string, bool> collectionSaveData = new Dictionary<string, bool>();
     public static ConditionalWeakTable<RainWorldGame, List<RiftWorldPrecence>> riftCWT = new();
 
+    // I think these don't need to be registered because SlugBase handles it, we just need them to be used locally.
     public static readonly SlugcatStats.Name BeaconName = new("Beacon", false);
     public static readonly SlugcatStats.Name PhotoName = new("Photomaniac", false);
-
+    // From Watcher, used for conditional Beacon world changes
     public static readonly SlugcatStats.Timeline BeaconTime = new("Beacon", false);
 
     private bool init = false;
@@ -44,8 +45,8 @@ class Plugin : BaseUnityPlugin
 
     // Significantly used colors that would be fine here
     public static Color Rose = new Color(0.82745098039f, 0.10980392156f, 0.29019607843f); // #d31c4a
-    public static Color PBAntiGold = new Color(0.355f, 0.31f, 0.87f); //#5b4fdd
-    public static Color PBAnti_GoldRGB = new Color(0.20784313725f, 0.18039215686f, 0.52156862745f); //#352e85
+    public static Color PBAntiGold = new Color(0.355f, 0.31f, 0.87f); // #5b4fdd
+    public static Color PBAnti_GoldRGB = new Color(0.20784313725f, 0.18039215686f, 0.52156862745f); // #352e85
     public static Color SaturatedRose = Rose * 2f;
     public static Color SaturatedAntiGold = PBAntiGold * 2f;
     public static Color PBRipple_Color = new Color(0.373f, 0.11f, 0.831f);
@@ -110,7 +111,6 @@ class Plugin : BaseUnityPlugin
         EchoHooks.Apply();
 
         JollyMenuHooks.Apply();
-        //KarmaMeterChanges.Apply();
         ScugGraphics.Apply();
 
         MoonDialogue.Apply();
@@ -123,7 +123,6 @@ class Plugin : BaseUnityPlugin
         Crafting.Apply();
         FlarebombHooks.Apply();
         ScugHooks.Apply();
-        //DeathHooks.Apply();
 
         DevCommOverride.Apply();
         PassageHooks.Apply();
@@ -194,13 +193,13 @@ class Plugin : BaseUnityPlugin
                 throw err;
             }
             #endregion
+            
             try {
                 FishobsNoWork();
             } catch (Exception err) {
                 Debug.Log($"Pitch Black error\n{err}");
                 logger.LogDebug($"Pitch Black error\n{err}");
             }
-
             if (!Futile.atlasManager.DoesContainAtlas("lmllspr"))
                 Futile.atlasManager.LoadAtlas("atlases/lmllspr");
             Futile.atlasManager.LoadAtlas("atlases/photosplt");
@@ -217,9 +216,7 @@ class Plugin : BaseUnityPlugin
             self.Shaders["PurpleEchoSkin"] = FShader.CreateShader("purpleechoskin", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/purpleecho")).LoadAsset<Shader>("Assets/shaders 1.9.03/PurpleEchoSkin.shader"));
             self.Shaders["Red"] = FShader.CreateShader("red", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath(path: "assetbundles/red")).LoadAsset<Shader>("Assets/red.shader"));
             self.Shaders["Sunrays"] = FShader.CreateShader("sunrays", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/sunrays")).LoadAsset<Shader>("Assets/sunrays.shader"));
-
             init = true;
-
             //RiftCosmetic.Register(self);
         }
     }
