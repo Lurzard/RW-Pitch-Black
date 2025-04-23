@@ -61,9 +61,11 @@ class Plugin : BaseUnityPlugin
     private static bool _rotundWorldEnabled;
     public static bool individualFoodEnabled = false;
 
-    void FishobsNoWork() {
+    void FishobsNoWork()
+    {
         // These caused problems on the update to 1.9.15, sanction them here
-        try {
+        try
+        {
             //PBPOMSunrays.RegisterLightrays();
             //PBPOMDarkness.RegisterDarkness();
             //ReliableCreatureSpawner.RegisterSpawner();
@@ -80,7 +82,9 @@ class Plugin : BaseUnityPlugin
             PBRoomEffectType.RegisterValues();
             PBEndGameID.RegisterValues();
             PBSceneID.RegisterValues();
-        } catch (Exception err) {
+        }
+        catch (Exception err)
+        {
             //Debug.LogError(err); Debug errors
             Logger.LogError(err);
         }
@@ -102,65 +106,52 @@ class Plugin : BaseUnityPlugin
             if (Futile.atlasManager.DoesContainAtlas("lmllspr"))
                 Futile.atlasManager.UnloadAtlas("lmllspr");
         };
-
-        ElsehowViewHooks.Apply();
-
+        DevHooks.Apply();
         MenuHooks.Apply();
         SyncMenuRegion.Apply();
-
         CreatureEdits.Apply();
-
         EchoHooks.Apply();
-
         JollyMenuHooks.Apply();
         ScugGraphics.Apply();
-
         MoonDialogue.Apply();
-
         OverseerGraphics.Apply();
         OverseerHooks.Apply();
-
         BeaconHooks.Apply();
         PhotoHooks.Apply();
         Crafting.Apply();
         FlarebombHooks.Apply();
         ScugHooks.Apply();
-
         DevCommOverride.Apply();
         PassageHooks.Apply();
         SpecialChanges.Apply();
         RoomScripts.Apply();
         WorldChanges.Apply();
-
         ScareEverything.Apply();
-
-        //OhNoMoonAndPebblesAreDeadGuys.Apply();
-        //CycleTimerChanges.Apply();
-
-        //On.Player.GraspsCanBeCrafted += Player_GraspsCanBeCrafted;
-        //On.Player.SpitUpCraftedObject += Player_SpitUpCraftedObject;
-        //On.PlayerGraphics.DrawSprites += PlayerGraphics_DrawSprites;
-        //On.Player.CanBeSwallowed += Player_CanBeSwallowed;
-        //On.Player.SwallowObject += Player_SwallowObject1;
-        //On.Player.Grabability += GrabCoalescipedes;
     }
 
-    public void Update() {
-        if (Input.anyKeyDown) {
-            foreach (char c in Input.inputString) {
+    public void Update()
+    {
+        if (Input.anyKeyDown)
+        {
+            foreach (char c in Input.inputString)
+            {
                 InputChecker.AddInput(c);
             }
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow)) {
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
             InputChecker.AddInput('\u2190');
         }
-        if (Input.GetKeyDown(KeyCode.UpArrow)) {
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
             InputChecker.AddInput('\u2191');
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow)) {
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
             InputChecker.AddInput('\u2192');
         }
-        if (Input.GetKeyDown(KeyCode.DownArrow)) {
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
             InputChecker.AddInput('\u2193');
         }
     }
@@ -168,37 +159,48 @@ class Plugin : BaseUnityPlugin
     {
         orig(self);
         MachineConnector.SetRegisteredOI("lurzard.pitchblack", PBRemixMenu.Instance);
-        if (!init) {
+        if (!init)
+        {
 
             regionMenuDisplaySavePath = ModManager.ActiveMods.First(x => x.id == MOD_ID).path + Path.DirectorySeparatorChar + "RegionMenuDisplay.txt";
 
             #region Load Collection data into readonly list
-            try {
+            try
+            {
                 // Creates a new directory and file if they do not exist (which they won't the first time the game is booted up), and fills it with default data.
-                if (!Directory.Exists(rootSavePath + COLLECTION_SAVE_FOLDER_NAME)) {
+                if (!Directory.Exists(rootSavePath + COLLECTION_SAVE_FOLDER_NAME))
+                {
                     Directory.CreateDirectory(rootSavePath + COLLECTION_SAVE_FOLDER_NAME);
                 }
-                if (!File.Exists(collectionSaveDataPath)) {
+                if (!File.Exists(collectionSaveDataPath))
+                {
                     string defaultText = "";
-                    foreach (var name in PBCollectionMenu.chatLogIDToButtonName.Keys) {
+                    foreach (var name in PBCollectionMenu.chatLogIDToButtonName.Keys)
+                    {
                         defaultText += name + ":0|";
                     }
                     File.WriteAllText(collectionSaveDataPath, defaultText);
                 }
-                foreach (string text in File.ReadAllText(collectionSaveDataPath).Trim('|').Split('|')) {
+                foreach (string text in File.ReadAllText(collectionSaveDataPath).Trim('|').Split('|'))
+                {
                     // If the second part is a 1, it is unlocked, 0 (or anything else) is locked
                     bool unlocked = text.Split(':')[1] == "1";
                     collectionSaveData.Add(text.Split(':')[0], unlocked);
                 }
-            } catch (Exception err) {
+            }
+            catch (Exception err)
+            {
                 Debug.LogError($"Pitch Black Error with collection file read/write.\n{err}");
                 throw err;
             }
             #endregion
-            
-            try {
+
+            try
+            {
                 FishobsNoWork();
-            } catch (Exception err) {
+            }
+            catch (Exception err)
+            {
                 Debug.Log($"Pitch Black error\n{err}");
                 logger.LogDebug($"Pitch Black error\n{err}");
             }
@@ -225,9 +227,12 @@ class Plugin : BaseUnityPlugin
     private void Weapon_SetRandomSpin(On.Weapon.orig_SetRandomSpin orig, Weapon self)
     {
         if (self.room == null) { return; }
-        try {
+        try
+        {
             orig(self);
-        } catch (Exception err) {
+        }
+        catch (Exception err)
+        {
             Debug.LogError($"Pitch Black, Caught exception in {nameof(Weapon.SetRandomSpin)}.\n{err}");
         }
     }

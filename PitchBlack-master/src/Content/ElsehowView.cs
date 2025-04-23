@@ -5,55 +5,6 @@ using RWCustom;
 
 namespace PitchBlack;
 
-#region Hooks
-public class ElsehowViewHooks
-{
-    public static void Apply()
-    {
-        On.Room.Loaded += Room_Loaded;
-        On.Room.NowViewed += Room_NowViewed;
-        On.DevInterface.RoomSettingsPage.DevEffectGetCategoryFromEffectType += RoomSettingsPage_DevEffectGetCategoryFromEffectType;
-    }
-
-    // Adds to PitchBlack dev effects catagory
-    private static RoomSettingsPage.DevEffectsCategories RoomSettingsPage_DevEffectGetCategoryFromEffectType(On.DevInterface.RoomSettingsPage.orig_DevEffectGetCategoryFromEffectType orig, RoomSettingsPage self, RoomSettings.RoomEffect.Type type)
-    {
-        RoomSettingsPage.DevEffectsCategories res = orig(self, type);
-        if (type == PBRoomEffectType.ElsehowView)
-        {
-            res = PBRoomEffectType.PitchBlackCatagory;
-        }
-        return res;
-    }
-
-    // Taken from other Watcher backgrounds, seems related to the building shader
-    private static void Room_NowViewed(On.Room.orig_NowViewed orig, Room self)
-    {
-        orig(self);
-        for (int i = 0; i < self.roomSettings.effects.Count; i++)
-        {
-            if (self.roomSettings.effects[i].type == PBRoomEffectType.ElsehowView)
-            {
-                Shader.SetGlobalFloat(RainWorld.ShadPropRimFix, 1f);
-            }
-        }
-    }
-
-    // Adds ElsehowView
-    private static void Room_Loaded(On.Room.orig_Loaded orig, Room self)
-    {
-        orig(self);
-        for (int num4 = 0; num4 < self.roomSettings.effects.Count; num4++)
-        {
-            if (self.roomSettings.effects[num4].type == PBRoomEffectType.ElsehowView)
-            {
-                self.AddObject(new ElsehowView(self, self.roomSettings.effects[num4]));
-            }
-        }
-    }
-}
-#endregion
-
 // Uses borrowed implementation from AboveCloudsView and AnicentUrbanView.
 public class ElsehowView : BackgroundScene
 {

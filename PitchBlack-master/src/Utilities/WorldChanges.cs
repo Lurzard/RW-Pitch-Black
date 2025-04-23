@@ -13,8 +13,8 @@ public static class WorldChanges {
     public static void Apply() {
         On.Expedition.NeuronDeliveryChallenge.ValidForThisSlugcat += NeuronDeliveryChallenge_ValidForThisSlugcat;
         On.Expedition.PearlDeliveryChallenge.ValidForThisSlugcat += PearlDeliveryChallenge_ValidForThisSlugcat;
-        On.Room.Update += Room_Update;
-        new Hook(typeof(ElectricDeath).GetMethod("get_Intensity", Public | NonPublic | Instance), ElecIntensity);
+        //On.Room.Update += Room_Update;
+        //new Hook(typeof(ElectricDeath).GetMethod("get_Intensity", Public | NonPublic | Instance), ElecIntensity);
         IL.Menu.SlugcatSelectMenu.SlugcatPageContinue.ctor += SlugcatSelectMenu_SlugcatPageContinue_ctor;
         On.Region.ctor_string_int_int_Timeline += Region_ctor_string_int_int_Timeline;
     }
