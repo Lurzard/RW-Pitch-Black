@@ -35,7 +35,7 @@
 		"karma_cap": 4,
 		"has_dreams": false,
 		"perma_unlock_gates": false,
-		"the_mark": true,
+		"the_mark": false,
 		"auto_grab_batflies": true,
 
 		"start_room": [ "SH_A08" ],
