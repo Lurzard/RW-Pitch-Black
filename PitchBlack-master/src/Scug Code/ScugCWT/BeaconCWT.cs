@@ -6,7 +6,8 @@ using RWCustom;
 
 namespace PitchBlack;
 
-public class BeaconCWT : ScugCWT {
+public class BeaconCWT : ScugCWT
+{
     // These are static now and initialized basically when the code is loaded. Since they don't need to be reassigned ever, a static
     // is fine here. The value just needs to be stored in a nicely accessable place that makes sense.
     public static readonly Color beaconDefaultColor = new Color(0.10588235294f, 0.06666666666f, 0.25882352941f);
@@ -26,11 +27,10 @@ public class BeaconCWT : ScugCWT {
     public bool isDead; //state tracking
     public bool isDeadButDeniedDeath; //for later implementing coming back from GameOver
     public bool isDeadForReal = false; //used to call GameOver
-    public bool isDeadForRealSoundNeedsToPlay = false; //stops recursive true death sound
+    public bool thanatosisBumpNeedsToPlay = false; //stops recursive true death sound
     public int thanatosisCounter; //tracking current time spent in Thanatosis
     public float thanatosisLerp; //for lerping player color based on time spent in Thanatosis
-    public int inputForThanatosisCounter = 0; //spec input doesn't recursively flip isDead
-    public bool graspsNeedToBeReleased = false; //stops grasp-losing recursion
+    public float thanatosisCharge;
     public float ThanatosisLimit
     {
         get
@@ -38,14 +38,18 @@ public class BeaconCWT : ScugCWT {
             return 1600; //soon to be based on Karma
         }
     }
+    public int inputForThanatosisCounter = 0; //spec input doesn't recursively flip isDead
+    public bool graspsNeedToBeReleased = false; //stops grasp-losing recursion
 
     //Higher Thanatosis levels
     public Color beaconDeadColor; /*= new Color(0.05490196078f, 0.03921568627f, 0.10980392156f);*/ //#0e0a1c
 
-    public BeaconCWT(Player player) : base() {
+    public BeaconCWT(Player player) : base()
+    {
         storage = new FlareStore(player);
     }
-    public class AbstractStoredFlare : AbstractPhysicalObject.AbstractObjectStick {
+    public class AbstractStoredFlare : AbstractPhysicalObject.AbstractObjectStick
+    {
         public AbstractPhysicalObject Player
         {
             get
@@ -72,7 +76,8 @@ public class BeaconCWT : ScugCWT {
 
         public AbstractStoredFlare(AbstractPhysicalObject player, AbstractPhysicalObject bomb) : base(player, bomb) { }
     }
-    public class FlareStore {
+    public class FlareStore
+    {
         public Player ownr;
         public Stack<FlareBomb> storedFlares;
         public bool increment;
@@ -83,38 +88,48 @@ public class BeaconCWT : ScugCWT {
         public bool interactionLocked;
         public Stack<AbstractStoredFlare> abstractFlare;
 
-        public FlareStore(Player owner) {
-            if (storedFlares == null) {
+        public FlareStore(Player owner)
+        {
+            if (storedFlares == null)
+            {
                 storedFlares = new Stack<FlareBomb>(capacity);
                 abstractFlare = new Stack<AbstractStoredFlare>(capacity);
             }
             ownr = owner;
         }
 
-        public void Update(bool eu) {
-            if (increment) {
+        public void Update(bool eu)
+        {
+            if (increment)
+            {
                 counter++;
-                if (counter > 20 && storedFlares.Count < capacity) {
+                if (counter > 20 && storedFlares.Count < capacity)
+                {
                     // Move flare from any hand to store if store is empty
                     //WW- WHY ONLY MAIN HAND IF STORAGE IS NOT FULL? SEEMS LIKE THIS SHOULD WORK FROM ANY HAND
-                    for (int i = 0; i < 2; i++) {
-                        if (ownr.grasps[i]?.grabbed is FlareBomb f) {
+                    for (int i = 0; i < 2; i++)
+                    {
+                        if (ownr.grasps[i]?.grabbed is FlareBomb f)
+                        {
                             FlarebombtoStorage(f);
                             counter = 0;
                             break;
                         }
                     }
                 }
-                if (counter > 20 && storedFlares.Count > 0) {
+                if (counter > 20 && storedFlares.Count > 0)
+                {
                     // Move flare from store to paw
                     FlarebombFromStorageToPaw(eu);
                     counter = 0;
                 }
             }
-            else {
+            else
+            {
                 counter = 0;
             }
-            if (!ownr.input[0].pckp) {
+            if (!ownr.input[0].pckp)
+            {
                 interactionLocked = false;
             }
             increment = false;
@@ -142,11 +157,13 @@ public class BeaconCWT : ScugCWT {
                 // These vectors are the limits on the linear position displacement of flarebombs in between them
                 Vector2 flarePositionStart = new(-30f, -8f);
                 Vector2 flarePositionEnd = new(30f, -8f);
-                if (i >= necklaceLength) {
+                if (i >= necklaceLength)
+                {
                     flarePositionStart = new Vector2(-8f, -8f);
                     flarePositionEnd = new Vector2(8f, -8f);
                 }
-                if (ownr.bodyMode == Player.BodyModeIndex.Crawl) {
+                if (ownr.bodyMode == Player.BodyModeIndex.Crawl)
+                {
                     flarePositionStart.y += 3.25f;
                     flarePositionEnd.y += 3.25f;
                 }
@@ -156,13 +173,14 @@ public class BeaconCWT : ScugCWT {
                 Vector2 vector1 = drawPointLeft + Custom.RotateAroundOrigo(flarePositionEnd, n);
 
                 // num is a fraction, that essentially determines at what point the flare is in between the flare position caps.
-                
+
                 float fractionOfDistance = (i + 1f) / (Mathf.Min(storedFlares.Count, necklaceLength) + 1f);
-                if (i >= necklaceLength) {
+                if (i >= necklaceLength)
+                {
                     fractionOfDistance = (i - necklaceLength + 1f) / (storedFlares.Count - necklaceLength + 1f);
                 }
                 Vector2 calculatedDestination = vector + (vector1 - vector) * fractionOfDistance;
-                
+
                 storedFlares.ToArray()[i].firstChunk.MoveFromOutsideMyUpdate(eu, calculatedDestination);
                 storedFlares.ToArray()[i].firstChunk.vel = Vector2.zero;
                 storedFlares.ToArray()[i].rotationSpeed = 0f;
@@ -192,7 +210,7 @@ public class BeaconCWT : ScugCWT {
                 {
                     fb.firstChunk.MoveFromOutsideMyUpdate(eu, (ownr.graphicsModule as PlayerGraphics).hands[toPaw].pos);
                 }
-                
+
                 af?.Deactivate();
 
                 fb.CollideWithObjects = true;
