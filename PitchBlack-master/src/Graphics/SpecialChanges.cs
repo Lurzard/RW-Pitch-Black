@@ -20,12 +20,15 @@ using System.Linq.Expressions;
 namespace PitchBlack;
 
 // Everything to do with changes to certain void/karma/gold things in the game
-public class SpecialChanges {
+public class SpecialChanges
+{
 
     // Changing stuff for PB for KarmaFlower & KarmaFlowerPatch
-    public static bool PBFlowerMode(RoomCamera rCam) {
+    public static bool PBFlowerMode(RoomCamera rCam)
+    {
         if (rCam.room.game.IsStorySession &&
-            rCam.room.game.GetStorySession.saveStateNumber == Plugin.BeaconName) {
+            rCam.room.game.GetStorySession.saveStateNumber == Plugin.BeaconName)
+        {
             return true;
         }
         return false;
@@ -33,17 +36,21 @@ public class SpecialChanges {
 
     public static Color flowerColor;
 
-    public static bool IsRealscapeRegion(RoomCamera rCam) {
+    public static bool IsRealscapeRegion(RoomCamera rCam)
+    {
         string name = rCam.room.world.region.name;
-        if (name == "SU" || name == "HI" || name == "SH" || name == "CC" || name == "LF") {
+        if (name == "SU" || name == "HI" || name == "SH" || name == "CC" || name == "LF")
+        {
             return true;
         }
         return false;
     }
 
-    public static bool IsDreamscapeRegion(RoomCamera rCam) {
+    public static bool IsDreamscapeRegion(RoomCamera rCam)
+    {
         string name = rCam.room.world.region.name;
-        if (name == "BSUR" || name == "BDSR") {
+        if (name == "BSUR" || name == "BDSR")
+        {
             return true;
         }
         return false;
@@ -51,19 +58,17 @@ public class SpecialChanges {
 
     // PB's RippleSymbolSprite
     // Todo: All of the RippleLevel Karma stuff remade but for this, as well as savedata
-    public static string QualiaSymbolSprite(bool small, float qualiaLevel) {
+    public static string QualiaSymbolSprite(bool small, float qualiaLevel)
+    {
         double num = Math.Round((double)(qualiaLevel * 2f), MidpointRounding.AwayFromZero) / 2.0;
         return (small ? "smallQualia" : "qualia") + num.ToString("#.0", CultureInfo.InvariantCulture);
     }
 
-    public static void Apply() {
+    public static void Apply()
+    {
 
         // [TODO] -Lur
         // - KarmaLadder
-        // - KarmaFlowerPatch
-        // - VoidSpawn
-        // - VoidSpawnEgg
-        // - Echoes
         // ...
 
         // NOTE: ApplyPalette to change color, InitiateSprites to change Shader
@@ -73,12 +78,14 @@ public class SpecialChanges {
         // KarmaFlower
         On.KarmaFlower.ApplyPalette += KarmaFlower_ApplyPalette;
         On.KarmaFlower.InitiateSprites += KarmaFlower_InitiateSprites;
-        
+
         // NOTE: Needs proper Beacon checks to not apply to all slugs
         // KarmaMeter
         On.HUD.KarmaMeter.UpdateGraphic += KarmaMeter_UpdateGraphic;
         On.HUD.KarmaMeter.ctor += KarmaMeter_ctor;
 
+        // All VoidSpawn code is in RippleSpawn.cs
+        #region pre 1.10 VoidSpawn hooks
         // VoidSpawn (iirc only the ILs work? bensone did so many... -Lur)
         //IL.VoidSpawnEgg.DrawSprites += VoidSpawnEgg_DrawSprites_IL;
         //IL.VoidSpawnGraphics.ApplyPalette += VoidSpawnGraphics_ApplyPalette_IL;
@@ -88,42 +95,56 @@ public class SpecialChanges {
         //On.VoidSpawnGraphics.ApplyPalette += VoidSpawnGraphics_ApplyPalette;
         //On.VoidSpawnGraphics.InitiateSprites += VoidSpawnGraphics_InitiateSprites;
         //On.VoidSpawnEgg.DrawSprites += VoidSpawnEgg_DrawSprites;
+        #endregion
     }
 
-    private static void KarmaFlowerPatch_InitiateSprites(On.Watcher.KarmaFlowerPatch.orig_InitiateSprites orig, KarmaFlowerPatch self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam) {
+    private static void KarmaFlowerPatch_InitiateSprites(On.Watcher.KarmaFlowerPatch.orig_InitiateSprites orig, KarmaFlowerPatch self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
+    {
         orig(self, sLeaser, rCam);
-        if (PBFlowerMode(rCam) && IsRealscapeRegion(rCam)) {
-            for (int i = 0; i < self.flowers.Length; i++) {
+        if (PBFlowerMode(rCam) && IsRealscapeRegion(rCam))
+        {
+            for (int i = 0; i < self.flowers.Length; i++)
+            {
                 sLeaser.sprites[self.EffectSprite(i, 2)].shader = rCam.room.game.rainWorld.Shaders["RippleGlow"];
             }
         }
     }
-    private static void KarmaFlowerPatch_ApplyPalette(On.Watcher.KarmaFlowerPatch.orig_ApplyPalette orig, KarmaFlowerPatch self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette) {
+    private static void KarmaFlowerPatch_ApplyPalette(On.Watcher.KarmaFlowerPatch.orig_ApplyPalette orig, KarmaFlowerPatch self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
+    {
         orig(self, sLeaser, rCam, palette);
-        if (PBFlowerMode(rCam)) {
-            if (IsRealscapeRegion(rCam)) {
+        if (PBFlowerMode(rCam))
+        {
+            if (IsRealscapeRegion(rCam))
+            {
                 flowerColor = Color.white;
             }
-            if (IsDreamscapeRegion(rCam)) {
+            if (IsDreamscapeRegion(rCam))
+            {
                 flowerColor = RainWorld.GoldRGB;
             }
             self.petalColor = flowerColor;
         }
     }
 
-    private static void KarmaFlower_InitiateSprites(On.KarmaFlower.orig_InitiateSprites orig, KarmaFlower self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam) {
+    private static void KarmaFlower_InitiateSprites(On.KarmaFlower.orig_InitiateSprites orig, KarmaFlower self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
+    {
         orig(self, sLeaser, rCam);
-        if (PBFlowerMode(rCam) && IsRealscapeRegion(rCam)) {
+        if (PBFlowerMode(rCam) && IsRealscapeRegion(rCam))
+        {
             sLeaser.sprites[self.EffectSprite(2)].shader = rCam.room.game.rainWorld.Shaders["RippleGlow"];
         }
     }
-    private static void KarmaFlower_ApplyPalette(On.KarmaFlower.orig_ApplyPalette orig, KarmaFlower self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette) {
+    private static void KarmaFlower_ApplyPalette(On.KarmaFlower.orig_ApplyPalette orig, KarmaFlower self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
+    {
         orig(self, sLeaser, rCam, palette);
-        if (PBFlowerMode(rCam)) {
-            if (IsRealscapeRegion(rCam)) {
+        if (PBFlowerMode(rCam))
+        {
+            if (IsRealscapeRegion(rCam))
+            {
                 flowerColor = Color.white;
             }
-            if (IsDreamscapeRegion(rCam)) {
+            if (IsDreamscapeRegion(rCam))
+            {
                 flowerColor = RainWorld.GoldRGB;
             }
             self.color = flowerColor;

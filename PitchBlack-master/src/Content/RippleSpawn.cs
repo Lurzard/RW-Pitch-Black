@@ -113,23 +113,11 @@ public class RippleSpawnKeeper : UpdatableAndDeletable
         }
         list.Remove(toRoom);
         fromRooms = list.ToArray();
-        Custom.Log(new string[]
-        {
-            toRoom.ToString()
-        });
-        Custom.Log(new string[]
-        {
-            "::TO ROOM:",
-            toRoom.ToString(),
-            (toRoom == -1) ? "NULL" : room.world.GetAbstractRoom(toRoom).name
-        });
+        Custom.Log(toRoom.ToString());
+        Custom.Log("::TO ROOM:", toRoom.ToString(), (toRoom == -1) ? "NULL" : room.world.GetAbstractRoom(toRoom).name);
         for (int j = 0; j < fromRooms.Length; j++)
         {
-            Custom.Log(new string[]
-            {
-                "From room:",
-                room.world.GetAbstractRoom(fromRooms[j]).name
-            });
+            Custom.Log("From room:", room.world.GetAbstractRoom(fromRooms[j]).name);
         }
         if (toRoom == -1)
         {
