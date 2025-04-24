@@ -2,6 +2,7 @@
 using System;
 using RWCustom;
 using System.Runtime.CompilerServices;
+using System.Runtime.ExceptionServices;
 
 namespace PitchBlack;
 
@@ -25,6 +26,107 @@ internal class CreatureEdits
         On.CicadaGraphics.DrawSprites += CicadaGraphics_DrawSprites;
         On.CicadaGraphics.AddToContainer += CicadaGraphics_AddToContainer;
         On.CicadaGraphics.ctor += CicadaGraphics_ctor;
+        //Guardians
+        On.TempleGuardGraphics.InitiateSprites += TempleGuardGraphics_InitiateSprites;
+        On.TempleGuardGraphics.DrawSprites += TempleGuardGraphics_DrawSprites;
+        //On.TempleGuardGraphics.ApplyPalette += TempleGuardGraphics_ApplyPalette;
+        On.TempleGuardGraphics.Arm.ApplyPalette += Arm_ApplyPalette;
+        On.TempleGuardGraphics.Halo.InitiateSprites += Halo_InitiateSprites;
+        On.TempleGuardGraphics.Halo.GlyphSwapper.InitiateSprites += GlyphSwapper_InitiateSprites;
+    }
+
+    static Color ripple = Plugin.PBRipple_Color;
+
+    private static void GlyphSwapper_InitiateSprites(On.TempleGuardGraphics.Halo.GlyphSwapper.orig_InitiateSprites orig, TempleGuardGraphics.Halo.GlyphSwapper self, int frst, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
+    {
+        orig(self, frst, sLeaser, rCam);
+        if (MiscUtils.IsBeaconOrPhoto(rCam.game.session))
+        {
+            sLeaser.sprites[frst + 2].color = ripple;
+            for (int i = 0; i < 2; i++)
+            {
+                sLeaser.sprites[frst + i].color = ripple;
+            }
+        }
+    }
+
+    private static void Halo_InitiateSprites(On.TempleGuardGraphics.Halo.orig_InitiateSprites orig, TempleGuardGraphics.Halo self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
+    {
+        orig(self, sLeaser, rCam);
+        if (MiscUtils.IsBeaconOrPhoto(rCam.game.session))
+        {
+            for (int i = 0; i < self.circles; i++)
+            {
+                sLeaser.sprites[self.firstSprite + i].color = ripple;
+            }
+            int circles = self.circles;
+            for (int j = 0; j < self.glyphs.Length; j++)
+            {
+                for (int k = 0; k < self.glyphs[j].Length; k++)
+                {
+                    sLeaser.sprites[self.firstSprite + circles].color = ripple;
+                    circles++;
+                }
+            }
+            for (int m = 0; m < self.lines.GetLength(0); m++)
+            {
+                sLeaser.sprites[self.firstSprite + self.firstLineSprite + m].color = ripple;
+            }
+            for (int n = 0; n < self.smallCircles.GetLength(0); n++)
+            {
+                sLeaser.sprites[self.firstSprite + self.firstSmallCircleSprite + n].color = ripple;
+            }
+        }
+    }
+
+    private static void TempleGuardGraphics_DrawSprites(On.TempleGuardGraphics.orig_DrawSprites orig, TempleGuardGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
+    {
+        orig(self, sLeaser, rCam, timeStacker, camPos);
+        float telekinesisLerp = Mathf.Max(Mathf.Lerp(self.lastTelekin, self.telekinesis, timeStacker), Mathf.Min(1f, Mathf.Lerp(self.lastEyeBlinking, self.eyeBlinking, timeStacker))) * UnityEngine.Random.value;
+        if (MiscUtils.IsBeaconOrPhoto(rCam.game.session))
+        {
+            sLeaser.sprites[self.EyeSprite(1)].color = new Color(Mathf.Lerp(0.1f, 0.5f, telekinesisLerp), 0f, Mathf.Lerp(0.1f, 1f, telekinesisLerp));
+        }
+    }
+
+    private static void Arm_ApplyPalette(On.TempleGuardGraphics.Arm.orig_ApplyPalette orig, TempleGuardGraphics.Arm self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
+    {
+        orig(self, sLeaser, rCam, palette);
+        Color rippleWhiteLerp = Color.Lerp(Plugin.PBRipple_Color, new Color(1f, 1f, 1f), 0.5f);
+        if (MiscUtils.IsBeaconOrPhoto(rCam.game.session))
+        {
+            sLeaser.sprites[self.firstSprite + 2].color = rippleWhiteLerp;
+            for (int i = 0; i < self.beads.Length; i++)
+            {
+                float num = (float)i / (float)(self.beads.Length - 1);
+                sLeaser.sprites[self.firstSprite + 3 + i].color = Color.Lerp(rippleWhiteLerp, palette.blackColor, 1.5f - num);
+            }
+        }
+    }
+
+    //private static void TempleGuardGraphics_ApplyPalette(On.TempleGuardGraphics.orig_ApplyPalette orig, TempleGuardGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
+    // {
+    //        orig(self, sLeaser, rCam, palette);
+    //   if (MiscUtils.IsBeaconOrPhoto(rCam.game.session))
+    //    {
+    //        for (int i = 0; i <= self.HeadSprite; i++)
+    //        {
+    //            sLeaser.sprites[i].color = Color.white;
+    //        }
+    //    }
+    // }
+
+    private static void TempleGuardGraphics_InitiateSprites(On.TempleGuardGraphics.orig_InitiateSprites orig, TempleGuardGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
+    {
+        orig(self, sLeaser, rCam);
+        if (MiscUtils.IsBeaconOrPhoto(rCam.game.session))
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                sLeaser.sprites[self.EyeSprite(i)] = new FSprite("toriiEye", true);
+            }
+            self.AddToContainer(sLeaser, rCam, null);
+        }
     }
 
     #region Cicadas

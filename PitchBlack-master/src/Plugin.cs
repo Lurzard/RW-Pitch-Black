@@ -214,8 +214,9 @@ class Plugin : BaseUnityPlugin
             Futile.atlasManager.LoadAtlas("atlases/UmbraScav");
             Futile.atlasManager.LoadAtlas("atlases/UmbraMask");
             Futile.atlasManager.LoadAtlas("atlases/icon_UmbraMask");
-            Futile.atlasManager.LoadAtlas("atlases/smallKarma10-10");
-            Futile.atlasManager.LoadAtlas("atlases/karma10-10");
+            //Futile.atlasManager.LoadAtlas("atlases/smallKarma10-10");
+            //Futile.atlasManager.LoadAtlas("atlases/karma10-10");
+            Futile.atlasManager.LoadAtlas("atlases/toriiEye");
             //Futile.atlasManager.LoadAtlas("atlases/FaceThanatosis");
             self.Shaders["PurpleEchoSkin"] = FShader.CreateShader("purpleechoskin", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/purpleecho")).LoadAsset<Shader>("Assets/shaders 1.9.03/PurpleEchoSkin.shader"));
             self.Shaders["Red"] = FShader.CreateShader("red", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath(path: "assetbundles/red")).LoadAsset<Shader>("Assets/red.shader"));
