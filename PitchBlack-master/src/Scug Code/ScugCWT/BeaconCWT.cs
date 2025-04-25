@@ -10,10 +10,6 @@ public class BeaconCWT : ScugCWT
 {
     // These are static now and initialized basically when the code is loaded. Since they don't need to be reassigned ever, a static
     // is fine here. The value just needs to be stored in a nicely accessable place that makes sense.
-    public static readonly Color beaconDefaultColor = new Color(0.10588235294f, 0.06666666666f, 0.25882352941f);
-    public static readonly Color beaconFullColor = new Color(0.2f, 0f, 1f);
-    public static readonly Color beaconEyeColor = Color.white;
-    public Color flareColor = new Color(0.2f, 0f, 1f); //FlareBomb glow
     public Color currentSkinColor;
     public Color currentEyeColor;
     public FlareStore storage;
@@ -40,9 +36,6 @@ public class BeaconCWT : ScugCWT
     }
     public int inputForThanatosisCounter = 0; //spec input doesn't recursively flip isDead
     public bool graspsNeedToBeReleased = false; //stops grasp-losing recursion
-
-    //Higher Thanatosis levels
-    public Color beaconDeadColor; /*= new Color(0.05490196078f, 0.03921568627f, 0.10980392156f);*/ //#0e0a1c
 
     public BeaconCWT(Player player) : base()
     {

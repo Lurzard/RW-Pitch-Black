@@ -201,8 +201,4 @@ public class PBSceneID
     }
 }
 
-// Doesn't need to be registered, adds a new VoidSpawn type DeathSpawn
-public class PBSpawnType : ExtEnum<VoidSpawn.SpawnType>
-{
-    public static readonly VoidSpawn.SpawnType DeathSpawn = new VoidSpawn.SpawnType("DeathSpawn", true);
-}
+//SpawnType moving inside DeathSpawn.cs

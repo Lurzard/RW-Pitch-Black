@@ -52,6 +52,14 @@ class Plugin : BaseUnityPlugin
     public static Color PBRipple_Color = new Color(0.373f, 0.11f, 0.831f);
     public static Color SaturatedRipple = PBRipple_Color * 2f;
 
+    // Thanatosis
+    public static readonly Color beaconDefaultColor = new Color(0.10588235294f, 0.06666666666f, 0.25882352941f);
+    public static readonly Color beaconFullColor = new Color(0.2f, 0f, 1f);
+    public static readonly Color beaconEyeColor = Color.white;
+    public static readonly Color flareColor = new Color(0.2f, 0f, 1f);
+    // This is actually assigned in player applypalette
+    public static Color beaconDeadColor; /*= new Color(0.05490196078f, 0.03921568627f, 0.10980392156f);*/ //#0e0a1c
+
     // "Save data" will be plugin variables for now, but should be moved to an actual savedata system that we can work with
     public static bool canIDoThanatosisYet = true; //after dev: false
     public static float qualiaLevel = 10f; //after dev: 0f
@@ -221,6 +229,8 @@ class Plugin : BaseUnityPlugin
             self.Shaders["PurpleEchoSkin"] = FShader.CreateShader("purpleechoskin", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/purpleecho")).LoadAsset<Shader>("Assets/shaders 1.9.03/PurpleEchoSkin.shader"));
             self.Shaders["Red"] = FShader.CreateShader("red", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath(path: "assetbundles/red")).LoadAsset<Shader>("Assets/red.shader"));
             self.Shaders["Sunrays"] = FShader.CreateShader("sunrays", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/sunrays")).LoadAsset<Shader>("Assets/sunrays.shader"));
+            //self.Shaders["DeathSpawnBody"] = FShader.CreateShader("deathspawnbody", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/deathspawnbody")).LoadAsset<Shader>("Assets/Shaders/DeathSpawnBody.shader"));
+            //self.Shaders["DeathGlow"] = FShader.CreateShader("deathglow", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/deathglow")).LoadAsset<Shader>("Assets/Shaders/DeathGlow.shader"));
             init = true;
             //RiftCosmetic.Register(self);
         }

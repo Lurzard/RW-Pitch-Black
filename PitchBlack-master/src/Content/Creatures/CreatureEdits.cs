@@ -85,7 +85,7 @@ internal class CreatureEdits
         float telekinesisLerp = Mathf.Max(Mathf.Lerp(self.lastTelekin, self.telekinesis, timeStacker), Mathf.Min(1f, Mathf.Lerp(self.lastEyeBlinking, self.eyeBlinking, timeStacker))) * UnityEngine.Random.value;
         if (MiscUtils.IsBeaconOrPhoto(rCam.game.session))
         {
-            sLeaser.sprites[self.EyeSprite(1)].color = new Color(Mathf.Lerp(0.1f, 0.5f, telekinesisLerp), 0f, Mathf.Lerp(0.1f, 1f, telekinesisLerp));
+            sLeaser.sprites[self.EyeSprite(1)].color = new Color(Mathf.Lerp(0.1f,  0.5f, telekinesisLerp), 0f, Mathf.Lerp(0.1f, 1f, telekinesisLerp));
         }
     }
 

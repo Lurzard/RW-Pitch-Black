@@ -139,7 +139,7 @@ public static class BeaconHooks
         {
             color2 = beaconCWT.currentSkinColor;
             color3 = palette.blackColor;
-            beaconCWT.beaconDeadColor = color3;
+            Plugin.beaconDeadColor = color3;
             for (int i = 0; i < sLeaser.sprites.Length; i++)
             {
                 if (i != 9)
@@ -174,26 +174,26 @@ public static class BeaconHooks
             {
                 if (Plugin.qualiaLevel <= 3f)
                 {
-                    beaconCWT.currentSkinColor = Color.Lerp(BeaconCWT.beaconDefaultColor, RainWorld.RippleColor, beaconCWT.thanatosisLerp);
-                    beaconCWT.currentEyeColor = BeaconCWT.beaconEyeColor;
+                    beaconCWT.currentSkinColor = Color.Lerp(Plugin.beaconDefaultColor, RainWorld.RippleColor, beaconCWT.thanatosisLerp);
+                    beaconCWT.currentEyeColor = Plugin.beaconEyeColor;
                 }
                 if (Plugin.qualiaLevel >= 3f)
                 {
-                    beaconCWT.currentSkinColor = Color.Lerp(BeaconCWT.beaconDefaultColor, beaconCWT.beaconDeadColor, beaconCWT.thanatosisLerp);
-                    beaconCWT.currentEyeColor = Color.Lerp(BeaconCWT.beaconEyeColor, RainWorld.RippleColor, beaconCWT.thanatosisLerp);
+                    beaconCWT.currentSkinColor = Color.Lerp(Plugin.beaconDefaultColor, Plugin.beaconDeadColor, beaconCWT.thanatosisLerp);
+                    beaconCWT.currentEyeColor = Color.Lerp(Plugin.beaconEyeColor, RainWorld.RippleColor, beaconCWT.thanatosisLerp);
                 }
             }
             // Otherwise use default colors.
             else
             {
                 int flares = beaconCWT.storage.storedFlares.Count;
-                beaconCWT.currentSkinColor = Color.Lerp(BeaconCWT.beaconDefaultColor, BeaconCWT.beaconFullColor, flares / (float)4);
+                beaconCWT.currentSkinColor = Color.Lerp(Plugin.beaconDefaultColor, Plugin.beaconFullColor, flares / (float)4);
             }
             // sprites
             for (int sprites = 0; sprites < sLeaser.sprites.Length; sprites++)
             {
                 if (sprites != 9) sLeaser.sprites[sprites].color = beaconCWT.currentSkinColor;
-                if (sprites == 9) sLeaser.sprites[sprites].color = beaconCWT.isDead ? beaconCWT.currentEyeColor : BeaconCWT.beaconEyeColor;
+                if (sprites == 9) sLeaser.sprites[sprites].color = beaconCWT.isDead ? beaconCWT.currentEyeColor : Plugin.beaconEyeColor;
                 if (beaconCWT.isDead)
                 {
                     sLeaser.sprites[9].element = Futile.atlasManager.GetElementWithName("Face" + "Dead");
@@ -228,12 +228,12 @@ public static class BeaconHooks
                 Color lerpColor;
                 if (beaconCWT.isDead)
                 {
-                    lerpColor = Color.Lerp(BeaconCWT.beaconDefaultColor, RainWorld.RippleColor, beaconCWT.thanatosisLerp);
+                    lerpColor = Color.Lerp(Plugin.beaconDefaultColor, RainWorld.RippleColor, beaconCWT.thanatosisLerp);
                 }
                 // Otherwise use default colors.
                 else
                 {
-                    lerpColor = Color.Lerp(BeaconCWT.beaconDefaultColor, BeaconCWT.beaconFullColor, beaconCWT.storage.storedFlares.Count / (float)4);//PBRemixMenu.maxFlashStore.Value);
+                    lerpColor = Color.Lerp(Plugin.beaconDefaultColor, Plugin.beaconFullColor, beaconCWT.storage.storedFlares.Count / (float)4);//PBRemixMenu.maxFlashStore.Value);
                 }
 
                 self.lightSource = new LightSource(self.player.mainBodyChunk.pos, false, Color.Lerp(new Color(1f, 1f, 1f), lerpColor, 0.5f), self.player);
