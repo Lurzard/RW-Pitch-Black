@@ -229,8 +229,8 @@ class Plugin : BaseUnityPlugin
             self.Shaders["PurpleEchoSkin"] = FShader.CreateShader("purpleechoskin", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/purpleecho")).LoadAsset<Shader>("Assets/shaders 1.9.03/PurpleEchoSkin.shader"));
             self.Shaders["Red"] = FShader.CreateShader("red", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath(path: "assetbundles/red")).LoadAsset<Shader>("Assets/red.shader"));
             self.Shaders["Sunrays"] = FShader.CreateShader("sunrays", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/sunrays")).LoadAsset<Shader>("Assets/sunrays.shader"));
-            //self.Shaders["DeathSpawnBody"] = FShader.CreateShader("deathspawnbody", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/deathspawnbody")).LoadAsset<Shader>("Assets/Shaders/DeathSpawnBody.shader"));
-            //self.Shaders["DeathGlow"] = FShader.CreateShader("deathglow", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/deathglow")).LoadAsset<Shader>("Assets/Shaders/DeathGlow.shader"));
+            self.Shaders["DeathSpawnBody"] = FShader.CreateShader("deathspawnbody", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/deathspawnbody")).LoadAsset<Shader>("Assets/Shaders/DeathSpawnBody.shader"));
+            self.Shaders["DeathGlow"] = FShader.CreateShader("deathglow", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/deathglow")).LoadAsset<Shader>("Assets/Shaders/DeathGlow.shader"));
             init = true;
             //RiftCosmetic.Register(self);
         }
