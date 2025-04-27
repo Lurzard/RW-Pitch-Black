@@ -27,9 +27,9 @@ public class ElsehowView : BackgroundScene
         for (int i = 0; i < towers; i++)
         {
             // Variable X and Y Position of Towers
-            float depthRange = Random.Range(0.2f, 3f);
+            float depthRange = Random.Range(0.1f, 3f);
             float xplacementRange = Random.Range(-screenWidth, screenWidth);
-            float ydepthRange = Random.Range(-300f, 0f);
+            float ydepthRange = Random.Range(-350f, -150f);
             int visualVariation = Random.Range(0, 3);
             float scaleRange = Random.Range(0.75f, 1.75f);
             float towerLayerThickness = 0.1f;
@@ -122,6 +122,7 @@ public class ElsehowView : BackgroundScene
     //floorlevel is from AncientUrbanView for the Buildings, this determines the exact x spacially that the towers are generated according to, yields weird results when y alters, needs to be checked out, and stuff that uses it to be altered. -Lur
     private float floorLevel = -2000f;
     public Color atmosphereColor = new Color(0.451f, 0.8f, 1f);
+    public float yShift;
 
     #region ElseCloud
     public abstract class ElseCloud : BackgroundSceneElement
@@ -161,21 +162,16 @@ public class ElsehowView : BackgroundScene
             }
         }
 
-        public Towers(ElsehowView scene, string assetName, Vector2 pos, float depth, float scale, float rotation, float thickness) : base(scene, pos, depth)
+        public Towers(ElsehowView scene, string assetName, Vector2 pos, float depth, float scale, float rotation, float atmosphericalDepthAdd) : base(scene, pos, depth)
         {
             this.assetName = assetName;
+            this.atmosphericalDepthAdd = atmosphericalDepthAdd;
             this.scale = scale;
             this.pos = pos;
             this.depth = depth;
             this.scale = scale;
             this.rotation = rotation;
-            this.thickness = thickness;
             scene.LoadGraphic(assetName, true, false);
-        }
-
-        private float getDepthForLayer(float layer)
-        {
-            return depth + layer * thickness;
         }
 
         public override void InitiateSprites(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
@@ -186,7 +182,7 @@ public class ElsehowView : BackgroundScene
                 sLeaser.sprites[i] = new FSprite(assetName, true);
                 sLeaser.sprites[i].shader = rCam.game.rainWorld.Shaders["AncientUrbanBuilding"];
                 sLeaser.sprites[i].anchorY = 0f;
-                sLeaser.sprites[i].scale = scale * (1f / getDepthForLayer(1f - (float)i / 3f));
+                sLeaser.sprites[i].scale = scale;
                 sLeaser.sprites[i].rotation = rotation;
             }
             AddToContainer(sLeaser, rCam, null);
@@ -196,11 +192,10 @@ public class ElsehowView : BackgroundScene
         {
             for (int i = 0; i < sLeaser.sprites.Length; i++)
             {
-                float depthForLayer = getDepthForLayer(1f - (float)i / 3f);
-                Vector2 vector = scene.DrawPos(pos, depthForLayer, camPos, rCam.hDisplace);
+                Vector2 vector = base.DrawPos(new Vector2(camPos.x, camPos.y + vvScene.yShift), rCam.hDisplace);
                 sLeaser.sprites[i].x = vector.x;
                 sLeaser.sprites[i].y = vector.y;
-                sLeaser.sprites[i].color = new Color(vvScene.AtmosphereColorAtDepth(depthForLayer), 1f - (float)i / 3f, depthForLayer / 8.2f);
+                sLeaser.sprites[i].color = new Color(Mathf.Pow(Mathf.InverseLerp(0f, 600f, this.depth + this.atmosphericalDepthAdd), 0.3f) * 0.9f, 1f - (float)i / 3f, 0f);
             }
             base.DrawSprites(sLeaser, rCam, timeStacker, camPos);
         }
@@ -208,7 +203,7 @@ public class ElsehowView : BackgroundScene
         public string assetName;
         public float scale;
         public float rotation;
-        public float thickness;
+        public float atmosphericalDepthAdd;
     }
     #endregion
 
@@ -427,7 +422,6 @@ public class ElsehowView : BackgroundScene
     public ElseFog generalFog;
     public float startAltitude = 20000f;
     public float endAltitude = 31400f;
-    public float yShift;
     public float cloudsStartDepth = 5f;
     public float cloudsEndDepth = 40f;
     public List<ElseCloud> elseClouds;
