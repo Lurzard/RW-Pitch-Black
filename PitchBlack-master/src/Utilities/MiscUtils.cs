@@ -5,12 +5,14 @@ using System.Collections.Generic;
 
 namespace PitchBlack;
 
-public static class MiscUtils {
+public static class MiscUtils
+{
     public static bool ValidTrackRoom(this Room room)
     {
         return room != null && !room.RoomIsAStartingCabinetsRoom() && !room.abstractRoom.shelter && !room.abstractRoom.gate;
     }
-    public static bool RoomIsAStartingCabinetsRoom(this Room room) {
+    public static bool RoomIsAStartingCabinetsRoom(this Room room)
+    {
         string roomName = room.roomSettings.name;
         if (roomName == "SH_CABINETMERCHANT")
             return true;
@@ -19,7 +21,7 @@ public static class MiscUtils {
         if (roomName == "SH_CabinetAlley")
             return true;
         if (roomName.StartsWith("RM_")) //ALSO DON'T TRACK IN THE ROT
-            return true; 
+            return true;
 
         for (int i = 1; i <= 5; i++)
         {
@@ -31,20 +33,26 @@ public static class MiscUtils {
         return false;
     }
     public static bool IsNightTerror(this CreatureTemplate creatureTemplate) => creatureTemplate.type == PBCreatureTemplateType.NightTerror;
-    public static void SaveCollectionData() {
+    public static void SaveCollectionData()
+    {
         string data = "";
-        foreach (KeyValuePair<string, bool> keyValuePair in collectionSaveData) {
-            data += keyValuePair.Key + ":" + (keyValuePair.Value? "1" : "0") + "|";
+        foreach (KeyValuePair<string, bool> keyValuePair in collectionSaveData)
+        {
+            data += keyValuePair.Key + ":" + (keyValuePair.Value ? "1" : "0") + "|";
         }
         File.WriteAllText(collectionSaveDataPath, data);
     }
-    public static void TryReplaceCollectionMenuBackground(string data) {
-        if (data != null && data != "") {
+    public static void TryReplaceCollectionMenuBackground(string data)
+    {
+        if (data != null && data != "")
+        {
             File.WriteAllText(regionMenuDisplaySavePath, data);
         }
     }
-    public static string GenerateRandomString(int shortestRange, int maxRange) {
-        if (shortestRange > maxRange) {
+    public static string GenerateRandomString(int shortestRange, int maxRange)
+    {
+        if (shortestRange > maxRange)
+        {
             throw new System.Exception($"Noooo Moon why you do this make sure the stuff does the thiiiing {nameof(GenerateRandomString)}");
         }
         int range = Random.Range(shortestRange, maxRange);
@@ -68,36 +76,91 @@ public static class MiscUtils {
         return retString;
     }
     #region Bacon or Photo checks
-    public static bool IsBeaconOrPhoto(GameSession session) {
+    public static bool IsBeaconOrPhoto(GameSession session)
+    {
         return (session is StoryGameSession s) && IsBeaconOrPhoto(s.saveStateNumber);
     }
-    public static bool IsBeaconOrPhoto(Creature crit) {
+    public static bool IsBeaconOrPhoto(Creature crit)
+    {
         return crit is Player player && IsBeaconOrPhoto(player.slugcatStats.name);
     }
-    public static bool IsBeaconOrPhoto(SlugcatStats.Name slugName) {
-        return null != slugName && (slugName == Plugin.BeaconName || slugName == PhotoName);
+    public static bool IsBeaconOrPhoto(SlugcatStats.Name slugName)
+    {
+        return null != slugName && (slugName == BeaconName || slugName == PhotoName);
     }
     #endregion
     #region Bacon Checks
-    public static bool IsBeacon(GameSession session) {
+    public static bool IsBeacon(GameSession session)
+    {
         return (session is StoryGameSession s) && IsBeacon(s.saveStateNumber);
     }
-    public static bool IsBeacon(Creature crit) {
+    public static bool IsBeacon(Creature crit)
+    {
         return (crit is Player player) && IsBeacon(player.slugcatStats.name);
     }
-    public static bool IsBeacon(SlugcatStats.Name name) {
-        return name != null && name == Plugin.BeaconName;
+    public static bool IsBeacon(SlugcatStats.Name name)
+    {
+        return name != null && name == BeaconName;
     }
     #endregion
     #region Photo Checks
-    public static bool IsPhoto(GameSession session) {
+    public static bool IsPhoto(GameSession session)
+    {
         return (session is StoryGameSession s) && IsPhoto(s.saveStateNumber);
     }
-    public static bool IsPhoto(Creature crit) {
+    public static bool IsPhoto(Creature crit)
+    {
         return (crit is Player player) && IsPhoto(player.slugcatStats.name);
     }
-    public static bool IsPhoto(SlugcatStats.Name name) {
+    public static bool IsPhoto(SlugcatStats.Name name)
+    {
         return name != null && name == PhotoName;
     }
     #endregion
+    // This makes Beacon guaranteed close their eyes if true
+    public static bool RegionBlindsBeacon(Room room)
+    {
+        string regionName = room.world.region.name;
+        if (regionName == "VV")
+        {
+            return true;
+        }
+        // then add more conditions for the echo rooms later.
+        return false;
+    }
+    // Identifying "Real" regions of the world
+    public static bool IsRealscapeRegion(RoomCamera rCam)
+    {
+        string regionName = rCam.room.world.region.name;
+        if (regionName == "SU" ||
+        regionName == "HI" ||
+        regionName == "SH" ||
+        regionName == "CC" ||
+        regionName == "LF")
+        {
+            return true;
+        }
+        return false;
+    }
+    // Identifying VV and the rooms that are meant to be treated as part of it
+    public static bool IsDeamscapeRegion(RoomCamera rCam)
+    {
+        string regionName = rCam.room.world.region.name;
+        if (regionName == "VV")
+        {
+            return true;
+        }
+        return false;
+    }
+    // Identifying "nightmare" regions of the world
+    public static bool IsNightmarescapeRegion(RoomCamera rCam)
+    {
+        string regionName = rCam.room.world.region.name;
+        if (regionName == "BSUR" ||
+        regionName == "BDSR")
+        {
+            return true;
+        }
+        return false;
+    }
 }

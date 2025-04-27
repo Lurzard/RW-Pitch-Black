@@ -4,7 +4,7 @@ using RWCustom;
 using UnityEngine;
 
 namespace PitchBlack;
-
+// Im instead just gonna do this with hooks
 public class DeathSpawnGraphics : ComplexGraphicsModule
 {
     public DeathSpawn spawn
@@ -311,7 +311,7 @@ public class DeathSpawnGraphics : ComplexGraphicsModule
         if (dayLightMode)
         {
             sLeaser.sprites[GlowSprite].color = Color.black;
-            
+
             return;
         }
         sLeaser.sprites[GlowSprite].color = Color.Lerp(Color.black, Plugin.beaconDeadColor, Mathf.InverseLerp(0.2f, 0.8f, darkness));

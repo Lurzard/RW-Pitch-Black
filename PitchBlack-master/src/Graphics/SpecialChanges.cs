@@ -36,26 +36,6 @@ public class SpecialChanges
 
     public static Color flowerColor;
 
-    public static bool IsRealscapeRegion(RoomCamera rCam)
-    {
-        string name = rCam.room.world.region.name;
-        if (name == "SU" || name == "HI" || name == "SH" || name == "CC" || name == "LF")
-        {
-            return true;
-        }
-        return false;
-    }
-
-    public static bool IsDreamscapeRegion(RoomCamera rCam)
-    {
-        string name = rCam.room.world.region.name;
-        if (name == "BSUR" || name == "BDSR")
-        {
-            return true;
-        }
-        return false;
-    }
-
     // PB's RippleSymbolSprite
     // Todo: All of the RippleLevel Karma stuff remade but for this, as well as savedata
     public static string QualiaSymbolSprite(bool small, float qualiaLevel)
@@ -101,7 +81,7 @@ public class SpecialChanges
     private static void KarmaFlowerPatch_InitiateSprites(On.Watcher.KarmaFlowerPatch.orig_InitiateSprites orig, KarmaFlowerPatch self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
     {
         orig(self, sLeaser, rCam);
-        if (PBFlowerMode(rCam) && IsRealscapeRegion(rCam))
+        if (PBFlowerMode(rCam) && MiscUtils.IsRealscapeRegion(rCam))
         {
             for (int i = 0; i < self.flowers.Length; i++)
             {
@@ -114,11 +94,11 @@ public class SpecialChanges
         orig(self, sLeaser, rCam, palette);
         if (PBFlowerMode(rCam))
         {
-            if (IsRealscapeRegion(rCam))
+            if (MiscUtils.IsRealscapeRegion(rCam))
             {
                 flowerColor = Color.white;
             }
-            if (IsDreamscapeRegion(rCam))
+            if (MiscUtils.IsNightmarescapeRegion(rCam))
             {
                 flowerColor = RainWorld.GoldRGB;
             }
@@ -129,7 +109,7 @@ public class SpecialChanges
     private static void KarmaFlower_InitiateSprites(On.KarmaFlower.orig_InitiateSprites orig, KarmaFlower self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
     {
         orig(self, sLeaser, rCam);
-        if (PBFlowerMode(rCam) && IsRealscapeRegion(rCam))
+        if (PBFlowerMode(rCam) && MiscUtils.IsRealscapeRegion(rCam))
         {
             sLeaser.sprites[self.EffectSprite(2)].shader = rCam.room.game.rainWorld.Shaders["RippleGlow"];
         }
@@ -139,11 +119,11 @@ public class SpecialChanges
         orig(self, sLeaser, rCam, palette);
         if (PBFlowerMode(rCam))
         {
-            if (IsRealscapeRegion(rCam))
+            if (MiscUtils.IsRealscapeRegion(rCam))
             {
                 flowerColor = Color.white;
             }
-            if (IsDreamscapeRegion(rCam))
+            if (MiscUtils.IsNightmarescapeRegion(rCam))
             {
                 flowerColor = RainWorld.GoldRGB;
             }

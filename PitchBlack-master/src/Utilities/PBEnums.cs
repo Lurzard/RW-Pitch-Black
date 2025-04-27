@@ -14,7 +14,6 @@ public static class PBCreatureTemplateType
     [AllowNull] public static CreatureTemplate.Type Rotrat = new(nameof(Rotrat), true);
     [AllowNull] public static CreatureTemplate.Type UmbraScav = new(nameof(UmbraScav), true);
     [AllowNull] public static CreatureTemplate.Type FireGrub = new(nameof(FireGrub), true);
-
     public static void UnregisterValues()
     {
         if (NightTerror != null)
@@ -52,7 +51,6 @@ public static class PBSandboxUnlockID
     [AllowNull] public static MultiplayerUnlocks.SandboxUnlockID Rotrat = new(nameof(Rotrat), true);
     [AllowNull] public static MultiplayerUnlocks.SandboxUnlockID FireGrub = new(nameof(FireGrub), true);
     [AllowNull] public static MultiplayerUnlocks.SandboxUnlockID UmbraScav = new(nameof(UmbraScav), true);
-
     public static void UnregisterValues()
     {
         if (NightTerror != null)
@@ -85,20 +83,11 @@ public static class PBSandboxUnlockID
 
 public class PBSoundID
 {
-    public static SoundID Player_Activated_Thanatosis;
-    public static SoundID Player_Deactivated_Thanatosis;
-    public static SoundID Player_Deactivated_Thanatosis_From_Stun;
-    public static SoundID Player_Died_From_Thanatosis;
-    public static SoundID Player_Revived;
-
-    public static void RegisterValues()
-    {
-        Player_Activated_Thanatosis = new SoundID("Player_Activated_Thanatosis", true);
-        Player_Deactivated_Thanatosis = new SoundID("Player_Deactivated_Thanatosis", true);
-        Player_Deactivated_Thanatosis_From_Stun = new SoundID("Player_Deactivated_Thanatosis_From_Stun", true);
-        Player_Died_From_Thanatosis = new SoundID("Player_Died_From_Thanatosis", true);
-        Player_Revived = new SoundID("Player_Revived", true);
-    }
+    public static SoundID Player_Activated_Thanatosis = new SoundID("Player_Activated_Thanatosis", true);
+    public static SoundID Player_Deactivated_Thanatosis = new SoundID("Player_Deactivated_Thanatosis", true);
+    public static SoundID Player_Deactivated_Thanatosis_From_Stun = new SoundID("Player_Deactivated_Thanatosis_From_Stun", true);
+    public static SoundID Player_Died_From_Thanatosis = new SoundID("Player_Died_From_Thanatosis", true);
+    public static SoundID Player_Revived = new SoundID("Player_Revived", true);
     public static void UnregisterValues()
     {
         if (Player_Activated_Thanatosis != null)
@@ -127,19 +116,11 @@ public class PBSoundID
 public class PBRoomEffectType
 {
     // I just threw this in here, it's used with the others.
-    public static RoomSettingsPage.DevEffectsCategories PitchBlackCatagory;
+    public static RoomSettingsPage.DevEffectsCategories PitchBlackCatagory = new RoomSettingsPage.DevEffectsCategories("Pitch-Black", true);
     // Actual effects
-    public static RoomSettings.RoomEffect.Type ElsehowView;
-    public static RoomSettings.RoomEffect.Type RippleSpawn;
-    public static RoomSettings.RoomEffect.Type RippleMelt;
-
-    public static void RegisterValues()
-    {
-        PitchBlackCatagory = new RoomSettingsPage.DevEffectsCategories("Pitch-Black", true);
-        ElsehowView = new RoomSettings.RoomEffect.Type("ElsehowView", true);
-        RippleSpawn = new RoomSettings.RoomEffect.Type("RippleSpawn", true);
-        RippleMelt = new RoomSettings.RoomEffect.Type("RippleMelt", true);
-    }
+    public static RoomSettings.RoomEffect.Type ElsehowView = new RoomSettings.RoomEffect.Type("ElsehowView", true);
+    public static RoomSettings.RoomEffect.Type RippleSpawn = new RoomSettings.RoomEffect.Type("RippleSpawn", true);
+    public static RoomSettings.RoomEffect.Type RippleMelt = new RoomSettings.RoomEffect.Type("RippleMelt", true);
     public static void UnregisterValues()
     {
         if (PitchBlackCatagory != null)
@@ -167,12 +148,7 @@ public class PBRoomEffectType
 
 public class PBEndGameID
 {
-    public static WinState.EndgameID Hunted;
-
-    public static void RegisterValues()
-    {
-        Hunted = new WinState.EndgameID("Hunted", true);
-    }
+    public static WinState.EndgameID Hunted = new WinState.EndgameID("Hunted", true);
     public static void UnregisterValues()
     {
         if (Hunted != null)
@@ -185,12 +161,7 @@ public class PBEndGameID
 
 public class PBSceneID
 {
-    public static Menu.MenuScene.SceneID Endgame_Hunted;
-
-    public static void RegisterValues()
-    {
-        Endgame_Hunted = new Menu.MenuScene.SceneID("Engame_Hunted", true);
-    }
+    public static Menu.MenuScene.SceneID Endgame_Hunted = new Menu.MenuScene.SceneID("Engame_Hunted", true);
     public static void UnregisterValues()
     {
         if (Endgame_Hunted != null)

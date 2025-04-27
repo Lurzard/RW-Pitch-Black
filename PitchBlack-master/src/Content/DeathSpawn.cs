@@ -5,6 +5,7 @@ using RWCustom;
 using UnityEngine;
 
 namespace PitchBlack;
+// Im instead just gonna do this with hooks
 public class DeathSpawn : PhysicalObject
 {
     // Used to access the list of deathspawn in a room
@@ -140,10 +141,10 @@ public class DeathSpawn : PhysicalObject
         {
             fade = Mathf.Min(1f, fade + 0.025f);
         }
-        if (timeUntilFadeout > 0)
+        if (tesWokeToi > 0)
         {
-            timeUntilFadeout--;
-            if (timeUntilFadeout == 0)
+            tesWokeToi--;
+            if (tesWokeToi == 0)
             {
                 startFadeOut = true;
             }
@@ -260,7 +261,7 @@ public class DeathSpawn : PhysicalObject
     public float voidMeltInRoom;
     public bool dayLightMode;
     public int rippleLayer;
-    public int timeUntilFadeout;
+    public int tesWokeToi; //renamed from timeUntilFadeout
     public bool startFadeOut;
     public SpawnType variant;
     public int proximityCounter;

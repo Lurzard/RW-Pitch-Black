@@ -19,7 +19,6 @@ public class DevHooks
         On.RoomCamera.DrawUpdate += RoomCamera_DrawUpdate;
         On.RoomCamera.MoveCamera_Room_int += RoomCamera_MoveCamera_Room_int;
     }
-
     private static void RoomCamera_MoveCamera_Room_int(On.RoomCamera.orig_MoveCamera_Room_int orig, RoomCamera self, Room room, int camPos)
     {
         orig(self, room, camPos);
@@ -29,7 +28,18 @@ public class DevHooks
             self.levelGraphic.alpha = room.roomSettings.GetEffectAmount(PBRoomEffectType.RippleMelt);
         }
     }
-
+    private static void ApplyPalette(On.RoomCamera.orig_ApplyPalette orig, RoomCamera self)
+    {
+        orig(self);
+        if (self.room != null && self.room.roomSettings.GetEffectAmount(PBRoomEffectType.RippleMelt) > 0f)
+        {
+            self.SetUpFullScreenEffect("Bloom");
+            self.fullScreenEffect.shader = self.game.rainWorld.Shaders["LevelMelt2"];
+            self.lightBloomAlphaEffect = PBRoomEffectType.RippleMelt;
+            self.fullScreenEffect.alpha = self.room.roomSettings.GetEffectAmount(PBRoomEffectType.RippleMelt);
+            return;
+        }
+    }
     private static void RoomCamera_DrawUpdate(On.RoomCamera.orig_DrawUpdate orig, RoomCamera self, float timeStacker, float timeSpeed)
     {
         orig(self, timeStacker, timeSpeed);
@@ -50,7 +60,6 @@ public class DevHooks
                 }
         }
     }
-
     private static void RainWorldGame_RawUpdate(On.RainWorldGame.orig_RawUpdate orig, RainWorldGame self, float dt)
     {
         orig(self, dt);
@@ -65,18 +74,6 @@ public class DevHooks
             }
         }
     }
-
-    private static RoomSettingsPage.DevEffectsCategories RoomSettingsPage_DevEffectGetCategoryFromEffectType(On.DevInterface.RoomSettingsPage.orig_DevEffectGetCategoryFromEffectType orig, RoomSettingsPage self, RoomSettings.RoomEffect.Type type)
-    {
-        RoomSettingsPage.DevEffectsCategories res = orig(self, type);
-        // Adds to PitchBlack dev effects catagory
-        if (type == PBRoomEffectType.ElsehowView || type == PBRoomEffectType.RippleSpawn || type == PBRoomEffectType.RippleMelt)
-        {
-            res = PBRoomEffectType.PitchBlackCatagory;
-        }
-        return res;
-    }
-
     // NOTE: Taken from other Watcher backgrounds, seems related to the building shader from AnicentUrbanBuildings. Only for ElsehowView.
     private static void Room_NowViewed(On.Room.orig_NowViewed orig, Room self)
     {
@@ -89,8 +86,19 @@ public class DevHooks
             }
         }
     }
-
-    // Actually adds our effects' objects
+    private static void EffectPanelSlider_NubDragged(On.DevInterface.EffectPanel.EffectPanelSlider.orig_NubDragged orig, EffectPanel.EffectPanelSlider self, float nubPos)
+    {
+        orig(self, nubPos);
+        if (self.effect.type == PBRoomEffectType.RippleMelt)
+        {
+            self.owner.room.game.cameras[0].levelGraphic.alpha = self.effect.amount;
+            if (self.owner.room.game.cameras[0].fullScreenEffect != null)
+            {
+                self.owner.room.game.cameras[0].fullScreenEffect.alpha = self.effect.amount;
+            }
+        }
+    }
+    // Actually adds our effects' objects (because I didn't make them utilize POM yet) -Lur
     private static void Room_Loaded(On.Room.orig_Loaded orig, Room self)
     {
         orig(self);
@@ -113,30 +121,14 @@ public class DevHooks
             }
         }
     }
-
-    // More implementation for RippleMelt
-    private static void ApplyPalette(On.RoomCamera.orig_ApplyPalette orig, RoomCamera self)
+    // Adds to PitchBlack dev effects catagory
+    private static RoomSettingsPage.DevEffectsCategories RoomSettingsPage_DevEffectGetCategoryFromEffectType(On.DevInterface.RoomSettingsPage.orig_DevEffectGetCategoryFromEffectType orig, RoomSettingsPage self, RoomSettings.RoomEffect.Type type)
     {
-        orig(self);
-        if (self.room != null && self.room.roomSettings.GetEffectAmount(PBRoomEffectType.RippleMelt) > 0f)
+        RoomSettingsPage.DevEffectsCategories res = orig(self, type);
+        if (type == PBRoomEffectType.ElsehowView || type == PBRoomEffectType.RippleSpawn || type == PBRoomEffectType.RippleMelt)
         {
-            self.SetUpFullScreenEffect("Bloom");
-            self.fullScreenEffect.shader = self.game.rainWorld.Shaders["LevelMelt2"];
-            self.lightBloomAlphaEffect = PBRoomEffectType.RippleMelt;
-            self.fullScreenEffect.alpha = self.room.roomSettings.GetEffectAmount(PBRoomEffectType.RippleMelt);
-            return;
+            res = PBRoomEffectType.PitchBlackCatagory;
         }
-    }
-    private static void EffectPanelSlider_NubDragged(On.DevInterface.EffectPanel.EffectPanelSlider.orig_NubDragged orig, EffectPanel.EffectPanelSlider self, float nubPos)
-    {
-        orig(self, nubPos);
-        if (self.effect.type == PBRoomEffectType.RippleMelt)
-        {
-            self.owner.room.game.cameras[0].levelGraphic.alpha = self.effect.amount;
-            if (self.owner.room.game.cameras[0].fullScreenEffect != null)
-            {
-                self.owner.room.game.cameras[0].fullScreenEffect.alpha = self.effect.amount;
-            }
-        }
+        return res;
     }
 }

@@ -6,6 +6,9 @@ using RWCustom;
 using Random = UnityEngine.Random;
 using System;
 using HUD;
+using JetBrains.Annotations;
+using System.Collections.Generic;
+using IL.Watcher;
 
 namespace PitchBlack;
 
@@ -565,12 +568,12 @@ public static class BeaconHooks
             }
         }
     }
+    public static List<DeathSpawn> deathSpawnList;
     private static void BeaconUpdate(On.Player.orig_Update orig, Player self, bool eu)
     {
         orig(self, eu);
         if (Plugin.scugCWT.TryGetValue(self, out ScugCWT c) && c is BeaconCWT beaconCWT)
         {
-
             //THANATOSIS -Lur
             if (!self.input[0].spec)
             {
@@ -580,7 +583,8 @@ public static class BeaconHooks
             if (Plugin.canIDoThanatosisYet == true && self.input[0].spec)
             {
                 beaconCWT.inputForThanatosisCounter++;
-                if (beaconCWT.inputForThanatosisCounter == 25) //Stops recursive input
+                // stops recursive input
+                if (beaconCWT.inputForThanatosisCounter == 25)
                 {
                     beaconCWT.deathToggle = beaconCWT.isDead;
                     beaconCWT.isDead = !beaconCWT.isDead;
@@ -611,32 +615,29 @@ public static class BeaconHooks
                         beaconCWT.graspsNeedToBeReleased = true;
                     }
                 }
-                //inThanatosisTime is never increased above ThanatosisLimit, so -1 will be actually true instead.
-                if ((beaconCWT.thanatosisCounter > beaconCWT.ThanatosisLimit - 1) && !beaconCWT.isDeadForReal)
-                {
-                    beaconCWT.isDeadForReal = true;
-                }
-
-                if (beaconCWT.isDeadForReal && !beaconCWT.thanatosisBumpNeedsToPlay)
-                {
-                    self.Die();
-                    self.room.PlaySound(PBSoundID.Player_Died_From_Thanatosis);
-                    beaconCWT.thanatosisBumpNeedsToPlay = true;
-                }
-
-                if (!beaconCWT.isDeadForReal)
-                {
-                    beaconCWT.thanatosisBumpNeedsToPlay = false;
-                }
-                //Code for impending death effect
-                //Uses Watcher RippleDeathEffect shader with intensity based on how close you are to dying for real.
             }
+            // Dying for real
+            // NOTE: inThanatosisTime is never increased above ThanatosisLimit, so -1 will be actually true instead.
+            if ((beaconCWT.thanatosisCounter > beaconCWT.ThanatosisLimit - 1) && !beaconCWT.isDeadForReal)
+            {
+                beaconCWT.isDeadForReal = true;
+            }
+            if (beaconCWT.isDeadForReal && !beaconCWT.thanatosisBumpNeedsToPlay)
+            {
+                self.Die();
+                self.room.PlaySound(PBSoundID.Player_Died_From_Thanatosis);
+                beaconCWT.thanatosisBumpNeedsToPlay = true;
+            }
+            if (!beaconCWT.isDeadForReal)
+            {
+                beaconCWT.thanatosisBumpNeedsToPlay = false;
+            }
+
             //Outside Thanatosis
             if (!beaconCWT.isDead)
             {
                 beaconCWT.thanatosisCharge = Mathf.Max(beaconCWT.thanatosisCharge - 1f, 0f);
                 beaconCWT.graspsNeedToBeReleased = false;
-
                 //Decrease time
                 if (beaconCWT.thanatosisCounter > 0)
                 {
@@ -646,10 +647,13 @@ public static class BeaconHooks
                         beaconCWT.thanatosisLerp -= 0.01f;
                         self.Stun(30);
                     }
-                    if (beaconCWT.thanatosisLerp == 0f)
-                    {
-                        beaconCWT.thanatosisCounter = 0; //STOP, PLEASE, thank you :3
-                    }
+                }
+                if (beaconCWT.thanatosisLerp < 0.01f)
+                {
+                    beaconCWT.thanatosisCounter = 0;
+                }
+                if (beaconCWT.thanatosisLerp > 0f)
+                {
                     self.exhausted = true;
                 }
             }
@@ -662,7 +666,7 @@ public static class BeaconHooks
             //DETECT DARKNESS FOR BLINKING
             if (self.room != null)
             {
-                if (self.room.Darkness(self.mainBodyChunk.pos) < 0.15f || self.room.world.region.name == "VV")
+                if (self.room.Darkness(self.mainBodyChunk.pos) < 0.15f || MiscUtils.RegionBlindsBeacon(self.room))
                 {
                     if (beaconCWT.brightSquint == 0)
                     {

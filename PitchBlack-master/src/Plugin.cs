@@ -31,10 +31,10 @@ class Plugin : BaseUnityPlugin
     public static readonly Dictionary<string, bool> collectionSaveData = new Dictionary<string, bool>();
     public static ConditionalWeakTable<RainWorldGame, List<RiftWorldPrecence>> riftCWT = new();
 
-    // I think these don't need to be registered because SlugBase handles it, we just need them to be used locally.
+    // SlugBase handles registering, we just need them to be used locally.
     public static readonly SlugcatStats.Name BeaconName = new("Beacon", false);
     public static readonly SlugcatStats.Name PhotoName = new("Photomaniac", false);
-    // From Watcher, used for conditional Beacon world changes
+    // From Watcher, used for conditional Beacon world changes.
     public static readonly SlugcatStats.Timeline BeaconTime = new("Beacon", false);
 
     private bool init = false;
@@ -44,27 +44,28 @@ class Plugin : BaseUnityPlugin
     public static ConditionalWeakTable<RainWorldGame, List<NTTracker>> NTTrackers = new ConditionalWeakTable<RainWorldGame, List<NTTracker>>();
 
     // Significantly used colors that would be fine here
-    public static Color Rose = new Color(0.82745098039f, 0.10980392156f, 0.29019607843f); // #d31c4a
-    public static Color PBAntiGold = new Color(0.355f, 0.31f, 0.87f); // #5b4fdd
-    public static Color PBAnti_GoldRGB = new Color(0.20784313725f, 0.18039215686f, 0.52156862745f); // #352e85
-    public static Color SaturatedRose = Rose * 2f;
-    public static Color SaturatedAntiGold = PBAntiGold * 2f;
-    public static Color PBRipple_Color = new Color(0.373f, 0.11f, 0.831f);
-    public static Color SaturatedRipple = PBRipple_Color * 2f;
-
-    // Thanatosis
+    public static readonly Color Rose = new Color(0.82745098039f, 0.10980392156f, 0.29019607843f); // #d31c4a
+    public static readonly Color PBAntiGold = new Color(0.355f, 0.31f, 0.87f); // #5b4fdd
+    public static readonly Color PBAnti_GoldRGB = new Color(0.20784313725f, 0.18039215686f, 0.52156862745f); // #352e85
+    public static readonly Color SaturatedRose = Rose * 2f;
+    public static readonly Color SaturatedAntiGold = PBAntiGold * 2f;
+    public static readonly Color PBRipple_Color = new Color(0.373f, 0.11f, 0.831f);
+    public static readonly Color SaturatedRipple = PBRipple_Color * 2f;
     public static readonly Color beaconDefaultColor = new Color(0.10588235294f, 0.06666666666f, 0.25882352941f);
     public static readonly Color beaconFullColor = new Color(0.2f, 0f, 1f);
     public static readonly Color beaconEyeColor = Color.white;
     public static readonly Color flareColor = new Color(0.2f, 0f, 1f);
-    // This is actually assigned in player applypalette
-    public static Color beaconDeadColor; /*= new Color(0.05490196078f, 0.03921568627f, 0.10980392156f);*/ //#0e0a1c
+    // This is actually assigned in BeaconHooks to the palette black color.
+    public static Color beaconDeadColor;
 
-    // "Save data" will be plugin variables for now, but should be moved to an actual savedata system that we can work with
-    public static bool canIDoThanatosisYet = true; //after dev: false
-    public static float qualiaLevel = 10f; //after dev: 0f
+    // Save data
+    // NOTE: indev, mess with values for testing
+    public static bool canIDoThanatosisYet = true;
+    public static float qualiaLevel = 10f;
+    public static float minQualiaLevel = 0f;
+    public static float maxQualiaLevel = 0f;
 
-    // Rotund World stuffs
+    // Rotund World stuff
     internal static bool RotundWorldEnabled => _rotundWorldEnabled; //for a single check in BeaconHooks' Player.Update hook
     private static bool _rotundWorldEnabled;
     public static bool individualFoodEnabled = false;
@@ -74,22 +75,24 @@ class Plugin : BaseUnityPlugin
         // These caused problems on the update to 1.9.15, sanction them here
         try
         {
+            // NOTE: the POM objects need testing to confirm they work as intended, for now they are commented out to prevent issues -Lur
             //PBPOMSunrays.RegisterLightrays();
             //PBPOMDarkness.RegisterDarkness();
             //ReliableCreatureSpawner.RegisterSpawner();
             //CreatureSpawnerHooks.Apply();
             //BreathableWater.Register();
             //TeleportWater.Register();
+
             Content.Register(new RotRatCritob());
             Content.Register(new FireGrubCritob());
             Content.Register(new LMLLCritob());
             Content.Register(new NightTerrorCritob());
             Content.Register(new ScholarScavCritob());
             Content.Register(new UmbraMaskFisob());
-            PBSoundID.RegisterValues();
-            PBRoomEffectType.RegisterValues();
-            PBEndGameID.RegisterValues();
-            PBSceneID.RegisterValues();
+            //PBSoundID.RegisterValues();
+            //PBRoomEffectType.RegisterValues();
+            //PBEndGameID.RegisterValues();
+            //PBSceneID.RegisterValues();
         }
         catch (Exception err)
         {
@@ -114,6 +117,7 @@ class Plugin : BaseUnityPlugin
             if (Futile.atlasManager.DoesContainAtlas("lmllspr"))
                 Futile.atlasManager.UnloadAtlas("lmllspr");
         };
+
         DevHooks.Apply();
         MenuHooks.Apply();
         SyncMenuRegion.Apply();
