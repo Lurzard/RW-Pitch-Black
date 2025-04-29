@@ -2,6 +2,7 @@
 using static PitchBlack.Plugin;
 using System.IO;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 
 namespace PitchBlack;
 
@@ -162,5 +163,83 @@ public static class MiscUtils
             return true;
         }
         return false;
+    }
+    // Identifying DreamSpawn types
+    public static bool IsDreamSpawn(VoidSpawn voidSpawn)
+    {
+        if (voidSpawn.variant == PBExtEnums.SpawnType.DreamSpawn ||
+            voidSpawn.variant == PBExtEnums.SpawnType.DreamBiter ||
+            voidSpawn.variant == PBExtEnums.SpawnType.DreamNoodle ||
+            voidSpawn.variant == PBExtEnums.SpawnType.DreamAmoeba ||
+            voidSpawn.variant == PBExtEnums.SpawnType.DreamJelly)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    //Spawning DreamSpawn
+    public static void MaterializeDreamSpawn(Room room, UnityEngine.Vector2 spawnPos, Room.RippleSpawnSource source)
+    {
+        float level = 3f;
+        int amountToSpawn = 0;
+        //int amountOfOscillations = 0;
+        if (room.game.IsStorySession)
+        {
+            level = (room.game.session as StoryGameSession).saveState.deathPersistentSaveData.rippleLevel;
+        }
+        if (source == PBExtEnums.DreamSpawnSource.Death)
+        {
+            amountToSpawn = 1;
+        }
+        if (source == PBExtEnums.DreamSpawnSource.Dreamer)
+        {
+            amountToSpawn = 50;
+        }
+
+        // NOTE: To be implemented later as part of Thanatosis, continuously spawning DeathSpawn each "oscillation tick" -Lur
+        //if (source == PBExtEnums.DreamSpawnSource.Oscillation)
+        //{
+        //    amountToSpawn = numberOfOscillations;
+        //}
+
+        // Stopping spawning if the room has too many
+        if (room.voidSpawns.Count >= amountToSpawn)
+        {
+            return;
+        }
+        // Determining type
+        VoidSpawn.SpawnType spawnType = PBExtEnums.SpawnType.DreamSpawn;
+        if (Random.Range(0, 10) >= 7)
+        {
+            spawnType = PBExtEnums.SpawnType.DreamJelly;
+        }
+        if (Random.Range(0, 10) >= 9)
+        {
+            spawnType = PBExtEnums.SpawnType.DreamNoodle;
+        }
+        if (Random.value <= 0.02f)
+        {
+            spawnType = PBExtEnums.SpawnType.DreamAmoeba;
+        }
+        // Spawning it
+        VoidSpawn voidSpawn = new VoidSpawn
+            (new AbstractPhysicalObject
+            (room.world,
+            PBAbstractObjectType.DreamSpawn,
+            null,
+            room.GetWorldCoordinate(spawnPos),
+            room.game.GetNewID()),
+            room.roomSettings.GetEffectAmount(RoomSettings.RoomEffect.Type.VoidMelt),
+            VoidSpawnKeeper.DayLightMode(room),
+            spawnType);
+        if (IsDreamSpawn(voidSpawn))
+        {
+            // BezierSwarm for now, but later I want them to chase and kill anything they can
+            voidSpawn.behavior = new VoidSpawn.BezierSwarm(voidSpawn, room);
+            voidSpawn.timeUntilFadeout = Random.Range(400, 1200);
+        }
+        voidSpawn.PlaceInRoom(room);
+        voidSpawn.ChangeRippleLayer(0, true);
     }
 }

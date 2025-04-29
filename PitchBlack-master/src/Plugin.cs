@@ -61,9 +61,9 @@ class Plugin : BaseUnityPlugin
     // Save data
     // NOTE: indev, mess with values for testing
     public static bool canIDoThanatosisYet = true;
-    public static float qualiaLevel = 10f;
-    public static float minQualiaLevel = 0f;
-    public static float maxQualiaLevel = 0f;
+    public static float qualiaLevel = 5f;
+    //public static float minQualiaLevel;
+    //public static float maxQualiaLevel;
 
     // Rotund World stuff
     internal static bool RotundWorldEnabled => _rotundWorldEnabled; //for a single check in BeaconHooks' Player.Update hook
@@ -82,17 +82,14 @@ class Plugin : BaseUnityPlugin
             //CreatureSpawnerHooks.Apply();
             //BreathableWater.Register();
             //TeleportWater.Register();
-
             Content.Register(new RotRatCritob());
             Content.Register(new FireGrubCritob());
             Content.Register(new LMLLCritob());
             Content.Register(new NightTerrorCritob());
             Content.Register(new ScholarScavCritob());
             Content.Register(new UmbraMaskFisob());
-            //PBSoundID.RegisterValues();
-            //PBRoomEffectType.RegisterValues();
-            //PBEndGameID.RegisterValues();
-            //PBSceneID.RegisterValues();
+            PBSoundID.RegisterValues();
+            PBAbstractObjectType.RegisterValues();
         }
         catch (Exception err)
         {
@@ -117,6 +114,8 @@ class Plugin : BaseUnityPlugin
             if (Futile.atlasManager.DoesContainAtlas("lmllspr"))
                 Futile.atlasManager.UnloadAtlas("lmllspr");
         };
+        //On.DeathPersistentSaveData.ctor += DeathPersistentSaveData_ctor;
+        //On.AbstractPhysicalObject.Realize += AbstractPhysicalObject_Realize;
 
         DevHooks.Apply();
         MenuHooks.Apply();
@@ -140,6 +139,42 @@ class Plugin : BaseUnityPlugin
         WorldChanges.Apply();
         ScareEverything.Apply();
     }
+
+    private void AbstractPhysicalObject_Realize(On.AbstractPhysicalObject.orig_Realize orig, AbstractPhysicalObject self)
+    {
+        orig(self);
+        if (self.type == PBAbstractObjectType.DreamSpawn)
+        {
+            self.realizedObject = new VoidSpawn(self, (self.Room.realizedRoom != null) ? self.Room.realizedRoom.roomSettings.GetEffectAmount(RoomSettings.RoomEffect.Type.VoidMelt) : 0f, self.Room.realizedRoom != null && VoidSpawnKeeper.DayLightMode(self.Room.realizedRoom), PBExtEnums.SpawnType.DreamSpawn);
+            return;
+        }
+    }
+
+    //private void DeathPersistentSaveData_ctor(On.DeathPersistentSaveData.orig_ctor orig, DeathPersistentSaveData self, SlugcatStats.Name slugcat)
+    //{
+    //    orig(self, slugcat);
+    //    // toggles testing mode
+    //    bool devMode = true;
+    //    if (slugcat == BeaconName)
+    //    {
+    //        if (!devMode)
+    //        {
+    //            // Default values, do not alter
+    //            canIDoThanatosisYet = false;
+    //            qualiaLevel = 0f;
+    //            minQualiaLevel = 0f;
+    //            maxQualiaLevel = 0f;
+    //        }
+    //        else
+    //        {
+    //            // For testing, you may alter here
+    //            canIDoThanatosisYet = true;
+    //            qualiaLevel = 5f;
+    //            minQualiaLevel = 5f;
+    //            maxQualiaLevel = 5f;
+    //        }
+    //    }
+    //}
 
     public void Update()
     {
@@ -233,8 +268,8 @@ class Plugin : BaseUnityPlugin
             self.Shaders["PurpleEchoSkin"] = FShader.CreateShader("purpleechoskin", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/purpleecho")).LoadAsset<Shader>("Assets/shaders 1.9.03/PurpleEchoSkin.shader"));
             self.Shaders["Red"] = FShader.CreateShader("red", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath(path: "assetbundles/red")).LoadAsset<Shader>("Assets/red.shader"));
             self.Shaders["Sunrays"] = FShader.CreateShader("sunrays", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/sunrays")).LoadAsset<Shader>("Assets/sunrays.shader"));
-            self.Shaders["DeathSpawnBody"] = FShader.CreateShader("deathspawnbody", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/deathspawnbody")).LoadAsset<Shader>("Assets/Shaders/DeathSpawnBody.shader"));
-            self.Shaders["DeathGlow"] = FShader.CreateShader("deathglow", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/deathglow")).LoadAsset<Shader>("Assets/Shaders/DeathGlow.shader"));
+            self.Shaders["DreamSpawnBody"] = FShader.CreateShader("dreamspawnbody", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/dreamspawnbody")).LoadAsset<Shader>("Assets/Shaders/DreamSpawnBody.shader"));
+            self.Shaders["BlackGlow"] = FShader.CreateShader("blackglow", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/blackglow")).LoadAsset<Shader>("Assets/Shaders/BlackGlow.shader"));
             init = true;
             //RiftCosmetic.Register(self);
         }
@@ -271,6 +306,7 @@ class Plugin : BaseUnityPlugin
                 PBRoomEffectType.UnregisterValues();
                 PBEndGameID.UnregisterValues();
                 PBSceneID.UnregisterValues();
+                PBAbstractObjectType.UnregisterValues();
                 break;
             }
         }

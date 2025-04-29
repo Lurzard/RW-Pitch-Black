@@ -2,11 +2,49 @@
 using System.Diagnostics.CodeAnalysis;
 using BepInEx.Logging;
 using DevInterface;
+using IL.Watcher;
 
 namespace PitchBlack;
 
-// These will all eventually just be changed to not need to be registered, except Fisobs enums of course.
+public static class PBExtEnums
+{
+    public static class DreamSpawnSource
+    {
+        public static Room.RippleSpawnSource Death = new Room.RippleSpawnSource("Death", true);
+        public static Room.RippleSpawnSource Oscillation = new Room.RippleSpawnSource("Oscillation", true);
+        public static Room.RippleSpawnSource Dreamer = new Room.RippleSpawnSource("Dreamer", true);
+    }
 
+    public static class SpawnType
+    {
+        public static VoidSpawn.SpawnType DreamSpawn = new("DreamSpawn", true);
+        public static VoidSpawn.SpawnType DreamJelly = new("DreamJelly", true);
+        public static VoidSpawn.SpawnType DreamAmoeba = new("DreamAmoeba", true);
+        public static VoidSpawn.SpawnType DreamNoodle = new("DreamNoodle", true);
+        public static VoidSpawn.SpawnType DreamBiter = new("DreamBiter", true);
+    }
+    public static class Tutorial
+    {
+        public static DeathPersistentSaveData.Tutorial MakeFlares = new("MakeFlares", true);
+        public static DeathPersistentSaveData.Tutorial Thanatosis = new("Thanatosis", true);
+    }
+}
+public class PBAbstractObjectType
+{
+    public static AbstractPhysicalObject.AbstractObjectType DreamSpawn;
+    public static void RegisterValues()
+    {
+        DreamSpawn = new AbstractPhysicalObject.AbstractObjectType("DreamSpawn");
+    }
+    public static void UnregisterValues()
+    {
+        if (DreamSpawn != null)
+        {
+            DreamSpawn.Unregister();
+            DreamSpawn = null;
+        }
+    }
+}
 public static class PBCreatureTemplateType
 {
     [AllowNull] public static CreatureTemplate.Type NightTerror = new("NightTerror", true);
@@ -81,13 +119,22 @@ public static class PBSandboxUnlockID
     }
 }
 
+// NOTE: These apparently HAVE to be registered to play ingame. -Lur
 public class PBSoundID
 {
-    public static SoundID Player_Activated_Thanatosis = new SoundID("Player_Activated_Thanatosis", true);
-    public static SoundID Player_Deactivated_Thanatosis = new SoundID("Player_Deactivated_Thanatosis", true);
-    public static SoundID Player_Deactivated_Thanatosis_From_Stun = new SoundID("Player_Deactivated_Thanatosis_From_Stun", true);
-    public static SoundID Player_Died_From_Thanatosis = new SoundID("Player_Died_From_Thanatosis", true);
-    public static SoundID Player_Revived = new SoundID("Player_Revived", true);
+    public static SoundID Player_Activated_Thanatosis;
+    public static SoundID Player_Deactivated_Thanatosis;
+    public static SoundID Player_Deactivated_Thanatosis_From_Stun;
+    public static SoundID Player_Died_From_Thanatosis;
+    public static SoundID Player_Revived;
+    public static void RegisterValues()
+    {
+        Player_Activated_Thanatosis = new SoundID("Player_Activated_Thanatosis", true);
+        Player_Deactivated_Thanatosis = new SoundID("Player_Deactivated_Thanatosis", true);
+        Player_Deactivated_Thanatosis_From_Stun = new SoundID("Player_Deactivated_Thanatosis_From_Stun", true);
+        Player_Died_From_Thanatosis = new SoundID("Player_Died_From_Thanatosis", true);
+        Player_Revived = new SoundID("Player_Revived", true);
+    }
     public static void UnregisterValues()
     {
         if (Player_Activated_Thanatosis != null)

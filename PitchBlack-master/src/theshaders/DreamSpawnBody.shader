@@ -5,7 +5,7 @@
 
 //from http://forum.unity3d.com/threads/68402-Making-a-2D-game-for-iPhone-iPad-and-need-better-performance
 
-Shader "Futile/DeathGLow" //Unlit Transparent Vertex Colored Additive 
+Shader "Futile/DeathSpawnBody" //Unlit Transparent Vertex Colored Additive 
 {
 Properties 
 	{
@@ -59,11 +59,13 @@ sampler2D _GrabTexture;
 #else
 sampler2D _GrabTexture : register(s0);
 #endif
+sampler2D _PalTex;
+sampler2D _LevelTex;
 sampler2D _NoiseTex2;
 uniform float2 _screenSize;
 uniform float4 _spriteRect;
+uniform float _waterLevel;
 uniform float _RAIN;
-
 
 struct v2f {
     float4  pos : SV_POSITION;
@@ -93,44 +95,17 @@ float2 textCoord = float2(floor(i.scrPos.x*_screenSize.x)/_screenSize.x, floor(i
 
 textCoord.x -= _spriteRect.x;
 textCoord.y -= _spriteRect.y;
-
 textCoord.x /= _spriteRect.z - _spriteRect.x;
 textCoord.y /= _spriteRect.w - _spriteRect.y;
 
-     float dist = clamp(distance(i.uv.xy, half2(0.5, 0.5))*2, 0, 1);
-   //  half2 dir = normalize(i.uv - half2(0.5, 0.5));
+half2 grabPos = half2(i.scrPos.x, i.scrPos.y);// - (dir * 0.01 * sin(dist*3.141592*2));
+grabPos += (tex2D(_NoiseTex2, half2(textCoord.x*1.5, textCoord.y*0.75 + _RAIN*0.1)).xy + half2(-0.5, -0.5)) * 0.008 * i.clr.w;
+grabPos.x = (floor(grabPos.x*_screenSize.x)+0.5)/_screenSize.x;
+grabPos.y = (floor(grabPos.y*_screenSize.y)+0.5)/_screenSize.y;
      
-  //   half h = 0.0;
- //    for(int j = 0; j < 4; j++)
-   //  h += tex2D(_NoiseTex2, half2(textCoord.x*0.25, textCoord.y*0.125 + _RAIN*0.2) + normalize(half2(0.5, 0.5) - i.uv) * 0.2 * j).x;
-
-   //  h/=4.0;
-     
-   //  h = lerp(-1,1, h);
-     
-     half effect = pow(pow((1-pow(dist , 2)), 3.5), 1);//pow((pow(sin(clamp((dist-0.5)*2, 0, 1)*3.14), 5)), 0.65);
-    // if(dist < 0.75)
-   //  effect = max(effect, pow(clamp((dist-0.2)*1.8, 0, 1), 2));
-     
-     half2 grabPos = half2(i.scrPos.x, i.scrPos.y);// + dir *0.01 * h * clamp(sin(dist*3.142), 0, 1) * i.clr.w;
-   //  grabPos += dir *0.04 * effect * sin(dist*20.0-_RAIN*13.1);
-     grabPos.x = (floor(grabPos.x*_screenSize.x)+0.5)/_screenSize.x;
-     grabPos.y = (floor(grabPos.y*_screenSize.y)+0.5)/_screenSize.y;
-     
-     
-     half4 grabCol = tex2D(_GrabTexture, grabPos);
-  //   grabCol =  half4(1, 0, 0, 1);
-     
-     half4 effCol = half4(0.003, 0.003, 0.003, 1);
-
-     float av = (abs(effCol.x-grabCol.x) + abs(effCol.y-grabCol.y) + abs(effCol.z-grabCol.z))/3.0;
-
-     grabCol = lerp(grabCol, lerp(half4(0,0,0,1), effCol, pow(1.0-av, 10)*2.0),  i.clr.w);
-
-     return half4((grabCol * lerp(1, 3 + 1.0-av, ((grabCol.x+grabCol.y+grabCol.z)/3.0)*pow(i.clr.w, 3))).xyz, effect * i.clr.w);
-    
-   //  return half4(grabCol.xyz, effect);
-
+half4 grabCol = tex2D(_GrabTexture, grabPos);
+	
+return half4(lerp(grabCol.xyz, half3(0.004, 0.004, 0.004) * (1.0+i.clr.x), i.clr.y * i.clr.w), 1.0);
 }
 ENDCG
 				

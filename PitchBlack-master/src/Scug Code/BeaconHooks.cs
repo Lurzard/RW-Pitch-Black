@@ -568,7 +568,6 @@ public static class BeaconHooks
             }
         }
     }
-    public static List<DeathSpawn> deathSpawnList;
     private static void BeaconUpdate(On.Player.orig_Update orig, Player self, bool eu)
     {
         orig(self, eu);
@@ -598,6 +597,9 @@ public static class BeaconHooks
             //In Thanatosis
             if (beaconCWT.isDead)
             {
+                // (Should) spawn a DreamSpawn on you when you die -Lur (it doesn't for now, maybe something to do with the beaconcwt)
+                MiscUtils.MaterializeDreamSpawn(self.room, self.mainBodyChunk.pos, PBExtEnums.DreamSpawnSource.Death);
+
                 // Input removing is done in IL_Player_checkInput;
                 beaconCWT.thanatosisCharge = Mathf.Min(beaconCWT.thanatosisCharge + 1f, beaconCWT.ThanatosisLimit);
                 // Increase time
