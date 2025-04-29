@@ -22,8 +22,8 @@ public class BeaconCWT : ScugCWT
     public bool deathToggle; //toggle tracking
     public bool isDead; //state tracking
     public bool isDeadButDeniedDeath; //for later implementing coming back from GameOver
-    public bool isDeadForReal = false; //used to call GameOver
-    public bool thanatosisBumpNeedsToPlay = false; //stops recursive true death sound
+    public bool diedInThanatosis = false; //used to call GameOver
+    public bool thanatosisDeathBumpNeedsToPlay = false; //stops recursive true death sound
     public int thanatosisCounter; //tracking current time spent in Thanatosis
     public float thanatosisLerp; //for lerping player color based on time spent in Thanatosis
     public float thanatosisCharge;

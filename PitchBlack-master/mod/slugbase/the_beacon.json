@@ -19,14 +19,12 @@
 			"base": "White",
 			"overrides": {
 				"SlimeMold": 1.5,
-				"BlackLizard": 1,
-				"DropBug": 1,
+				"BlackLizard": 0.5,
+				"DropBug": 0.5,
 				"LanternMouse": 1,
-				"MirosVulture": 1.5,
-				"MirosBird": 1,
-				"BigSpider": 1,
-				"SpitterSpider": 1,
-				"MotherSpider": 1,
+				"BigSpider": 0.5,
+				"SpitterSpider": 0.5,
+				"MotherSpider": 0.5,
 				"LillyPuck": 1.5
 			}
 		},

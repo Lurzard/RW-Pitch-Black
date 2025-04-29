@@ -9,6 +9,7 @@ using HUD;
 using JetBrains.Annotations;
 using System.Collections.Generic;
 using IL.Watcher;
+using System.Data.Common;
 
 namespace PitchBlack;
 
@@ -224,7 +225,6 @@ public static class BeaconHooks
             self.player.room.Darkness(self.player.mainBodyChunk.pos) > 0f)
         {
             // This (the lightsource) is 100% causing issues. -Lur
-
             //GIVE THIS BACK SINCE ORIG PROBABLY TOOK IT
             if (self.lightSource == null)
             {
@@ -236,7 +236,7 @@ public static class BeaconHooks
                 // Otherwise use default colors.
                 else
                 {
-                    lerpColor = Color.Lerp(Plugin.beaconDefaultColor, Plugin.beaconFullColor, beaconCWT.storage.storedFlares.Count / (float)4);//PBRemixMenu.maxFlashStore.Value);
+                    lerpColor = Color.Lerp(Plugin.beaconDefaultColor, Plugin.beaconFullColor, beaconCWT.storage.storedFlares.Count / (float)4);
                 }
 
                 self.lightSource = new LightSource(self.player.mainBodyChunk.pos, false, Color.Lerp(new Color(1f, 1f, 1f), lerpColor, 0.5f), self.player);
@@ -251,15 +251,11 @@ public static class BeaconHooks
             float rad = flares switch
             {
                 0 => 200,
-                //+100
                 1 => 300,
-                //+100
                 2 => 400,
-                //+75
                 3 => 475,
-                //+75
                 4 => 550,
-                //+25
+                // +25
                 _ => (float)(550 + (25 * (flares - 4))),
             };
 
@@ -274,8 +270,8 @@ public static class BeaconHooks
             };
 
             //ROTUND WORLD SHENANIGANS
-            float baseWeight = (0.7f * self.player.slugcatStats.bodyWeightFac) / 2f;
-            rad *= (self.player.bodyChunks[0].mass / baseWeight) / 2f;
+            float baseWeight = 0.7f * self.player.slugcatStats.bodyWeightFac / 2f;
+            rad *= self.player.bodyChunks[0].mass / baseWeight / 2f;
             //AT +2 BONUS PIPS THIS IS ROUGHLY 125% RAD. CAPPING AT 150%
 
             //IF WE HAVE THE_GLOW, DON'T LET OUR GLOW STRENGTH UNDERCUT THAT
@@ -324,6 +320,7 @@ public static class BeaconHooks
 
         orig(self);
     }
+
     private static void Player_GrabUpdate_IL(ILContext il)
     {
         //spinch: give priority to auto-throwing flarebombs from storage over throwing slug on back
@@ -576,95 +573,12 @@ public static class BeaconHooks
     #region BeaconUpdate
     public static void BeaconUpdate(Player self)
     {
+        // Also runs ThanatosisUpdate.
+        ThanatosisUpdate(self);
         if (self.SlugCatClass == Plugin.BeaconName)
         {
             if (Plugin.scugCWT.TryGetValue(self, out ScugCWT c) && c is BeaconCWT beaconCWT)
             {
-                if (!self.input[0].spec)
-                {
-                    beaconCWT.inputForThanatosisCounter = 0;
-                }
-                // NOTE: canIDoThanatosisYet check because player must first meet the condition for this to be true. For now because of dev, it is set to true -Lur
-                if (Plugin.canIDoThanatosisYet == true && self.input[0].spec)
-                {
-                    beaconCWT.inputForThanatosisCounter++;
-                    // stops recursive input
-                    if (beaconCWT.inputForThanatosisCounter == 25)
-                    {
-                        beaconCWT.deathToggle = beaconCWT.isDead;
-                        beaconCWT.isDead = !beaconCWT.isDead;
-                    }
-                    if ((beaconCWT.deathToggle != beaconCWT.isDead) && beaconCWT.inputForThanatosisCounter == 25)
-                    {
-                        self.room.PlaySound(beaconCWT.isDead ? PBSoundID.Player_Activated_Thanatosis : PBSoundID.Player_Deactivated_Thanatosis, self.mainBodyChunk);
-                        //self.room.PlaySound(beaconCWT.isDead ? new SoundID("Player_Activated_Thanatosis", false) : new SoundID("Player_Deactivated_Thanatosis", false), self.mainBodyChunk);
-                    }
-                }
-                //In Thanatosis
-                if (beaconCWT.isDead)
-                {
-                    // (Should) spawn a DreamSpawn on you when you die -Lur (it doesn't for now for some reason..)
-                    MiscUtils.MaterializeDreamSpawn(self.room, self.mainBodyChunk.pos, PBExtEnums.DreamSpawnSource.Death);
-
-                    // Input removing is done in IL_Player_checkInput;
-                    beaconCWT.thanatosisCharge = Mathf.Min(beaconCWT.thanatosisCharge + 1f, beaconCWT.ThanatosisLimit);
-                    // Increase time
-                    if (beaconCWT.thanatosisCounter < beaconCWT.ThanatosisLimit)
-                    {
-                        beaconCWT.thanatosisCounter++;
-                        if (beaconCWT.thanatosisLerp < 0.92f)
-                        {
-                            beaconCWT.thanatosisLerp += 0.01f;
-                        }
-                        if (!beaconCWT.graspsNeedToBeReleased)
-                        {
-                            self.LoseAllGrasps();
-                            DropAllFlares(self);
-                            beaconCWT.graspsNeedToBeReleased = true;
-                        }
-                    }
-                }
-                // Dying for real
-                // NOTE: inThanatosisTime is never increased above ThanatosisLimit, so -1 will be actually true instead.
-                if ((beaconCWT.thanatosisCounter > beaconCWT.ThanatosisLimit - 1) && !beaconCWT.isDeadForReal)
-                {
-                    beaconCWT.isDeadForReal = true;
-                }
-                if (beaconCWT.isDeadForReal && !beaconCWT.thanatosisBumpNeedsToPlay)
-                {
-                    self.Die();
-                    self.room.PlaySound(PBSoundID.Player_Died_From_Thanatosis);
-                    beaconCWT.thanatosisBumpNeedsToPlay = true;
-                }
-                if (!beaconCWT.isDeadForReal)
-                {
-                    beaconCWT.thanatosisBumpNeedsToPlay = false;
-                }
-
-                //Outside Thanatosis
-                if (!beaconCWT.isDead)
-                {
-                    beaconCWT.thanatosisCharge = Mathf.Max(beaconCWT.thanatosisCharge - 1f, 0f);
-                    beaconCWT.graspsNeedToBeReleased = false;
-                    //Decrease time
-                    if (beaconCWT.thanatosisCounter > 0)
-                    {
-                        beaconCWT.thanatosisCounter--;
-                        if (beaconCWT.thanatosisLerp > 0f)
-                        {
-                            beaconCWT.thanatosisLerp -= 0.01f;
-                            self.Stun(30);
-                        }
-                    }
-                    if (beaconCWT.thanatosisLerp < 0.01f)
-                    {
-                        beaconCWT.thanatosisCounter = 0;
-                    }
-                    if (beaconCWT.thanatosisLerp > 0f)
-                    {
-                        self.exhausted = true;
-                    }
-                }
 
                 //Isolated bit of code for flashbang throwing from storage implementation
                 if (beaconCWT.dontThrowTimer > 0)
@@ -694,6 +608,117 @@ public static class BeaconHooks
                         beaconCWT.brightSquint--;
                     }
                 }
+            }
+        }
+    }
+    #endregion
+    #region ThanatosisUpdate
+    public static void ThanatosisUpdate(Player self)
+    {
+        if (Plugin.scugCWT.TryGetValue(self, out ScugCWT c) && c is BeaconCWT beaconCWT)
+        {
+            if (!self.input[0].spec)
+            {
+                beaconCWT.inputForThanatosisCounter = 0;
+            }
+            // NOTE: canIDoThanatosisYet check because player must first meet the condition for this to be true. For now because of dev, it is set to true -Lur
+            if (Plugin.canIDoThanatosisYet == true && self.input[0].spec)
+            {
+                beaconCWT.inputForThanatosisCounter++;
+                // stops recursive input
+                if (beaconCWT.inputForThanatosisCounter == 25)
+                {
+                    beaconCWT.deathToggle = beaconCWT.isDead;
+                    beaconCWT.isDead = !beaconCWT.isDead;
+                }
+                if ((beaconCWT.deathToggle != beaconCWT.isDead) && beaconCWT.inputForThanatosisCounter == 25)
+                {
+                    self.room.PlaySound(beaconCWT.isDead ? PBSoundID.Player_Activated_Thanatosis : PBSoundID.Player_Deactivated_Thanatosis, self.mainBodyChunk);
+                    //self.room.PlaySound(beaconCWT.isDead ? new SoundID("Player_Activated_Thanatosis", false) : new SoundID("Player_Deactivated_Thanatosis", false), self.mainBodyChunk);
+                }
+            }
+            //In Thanatosis
+            if (beaconCWT.isDead)
+            {
+                // (Should) spawn a DreamSpawn on you when you die -Lur (it doesn't for now for some reason..)
+                MiscUtils.MaterializeDreamSpawn(self.room, self.mainBodyChunk.pos, PBExtEnums.DreamSpawnSource.Death);
+
+                // Input removing is done in IL_Player_checkInput;
+                beaconCWT.thanatosisCharge = Mathf.Min(beaconCWT.thanatosisCharge + 1f, beaconCWT.ThanatosisLimit);
+                // Increase time
+                if (beaconCWT.thanatosisCounter < beaconCWT.ThanatosisLimit)
+                {
+                    beaconCWT.thanatosisCounter++;
+                    if (beaconCWT.thanatosisLerp < 0.92f)
+                    {
+                        beaconCWT.thanatosisLerp += 0.01f;
+                    }
+                    if (!beaconCWT.graspsNeedToBeReleased)
+                    {
+                        self.LoseAllGrasps();
+                        DropAllFlares(self);
+                        beaconCWT.graspsNeedToBeReleased = true;
+                    }
+                }
+            }
+            // Dying for real
+            // NOTE: inThanatosisTime is never increased above ThanatosisLimit, so -1 will be actually true instead.
+            if (((beaconCWT.thanatosisCounter > beaconCWT.ThanatosisLimit - 1) && !beaconCWT.diedInThanatosis) || (beaconCWT.isDead && self.dead))
+            {
+                beaconCWT.diedInThanatosis = true;
+            }
+            if (beaconCWT.diedInThanatosis && !beaconCWT.thanatosisDeathBumpNeedsToPlay)
+            {
+                self.Die();
+                self.room.PlaySound(PBSoundID.Player_Died_From_Thanatosis);
+                beaconCWT.thanatosisDeathBumpNeedsToPlay = true;
+            }
+            if (!beaconCWT.diedInThanatosis)
+            {
+                beaconCWT.thanatosisDeathBumpNeedsToPlay = false;
+            }
+
+            //Outside Thanatosis
+            if (!beaconCWT.isDead)
+            {
+                beaconCWT.thanatosisCharge = Mathf.Max(beaconCWT.thanatosisCharge - 1f, 0f);
+                beaconCWT.graspsNeedToBeReleased = false;
+                //Decrease time
+                if (beaconCWT.thanatosisCounter > 0)
+                {
+                    beaconCWT.thanatosisCounter--;
+                    if (beaconCWT.thanatosisLerp > 0f)
+                    {
+                        beaconCWT.thanatosisLerp -= 0.01f;
+                        self.Stun(30);
+                        self.Blink(45);
+                    }
+                }
+                if (beaconCWT.thanatosisLerp < 0.01f)
+                {
+                    beaconCWT.thanatosisCounter = 0;
+                }
+            }
+            // RippleDeath effect
+            if (beaconCWT.isDead && (
+            (beaconCWT.thanatosisCounter > 0 && self.rippleDeathIntensity < 0.2f) ||
+            (beaconCWT.thanatosisCounter > 200 && self.rippleDeathIntensity < 0.3f) ||
+            (beaconCWT.thanatosisCounter > 400 && self.rippleDeathIntensity < 0.4f) ||
+            (beaconCWT.thanatosisCounter > 600 && self.rippleDeathIntensity < 0.5f) ||
+            (beaconCWT.thanatosisCounter > 800 && self.rippleDeathIntensity < 0.6f) ||
+            (beaconCWT.thanatosisCounter > 1200 && self.rippleDeathIntensity < 0.7f) ||
+            (beaconCWT.thanatosisCounter > 1400 && self.rippleDeathIntensity < 0.8f) ||
+            (beaconCWT.thanatosisCounter == 1550 && self.rippleDeathIntensity < 0.9f)))
+            {
+                self.rippleDeathIntensity += 0.004f;
+            }
+            if (!beaconCWT.isDead && self.rippleDeathIntensity > 0f)
+            {
+                self.rippleDeathIntensity -= 0.002f;
+            }
+            if (beaconCWT.diedInThanatosis || self.dead)
+            {
+                self.rippleDeathIntensity += 0.003f;
             }
         }
     }
