@@ -64,6 +64,9 @@ public class SpecialChanges
         On.HUD.KarmaMeter.UpdateGraphic += KarmaMeter_UpdateGraphic;
         On.HUD.KarmaMeter.ctor += KarmaMeter_ctor;
 
+        // Supposed to add a disembodied sound loop to RippleDeathEffect, like RedsIllness (Andrew gutted the soundLoop part when copying so this re-adds it for Beacon)
+        //On.Watcher.RippleDeathEffect.Update += RippleDeathEffect_Update;
+
         // All VoidSpawn code is in RippleSpawn.cs
         #region pre 1.10 VoidSpawn hooks
         // VoidSpawn (iirc only the ILs work? bensone did so many... -Lur)
@@ -76,6 +79,39 @@ public class SpecialChanges
         //On.VoidSpawnGraphics.InitiateSprites += VoidSpawnGraphics_InitiateSprites;
         //On.VoidSpawnEgg.DrawSprites += VoidSpawnEgg_DrawSprites;
         #endregion
+    }
+
+    private static void RippleDeathEffect_Update(On.Watcher.RippleDeathEffect.orig_Update orig, RippleDeathEffect self, bool eu)
+    {
+        orig(self, eu);
+            DisembodiedDynamicSoundLoop soundLoop = null;
+        if (self.player.SlugCatClass == Plugin.BeaconName)
+        {
+            if (soundLoop == null && self.fade > 0f)
+            {
+                soundLoop = new DisembodiedDynamicSoundLoop(self);
+                soundLoop.sound = PBSoundID.Thanatosis_Drowning_LOOP;
+                soundLoop.VolumeGroup = 1;
+                return;
+            }
+            if (soundLoop != null)
+            {
+                soundLoop.Update();
+                soundLoop.Volume = Custom.LerpAndTick(soundLoop.Volume, Mathf.Pow((self.fade + self.player.rippleDeathIntensity) / 2f, 0.5f), 0.06f, 0.14285715f);
+            }
+            if (!RippleDeathEffect.CanShowPlayer(self.player) || (self.player.room != self.room && self.player.room != null) || self.player.rippleDeathIntensity <= 0f)
+            {
+                self.viableFade = Mathf.Max(0f, self.viableFade - 0.033333335f);
+                if (self.viableFade <= 0f && self.lastViableFade <= 0f)
+                {
+                    if (soundLoop != null && soundLoop.emitter != null)
+                    {
+                        soundLoop.emitter.slatedForDeletetion = true;
+                        return;
+                    }
+                }
+            }
+        }
     }
 
     private static void KarmaFlowerPatch_InitiateSprites(On.Watcher.KarmaFlowerPatch.orig_InitiateSprites orig, KarmaFlowerPatch self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)

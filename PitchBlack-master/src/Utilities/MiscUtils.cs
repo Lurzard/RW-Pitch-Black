@@ -271,7 +271,6 @@ public static class MiscUtils
             if (beaconCWT.isDead)
             {
                 //function made by MaxDubstep <3 -Lur
-
                 float timeCounter = beaconCWT.thanatosisCounter; //x
                 float minKarmaSafeTime = 12 * 40f; //tc
                 float maxKarmaSafeTime = 40 * 40f; // Tc
@@ -300,10 +299,10 @@ public static class MiscUtils
                 if (timeCounter >= windUpTime + plateauDuration + (rampUpTime / 2))
                 {
                     float increment = 0.008f;
-                    int mult = 2;
+                    int mult = 4;
                     self.rippleDeathIntensity += increment;
                     increment += 0.008f * mult;
-                    mult += 2;
+                    mult += 4;
                 }
             }
             if ((beaconCWT.diedInThanatosis || self.dead) && (self.rippleDeathIntensity < 0.12f))
