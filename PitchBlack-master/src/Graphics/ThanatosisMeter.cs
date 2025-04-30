@@ -32,7 +32,7 @@ public class ThanatosisMeter : HudPart
         {
             // Watcher's original line in CamoMeter
             //return this.Unlocked && ((this.Player.isCamo && this.Player.camoCharge >= this.Player.usableCamoLimit * 0.7f) || this.Player.activateCamoTimer > 0 || (this.Player.isCamo && this.Player.inCamoTime < 400));
-            return Unlocked && ((beaconCWT.isDead && beaconCWT.thanatosisCharge >= beaconCWT.ThanatosisLimit * 0.7f) || (beaconCWT.isDead && beaconCWT.thanatosisCounter < 400));
+            return Unlocked && ((beaconCWT.isDead && beaconCWT.thanatosisCharge >= beaconCWT.inThanatosisLimit * 0.7f) || (beaconCWT.isDead && beaconCWT.thanatosisCounter < 400));
         }
     }
     public ThanatosisMeter(HUD.HUD hud, FContainer fContainer) : base(hud)
@@ -78,7 +78,7 @@ public class ThanatosisMeter : HudPart
         {
             fade = 0f;
         }
-        full = 1f - beaconCWT.thanatosisCharge / beaconCWT.ThanatosisLimit;
+        full = 1f - beaconCWT.thanatosisCharge / beaconCWT.inThanatosisLimit;
         Room room = Player.room;
         StoryGameSession storyGameSession = room != null ? room.game.GetStorySession : null;
         if (storyGameSession != null)

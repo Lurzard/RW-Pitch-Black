@@ -10,6 +10,7 @@ using JetBrains.Annotations;
 using System.Collections.Generic;
 using IL.Watcher;
 using System.Data.Common;
+using System.ComponentModel;
 
 namespace PitchBlack;
 
@@ -615,6 +616,7 @@ public static class BeaconHooks
     #region ThanatosisUpdate
     public static void ThanatosisUpdate(Player self)
     {
+        MiscUtils.ThanatosisDeathIntensity(self);
         if (Plugin.scugCWT.TryGetValue(self, out ScugCWT c) && c is BeaconCWT beaconCWT)
         {
             if (!self.input[0].spec)
@@ -644,11 +646,11 @@ public static class BeaconHooks
                 MiscUtils.MaterializeDreamSpawn(self.room, self.mainBodyChunk.pos, PBExtEnums.DreamSpawnSource.Death);
 
                 // Input removing is done in IL_Player_checkInput;
-                beaconCWT.thanatosisCharge = Mathf.Min(beaconCWT.thanatosisCharge + 1f, beaconCWT.ThanatosisLimit);
+                beaconCWT.thanatosisCharge = Mathf.Min(beaconCWT.thanatosisCharge + 1f, beaconCWT.inThanatosisLimit);
                 // Increase time
-                if (beaconCWT.thanatosisCounter < beaconCWT.ThanatosisLimit)
+                if (beaconCWT.thanatosisCounter < beaconCWT.inThanatosisLimit)
                 {
-                    beaconCWT.thanatosisCounter++;
+                        beaconCWT.thanatosisCounter++;
                     if (beaconCWT.thanatosisLerp < 0.92f)
                     {
                         beaconCWT.thanatosisLerp += 0.01f;
@@ -661,15 +663,16 @@ public static class BeaconHooks
                     }
                 }
             }
-            // Dying for real
+            // Dying in thanatosis
             // NOTE: inThanatosisTime is never increased above ThanatosisLimit, so -1 will be actually true instead.
-            if (((beaconCWT.thanatosisCounter > beaconCWT.ThanatosisLimit - 1) && !beaconCWT.diedInThanatosis) || (beaconCWT.isDead && self.dead))
+            if (((beaconCWT.thanatosisCounter > beaconCWT.inThanatosisLimit - 1) && !beaconCWT.diedInThanatosis) || (beaconCWT.isDead && self.dead))
             {
                 beaconCWT.diedInThanatosis = true;
             }
-            if (beaconCWT.diedInThanatosis && !beaconCWT.thanatosisDeathBumpNeedsToPlay)
+            if (beaconCWT.diedInThanatosis && !beaconCWT.thanatosisDeathBumpNeedsToPlay && self.rippleDeathTime == 80)
             {
-                self.Die();
+                // This is a holy combination of sounds fr
+                self.room.PlaySound(SoundID.Gate_Rails_Collide, 1f, 1f, 0.8f);
                 self.room.PlaySound(PBSoundID.Player_Died_From_Thanatosis);
                 beaconCWT.thanatosisDeathBumpNeedsToPlay = true;
             }
@@ -677,7 +680,6 @@ public static class BeaconHooks
             {
                 beaconCWT.thanatosisDeathBumpNeedsToPlay = false;
             }
-
             //Outside Thanatosis
             if (!beaconCWT.isDead)
             {
@@ -691,34 +693,19 @@ public static class BeaconHooks
                     {
                         beaconCWT.thanatosisLerp -= 0.01f;
                         self.Stun(30);
-                        self.Blink(45);
+                        self.Blink(50);
                     }
                 }
                 if (beaconCWT.thanatosisLerp < 0.01f)
                 {
                     beaconCWT.thanatosisCounter = 0;
                 }
-            }
-            // RippleDeath effect
-            if (beaconCWT.isDead && (
-            (beaconCWT.thanatosisCounter > 0 && self.rippleDeathIntensity < 0.2f) ||
-            (beaconCWT.thanatosisCounter > 200 && self.rippleDeathIntensity < 0.3f) ||
-            (beaconCWT.thanatosisCounter > 400 && self.rippleDeathIntensity < 0.4f) ||
-            (beaconCWT.thanatosisCounter > 600 && self.rippleDeathIntensity < 0.5f) ||
-            (beaconCWT.thanatosisCounter > 800 && self.rippleDeathIntensity < 0.6f) ||
-            (beaconCWT.thanatosisCounter > 1200 && self.rippleDeathIntensity < 0.7f) ||
-            (beaconCWT.thanatosisCounter > 1400 && self.rippleDeathIntensity < 0.8f) ||
-            (beaconCWT.thanatosisCounter == 1550 && self.rippleDeathIntensity < 0.9f)))
-            {
-                self.rippleDeathIntensity += 0.004f;
-            }
-            if (!beaconCWT.isDead && self.rippleDeathIntensity > 0f)
-            {
-                self.rippleDeathIntensity -= 0.002f;
-            }
-            if (beaconCWT.diedInThanatosis || self.dead)
-            {
-                self.rippleDeathIntensity += 0.003f;
+                //if (self.rippleDeathIntensity > 0f)
+                //{
+                //    // Is this gonna work
+                //    self.rippleDeathIntensity -= 0.004f;
+                //    self.rippleDeathIntensity += 0.003f;
+                //}
             }
         }
     }

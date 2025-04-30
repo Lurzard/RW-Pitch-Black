@@ -79,7 +79,7 @@ public class PBMeltLights : UpdatableAndDeletable, IDrawable
     }
     public void InitiateSprites(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
     {
-        sLeaser.sprites = [];
+        sLeaser.sprites = new FSprite[0];
     }
     public void DrawSprites(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
     {

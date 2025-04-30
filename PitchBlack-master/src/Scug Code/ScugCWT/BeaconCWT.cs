@@ -27,15 +27,28 @@ public class BeaconCWT : ScugCWT
     public int thanatosisCounter; //tracking current time spent in Thanatosis
     public float thanatosisLerp; //for lerping player color based on time spent in Thanatosis
     public float thanatosisCharge;
-    public float ThanatosisLimit
+    public float inThanatosisLimit
     {
         get
         {
-            return 1600; //soon to be based on Karma
+            if (Plugin.qualiaLevel >= 5f)
+            {
+                return 1600f;
+            }
+            if (Plugin.qualiaLevel >= 4f)
+            {
+                return 1360f;
+            }
+            if (Plugin.qualiaLevel >= 2f)
+            {
+                return 960f;
+            }
+            return 480f;
         }
     }
     public int inputForThanatosisCounter = 0; //spec input doesn't recursively flip isDead
     public bool graspsNeedToBeReleased = false; //stops grasp-losing recursion
+    public int numberOfOscillations = 0;
 
     public BeaconCWT(Player player) : base()
     {

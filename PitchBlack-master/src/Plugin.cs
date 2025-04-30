@@ -61,7 +61,7 @@ class Plugin : BaseUnityPlugin
     // Save data
     // NOTE: indev, mess with values for testing
     public static bool canIDoThanatosisYet = true;
-    public static float qualiaLevel = 5f;
+    public static float qualiaLevel = 1f;
     //public static float minQualiaLevel;
     //public static float maxQualiaLevel;
 
@@ -82,12 +82,14 @@ class Plugin : BaseUnityPlugin
             //CreatureSpawnerHooks.Apply();
             //BreathableWater.Register();
             //TeleportWater.Register();
-            Content.Register(new RotRatCritob());
-            Content.Register(new FireGrubCritob());
-            Content.Register(new LMLLCritob());
-            Content.Register(new NightTerrorCritob());
-            Content.Register(new ScholarScavCritob());
-            Content.Register(new UmbraMaskFisob());
+
+            // These needed clarification
+            Fisobs.Core.Content.Register(new RotRatCritob());
+            Fisobs.Core.Content.Register(new FireGrubCritob());
+            Fisobs.Core.Content.Register(new LMLLCritob());
+            Fisobs.Core.Content.Register(new NightTerrorCritob());
+            Fisobs.Core.Content.Register(new ScholarScavCritob());
+            Fisobs.Core.Content.Register(new UmbraMaskFisob());
             PBSoundID.RegisterValues();
             PBAbstractObjectType.RegisterValues();
         }

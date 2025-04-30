@@ -3,6 +3,11 @@ using static PitchBlack.Plugin;
 using System.IO;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
+using UnityEngine;
+using Watcher;
+using System;
+using System.Security.Cryptography.X509Certificates;
+using IL.Menu.Remix.MixedUI;
 
 namespace PitchBlack;
 
@@ -223,16 +228,7 @@ public static class MiscUtils
             spawnType = PBExtEnums.SpawnType.DreamAmoeba;
         }
         // Spawning it
-        VoidSpawn voidSpawn = new VoidSpawn
-            (new AbstractPhysicalObject
-            (room.world,
-            PBAbstractObjectType.DreamSpawn,
-            null,
-            room.GetWorldCoordinate(spawnPos),
-            room.game.GetNewID()),
-            room.roomSettings.GetEffectAmount(RoomSettings.RoomEffect.Type.VoidMelt),
-            VoidSpawnKeeper.DayLightMode(room),
-            spawnType);
+        VoidSpawn voidSpawn = new VoidSpawn(new AbstractPhysicalObject(room.world, PBAbstractObjectType.DreamSpawn, null, room.GetWorldCoordinate(spawnPos), room.game.GetNewID()), room.roomSettings.GetEffectAmount(RoomSettings.RoomEffect.Type.VoidMelt), VoidSpawnKeeper.DayLightMode(room), spawnType);
         if (IsDreamSpawn(voidSpawn))
         {
             // BezierSwarm for now, but later I want them to chase and kill anything they can
@@ -241,5 +237,79 @@ public static class MiscUtils
         }
         voidSpawn.PlaceInRoom(room);
         voidSpawn.ChangeRippleLayer(0, true);
+    }
+    public static void SpawnOscillatingRipple(Player self, bool fromThanatosis)
+    {
+        float timer = 0;
+        float timerLimit = 2f;
+        bool secondOscillation = false;
+        timer += Time.deltaTime;
+        int life = Random.Range(80, 260);
+        float intensity = fromThanatosis ? 1f : 0.5f;
+        float speed = fromThanatosis ? Random.Range(0.7f, 1f) : Random.Range(0.35f, 0.5f);
+        float vol = fromThanatosis ? 1f : 0.25f;
+        float pitch = fromThanatosis ? Random.Range(0.6f, 0.9f) : Random.Range(0.3f, 0.45f);
+        if (timer >= timerLimit && !secondOscillation)
+        {
+            secondOscillation = true;
+            self.room.AddObject(new RippleRing(self.mainBodyChunk.pos, life, intensity, speed));
+            self.room.PlaySound(WatcherEnums.WatcherSoundID.Warp_Point_Ripple_Hint, self.mainBodyChunk.pos, vol, pitch);
+        }
+        if (timer >= timerLimit + 0.04f && secondOscillation)
+        {
+            timerLimit = Random.Range(2f, 6f);
+            timer = 0f;
+            self.room.AddObject(new RippleRing(self.mainBodyChunk.pos, life, intensity, speed));
+            secondOscillation = false;
+        }
+    }
+
+    public static void ThanatosisDeathIntensity(Player self)
+    {
+        if (scugCWT.TryGetValue(self, out ScugCWT c) && c is BeaconCWT beaconCWT)
+        {
+            if (beaconCWT.isDead)
+            {
+                //function made by MaxDubstep <3 -Lur
+
+                float timeCounter = beaconCWT.thanatosisCounter; //x
+                float minKarmaSafeTime = 12 * 40f; //tc
+                float maxKarmaSafeTime = 40 * 40f; // Tc
+                float beginningIntensity = 0.4f; //l
+                float endIntensity = 0.45f; //m
+                float windUpTime = 3 * 40f; //wc
+                float rampUpTime = 3 * 40f; //Wc
+                float maxIntensity = 0.9f; //u
+                float plateauDuration = (qualiaLevel - 1) * (maxKarmaSafeTime - (windUpTime + rampUpTime) * 2) / 4 + minKarmaSafeTime - windUpTime - rampUpTime; //c
+                // Starting plateau
+                if (timeCounter < windUpTime)
+                {
+                    self.rippleDeathIntensity = Mathf.Sqrt(timeCounter) * beginningIntensity / Mathf.Sqrt(windUpTime);
+                }
+                // Middle of plateau
+                if ((timeCounter < windUpTime + plateauDuration) && timeCounter >= windUpTime)
+                {
+                    self.rippleDeathIntensity = (timeCounter - windUpTime) * (endIntensity - beginningIntensity) / plateauDuration + beginningIntensity;
+                }
+                // Ending ramp up
+                //if ((timeCounter >= windUpTime + plateauDuration) && (timeCounter <= rampUpTime + windUpTime + plateauDuration))
+                //{
+                // self.rippleDeathIntensity = Mathf.Pow(timeCounter - plateauDuration - windUpTime, 2) * (maxIntensity - endIntensity) / rampUpTime * rampUpTime + endIntensity;
+                //}
+                // This MIGHT work -Lur
+                if (timeCounter >= windUpTime + plateauDuration + (rampUpTime / 2))
+                {
+                    float increment = 0.008f;
+                    int mult = 2;
+                    self.rippleDeathIntensity += increment;
+                    increment += 0.008f * mult;
+                    mult += 2;
+                }
+            }
+            if ((beaconCWT.diedInThanatosis || self.dead) && (self.rippleDeathIntensity < 0.12f))
+            {
+                self.rippleDeathIntensity += 0.004f;
+            }
+        }
     }
 }

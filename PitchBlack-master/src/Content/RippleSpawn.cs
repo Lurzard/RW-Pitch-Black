@@ -43,7 +43,7 @@ public class RippleSpawnKeeper : UpdatableAndDeletable
         spawn = new List<VoidSpawn>();
         // will be changed to RippleMelt
         rippleMeltInRoom = room.roomSettings.GetEffectAmount(PBRoomEffectType.RippleMelt);
-        fromRooms = [];
+        fromRooms = new int[0];
     }
     public override void Update(bool eu)
     {
