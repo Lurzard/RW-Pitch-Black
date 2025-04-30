@@ -127,6 +127,7 @@ public class PBSoundID
     public static SoundID Player_Deactivated_Thanatosis_From_Stun;
     public static SoundID Player_Died_From_Thanatosis;
     public static SoundID Player_Revived;
+    public static SoundID Thanatosis_Drowning_LOOP;
     public static void RegisterValues()
     {
         Player_Activated_Thanatosis = new SoundID("Player_Activated_Thanatosis", true);
@@ -134,6 +135,7 @@ public class PBSoundID
         Player_Deactivated_Thanatosis_From_Stun = new SoundID("Player_Deactivated_Thanatosis_From_Stun", true);
         Player_Died_From_Thanatosis = new SoundID("Player_Died_From_Thanatosis", true);
         Player_Revived = new SoundID("Player_Revived", true);
+        Thanatosis_Drowning_LOOP = new SoundID("Drowning_Thanatosis_LOOP", true);
     }
     public static void UnregisterValues()
     {
@@ -156,6 +158,10 @@ public class PBSoundID
         if (Player_Revived != null)
         {
             Player_Revived.Unregister();
+        }
+        if (Thanatosis_Drowning_LOOP != null)
+        {
+            Thanatosis_Drowning_LOOP.Unregister();
         }
     }
 }
