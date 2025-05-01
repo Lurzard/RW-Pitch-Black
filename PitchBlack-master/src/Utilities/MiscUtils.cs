@@ -305,9 +305,13 @@ public static class MiscUtils
                     mult += 4;
                 }
             }
-            if ((beaconCWT.diedInThanatosis || self.dead) && (self.rippleDeathIntensity < 0.12f))
+            if ((beaconCWT.diedInThanatosis || self.dead) && self.rippleDeathIntensity < 0.12f)
             {
                 self.rippleDeathIntensity += 0.004f;
+            }
+            if (self.rippleDeathIntensity > 0 && !beaconCWT.isDead)
+            {
+                self.rippleDeathIntensity -= 0.002f;
             }
         }
     }

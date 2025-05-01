@@ -49,7 +49,7 @@ class Plugin : BaseUnityPlugin
     public static readonly Color PBAnti_GoldRGB = new Color(0.20784313725f, 0.18039215686f, 0.52156862745f); // #352e85
     public static readonly Color SaturatedRose = Rose * 2f;
     public static readonly Color SaturatedAntiGold = PBAntiGold * 2f;
-    public static readonly Color PBRipple_Color = new Color(0.373f, 0.11f, 0.831f);
+    public static readonly Color PBRipple_Color = RainWorld.RippleColor;
     public static readonly Color SaturatedRipple = PBRipple_Color * 2f;
     public static readonly Color beaconDefaultColor = new Color(0.10588235294f, 0.06666666666f, 0.25882352941f);
     public static readonly Color beaconFullColor = new Color(0.2f, 0f, 1f);
@@ -116,8 +116,8 @@ class Plugin : BaseUnityPlugin
             if (Futile.atlasManager.DoesContainAtlas("lmllspr"))
                 Futile.atlasManager.UnloadAtlas("lmllspr");
         };
-        //On.DeathPersistentSaveData.ctor += DeathPersistentSaveData_ctor;
-        //On.AbstractPhysicalObject.Realize += AbstractPhysicalObject_Realize;
+        On.DeathPersistentSaveData.ctor += DeathPersistentSaveData_ctor;
+        On.AbstractPhysicalObject.Realize += AbstractPhysicalObject_Realize;
 
         DevHooks.Apply();
         MenuHooks.Apply();
@@ -152,31 +152,16 @@ class Plugin : BaseUnityPlugin
         }
     }
 
-    //private void DeathPersistentSaveData_ctor(On.DeathPersistentSaveData.orig_ctor orig, DeathPersistentSaveData self, SlugcatStats.Name slugcat)
-    //{
-    //    orig(self, slugcat);
-    //    // toggles testing mode
-    //    bool devMode = true;
-    //    if (slugcat == BeaconName)
-    //    {
-    //        if (!devMode)
-    //        {
-    //            // Default values, do not alter
-    //            canIDoThanatosisYet = false;
-    //            qualiaLevel = 0f;
-    //            minQualiaLevel = 0f;
-    //            maxQualiaLevel = 0f;
-    //        }
-    //        else
-    //        {
-    //            // For testing, you may alter here
-    //            canIDoThanatosisYet = true;
-    //            qualiaLevel = 5f;
-    //            minQualiaLevel = 5f;
-    //            maxQualiaLevel = 5f;
-    //        }
-    //    }
-    //}
+    private void DeathPersistentSaveData_ctor(On.DeathPersistentSaveData.orig_ctor orig, DeathPersistentSaveData self, SlugcatStats.Name slugcat)
+    {
+        orig(self, slugcat);
+        if (slugcat == BeaconName)
+        {
+            self.rippleLevel = 4.5f;
+            self.minimumRippleLevel = 4.5f;
+            self.maximumRippleLevel = 4.5f;
+        }
+    }
 
     public void Update()
     {
@@ -267,6 +252,8 @@ class Plugin : BaseUnityPlugin
             //Futile.atlasManager.LoadAtlas("atlases/karma10-10");
             Futile.atlasManager.LoadAtlas("atlases/toriiEye");
             //Futile.atlasManager.LoadAtlas("atlases/FaceThanatosis");
+            Futile.atlasManager.LoadAtlas("atlases/QualiaSymbols");
+            Futile.atlasManager.LoadAtlas("atlases/SidewaysSymbols");
             self.Shaders["PurpleEchoSkin"] = FShader.CreateShader("purpleechoskin", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/purpleecho")).LoadAsset<Shader>("Assets/shaders 1.9.03/PurpleEchoSkin.shader"));
             self.Shaders["Red"] = FShader.CreateShader("red", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath(path: "assetbundles/red")).LoadAsset<Shader>("Assets/red.shader"));
             self.Shaders["Sunrays"] = FShader.CreateShader("sunrays", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/sunrays")).LoadAsset<Shader>("Assets/sunrays.shader"));

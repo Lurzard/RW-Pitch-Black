@@ -34,6 +34,7 @@
 		"has_dreams": false,
 		"perma_unlock_gates": false,
 		"the_mark": false,
+		"the_glow": true,
 		"auto_grab_batflies": true,
 
 		"start_room": [ "SH_A08" ],

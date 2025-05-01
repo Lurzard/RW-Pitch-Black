@@ -86,7 +86,7 @@ internal class CreatureEdits
                 sLeaser.sprites[self.BodyMeshSprite].shader = rCam.game.rainWorld.Shaders["DreamSpawnBody"];
                 if (self.hasOwnGoldEffect)
                 {
-                    //sLeaser.sprites[self.EffectSprite].shader = rCam.game.rainWorld.Shaders["BlackGLow"];
+                    sLeaser.sprites[self.EffectSprite].shader = rCam.game.rainWorld.Shaders["GoldenGlow"];
                 }
                 for (int k = 0; k < (sLeaser.sprites[self.BodyMeshSprite] as TriangleMesh).verticeColors.Length; k++)
                 {
@@ -104,7 +104,7 @@ internal class CreatureEdits
             sLeaser.sprites[self.BodyMeshSprite].shader = rCam.game.rainWorld.Shaders["DreamSpawnBody"];
             if (self.hasOwnGoldEffect)
             {
-                sLeaser.sprites[self.EffectSprite].shader = rCam.game.rainWorld.Shaders["BlackGlow"];
+                sLeaser.sprites[self.EffectSprite].shader = rCam.game.rainWorld.Shaders["GoldenGlow"];
             }
         }
         self.AddToContainer(sLeaser, rCam, null);
