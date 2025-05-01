@@ -1,5 +1,5 @@
 ﻿using HUD;
-using IL.Menu;
+using Menu;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using MoreSlugcats;
@@ -16,6 +16,7 @@ using Random = UnityEngine.Random;
 using Watcher;
 using System.Xml;
 using System.Linq.Expressions;
+using System.Drawing;
 
 namespace PitchBlack;
 
@@ -34,21 +35,7 @@ public class SpecialChanges
         return false;
     }
 
-    public static Color flowerColor;
-
-    // PB's RippleSymbolSprite
-    // Todo: All of the RippleLevel Karma stuff remade but for this, as well as savedata
-    public static string QualiaSymbolSprite(bool small, float level)
-    {
-        double num = Math.Round((double)(level * 2f), MidpointRounding.AwayFromZero) / 2.0;
-        return (small ? "smallQualia" : "qualia") + num.ToString("#.0", CultureInfo.InvariantCulture);
-    }
-
-    public static string SidewaysSymbolSprite(bool small, float level)
-    {
-        double num = Math.Round((double)(level * 2f), MidpointRounding.AwayFromZero) / 2.0;
-        return (small ? "smallSideways" : "sideways") + num.ToString("#.0", CultureInfo.InvariantCulture);
-    }
+    public static UnityEngine.Color flowerColor;
 
     public static void Apply()
     {
@@ -64,8 +51,6 @@ public class SpecialChanges
         // KarmaFlower
         On.KarmaFlower.ApplyPalette += KarmaFlower_ApplyPalette;
         On.KarmaFlower.InitiateSprites += KarmaFlower_InitiateSprites;
-
-        // NOTE: Needs proper Beacon checks to not apply to all slugs
         // KarmaMeter
         On.HUD.KarmaMeter.UpdateGraphic += KarmaMeter_UpdateGraphic;
         On.HUD.KarmaMeter.ctor += KarmaMeter_ctor;
@@ -73,20 +58,61 @@ public class SpecialChanges
 
         // Supposed to add a disembodied sound loop to RippleDeathEffect, like RedsIllness (Andrew gutted the soundLoop part when copying so this re-adds it for Beacon)
         //On.Watcher.RippleDeathEffect.Update += RippleDeathEffect_Update;
-
-        // All VoidSpawn code is in RippleSpawn.cs
-        #region pre 1.10 VoidSpawn hooks
-        // VoidSpawn (iirc only the ILs work? bensone did so many... -Lur)
-        //IL.VoidSpawnEgg.DrawSprites += VoidSpawnEgg_DrawSprites_IL;
-        //IL.VoidSpawnGraphics.ApplyPalette += VoidSpawnGraphics_ApplyPalette_IL;
-        //IL.VoidSpawnGraphics.DrawSprites += VoidSpawnGraphics_DrawSprites_IL;
-        //On.VoidSpawnGraphics.DrawSprites += VoidSpawnGraphics_DrawSprites;
-        //On.VoidSpawnGraphics.Antenna.DrawSprites += Antenna_DrawSprites;
-        //On.VoidSpawnGraphics.ApplyPalette += VoidSpawnGraphics_ApplyPalette;
-        //On.VoidSpawnGraphics.InitiateSprites += VoidSpawnGraphics_InitiateSprites;
-        //On.VoidSpawnEgg.DrawSprites += VoidSpawnEgg_DrawSprites;
-        #endregion
     }
+
+    #region KarmaMeter
+    private static void KarmaMeter_Update(On.HUD.KarmaMeter.orig_Update orig, KarmaMeter self)
+    {
+        orig(self);
+        if (self.hud.owner is Player &&
+            (self.hud.owner as Player).SlugCatClass == Plugin.BeaconName &&
+            (self.hud.owner as Player).rippleLevel >= 1f)
+        {
+            self.karmaSprite.element = Futile.atlasManager.GetElementWithName(MiscUtils.QualiaSymbolSprite(true, (self.hud.owner as Player).rippleLevel));
+            self.baseColor = Plugin.SaturatedRipple;
+            if (self.showAsReinforced)
+            {
+                self.karmaSprite.element = Futile.atlasManager.GetElementWithName(MiscUtils.SidewaysSymbolSprite(true, (self.hud.owner as Player).rippleLevel));
+                self.baseColor = RainWorld.SaturatedGold;
+            }
+            self.karmaSprite.color = self.baseColor;
+        }
+    }
+
+    private static void KarmaMeter_ctor(On.HUD.KarmaMeter.orig_ctor orig, KarmaMeter self, HUD.HUD hud, FContainer fContainer, IntVector2 displayKarma, bool showAsReinforced)
+    {
+        orig(self, hud, fContainer, displayKarma, showAsReinforced);
+        if (hud.owner is Player &&
+            (hud.owner as Player).SlugCatClass == Plugin.BeaconName &&
+            (hud.owner as Player).rippleLevel >= 1f)
+        {
+            self.karmaSprite.element = Futile.atlasManager.GetElementWithName(MiscUtils.QualiaSymbolSprite(true, (self.hud.owner as Player).rippleLevel));
+            self.baseColor = Plugin.SaturatedRipple;
+            if (self.showAsReinforced)
+            {
+                self.karmaSprite.element = Futile.atlasManager.GetElementWithName(MiscUtils.SidewaysSymbolSprite(true, (self.hud.owner as Player).rippleLevel));
+                self.baseColor = RainWorld.SaturatedGold;
+            }
+            self.karmaSprite.color = self.baseColor;
+        }
+    }
+    private static void KarmaMeter_UpdateGraphic(On.HUD.KarmaMeter.orig_UpdateGraphic orig, KarmaMeter self)
+    {
+        orig(self);
+        if ((self.hud.owner as Player).SlugCatClass == Plugin.BeaconName &&
+            (self.hud.owner as Player).rippleLevel >= 1f)
+        {
+            self.karmaSprite.element = Futile.atlasManager.GetElementWithName(MiscUtils.QualiaSymbolSprite(true, (self.hud.owner as Player).rippleLevel));
+            self.baseColor = Plugin.SaturatedRipple;
+            if (self.showAsReinforced)
+            {
+                self.karmaSprite.element = Futile.atlasManager.GetElementWithName(MiscUtils.SidewaysSymbolSprite(true, (self.hud.owner as Player).rippleLevel));
+                self.baseColor = RainWorld.SaturatedGold;
+            }
+            self.karmaSprite.color = self.baseColor;
+        }
+    }
+    #endregion
 
     #region RippleDeath
     private static void RippleDeathEffect_Update(On.Watcher.RippleDeathEffect.orig_Update orig, RippleDeathEffect self, bool eu)
@@ -141,7 +167,7 @@ public class SpecialChanges
         {
             if (MiscUtils.IsRealscapeRegion(rCam))
             {
-                flowerColor = Color.white;
+                flowerColor = UnityEngine.Color.white;
             }
             if (MiscUtils.IsNightmarescapeRegion(rCam))
             {
@@ -167,60 +193,13 @@ public class SpecialChanges
         {
             if (MiscUtils.IsRealscapeRegion(rCam))
             {
-                flowerColor = Color.white;
+                flowerColor = UnityEngine.Color.white;
             }
             if (MiscUtils.IsNightmarescapeRegion(rCam))
             {
                 flowerColor = RainWorld.GoldRGB;
             }
             self.color = flowerColor;
-        }
-    }
-    #endregion
-
-    #region KarmaMeter
-    private static void KarmaMeter_Update(On.HUD.KarmaMeter.orig_Update orig, KarmaMeter self)
-    {
-        orig(self);
-        if (self.hud.owner is Player && (self.hud.owner as Player).rippleLevel >= 1f)
-        {
-            if ((self.hud.owner as Player).SlugCatClass == Plugin.BeaconName)
-            {
-                if (self.showAsReinforced)
-                {
-                    self.karmaSprite.element = Futile.atlasManager.GetElementWithName(SidewaysSymbolSprite(true, (self.hud.owner as Player).rippleLevel));
-                    self.baseColor = RainWorld.SaturatedGold;
-                    self.karmaSprite.color = self.baseColor;
-                }
-                else
-                {
-                    self.karmaSprite.element = Futile.atlasManager.GetElementWithName(QualiaSymbolSprite(true, (self.hud.owner as Player).rippleLevel));
-                    self.baseColor = Plugin.SaturatedRipple;
-                    self.karmaSprite.color = self.baseColor;
-                }
-            }
-        }
-    }
-
-    private static void KarmaMeter_ctor(On.HUD.KarmaMeter.orig_ctor orig, KarmaMeter self, HUD.HUD hud, FContainer fContainer, IntVector2 displayKarma, bool showAsReinforced)
-    {
-        orig(self, hud, fContainer, displayKarma, showAsReinforced);
-        if (hud.owner is Player && (hud.owner as Player).SlugCatClass == Plugin.BeaconName && (hud.owner as Player).rippleLevel >= 1f)
-        {
-            self.karmaSprite.element = Futile.atlasManager.GetElementWithName(QualiaSymbolSprite(true, (self.hud.owner as Player).rippleLevel));
-            self.baseColor = Plugin.SaturatedRipple;
-            self.karmaSprite.color = self.baseColor;
-        }
-    }
-    private static void KarmaMeter_UpdateGraphic(On.HUD.KarmaMeter.orig_UpdateGraphic orig, KarmaMeter self)
-    {
-        orig(self);
-        if ((self.hud.owner as Player).SlugCatClass == Plugin.BeaconName && (self.hud.owner as Player).rippleLevel >= 1f)
-        {
-            self.karmaSprite.element = Futile.atlasManager.GetElementWithName(QualiaSymbolSprite(true, (self.hud.owner as Player).rippleLevel));
-            self.baseColor = Plugin.SaturatedRipple;
-            self.karmaSprite.color = self.baseColor;
-            return;
         }
     }
     #endregion
@@ -321,91 +300,91 @@ public class SpecialChanges
     //    }
     //}
 
-    private static void VoidSpawnEgg_DrawSprites_IL(ILContext il)
-    {
-        var cursor = new ILCursor(il);
-        if (cursor.TryGotoNext(MoveType.After,
-            i => i.MatchCallvirt(typeof(FSprite).GetMethod("set_color"))))
-        {
-            // Load the RoomCamera argument onto the stack.
-            cursor.Emit(OpCodes.Ldarg_2);
+    //private static void VoidSpawnEgg_DrawSprites_IL(ILContext il)
+    //{
+    //    var cursor = new ILCursor(il);
+    //    if (cursor.TryGotoNext(MoveType.After,
+    //        i => i.MatchCallvirt(typeof(FSprite).GetMethod("set_color"))))
+    //    {
+    //        // Load the RoomCamera argument onto the stack.
+    //        cursor.Emit(OpCodes.Ldarg_2);
 
-            cursor.EmitDelegate<Func<Color, RoomCamera, Color>>((origColor, rCam) =>
-            {
-                // Apply changes only if the campaing is Beacon?
-                if (rCam.room.game.IsStorySession &&
-                    rCam.room.game.GetStorySession.saveStateNumber == Plugin.BeaconName)
-                {
-                    return Plugin.Rose;
-                }
-                return origColor;
-            });
-        }
-        else
-        {
-            Debug.LogError("ILHook: Failed to find the sprite color set call in VoidSpawnEgg.DrawSprites.");
-        }
-    }
+    //        cursor.EmitDelegate<Func<Color, RoomCamera, Color>>((origColor, rCam) =>
+    //        {
+    //            // Apply changes only if the campaing is Beacon?
+    //            if (rCam.room.game.IsStorySession &&
+    //                rCam.room.game.GetStorySession.saveStateNumber == Plugin.BeaconName)
+    //            {
+    //                return Plugin.Rose;
+    //            }
+    //            return origColor;
+    //        });
+    //    }
+    //    else
+    //    {
+    //        Debug.LogError("ILHook: Failed to find the sprite color set call in VoidSpawnEgg.DrawSprites.");
+    //    }
+    //}
 
-    private static void VoidSpawnGraphics_ApplyPalette_IL(ILContext il)
-    {
-        var cursor = new ILCursor(il);
+    //private static void VoidSpawnGraphics_ApplyPalette_IL(ILContext il)
+    //{
+    //    var cursor = new ILCursor(il);
 
-        if (cursor.TryGotoNext(MoveType.After,
-            i => i.MatchCallvirt(typeof(FSprite).GetMethod("set_color"))))
-        {
-            // Load 'this' and RoomCamera onto the stack.
-            cursor.Emit(OpCodes.Ldarg_0);
-            cursor.Emit(OpCodes.Ldarg_2);
+    //    if (cursor.TryGotoNext(MoveType.After,
+    //        i => i.MatchCallvirt(typeof(FSprite).GetMethod("set_color"))))
+    //    {
+    //        // Load 'this' and RoomCamera onto the stack.
+    //        cursor.Emit(OpCodes.Ldarg_0);
+    //        cursor.Emit(OpCodes.Ldarg_2);
 
-            cursor.EmitDelegate<Func<Color, VoidSpawnGraphics, RoomCamera, Color>>((origColor, self, rCam) =>
-            {
-                if (rCam.room.game.IsStorySession &&
-                    rCam.room.game.GetStorySession.saveStateNumber == Plugin.BeaconName)
-                {
-                    if (self.dayLightMode)
-                    {
-                        return Plugin.SaturatedRose;
-                    }
-                    return Color.Lerp(Plugin.SaturatedRose, Plugin.Rose, Mathf.InverseLerp(0.3f, 0.9f, self.darkness));
-                }
-                return origColor;
-            });
-        }
-        else
-        {
-            Debug.LogError("ILHook: Failed to find the glow sprite color set call in VoidSpawnGraphics.ApplyPalette.");
-        }
-    }
+    //        cursor.EmitDelegate<Func<Color, VoidSpawnGraphics, RoomCamera, Color>>((origColor, self, rCam) =>
+    //        {
+    //            if (rCam.room.game.IsStorySession &&
+    //                rCam.room.game.GetStorySession.saveStateNumber == Plugin.BeaconName)
+    //            {
+    //                if (self.dayLightMode)
+    //                {
+    //                    return Plugin.SaturatedRose;
+    //                }
+    //                return Color.Lerp(Plugin.SaturatedRose, Plugin.Rose, Mathf.InverseLerp(0.3f, 0.9f, self.darkness));
+    //            }
+    //            return origColor;
+    //        });
+    //    }
+    //    else
+    //    {
+    //        Debug.LogError("ILHook: Failed to find the glow sprite color set call in VoidSpawnGraphics.ApplyPalette.");
+    //    }
+    //}
 
-    private static void VoidSpawnGraphics_DrawSprites_IL(ILContext il)
-    {
-        var cursor = new ILCursor(il);
+    //private static void VoidSpawnGraphics_DrawSprites_IL(ILContext il)
+    //{
+    //    var cursor = new ILCursor(il);
 
-        ConstructorInfo colorCtor = typeof(Color).GetConstructor(new Type[] { typeof(float), typeof(float), typeof(float), typeof(float) });
-        if (colorCtor == null)
-        {
-            Debug.LogError("ILHook: Could not find the Color.");
-            return;
-        }
+    //    ConstructorInfo colorCtor = typeof(Color).GetConstructor(new Type[] { typeof(float), typeof(float), typeof(float), typeof(float) });
+    //    if (colorCtor == null)
+    //    {
+    //        Debug.LogError("ILHook: Could not find the Color.");
+    //        return;
+    //    }
 
-        while (cursor.TryGotoNext(MoveType.After, i => i.MatchNewobj(colorCtor)))
-        {
-            // Load 'this' and RoomCamera onto the stack.
-            cursor.Emit(OpCodes.Ldarg_0);
-            cursor.Emit(OpCodes.Ldarg_2);
+    //    while (cursor.TryGotoNext(MoveType.After, i => i.MatchNewobj(colorCtor)))
+    //    {
+    //        // Load 'this' and RoomCamera onto the stack.
+    //        cursor.Emit(OpCodes.Ldarg_0);
+    //        cursor.Emit(OpCodes.Ldarg_2);
 
-            cursor.EmitDelegate<Func<Color, VoidSpawnGraphics, RoomCamera, Color>>((origColor, self, rCam) =>
-            {
-                if (rCam.room.game.IsStorySession &&
-                    rCam.room.game.GetStorySession.saveStateNumber == Plugin.BeaconName)
-                {
-                    return Plugin.Rose;
-                }
-                return origColor;
-            });
-        }
-    }
+    //        cursor.EmitDelegate<Func<Color, VoidSpawnGraphics, RoomCamera, Color>>((origColor, self, rCam) =>
+    //        {
+    //            if (rCam.room.game.IsStorySession &&
+    //                rCam.room.game.GetStorySession.saveStateNumber == Plugin.BeaconName)
+    //            {
+    //                return Plugin.Rose;
+    //            }
+    //            return origColor;
+    //        });
+    //    }
+    //}
 
     #endregion
 }

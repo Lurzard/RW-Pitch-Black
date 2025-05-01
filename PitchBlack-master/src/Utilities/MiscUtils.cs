@@ -8,6 +8,7 @@ using Watcher;
 using System;
 using System.Security.Cryptography.X509Certificates;
 using IL.Menu.Remix.MixedUI;
+using System.Globalization;
 
 namespace PitchBlack;
 
@@ -314,5 +315,16 @@ public static class MiscUtils
                 self.rippleDeathIntensity -= 0.002f;
             }
         }
+    }
+    public static string QualiaSymbolSprite(bool small, float level)
+    {
+        double num = Math.Round((double)(level * 2f), MidpointRounding.AwayFromZero) / 2.0;
+        return (small ? "smallQualia" : "qualia") + num.ToString("#.0", CultureInfo.InvariantCulture);
+    }
+
+    public static string SidewaysSymbolSprite(bool small, float level)
+    {
+        double num = Math.Round((double)(level * 2f), MidpointRounding.AwayFromZero) / 2.0;
+        return (small ? "smallSideways" : "sideways") + num.ToString("#.0", CultureInfo.InvariantCulture);
     }
 }

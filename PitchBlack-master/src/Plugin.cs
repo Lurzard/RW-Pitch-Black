@@ -62,8 +62,6 @@ class Plugin : BaseUnityPlugin
     // NOTE: indev, mess with values for testing
     public static bool canIDoThanatosisYet = true;
     public static float qualiaLevel = 1f;
-    //public static float minQualiaLevel;
-    //public static float maxQualiaLevel;
 
     // Rotund World stuff
     internal static bool RotundWorldEnabled => _rotundWorldEnabled; //for a single check in BeaconHooks' Player.Update hook
