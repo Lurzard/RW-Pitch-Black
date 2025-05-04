@@ -120,6 +120,20 @@ public class DevHooks
                 self.AddObject(new PBMeltLights(self.roomSettings.effects[num], self));
             }
         }
+        //for (int num9 = 1; num9 <= 2; num9++)
+        // {
+        //    int num10 = 0;
+        //    if (self.roomSettings.placedObjects[num10].type == PBPlacedObjectType.DreamerSpot && self.game.IsStorySession && self.game.StoryCharacter == Plugin.BeaconName)
+        //     {
+        //        GhostWorldPresence ghostWorldPresence = null;
+        //        if (ghostWorldPresence == null)
+        //        {
+        //            ghostWorldPresence = new GhostWorldPresence(self.world, PBGhostID.Dreamer);
+        //            ghostWorldPresence.ghostRoom = self.abstractRoom;
+        //        }
+        //        self.AddObject(new Dreamer(self, self.roomSettings.placedObjects[num10], ghostWorldPresence));
+        //    }
+        // }
     }
     // Adds to PitchBlack dev effects catagory
     private static RoomSettingsPage.DevEffectsCategories RoomSettingsPage_DevEffectGetCategoryFromEffectType(On.DevInterface.RoomSettingsPage.orig_DevEffectGetCategoryFromEffectType orig, RoomSettingsPage self, RoomSettings.RoomEffect.Type type)

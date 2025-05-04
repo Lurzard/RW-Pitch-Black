@@ -10,7 +10,6 @@ namespace PitchBlack;
 
 // TODO:
 // Spawning in room (through DreamerSpot object)
-// 
 
 public class Dreamer : Ghost
 {

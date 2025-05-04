@@ -81,17 +81,13 @@ class Plugin : BaseUnityPlugin
             //BreathableWater.Register();
             //TeleportWater.Register();
 
-            // These needed clarification
-            Fisobs.Core.Content.Register(new RotRatCritob());
-            Fisobs.Core.Content.Register(new FireGrubCritob());
-            Fisobs.Core.Content.Register(new LMLLCritob());
-            Fisobs.Core.Content.Register(new NightTerrorCritob());
-            Fisobs.Core.Content.Register(new ScholarScavCritob());
-            Fisobs.Core.Content.Register(new UmbraMaskFisob());
-            PBSoundID.RegisterValues();
-            PBAbstractObjectType.RegisterValues();
-            PBGhostID.RegisterValues();
-            PBPlacedObjectType.RegisterValues();
+            // These error if any namespace uses PitchBlack.Content!!
+            Content.Register(new RotRatCritob());
+            Content.Register(new FireGrubCritob());
+            Content.Register(new LMLLCritob());
+            Content.Register(new NightTerrorCritob());
+            Content.Register(new ScholarScavCritob());
+            Content.Register(new UmbraMaskFisob());
         }
         catch (Exception err)
         {
@@ -123,7 +119,6 @@ class Plugin : BaseUnityPlugin
         MenuHooks.Apply();
         SyncMenuRegion.Apply();
         CreatureEdits.Apply();
-        EchoHooks.Apply();
         JollyMenuHooks.Apply();
         ScugGraphics.Apply();
         MoonDialogue.Apply();
@@ -228,7 +223,6 @@ class Plugin : BaseUnityPlugin
                 throw err;
             }
             #endregion
-
             try
             {
                 FishobsNoWork();
@@ -238,6 +232,12 @@ class Plugin : BaseUnityPlugin
                 Debug.Log($"Pitch Black error\n{err}");
                 logger.LogDebug($"Pitch Black error\n{err}");
             }
+            // Register non-sanctioned PBEnums
+            PBSoundID.RegisterValues();
+            PBAbstractObjectType.RegisterValues();
+            PBGhostID.RegisterValues();
+            PBPlacedObjectType.RegisterValues();
+
             if (!Futile.atlasManager.DoesContainAtlas("lmllspr"))
                 Futile.atlasManager.LoadAtlas("atlases/lmllspr");
             Futile.atlasManager.LoadAtlas("atlases/photosplt");
@@ -254,7 +254,6 @@ class Plugin : BaseUnityPlugin
             //Futile.atlasManager.LoadAtlas("atlases/FaceThanatosis");
             Futile.atlasManager.LoadAtlas("atlases/QualiaSymbols");
             Futile.atlasManager.LoadAtlas("atlases/SidewaysSymbols");
-            self.Shaders["PurpleEchoSkin"] = FShader.CreateShader("purpleechoskin", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/purpleecho")).LoadAsset<Shader>("Assets/shaders 1.9.03/PurpleEchoSkin.shader"));
             self.Shaders["Red"] = FShader.CreateShader("red", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath(path: "assetbundles/red")).LoadAsset<Shader>("Assets/red.shader"));
             self.Shaders["Sunrays"] = FShader.CreateShader("sunrays", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/sunrays")).LoadAsset<Shader>("Assets/sunrays.shader"));
             self.Shaders["DreamSpawnBody"] = FShader.CreateShader("dreamspawnbody", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/dreamspawnbody")).LoadAsset<Shader>("Assets/Shaders/DreamSpawnBody.shader"));

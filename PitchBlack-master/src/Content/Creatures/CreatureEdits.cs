@@ -20,20 +20,25 @@ internal class CreatureEdits
     //CWTs
     static ConditionalWeakTable<CicadaGraphics, CicadaCWT> cicadaCWT = new ConditionalWeakTable<CicadaGraphics, CicadaCWT>();
 
+    // Used to make Dreamer albino, where it is applicable
+    public static Color white = Color.white;
+
     public static void Apply()
     {
-        //Cicadas
+        // Cicadas
         On.CicadaGraphics.InitiateSprites += CicadaGraphics_InitiateSprites;
         On.CicadaGraphics.DrawSprites += CicadaGraphics_DrawSprites;
         On.CicadaGraphics.AddToContainer += CicadaGraphics_AddToContainer;
         On.CicadaGraphics.ctor += CicadaGraphics_ctor;
-        //Guardians
-        On.TempleGuardGraphics.InitiateSprites += TempleGuardGraphics_InitiateSprites;
-        On.TempleGuardGraphics.DrawSprites += TempleGuardGraphics_DrawSprites;
-        On.TempleGuardGraphics.Arm.ApplyPalette += Arm_ApplyPalette;
-        On.TempleGuardGraphics.Halo.InitiateSprites += Halo_InitiateSprites;
-        On.TempleGuardGraphics.Halo.GlyphSwapper.InitiateSprites += GlyphSwapper_InitiateSprites;
-        //VoidSpawn (Hooks for DreamSpawn type)
+
+        //Guardians (Temp)
+        //On.TempleGuardGraphics.InitiateSprites += TempleGuardGraphics_InitiateSprites;
+        //On.TempleGuardGraphics.DrawSprites += TempleGuardGraphics_DrawSprites;
+        //On.TempleGuardGraphics.Arm.ApplyPalette += Arm_ApplyPalette;
+        //On.TempleGuardGraphics.Halo.InitiateSprites += Halo_InitiateSprites;
+        //On.TempleGuardGraphics.Halo.GlyphSwapper.InitiateSprites += GlyphSwapper_InitiateSprites;
+
+        // VoidSpawn (DreamSpawn family)
         On.VoidSpawn.GenerateBody += VoidSpawn_GenerateBody;
         On.VoidSpawnGraphics.ctor += VoidSpawnGraphics_ctor;
         On.VoidSpawnGraphics.InitiateSprites += VoidSpawnGraphics_InitiateSprites;
@@ -41,8 +46,160 @@ internal class CreatureEdits
         On.VoidSpawnGraphics.UpdateGlowSpriteColor += VoidSpawnGraphics_UpdateGlowSpriteColor;
         On.VoidSpawnGraphics.Antenna.InitiateSprites += Antenna_InitiateSprites;
         On.VoidSpawnGraphics.Antenna.DrawSprites += Antenna_DrawSprites;
+
+        // Echoes (Dreamer ID)
+        On.GhostWorldPresence.ctor_World_GhostID_int += GhostWorldPresence_ctor_World_GhostID_int;
+        On.Ghost.ctor += Ghost_ctor;
+        On.Ghost.InitiateSprites += Ghost_InitiateSprites;
+        On.GoldFlakes.GoldFlake.DrawSprites += GoldFlake_DrawSprites;
+        // These are mainly for switching out blackColor
+        On.Ghost.ApplyPalette += Ghost_ApplyPalette;
+        On.Ghost.Chains.DrawSprites += Chains_DrawSprites;
+        On.Ghost.Rags.DrawSprites += Rags_DrawSprites;
+        On.Ghost.Rags.InitiateSprites += Rags_InitiateSprites;
+    }
+    #region Dreamer
+    // NOTES -Lur
+    // Attempting to make the echo colored White instead of black (Albino) and RippleGold instead of Gold. Worked out, had to use new edited shaders:
+    // DreamerSkin is an edited version of GhostSkin to change palette blackColor to white and hardcoded gold color to ripplegold
+    // DreamerRag is an edited version of TentaclePlant to change palette blackColor to white (ripplegold lerping is added in-code)
+    private static void Rags_InitiateSprites(On.Ghost.Rags.orig_InitiateSprites orig, Ghost.Rags self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
+    {
+        orig(self, sLeaser, rCam);
+        if (MiscUtils.Dreamer(self.ghost))
+        {
+            for (int i = 0; i < self.segments.Length; i++)
+            {
+                sLeaser.sprites[self.firstSprite + i].shader = rCam.room.game.rainWorld.Shaders["DreamerRag"];
+            }
+        }
     }
 
+    private static void Rags_DrawSprites(On.Ghost.Rags.orig_DrawSprites orig, Ghost.Rags self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, UnityEngine.Vector2 camPos)
+    {
+        orig(self, sLeaser, rCam, timeStacker, camPos);
+        // If Dreamer, replace color lerping
+        if (MiscUtils.Dreamer(self.ghost))
+        {
+            for (int i = 0; i < self.segments.Length; i++)
+            {
+                UnityEngine.Vector2 a = self.AttachPos(i, timeStacker);
+                float num2 = 0f;
+                for (int j = 0; j < self.segments[i].GetLength(0); j++)
+                {
+                    UnityEngine.Vector2 vector = UnityEngine.Vector2.Lerp(self.segments[i][j, 1], self.segments[i][j, 0], timeStacker);
+                    UnityEngine.Vector2 normalized = (a - vector).normalized;
+                    float num4 = 0.35f + 0.65f * Custom.BackwardsSCurve(Mathf.Pow(Mathf.Abs(UnityEngine.Vector2.Dot(UnityEngine.Vector3.Slerp(self.segments[i][j, 5], self.segments[i][j, 4], timeStacker), Custom.DegToVec(45f + Custom.VecToDeg(normalized)))), 2f), 0.5f);
+                    (sLeaser.sprites[self.firstSprite + i] as TriangleMesh).verticeColors[j * 4] = Color.Lerp(white, self.ghost.goldColor, (num4 + num2) / 2f);
+                    (sLeaser.sprites[self.firstSprite + i] as TriangleMesh).verticeColors[j * 4 + 1] = Color.Lerp(white, self.ghost.goldColor, (num4 + num2) / 2f);
+                    (sLeaser.sprites[self.firstSprite + i] as TriangleMesh).verticeColors[j * 4 + 2] = Color.Lerp(white, self.ghost.goldColor, num4);
+                    (sLeaser.sprites[self.firstSprite + i] as TriangleMesh).verticeColors[j * 4 + 3] = Color.Lerp(white, self.ghost.goldColor, num4);
+                }
+            }
+        }
+    }
+
+    private static void Chains_DrawSprites(On.Ghost.Chains.orig_DrawSprites orig, Ghost.Chains self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, UnityEngine.Vector2 camPos)
+    {
+        orig(self, sLeaser, rCam, timeStacker, camPos);
+        // If Dreamer, replace color lerping
+        if (MiscUtils.Dreamer(self.ghost))
+        {
+            for (int i = 0; i < self.segments.Length; i++)
+            {
+                UnityEngine.Vector2 vector = self.AttachPos(i, timeStacker);
+                for (int j = 0; j < self.segments[i].GetLength(0); j++)
+                {
+                    UnityEngine.Vector2 vector2 = UnityEngine.Vector2.Lerp(self.segments[i][j, 1], self.segments[i][j, 0], timeStacker);
+                    if (self.segments[i][j, 4].y == 0.2f)
+                    {
+                        sLeaser.sprites[self.firstSprite + self.firstSpriteOfChains[i] + j * 2].color = Color.Lerp(white, self.ghost.goldColor, 0.65f);
+                    }
+                    else
+                    {
+                        float ang = Mathf.Sin(Mathf.Lerp(self.segments[i][j, 5].y, self.segments[i][j, 5].x, timeStacker)) * 360f / 3.1415927f;
+                        float num = Mathf.Abs(UnityEngine.Vector2.Dot(Custom.DegToVec(ang), Custom.DirVec(vector, vector2)));
+                        num = Custom.BackwardsSCurve(num, 0.3f);
+                        sLeaser.sprites[self.firstSprite + self.firstSpriteOfChains[i] + j * 2].color = Color.Lerp(white, self.ghost.goldColor, 0.65f + 0.1f * Mathf.Sin(num * 3.1415927f * 2f));
+                        sLeaser.sprites[self.firstSprite + self.firstSpriteOfChains[i] + j * 2 + 1].color = Color.Lerp(white, self.ghost.goldColor, 0.1f + 0.9f * num);
+                    }
+                }
+            }
+        }
+    }
+
+    private static void Ghost_ApplyPalette(On.Ghost.orig_ApplyPalette orig, Ghost self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
+    {
+        orig(self, sLeaser, rCam, palette);
+        // If Dreamer, Color the normally palette blackColor sprites to white
+        if (MiscUtils.Dreamer(self))
+        {
+            self.blackColor = white;
+            sLeaser.sprites[self.NeckConnectorSprite].color = self.blackColor;
+            sLeaser.sprites[self.ButtockSprite(0)].color = self.blackColor;
+            sLeaser.sprites[self.ButtockSprite(1)].color = self.blackColor;
+            for (int i = 0; i < (sLeaser.sprites[self.BodyMeshSprite] as TriangleMesh).verticeColors.Length; i++)
+            {
+                (sLeaser.sprites[self.BodyMeshSprite] as TriangleMesh).verticeColors[i] = self.blackColor;
+            }
+            for (int j = 0; j < self.legs.GetLength(0); j++)
+            {
+                for (int k = 0; k < (sLeaser.sprites[self.ThightSprite(j)] as TriangleMesh).verticeColors.Length; k++)
+                {
+                    (sLeaser.sprites[self.ThightSprite(j)] as TriangleMesh).verticeColors[k] = self.blackColor;
+                }
+            }
+        }
+    }
+
+    private static void Ghost_ctor(On.Ghost.orig_ctor orig, Ghost self, Room room, PlacedObject placedObject, GhostWorldPresence worldGhost)
+    {
+        orig(self, room, placedObject, worldGhost);
+        // Changes the gold to purple for all cosmetics if the ID is Dreamer
+        if (MiscUtils.Dreamer(self))
+        {
+            self.goldColor = RainWorld.RippleGold;
+        }
+    }
+    private static void Ghost_InitiateSprites(On.Ghost.orig_InitiateSprites orig, Ghost self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
+    {
+        orig(self, sLeaser, rCam);
+        if (MiscUtils.Dreamer(self))
+        {
+            sLeaser.sprites[self.HeadMeshSprite].shader = rCam.game.rainWorld.Shaders["DreamerSkin"];
+            for (int i = 0; i < self.legs.GetLength(0); i++)
+            {
+                sLeaser.sprites[self.ThightSprite(i)].shader = rCam.game.rainWorld.Shaders["DreamerSkin"];
+                sLeaser.sprites[self.LowerLegSprite(i)].shader = rCam.game.rainWorld.Shaders["DreamerSkin"];
+            }
+        }
+    }
+    private static void GoldFlake_DrawSprites(On.GoldFlakes.GoldFlake.orig_DrawSprites orig, GoldFlakes.GoldFlake self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, UnityEngine.Vector2 camPos)
+    {
+        orig(self, sLeaser, rCam, timeStacker, camPos);
+        // Checks campaign instead, Changes the hardcoded color for this effect
+        if (MiscUtils.IsBeaconOrPhoto(rCam.room.game.session))
+        {
+            float f = Mathf.InverseLerp(-1f, 1f, UnityEngine.Vector2.Dot(RWCustom.Custom.DegToVec(45f), RWCustom.Custom.DegToVec(Mathf.Lerp(self.lastYRot, self.yRot, timeStacker) * 57.29578f + Mathf.Lerp(self.lastRot, self.rot, timeStacker))));
+            float ghostMode = rCam.ghostMode;
+            Color c = Custom.HSL2RGB(0.68f, 0.97f, Mathf.Lerp(0.65f, 0f, ghostMode));
+            Color d = Custom.HSL2RGB(0.68f, Mathf.Lerp(1f, 0.97f, ghostMode), Mathf.Lerp(1f, 0.65f, ghostMode));
+            sLeaser.sprites[0].color = Color.Lerp(c, d, f);
+        }
+    }
+    private static void GhostWorldPresence_ctor_World_GhostID_int(On.GhostWorldPresence.orig_ctor_World_GhostID_int orig, GhostWorldPresence self, World world, GhostWorldPresence.GhostID ghostID, int spinningTopSpawnId)
+    {
+        orig(self, world, ghostID, spinningTopSpawnId);
+
+        // This is also used to determine the room Echoes are placed in, so we can easily move them into VV
+
+        if (ghostID == PBGhostID.Dreamer)
+        {
+            // Placeholder
+            self.songName = "ELSE_LXIX";
+        }
+    }
+    #endregion
     #region DreamSpawn
     private static void Antenna_DrawSprites(On.VoidSpawnGraphics.Antenna.orig_DrawSprites orig, VoidSpawnGraphics.Antenna self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
     {

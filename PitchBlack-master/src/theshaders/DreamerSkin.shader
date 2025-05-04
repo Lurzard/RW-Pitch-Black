@@ -113,7 +113,7 @@ if(texCol.x > 0)
 glimmer = tex2D(_NoiseTex2, half2(texCol.x, _RAIN*0.02 + i.clr.y*0.2 + i.clr.w*0.3)).x;
 glimmer = max(0, glimmer - i.clr.z);
 
-return lerp(tex2D(_PalTex, half2(2.5/32.0, 7.5/8.0)), half4(0.335, 0.31, 0.87, 1), glimmer);
+return lerp(fixed4(1,1,1,1), half4(0.335, 0.31, 0.87, 1), glimmer);
 
 return half4(glimmer, 0, 0, 1);
 
