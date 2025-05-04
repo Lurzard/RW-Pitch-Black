@@ -47,7 +47,7 @@ internal class CreatureEdits
     private static void Antenna_DrawSprites(On.VoidSpawnGraphics.Antenna.orig_DrawSprites orig, VoidSpawnGraphics.Antenna self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
     {
         orig(self, sLeaser, rCam, timeStacker, camPos);
-        if (self.vsGraphics.spawn.variant == SpawnType.DreamSpawn)
+        if (MiscUtils.IsDreamSpawn(self.vsGraphics.spawn))
         {
             sLeaser.sprites[self.firstSprite].shader = rCam.game.rainWorld.Shaders["DreamSpawnBody"];
         }
@@ -56,7 +56,7 @@ internal class CreatureEdits
     private static void Antenna_InitiateSprites(On.VoidSpawnGraphics.Antenna.orig_InitiateSprites orig, VoidSpawnGraphics.Antenna self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
     {
         orig(self, sLeaser, rCam);
-        if (self.vsGraphics.spawn.variant == SpawnType.DreamSpawn)
+        if (MiscUtils.IsDreamSpawn(self.vsGraphics.spawn))
         {
             sLeaser.sprites[self.firstSprite].shader = rCam.game.rainWorld.Shaders["DreamSpawnBody"];
         }
@@ -65,7 +65,7 @@ internal class CreatureEdits
     private static void VoidSpawnGraphics_UpdateGlowSpriteColor(On.VoidSpawnGraphics.orig_UpdateGlowSpriteColor orig, VoidSpawnGraphics self, RoomCamera.SpriteLeaser sLeaser)
     {
         orig(self, sLeaser);
-        if (self.spawn.variant == SpawnType.DreamSpawn)
+        if (MiscUtils.IsDreamSpawn(self.spawn))
         {
             if (self.dayLightMode)
             {
@@ -79,7 +79,7 @@ internal class CreatureEdits
     private static void VoidSpawnGraphics_DrawSprites(On.VoidSpawnGraphics.orig_DrawSprites orig, VoidSpawnGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
     {
         orig(self, sLeaser, rCam, timeStacker, camPos);
-        if (self.spawn.variant == SpawnType.DreamSpawn)
+        if (MiscUtils.IsDreamSpawn(self.spawn))
         {
             if (!self.spawn.culled)
             {
@@ -88,10 +88,6 @@ internal class CreatureEdits
                 {
                     sLeaser.sprites[self.EffectSprite].shader = rCam.game.rainWorld.Shaders["GoldenGlow"];
                 }
-                for (int k = 0; k < (sLeaser.sprites[self.BodyMeshSprite] as TriangleMesh).verticeColors.Length; k++)
-                {
-                    (sLeaser.sprites[self.BodyMeshSprite] as TriangleMesh).verticeColors[k] = new Color(self.meshColor.r, self.meshColor.g, self.meshColor.b, self.AlphaFromGlowDist((sLeaser.sprites[self.BodyMeshSprite] as TriangleMesh).vertices[k], self.glowPos - camPos));
-                }
             }
         }
     }
@@ -99,7 +95,7 @@ internal class CreatureEdits
     private static void VoidSpawnGraphics_InitiateSprites(On.VoidSpawnGraphics.orig_InitiateSprites orig, VoidSpawnGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
     {
         orig(self, sLeaser, rCam);
-        if (self.spawn.variant == SpawnType.DreamSpawn)
+        if (MiscUtils.IsDreamSpawn(self.spawn))
         {
             sLeaser.sprites[self.BodyMeshSprite].shader = rCam.game.rainWorld.Shaders["DreamSpawnBody"];
             if (self.hasOwnGoldEffect)
@@ -142,7 +138,6 @@ internal class CreatureEdits
         {
             length = Mathf.Lerp(1f, 6f, UnityEngine.Random.value);
         }
-
         else if (self.variant == SpawnType.DreamBiter)
         {
             sizeMult = UnityEngine.Random.Range(0.25f, 0.75f);

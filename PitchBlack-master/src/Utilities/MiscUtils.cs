@@ -237,7 +237,7 @@ public static class MiscUtils
             voidSpawn.timeUntilFadeout = Random.Range(400, 1200);
         }
         voidSpawn.PlaceInRoom(room);
-        voidSpawn.ChangeRippleLayer(0, true);
+        //voidSpawn.ChangeRippleLayer(0, true);
     }
     public static void SpawnOscillatingRipple(Player self, bool fromThanatosis)
     {
@@ -326,5 +326,10 @@ public static class MiscUtils
     {
         double num = Math.Round((double)(level * 2f), MidpointRounding.AwayFromZero) / 2.0;
         return (small ? "smallSideways" : "sideways") + num.ToString("#.0", CultureInfo.InvariantCulture);
+    }
+
+    public static bool Dreamer(Ghost ghost)
+    {
+        return ghost.worldGhost.ghostID == PBGhostID.Dreamer;
     }
 }

@@ -8,7 +8,7 @@ using System;
 using HUD;
 using JetBrains.Annotations;
 using System.Collections.Generic;
-using IL.Watcher;
+using Watcher;
 using System.Data.Common;
 using System.ComponentModel;
 
@@ -651,7 +651,7 @@ public static class BeaconHooks
                 // Increase time
                 if (beaconCWT.thanatosisCounter < beaconCWT.inThanatosisLimit)
                 {
-                        beaconCWT.thanatosisCounter++;
+                    beaconCWT.thanatosisCounter++;
                     if (beaconCWT.thanatosisLerp < 0.92f)
                     {
                         beaconCWT.thanatosisLerp += 0.01f;

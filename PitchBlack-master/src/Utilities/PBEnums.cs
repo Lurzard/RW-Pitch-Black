@@ -14,7 +14,6 @@ public static class PBExtEnums
         public static Room.RippleSpawnSource Oscillation = new Room.RippleSpawnSource("Oscillation", true);
         public static Room.RippleSpawnSource Dreamer = new Room.RippleSpawnSource("Dreamer", true);
     }
-
     public static class SpawnType
     {
         public static VoidSpawn.SpawnType DreamSpawn = new("DreamSpawn", true);
@@ -29,6 +28,41 @@ public static class PBExtEnums
         public static DeathPersistentSaveData.Tutorial Thanatosis = new("Thanatosis", true);
     }
 }
+
+public class PBPlacedObjectType
+{
+    public static PlacedObject.Type DreamerSpot;
+    public static void RegisterValues()
+    {
+        DreamerSpot = new PlacedObject.Type("DreamerSpot", true);
+    }
+    public static void UnregisterValues()
+    {
+        if (DreamerSpot != null)
+        {
+            DreamerSpot.Unregister();
+            DreamerSpot = null;
+        }
+    }
+}
+
+public class PBGhostID
+{
+    public static GhostWorldPresence.GhostID Dreamer;
+    public static void RegisterValues()
+    {
+        Dreamer = new GhostWorldPresence.GhostID("Dreamer", true);
+    }
+    public static void UnregisterValues()
+    {
+        if (Dreamer != null)
+        {
+            Dreamer.Unregister();
+            Dreamer = null;
+        }
+    }
+}
+
 public class PBAbstractObjectType
 {
     public static AbstractPhysicalObject.AbstractObjectType DreamSpawn;

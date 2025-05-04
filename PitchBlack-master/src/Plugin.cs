@@ -90,6 +90,8 @@ class Plugin : BaseUnityPlugin
             Fisobs.Core.Content.Register(new UmbraMaskFisob());
             PBSoundID.RegisterValues();
             PBAbstractObjectType.RegisterValues();
+            PBGhostID.RegisterValues();
+            PBPlacedObjectType.RegisterValues();
         }
         catch (Exception err)
         {
@@ -155,9 +157,9 @@ class Plugin : BaseUnityPlugin
         orig(self, slugcat);
         if (slugcat == BeaconName)
         {
-            self.rippleLevel = 4.5f;
-            self.minimumRippleLevel = 4.5f;
-            self.maximumRippleLevel = 4.5f;
+            self.rippleLevel = 1f;
+            self.minimumRippleLevel = 1f;
+            self.maximumRippleLevel = 5f;
         }
     }
 
@@ -257,6 +259,8 @@ class Plugin : BaseUnityPlugin
             self.Shaders["Sunrays"] = FShader.CreateShader("sunrays", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/sunrays")).LoadAsset<Shader>("Assets/sunrays.shader"));
             self.Shaders["DreamSpawnBody"] = FShader.CreateShader("dreamspawnbody", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/dreamspawnbody")).LoadAsset<Shader>("Assets/Shaders/DreamSpawnBody.shader"));
             self.Shaders["BlackGlow"] = FShader.CreateShader("blackglow", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/blackglow")).LoadAsset<Shader>("Assets/Shaders/BlackGlow.shader"));
+            self.Shaders["DreamerSkin"] = FShader.CreateShader("dreamerskin", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/dreamerskin")).LoadAsset<Shader>("Assets/Shaders/DreamerSkin.shader"));
+            self.Shaders["DreamerRag"] = FShader.CreateShader("dreamerrags", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/dreamerrags")).LoadAsset<Shader>("Assets/Shaders/DreamerRag.shader"));
             init = true;
             //RiftCosmetic.Register(self);
         }
@@ -294,6 +298,8 @@ class Plugin : BaseUnityPlugin
                 PBEndGameID.UnregisterValues();
                 PBSceneID.UnregisterValues();
                 PBAbstractObjectType.UnregisterValues();
+                PBGhostID.UnregisterValues();
+                PBPlacedObjectType.UnregisterValues();
                 break;
             }
         }
