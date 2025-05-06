@@ -136,7 +136,10 @@ class Plugin : BaseUnityPlugin
         orig(self);
         if (self.type == PBAbstractObjectType.DreamSpawn)
         {
-            self.realizedObject = new VoidSpawn(self, (self.Room.realizedRoom != null) ? self.Room.realizedRoom.roomSettings.GetEffectAmount(RoomSettings.RoomEffect.Type.VoidMelt) : 0f, self.Room.realizedRoom != null && VoidSpawnKeeper.DayLightMode(self.Room.realizedRoom), PBEnums.SpawnType.DreamSpawn);
+            self.realizedObject = new VoidSpawn(self,
+                (self.Room.realizedRoom != null) ? self.Room.realizedRoom.roomSettings.GetEffectAmount(RoomSettings.RoomEffect.Type.VoidMelt) : 0f,
+                self.Room.realizedRoom != null && VoidSpawnKeeper.DayLightMode(self.Room.realizedRoom),
+                PBEnums.DreamSpawn.SpawnType.DreamSpawn);
             return;
         }
     }

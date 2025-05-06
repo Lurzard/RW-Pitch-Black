@@ -272,16 +272,19 @@ internal class CreatureEdits
         List<BodyChunk> list = new List<BodyChunk>();
         List<PhysicalObject.BodyChunkConnection> list2 = new List<PhysicalObject.BodyChunkConnection>();
         float sizeMult = 1f;
-        if (self.variant == VoidSpawn.SpawnType.RippleAmoeba || self.variant == SpawnType.DreamAmoeba)
+        if (self.variant == VoidSpawn.SpawnType.RippleAmoeba
+            || self.variant == DreamSpawn.SpawnType.DreamAmoeba)
         {
             sizeMult = 2f;
             segments = UnityEngine.Random.Range(5, 8);
         }
-        else if (self.variant == VoidSpawn.SpawnType.RippleJelly || self.variant == SpawnType.DreamJelly)
+        else if (self.variant == VoidSpawn.SpawnType.RippleJelly
+            || self.variant == DreamSpawn.SpawnType.DreamJelly)
         {
             segments = UnityEngine.Random.Range(3, 4);
         }
-        else if (self.variant == VoidSpawn.SpawnType.RippleNoodle || self.variant == SpawnType.DreamNoodle)
+        else if (self.variant == VoidSpawn.SpawnType.RippleNoodle
+            || self.variant == DreamSpawn.SpawnType.DreamNoodle)
         {
             sizeMult = 0.5f;
             segments = UnityEngine.Random.Range(6, 10);
@@ -295,7 +298,7 @@ internal class CreatureEdits
         {
             length = Mathf.Lerp(1f, 6f, UnityEngine.Random.value);
         }
-        else if (self.variant == SpawnType.DreamBiter)
+        else if (self.variant == DreamSpawn.SpawnType.DreamBiter)
         {
             sizeMult = UnityEngine.Random.Range(0.25f, 0.75f);
             length = Mathf.Lerp(1f, 6f, UnityEngine.Random.value);
@@ -328,7 +331,7 @@ internal class CreatureEdits
         orig(self, owner);
         float thickness = Mathf.Lerp(self.spawn.sizeFac, 0.5f + 0.5f * UnityEngine.Random.value, UnityEngine.Random.value);
         int segments = UnityEngine.Random.Range(4, 8);
-        if (self.spawn.variant == SpawnType.DreamSpawn)
+        if (self.spawn.variant == DreamSpawn.SpawnType.DreamSpawn)
         {
             // Taken from RippleAmoeba
             self.antennae.Add(new VoidSpawnGraphics.TailAntenna(self, self.totalSprites, segments, 12f * thickness, self.spawn.mainBody[self.spawn.mainBody.Length - 1].rad, 0f, 0.1f * thickness, 2, 2.2f));

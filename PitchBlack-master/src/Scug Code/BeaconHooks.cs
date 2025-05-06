@@ -644,7 +644,7 @@ public static class BeaconHooks
             if (beaconCWT.isDead)
             {
                 // (Should) spawn a DreamSpawn on you when you die -Lur (it doesn't for now for some reason..)
-                MiscUtils.MaterializeDreamSpawn(self.room, self.mainBodyChunk.pos, PBEnums.DreamSpawnSource.Death);
+                MiscUtils.MaterializeDreamSpawn(self.room, self.mainBodyChunk.pos, PBEnums.DreamSpawn.SpawnSource.Death);
 
                 // Input removing is done in IL_Player_checkInput;
                 beaconCWT.thanatosisCharge = Mathf.Min(beaconCWT.thanatosisCharge + 1f, beaconCWT.inThanatosisLimit);

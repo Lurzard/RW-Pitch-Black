@@ -14,19 +14,22 @@ public static class PBEnums
     {
         public static readonly SlugcatStats.Timeline Beacon = new("Beacon", false);
     }
-    public static class DreamSpawnSource
+    public static class DreamSpawn
     {
-        public static Room.RippleSpawnSource Death = new Room.RippleSpawnSource("Death", true);
-        public static Room.RippleSpawnSource Oscillation = new Room.RippleSpawnSource("Oscillation", true);
-        public static Room.RippleSpawnSource Dreamer = new Room.RippleSpawnSource("Dreamer", true);
-    }
-    public static class SpawnType
-    {
-        public static VoidSpawn.SpawnType DreamSpawn = new("DreamSpawn", true);
-        public static VoidSpawn.SpawnType DreamJelly = new("DreamJelly", true);
-        public static VoidSpawn.SpawnType DreamAmoeba = new("DreamAmoeba", true);
-        public static VoidSpawn.SpawnType DreamNoodle = new("DreamNoodle", true);
-        public static VoidSpawn.SpawnType DreamBiter = new("DreamBiter", true);
+        public static class SpawnSource
+        {
+            public static Room.RippleSpawnSource Death = new Room.RippleSpawnSource("Death", true);
+            public static Room.RippleSpawnSource Oscillation = new Room.RippleSpawnSource("Oscillation", true);
+            public static Room.RippleSpawnSource Dreamer = new Room.RippleSpawnSource("Dreamer", true);
+        }
+        public static class SpawnType
+        {
+            public static VoidSpawn.SpawnType DreamSpawn = new("DreamSpawn", true);
+            public static VoidSpawn.SpawnType DreamJelly = new("DreamJelly", true);
+            public static VoidSpawn.SpawnType DreamAmoeba = new("DreamAmoeba", true);
+            public static VoidSpawn.SpawnType DreamNoodle = new("DreamNoodle", true);
+            public static VoidSpawn.SpawnType DreamBiter = new("DreamBiter", true);
+        }
     }
     public static class Tutorial
     {

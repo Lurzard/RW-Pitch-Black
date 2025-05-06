@@ -173,11 +173,11 @@ public static class MiscUtils
     // Identifying DreamSpawn types
     public static bool IsDreamSpawn(VoidSpawn voidSpawn)
     {
-        if (voidSpawn.variant == PBEnums.SpawnType.DreamSpawn ||
-            voidSpawn.variant == PBEnums.SpawnType.DreamBiter ||
-            voidSpawn.variant == PBEnums.SpawnType.DreamNoodle ||
-            voidSpawn.variant == PBEnums.SpawnType.DreamAmoeba ||
-            voidSpawn.variant == PBEnums.SpawnType.DreamJelly)
+        if (voidSpawn.variant == PBEnums.DreamSpawn.SpawnType.DreamSpawn ||
+            voidSpawn.variant == PBEnums.DreamSpawn.SpawnType.DreamBiter ||
+            voidSpawn.variant == PBEnums.DreamSpawn.SpawnType.DreamNoodle ||
+            voidSpawn.variant == PBEnums.DreamSpawn.SpawnType.DreamAmoeba ||
+            voidSpawn.variant == PBEnums.DreamSpawn.SpawnType.DreamJelly)
         {
             return true;
         }
@@ -194,11 +194,11 @@ public static class MiscUtils
         {
             level = (room.game.session as StoryGameSession).saveState.deathPersistentSaveData.rippleLevel;
         }
-        if (source == PBEnums.DreamSpawnSource.Death)
+        if (source == PBEnums.DreamSpawn.SpawnSource.Death)
         {
             amountToSpawn = 1;
         }
-        if (source == PBEnums.DreamSpawnSource.Dreamer)
+        if (source == PBEnums.DreamSpawn.SpawnSource.Dreamer)
         {
             amountToSpawn = 50;
         }
@@ -215,18 +215,18 @@ public static class MiscUtils
             return;
         }
         // Determining type
-        VoidSpawn.SpawnType spawnType = PBEnums.SpawnType.DreamSpawn;
+        VoidSpawn.SpawnType spawnType = PBEnums.DreamSpawn.SpawnType.DreamSpawn;
         if (Random.Range(0, 10) >= 7)
         {
-            spawnType = PBEnums.SpawnType.DreamJelly;
+            spawnType = PBEnums.DreamSpawn.SpawnType.DreamJelly;
         }
         if (Random.Range(0, 10) >= 9)
         {
-            spawnType = PBEnums.SpawnType.DreamNoodle;
+            spawnType = PBEnums.DreamSpawn.SpawnType.DreamNoodle;
         }
         if (Random.value <= 0.02f)
         {
-            spawnType = PBEnums.SpawnType.DreamAmoeba;
+            spawnType = PBEnums.DreamSpawn.SpawnType.DreamAmoeba;
         }
         // Spawning it
         VoidSpawn voidSpawn = new VoidSpawn(new AbstractPhysicalObject(room.world, PBAbstractObjectType.DreamSpawn, null, room.GetWorldCoordinate(spawnPos), room.game.GetNewID()), room.roomSettings.GetEffectAmount(RoomSettings.RoomEffect.Type.VoidMelt), VoidSpawnKeeper.DayLightMode(room), spawnType);
