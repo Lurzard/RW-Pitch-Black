@@ -4,7 +4,7 @@ using RWCustom;
 using System.Runtime.CompilerServices;
 using System.Runtime.ExceptionServices;
 using System.Collections.Generic;
-using static PitchBlack.PBExtEnums;
+using static PitchBlack.PBEnums;
 
 namespace PitchBlack;
 

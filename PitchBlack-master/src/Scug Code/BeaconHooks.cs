@@ -77,7 +77,7 @@ public static class BeaconHooks
     private static void HUD_InitSinglePlayerHud(On.HUD.HUD.orig_InitSinglePlayerHud orig, HUD.HUD self, RoomCamera cam)
     {
         orig(self, cam);
-        if ((self.owner as Player).SlugCatClass == Plugin.BeaconName)
+        if ((self.owner as Player).SlugCatClass == PBEnums.SlugcatStatsName.Beacon)
         {
             self.AddPart(new ThanatosisMeter(self, self.fContainers[1]));
         }
@@ -126,9 +126,9 @@ public static class BeaconHooks
     private static SlugcatStats.Timeline SlugcatStats_SlugcatToTimeline(On.SlugcatStats.orig_SlugcatToTimeline orig, SlugcatStats.Name slugcat)
     {
         orig(slugcat);
-        if (slugcat == Plugin.BeaconName)
+        if (slugcat == PBEnums.SlugcatStatsName.Beacon)
         {
-            return Plugin.BeaconTime;
+            return PBEnums.Timeline.Beacon;
         }
         return orig(slugcat);
     }
@@ -411,7 +411,7 @@ public static class BeaconHooks
     }
     private static void Creature_Abstractize(On.Creature.orig_Abstractize orig, Creature self)
     {
-        if (self is Player player && player.slugcatStats?.name == Plugin.BeaconName)
+        if (self is Player player && player.slugcatStats?.name == PBEnums.SlugcatStatsName.Beacon)
         {
             DropAllFlares(player);
         }
@@ -445,7 +445,7 @@ public static class BeaconHooks
     {
         orig(self);
 
-        if (Plugin.BeaconName == self.slugcatStats.name)
+        if (PBEnums.SlugcatStatsName.Beacon == self.slugcatStats.name)
         {
             if (Player.AnimationIndex.Flip == self.animation)
                 self.jumpBoost *= 1f + 0.55f;
@@ -456,7 +456,7 @@ public static class BeaconHooks
     public static void BeaconTransmuteIntoFlashbang(On.Player.orig_SwallowObject orig, Player self, int grasp)
     {
         orig(self, grasp);
-        if (self.slugcatStats.name == Plugin.BeaconName && self.playerState.foodInStomach > 0 && self.objectInStomach.type == AbstractObjectType.Rock)
+        if (self.slugcatStats.name == PBEnums.SlugcatStatsName.Beacon && self.playerState.foodInStomach > 0 && self.objectInStomach.type == AbstractObjectType.Rock)
         {
             self.objectInStomach = new AbstractConsumable(self.room.world, AbstractObjectType.FlareBomb, null, self.abstractCreature.pos, self.room.game.GetNewID(), -1, -1, null);
             self.SubtractFood(1);
@@ -576,7 +576,7 @@ public static class BeaconHooks
     {
         // Also runs ThanatosisUpdate.
         ThanatosisUpdate(self);
-        if (self.SlugCatClass == Plugin.BeaconName)
+        if (self.SlugCatClass == PBEnums.SlugcatStatsName.Beacon)
         {
             if (Plugin.scugCWT.TryGetValue(self, out ScugCWT c) && c is BeaconCWT beaconCWT)
             {
@@ -644,7 +644,7 @@ public static class BeaconHooks
             if (beaconCWT.isDead)
             {
                 // (Should) spawn a DreamSpawn on you when you die -Lur (it doesn't for now for some reason..)
-                MiscUtils.MaterializeDreamSpawn(self.room, self.mainBodyChunk.pos, PBExtEnums.DreamSpawnSource.Death);
+                MiscUtils.MaterializeDreamSpawn(self.room, self.mainBodyChunk.pos, PBEnums.DreamSpawnSource.Death);
 
                 // Input removing is done in IL_Player_checkInput;
                 beaconCWT.thanatosisCharge = Mathf.Min(beaconCWT.thanatosisCharge + 1f, beaconCWT.inThanatosisLimit);

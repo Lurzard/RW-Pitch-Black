@@ -1,13 +1,19 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
-using BepInEx.Logging;
+﻿using System.Diagnostics.CodeAnalysis;
 using DevInterface;
-using IL.Watcher;
 
 namespace PitchBlack;
 
-public static class PBExtEnums
+public static class PBEnums
 {
+    public static class SlugcatStatsName
+    {
+        public static readonly SlugcatStats.Name Beacon = new("Beacon", false);
+        public static readonly SlugcatStats.Name Photomaniac = new("Photomaniac", false);
+    }
+    public static class Timeline
+    {
+        public static readonly SlugcatStats.Timeline Beacon = new("Beacon", false);
+    }
     public static class DreamSpawnSource
     {
         public static Room.RippleSpawnSource Death = new Room.RippleSpawnSource("Death", true);

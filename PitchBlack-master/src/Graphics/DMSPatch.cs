@@ -14,7 +14,7 @@ internal class DMSPatch
             Description = "Whiskers", //description on dms menu
             GallerySprite = "LizardScaleA0",
             RequiredSprites = new() { "LizardScaleA0" },
-            Slugcats = new() { Plugin.BeaconName.value, PhotoName.value }
+            Slugcats = new() {PBEnums.SlugcatStatsName.Beacon.value, PBEnums.SlugcatStatsName.Photomaniac.value }
         });
 
         SpriteDefinitions.AddSprite(new()
@@ -23,7 +23,7 @@ internal class DMSPatch
             Description = "Splatter",
             GallerySprite = "PhotoSplatter",
             RequiredSprites = new() { "PhotoSplatter" },
-            Slugcats = new() { PhotoName.value },
+            Slugcats = new() { PBEnums.SlugcatStatsName.Photomaniac.value },
         });
     }
 }

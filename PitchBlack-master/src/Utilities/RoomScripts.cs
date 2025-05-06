@@ -21,14 +21,14 @@ public class RoomScripts
     {
         orig(room);
         if (room.game.session is StoryGameSession story
-            && story.saveStateNumber == Plugin.BeaconName
+            && story.saveStateNumber == PBEnums.SlugcatStatsName.Beacon
             && room.abstractRoom.name == "SH_CABINETS1"
             && room.game.rainWorld.progression.currentSaveState.cycleNumber == 0)
         {
             room.AddObject(new SH_CABINETS1_IntroScript(room));
         }
         if (room.game.session is StoryGameSession session
-            && session.saveStateNumber == Plugin.PhotoName
+            && session.saveStateNumber == PBEnums.SlugcatStatsName.Photomaniac
             && room.abstractRoom.name == "GW_photo01"
             && room.game.rainWorld.progression.currentSaveState.cycleNumber == 0)
         {

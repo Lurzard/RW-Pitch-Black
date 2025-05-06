@@ -93,7 +93,7 @@ public static class MiscUtils
     }
     public static bool IsBeaconOrPhoto(SlugcatStats.Name slugName)
     {
-        return null != slugName && (slugName == BeaconName || slugName == PhotoName);
+        return null != slugName && (slugName == PBEnums.SlugcatStatsName.Beacon || slugName == PBEnums.SlugcatStatsName.Photomaniac);
     }
     #endregion
     #region Bacon Checks
@@ -107,7 +107,7 @@ public static class MiscUtils
     }
     public static bool IsBeacon(SlugcatStats.Name name)
     {
-        return name != null && name == BeaconName;
+        return name != null && name == PBEnums.SlugcatStatsName.Beacon;
     }
     #endregion
     #region Photo Checks
@@ -121,7 +121,7 @@ public static class MiscUtils
     }
     public static bool IsPhoto(SlugcatStats.Name name)
     {
-        return name != null && name == PhotoName;
+        return name != null && name == PBEnums.SlugcatStatsName.Photomaniac;
     }
     #endregion
     // This makes Beacon guaranteed close their eyes if true
@@ -173,11 +173,11 @@ public static class MiscUtils
     // Identifying DreamSpawn types
     public static bool IsDreamSpawn(VoidSpawn voidSpawn)
     {
-        if (voidSpawn.variant == PBExtEnums.SpawnType.DreamSpawn ||
-            voidSpawn.variant == PBExtEnums.SpawnType.DreamBiter ||
-            voidSpawn.variant == PBExtEnums.SpawnType.DreamNoodle ||
-            voidSpawn.variant == PBExtEnums.SpawnType.DreamAmoeba ||
-            voidSpawn.variant == PBExtEnums.SpawnType.DreamJelly)
+        if (voidSpawn.variant == PBEnums.SpawnType.DreamSpawn ||
+            voidSpawn.variant == PBEnums.SpawnType.DreamBiter ||
+            voidSpawn.variant == PBEnums.SpawnType.DreamNoodle ||
+            voidSpawn.variant == PBEnums.SpawnType.DreamAmoeba ||
+            voidSpawn.variant == PBEnums.SpawnType.DreamJelly)
         {
             return true;
         }
@@ -194,11 +194,11 @@ public static class MiscUtils
         {
             level = (room.game.session as StoryGameSession).saveState.deathPersistentSaveData.rippleLevel;
         }
-        if (source == PBExtEnums.DreamSpawnSource.Death)
+        if (source == PBEnums.DreamSpawnSource.Death)
         {
             amountToSpawn = 1;
         }
-        if (source == PBExtEnums.DreamSpawnSource.Dreamer)
+        if (source == PBEnums.DreamSpawnSource.Dreamer)
         {
             amountToSpawn = 50;
         }
@@ -215,18 +215,18 @@ public static class MiscUtils
             return;
         }
         // Determining type
-        VoidSpawn.SpawnType spawnType = PBExtEnums.SpawnType.DreamSpawn;
+        VoidSpawn.SpawnType spawnType = PBEnums.SpawnType.DreamSpawn;
         if (Random.Range(0, 10) >= 7)
         {
-            spawnType = PBExtEnums.SpawnType.DreamJelly;
+            spawnType = PBEnums.SpawnType.DreamJelly;
         }
         if (Random.Range(0, 10) >= 9)
         {
-            spawnType = PBExtEnums.SpawnType.DreamNoodle;
+            spawnType = PBEnums.SpawnType.DreamNoodle;
         }
         if (Random.value <= 0.02f)
         {
-            spawnType = PBExtEnums.SpawnType.DreamAmoeba;
+            spawnType = PBEnums.SpawnType.DreamAmoeba;
         }
         // Spawning it
         VoidSpawn voidSpawn = new VoidSpawn(new AbstractPhysicalObject(room.world, PBAbstractObjectType.DreamSpawn, null, room.GetWorldCoordinate(spawnPos), room.game.GetNewID()), room.roomSettings.GetEffectAmount(RoomSettings.RoomEffect.Type.VoidMelt), VoidSpawnKeeper.DayLightMode(room), spawnType);

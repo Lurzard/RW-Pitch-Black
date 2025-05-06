@@ -123,7 +123,8 @@ public class DevHooks
         //for (int num9 = 1; num9 <= 2; num9++)
         // {
         //    int num10 = 0;
-        //    if (self.roomSettings.placedObjects[num10].type == PBPlacedObjectType.DreamerSpot && self.game.IsStorySession && self.game.StoryCharacter == Plugin.BeaconName)
+        //    if (self.roomSettings.placedObjects[num10].type == PBPlacedObjectType.DreamerSpot && self.game.IsStorySession && self.game.StoryCharacter ==
+        //    )
         //     {
         //        GhostWorldPresence ghostWorldPresence = null;
         //        if (ghostWorldPresence == null)

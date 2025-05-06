@@ -9,8 +9,10 @@ using Mono.Cecil.Cil;
 
 namespace PitchBlack;
 
-public static class WorldChanges {
-    public static void Apply() {
+public static class WorldChanges
+{
+    public static void Apply()
+    {
         On.Expedition.NeuronDeliveryChallenge.ValidForThisSlugcat += NeuronDeliveryChallenge_ValidForThisSlugcat;
         On.Expedition.PearlDeliveryChallenge.ValidForThisSlugcat += PearlDeliveryChallenge_ValidForThisSlugcat;
         //On.Room.Update += Room_Update;
@@ -20,17 +22,21 @@ public static class WorldChanges {
     }
 
     // Change the color of rot
-    private static void Region_ctor_string_int_int_Timeline(On.Region.orig_ctor_string_int_int_Timeline orig, Region self, string name, int firstRoomIndex, int regionNumber, SlugcatStats.Timeline timelineIndex) {
+    private static void Region_ctor_string_int_int_Timeline(On.Region.orig_ctor_string_int_int_Timeline orig, Region self, string name, int firstRoomIndex, int regionNumber, SlugcatStats.Timeline timelineIndex)
+    {
         orig(self, name, firstRoomIndex, regionNumber, timelineIndex);
         Color color = new Color();
         if (timelineIndex != null &&
-            timelineIndex == Plugin.BeaconTime) {
+            timelineIndex == PBEnums.Timeline.Beacon)
+        {
             // Sentient Rot
-            if (self.name != "UD") {
+            if (self.name != "UD")
+            {
                 color = RainWorld.RippleColor;
             }
             // Nightmare Rot
-            if (self.name == "UD") {
+            if (self.name == "UD")
+            {
                 color = Plugin.Rose;
             }
             self.regionParams.corruptionEffectColor = color;
@@ -61,7 +67,7 @@ public static class WorldChanges {
                     Debug.Log($"Pitch Black: cycle number was not, in fact, a number!\n{err}");
                     startingRange = cycleNum.Length;
                 }
-                return MiscUtils.GenerateRandomString(startingRange, startingRange+10);
+                return MiscUtils.GenerateRandomString(startingRange, startingRange + 10);
             }
             return cycleNum;
         });
@@ -74,7 +80,7 @@ public static class WorldChanges {
         }
         return orig(self);
     }
-    
+
     private static void Room_Update(On.Room.orig_Update orig, Room self)
     {
         orig(self);

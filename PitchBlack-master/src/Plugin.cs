@@ -31,12 +31,6 @@ class Plugin : BaseUnityPlugin
     public static readonly Dictionary<string, bool> collectionSaveData = new Dictionary<string, bool>();
     public static ConditionalWeakTable<RainWorldGame, List<RiftWorldPrecence>> riftCWT = new();
 
-    // SlugBase handles registering, we just need them to be used locally.
-    public static readonly SlugcatStats.Name BeaconName = new("Beacon", false);
-    public static readonly SlugcatStats.Name PhotoName = new("Photomaniac", false);
-    // From Watcher, used for conditional Beacon world changes.
-    public static readonly SlugcatStats.Timeline BeaconTime = new("Beacon", false);
-
     private bool init = false;
     public static ManualLogSource logger;
 
@@ -142,7 +136,7 @@ class Plugin : BaseUnityPlugin
         orig(self);
         if (self.type == PBAbstractObjectType.DreamSpawn)
         {
-            self.realizedObject = new VoidSpawn(self, (self.Room.realizedRoom != null) ? self.Room.realizedRoom.roomSettings.GetEffectAmount(RoomSettings.RoomEffect.Type.VoidMelt) : 0f, self.Room.realizedRoom != null && VoidSpawnKeeper.DayLightMode(self.Room.realizedRoom), PBExtEnums.SpawnType.DreamSpawn);
+            self.realizedObject = new VoidSpawn(self, (self.Room.realizedRoom != null) ? self.Room.realizedRoom.roomSettings.GetEffectAmount(RoomSettings.RoomEffect.Type.VoidMelt) : 0f, self.Room.realizedRoom != null && VoidSpawnKeeper.DayLightMode(self.Room.realizedRoom), PBEnums.SpawnType.DreamSpawn);
             return;
         }
     }
@@ -150,7 +144,7 @@ class Plugin : BaseUnityPlugin
     private void DeathPersistentSaveData_ctor(On.DeathPersistentSaveData.orig_ctor orig, DeathPersistentSaveData self, SlugcatStats.Name slugcat)
     {
         orig(self, slugcat);
-        if (slugcat == BeaconName)
+        if (slugcat == PBEnums.SlugcatStatsName.Beacon)
         {
             self.rippleLevel = 1f;
             self.minimumRippleLevel = 1f;

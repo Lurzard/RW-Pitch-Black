@@ -28,7 +28,7 @@ public class SpecialChanges
     public static bool PBFlowerMode(RoomCamera rCam)
     {
         if (rCam.room.game.IsStorySession &&
-            rCam.room.game.GetStorySession.saveStateNumber == Plugin.BeaconName)
+            rCam.room.game.GetStorySession.saveStateNumber == PBEnums.SlugcatStatsName.Beacon)
         {
             return true;
         }
@@ -65,7 +65,7 @@ public class SpecialChanges
     {
         orig(self);
         if (self.hud.owner is Player &&
-            (self.hud.owner as Player).SlugCatClass == Plugin.BeaconName &&
+            (self.hud.owner as Player).SlugCatClass == PBEnums.SlugcatStatsName.Beacon &&
             (self.hud.owner as Player).rippleLevel >= 1f)
         {
             self.karmaSprite.element = Futile.atlasManager.GetElementWithName(MiscUtils.QualiaSymbolSprite(true, (self.hud.owner as Player).rippleLevel));
@@ -83,7 +83,7 @@ public class SpecialChanges
     {
         orig(self, hud, fContainer, displayKarma, showAsReinforced);
         if (hud.owner is Player &&
-            (hud.owner as Player).SlugCatClass == Plugin.BeaconName &&
+            (hud.owner as Player).SlugCatClass == PBEnums.SlugcatStatsName.Beacon &&
             (hud.owner as Player).rippleLevel >= 1f)
         {
             self.karmaSprite.element = Futile.atlasManager.GetElementWithName(MiscUtils.QualiaSymbolSprite(true, (self.hud.owner as Player).rippleLevel));
@@ -99,7 +99,7 @@ public class SpecialChanges
     private static void KarmaMeter_UpdateGraphic(On.HUD.KarmaMeter.orig_UpdateGraphic orig, KarmaMeter self)
     {
         orig(self);
-        if ((self.hud.owner as Player).SlugCatClass == Plugin.BeaconName &&
+        if ((self.hud.owner as Player).SlugCatClass == PBEnums.SlugcatStatsName.Beacon &&
             (self.hud.owner as Player).rippleLevel >= 1f)
         {
             self.karmaSprite.element = Futile.atlasManager.GetElementWithName(MiscUtils.QualiaSymbolSprite(true, (self.hud.owner as Player).rippleLevel));
@@ -119,7 +119,7 @@ public class SpecialChanges
     {
         orig(self, eu);
             DisembodiedDynamicSoundLoop soundLoop = null;
-        if (self.player.SlugCatClass == Plugin.BeaconName)
+        if (self.player.SlugCatClass == PBEnums.SlugcatStatsName.Beacon)
         {
             if (soundLoop == null && self.fade > 0f)
             {
@@ -313,7 +313,7 @@ public class SpecialChanges
     //        {
     //            // Apply changes only if the campaing is Beacon?
     //            if (rCam.room.game.IsStorySession &&
-    //                rCam.room.game.GetStorySession.saveStateNumber == Plugin.BeaconName)
+    //                rCam.room.game.GetStorySession.saveStateNumber == PBEnums.SlugcatStatsName.Beacon)
     //            {
     //                return Plugin.Rose;
     //            }
@@ -340,7 +340,7 @@ public class SpecialChanges
     //        cursor.EmitDelegate<Func<Color, VoidSpawnGraphics, RoomCamera, Color>>((origColor, self, rCam) =>
     //        {
     //            if (rCam.room.game.IsStorySession &&
-    //                rCam.room.game.GetStorySession.saveStateNumber == Plugin.BeaconName)
+    //                rCam.room.game.GetStorySession.saveStateNumber == PBEnums.SlugcatStatsName.Beacon)
     //            {
     //                if (self.dayLightMode)
     //                {
@@ -377,7 +377,7 @@ public class SpecialChanges
     //        cursor.EmitDelegate<Func<Color, VoidSpawnGraphics, RoomCamera, Color>>((origColor, self, rCam) =>
     //        {
     //            if (rCam.room.game.IsStorySession &&
-    //                rCam.room.game.GetStorySession.saveStateNumber == Plugin.BeaconName)
+    //                rCam.room.game.GetStorySession.saveStateNumber == PBEnums.SlugcatStatsName.Beacon)
     //            {
     //                return Plugin.Rose;
     //            }
