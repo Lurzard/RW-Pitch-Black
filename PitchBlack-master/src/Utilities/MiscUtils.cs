@@ -39,7 +39,7 @@ public static class MiscUtils
 
         return false;
     }
-    public static bool IsNightTerror(this CreatureTemplate creatureTemplate) => creatureTemplate.type == PBCreatureTemplateType.NightTerror;
+    public static bool IsNightTerror(this CreatureTemplate creatureTemplate) => creatureTemplate.type == PBEnums.CreatureTemplateType.NightTerror;
     public static void SaveCollectionData()
     {
         string data = "";
