@@ -233,7 +233,7 @@ class Plugin : BaseUnityPlugin
             PBSoundID.RegisterValues();
             PBAbstractObjectType.RegisterValues();
             PBGhostID.RegisterValues();
-            PBPlacedObjectType.RegisterValues();
+            PBEnums.PlacedObjectType.RegisterValues();
 
             if (!Futile.atlasManager.DoesContainAtlas("lmllspr"))
                 Futile.atlasManager.LoadAtlas("atlases/lmllspr");
@@ -290,12 +290,12 @@ class Plugin : BaseUnityPlugin
                 PBEnums.CreatureTemplateType.UnregisterValues();
                 PBEnums.SandboxUnlockID.UnregisterValues();
                 PBSoundID.UnregisterValues();
-                PBRoomEffectType.UnregisterValues();
+                PBEnums.RoomEffectType.UnregisterValues();
                 PBEndGameID.UnregisterValues();
                 PBSceneID.UnregisterValues();
                 PBAbstractObjectType.UnregisterValues();
                 PBGhostID.UnregisterValues();
-                PBPlacedObjectType.UnregisterValues();
+                PBEnums.PlacedObjectType.UnregisterValues();
                 break;
             }
         }

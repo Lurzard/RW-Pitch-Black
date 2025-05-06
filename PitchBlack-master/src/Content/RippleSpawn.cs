@@ -42,7 +42,7 @@ public class RippleSpawnKeeper : UpdatableAndDeletable
         worldAI = room.world.voidSpawnWorldAI;
         spawn = new List<VoidSpawn>();
         // will be changed to RippleMelt
-        rippleMeltInRoom = room.roomSettings.GetEffectAmount(PBRoomEffectType.RippleMelt);
+        rippleMeltInRoom = room.roomSettings.GetEffectAmount(PBEnums.RoomEffectType.RippleMelt);
         fromRooms = new int[0];
     }
     public override void Update(bool eu)
