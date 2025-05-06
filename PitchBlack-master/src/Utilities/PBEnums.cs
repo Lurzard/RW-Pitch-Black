@@ -36,6 +36,78 @@ public static class PBEnums
         public static DeathPersistentSaveData.Tutorial MakeFlares = new("MakeFlares", true);
         public static DeathPersistentSaveData.Tutorial Thanatosis = new("Thanatosis", true);
     }
+    public static class CreatureTemplateType
+    {
+        [AllowNull] public static CreatureTemplate.Type NightTerror = new("NightTerror", true);
+        [AllowNull] public static CreatureTemplate.Type LMiniLongLegs = new(nameof(LMiniLongLegs), true);
+        [AllowNull] public static CreatureTemplate.Type Rotrat = new(nameof(Rotrat), true);
+        [AllowNull] public static CreatureTemplate.Type UmbraScav = new(nameof(UmbraScav), true);
+        [AllowNull] public static CreatureTemplate.Type FireGrub = new(nameof(FireGrub), true);
+        public static void UnregisterValues()
+        {
+            if (NightTerror != null)
+            {
+                NightTerror.Unregister();
+                NightTerror = null;
+            }
+            if (LMiniLongLegs != null)
+            {
+                LMiniLongLegs.Unregister();
+                LMiniLongLegs = null;
+            }
+            if (Rotrat != null)
+            {
+                Rotrat.Unregister();
+                Rotrat = null;
+            }
+            if (FireGrub != null)
+            {
+                FireGrub.Unregister();
+                FireGrub = null;
+            }
+            if (UmbraScav != null)
+            {
+                UmbraScav.Unregister();
+                UmbraScav = null;
+            }
+        }
+    }
+    public static class SandboxUnlockID
+    {
+        [AllowNull] public static MultiplayerUnlocks.SandboxUnlockID NightTerror = new("NightTerror", true);
+        [AllowNull] public static MultiplayerUnlocks.SandboxUnlockID LMiniLongLegs = new(nameof(LMiniLongLegs), true);
+        [AllowNull] public static MultiplayerUnlocks.SandboxUnlockID Rotrat = new(nameof(Rotrat), true);
+        [AllowNull] public static MultiplayerUnlocks.SandboxUnlockID FireGrub = new(nameof(FireGrub), true);
+        [AllowNull] public static MultiplayerUnlocks.SandboxUnlockID UmbraScav = new(nameof(UmbraScav), true);
+        public static void UnregisterValues()
+        {
+            if (NightTerror != null)
+            {
+                NightTerror.Unregister();
+                NightTerror = null;
+            }
+            if (LMiniLongLegs != null)
+            {
+                LMiniLongLegs.Unregister();
+                LMiniLongLegs = null;
+            }
+            if (Rotrat != null)
+            {
+                Rotrat.Unregister();
+                Rotrat = null;
+            }
+            if (FireGrub != null)
+            {
+                FireGrub.Unregister();
+                FireGrub = null;
+            }
+            if (UmbraScav != null)
+            {
+                UmbraScav.Unregister();
+                UmbraScav = null;
+            }
+        }
+    }
 }
 
 public class PBPlacedObjectType
@@ -85,79 +157,6 @@ public class PBAbstractObjectType
         {
             DreamSpawn.Unregister();
             DreamSpawn = null;
-        }
-    }
-}
-public static class PBCreatureTemplateType
-{
-    [AllowNull] public static CreatureTemplate.Type NightTerror = new("NightTerror", true);
-    [AllowNull] public static CreatureTemplate.Type LMiniLongLegs = new(nameof(LMiniLongLegs), true);
-    [AllowNull] public static CreatureTemplate.Type Rotrat = new(nameof(Rotrat), true);
-    [AllowNull] public static CreatureTemplate.Type UmbraScav = new(nameof(UmbraScav), true);
-    [AllowNull] public static CreatureTemplate.Type FireGrub = new(nameof(FireGrub), true);
-    public static void UnregisterValues()
-    {
-        if (NightTerror != null)
-        {
-            NightTerror.Unregister();
-            NightTerror = null;
-        }
-        if (LMiniLongLegs != null)
-        {
-            LMiniLongLegs.Unregister();
-            LMiniLongLegs = null;
-        }
-        if (Rotrat != null)
-        {
-            Rotrat.Unregister();
-            Rotrat = null;
-        }
-        if (FireGrub != null)
-        {
-            FireGrub.Unregister();
-            FireGrub = null;
-        }
-        if (UmbraScav != null)
-        {
-            UmbraScav.Unregister();
-            UmbraScav = null;
-        }
-    }
-}
-
-public static class PBSandboxUnlockID
-{
-    [AllowNull] public static MultiplayerUnlocks.SandboxUnlockID NightTerror = new("NightTerror", true);
-    [AllowNull] public static MultiplayerUnlocks.SandboxUnlockID LMiniLongLegs = new(nameof(LMiniLongLegs), true);
-    [AllowNull] public static MultiplayerUnlocks.SandboxUnlockID Rotrat = new(nameof(Rotrat), true);
-    [AllowNull] public static MultiplayerUnlocks.SandboxUnlockID FireGrub = new(nameof(FireGrub), true);
-    [AllowNull] public static MultiplayerUnlocks.SandboxUnlockID UmbraScav = new(nameof(UmbraScav), true);
-    public static void UnregisterValues()
-    {
-        if (NightTerror != null)
-        {
-            NightTerror.Unregister();
-            NightTerror = null;
-        }
-        if (LMiniLongLegs != null)
-        {
-            LMiniLongLegs.Unregister();
-            LMiniLongLegs = null;
-        }
-        if (Rotrat != null)
-        {
-            Rotrat.Unregister();
-            Rotrat = null;
-        }
-        if (FireGrub != null)
-        {
-            FireGrub.Unregister();
-            FireGrub = null;
-        }
-        if (UmbraScav != null)
-        {
-            UmbraScav.Unregister();
-            UmbraScav = null;
         }
     }
 }

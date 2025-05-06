@@ -88,7 +88,7 @@ public class RotRatHooks
     static private void LanternMouse_ctor(On.LanternMouse.orig_ctor orig, LanternMouse self, AbstractCreature abstractCreature, World world)
     {
         orig(self, abstractCreature, world);
-        if(self.Template.type == PBCreatureTemplateType.Rotrat)
+        if(self.Template.type == PBEnums.CreatureTemplateType.Rotrat)
         {
             Random.State state = Random.state;
             Random.InitState(self.abstractCreature.ID.RandomSeed);
@@ -118,7 +118,7 @@ public class RotRatHooks
     }
     private static void LanternMouse_InitiateGraphicsModule(On.LanternMouse.orig_InitiateGraphicsModule orig, LanternMouse self)
     {
-        if (self.Template.type == PBCreatureTemplateType.Rotrat) {
+        if (self.Template.type == PBEnums.CreatureTemplateType.Rotrat) {
             self.graphicsModule = new RotratGraphics(self);
             self.graphicsModule.Reset();
         }
@@ -129,7 +129,7 @@ public class RotRatHooks
     static private void LanternMouse_Update(On.LanternMouse.orig_Update orig, LanternMouse self, bool eu)
     {
         orig(self, eu);
-        if(self.Template.type == PBCreatureTemplateType.Rotrat)
+        if(self.Template.type == PBEnums.CreatureTemplateType.Rotrat)
         {
             if(self.grasps[0] != null)
             {
@@ -180,7 +180,7 @@ public class RotRatHooks
     }
     static private void MouseAI_Update(On.MouseAI.orig_Update orig, MouseAI self)
     {
-        if(self.mouse.Template.type == PBCreatureTemplateType.Rotrat)
+        if(self.mouse.Template.type == PBEnums.CreatureTemplateType.Rotrat)
         {
             self.preyTracker.Update();
             self.stuckTracker.Update();
@@ -228,7 +228,7 @@ public class RotRatHooks
     static private void MouseAI_ctor(On.MouseAI.orig_ctor orig, MouseAI self, AbstractCreature creature, World world)
     {
         orig(self, creature, world);
-        if(self.mouse.Template.type == PBCreatureTemplateType.Rotrat)
+        if(self.mouse.Template.type == PBEnums.CreatureTemplateType.Rotrat)
         {
             self.AddModule(new PreyTracker(self, 3, 2f, 10f, 70f, 0.5f));
             self.utilityComparer.AddComparedModule(self.preyTracker, null, 1f, 1.5f);

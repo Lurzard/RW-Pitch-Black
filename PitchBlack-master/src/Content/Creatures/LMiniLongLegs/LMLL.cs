@@ -50,7 +50,7 @@ public class LittleLongLegs : DaddyLongLegs, IPlayerEdible {
         FoodPoints = diff;
         State.meatLeft = diff;
         LittleLongLegsSizeChange(-SplitSizeChange);
-        AbstractCreature abstractCreature = new AbstractCreature(world, StaticWorld.GetCreatureTemplate(PBCreatureTemplateType.LMiniLongLegs), null, room.GetWorldCoordinate(mainBodyChunk.pos), room.game.GetNewID());
+        AbstractCreature abstractCreature = new AbstractCreature(world, StaticWorld.GetCreatureTemplate(PBEnums.CreatureTemplateType.LMiniLongLegs), null, room.GetWorldCoordinate(mainBodyChunk.pos), room.game.GetNewID());
         room.abstractRoom.AddEntity(abstractCreature);
         abstractCreature.RealizeInRoom();
         (abstractCreature.realizedCreature as LittleLongLegs).FoodPoints = SplitSizeChange;

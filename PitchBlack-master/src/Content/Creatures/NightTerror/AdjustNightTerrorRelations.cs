@@ -6,13 +6,13 @@ namespace PitchBlack;
 public class ScareEverything {
     private static readonly CreatureTemplate.Relationship.Type newRelation = CreatureTemplate.Relationship.Type.Afraid;
     private static bool Condition(Creature crit) {
-        return crit != null && crit.Template.type == PBCreatureTemplateType.NightTerror;
+        return crit != null && crit.Template.type == PBEnums.CreatureTemplateType.NightTerror;
     }
     private delegate CreatureTemplate.Relationship Orig(ArtificialIntelligence self, RelationshipTracker.DynamicRelationship dRelation);
     unsafe private static CreatureTemplate.Relationship AdjustRelationship(Orig* orig, ArtificialIntelligence self, RelationshipTracker.DynamicRelationship dRelation) {
         CreatureTemplate.Relationship relationship = (*orig)(self, dRelation);
         Creature trackedCreature = dRelation?.trackerRep?.representedCreature?.realizedCreature;
-        if (trackedCreature != null && trackedCreature.Template.type == PBCreatureTemplateType.NightTerror) {
+        if (trackedCreature != null && trackedCreature.Template.type == PBEnums.CreatureTemplateType.NightTerror) {
             return new CreatureTemplate.Relationship(newRelation, 10);
         }
         return relationship;
@@ -41,15 +41,15 @@ public class ScareEverything {
             On.BigSpiderAI.IUseARelationshipTracker_UpdateDynamicRelationship += (orig, self, dRelation) => AdjustRelationship((Orig*)&orig, self, dRelation);
             On.CentipedeAI.IUseARelationshipTracker_UpdateDynamicRelationship += (orig, self, dRelation) => {
                 Creature trackedCreature = dRelation?.trackerRep?.representedCreature?.realizedCreature;
-                if (trackedCreature != null && trackedCreature.Template.type == PBCreatureTemplateType.NightTerror && self.centipede.Template.type != PBCreatureTemplateType.NightTerror) {
+                if (trackedCreature != null && trackedCreature.Template.type == PBEnums.CreatureTemplateType.NightTerror && self.centipede.Template.type != PBEnums.CreatureTemplateType.NightTerror) {
                     // If the 'target' creature is a NightTerror and self is not, be afraid
                     return new CreatureTemplate.Relationship(newRelation, 10f);
                 }
-                if (trackedCreature != null && trackedCreature.Template.type == CreatureTemplate.Type.Slugcat && self.centipede.Template.type == PBCreatureTemplateType.NightTerror) {
+                if (trackedCreature != null && trackedCreature.Template.type == CreatureTemplate.Type.Slugcat && self.centipede.Template.type == PBEnums.CreatureTemplateType.NightTerror) {
                     // If the 'target' creature is slugcat and it is a nightterror, eat it 100%
                     return new CreatureTemplate.Relationship(CreatureTemplate.Relationship.Type.Eats, 1f);
                 }
-                else if (trackedCreature != null && trackedCreature.Template.type == PBCreatureTemplateType.NightTerror && self.centipede.Template.type == PBCreatureTemplateType.NightTerror) {
+                else if (trackedCreature != null && trackedCreature.Template.type == PBEnums.CreatureTemplateType.NightTerror && self.centipede.Template.type == PBEnums.CreatureTemplateType.NightTerror) {
                     // If the 'target' is a NightTerror, and self is a NightTerror, Ignore it
                     return new CreatureTemplate.Relationship(CreatureTemplate.Relationship.Type.Ignores, 1f);
                 }

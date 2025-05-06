@@ -281,14 +281,14 @@ class Plugin : BaseUnityPlugin
         {
             if (mod.id == MOD_ID)
             {
-                if (MultiplayerUnlocks.CreatureUnlockList.Contains(PBSandboxUnlockID.NightTerror))
-                    MultiplayerUnlocks.CreatureUnlockList.Remove(PBSandboxUnlockID.NightTerror);
+                if (MultiplayerUnlocks.CreatureUnlockList.Contains(PBEnums.SandboxUnlockID.NightTerror))
+                    MultiplayerUnlocks.CreatureUnlockList.Remove(PBEnums.SandboxUnlockID.NightTerror);
 
-                if (MultiplayerUnlocks.CreatureUnlockList.Contains(PBSandboxUnlockID.LMiniLongLegs))
-                    MultiplayerUnlocks.CreatureUnlockList.Remove(PBSandboxUnlockID.LMiniLongLegs);
+                if (MultiplayerUnlocks.CreatureUnlockList.Contains(PBEnums.SandboxUnlockID.LMiniLongLegs))
+                    MultiplayerUnlocks.CreatureUnlockList.Remove(PBEnums.SandboxUnlockID.LMiniLongLegs);
 
-                PBCreatureTemplateType.UnregisterValues();
-                PBSandboxUnlockID.UnregisterValues();
+                PBEnums.CreatureTemplateType.UnregisterValues();
+                PBEnums.SandboxUnlockID.UnregisterValues();
                 PBSoundID.UnregisterValues();
                 PBRoomEffectType.UnregisterValues();
                 PBEndGameID.UnregisterValues();

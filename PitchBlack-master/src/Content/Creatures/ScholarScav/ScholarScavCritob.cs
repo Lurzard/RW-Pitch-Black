@@ -10,10 +10,10 @@ namespace PitchBlack;
 
     sealed class ScholarScavCritob : Critob
 {
-    internal ScholarScavCritob() : base(PBCreatureTemplateType.UmbraScav)
+    internal ScholarScavCritob() : base(PBEnums.CreatureTemplateType.UmbraScav)
     {
         Icon = new SimpleIcon("UmbraScav", Color.grey);
-        RegisterUnlock(KillScore.Configurable(25), PBSandboxUnlockID.UmbraScav, MultiplayerUnlocks.SandboxUnlockID.Scavenger, 0);
+        RegisterUnlock(KillScore.Configurable(25), PBEnums.SandboxUnlockID.UmbraScav, MultiplayerUnlocks.SandboxUnlockID.Scavenger, 0);
         LoadedPerformanceCost = 100f; //probably for loading a lot of creatures
         SandboxPerformanceCost = new SandboxPerformanceCost(0.5f, 0.5f);
         ShelterDanger = 0;
@@ -32,7 +32,7 @@ namespace PitchBlack;
 
     public override CreatureTemplate CreateTemplate()
     {
-        CreatureTemplate t = new CreatureFormula(CreatureTemplate.Type.Scavenger, PBCreatureTemplateType.UmbraScav, "UmbraScav")
+        CreatureTemplate t = new CreatureFormula(CreatureTemplate.Type.Scavenger, PBEnums.CreatureTemplateType.UmbraScav, "UmbraScav")
         {
             DefaultRelationship = new(CreatureTemplate.Relationship.Type.Ignores, 0.1f),
             Pathing = PreBakedPathing.Ancestral(CreatureTemplate.Type.Scavenger),
