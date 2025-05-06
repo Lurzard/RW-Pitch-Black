@@ -134,7 +134,7 @@ class Plugin : BaseUnityPlugin
     private void AbstractPhysicalObject_Realize(On.AbstractPhysicalObject.orig_Realize orig, AbstractPhysicalObject self)
     {
         orig(self);
-        if (self.type == PBAbstractObjectType.DreamSpawn)
+        if (self.type == PBEnums.AbstractObjectType.DreamSpawn)
         {
             self.realizedObject = new VoidSpawn(self,
                 (self.Room.realizedRoom != null) ? self.Room.realizedRoom.roomSettings.GetEffectAmount(RoomSettings.RoomEffect.Type.VoidMelt) : 0f,
@@ -231,8 +231,8 @@ class Plugin : BaseUnityPlugin
             }
             // Register non-sanctioned PBEnums
             PBSoundID.RegisterValues();
-            PBAbstractObjectType.RegisterValues();
-            PBGhostID.RegisterValues();
+            PBEnums.AbstractObjectType.RegisterValues();
+            PBEnums.GhostID.RegisterValues();
             PBEnums.PlacedObjectType.RegisterValues();
 
             if (!Futile.atlasManager.DoesContainAtlas("lmllspr"))
@@ -293,8 +293,8 @@ class Plugin : BaseUnityPlugin
                 PBEnums.RoomEffectType.UnregisterValues();
                 PBEndGameID.UnregisterValues();
                 PBSceneID.UnregisterValues();
-                PBAbstractObjectType.UnregisterValues();
-                PBGhostID.UnregisterValues();
+                PBEnums.AbstractObjectType.UnregisterValues();
+                PBEnums.GhostID.UnregisterValues();
                 PBEnums.PlacedObjectType.UnregisterValues();
                 break;
             }

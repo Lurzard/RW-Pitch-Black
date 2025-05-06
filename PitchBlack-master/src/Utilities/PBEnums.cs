@@ -161,38 +161,36 @@ public static class PBEnums
             }
         }
     }
-}
-
-public class PBGhostID
-{
-    public static GhostWorldPresence.GhostID Dreamer;
-    public static void RegisterValues()
+    public class AbstractObjectType
     {
-        Dreamer = new GhostWorldPresence.GhostID("Dreamer", true);
-    }
-    public static void UnregisterValues()
-    {
-        if (Dreamer != null)
+        public static AbstractPhysicalObject.AbstractObjectType DreamSpawn;
+        public static void RegisterValues()
         {
-            Dreamer.Unregister();
-            Dreamer = null;
+            DreamSpawn = new AbstractPhysicalObject.AbstractObjectType("DreamSpawn");
+        }
+        public static void UnregisterValues()
+        {
+            if (DreamSpawn != null)
+            {
+                DreamSpawn.Unregister();
+                DreamSpawn = null;
+            }
         }
     }
-}
-
-public class PBAbstractObjectType
-{
-    public static AbstractPhysicalObject.AbstractObjectType DreamSpawn;
-    public static void RegisterValues()
+    public class GhostID
     {
-        DreamSpawn = new AbstractPhysicalObject.AbstractObjectType("DreamSpawn");
-    }
-    public static void UnregisterValues()
-    {
-        if (DreamSpawn != null)
+        public static GhostWorldPresence.GhostID Dreamer;
+        public static void RegisterValues()
         {
-            DreamSpawn.Unregister();
-            DreamSpawn = null;
+            Dreamer = new GhostWorldPresence.GhostID("Dreamer", true);
+        }
+        public static void UnregisterValues()
+        {
+            if (Dreamer != null)
+            {
+                Dreamer.Unregister();
+                Dreamer = null;
+            }
         }
     }
 }

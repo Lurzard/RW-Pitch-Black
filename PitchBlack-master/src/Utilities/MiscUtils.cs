@@ -229,7 +229,7 @@ public static class MiscUtils
             spawnType = PBEnums.DreamSpawn.SpawnType.DreamAmoeba;
         }
         // Spawning it
-        VoidSpawn voidSpawn = new VoidSpawn(new AbstractPhysicalObject(room.world, PBAbstractObjectType.DreamSpawn, null, room.GetWorldCoordinate(spawnPos), room.game.GetNewID()), room.roomSettings.GetEffectAmount(RoomSettings.RoomEffect.Type.VoidMelt), VoidSpawnKeeper.DayLightMode(room), spawnType);
+        VoidSpawn voidSpawn = new VoidSpawn(new AbstractPhysicalObject(room.world, PBEnums.AbstractObjectType.DreamSpawn, null, room.GetWorldCoordinate(spawnPos), room.game.GetNewID()), room.roomSettings.GetEffectAmount(RoomSettings.RoomEffect.Type.VoidMelt), VoidSpawnKeeper.DayLightMode(room), spawnType);
         if (IsDreamSpawn(voidSpawn))
         {
             // BezierSwarm for now, but later I want them to chase and kill anything they can
@@ -330,6 +330,6 @@ public static class MiscUtils
 
     public static bool Dreamer(Ghost ghost)
     {
-        return ghost.worldGhost.ghostID == PBGhostID.Dreamer;
+        return ghost.worldGhost.ghostID == PBEnums.GhostID.Dreamer;
     }
 }

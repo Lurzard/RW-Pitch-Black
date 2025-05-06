@@ -193,7 +193,7 @@ internal class CreatureEdits
 
         // This is also used to determine the room Echoes are placed in, so we can easily move them into VV
 
-        if (ghostID == PBGhostID.Dreamer)
+        if (ghostID == GhostID.Dreamer)
         {
             // Placeholder
             self.songName = "ELSE_LXIX";
