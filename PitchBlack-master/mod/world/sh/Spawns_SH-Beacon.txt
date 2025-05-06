@@ -70,7 +70,7 @@ LINEAGE : SH_E02 : 6 : LMiniLongLegs-0.5, Bro-0
 
 SH_C04 : 5-Mouse-2, 6-Mouse, 7-DropBug, 8-BigSpider, 9-Spider-10
 
-SH_A10 : 1-EggBug
+SH_A10 : 1-EggBug, 1-SmallMoth-4
 
 SH_B03 : 2-White, 3-Mouse-2
 LINEAGE : SH_B03 : 3 : NONE-0.8, MotherSpider-0
@@ -112,4 +112,4 @@ LINEAGE : SH_B08 : 2 : Pink-0.5, White-0.5, Cyan-0
 
 SH_A25 : 2-Mouse-2
 
-SH_D01 : 2-SpitterSpider
+SH_D01 : 2-SpitterSpider, 3-SmallMoth-4
