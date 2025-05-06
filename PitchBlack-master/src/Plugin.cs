@@ -291,8 +291,8 @@ class Plugin : BaseUnityPlugin
                 PBEnums.SandboxUnlockID.UnregisterValues();
                 PBSoundID.UnregisterValues();
                 PBEnums.RoomEffectType.UnregisterValues();
-                PBEndGameID.UnregisterValues();
-                PBSceneID.UnregisterValues();
+                PBEnums.EndGameID.UnregisterValues();
+                PBEnums.SceneID.UnregisterValues();
                 PBEnums.AbstractObjectType.UnregisterValues();
                 PBEnums.GhostID.UnregisterValues();
                 PBEnums.PlacedObjectType.UnregisterValues();

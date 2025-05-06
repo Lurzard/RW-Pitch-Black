@@ -28,7 +28,7 @@ public static class PassageHooks
     {
         orig(self, timeStacker);
 		//SPECIAL COLORS FOR THIS ONE
-        if (self.tracker.ID == PBEndGameID.Hunted)
+        if (self.tracker.ID == PBEnums.EndGameID.Hunted)
 		{
             float num2 = Mathf.Lerp(self.lastShowAsFullFilled, self.showAsFullfilled, timeStacker);
             float num3 = Mathf.Lerp(self.lastAnimationLightUp, self.animationLightUp, timeStacker);
@@ -45,7 +45,7 @@ public static class PassageHooks
     {
 		orig(self, timeStacker);
         //RERUN THESE
-		if (self.owner.tracker.ID == PBEndGameID.Hunted)
+		if (self.owner.tracker.ID == PBEnums.EndGameID.Hunted)
 		{
             float num = Mathf.Lerp(self.owner.lastMeterAnimation, self.owner.meterAnimation, timeStacker);
             float num2 = Mathf.Pow(Mathf.InverseLerp(0.5f, 1f, num), 3f);
@@ -65,7 +65,7 @@ public static class PassageHooks
 
     private static string WinState_PassageDisplayName(On.WinState.orig_PassageDisplayName orig, WinState.EndgameID ID)
 	{
-		if (ID == PBEndGameID.Hunted)
+		if (ID == PBEnums.EndGameID.Hunted)
 			return "The Hunted";
 		else
 			return orig.Invoke(ID);
@@ -98,7 +98,7 @@ public static class PassageHooks
 
 	public static void BP_BuildScene(On.Menu.MenuScene.orig_BuildScene orig, MenuScene self)
 	{
-		if (self.sceneID == PBSceneID.Endgame_Hunted)
+		if (self.sceneID == PBEnums.SceneID.Endgame_Hunted)
 		{
 			//WE DIDN'T BUILD ONE YET, BUT IF YOU WANT TO....
 			/*
@@ -144,11 +144,11 @@ public static class PassageHooks
 
 	private static void BP_GetDataFromSleepScreen(On.Menu.CustomEndGameScreen.orig_GetDataFromSleepScreen orig, CustomEndGameScreen self, WinState.EndgameID endGameID)
 	{
-		if (endGameID == PBEndGameID.Hunted)
+		if (endGameID == PBEnums.EndGameID.Hunted)
 		{
 			//GOTTA REPLICATE THE MENU SCREEN
 			MenuScene.SceneID sceneID = Menu.MenuScene.SceneID.Empty;
-			sceneID = PBSceneID.Endgame_Hunted;
+			sceneID = PBEnums.SceneID.Endgame_Hunted;
 			self.scene = new InteractiveMenuScene(self, self.pages[0], sceneID);
 			self.pages[0].subObjects.Add(self.scene);
 			self.pages[0].Container.AddChild(self.blackSprite);
@@ -175,7 +175,7 @@ public static class PassageHooks
 	private static void BP_GenerateAchievementScores(On.Expedition.ChallengeTools.orig_GenerateAchievementScores orig)
 	{
 		orig.Invoke();
-		Expedition.ChallengeTools.achievementScores.Add(PBEndGameID.Hunted, 50);
+		Expedition.ChallengeTools.achievementScores.Add(PBEnums.EndGameID.Hunted, 50);
 	}
 	
 	
@@ -186,7 +186,7 @@ public static class PassageHooks
 		//ONLY FOR BACON
 		if (game.session is StoryGameSession session && (session.saveStateNumber == PBEnums.SlugcatStatsName.Beacon))
 		{
-            WinState.IntegerTracker integerTracker4 = self.GetTracker(PBEndGameID.Hunted, true) as WinState.IntegerTracker;
+            WinState.IntegerTracker integerTracker4 = self.GetTracker(PBEnums.EndGameID.Hunted, true) as WinState.IntegerTracker;
             if (integerTracker4 != null)
             {
                 integerTracker4.SetProgress(100);
@@ -200,7 +200,7 @@ public static class PassageHooks
 	{
 		WinState.EndgameTracker endgameTracker = null;
 		
-		if (ID == PBEndGameID.Hunted)
+		if (ID == PBEnums.EndGameID.Hunted)
 		{
 			endgameTracker = new WinState.IntegerTracker(ID, 99, 0, 0, 100); //default, min, showFrom, max
 			Debug.Log("PURSUED TRACKER CREATED!");

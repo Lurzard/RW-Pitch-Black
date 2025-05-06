@@ -193,6 +193,31 @@ public static class PBEnums
             }
         }
     }
+    public class EndGameID
+    {
+        public static WinState.EndgameID Hunted = new WinState.EndgameID("Hunted", true);
+        public static void UnregisterValues()
+        {
+            if (Hunted != null)
+            {
+                Hunted.Unregister();
+                Hunted = null;
+            }
+        }
+    }
+
+    public class SceneID
+    {
+        public static Menu.MenuScene.SceneID Endgame_Hunted = new Menu.MenuScene.SceneID("Engame_Hunted", true);
+        public static void UnregisterValues()
+        {
+            if (Endgame_Hunted != null)
+            {
+                Endgame_Hunted.Unregister();
+                Endgame_Hunted = null;
+            }
+        }
+    }
 }
 
 // NOTE: These apparently HAVE to be registered to play ingame. -Lur
@@ -238,32 +263,6 @@ public class PBSoundID
         if (Thanatosis_Drowning_LOOP != null)
         {
             Thanatosis_Drowning_LOOP.Unregister();
-        }
-    }
-}
-
-public class PBEndGameID
-{
-    public static WinState.EndgameID Hunted = new WinState.EndgameID("Hunted", true);
-    public static void UnregisterValues()
-    {
-        if (Hunted != null)
-        {
-            Hunted.Unregister();
-            Hunted = null;
-        }
-    }
-}
-
-public class PBSceneID
-{
-    public static Menu.MenuScene.SceneID Endgame_Hunted = new Menu.MenuScene.SceneID("Engame_Hunted", true);
-    public static void UnregisterValues()
-    {
-        if (Endgame_Hunted != null)
-        {
-            Endgame_Hunted.Unregister();
-            Endgame_Hunted = null;
         }
     }
 }
