@@ -635,7 +635,7 @@ public static class BeaconHooks
                 }
                 if ((beaconCWT.deathToggle != beaconCWT.isDead) && beaconCWT.inputForThanatosisCounter == 25)
                 {
-                    self.room.PlaySound(beaconCWT.isDead ? PBSoundID.Player_Activated_Thanatosis : PBSoundID.Player_Deactivated_Thanatosis, self.mainBodyChunk);
+                    self.room.PlaySound(beaconCWT.isDead ? PBEnums.SoundID.Player_Activated_Thanatosis : PBEnums.SoundID.Player_Deactivated_Thanatosis, self.mainBodyChunk);
                     MiscUtils.SpawnOscillatingRipple(self, true);
                     //self.room.PlaySound(beaconCWT.isDead ? new SoundID("Player_Activated_Thanatosis", false) : new SoundID("Player_Deactivated_Thanatosis", false), self.mainBodyChunk);
                 }
@@ -673,7 +673,7 @@ public static class BeaconHooks
             if (beaconCWT.diedInThanatosis && !beaconCWT.thanatosisDeathBumpNeedsToPlay && self.rippleDeathTime == 80)
             {
                 // This is a holy combination of sounds fr
-                self.room.PlaySound(PBSoundID.Player_Died_From_Thanatosis);
+                self.room.PlaySound(PBEnums.SoundID.Player_Died_From_Thanatosis);
                 self.room.PlaySound(SoundID.Gate_Rails_Collide);
                 self.room.PlaySound(SoundID.Gate_Rails_Collide);
                 beaconCWT.thanatosisDeathBumpNeedsToPlay = true;

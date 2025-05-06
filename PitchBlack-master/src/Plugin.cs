@@ -230,7 +230,7 @@ class Plugin : BaseUnityPlugin
                 logger.LogDebug($"Pitch Black error\n{err}");
             }
             // Register non-sanctioned PBEnums
-            PBSoundID.RegisterValues();
+            PBEnums.SoundID.RegisterValues();
             PBEnums.AbstractObjectType.RegisterValues();
             PBEnums.GhostID.RegisterValues();
             PBEnums.PlacedObjectType.RegisterValues();
@@ -289,7 +289,7 @@ class Plugin : BaseUnityPlugin
 
                 PBEnums.CreatureTemplateType.UnregisterValues();
                 PBEnums.SandboxUnlockID.UnregisterValues();
-                PBSoundID.UnregisterValues();
+                PBEnums.SoundID.UnregisterValues();
                 PBEnums.RoomEffectType.UnregisterValues();
                 PBEnums.EndGameID.UnregisterValues();
                 PBEnums.SceneID.UnregisterValues();

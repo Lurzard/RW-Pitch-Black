@@ -124,7 +124,7 @@ public class SpecialChanges
             if (soundLoop == null && self.fade > 0f)
             {
                 soundLoop = new DisembodiedDynamicSoundLoop(self);
-                soundLoop.sound = PBSoundID.Thanatosis_Drowning_LOOP;
+                soundLoop.sound = PBEnums.SoundID.Thanatosis_Drowning_LOOP;
                 soundLoop.VolumeGroup = 1;
                 return;
             }

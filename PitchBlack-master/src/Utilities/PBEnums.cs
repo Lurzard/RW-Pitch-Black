@@ -218,53 +218,50 @@ public static class PBEnums
             }
         }
     }
-}
-
-// NOTE: These apparently HAVE to be registered to play ingame. -Lur
-public class PBSoundID
-{
-    public static SoundID Player_Activated_Thanatosis;
-    public static SoundID Player_Deactivated_Thanatosis;
-    public static SoundID Player_Deactivated_Thanatosis_From_Stun;
-    public static SoundID Player_Died_From_Thanatosis;
-    public static SoundID Player_Revived;
-    public static SoundID Thanatosis_Drowning_LOOP;
-    public static void RegisterValues()
+    // NOTE: These apparently HAVE to be registered to play ingame. -Lur
+    public class SoundID
     {
-        Player_Activated_Thanatosis = new SoundID("Player_Activated_Thanatosis", true);
-        Player_Deactivated_Thanatosis = new SoundID("Player_Deactivated_Thanatosis", true);
-        Player_Deactivated_Thanatosis_From_Stun = new SoundID("Player_Deactivated_Thanatosis_From_Stun", true);
-        Player_Died_From_Thanatosis = new SoundID("Player_Died_From_Thanatosis", true);
-        Player_Revived = new SoundID("Player_Revived", true);
-        Thanatosis_Drowning_LOOP = new SoundID("Drowning_Thanatosis_LOOP", true);
-    }
-    public static void UnregisterValues()
-    {
-        if (Player_Activated_Thanatosis != null)
+        public static global::SoundID Player_Activated_Thanatosis;
+        public static global::SoundID Player_Deactivated_Thanatosis;
+        public static global::SoundID Player_Deactivated_Thanatosis_From_Stun;
+        public static global::SoundID Player_Died_From_Thanatosis;
+        public static global::SoundID Player_Revived;
+        public static global::SoundID Thanatosis_Drowning_LOOP;
+        public static void RegisterValues()
         {
-            Player_Activated_Thanatosis.Unregister();
+            Player_Activated_Thanatosis = new global::SoundID("Player_Activated_Thanatosis", true);
+            Player_Deactivated_Thanatosis = new global::SoundID("Player_Deactivated_Thanatosis", true);
+            Player_Deactivated_Thanatosis_From_Stun = new global::SoundID("Player_Deactivated_Thanatosis_From_Stun", true);
+            Player_Died_From_Thanatosis = new global::SoundID("Player_Died_From_Thanatosis", true);
+            Player_Revived = new global::SoundID("Player_Revived", true);
+            Thanatosis_Drowning_LOOP = new global::SoundID("Drowning_Thanatosis_LOOP", true);
         }
-        if (Player_Deactivated_Thanatosis != null)
+        public static void UnregisterValues()
         {
-            Player_Deactivated_Thanatosis.Unregister();
-        }
-        if (Player_Deactivated_Thanatosis_From_Stun != null)
-        {
-            Player_Deactivated_Thanatosis_From_Stun.Unregister();
-        }
-        if (Player_Died_From_Thanatosis != null)
-        {
-            Player_Died_From_Thanatosis.Unregister();
-        }
-        if (Player_Revived != null)
-        {
-            Player_Revived.Unregister();
-        }
-        if (Thanatosis_Drowning_LOOP != null)
-        {
-            Thanatosis_Drowning_LOOP.Unregister();
+            if (Player_Activated_Thanatosis != null)
+            {
+                Player_Activated_Thanatosis.Unregister();
+            }
+            if (Player_Deactivated_Thanatosis != null)
+            {
+                Player_Deactivated_Thanatosis.Unregister();
+            }
+            if (Player_Deactivated_Thanatosis_From_Stun != null)
+            {
+                Player_Deactivated_Thanatosis_From_Stun.Unregister();
+            }
+            if (Player_Died_From_Thanatosis != null)
+            {
+                Player_Died_From_Thanatosis.Unregister();
+            }
+            if (Player_Revived != null)
+            {
+                Player_Revived.Unregister();
+            }
+            if (Thanatosis_Drowning_LOOP != null)
+            {
+                Thanatosis_Drowning_LOOP.Unregister();
+            }
         }
     }
 }
-
-//SpawnType moving inside DeathSpawn.cs
