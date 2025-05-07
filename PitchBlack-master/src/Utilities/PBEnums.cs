@@ -5,41 +5,40 @@ namespace PitchBlack;
 
 public static class PBEnums
 {
-    // Likely that SlugBase handles registering, so these are unregistered
     public static class SlugcatStatsName
     {
-        public static readonly SlugcatStats.Name Beacon = new(nameof(Beacon), false);
-        public static readonly SlugcatStats.Name Photomaniac = new(nameof(Photomaniac), false);
+        public static readonly SlugcatStats.Name Beacon = new("Beacon", false);
+        public static readonly SlugcatStats.Name Photomaniac = new("Photomaniac", false);
     }
     public static class Timeline
     {
-        public static readonly SlugcatStats.Timeline Beacon = new(nameof(Beacon), false);
+        public static readonly SlugcatStats.Timeline Beacon = new("Beacon", false);
     }
     public static class DreamSpawn
     {
         public static class SpawnSource
         {
-            public static Room.RippleSpawnSource Death = new Room.RippleSpawnSource(nameof(Death), true);
-            public static Room.RippleSpawnSource Oscillation = new Room.RippleSpawnSource(nameof(Oscillation), true);
-            public static Room.RippleSpawnSource Dreamer = new Room.RippleSpawnSource(nameof(Dreamer), true);
+            public static Room.RippleSpawnSource Death = new Room.RippleSpawnSource("Death", true);
+            public static Room.RippleSpawnSource Oscillation = new Room.RippleSpawnSource("Oscillation", true);
+            public static Room.RippleSpawnSource Dreamer = new Room.RippleSpawnSource("Dreamer", true);
         }
         public static class SpawnType
         {
-            public static VoidSpawn.SpawnType DreamSpawn = new(nameof(DreamSpawn), true);
-            public static VoidSpawn.SpawnType DreamJelly = new(nameof(DreamJelly), true);
-            public static VoidSpawn.SpawnType DreamAmoeba = new(nameof(DreamAmoeba), true);
-            public static VoidSpawn.SpawnType DreamNoodle = new(nameof(DreamNoodle), true);
-            public static VoidSpawn.SpawnType DreamBiter = new(nameof(DreamBiter), true);
+            public static VoidSpawn.SpawnType DreamSpawn = new("DreamSpawn", true);
+            public static VoidSpawn.SpawnType DreamJelly = new("DreamJelly", true);
+            public static VoidSpawn.SpawnType DreamAmoeba = new("DreamAmoeba", true);
+            public static VoidSpawn.SpawnType DreamNoodle = new("DreamNoodle", true);
+            public static VoidSpawn.SpawnType DreamBiter = new("DreamBiter", true);
         }
     }
     public static class Tutorial
     {
-        public static DeathPersistentSaveData.Tutorial MakeFlares = new(nameof(MakeFlares), true);
-        public static DeathPersistentSaveData.Tutorial Thanatosis = new(nameof(Thanatosis), true);
+        public static DeathPersistentSaveData.Tutorial MakeFlares = new("MakeFlares", true);
+        public static DeathPersistentSaveData.Tutorial Thanatosis = new("Thanatosis", true);
     }
     public static class CreatureTemplateType
     {
-        [AllowNull] public static CreatureTemplate.Type NightTerror = new(nameof(NightTerror), true);
+        [AllowNull] public static CreatureTemplate.Type NightTerror = new("NightTerror", true);
         [AllowNull] public static CreatureTemplate.Type LMiniLongLegs = new(nameof(LMiniLongLegs), true);
         [AllowNull] public static CreatureTemplate.Type Rotrat = new(nameof(Rotrat), true);
         [AllowNull] public static CreatureTemplate.Type UmbraScav = new(nameof(UmbraScav), true);
@@ -75,7 +74,7 @@ public static class PBEnums
     }
     public static class SandboxUnlockID
     {
-        [AllowNull] public static MultiplayerUnlocks.SandboxUnlockID NightTerror = new(nameof(NightTerror), true);
+        [AllowNull] public static MultiplayerUnlocks.SandboxUnlockID NightTerror = new("NightTerror", true);
         [AllowNull] public static MultiplayerUnlocks.SandboxUnlockID LMiniLongLegs = new(nameof(LMiniLongLegs), true);
         [AllowNull] public static MultiplayerUnlocks.SandboxUnlockID Rotrat = new(nameof(Rotrat), true);
         [AllowNull] public static MultiplayerUnlocks.SandboxUnlockID FireGrub = new(nameof(FireGrub), true);
@@ -111,7 +110,7 @@ public static class PBEnums
     }
     public class DevEffectsCatagories
     {
-        public static RoomSettingsPage.DevEffectsCategories PitchBlack = new RoomSettingsPage.DevEffectsCategories(nameof(PitchBlack), true);
+        public static RoomSettingsPage.DevEffectsCategories PitchBlack = new RoomSettingsPage.DevEffectsCategories("Pitch-Black", true);
         public static void UnregisterValues()
         {
             if (PitchBlack != null)
@@ -124,9 +123,9 @@ public static class PBEnums
     public class RoomEffectType
     {
         // Actual effects
-        public static RoomSettings.RoomEffect.Type ElsehowView = new RoomSettings.RoomEffect.Type(nameof(ElsehowView), true);
-        public static RoomSettings.RoomEffect.Type RippleSpawn = new RoomSettings.RoomEffect.Type(nameof(RippleSpawn), true);
-        public static RoomSettings.RoomEffect.Type RippleMelt = new RoomSettings.RoomEffect.Type(nameof(RippleMelt), true);
+        public static RoomSettings.RoomEffect.Type ElsehowView = new RoomSettings.RoomEffect.Type("ElsehowView", true);
+        public static RoomSettings.RoomEffect.Type RippleSpawn = new RoomSettings.RoomEffect.Type("RippleSpawn", true);
+        public static RoomSettings.RoomEffect.Type RippleMelt = new RoomSettings.RoomEffect.Type("RippleMelt", true);
         public static void UnregisterValues()
         {
             if (ElsehowView != null)
@@ -151,7 +150,7 @@ public static class PBEnums
         public static PlacedObject.Type DreamerSpot;
         public static void RegisterValues()
         {
-            DreamerSpot = new PlacedObject.Type(nameof(DreamerSpot), true);
+            DreamerSpot = new PlacedObject.Type("DreamerSpot", true);
         }
         public static void UnregisterValues()
         {
@@ -167,7 +166,7 @@ public static class PBEnums
         public static AbstractPhysicalObject.AbstractObjectType DreamSpawn;
         public static void RegisterValues()
         {
-            DreamSpawn = new AbstractPhysicalObject.AbstractObjectType(nameof(DreamSpawn), true);
+            DreamSpawn = new AbstractPhysicalObject.AbstractObjectType("DreamSpawn");
         }
         public static void UnregisterValues()
         {
@@ -183,7 +182,7 @@ public static class PBEnums
         public static GhostWorldPresence.GhostID Dreamer;
         public static void RegisterValues()
         {
-            Dreamer = new GhostWorldPresence.GhostID(nameof(Dreamer), true);
+            Dreamer = new GhostWorldPresence.GhostID("Dreamer", true);
         }
         public static void UnregisterValues()
         {
@@ -196,7 +195,7 @@ public static class PBEnums
     }
     public class EndGameID
     {
-        public static WinState.EndgameID Hunted = new WinState.EndgameID(nameof(Hunted), true);
+        public static WinState.EndgameID Hunted = new WinState.EndgameID("Hunted", true);
         public static void UnregisterValues()
         {
             if (Hunted != null)
@@ -209,7 +208,7 @@ public static class PBEnums
 
     public class SceneID
     {
-        public static Menu.MenuScene.SceneID Endgame_Hunted = new Menu.MenuScene.SceneID(nameof(Endgame_Hunted), true);
+        public static Menu.MenuScene.SceneID Endgame_Hunted = new Menu.MenuScene.SceneID("Engame_Hunted", true);
         public static void UnregisterValues()
         {
             if (Endgame_Hunted != null)
@@ -219,7 +218,8 @@ public static class PBEnums
             }
         }
     }
-    public static class SoundID
+    // NOTE: These apparently HAVE to be registered to play ingame. -Lur
+    public class SoundID
     {
         public static global::SoundID Player_Activated_Thanatosis;
         public static global::SoundID Player_Deactivated_Thanatosis;
@@ -227,10 +227,8 @@ public static class PBEnums
         public static global::SoundID Player_Died_From_Thanatosis;
         public static global::SoundID Player_Revived;
         public static global::SoundID Thanatosis_Drowning_LOOP;
-        // These apparently HAVE to be registered to play ingame. -Lur
         public static void RegisterValues()
         {
-            // Keeping as strings, because they're specifically used in sounds.txt
             Player_Activated_Thanatosis = new global::SoundID("Player_Activated_Thanatosis", true);
             Player_Deactivated_Thanatosis = new global::SoundID("Player_Deactivated_Thanatosis", true);
             Player_Deactivated_Thanatosis_From_Stun = new global::SoundID("Player_Deactivated_Thanatosis_From_Stun", true);
