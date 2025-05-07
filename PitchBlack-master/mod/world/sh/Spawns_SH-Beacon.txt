@@ -1,15 +1,17 @@
 //OFFSCREEN
-OFFSCREEN : 0-Scavenger-16
+OFFSCREEN : 0-Scavenger-16, 0-FatFireFly
 LINEAGE : OFFSCREEN : 0 : NONE-0.5, Disciple-0
 LINEAGE : OFFSCREEN : 0 : NONE-0.5, Templar-0
 LINEAGE : OFFSCREEN : 0 : NONE-0.5, Templar-0
+LINEAGE : OFFSCREEN : 0 : Scavenger-0.5, Elite-0
+LINEAGE : OFFSCREEN : 0 : NONE-0.5, FatFireFly-0
 LINEAGE : OFFSCREEN : 0 : NONE-0.2, MirosVulture-0
 
 //MID
 
 SH_A09 : 4-Mouse-2, 5-Mouse-2
 
-SH_A23 : 4-Spider-10
+SH_A23 : 4-Spider-10, 6-ChipChop-3
 
 SH_B04 : 3-Mouse-2, 4-Mouse-2, 5-BigSpider
 
@@ -26,7 +28,7 @@ SH_A07 : 6-Spider-10
 
 SH_C12 : 2-White
 
-SH_A22 : 2-Spider-10
+SH_A22 : 2-Spider-10, 3-ChipChop-3
 
 SH_A19 : 2-Spider-20
 
@@ -39,7 +41,7 @@ LINEAGE : SH_C08 : 3 : Black-1, Yellow-0
 LINEAGE : SH_C08 : 4 : Black-1, Yellow-0
 LINEAGE : SH_C08 : 5 : Black-1, Yellow-0
 
-SH_B11 : 4-Red, 5-Blue, 7-BigSpider
+SH_B11 : 4-Red, 5-Blue, 6-ChipChop-2, 7-BigSpider
 
 SH_B06 : 2-Spider-5, 4-BigSpider, 4-Spider-10, 5-BigSpider, 5-Spider-10
 LINEAGE : SH_B06 : 3 : NONE-0.4, SpitterSpider-0
@@ -48,9 +50,9 @@ SH_A17 : 3-Spider-10, 5-Spider-10
 
 SH_A16 : 2-Spider-5, 3-Spider-5	
 
-SH_C09 : 2-Black, 3-BigSpider, 5-Spider-20
+SH_C09 : 2-Black, 3-BigSpider, 4-ChipChop-3, 5-Spider-20
 
-SH_B17 : 2-EggBug, 5-Black
+SH_B17 : 2-EggBug, 3-ChipChop-2, 5-Black
 
 //LOW
 
@@ -70,9 +72,9 @@ LINEAGE : SH_E02 : 6 : LMiniLongLegs-0.5, Bro-0
 
 SH_C04 : 5-Mouse-2, 6-Mouse, 7-DropBug, 8-BigSpider, 9-Spider-10
 
-SH_A10 : 1-EggBug, 1-SmallMoth-4
+SH_A10 : 1-EggBug, 1-SmallMoth-4, 1-Hoverfly-2
 
-SH_B03 : 2-White, 3-Mouse-2
+SH_B03 : 2-White, 3-Mouse-2, 3-Hoverfly-2, 4-MoleSalamander
 LINEAGE : SH_B03 : 3 : NONE-0.8, MotherSpider-0
 
 SH_B02 : 3-Mouse-2, 4-Black, 5-Black, 8-Mouse
@@ -89,7 +91,7 @@ SH_A05 : 2-Mouse-2, 3-Mouse-2
 
 SH_B01 : 5-White, 6-Mouse-2
 
-SH_C10 : 2-Mouse, 3-Mouse, 4-Mouse, 5-Mouse, 6-Mouse, 7-Mouse
+SH_C10 : 2-Mouse, 3-Mouse, 4-Mouse, 5-Mouse, 6-Mouse-2, 7-ChipChop-2
 
 SH_A21 : 2-Mouse-2, 4-Black
 
