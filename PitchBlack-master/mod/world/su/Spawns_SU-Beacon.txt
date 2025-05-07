@@ -38,13 +38,13 @@ LINEAGE : SU_B09W : 4 : LMiniLongLegs-0.5, Bro-0
 
 //TOWER & TOLL
 
-SU_B02 : 4-White, 5-CicadaA, 6-CicadaB-2, 7-Mouse-2, 8-Mouse-2
+SU_B02 : 4-White, 5-Hoverfly, 6-CicadaA, 6-CicadaB-2, 7-Mouse-2, 8-Mouse-2
 
-SU_A13 : 4-DropBug
+SU_A13 : 3-Hoverfly, 4-DropBug
 
-SU_B11 : 4-CicadaB-2, 5-CicadaA-2, 8-BigSpider-2
+SU_B11 : 4-CicadaB-2, 5-CicadaA-2, 6-Hoverfly, 8-BigSpider-2
 
-SU_B06 : 6-CicadaB-2, 7-CicadaA
+SU_B06 : 6-CicadaB-2, 6-CicadaA, 7-Hoverfly
 LINEAGE : SU_B06 : 4 : NONE-0.5, White-0.5, Cyan-0
 LINEAGE : SU_B06 : 5 : Pink-1, Black-0
 
