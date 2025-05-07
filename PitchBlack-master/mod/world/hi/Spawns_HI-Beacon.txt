@@ -25,7 +25,7 @@ HI_C03 : 3-White
 LINEAGE : HI_B06 : 4 : Green-0.5, Caramel-0.5, Red-0
 
 HI_C04 : 5-Mouse-3, 6-Snail-2, 8-Snail-2
-LINEAGE : HI_C04 : 7 : NONE-0.5, Eel-0
+LINEAGE : HI_C04 : 7 : MoleSalamander-0.5, Eel-0
 
 HI_B03 : 2-BigSpider, 3-DropBug
 
