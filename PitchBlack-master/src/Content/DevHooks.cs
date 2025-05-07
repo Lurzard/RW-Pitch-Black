@@ -22,21 +22,21 @@ public class DevHooks
     private static void RoomCamera_MoveCamera_Room_int(On.RoomCamera.orig_MoveCamera_Room_int orig, RoomCamera self, Room room, int camPos)
     {
         orig(self, room, camPos);
-        if (room.roomSettings.GetEffectAmount(PBEnums.RoomEffectType.RippleMelt) > 0f)
+        if (room.roomSettings.GetEffectAmount(PBRoomEffectType.RippleMelt) > 0f)
         {
             self.levelGraphic.shader = self.game.rainWorld.Shaders["LevelMelt"];
-            self.levelGraphic.alpha = room.roomSettings.GetEffectAmount(PBEnums.RoomEffectType.RippleMelt);
+            self.levelGraphic.alpha = room.roomSettings.GetEffectAmount(PBRoomEffectType.RippleMelt);
         }
     }
     private static void ApplyPalette(On.RoomCamera.orig_ApplyPalette orig, RoomCamera self)
     {
         orig(self);
-        if (self.room != null && self.room.roomSettings.GetEffectAmount(PBEnums.RoomEffectType.RippleMelt) > 0f)
+        if (self.room != null && self.room.roomSettings.GetEffectAmount(PBRoomEffectType.RippleMelt) > 0f)
         {
             self.SetUpFullScreenEffect("Bloom");
             self.fullScreenEffect.shader = self.game.rainWorld.Shaders["LevelMelt2"];
-            self.lightBloomAlphaEffect = PBEnums.RoomEffectType.RippleMelt;
-            self.fullScreenEffect.alpha = self.room.roomSettings.GetEffectAmount(PBEnums.RoomEffectType.RippleMelt);
+            self.lightBloomAlphaEffect = PBRoomEffectType.RippleMelt;
+            self.fullScreenEffect.alpha = self.room.roomSettings.GetEffectAmount(PBRoomEffectType.RippleMelt);
             return;
         }
     }
@@ -47,7 +47,7 @@ public class DevHooks
         vector = new Vector2(Mathf.Floor(vector.x), Mathf.Floor(vector.y));
         if (self.room != null)
         {
-            if (self.lightBloomAlphaEffect == PBEnums.RoomEffectType.RippleMelt && self.fullScreenEffect != null)
+            if (self.lightBloomAlphaEffect == PBRoomEffectType.RippleMelt && self.fullScreenEffect != null)
                 if (self.room.roomSettings.GetEffectAmount(RoomSettings.RoomEffect.Type.VoidSea) > 0f)
                 {
                     self.lightBloomAlpha *= self.voidSeaGoldFilter;
@@ -68,9 +68,9 @@ public class DevHooks
         float num2 = flag ? Mathf.Lerp(self.framesPerSecond, 8f, num) : Mathf.Lerp(self.framesPerSecond, 15f, num);
         for (int j = 0; j < self.session.Players.Count; j++)
         {
-            if (self.session.Players[j].realizedCreature != null && self.session.Players[j].realizedCreature.room != null && self.session.Players[j].realizedCreature.room.roomSettings.GetEffectAmount(PBEnums.RoomEffectType.RippleMelt) > 0f)
+            if (self.session.Players[j].realizedCreature != null && self.session.Players[j].realizedCreature.room != null && self.session.Players[j].realizedCreature.room.roomSettings.GetEffectAmount(PBRoomEffectType.RippleMelt) > 0f)
             {
-                num2 = Math.Min(num2, Mathf.Lerp(num2, 15f, self.session.Players[j].realizedCreature.room.roomSettings.GetEffectAmount(PBEnums.RoomEffectType.RippleMelt) * Mathf.InverseLerp(-7000f, -2000f, self.session.Players[j].realizedCreature.mainBodyChunk.pos.y)));
+                num2 = Math.Min(num2, Mathf.Lerp(num2, 15f, self.session.Players[j].realizedCreature.room.roomSettings.GetEffectAmount(PBRoomEffectType.RippleMelt) * Mathf.InverseLerp(-7000f, -2000f, self.session.Players[j].realizedCreature.mainBodyChunk.pos.y)));
             }
         }
     }
@@ -80,7 +80,7 @@ public class DevHooks
         orig(self);
         for (int i = 0; i < self.roomSettings.effects.Count; i++)
         {
-            if (self.roomSettings.effects[i].type == PBEnums.RoomEffectType.ElsehowView)
+            if (self.roomSettings.effects[i].type == PBRoomEffectType.ElsehowView)
             {
                 Shader.SetGlobalFloat(RainWorld.ShadPropRimFix, 1f);
             }
@@ -89,7 +89,7 @@ public class DevHooks
     private static void EffectPanelSlider_NubDragged(On.DevInterface.EffectPanel.EffectPanelSlider.orig_NubDragged orig, EffectPanel.EffectPanelSlider self, float nubPos)
     {
         orig(self, nubPos);
-        if (self.effect.type == PBEnums.RoomEffectType.RippleMelt)
+        if (self.effect.type == PBRoomEffectType.RippleMelt)
         {
             self.owner.room.game.cameras[0].levelGraphic.alpha = self.effect.amount;
             if (self.owner.room.game.cameras[0].fullScreenEffect != null)
@@ -105,17 +105,17 @@ public class DevHooks
         for (int num = 0; num < self.roomSettings.effects.Count; num++)
         {
             // ElsehowView
-            if (self.roomSettings.effects[num].type == PBEnums.RoomEffectType.ElsehowView)
+            if (self.roomSettings.effects[num].type == PBRoomEffectType.ElsehowView)
             {
                 self.AddObject(new ElsehowView(self, self.roomSettings.effects[num]));
             }
             // RippleSpawn
-            if (self.roomSettings.effects[num].type == PBEnums.RoomEffectType.RippleSpawn)
+            if (self.roomSettings.effects[num].type == PBRoomEffectType.RippleSpawn)
             {
                 self.AddObject(new RippleSpawnKeeper(self, self.roomSettings.effects[num]));
             }
             // RippleMelt
-            if (self.roomSettings.effects[num].type == PBEnums.RoomEffectType.RippleMelt)
+            if (self.roomSettings.effects[num].type == PBRoomEffectType.RippleMelt)
             {
                 self.AddObject(new PBMeltLights(self.roomSettings.effects[num], self));
             }
@@ -140,9 +140,9 @@ public class DevHooks
     private static RoomSettingsPage.DevEffectsCategories RoomSettingsPage_DevEffectGetCategoryFromEffectType(On.DevInterface.RoomSettingsPage.orig_DevEffectGetCategoryFromEffectType orig, RoomSettingsPage self, RoomSettings.RoomEffect.Type type)
     {
         RoomSettingsPage.DevEffectsCategories res = orig(self, type);
-        if (type == PBEnums.RoomEffectType.ElsehowView || type == PBEnums.RoomEffectType.RippleSpawn || type == PBEnums.RoomEffectType.RippleMelt)
+        if (type == PBRoomEffectType.ElsehowView || type == PBRoomEffectType.RippleSpawn || type == PBRoomEffectType.RippleMelt)
         {
-            res = PBEnums.DevEffectsCatagories.PitchBlack;
+            res = PBRoomEffectType.PitchBlackCatagory;
         }
         return res;
     }

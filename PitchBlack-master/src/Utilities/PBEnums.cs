@@ -108,43 +108,6 @@ public static class PBEnums
             }
         }
     }
-    public class DevEffectsCatagories
-    {
-        public static RoomSettingsPage.DevEffectsCategories PitchBlack = new RoomSettingsPage.DevEffectsCategories("Pitch-Black", true);
-        public static void UnregisterValues()
-        {
-            if (PitchBlack != null)
-            {
-                PitchBlack.Unregister();
-                PitchBlack = null;
-            }
-        }
-    }
-    public class RoomEffectType
-    {
-        // Actual effects
-        public static RoomSettings.RoomEffect.Type ElsehowView = new RoomSettings.RoomEffect.Type("ElsehowView", true);
-        public static RoomSettings.RoomEffect.Type RippleSpawn = new RoomSettings.RoomEffect.Type("RippleSpawn", true);
-        public static RoomSettings.RoomEffect.Type RippleMelt = new RoomSettings.RoomEffect.Type("RippleMelt", true);
-        public static void UnregisterValues()
-        {
-            if (ElsehowView != null)
-            {
-                ElsehowView.Unregister();
-                ElsehowView = null;
-            }
-            if (RippleSpawn != null)
-            {
-                RippleSpawn.Unregister();
-                RippleSpawn = null;
-            }
-            if (RippleMelt != null)
-            {
-                RippleMelt.Unregister();
-                RippleMelt = null;
-            }
-        }
-    }
     public class PlacedObjectType
     {
         public static PlacedObject.Type DreamerSpot;
@@ -262,6 +225,38 @@ public static class PBEnums
             {
                 Thanatosis_Drowning_LOOP.Unregister();
             }
+        }
+    }
+}
+public class PBRoomEffectType
+{
+    // I just threw this in here, it's used with the others.
+    public static RoomSettingsPage.DevEffectsCategories PitchBlackCatagory = new RoomSettingsPage.DevEffectsCategories("Pitch-Black", true);
+    // Actual effects
+    public static RoomSettings.RoomEffect.Type ElsehowView = new RoomSettings.RoomEffect.Type("ElsehowView", true);
+    public static RoomSettings.RoomEffect.Type RippleSpawn = new RoomSettings.RoomEffect.Type("RippleSpawn", true);
+    public static RoomSettings.RoomEffect.Type RippleMelt = new RoomSettings.RoomEffect.Type("RippleMelt", true);
+    public static void UnregisterValues()
+    {
+        if (PitchBlackCatagory != null)
+        {
+            PitchBlackCatagory.Unregister();
+            PitchBlackCatagory = null;
+        }
+        if (ElsehowView != null)
+        {
+            ElsehowView.Unregister();
+            ElsehowView = null;
+        }
+        if (RippleSpawn != null)
+        {
+            RippleSpawn.Unregister();
+            RippleSpawn = null;
+        }
+        if (RippleMelt != null)
+        {
+            RippleMelt.Unregister();
+            RippleMelt = null;
         }
     }
 }

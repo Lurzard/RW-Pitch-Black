@@ -233,7 +233,7 @@ class Plugin : BaseUnityPlugin
             PBEnums.SoundID.RegisterValues();
             PBEnums.AbstractObjectType.RegisterValues();
             PBEnums.GhostID.RegisterValues();
-            PBEnums.PlacedObjectType.RegisterValues();
+            //PBEnums.PlacedObjectType.RegisterValues();
 
             if (!Futile.atlasManager.DoesContainAtlas("lmllspr"))
                 Futile.atlasManager.LoadAtlas("atlases/lmllspr");
@@ -290,7 +290,7 @@ class Plugin : BaseUnityPlugin
                 PBEnums.CreatureTemplateType.UnregisterValues();
                 PBEnums.SandboxUnlockID.UnregisterValues();
                 PBEnums.SoundID.UnregisterValues();
-                PBEnums.RoomEffectType.UnregisterValues();
+                PBRoomEffectType.UnregisterValues();
                 PBEnums.EndGameID.UnregisterValues();
                 PBEnums.SceneID.UnregisterValues();
                 PBEnums.AbstractObjectType.UnregisterValues();
