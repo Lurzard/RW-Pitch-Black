@@ -1,0 +1,4 @@
+-Centens Concrete
+[#nm:"CentensConcrete", #color:color(240, 255, 255), #block:[#repeatL:[1,9], #rnd:1, #tags:[]], #slope:[#repeatL:[1,9], #rnd:1, #tags:[]], #floor:[#repeatL:[6,1,1,1,1], #rnd:1, #bfTiles:1, #tags:[]], #texture:[#sz:point(12, 12), #repeatL:[1,1], #tags:[]]]
+[#nm:"CentensRidgedConcrete", #color:color(240, 255, 255), #block:[#repeatL:[1,9], #rnd:1, #tags:[]], #slope:[#repeatL:[1,9], #rnd:1, #tags:[]], #floor:[#repeatL:[6,1,1,1,1], #rnd:1, #bfTiles:1, #tags:[]], #texture:[#sz:point(12, 12), #repeatL:[1,1], #tags:[]]]
+[#nm:"CentensLayeredConcrete", #color:color(240, 240, 240), #texture:[#sz:point(12, 12), #repeatL:[1,1,8], #tags:["textureOnFloor"]]]
