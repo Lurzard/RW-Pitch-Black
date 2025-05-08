@@ -29,6 +29,10 @@
 			}
 		},
 
+		"alignments": {
+  			"Scavengers": { "like": 0.5, }
+		},
+
 		"karma": 0,
 		"karma_cap": 4,
 		"has_dreams": false,
