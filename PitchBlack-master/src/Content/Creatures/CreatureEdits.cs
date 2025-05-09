@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.ExceptionServices;
 using System.Collections.Generic;
 using static PitchBlack.PBEnums;
+using Unity.Mathematics;
 
 namespace PitchBlack;
 
@@ -57,6 +58,10 @@ internal class CreatureEdits
         On.Ghost.Chains.DrawSprites += Chains_DrawSprites;
         On.Ghost.Rags.DrawSprites += Rags_DrawSprites;
         On.Ghost.Rags.InitiateSprites += Rags_InitiateSprites;
+
+        On.Scavenger.ctor += Scavenger_ctor;
+        On.ScavengerGraphics.ApplyPalette += ScavengerGraphics_ApplyPalette;
+        On.ScavengerGraphics.DrawSprites += ScavengerGraphics_DrawSprites;
     }
     #region Dreamer
     // NOTES -Lur
@@ -488,4 +493,86 @@ internal class CreatureEdits
         }
     }
     #endregion
+    
+    //used by umbra scavs and citizens sharedhooks
+    #region Scavenger
+
+    private static void ScavengerGraphics_DrawSprites(On.ScavengerGraphics.orig_DrawSprites orig, ScavengerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPosV2)
+    {
+        orig(self, sLeaser, rCam, timeStacker, camPosV2);
+        if (self.scavenger.Template.type == PBEnums.CreatureTemplateType.Citizen) //to remove its eyes
+        {
+            for (int j = 0; j < 2; j++)
+            {
+                sLeaser.sprites[self.EyeSprite(j, 0)].isVisible = false;
+                sLeaser.sprites[self.EyeSprite(j, 1)].isVisible = false;
+            }
+        }
+        // umbra scav stuff
+        float2 float2 = math.lerp(self.drawPositions[self.headDrawPos, 1], self.drawPositions[self.headDrawPos, 0], timeStacker); 
+        float2 float3 = math.lerp(self.drawPositions[self.chestDrawPos, 1], self.drawPositions[self.chestDrawPos, 0], timeStacker);
+        float2 float4 = math.lerp(self.drawPositions[self.hipsDrawPos, 1], self.drawPositions[self.hipsDrawPos, 0], timeStacker);
+        float2 floatTheSequel = camPosV2.ToF2(); //@float in ScavengerGraphics.DrawSPrites
+        for (int i = 0; i < sLeaser.sprites.Length; i++)
+        {
+            if (self.scavenger.Template.type == PBEnums.CreatureTemplateType.UmbraScav)
+            {
+                //Mark
+                sLeaser.sprites[self.TotalSprites - 1].x = float2.x - floatTheSequel.x;
+                sLeaser.sprites[self.TotalSprites - 1].y = float2.y - floatTheSequel.y + 32f;
+                sLeaser.sprites[self.TotalSprites - 1].alpha = Mathf.Lerp(self.lastMarkAlpha, self.markAlpha, timeStacker);
+                sLeaser.sprites[self.TotalSprites - 1].scale = 5f;
+                sLeaser.sprites[self.TotalSprites - 1].color = Color.white;
+                sLeaser.sprites[self.TotalSprites - 1].element = Futile.atlasManager.GetElementWithName("pixel");
+                sLeaser.sprites[self.TotalSprites - 1].isVisible = true;
+                sLeaser.sprites[self.TotalSprites - 1].rotation = 0f;
+
+                //Mark Glow
+                sLeaser.sprites[self.TotalSprites - 2].x = float2.x - floatTheSequel.x;
+                sLeaser.sprites[self.TotalSprites - 2].y = float2.y - floatTheSequel.y + 32f;
+                sLeaser.sprites[self.TotalSprites - 2].alpha = 0.2f * Mathf.Lerp(self.lastMarkAlpha, self.markAlpha, timeStacker);
+                sLeaser.sprites[self.TotalSprites - 2].scale = 2f + Mathf.Lerp(self.lastMarkAlpha, self.markAlpha, timeStacker);
+                sLeaser.sprites[self.TotalSprites - 2].element = Futile.atlasManager.GetElementWithName("Futile_White");
+                sLeaser.sprites[self.TotalSprites - 2].shader = rCam.game.rainWorld.Shaders["FlatLight"];
+                sLeaser.sprites[self.TotalSprites - 2].color = Color.white;
+                sLeaser.sprites[self.TotalSprites - 2].isVisible = true;
+                sLeaser.sprites[self.totalSprites - 2].rotation = 0f;
+
+                //glow inherits MASK POSITION???
+                //sprites work as intended without a mask
+
+                //sLeaser.sprites[self.TotalSprites - 1].SetPosition(200f, 250f); //pixel debugging
+                //sLeaser.sprites[self.TotalSprites - 2].SetPosition(250f, 250f); //glow debugging
+            }
+        }
+    }
+
+    private static void ScavengerGraphics_ApplyPalette(On.ScavengerGraphics.orig_ApplyPalette orig, ScavengerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
+    {
+        orig(self, sLeaser, rCam, palette);
+        if (self.scavenger.Template.type == PBEnums.CreatureTemplateType.Citizen) //to make it solid white
+        {
+            Color blendedBodyColor = new Color(0.9f, 0.9f, 0.9f);
+            Color blendedHeadColor = new Color(0.9f, 0.9f, 0.9f);
+        }
+    }
+
+    private static void Scavenger_ctor(On.Scavenger.orig_ctor orig, Scavenger self, AbstractCreature abstractCreature, World world)
+    {
+        orig(self, abstractCreature, world);
+        if (self.Template.type == PBEnums.CreatureTemplateType.Citizen) //to make it not collide with anything
+        {
+            self.collisionLayer = 3;
+        }
+        if (self.Template.type == PBEnums.CreatureTemplateType.UmbraScav) //umbra scav stuff
+        {
+            self.abstractCreature.personality.aggression = 0.4f;
+            self.abstractCreature.personality.bravery = 0.6f;
+            self.abstractCreature.personality.dominance = 0.6f;
+            self.abstractCreature.personality.energy = 0.8f;
+            self.abstractCreature.personality.nervous = 0.2f;
+            self.abstractCreature.personality.sympathy = 0.7f;
+        }
+    }
+    #endregion 
 }

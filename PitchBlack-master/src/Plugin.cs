@@ -82,6 +82,7 @@ class Plugin : BaseUnityPlugin
             Content.Register(new NightTerrorCritob());
             Content.Register(new ScholarScavCritob());
             Content.Register(new UmbraMaskFisob());
+            Content.Register(new CitizenCritob());
         }
         catch (Exception err)
         {

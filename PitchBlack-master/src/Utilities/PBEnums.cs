@@ -43,6 +43,7 @@ public static class PBEnums
         [AllowNull] public static CreatureTemplate.Type Rotrat = new(nameof(Rotrat), true);
         [AllowNull] public static CreatureTemplate.Type UmbraScav = new(nameof(UmbraScav), true);
         [AllowNull] public static CreatureTemplate.Type FireGrub = new(nameof(FireGrub), true);
+        [AllowNull] public static CreatureTemplate.Type Citizen = new("Citizen", true);
         public static void UnregisterValues()
         {
             if (NightTerror != null)
@@ -69,6 +70,11 @@ public static class PBEnums
             {
                 UmbraScav.Unregister();
                 UmbraScav = null;
+            }
+            if (Citizen != null)
+            {
+                Citizen.Unregister();
+                Citizen = null;
             }
         }
     }
