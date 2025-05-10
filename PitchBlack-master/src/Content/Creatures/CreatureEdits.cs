@@ -510,11 +510,11 @@ internal class CreatureEdits
         }
         if (self.scavenger.Template.type == PBEnums.CreatureTemplateType.Citizen)
         {
-            self.bodyColor = new HSLColor(0.9f, 0.9f, 0.9f);
-            self.headColor = new HSLColor(0.9f, 0.9f, 0.9f);
-            self.decorationColor = new HSLColor(0.9f, 0.9f, 0.9f);
-            self.eyeColor = new HSLColor(0.9f, 0.9f, 0.9f);
-            self.bellyColor = new HSLColor(0.9f, 0.9f, 0.9f);
+            self.bodyColor = new HSLColor(0.67f, 0.9f, 0.95f);
+            self.headColor = new HSLColor(0.67f, 0.9f, 0.95f);
+            self.decorationColor = new HSLColor(0.67f, 0.9f, 0.95f);
+            self.eyeColor = new HSLColor(0.67f, 0.9f, 0.95f);
+            self.bellyColor = new HSLColor(0.67f, 0.9f, 0.95f);
         }
     }
     private static void ScavengerGraphics_DrawSprites(On.ScavengerGraphics.orig_DrawSprites orig, ScavengerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPosV2)
@@ -524,9 +524,10 @@ internal class CreatureEdits
         {
             for (int j = 0; j < 2; j++)
             {
-                for (int i = 0; i < 2; i++)
+                sLeaser.sprites[self.EyeSprite(j, 0)].isVisible = false;
+                if (self.iVars.pupilSize > 0f)
                 {
-                    sLeaser.sprites[self.EyeSprite(j, i)].isVisible = false;
+                    sLeaser.sprites[self.EyeSprite(j, 1)].isVisible = false;
                 }
             }
         }

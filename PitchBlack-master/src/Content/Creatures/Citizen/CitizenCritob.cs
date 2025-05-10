@@ -76,7 +76,8 @@ namespace PitchBlack;
     public override void EstablishRelationships()
     {
         //From: RW Wiki Elite Scavenger page UNFINISHED
-        Relationships Citzn = new Relationships(Type);
+        Relationships citzn = new Relationships(Type);
+        citzn.Ignores(CreatureTemplate.Type.Slugcat);
     }
 
     public override ArtificialIntelligence CreateRealizedAI(AbstractCreature acrit) => new ScavengerAI(acrit, acrit.world);
