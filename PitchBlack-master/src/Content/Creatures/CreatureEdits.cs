@@ -60,8 +60,8 @@ internal class CreatureEdits
         On.Ghost.Rags.InitiateSprites += Rags_InitiateSprites;
 
         On.Scavenger.ctor += Scavenger_ctor;
-        On.ScavengerGraphics.ApplyPalette += ScavengerGraphics_ApplyPalette;
         On.ScavengerGraphics.DrawSprites += ScavengerGraphics_DrawSprites;
+        On.ScavengerGraphics.GenerateColors += ScavengerGraphics_GenerateColors;
     }
     #region Dreamer
     // NOTES -Lur
@@ -493,10 +493,30 @@ internal class CreatureEdits
         }
     }
     #endregion
-    
+
     //used by umbra scavs and citizens sharedhooks
     #region Scavenger
 
+    private static void ScavengerGraphics_GenerateColors(On.ScavengerGraphics.orig_GenerateColors orig, ScavengerGraphics self)
+    {
+        orig(self);
+        if (self.scavenger.Template.type == PBEnums.CreatureTemplateType.UmbraScav)
+        {
+            self.bodyColor = new HSLColor(0.08184808f, 0.06207584f, 0.8753151f);
+            self.headColor = new HSLColor(0.08184808f, 0.06207584f, 0.8753151f);
+            self.decorationColor = new HSLColor(0.6535784f, 0.1437009f, 0.3652394f);
+            self.eyeColor = new HSLColor(0.6535784f, 0.7f, 0.1f);
+            self.bellyColor = new HSLColor(0.08184808f, 0.06207584f, 0.8753151f);
+        }
+        if (self.scavenger.Template.type == PBEnums.CreatureTemplateType.Citizen)
+        {
+            self.bodyColor = new HSLColor(0.9f, 0.9f, 0.9f);
+            self.headColor = new HSLColor(0.9f, 0.9f, 0.9f);
+            self.decorationColor = new HSLColor(0.9f, 0.9f, 0.9f);
+            self.eyeColor = new HSLColor(0.9f, 0.9f, 0.9f);
+            self.bellyColor = new HSLColor(0.9f, 0.9f, 0.9f);
+        }
+    }
     private static void ScavengerGraphics_DrawSprites(On.ScavengerGraphics.orig_DrawSprites orig, ScavengerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPosV2)
     {
         orig(self, sLeaser, rCam, timeStacker, camPosV2);
@@ -504,8 +524,10 @@ internal class CreatureEdits
         {
             for (int j = 0; j < 2; j++)
             {
-                sLeaser.sprites[self.EyeSprite(j, 0)].isVisible = false;
-                sLeaser.sprites[self.EyeSprite(j, 1)].isVisible = false;
+                for (int i = 0; i < 2; i++)
+                {
+                    sLeaser.sprites[self.EyeSprite(j, i)].isVisible = false;
+                }
             }
         }
         // umbra scav stuff
@@ -547,23 +569,9 @@ internal class CreatureEdits
         }
     }
 
-    private static void ScavengerGraphics_ApplyPalette(On.ScavengerGraphics.orig_ApplyPalette orig, ScavengerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
-    {
-        orig(self, sLeaser, rCam, palette);
-        if (self.scavenger.Template.type == PBEnums.CreatureTemplateType.Citizen) //to make it solid white
-        {
-            Color blendedBodyColor = new Color(0.9f, 0.9f, 0.9f);
-            Color blendedHeadColor = new Color(0.9f, 0.9f, 0.9f);
-        }
-    }
-
     private static void Scavenger_ctor(On.Scavenger.orig_ctor orig, Scavenger self, AbstractCreature abstractCreature, World world)
     {
         orig(self, abstractCreature, world);
-        if (self.Template.type == PBEnums.CreatureTemplateType.Citizen) //to make it not collide with anything
-        {
-            self.collisionLayer = 3;
-        }
         if (self.Template.type == PBEnums.CreatureTemplateType.UmbraScav) //umbra scav stuff
         {
             self.abstractCreature.personality.aggression = 0.4f;

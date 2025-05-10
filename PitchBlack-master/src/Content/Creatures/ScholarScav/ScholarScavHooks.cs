@@ -15,7 +15,6 @@ public class ScholarScavHooks
         On.ScavengerGraphics.AddToContainer += ScavengerGraphics_AddToContainer;
         On.Scavenger.SetUpCombatSkills += Scavenger_SetUpCombatSkills;
         On.ScavengerGraphics.IndividualVariations.ctor += IndividualVariations_ctor;
-        On.ScavengerGraphics.GenerateColors += ScavengerGraphics_GenerateColors;
         On.Scavenger.Throw += Scavenger_Throw;
         On.Scavenger.GrabbedObjectSnatched += Scavenger_GrabbedObjectSnatched;
         //On.Scavenger.ctor += Scavenger_ctor; < moved to CreatureEdits because of Citizens
@@ -159,18 +158,6 @@ public class ScholarScavHooks
     //    }
     //}
 
-    private static void ScavengerGraphics_GenerateColors(On.ScavengerGraphics.orig_GenerateColors orig, ScavengerGraphics self)
-    {
-        orig(self);
-        if (self.scavenger.Template.type == PBEnums.CreatureTemplateType.UmbraScav)
-        {
-            self.bodyColor = new HSLColor(0.08184808f, 0.06207584f, 0.8753151f);
-            self.headColor = new HSLColor(0.08184808f, 0.06207584f, 0.8753151f);
-            self.decorationColor = new HSLColor(0.6535784f, 0.1437009f, 0.3652394f);
-            self.eyeColor = new HSLColor(0.6535784f, 0.7f, 0.1f);
-            self.bellyColor = new HSLColor(0.08184808f, 0.06207584f, 0.8753151f);
-        }
-    }
 
     private static void IndividualVariations_ctor(On.ScavengerGraphics.IndividualVariations.orig_ctor orig, ref ScavengerGraphics.IndividualVariations self, Scavenger scavenger)
     {

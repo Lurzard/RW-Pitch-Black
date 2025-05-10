@@ -7,17 +7,19 @@ public class CitizenHooks
     {
     public static void Apply()
     {
-        On.ScavengerGraphics.ApplyPalette += ScavengerGraphics_ApplyPalette;
+        On.Scavenger.Update += Scavenger_Update;
     }
 
-    //to make it solid white
-    private static void ScavengerGraphics_ApplyPalette(On.ScavengerGraphics.orig_ApplyPalette orig, ScavengerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
+    private static void Scavenger_Update(On.Scavenger.orig_Update orig, Scavenger self, bool eu)
     {
-        orig(self, sLeaser, rCam, palette);
-        if (self.scavenger.Template.type == PBEnums.CreatureTemplateType.Citizen)
+        if (self.Template.type == PBEnums.CreatureTemplateType.Citizen)
         {
-            Color blendedBodyColor = new Color(0.9f, 0.9f, 0.9f);
-            Color blendedHeadColor = new Color(0.9f, 0.9f, 0.9f);
+            self.CollideWithObjects = false;
+        }
+        orig(self, eu);
+        if (self.Template.type == PBEnums.CreatureTemplateType.Citizen)
+        {
+            self.CollideWithObjects = false;
         }
     }
 }

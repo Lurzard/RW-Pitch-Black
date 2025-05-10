@@ -5,7 +5,6 @@
         <LangVersion>Latest</LangVersion>
         <PathMap>$(MSBuildProjectDirectory)=/PitchBlackDevTeam</PathMap>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <OutDir>..\mod\plugins</OutDir>
     </PropertyGroup>
     
     <ItemGroup>
