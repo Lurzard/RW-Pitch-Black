@@ -61,10 +61,10 @@ public class ElsehowView : BackgroundScene
 
         // Adding graphics
         elseClouds = new List<ElseCloud>();
-        LoadGraphic("clouds1", false, false);
-        LoadGraphic("clouds2", false, false);
-        LoadGraphic("clouds3", false, false);
-        LoadGraphic("flyingClouds1", false, false);
+        LoadGraphic("elsewhyClouds1", false, false);
+        LoadGraphic("elsewhyClouds2", false, false);
+        LoadGraphic("elsewhyClouds3", false, false);
+        LoadGraphic("elsewhyFlyingClouds1", false, false);
         generalFog = new ElseFog(this);
         AddElement(generalFog);
         AddElement(centensSky);
@@ -120,8 +120,8 @@ public class ElsehowView : BackgroundScene
 
     public RoomSettings.RoomEffect effect;
     //floorlevel is from AncientUrbanView for the Buildings, this determines the exact x spacially that the towers are generated according to, yields weird results when y alters, needs to be checked out, and stuff that uses it to be altered. -Lur
-    private float floorLevel = -2000f;
     public Color atmosphereColor = new Color(0.451f, 0.8f, 1f);
+    public float floorLevel = -2000f;
     public float yShift;
 
     #region ElseCloud
@@ -169,7 +169,6 @@ public class ElsehowView : BackgroundScene
             this.scale = scale;
             this.pos = pos;
             this.depth = depth;
-            this.scale = scale;
             this.rotation = rotation;
             scene.LoadGraphic(assetName, true, false);
         }
@@ -232,7 +231,7 @@ public class ElsehowView : BackgroundScene
             sLeaser.sprites[0].scaleX = 1400f;
             sLeaser.sprites[0].x = 683f;
             sLeaser.sprites[0].y = 0f;
-            sLeaser.sprites[1] = new FSprite("clouds" + (index % 3 + 1).ToString(), true);
+            sLeaser.sprites[1] = new FSprite("elsewhyClouds" + (index % 3 + 1).ToString(), true);
             sLeaser.sprites[1].shader = rCam.game.rainWorld.Shaders["Cloud"];
             sLeaser.sprites[1].anchorY = 1f;
             AddToContainer(sLeaser, rCam, null);
@@ -292,7 +291,7 @@ public class ElsehowView : BackgroundScene
             sLeaser.sprites[0].scaleX = 1400f;
             sLeaser.sprites[0].x = 683f;
             sLeaser.sprites[0].y = 0f;
-            sLeaser.sprites[1] = new FSprite("clouds" + (index % 3 + 1).ToString(), true);
+            sLeaser.sprites[1] = new FSprite("elsewhyClouds" + (index % 3 + 1).ToString(), true);
             sLeaser.sprites[1].shader = rCam.game.rainWorld.Shaders["CloudDistant"];
             sLeaser.sprites[1].anchorY = 1f;
             AddToContainer(sLeaser, rCam, null);
@@ -350,7 +349,7 @@ public class ElsehowView : BackgroundScene
         public override void InitiateSprites(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
         {
             sLeaser.sprites = new FSprite[1];
-            sLeaser.sprites[0] = new FSprite("flyingClouds1", true);
+            sLeaser.sprites[0] = new FSprite("elsewhyFlyingClouds1", true);
             sLeaser.sprites[0].shader = rCam.game.rainWorld.Shaders["CloudDistant"];
             sLeaser.sprites[0].anchorY = 1f;
             AddToContainer(sLeaser, rCam, null);
