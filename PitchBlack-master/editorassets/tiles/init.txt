@@ -1,0 +1,2 @@
+[#nm:"Thin Pillar Segment", #sz:point(2,2), #specs:[1,1,1,1], #specs2:0, #tp:"voxelStruct", #repeatL:[1,1,1,4,1,1,1], #bfTiles:0, #rnd:1, #ptPos:0, #tags:["nonSolid"]]
+[#nm:"Thin Pillar divider", #sz:point(2,1), #specs:[1,1], #specs2:0, #tp:"voxelStruct", #repeatL:[1,8,1], #bfTiles:1, #rnd:1, #ptPos:0, #tags:[]]
