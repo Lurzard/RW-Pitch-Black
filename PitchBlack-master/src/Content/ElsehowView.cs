@@ -31,9 +31,9 @@ public class ElsehowView : BackgroundScene
             float xplacementRange = Random.Range(-screenWidth, screenWidth);
             float ydepthRange = Random.Range(-350f, -150f);
             int visualVariation = Random.Range(0, 3);
-            float scaleRange = Random.Range(0.75f, 1.75f);
+            float scaleRange = Random.Range(0.75f, 1.25f);
             float towerLayerThickness = 0.1f;
-            Vector2 pos = new Vector2(PosFromDrawPosAtNeutralCamPos(new Vector2(xplacementRange, 0f), depthRange).x, floorLevel + offset * depthRange + ydepthRange);
+            Vector2 pos = new Vector2(PosFromDrawPosAtNeutralCamPos(new Vector2(xplacementRange, 0f), depthRange).x, floorLevel + offset + ydepthRange);
             // Adding Towers
             AddElement(new Towers(this, "Centens_Tower_" + visualVariation.ToString(), pos, depthRange, scaleRange, 0f, towerLayerThickness));
         }

@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using On;
+using ScavengerCosmetic;
+using UnityEngine;
 
 namespace PitchBlack;
 
@@ -9,6 +11,26 @@ public class CitizenHooks
     {
         On.Scavenger.Update += Scavenger_Update;
         On.Scavenger.Grab += Scavenger_Grab;
+        On.Scavenger.Collide += Scavenger_Collide;
+        On.ScavengerAbstractAI.InitGearUp += ScavengerAbstractAI_InitGearUp;
+    }
+
+    private static void ScavengerAbstractAI_InitGearUp(On.ScavengerAbstractAI.orig_InitGearUp orig, ScavengerAbstractAI self)
+    {
+        if (self.parent.creatureTemplate.type == PBEnums.CreatureTemplateType.Citizen)
+        {
+            return;
+        }
+        orig(self);
+    }
+
+    private static void Scavenger_Collide(On.Scavenger.orig_Collide orig, Scavenger self, PhysicalObject otherObject, int myChunk, int otherChunk)
+    {
+        if (self.Template.type == PBEnums.CreatureTemplateType.Citizen)
+        {
+            return;
+        }
+        orig(self, otherObject, myChunk, otherChunk);
     }
 
     private static bool Scavenger_Grab(On.Scavenger.orig_Grab orig, Scavenger self, PhysicalObject obj, int graspUsed, int chunkGrabbed, Creature.Grasp.Shareability shareability, float dominance, bool overrideEquallyDominant, bool pacifying)
@@ -32,5 +54,6 @@ public class CitizenHooks
             self.CollideWithObjects = false;
         }
     }
+
 }
 

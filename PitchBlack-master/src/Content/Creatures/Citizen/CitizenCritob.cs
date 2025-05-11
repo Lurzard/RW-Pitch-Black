@@ -33,7 +33,7 @@ namespace PitchBlack;
     {
         CreatureTemplate t = new CreatureFormula(CreatureTemplate.Type.Scavenger, PBEnums.CreatureTemplateType.Citizen, "Citizen")
         {
-            DefaultRelationship = new(CreatureTemplate.Relationship.Type.Ignores, 0.1f),
+            DefaultRelationship = new(CreatureTemplate.Relationship.Type.Ignores, 1f),
             Pathing = PreBakedPathing.Ancestral(CreatureTemplate.Type.Scavenger),
         }.IntoTemplate();
         t.dangerousToPlayer = 0;
@@ -77,6 +77,7 @@ namespace PitchBlack;
     {
         //From: RW Wiki Elite Scavenger page UNFINISHED
         Relationships citzn = new Relationships(Type);
+        citzn.IsInPack(PBEnums.CreatureTemplateType.Citizen, 1f);
         citzn.Ignores(CreatureTemplate.Type.Slugcat);
     }
 

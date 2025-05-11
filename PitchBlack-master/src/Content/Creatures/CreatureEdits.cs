@@ -62,7 +62,12 @@ internal class CreatureEdits
         On.Scavenger.ctor += Scavenger_ctor;
         On.ScavengerGraphics.DrawSprites += ScavengerGraphics_DrawSprites;
         On.ScavengerGraphics.GenerateColors += ScavengerGraphics_GenerateColors;
+        On.ScavengerGraphics.AddToContainer += ScavengerGraphics_AddToContainer;
     }
+
+
+
+
     #region Dreamer
     // NOTES -Lur
     // Attempting to make the echo colored White instead of black (Albino) and RippleGold instead of Gold. Worked out, had to use new edited shaders:
@@ -573,6 +578,10 @@ internal class CreatureEdits
     private static void Scavenger_ctor(On.Scavenger.orig_ctor orig, Scavenger self, AbstractCreature abstractCreature, World world)
     {
         orig(self, abstractCreature, world);
+        if (self.Template.type == PBEnums.CreatureTemplateType.Citizen)
+        {
+            self.collisionLayer = 2;
+        }
         if (self.Template.type == PBEnums.CreatureTemplateType.UmbraScav) //umbra scav stuff
         {
             self.abstractCreature.personality.aggression = 0.4f;
@@ -583,5 +592,38 @@ internal class CreatureEdits
             self.abstractCreature.personality.sympathy = 0.7f;
         }
     }
-    #endregion 
+
+    
+private static void ScavengerGraphics_AddToContainer(On.ScavengerGraphics.orig_AddToContainer orig, ScavengerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, FContainer newContatiner)
+    {
+        int randomContainerInt = UnityEngine.Random.Range(0, 1);
+        string RandomContainerStr = randomContainerInt switch
+        {
+            0 => "Midground",
+            1 => "Background",
+            _ => "Background",
+        };
+        if (self.scavenger.Template.type == PBEnums.CreatureTemplateType.Citizen)
+        {
+            sLeaser.RemoveAllSpritesFromContainer();
+            if (newContatiner == null)
+            {
+                newContatiner = rCam.ReturnFContainer(RandomContainerStr);
+            }
+            newContatiner.AddChild(sLeaser.containers[0]);
+            for (int i = 0; i < self.FirstInFrontLimbSprite; i++)
+            {
+                newContatiner.AddChild(sLeaser.sprites[i]);
+            }
+        
+            for (int m = self.FirstInFrontLimbSprite; m < self.FirstInFrontLimbSprite + 2; m++)
+            {
+                newContatiner.AddChild(sLeaser.sprites[m]);
+            }
+            newContatiner.AddChild(sLeaser.containers[1]);
+        }
+        orig(self, sLeaser,rCam,newContatiner);
+    }
+    #endregion
+    
 }
