@@ -1,13 +1,15 @@
-﻿using Fisobs.Core;
+﻿using DevInterface;
+using Fisobs.Core;
 using Fisobs.Creatures;
+using MoreSlugcats;
 using System.Collections.Generic;
 using UnityEngine;
-using DevInterface;
+using Watcher;
 
 namespace PitchBlack;
-    sealed class CitizenCritob : Critob
+sealed class CitizenCritob : Critob
 {
-    internal CitizenCritob() : base (PBEnums.CreatureTemplateType.Citizen)
+    internal CitizenCritob() : base(PBEnums.CreatureTemplateType.Citizen)
     {
         Icon = new SimpleIcon("Kill_Scavenger", mapCitizen);
         LoadedPerformanceCost = 100f; //probably for loading a lot of creatures
@@ -67,7 +69,7 @@ namespace PitchBlack;
         {
             t.usesNPCTransportation = true;
             t.usesRegionTransportation = false;
-            t.usesCreatureHoles = true; 
+            t.usesCreatureHoles = true;
             t.doesNotUseDens = false;
         }
         return t;
@@ -75,10 +77,61 @@ namespace PitchBlack;
 
     public override void EstablishRelationships()
     {
-        //From: RW Wiki Elite Scavenger page UNFINISHED
         Relationships citzn = new Relationships(Type);
-        citzn.IsInPack(PBEnums.CreatureTemplateType.Citizen, 1f);
+        //to others
+        citzn.IsInPack(PBEnums.CreatureTemplateType.Citizen, 1f); //friend
+        //basegame
         citzn.Ignores(CreatureTemplate.Type.Slugcat);
+        citzn.Ignores(CreatureTemplate.Type.Vulture);
+        citzn.Ignores(CreatureTemplate.Type.KingVulture);
+        citzn.Ignores(CreatureTemplate.Type.Scavenger);
+        citzn.Ignores(CreatureTemplate.Type.LanternMouse);
+        citzn.Ignores(CreatureTemplate.Type.LizardTemplate);
+        citzn.Ignores(CreatureTemplate.Type.Snail);
+        citzn.Ignores(CreatureTemplate.Type.GarbageWorm);
+        citzn.Ignores(CreatureTemplate.Type.DaddyLongLegs);
+        citzn.Ignores(CreatureTemplate.Type.BrotherLongLegs);
+        citzn.Ignores(CreatureTemplate.Type.Centipede);
+        citzn.Ignores(CreatureTemplate.Type.RedCentipede);
+        citzn.Ignores(CreatureTemplate.Type.SmallCentipede);
+        citzn.Ignores(CreatureTemplate.Type.TentaclePlant);
+        citzn.Ignores(CreatureTemplate.Type.PoleMimic);
+        citzn.Ignores(CreatureTemplate.Type.MirosBird);
+        citzn.Ignores(CreatureTemplate.Type.BigSpider);
+        citzn.Ignores(CreatureTemplate.Type.BigNeedleWorm);
+        citzn.Ignores(CreatureTemplate.Type.SmallNeedleWorm);
+        citzn.Ignores(CreatureTemplate.Type.DropBug);
+        citzn.Ignores(CreatureTemplate.Type.Overseer);
+        //msc
+        citzn.Ignores(MoreSlugcatsEnums.CreatureTemplateType.HunterDaddy);
+        citzn.Ignores(MoreSlugcatsEnums.CreatureTemplateType.FireBug);
+        citzn.Ignores(MoreSlugcatsEnums.CreatureTemplateType.SlugNPC);
+        //dlcshared
+        citzn.Ignores(DLCSharedEnums.CreatureTemplateType.Yeek);
+        citzn.Ignores(DLCSharedEnums.CreatureTemplateType.MirosVulture);
+        citzn.Ignores(DLCSharedEnums.CreatureTemplateType.Inspector);
+        citzn.Ignores(DLCSharedEnums.CreatureTemplateType.TerrorLongLegs);
+        //watcher
+        citzn.Ignores(WatcherEnums.CreatureTemplateType.DrillCrab);
+        citzn.Ignores(WatcherEnums.CreatureTemplateType.BigSandGrub);
+        citzn.Ignores(WatcherEnums.CreatureTemplateType.FireSprite);
+        //mods go down here later?
+
+        //from others
+        //basegame
+        citzn.IgnoredBy(CreatureTemplate.Type.LizardTemplate);
+        citzn.IgnoredBy(CreatureTemplate.Type.Vulture);
+        citzn.IgnoredBy(CreatureTemplate.Type.Scavenger);
+        citzn.IgnoredBy(CreatureTemplate.Type.BigSpider);
+        //dlcshared
+        citzn.IgnoredBy(DLCSharedEnums.CreatureTemplateType.MirosVulture);
+        //watcher
+        citzn.IgnoredBy(WatcherEnums.CreatureTemplateType.DrillCrab);
+        citzn.IgnoredBy(WatcherEnums.CreatureTemplateType.Rattler);
+        citzn.IgnoredBy(WatcherEnums.CreatureTemplateType.FireSprite);
+        citzn.IgnoredBy(WatcherEnums.CreatureTemplateType.RotLoach);
+        citzn.IgnoredBy(WatcherEnums.CreatureTemplateType.Frog);
+        //mods go down here later?
     }
 
     public override ArtificialIntelligence CreateRealizedAI(AbstractCreature acrit) => new ScavengerAI(acrit, acrit.world);

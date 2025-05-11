@@ -596,12 +596,12 @@ internal class CreatureEdits
     
 private static void ScavengerGraphics_AddToContainer(On.ScavengerGraphics.orig_AddToContainer orig, ScavengerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, FContainer newContatiner)
     {
-        int randomContainerInt = UnityEngine.Random.Range(0, 1);
+        int randomContainerInt = UnityEngine.Random.Range(0, 2);
         string RandomContainerStr = randomContainerInt switch
         {
-            0 => "Midground",
-            1 => "Background",
-            _ => "Background",
+            0 => "Background",
+            1 => "Midground",
+            2 => "Foreground",
         };
         if (self.scavenger.Template.type == PBEnums.CreatureTemplateType.Citizen)
         {
