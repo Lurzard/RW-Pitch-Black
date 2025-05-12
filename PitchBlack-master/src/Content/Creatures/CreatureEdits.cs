@@ -251,6 +251,7 @@ internal class CreatureEdits
             if (!self.spawn.culled)
             {
                 sLeaser.sprites[self.BodyMeshSprite].shader = rCam.game.rainWorld.Shaders["DreamSpawnBody"];
+                sLeaser.sprites[self.GlowSprite].color = Plugin.SaturatedRose;
                 if (self.hasOwnGoldEffect)
                 {
                     sLeaser.sprites[self.EffectSprite].shader = rCam.game.rainWorld.Shaders["GoldenGlow"];
@@ -265,6 +266,7 @@ internal class CreatureEdits
         if (MiscUtils.IsDreamSpawn(self.spawn))
         {
             sLeaser.sprites[self.BodyMeshSprite].shader = rCam.game.rainWorld.Shaders["DreamSpawnBody"];
+            sLeaser.sprites[self.GlowSprite].color = Plugin.SaturatedRose;
             if (self.hasOwnGoldEffect)
             {
                 sLeaser.sprites[self.EffectSprite].shader = rCam.game.rainWorld.Shaders["GoldenGlow"];

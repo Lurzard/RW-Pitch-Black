@@ -187,13 +187,8 @@ public static class MiscUtils
     //Spawning DreamSpawn
     public static void MaterializeDreamSpawn(Room room, UnityEngine.Vector2 spawnPos, Room.RippleSpawnSource source)
     {
-        float level = 3f;
         int amountToSpawn = 0;
         //int amountOfOscillations = 0;
-        if (room.game.IsStorySession)
-        {
-            level = (room.game.session as StoryGameSession).saveState.deathPersistentSaveData.rippleLevel;
-        }
         if (source == PBEnums.DreamSpawn.SpawnSource.Death)
         {
             amountToSpawn = 1;
@@ -209,8 +204,8 @@ public static class MiscUtils
         //    amountToSpawn = numberOfOscillations;
         //}
 
-        // Stopping spawning if the room has too many
-        if (room.voidSpawns.Count >= amountToSpawn)
+        //Stopping spawning if the room has too many
+        if (room.voidSpawns.Count >= room.voidSpawns.Count + amountToSpawn)
         {
             return;
         }
@@ -233,11 +228,11 @@ public static class MiscUtils
         if (IsDreamSpawn(voidSpawn))
         {
             // BezierSwarm for now, but later I want them to chase and kill anything they can
-            voidSpawn.behavior = new VoidSpawn.BezierSwarm(voidSpawn, room);
+            voidSpawn.behavior = new VoidSpawn.CircleSwarm(voidSpawn, room);
             voidSpawn.timeUntilFadeout = Random.Range(400, 1200);
         }
         voidSpawn.PlaceInRoom(room);
-        //voidSpawn.ChangeRippleLayer(0, true);
+        voidSpawn.ChangeRippleLayer(0, true);
     }
     public static void SpawnOscillatingRipple(Player self, bool fromThanatosis)
     {

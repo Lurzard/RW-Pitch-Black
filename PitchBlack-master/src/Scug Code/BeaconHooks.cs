@@ -51,38 +51,38 @@ public static class BeaconHooks
     }
 
     // NOTE: All of this references how CamoMeter is added
-    public static ThanatosisMeter thanatosisMeter;
+    //public static ThanatosisMeter thanatosisMeter;
     // Adding to hud the Thanatosis part
-    private static void HUD_AddPart(On.HUD.HUD.orig_AddPart orig, HUD.HUD self, HudPart part)
-    {
-        orig(self, part);
-        if (part is ThanatosisMeter)
-        {
-            thanatosisMeter = part as ThanatosisMeter;
-        }
-        self.parts.Add(part);
-    }
+    //private static void HUD_AddPart(On.HUD.HUD.orig_AddPart orig, HUD.HUD self, HudPart part)
+    //{
+    //    orig(self, part);
+    //    if (part is ThanatosisMeter)
+    //    {
+    //        thanatosisMeter = part as ThanatosisMeter;
+    //    }
+    //    self.parts.Add(part);
+    //}
 
     // Black circles behind food pips, like Watcher
-    private static void MeterCircle_AddCircles(On.HUD.FoodMeter.MeterCircle.orig_AddCircles orig, HUD.FoodMeter.MeterCircle self)
-    {
-        orig(self);
-        if (thanatosisMeter != null)
-        {
-            self.backCircle = new HUDCircle(self.meter.hud, HUDCircle.SnapToGraphic.None, self.meter.fContainer, 5);
-        }
-    }
+    //private static void MeterCircle_AddCircles(On.HUD.FoodMeter.MeterCircle.orig_AddCircles orig, HUD.FoodMeter.MeterCircle self)
+    //{
+    //    orig(self);
+    //    if (thanatosisMeter != null)
+    //    {
+    //        self.backCircle = new HUDCircle(self.meter.hud, HUDCircle.SnapToGraphic.None, self.meter.fContainer, 5);
+    //    }
+    //}
 
     // Adding ThanatosisMeter to the singleplayer hud
-    private static void HUD_InitSinglePlayerHud(On.HUD.HUD.orig_InitSinglePlayerHud orig, HUD.HUD self, RoomCamera cam)
-    {
-        orig(self, cam);
-        if ((self.owner as Player).SlugCatClass == PBEnums.SlugcatStatsName.Beacon)
-        {
-            self.AddPart(new ThanatosisMeter(self, self.fContainers[1]));
-        }
+    //private static void HUD_InitSinglePlayerHud(On.HUD.HUD.orig_InitSinglePlayerHud orig, HUD.HUD self, RoomCamera cam)
+    //{
+    //    orig(self, cam);
+    //    if ((self.owner as Player).SlugCatClass == PBEnums.SlugcatStatsName.Beacon)
+    //    {
+    //        self.AddPart(new ThanatosisMeter(self, self.fContainers[1]));
+    //    }
 
-    }
+    //}
 
     private static void IL_Player_checkInput(ILContext il)
     {
@@ -179,7 +179,8 @@ public static class BeaconHooks
             {
                 if (Plugin.qualiaLevel <= 3f)
                 {
-                    beaconCWT.currentSkinColor = Color.Lerp(Plugin.beaconDefaultColor, RainWorld.RippleColor, beaconCWT.thanatosisLerp);
+                    Color starveColor = Color.Lerp(Plugin.beaconDefaultColor, Color.gray, 0.4f);
+                    beaconCWT.currentSkinColor = Color.Lerp(Plugin.beaconDefaultColor, starveColor, beaconCWT.thanatosisLerp);
                     beaconCWT.currentEyeColor = Plugin.beaconEyeColor;
                 }
                 if (Plugin.qualiaLevel >= 3f)
@@ -623,31 +624,34 @@ public static class BeaconHooks
             {
                 beaconCWT.inputForThanatosisCounter = 0;
             }
-            // NOTE: canIDoThanatosisYet check because player must first meet the condition for this to be true. For now because of dev, it is set to true -Lur
+            // Checks input
             if (Plugin.canIDoThanatosisYet == true && self.input[0].spec)
             {
                 beaconCWT.inputForThanatosisCounter++;
-                // stops recursive input
+                // Flip isDead
                 if (beaconCWT.inputForThanatosisCounter == 25)
                 {
                     beaconCWT.deathToggle = beaconCWT.isDead;
                     beaconCWT.isDead = !beaconCWT.isDead;
                 }
+                // Play sound
                 if ((beaconCWT.deathToggle != beaconCWT.isDead) && beaconCWT.inputForThanatosisCounter == 25)
                 {
                     self.room.PlaySound(beaconCWT.isDead ? PBEnums.SoundID.Player_Activated_Thanatosis : PBEnums.SoundID.Player_Deactivated_Thanatosis, self.mainBodyChunk);
-                    MiscUtils.SpawnOscillatingRipple(self, true);
-                    //self.room.PlaySound(beaconCWT.isDead ? new SoundID("Player_Activated_Thanatosis", false) : new SoundID("Player_Deactivated_Thanatosis", false), self.mainBodyChunk);
                 }
             }
-            //In Thanatosis
+            // IN THANATOSIS
             if (beaconCWT.isDead)
             {
-                // (Should) spawn a DreamSpawn on you when you die -Lur (it doesn't for now for some reason..)
-                MiscUtils.MaterializeDreamSpawn(self.room, self.mainBodyChunk.pos, PBEnums.DreamSpawn.SpawnSource.Death);
+                // Spawn a DreamSpawn
+                if (!beaconCWT.spawnLeftBody)
+                {
+                    MiscUtils.MaterializeDreamSpawn(self.room, self.mainBodyChunk.pos, PBEnums.DreamSpawn.SpawnSource.Death);
+                    beaconCWT.spawnLeftBody = true;
+                }
 
                 // Input removing is done in IL_Player_checkInput;
-                beaconCWT.thanatosisCharge = Mathf.Min(beaconCWT.thanatosisCharge + 1f, beaconCWT.inThanatosisLimit);
+
                 // Increase time
                 if (beaconCWT.thanatosisCounter < beaconCWT.inThanatosisLimit)
                 {
@@ -664,7 +668,7 @@ public static class BeaconHooks
                     }
                 }
             }
-            // Dying in thanatosis
+            // DYING IN THANATOSIS
             // NOTE: inThanatosisTime is never increased above ThanatosisLimit, so -1 will be actually true instead.
             if (((beaconCWT.thanatosisCounter > beaconCWT.inThanatosisLimit - 1) && !beaconCWT.diedInThanatosis) || (beaconCWT.isDead && self.dead))
             {
@@ -682,12 +686,11 @@ public static class BeaconHooks
             {
                 beaconCWT.thanatosisDeathBumpNeedsToPlay = false;
             }
-            //Outside Thanatosis
+            //OUTSIDE THANATOSIS
             if (!beaconCWT.isDead)
             {
-                beaconCWT.thanatosisCharge = Mathf.Max(beaconCWT.thanatosisCharge - 1f, 0f);
                 beaconCWT.graspsNeedToBeReleased = false;
-                //Decrease time
+                beaconCWT.spawnLeftBody = false;
                 if (beaconCWT.thanatosisCounter > 0)
                 {
                     beaconCWT.thanatosisCounter--;
