@@ -1,18 +1,16 @@
 {
 	"id": "Beacon",
 	"name": "The Beacon",
-	"description": "In the wake of night, a frail but agile slugcat with a strange luminosity makes their presence known.\nLight your path and journey far; time is of the essence when under pursuit.",
+	"description": "Placeholder-character-description",
+
 	"features": {
-
 		"guide_overseer": 87,
-
 		"weight": 1,
 		"tunnel_speed": 1,
 		"climb_speed": 1,
 		"walk_speed": 1,
 		"throw_skill": 1,
 		"lung_capacity": 1,
-
 		"food_min": 4,
 		"food_max": 7,
 		"diet": {

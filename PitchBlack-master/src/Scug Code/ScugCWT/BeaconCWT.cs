@@ -26,7 +26,6 @@ public class BeaconCWT : ScugCWT
     public bool thanatosisDeathBumpNeedsToPlay = false; //stops recursive true death sound
     public int thanatosisCounter; //tracking current time spent in Thanatosis
     public float thanatosisLerp; //for lerping player color based on time spent in Thanatosis
-    public float thanatosisCharge;
     public float inThanatosisLimit
     {
         get
@@ -49,6 +48,7 @@ public class BeaconCWT : ScugCWT
     public int inputForThanatosisCounter = 0; //spec input doesn't recursively flip isDead
     public bool graspsNeedToBeReleased = false; //stops grasp-losing recursion
     public int numberOfOscillations = 0;
+    public bool spawnLeftBody = false;
 
     public BeaconCWT(Player player) : base()
     {
