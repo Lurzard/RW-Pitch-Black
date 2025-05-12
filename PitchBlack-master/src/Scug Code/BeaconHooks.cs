@@ -50,6 +50,25 @@ public static class BeaconHooks
         //On.HUD.HUD.AddPart += HUD_AddPart;
     }
 
+    public static void DropAllFlares(Player self)
+    {
+        if (Plugin.scugCWT.TryGetValue(self, out ScugCWT scugCWT) && scugCWT is BeaconCWT beaconCWT && beaconCWT.storage != null)
+        {
+            while (beaconCWT.storage.storedFlares.Count > 0)
+            {
+                FlareBomb fb = beaconCWT.storage.storedFlares.Pop();
+                BeaconCWT.AbstractStoredFlare af = beaconCWT.storage.abstractFlare.Pop();
+                if (fb != null)
+                {
+                    fb.firstChunk.vel = self.mainBodyChunk.vel + Custom.RNV() * 3f * Random.value;
+                    fb.ChangeMode(Weapon.Mode.Free);
+                }
+                af?.Deactivate();
+            }
+        }
+    }
+
+    #region ThanatosisMeter hooks
     // NOTE: All of this references how CamoMeter is added
     //public static ThanatosisMeter thanatosisMeter;
     // Adding to hud the Thanatosis part
@@ -81,8 +100,8 @@ public static class BeaconHooks
     //    {
     //        self.AddPart(new ThanatosisMeter(self, self.fContainers[1]));
     //    }
-
     //}
+    #endregion
 
     private static void IL_Player_checkInput(ILContext il)
     {
@@ -123,15 +142,6 @@ public static class BeaconHooks
             Plugin.logger.LogDebug($"PB {nameof(IL_Player_checkInput)} could not match IL.\n{err}");
         }
     }
-    private static SlugcatStats.Timeline SlugcatStats_SlugcatToTimeline(On.SlugcatStats.orig_SlugcatToTimeline orig, SlugcatStats.Name slugcat)
-    {
-        orig(slugcat);
-        if (slugcat == PBEnums.SlugcatStatsName.Beacon)
-        {
-            return PBEnums.Timeline.Beacon;
-        }
-        return orig(slugcat);
-    }
 
     private static void PlayerGraphics_ApplyPalette(On.PlayerGraphics.orig_ApplyPalette orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
     {
@@ -158,16 +168,6 @@ public static class BeaconHooks
         }
     }
 
-    //Keeping this here for now
-    //private static void PlayerGraphics_InitiateSprites(On.PlayerGraphics.orig_InitiateSprites orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
-    //{
-    //    orig(self, sLeaser, rCam);
-    //    if (Plugin.scugCWT.TryGetValue(self.player, out ScugCWT scugCWT) && scugCWT is BeaconCWT beaconCWT) {
-    //        sLeaser.sprites[9] = new FSprite(beaconCWT.isDead ? "FaceThanatosisA0" : "FaceA0", true);
-    //    }
-    //}
-
-    //add math to fade beacon color in real time instead of immediately 
     private static void PlayerGraphics_DrawSprites(On.PlayerGraphics.orig_DrawSprites orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
     {
         orig(self, sLeaser, rCam, timeStacker, camPos);
@@ -221,13 +221,13 @@ public static class BeaconHooks
     }
     private static void PlayerGraphics_Update(On.PlayerGraphics.orig_Update orig, PlayerGraphics self)
     {
-        //ASSUMING THIS WILL BE TRUE MOST OF THE TIME IN BEACON'S WORLD STATE
+        //Assuming this will be true most of the time for Beacon
         if (Plugin.scugCWT.TryGetValue(self.player, out ScugCWT scugCWT) &&
             scugCWT is BeaconCWT beaconCWT &&
             self.player.room.Darkness(self.player.mainBodyChunk.pos) > 0f)
         {
             // This (the lightsource) is 100% causing issues. -Lur
-            //GIVE THIS BACK SINCE ORIG PROBABLY TOOK IT
+            //Adding lightsource if orig took it
             if (self.lightSource == null)
             {
                 Color lerpColor;
@@ -278,7 +278,7 @@ public static class BeaconHooks
 
             //IF WE HAVE THE_GLOW, DON'T LET OUR GLOW STRENGTH UNDERCUT THAT
             if (self.player.glowing && rad < 300) rad = 300;
-            if (self.player.dead || beaconCWT.isDead) rad = 0;
+            if (self.player.dead || beaconCWT.isDead) rad = 200;
 
             self.lightSource.setRad = rad;
             self.lightSource.setAlpha = alpha;
@@ -290,7 +290,8 @@ public static class BeaconHooks
                 if (self.blink <= 0 && Random.value < 0.35f) self.player.Blink(Mathf.FloorToInt(Mathf.Lerp(3f, 8f, UnityEngine.Random.value)));
                 self.head.vel -= self.lookDirection * 3f;
             }
-            // For petting Friend and Noir... I think
+
+            // For petting Friend and Noir... I think -Moon
             // Yeah that's probably it, but I have no idea when I wrote
             //this.events.Add(new Conversation.TextEvent(this, 0, this.Translate("What are you? If I had my memories I would know..."), 0));
             int initptm = beaconCWT.petTimer;
@@ -319,254 +320,10 @@ public static class BeaconHooks
                 }
             }
         }
-
         orig(self);
     }
 
-    private static void Player_GrabUpdate_IL(ILContext il)
-    {
-        //spinch: give priority to auto-throwing flarebombs from storage over throwing slug on back
-        ILCursor c = new(il);
-        ILLabel label = il.DefineLabel();
-
-        if (!c.TryGotoNext(MoveType.After,
-            i => i.MatchCallOrCallvirt<Player.SlugOnBack>("get_HasASlug"),
-            i => i.MatchBrfalse(out label)
-            ))
-        {
-            return;
-        }
-
-        c.Emit(OpCodes.Ldarg_0);
-
-        c.EmitDelegate((Player self) =>
-        {
-            if (self.slugOnBack == null || !self.slugOnBack.HasASlug || !Plugin.scugCWT.TryGetValue(self, out var c) || c is not BeaconCWT cwt || cwt.storage.storedFlares.Count <= 0)
-            {
-                return false;
-            }
-
-            foreach (var item in self.grasps)
-            {
-                if (item != null && self.IsObjectThrowable(item.grabbed))
-                {
-                    return false;
-                }
-            }
-            return true;
-        });
-
-        c.Emit(OpCodes.Brtrue, label);
-    }
-    private static void MeterCircle_Update(On.HUD.FoodMeter.MeterCircle.orig_Update orig, HUD.FoodMeter.MeterCircle self)
-    {
-        orig(self);
-        if (foodWarning > 0 && !self.meter.IsPupFoodMeter && self.number < self.meter.ShowSurvivalLimit && (self.meter.hud.owner.GetOwnerType() == HUD.HUD.OwnerType.Player))
-        {
-            if (self.meter.timeCounter % 20 > 10)
-            {
-                self.rads[0, 0] *= 0.96f;
-                self.circles[0].color = 1;
-            }
-            //num = 0.65f + 0.35f * Mathf.Sin((float)self.meter.timeCounter / 20f * 3.1415927f * 2f);
-            self.circles[0].fade = 1f;
-            self.meter.visibleCounter = 80;
-            foodWarning--;
-        }
-    }
-    public static void DropAllFlares(Player self)
-    {
-        if (Plugin.scugCWT.TryGetValue(self, out ScugCWT scugCWT) && scugCWT is BeaconCWT beaconCWT && beaconCWT.storage != null)
-        {
-            while (beaconCWT.storage.storedFlares.Count > 0)
-            {
-                FlareBomb fb = beaconCWT.storage.storedFlares.Pop();
-                BeaconCWT.AbstractStoredFlare af = beaconCWT.storage.abstractFlare.Pop();
-                if (fb != null)
-                {
-                    fb.firstChunk.vel = self.mainBodyChunk.vel + Custom.RNV() * 3f * Random.value;
-                    fb.ChangeMode(Weapon.Mode.Free);
-                }
-                af?.Deactivate();
-            }
-        }
-    }
-    private static void Player_Die(On.Player.orig_Die orig, Player self)
-    {
-        if (ModManager.CoopAvailable && Plugin.scugCWT.TryGetValue(self, out var c) && c is BeaconCWT cwt && cwt.storage != null)
-        {
-            cwt.coopRefund = Mathf.Max(cwt.coopRefund, cwt.storage.storedFlares.Count);
-        }
-        //spinch: on death, all of beacon's stored flarebombs gets popped off
-        DropAllFlares(self);
-        //WW: but do that BEFORE orig in case our death unrealizes us
-        orig(self);
-    }
-    private static void Player_PermaDie(On.Player.orig_PermaDie orig, Player self)
-    {
-        if (ModManager.CoopAvailable && Plugin.scugCWT.TryGetValue(self, out ScugCWT c) && c is BeaconCWT cwt && cwt.storage != null)
-        {
-            cwt.coopRefund = Mathf.Max(cwt.coopRefund, cwt.storage.storedFlares.Count);
-        }
-        orig(self);
-    }
-    private static void Creature_Abstractize(On.Creature.orig_Abstractize orig, Creature self)
-    {
-        if (self is Player player && player.slugcatStats?.name == PBEnums.SlugcatStatsName.Beacon)
-        {
-            DropAllFlares(player);
-        }
-        orig(self);
-    }
-    private static void ShelterDoor_DoorClosed(On.ShelterDoor.orig_DoorClosed orig, ShelterDoor self)
-    {
-        //IT'S NOT FOOLPROOF, BUT IT'S GOOD ENOUGH...
-        if (ModManager.CoopAvailable)
-        {
-            // This might work, as long as players are still realized.
-            foreach (AbstractCreature player in self.room.game.AlivePlayers)
-            {
-                if (player.realizedCreature is Player p && Plugin.scugCWT.TryGetValue(p, out ScugCWT c) && c is BeaconCWT beaconCWT)
-                {
-                    for (int i = 0; i < beaconCWT.coopRefund; i++)
-                    {
-                        AbstractConsumable item = new(self.room.world, AbstractObjectType.FlareBomb, null, self.room.LocalCoordinateOfNode(0), self.room.game.GetNewID(), -1, -1, null);
-                        self.room.abstractRoom.AddEntity(item);
-                        item.RealizeInRoom();
-                        self.room.AddObject(item.realizedObject);
-                    }
-                    beaconCWT.coopRefund = 0;
-                }
-            }
-        }
-
-        orig(self);
-    }
-    private static void Player_Jump(On.Player.orig_Jump orig, Player self)
-    {
-        orig(self);
-
-        if (PBEnums.SlugcatStatsName.Beacon == self.slugcatStats.name)
-        {
-            if (Player.AnimationIndex.Flip == self.animation)
-                self.jumpBoost *= 1f + 0.55f;
-            else
-                self.jumpBoost *= 1f + 0.1f;
-        }
-    }
-    public static void BeaconTransmuteIntoFlashbang(On.Player.orig_SwallowObject orig, Player self, int grasp)
-    {
-        orig(self, grasp);
-        if (self.slugcatStats.name == PBEnums.SlugcatStatsName.Beacon && self.playerState.foodInStomach > 0 && self.objectInStomach.type == AbstractObjectType.Rock)
-        {
-            self.objectInStomach = new AbstractConsumable(self.room.world, AbstractObjectType.FlareBomb, null, self.abstractCreature.pos, self.room.game.GetNewID(), -1, -1, null);
-            self.SubtractFood(1);
-
-            if (Plugin.scugCWT.TryGetValue(self, out ScugCWT c) && c is BeaconCWT cwt)
-            {
-                //DON'T UNSTORE ANOTHER FLASHBANG UNTIL WE'VE LET GO OF THE BUTTON
-                cwt.heldCraft = true;
-            }
-        }
-    }
-    public static void Player_GrabUpdate(On.Player.orig_GrabUpdate orig, Player self, bool eu)
-    {
-        Plugin.scugCWT.TryGetValue(self, out ScugCWT scugCWT);
-        bool dontAutoThrowFlarebomb = (scugCWT is BeaconCWT cWT && cWT.dontThrowTimer > 0) || self.FreeHand() == -1 || self.input[0].pckp;
-
-        if (scugCWT is BeaconCWT beaconCWT)
-        {
-            //spinch: check grasps to see if beacon is holding a throwable object or a creature
-            // if true, then don't auto throw the flarebombs from storage
-            // done before orig because things can get thrown during orig
-            for (int i = 0; i < 2; i++)
-            {
-                if (self.grasps[i] != null && (self.IsObjectThrowable(self.grasps[i].grabbed) || self.grasps[i].grabbed is Creature))
-                {
-                    if (self.slugOnBack != null && self.input[0].pckp && self.grasps[i].grabbed is FlareBomb && beaconCWT.storage.storedFlares.Count < beaconCWT.storage.capacity)
-                    {
-                        //if you're trying to put a flarebomb into storage, don't put the slug on back to your hand
-                        self.slugOnBack.interactionLocked = true;
-                        self.slugOnBack.counter = 0;
-                    }
-                    dontAutoThrowFlarebomb = true;
-                    break;
-                }
-            }
-        }
-
-        int preFreeHand = self.FreeHand(); //remember this for later
-        orig(self, eu);
-
-        if (scugCWT is BeaconCWT beaconCWT1)
-        {
-            //CHECK FOR AUTO-STORE FLASHBANGS IF OUR HANDS ARE FULL
-            if (self.input[0].pckp && !self.input[1].pckp && self.pickUpCandidate != null && self.pickUpCandidate is FlareBomb flare && beaconCWT1.storage.storedFlares.Count < beaconCWT1.storage.capacity)
-            {
-                //IF WE'RE HOLDING TWO ITEMS OR ONE BIG TWO HANDED ITEM
-                if (preFreeHand == -1)
-                {
-                    beaconCWT1.storage.FlarebombtoStorage(flare);
-                    self.wantToPickUp = 0;
-                    return;
-                }
-            }
-
-            bool interactLockStorage = self.eatMeat > 0;
-
-            //spinch: if bacon is full and rotund isnt enabled, put flarebomb into storage
-            //dont even check for grasps if bacon's holding a food item
-            if (!Plugin.RotundWorldEnabled && self.FoodInStomach >= self.MaxFoodInStomach)
-            {
-                goto JustGoOverHere;
-            }
-
-            if (!interactLockStorage)
-            {
-                //check grasps for food if not eating meat
-                for (int i = 0; i < 2; i++)
-                {
-                    if (self.grasps[i]?.grabbed is IPlayerEdible)
-                    {
-                        interactLockStorage = true;
-                        break;
-                    }
-                }
-            }
-
-        JustGoOverHere:
-
-            //DON'T UNSTORE A FLASHBANG RIGHT AFTER WE'VE CRAFTED ONE
-            if (interactLockStorage || beaconCWT1.heldCraft)
-            {
-                //dont take flarebomb from storage if holding food or eating
-                beaconCWT1.storage.interactionLocked = true;
-                beaconCWT1.storage.counter = 0;
-            }
-
-            if (beaconCWT1.heldCraft && !self.input[0].pckp)
-                beaconCWT1.heldCraft = false; //ONCE WE LET GO OF GRAB, WE CAN MOVE STORAGE AGAIN
-
-            if (beaconCWT1.storage != null)
-            {
-                //ALSO, PAST A CERTAIN POINT STOP INCRIMENTING BECAUSE WE ARE CLEARLY TRYING TO REGURGITATE SOMETHING
-                if (!self.craftingObject && self.swallowAndRegurgitateCounter < 45)
-                {
-                    //dont increment if crafting
-                    beaconCWT1.storage.increment = self.input[0].pckp && !beaconCWT1.heldCraft;
-                    beaconCWT1.storage.Update(eu);
-                }
-
-                if (!dontAutoThrowFlarebomb && self.input[0].thrw && !self.input[1].thrw && beaconCWT1.storage.storedFlares.Count > 0)
-                {
-                    //auto throw flarebomb on an empty hand
-                    int handWithFlarebomb = beaconCWT1.storage.FlarebombFromStorageToPaw(eu);
-                    self.ThrowObject(handWithFlarebomb, eu);
-                    self.wantToThrow = 0;
-                }
-            }
-        }
-    }
+    // NOTE: Moved this higher so it taks significantly less time to scroll down for -Lur
     private static void Player_Update(On.Player.orig_Update orig, Player self, bool eu)
     {
         orig(self, eu);
@@ -715,6 +472,249 @@ public static class BeaconHooks
         }
     }
     #endregion
+
+    private static SlugcatStats.Timeline SlugcatStats_SlugcatToTimeline(On.SlugcatStats.orig_SlugcatToTimeline orig, SlugcatStats.Name slugcat)
+    {
+        orig(slugcat);
+        if (slugcat == PBEnums.SlugcatStatsName.Beacon)
+        {
+            return PBEnums.Timeline.Beacon;
+        }
+        return orig(slugcat);
+    }
+
+    private static void Player_GrabUpdate_IL(ILContext il)
+    {
+        //spinch: give priority to auto-throwing flarebombs from storage over throwing slug on back
+        ILCursor c = new(il);
+        ILLabel label = il.DefineLabel();
+
+        if (!c.TryGotoNext(MoveType.After,
+            i => i.MatchCallOrCallvirt<Player.SlugOnBack>("get_HasASlug"),
+            i => i.MatchBrfalse(out label)
+            ))
+        {
+            return;
+        }
+
+        c.Emit(OpCodes.Ldarg_0);
+
+        c.EmitDelegate((Player self) =>
+        {
+            if (self.slugOnBack == null || !self.slugOnBack.HasASlug || !Plugin.scugCWT.TryGetValue(self, out var c) || c is not BeaconCWT cwt || cwt.storage.storedFlares.Count <= 0)
+            {
+                return false;
+            }
+
+            foreach (var item in self.grasps)
+            {
+                if (item != null && self.IsObjectThrowable(item.grabbed))
+                {
+                    return false;
+                }
+            }
+            return true;
+        });
+
+        c.Emit(OpCodes.Brtrue, label);
+    }
+    private static void MeterCircle_Update(On.HUD.FoodMeter.MeterCircle.orig_Update orig, HUD.FoodMeter.MeterCircle self)
+    {
+        orig(self);
+        if (foodWarning > 0 && !self.meter.IsPupFoodMeter && self.number < self.meter.ShowSurvivalLimit && (self.meter.hud.owner.GetOwnerType() == HUD.HUD.OwnerType.Player))
+        {
+            if (self.meter.timeCounter % 20 > 10)
+            {
+                self.rads[0, 0] *= 0.96f;
+                self.circles[0].color = 1;
+            }
+            //num = 0.65f + 0.35f * Mathf.Sin((float)self.meter.timeCounter / 20f * 3.1415927f * 2f);
+            self.circles[0].fade = 1f;
+            self.meter.visibleCounter = 80;
+            foodWarning--;
+        }
+    }
+
+    private static void ShelterDoor_DoorClosed(On.ShelterDoor.orig_DoorClosed orig, ShelterDoor self)
+    {
+        //IT'S NOT FOOLPROOF, BUT IT'S GOOD ENOUGH...
+        if (ModManager.CoopAvailable)
+        {
+            // This might work, as long as players are still realized.
+            foreach (AbstractCreature player in self.room.game.AlivePlayers)
+            {
+                if (player.realizedCreature is Player p && Plugin.scugCWT.TryGetValue(p, out ScugCWT c) && c is BeaconCWT beaconCWT)
+                {
+                    for (int i = 0; i < beaconCWT.coopRefund; i++)
+                    {
+                        AbstractConsumable item = new(self.room.world, AbstractObjectType.FlareBomb, null, self.room.LocalCoordinateOfNode(0), self.room.game.GetNewID(), -1, -1, null);
+                        self.room.abstractRoom.AddEntity(item);
+                        item.RealizeInRoom();
+                        self.room.AddObject(item.realizedObject);
+                    }
+                    beaconCWT.coopRefund = 0;
+                }
+            }
+        }
+
+        orig(self);
+    }
+
+    public static void Player_GrabUpdate(On.Player.orig_GrabUpdate orig, Player self, bool eu)
+    {
+        Plugin.scugCWT.TryGetValue(self, out ScugCWT scugCWT);
+        bool dontAutoThrowFlarebomb = (scugCWT is BeaconCWT cWT && cWT.dontThrowTimer > 0) || self.FreeHand() == -1 || self.input[0].pckp;
+
+        if (scugCWT is BeaconCWT beaconCWT)
+        {
+            //spinch: check grasps to see if beacon is holding a throwable object or a creature
+            // if true, then don't auto throw the flarebombs from storage
+            // done before orig because things can get thrown during orig
+            for (int i = 0; i < 2; i++)
+            {
+                if (self.grasps[i] != null && (self.IsObjectThrowable(self.grasps[i].grabbed) || self.grasps[i].grabbed is Creature))
+                {
+                    if (self.slugOnBack != null && self.input[0].pckp && self.grasps[i].grabbed is FlareBomb && beaconCWT.storage.storedFlares.Count < beaconCWT.storage.capacity)
+                    {
+                        //if you're trying to put a flarebomb into storage, don't put the slug on back to your hand
+                        self.slugOnBack.interactionLocked = true;
+                        self.slugOnBack.counter = 0;
+                    }
+                    dontAutoThrowFlarebomb = true;
+                    break;
+                }
+            }
+        }
+
+        int preFreeHand = self.FreeHand(); //remember this for later
+        orig(self, eu);
+
+        if (scugCWT is BeaconCWT beaconCWT1)
+        {
+            //CHECK FOR AUTO-STORE FLASHBANGS IF OUR HANDS ARE FULL
+            if (self.input[0].pckp && !self.input[1].pckp && self.pickUpCandidate != null && self.pickUpCandidate is FlareBomb flare && beaconCWT1.storage.storedFlares.Count < beaconCWT1.storage.capacity)
+            {
+                //IF WE'RE HOLDING TWO ITEMS OR ONE BIG TWO HANDED ITEM
+                if (preFreeHand == -1)
+                {
+                    beaconCWT1.storage.FlarebombtoStorage(flare);
+                    self.wantToPickUp = 0;
+                    return;
+                }
+            }
+
+            bool interactLockStorage = self.eatMeat > 0;
+
+            //spinch: if bacon is full and rotund isnt enabled, put flarebomb into storage
+            //dont even check for grasps if bacon's holding a food item
+            if (!Plugin.RotundWorldEnabled && self.FoodInStomach >= self.MaxFoodInStomach)
+            {
+                goto JustGoOverHere;
+            }
+
+            if (!interactLockStorage)
+            {
+                //check grasps for food if not eating meat
+                for (int i = 0; i < 2; i++)
+                {
+                    if (self.grasps[i]?.grabbed is IPlayerEdible)
+                    {
+                        interactLockStorage = true;
+                        break;
+                    }
+                }
+            }
+
+        JustGoOverHere:
+
+            //DON'T UNSTORE A FLASHBANG RIGHT AFTER WE'VE CRAFTED ONE
+            if (interactLockStorage || beaconCWT1.heldCraft)
+            {
+                //dont take flarebomb from storage if holding food or eating
+                beaconCWT1.storage.interactionLocked = true;
+                beaconCWT1.storage.counter = 0;
+            }
+
+            if (beaconCWT1.heldCraft && !self.input[0].pckp)
+                beaconCWT1.heldCraft = false; //ONCE WE LET GO OF GRAB, WE CAN MOVE STORAGE AGAIN
+
+            if (beaconCWT1.storage != null)
+            {
+                //ALSO, PAST A CERTAIN POINT STOP INCRIMENTING BECAUSE WE ARE CLEARLY TRYING TO REGURGITATE SOMETHING
+                if (!self.craftingObject && self.swallowAndRegurgitateCounter < 45)
+                {
+                    //dont increment if crafting
+                    beaconCWT1.storage.increment = self.input[0].pckp && !beaconCWT1.heldCraft;
+                    beaconCWT1.storage.Update(eu);
+                }
+
+                if (!dontAutoThrowFlarebomb && self.input[0].thrw && !self.input[1].thrw && beaconCWT1.storage.storedFlares.Count > 0)
+                {
+                    //auto throw flarebomb on an empty hand
+                    int handWithFlarebomb = beaconCWT1.storage.FlarebombFromStorageToPaw(eu);
+                    self.ThrowObject(handWithFlarebomb, eu);
+                    self.wantToThrow = 0;
+                }
+            }
+        }
+    }
+
+    private static void Player_Die(On.Player.orig_Die orig, Player self)
+    {
+        if (ModManager.CoopAvailable && Plugin.scugCWT.TryGetValue(self, out var c) && c is BeaconCWT cwt && cwt.storage != null)
+        {
+            cwt.coopRefund = Mathf.Max(cwt.coopRefund, cwt.storage.storedFlares.Count);
+        }
+        //spinch: on death, all of beacon's stored flarebombs gets popped off
+        DropAllFlares(self);
+        //WW: but do that BEFORE orig in case our death unrealizes us
+        orig(self);
+    }
+    private static void Player_PermaDie(On.Player.orig_PermaDie orig, Player self)
+    {
+        if (ModManager.CoopAvailable && Plugin.scugCWT.TryGetValue(self, out ScugCWT c) && c is BeaconCWT cwt && cwt.storage != null)
+        {
+            cwt.coopRefund = Mathf.Max(cwt.coopRefund, cwt.storage.storedFlares.Count);
+        }
+        orig(self);
+    }
+    private static void Creature_Abstractize(On.Creature.orig_Abstractize orig, Creature self)
+    {
+        if (self is Player player && player.slugcatStats?.name == PBEnums.SlugcatStatsName.Beacon)
+        {
+            DropAllFlares(player);
+        }
+        orig(self);
+    }
+
+    private static void Player_Jump(On.Player.orig_Jump orig, Player self)
+    {
+        orig(self);
+
+        if (PBEnums.SlugcatStatsName.Beacon == self.slugcatStats.name)
+        {
+            if (Player.AnimationIndex.Flip == self.animation)
+                self.jumpBoost *= 1f + 0.55f;
+            else
+                self.jumpBoost *= 1f + 0.1f;
+        }
+    }
+
+    public static void BeaconTransmuteIntoFlashbang(On.Player.orig_SwallowObject orig, Player self, int grasp)
+    {
+        orig(self, grasp);
+        if (self.slugcatStats.name == PBEnums.SlugcatStatsName.Beacon && self.playerState.foodInStomach > 0 && self.objectInStomach.type == AbstractObjectType.Rock)
+        {
+            self.objectInStomach = new AbstractConsumable(self.room.world, AbstractObjectType.FlareBomb, null, self.abstractCreature.pos, self.room.game.GetNewID(), -1, -1, null);
+            self.SubtractFood(1);
+
+            if (Plugin.scugCWT.TryGetValue(self, out ScugCWT c) && c is BeaconCWT cwt)
+            {
+                //DON'T UNSTORE ANOTHER FLASHBANG UNTIL WE'VE LET GO OF THE BUTTON
+                cwt.heldCraft = true;
+            }
+        }
+    }
 
     private static bool SlugcatHand_EngageInMovement(On.SlugcatHand.orig_EngageInMovement orig, SlugcatHand self)
     {
