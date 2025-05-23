@@ -22,7 +22,7 @@ internal class CreatureEdits
     static ConditionalWeakTable<CicadaGraphics, CicadaCWT> cicadaCWT = new ConditionalWeakTable<CicadaGraphics, CicadaCWT>();
 
     // Used to make Dreamer albino, where it is applicable
-    public static Color white = Color.white;
+    public static Color white = new Color(1f, 0.98f, 0.98f);
 
     public static void Apply()
     {
@@ -44,7 +44,7 @@ internal class CreatureEdits
         On.VoidSpawnGraphics.ctor += VoidSpawnGraphics_ctor;
         On.VoidSpawnGraphics.InitiateSprites += VoidSpawnGraphics_InitiateSprites;
         On.VoidSpawnGraphics.DrawSprites += VoidSpawnGraphics_DrawSprites;
-        On.VoidSpawnGraphics.UpdateGlowSpriteColor += VoidSpawnGraphics_UpdateGlowSpriteColor;
+        //On.VoidSpawnGraphics.UpdateGlowSpriteColor += VoidSpawnGraphics_UpdateGlowSpriteColor;
         On.VoidSpawnGraphics.Antenna.InitiateSprites += Antenna_InitiateSprites;
         On.VoidSpawnGraphics.Antenna.DrawSprites += Antenna_DrawSprites;
 
@@ -76,7 +76,7 @@ internal class CreatureEdits
     private static void Rags_InitiateSprites(On.Ghost.Rags.orig_InitiateSprites orig, Ghost.Rags self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
     {
         orig(self, sLeaser, rCam);
-        if (MiscUtils.Dreamer(self.ghost))
+        if (MiscUtils.IsBeaconOrPhoto(rCam.room.game.session)) //(MiscUtils.Dreamer(self.ghost))
         {
             for (int i = 0; i < self.segments.Length; i++)
             {
@@ -89,7 +89,7 @@ internal class CreatureEdits
     {
         orig(self, sLeaser, rCam, timeStacker, camPos);
         // If Dreamer, replace color lerping
-        if (MiscUtils.Dreamer(self.ghost))
+        if (MiscUtils.IsBeaconOrPhoto(rCam.room.game.session)) //(MiscUtils.Dreamer(self.ghost))
         {
             for (int i = 0; i < self.segments.Length; i++)
             {
@@ -113,7 +113,7 @@ internal class CreatureEdits
     {
         orig(self, sLeaser, rCam, timeStacker, camPos);
         // If Dreamer, replace color lerping
-        if (MiscUtils.Dreamer(self.ghost))
+        if (MiscUtils.IsBeaconOrPhoto(rCam.room.game.session)) //(MiscUtils.Dreamer(self.ghost))
         {
             for (int i = 0; i < self.segments.Length; i++)
             {
@@ -142,7 +142,7 @@ internal class CreatureEdits
     {
         orig(self, sLeaser, rCam, palette);
         // If Dreamer, Color the normally palette blackColor sprites to white
-        if (MiscUtils.Dreamer(self))
+        if (MiscUtils.IsBeaconOrPhoto(rCam.room.game.session)) //(MiscUtils.Dreamer(self))
         {
             self.blackColor = white;
             sLeaser.sprites[self.NeckConnectorSprite].color = self.blackColor;
@@ -166,17 +166,19 @@ internal class CreatureEdits
     {
         orig(self, room, placedObject, worldGhost);
         // Changes the gold to purple for all cosmetics if the ID is Dreamer
-        if (MiscUtils.Dreamer(self))
+        if (MiscUtils.IsBeaconOrPhoto(room.game.session)) //(MiscUtils.Dreamer(self))
         {
-            self.goldColor = RainWorld.RippleGold;
+            self.goldColor = Plugin.Rose;
         }
     }
     private static void Ghost_InitiateSprites(On.Ghost.orig_InitiateSprites orig, Ghost self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
     {
         orig(self, sLeaser, rCam);
-        if (MiscUtils.Dreamer(self))
+        if (MiscUtils.IsBeaconOrPhoto(rCam.room.game.session)) //(MiscUtils.Dreamer(self))
         {
             sLeaser.sprites[self.HeadMeshSprite].shader = rCam.game.rainWorld.Shaders["DreamerSkin"];
+            sLeaser.sprites[self.DistortionSprite].shader = rCam.game.rainWorld.Shaders["DreamerDistortion"];
+            sLeaser.sprites[self.LightSprite].color = new Color(0.25882354f, 0.79607843137f, 0.50980392156f);
             for (int i = 0; i < self.legs.GetLength(0); i++)
             {
                 sLeaser.sprites[self.ThightSprite(i)].shader = rCam.game.rainWorld.Shaders["DreamerSkin"];
@@ -184,13 +186,13 @@ internal class CreatureEdits
             }
         }
     }
-    private static void GoldFlake_DrawSprites(On.GoldFlakes.GoldFlake.orig_DrawSprites orig, GoldFlakes.GoldFlake self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, UnityEngine.Vector2 camPos)
+    private static void GoldFlake_DrawSprites(On.GoldFlakes.GoldFlake.orig_DrawSprites orig, GoldFlakes.GoldFlake self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
     {
         orig(self, sLeaser, rCam, timeStacker, camPos);
         // Checks campaign instead, Changes the hardcoded color for this effect
         if (MiscUtils.IsBeaconOrPhoto(rCam.room.game.session))
         {
-            float f = Mathf.InverseLerp(-1f, 1f, UnityEngine.Vector2.Dot(RWCustom.Custom.DegToVec(45f), RWCustom.Custom.DegToVec(Mathf.Lerp(self.lastYRot, self.yRot, timeStacker) * 57.29578f + Mathf.Lerp(self.lastRot, self.rot, timeStacker))));
+            float f = Mathf.InverseLerp(-1f, 1f, Vector2.Dot(Custom.DegToVec(45f), Custom.DegToVec(Mathf.Lerp(self.lastYRot, self.yRot, timeStacker) * 57.29578f + Mathf.Lerp(self.lastRot, self.rot, timeStacker))));
             float ghostMode = rCam.ghostMode;
             Color c = Custom.HSL2RGB(0.68f, 0.97f, Mathf.Lerp(0.65f, 0f, ghostMode));
             Color d = Custom.HSL2RGB(0.68f, Mathf.Lerp(1f, 0.97f, ghostMode), Mathf.Lerp(1f, 0.65f, ghostMode));
@@ -231,7 +233,6 @@ internal class CreatureEdits
 
     private static void VoidSpawnGraphics_UpdateGlowSpriteColor(On.VoidSpawnGraphics.orig_UpdateGlowSpriteColor orig, VoidSpawnGraphics self, RoomCamera.SpriteLeaser sLeaser)
     {
-        orig(self, sLeaser);
         if (MiscUtils.IsDreamSpawn(self.spawn))
         {
             if (self.dayLightMode)
@@ -239,8 +240,9 @@ internal class CreatureEdits
                 sLeaser.sprites[self.GlowSprite].color = Plugin.SaturatedRose;
                 return;
             }
-            sLeaser.sprites[self.GlowSprite].color = Color.Lerp(Plugin.SaturatedRose, Plugin.Rose, 1f);
+            sLeaser.sprites[self.GlowSprite].color = Color.Lerp(Plugin.SaturatedRose, Plugin.Rose, Mathf.InverseLerp(0.3f, 0.9f, self.darkness));
         }
+        else orig(self, sLeaser);
     }
 
     private static void VoidSpawnGraphics_DrawSprites(On.VoidSpawnGraphics.orig_DrawSprites orig, VoidSpawnGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
@@ -251,10 +253,10 @@ internal class CreatureEdits
             if (!self.spawn.culled)
             {
                 sLeaser.sprites[self.BodyMeshSprite].shader = rCam.game.rainWorld.Shaders["DreamSpawnBody"];
-                sLeaser.sprites[self.GlowSprite].color = Plugin.SaturatedRose;
+                //sLeaser.sprites[self.GlowSprite].color = Plugin.SaturatedRose;
                 if (self.hasOwnGoldEffect)
                 {
-                    sLeaser.sprites[self.EffectSprite].shader = rCam.game.rainWorld.Shaders["GoldenGlow"];
+                    sLeaser.sprites[self.EffectSprite].shader = rCam.game.rainWorld.Shaders["RoseGlow"];
                 }
             }
         }
@@ -266,13 +268,13 @@ internal class CreatureEdits
         if (MiscUtils.IsDreamSpawn(self.spawn))
         {
             sLeaser.sprites[self.BodyMeshSprite].shader = rCam.game.rainWorld.Shaders["DreamSpawnBody"];
-            sLeaser.sprites[self.GlowSprite].color = Plugin.SaturatedRose;
+            sLeaser.sprites[self.GlowSprite].shader = rCam.game.rainWorld.Shaders["FlatWaterLightBothSides"];
             if (self.hasOwnGoldEffect)
             {
-                sLeaser.sprites[self.EffectSprite].shader = rCam.game.rainWorld.Shaders["GoldenGlow"];
+                sLeaser.sprites[self.EffectSprite].shader = rCam.game.rainWorld.Shaders["RoseGlow"];
             }
         }
-        self.AddToContainer(sLeaser, rCam, null);
+        //self.AddToContainer(sLeaser, rCam, null);
     }
 
     // Copied from decompiled code, an IL hook would be preferred -Lur
@@ -343,7 +345,7 @@ internal class CreatureEdits
         orig(self, owner);
         float thickness = Mathf.Lerp(self.spawn.sizeFac, 0.5f + 0.5f * UnityEngine.Random.value, UnityEngine.Random.value);
         int segments = UnityEngine.Random.Range(4, 8);
-        if (self.spawn.variant == DreamSpawn.SpawnType.DreamSpawn)
+        if (self.spawn.variant == DreamSpawn.SpawnType.DreamAmoeba)
         {
             // Taken from RippleAmoeba
             self.antennae.Add(new VoidSpawnGraphics.TailAntenna(self, self.totalSprites, segments, 12f * thickness, self.spawn.mainBody[self.spawn.mainBody.Length - 1].rad, 0f, 0.1f * thickness, 2, 2.2f));
@@ -352,7 +354,7 @@ internal class CreatureEdits
     }
     #endregion
     #region TempleGuard
-    static Color ripple = Plugin.PBRipple_Color;
+    static Color ripple = RainWorld.RippleColor;
 
     private static void GlyphSwapper_InitiateSprites(On.TempleGuardGraphics.Halo.GlyphSwapper.orig_InitiateSprites orig, TempleGuardGraphics.Halo.GlyphSwapper self, int frst, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
     {
@@ -409,7 +411,7 @@ internal class CreatureEdits
     private static void Arm_ApplyPalette(On.TempleGuardGraphics.Arm.orig_ApplyPalette orig, TempleGuardGraphics.Arm self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
     {
         orig(self, sLeaser, rCam, palette);
-        Color rippleWhiteLerp = Color.Lerp(Plugin.PBRipple_Color, new Color(1f, 1f, 1f), 0.5f);
+        Color rippleWhiteLerp = Color.Lerp(Plugin.Rose, new Color(1f, 1f, 1f), 0.5f);
         if (MiscUtils.IsBeaconOrPhoto(rCam.game.session))
         {
             sLeaser.sprites[self.firstSprite + 2].color = rippleWhiteLerp;
@@ -501,7 +503,7 @@ internal class CreatureEdits
     }
     #endregion
 
-    //used by umbra scavs and citizens sharedhooks
+    //used by umbrascavs and citizens sharedhooks
     #region Scavenger
 
     private static void ScavengerGraphics_GenerateColors(On.ScavengerGraphics.orig_GenerateColors orig, ScavengerGraphics self)

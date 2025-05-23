@@ -37,22 +37,20 @@ class Plugin : BaseUnityPlugin
     public static ConditionalWeakTable<Player, ScugCWT> scugCWT = new();
     public static ConditionalWeakTable<RainWorldGame, List<NTTracker>> NTTrackers = new ConditionalWeakTable<RainWorldGame, List<NTTracker>>();
 
-    // Significantly used colors that would be fine here
-    public static readonly Color Rose = new Color(0.82745098039f, 0.10980392156f, 0.29019607843f); // #d31c4a
-    public static readonly Color PBAntiGold = new Color(0.355f, 0.31f, 0.87f); // #5b4fdd
-    public static readonly Color PBAnti_GoldRGB = new Color(0.20784313725f, 0.18039215686f, 0.52156862745f); // #352e85
+    // #862e48
+    public static readonly Color Rose = new Color(0.52549019607f, 0.18039215686f, 0.28235294117f);
     public static readonly Color SaturatedRose = Rose * 2f;
-    public static readonly Color SaturatedAntiGold = PBAntiGold * 2f;
-    public static readonly Color PBRipple_Color = RainWorld.RippleColor;
-    public static readonly Color SaturatedRipple = PBRipple_Color * 2f;
+    // #1a1041
     public static readonly Color beaconDefaultColor = new Color(0.10588235294f, 0.06666666666f, 0.25882352941f);
     public static readonly Color beaconFullColor = new Color(0.2f, 0f, 1f);
     public static readonly Color beaconEyeColor = Color.white;
     public static readonly Color flareColor = new Color(0.2f, 0f, 1f);
+
     // This is actually assigned in BeaconHooks to the palette black color.
     public static Color beaconDeadColor;
+    public static Color pitchBlack = new Color(0.003f, 0.003f, 0.003f);
 
-    // Save data
+    // Save data 
     // NOTE: indev, mess with values for testing
     public static bool canIDoThanatosisYet = true;
     public static float qualiaLevel = 1f;
@@ -255,9 +253,10 @@ class Plugin : BaseUnityPlugin
             self.Shaders["Red"] = FShader.CreateShader("red", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath(path: "assetbundles/red")).LoadAsset<Shader>("Assets/red.shader"));
             self.Shaders["Sunrays"] = FShader.CreateShader("sunrays", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/sunrays")).LoadAsset<Shader>("Assets/sunrays.shader"));
             self.Shaders["DreamSpawnBody"] = FShader.CreateShader("dreamspawnbody", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/dreamspawnbody")).LoadAsset<Shader>("Assets/Shaders/DreamSpawnBody.shader"));
-            self.Shaders["BlackGlow"] = FShader.CreateShader("blackglow", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/blackglow")).LoadAsset<Shader>("Assets/Shaders/BlackGlow.shader"));
+            self.Shaders["RoseGlow"] = FShader.CreateShader("roseglow", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/roseglow")).LoadAsset<Shader>("Assets/Shaders/RoseGlow.shader"));
             self.Shaders["DreamerSkin"] = FShader.CreateShader("dreamerskin", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/dreamerskin")).LoadAsset<Shader>("Assets/Shaders/DreamerSkin.shader"));
             self.Shaders["DreamerRag"] = FShader.CreateShader("dreamerrags", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/dreamerrags")).LoadAsset<Shader>("Assets/Shaders/DreamerRag.shader"));
+            self.Shaders["DreamerDistortion"] = FShader.CreateShader("dreamerdistortion", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/dreamerdistortion")).LoadAsset<Shader>("Assets/Shaders/DreamerDistortion.shader"));
             init = true;
             //RiftCosmetic.Register(self);
         }

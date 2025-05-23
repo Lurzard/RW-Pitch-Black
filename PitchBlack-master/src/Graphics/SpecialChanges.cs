@@ -69,11 +69,11 @@ public class SpecialChanges
             (self.hud.owner as Player).rippleLevel >= 1f)
         {
             self.karmaSprite.element = Futile.atlasManager.GetElementWithName(MiscUtils.QualiaSymbolSprite(true, (self.hud.owner as Player).rippleLevel));
-            self.baseColor = Plugin.SaturatedRipple;
+            self.baseColor = Plugin.SaturatedRose;
             if (self.showAsReinforced)
             {
                 self.karmaSprite.element = Futile.atlasManager.GetElementWithName(MiscUtils.SidewaysSymbolSprite(true, (self.hud.owner as Player).rippleLevel));
-                self.baseColor = RainWorld.SaturatedGold;
+                self.baseColor = RainWorld.RippleGold;
             }
             self.karmaSprite.color = self.baseColor;
         }
@@ -87,7 +87,7 @@ public class SpecialChanges
             (hud.owner as Player).rippleLevel >= 1f)
         {
             self.karmaSprite.element = Futile.atlasManager.GetElementWithName(MiscUtils.QualiaSymbolSprite(true, (self.hud.owner as Player).rippleLevel));
-            self.baseColor = Plugin.SaturatedRipple;
+            self.baseColor = Plugin.SaturatedRose;
             if (self.showAsReinforced)
             {
                 self.karmaSprite.element = Futile.atlasManager.GetElementWithName(MiscUtils.SidewaysSymbolSprite(true, (self.hud.owner as Player).rippleLevel));
@@ -103,7 +103,7 @@ public class SpecialChanges
             (self.hud.owner as Player).rippleLevel >= 1f)
         {
             self.karmaSprite.element = Futile.atlasManager.GetElementWithName(MiscUtils.QualiaSymbolSprite(true, (self.hud.owner as Player).rippleLevel));
-            self.baseColor = Plugin.SaturatedRipple;
+            self.baseColor = Plugin.SaturatedRose;
             if (self.showAsReinforced)
             {
                 self.karmaSprite.element = Futile.atlasManager.GetElementWithName(MiscUtils.SidewaysSymbolSprite(true, (self.hud.owner as Player).rippleLevel));

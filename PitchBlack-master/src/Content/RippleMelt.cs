@@ -86,7 +86,7 @@ public class PBMeltLights : UpdatableAndDeletable, IDrawable
     }
     public void ApplyPalette(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
     {
-        color = Plugin.PBAnti_GoldRGB;
+        color = RainWorld.RippleGold;
     }
     public void AddToContainer(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, FContainer newContatiner)
     {

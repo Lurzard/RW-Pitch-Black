@@ -125,7 +125,8 @@ clr = 1;
 else if(pow((n - 0.25) * 1.5, lerp(3, 1, i.uv.y)) < 0.25 * (i.uv.y-0.1))
 clr = 0.5;
 
-return lerp(lerp(fixed4(1,1,1,1), fixed4(1,1,1,1), pow(i.uv.y, 2)), half4(i.clr.xyz, 1), clr);
+//Where color is assigned.
+return lerp(lerp(tex2D(_PalTex, half2(2.5/32.0, 7.5/8.0)), half4(1,1,1,1), 0.87), half4(i.clr.xyz, 1), clr);
 
 
 }

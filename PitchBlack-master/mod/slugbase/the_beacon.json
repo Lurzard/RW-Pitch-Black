@@ -12,7 +12,7 @@
 		"throw_skill": 1,
 		"lung_capacity": 1,
 		"food_min": 4,
-		"food_max": 7,
+		"food_max": 6,
 		"diet": {
 			"base": "White",
 			"overrides": {
