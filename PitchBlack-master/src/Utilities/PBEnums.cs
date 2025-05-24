@@ -24,11 +24,15 @@ public static class PBEnums
         }
         public static class SpawnType
         {
+            public static VoidSpawn.SpawnType StarSpawn = new("StarSpawn", true);
             public static VoidSpawn.SpawnType DreamSpawn = new("DreamSpawn", true);
             public static VoidSpawn.SpawnType DreamJelly = new("DreamJelly", true);
             public static VoidSpawn.SpawnType DreamAmoeba = new("DreamAmoeba", true);
             public static VoidSpawn.SpawnType DreamNoodle = new("DreamNoodle", true);
             public static VoidSpawn.SpawnType DreamBiter = new("DreamBiter", true);
+            // Plan: ID is passed then it instead spawns the Night Terror creature.
+            public static VoidSpawn.SpawnType DreamChimera = new("DreamChimera", true);
+
         }
     }
     public static class Tutorial
@@ -242,6 +246,7 @@ public class PBRoomEffectType
     public static RoomSettings.RoomEffect.Type ElsehowView = new RoomSettings.RoomEffect.Type("ElsehowView", true);
     public static RoomSettings.RoomEffect.Type RippleSpawn = new RoomSettings.RoomEffect.Type("RippleSpawn", true);
     public static RoomSettings.RoomEffect.Type RippleMelt = new RoomSettings.RoomEffect.Type("RippleMelt", true);
+    public static RoomSettings.RoomEffect.Type RoseSky = new RoomSettings.RoomEffect.Type("RoseSky", true);
     public static void UnregisterValues()
     {
         if (PitchBlackCatagory != null)
@@ -263,6 +268,11 @@ public class PBRoomEffectType
         {
             RippleMelt.Unregister();
             RippleMelt = null;
+        }
+        if (RoseSky != null)
+        {
+            RoseSky.Unregister();
+            RoseSky = null;
         }
     }
 }

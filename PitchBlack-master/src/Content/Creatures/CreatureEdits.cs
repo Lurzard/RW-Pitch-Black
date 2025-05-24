@@ -39,7 +39,7 @@ internal class CreatureEdits
         //On.TempleGuardGraphics.Halo.InitiateSprites += Halo_InitiateSprites;
         //On.TempleGuardGraphics.Halo.GlyphSwapper.InitiateSprites += GlyphSwapper_InitiateSprites;
 
-        // VoidSpawn (DreamSpawn family)
+        // VoidSpawn (DreamSpawn + StarSpawn family)
         On.VoidSpawn.GenerateBody += VoidSpawn_GenerateBody;
         On.VoidSpawnGraphics.ctor += VoidSpawnGraphics_ctor;
         On.VoidSpawnGraphics.InitiateSprites += VoidSpawnGraphics_InitiateSprites;
@@ -64,9 +64,6 @@ internal class CreatureEdits
         On.ScavengerGraphics.GenerateColors += ScavengerGraphics_GenerateColors;
         On.ScavengerGraphics.AddToContainer += ScavengerGraphics_AddToContainer;
     }
-
-
-
 
     #region Dreamer
     // NOTES -Lur
@@ -194,17 +191,14 @@ internal class CreatureEdits
         {
             float f = Mathf.InverseLerp(-1f, 1f, Vector2.Dot(Custom.DegToVec(45f), Custom.DegToVec(Mathf.Lerp(self.lastYRot, self.yRot, timeStacker) * 57.29578f + Mathf.Lerp(self.lastRot, self.rot, timeStacker))));
             float ghostMode = rCam.ghostMode;
-            Color c = Custom.HSL2RGB(0.68f, 0.97f, Mathf.Lerp(0.65f, 0f, ghostMode));
-            Color d = Custom.HSL2RGB(0.68f, Mathf.Lerp(1f, 0.97f, ghostMode), Mathf.Lerp(1f, 0.65f, ghostMode));
+            Color c = Custom.HSL2RGB(0.9f, 0.97f, Mathf.Lerp(0.65f, 0f, ghostMode));
+            Color d = Custom.HSL2RGB(0.9f, Mathf.Lerp(1f, 0.97f, ghostMode), Mathf.Lerp(1f, 0.65f, ghostMode));
             sLeaser.sprites[0].color = Color.Lerp(c, d, f);
         }
     }
     private static void GhostWorldPresence_ctor_World_GhostID_int(On.GhostWorldPresence.orig_ctor_World_GhostID_int orig, GhostWorldPresence self, World world, GhostWorldPresence.GhostID ghostID, int spinningTopSpawnId)
     {
         orig(self, world, ghostID, spinningTopSpawnId);
-
-        // This is also used to determine the room Echoes are placed in, so we can easily move them into VV
-
         if (ghostID == GhostID.Dreamer)
         {
             // Placeholder
@@ -212,13 +206,17 @@ internal class CreatureEdits
         }
     }
     #endregion
-    #region DreamSpawn
+    #region VoidSpawn
     private static void Antenna_DrawSprites(On.VoidSpawnGraphics.Antenna.orig_DrawSprites orig, VoidSpawnGraphics.Antenna self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
     {
         orig(self, sLeaser, rCam, timeStacker, camPos);
         if (MiscUtils.IsDreamSpawn(self.vsGraphics.spawn))
         {
             sLeaser.sprites[self.firstSprite].shader = rCam.game.rainWorld.Shaders["DreamSpawnBody"];
+        }
+        if (self.vsGraphics.spawn.variant == DreamSpawn.SpawnType.StarSpawn)
+        {
+            sLeaser.sprites[self.firstSprite].shader = rCam.game.rainWorld.Shaders["StarSpawnBody"];
         }
     }
 
@@ -228,6 +226,10 @@ internal class CreatureEdits
         if (MiscUtils.IsDreamSpawn(self.vsGraphics.spawn))
         {
             sLeaser.sprites[self.firstSprite].shader = rCam.game.rainWorld.Shaders["DreamSpawnBody"];
+        }
+        if (self.vsGraphics.spawn.variant == DreamSpawn.SpawnType.StarSpawn)
+        {
+            sLeaser.sprites[self.firstSprite].shader = rCam.game.rainWorld.Shaders["StarSpawnBody"];
         }
     }
 
@@ -248,15 +250,23 @@ internal class CreatureEdits
     private static void VoidSpawnGraphics_DrawSprites(On.VoidSpawnGraphics.orig_DrawSprites orig, VoidSpawnGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
     {
         orig(self, sLeaser, rCam, timeStacker, camPos);
-        if (MiscUtils.IsDreamSpawn(self.spawn))
+        if (!self.spawn.culled)
         {
-            if (!self.spawn.culled)
+            if (MiscUtils.IsDreamSpawn(self.spawn))
             {
                 sLeaser.sprites[self.BodyMeshSprite].shader = rCam.game.rainWorld.Shaders["DreamSpawnBody"];
                 //sLeaser.sprites[self.GlowSprite].color = Plugin.SaturatedRose;
                 if (self.hasOwnGoldEffect)
                 {
                     sLeaser.sprites[self.EffectSprite].shader = rCam.game.rainWorld.Shaders["RoseGlow"];
+                }
+            }
+            if (self.spawn.variant == DreamSpawn.SpawnType.StarSpawn)
+            {
+                sLeaser.sprites[self.BodyMeshSprite].shader = rCam.game.rainWorld.Shaders["StarSpawnBody"];
+                if (self.hasOwnGoldEffect)
+                {
+                    sLeaser.sprites[self.EffectSprite].shader = rCam.game.rainWorld.Shaders["GreenGlow"];
                 }
             }
         }
@@ -272,6 +282,15 @@ internal class CreatureEdits
             if (self.hasOwnGoldEffect)
             {
                 sLeaser.sprites[self.EffectSprite].shader = rCam.game.rainWorld.Shaders["RoseGlow"];
+            }
+        }
+        if (self.spawn.variant == DreamSpawn.SpawnType.StarSpawn)
+        {
+            sLeaser.sprites[self.BodyMeshSprite].shader = rCam.game.rainWorld.Shaders["StarSpawnBody"];
+            sLeaser.sprites[self.GlowSprite].shader = rCam.game.rainWorld.Shaders["FlatWaterLightBothSides"];
+            if (self.hasOwnGoldEffect)
+            {
+                sLeaser.sprites[self.EffectSprite].shader = rCam.game.rainWorld.Shaders["GreenGlow"];
             }
         }
         //self.AddToContainer(sLeaser, rCam, null);

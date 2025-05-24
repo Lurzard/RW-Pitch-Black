@@ -250,10 +250,19 @@ class Plugin : BaseUnityPlugin
             //Futile.atlasManager.LoadAtlas("atlases/FaceThanatosis");
             Futile.atlasManager.LoadAtlas("atlases/QualiaSymbols");
             Futile.atlasManager.LoadAtlas("atlases/SidewaysSymbols");
+
             self.Shaders["Red"] = FShader.CreateShader("red", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath(path: "assetbundles/red")).LoadAsset<Shader>("Assets/red.shader"));
             self.Shaders["Sunrays"] = FShader.CreateShader("sunrays", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/sunrays")).LoadAsset<Shader>("Assets/sunrays.shader"));
+
+            // DreamSpawn
             self.Shaders["DreamSpawnBody"] = FShader.CreateShader("dreamspawnbody", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/dreamspawnbody")).LoadAsset<Shader>("Assets/Shaders/DreamSpawnBody.shader"));
             self.Shaders["RoseGlow"] = FShader.CreateShader("roseglow", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/roseglow")).LoadAsset<Shader>("Assets/Shaders/RoseGlow.shader"));
+
+            // StarSpawn
+            self.Shaders["StarSpawnBody"] = FShader.CreateShader("starspawnbody", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/starspawnbody")).LoadAsset<Shader>("Assets/Shaders/StarSpawnBody.shader"));
+            self.Shaders["GreenGlow"] = FShader.CreateShader("greenglow", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/greenglow")).LoadAsset<Shader>("Assets/Shaders/GreenGlow.shader"));
+
+            // Dreamer
             self.Shaders["DreamerSkin"] = FShader.CreateShader("dreamerskin", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/dreamerskin")).LoadAsset<Shader>("Assets/Shaders/DreamerSkin.shader"));
             self.Shaders["DreamerRag"] = FShader.CreateShader("dreamerrags", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/dreamerrags")).LoadAsset<Shader>("Assets/Shaders/DreamerRag.shader"));
             self.Shaders["DreamerDistortion"] = FShader.CreateShader("dreamerdistortion", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/dreamerdistortion")).LoadAsset<Shader>("Assets/Shaders/DreamerDistortion.shader"));
