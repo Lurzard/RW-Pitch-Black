@@ -189,7 +189,7 @@ public static class MiscUtils
     {
         int amountToSpawn = 0;
         //int amountOfOscillations = 0;
-        if (source == PBEnums.DreamSpawn.SpawnSource.Death)
+        if (source == PBEnums.DreamSpawn.SpawnSource.Death || source == PBEnums.DreamSpawn.SpawnSource.Oscillation)
         {
             amountToSpawn = 1;
         }
@@ -225,12 +225,9 @@ public static class MiscUtils
         }
         // Spawning it
         VoidSpawn voidSpawn = new VoidSpawn(new AbstractPhysicalObject(room.world, PBEnums.AbstractObjectType.DreamSpawn, null, room.GetWorldCoordinate(spawnPos), room.game.GetNewID()), room.roomSettings.GetEffectAmount(RoomSettings.RoomEffect.Type.VoidMelt), VoidSpawnKeeper.DayLightMode(room), spawnType);
-        if (IsDreamSpawn(voidSpawn))
-        {
-            // BezierSwarm for now, but later I want them to chase and kill anything they can
-            voidSpawn.behavior = new VoidSpawn.CircleSwarm(voidSpawn, room);
-            voidSpawn.timeUntilFadeout = Random.Range(400, 1200);
-        }
+        // BezierSwarm for now, but later I want them to chase and kill anything they can
+        voidSpawn.behavior = new VoidSpawn.BezierSwarm(voidSpawn, room);
+        voidSpawn.timeUntilFadeout = Random.Range(400, 1200);
         voidSpawn.PlaceInRoom(room);
         voidSpawn.ChangeRippleLayer(0, true);
     }

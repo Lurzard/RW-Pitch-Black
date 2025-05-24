@@ -255,7 +255,7 @@ public static class NightTerrorHooks
         Color result = orig(self);
         if (self.abstractCreature.creatureTemplate.IsNightTerror())
         {
-            return new Color(0.529f, 0.184f, 0.360f);
+            return Plugin.SaturatedRose;
         }
         return result;
     }
@@ -343,7 +343,7 @@ public static class NightTerrorHooks
         orig(self, ow);
         if (self.centipede.abstractCreature.creatureTemplate.IsNightTerror())
         {
-            self.hue = 0.900f;
+            self.hue = 0.9f;
             self.saturation = 0.96f;
         }
     }
