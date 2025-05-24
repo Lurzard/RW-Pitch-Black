@@ -1,11 +1,11 @@
 Parent: AtC_GeneralDefault
 PROTECTED
 ---------------
-daySky: PB_AtC_Sky
-duskSky: PB_AtC_Sky
-nightSky: PB_AtC_Sky
-atmosphereColor: 0e131c
-multiplyColor: 374459
+daySky: Rose_Sky
+duskSky: Rose_Sky
+nightSky: Rose_Sky
+atmosphereColor: 2b121f
+multiplyColor: 823e68
 
 distantCloudsCount: 41
 

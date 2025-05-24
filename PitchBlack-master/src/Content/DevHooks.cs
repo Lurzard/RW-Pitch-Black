@@ -6,6 +6,7 @@ namespace PitchBlack;
 
 public class DevHooks
 {
+    public static bool RoseSky;
     public static void Apply()
     {
         // For dev effects
@@ -18,7 +19,23 @@ public class DevHooks
         On.RainWorldGame.RawUpdate += RainWorldGame_RawUpdate;
         On.RoomCamera.DrawUpdate += RoomCamera_DrawUpdate;
         On.RoomCamera.MoveCamera_Room_int += RoomCamera_MoveCamera_Room_int;
+        //On.AboveCloudsView.ctor += AboveCloudsView_ctor;
     }
+    
+    // Gonna use a RK bg instead -Lur
+    //private static void AboveCloudsView_ctor(On.AboveCloudsView.orig_ctor orig, AboveCloudsView self, Room room, RoomSettings.RoomEffect effect)
+    //{
+    //    orig(self, room, effect);
+    //    RoseSky = (effect.type == PBRoomEffectType.RoseSky);
+    //    if (RoseSky)
+    //    {
+    //        self.atmosphereColor = new Color(0.219f, 0.098f, 0.137f);
+    //        self.daySky = new BackgroundScene.Simple2DBackgroundIllustration(self, "Rose_Sky", new Vector2(683f, 384f));
+    //        self.duskSky = new BackgroundScene.Simple2DBackgroundIllustration(self, "Rose_Sky", new Vector2(683f, 384f));
+    //        self.nightSky = new BackgroundScene.Simple2DBackgroundIllustration(self, "Rose_Sky", new Vector2(683f, 384f));
+    //    }
+    //}
+
     private static void RoomCamera_MoveCamera_Room_int(On.RoomCamera.orig_MoveCamera_Room_int orig, RoomCamera self, Room room, int camPos)
     {
         orig(self, room, camPos);
@@ -80,7 +97,8 @@ public class DevHooks
         orig(self);
         for (int i = 0; i < self.roomSettings.effects.Count; i++)
         {
-            if (self.roomSettings.effects[i].type == PBRoomEffectType.ElsehowView)
+            if (self.roomSettings.effects[i].type == PBRoomEffectType.ElsehowView
+                || self.roomSettings.effects[i].type == PBRoomEffectType.RoseSky)
             {
                 Shader.SetGlobalFloat(RainWorld.ShadPropRimFix, 1f);
             }
@@ -119,6 +137,11 @@ public class DevHooks
             {
                 self.AddObject(new PBMeltLights(self.roomSettings.effects[num], self));
             }
+            // EclipseView
+            if (self.roomSettings.effects[num].type == PBRoomEffectType.RoseSky)
+            {
+                self.AddObject(new AboveCloudsView(self, self.roomSettings.effects[num]));
+            }
         }
         //for (int num9 = 1; num9 <= 2; num9++)
         // {
@@ -140,7 +163,10 @@ public class DevHooks
     private static RoomSettingsPage.DevEffectsCategories RoomSettingsPage_DevEffectGetCategoryFromEffectType(On.DevInterface.RoomSettingsPage.orig_DevEffectGetCategoryFromEffectType orig, RoomSettingsPage self, RoomSettings.RoomEffect.Type type)
     {
         RoomSettingsPage.DevEffectsCategories res = orig(self, type);
-        if (type == PBRoomEffectType.ElsehowView || type == PBRoomEffectType.RippleSpawn || type == PBRoomEffectType.RippleMelt)
+        if (type == PBRoomEffectType.ElsehowView
+            || type == PBRoomEffectType.RippleSpawn
+            || type == PBRoomEffectType.RippleMelt
+            || type == PBRoomEffectType.RoseSky)
         {
             res = PBRoomEffectType.PitchBlackCatagory;
         }
