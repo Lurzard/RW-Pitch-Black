@@ -25,20 +25,10 @@ public static class WorldChanges
     private static void Region_ctor_string_int_int_Timeline(On.Region.orig_ctor_string_int_int_Timeline orig, Region self, string name, int firstRoomIndex, int regionNumber, SlugcatStats.Timeline timelineIndex)
     {
         orig(self, name, firstRoomIndex, regionNumber, timelineIndex);
-        Color color = new Color();
+        Color color = RainWorld.RippleColor;
         if (timelineIndex != null &&
             timelineIndex == PBEnums.Timeline.Beacon)
         {
-            // Sentient Rot
-            if (self.name != "UD")
-            {
-                color = RainWorld.RippleColor;
-            }
-            // Nightmare Rot
-            if (self.name == "UD")
-            {
-                color = Plugin.Rose;
-            }
             self.regionParams.corruptionEffectColor = color;
             self.regionParams.corruptionEyeColor = color;
         }

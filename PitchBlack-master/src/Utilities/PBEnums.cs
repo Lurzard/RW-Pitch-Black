@@ -39,6 +39,10 @@ public static class PBEnums
     {
         public static DeathPersistentSaveData.Tutorial MakeFlares = new("MakeFlares", true);
         public static DeathPersistentSaveData.Tutorial Thanatosis = new("Thanatosis", true);
+        public static DeathPersistentSaveData.Tutorial Oscillation = new("Oscillation", true);
+        public static DeathPersistentSaveData.Tutorial Drown = new("Drown", true);
+        public static DeathPersistentSaveData.Tutorial Revive = new("Revive", true);
+        public static DeathPersistentSaveData.Tutorial Rot = new("Rot", true);
     }
     public static class CreatureTemplateType
     {
