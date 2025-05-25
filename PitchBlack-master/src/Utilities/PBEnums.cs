@@ -241,42 +241,42 @@ public static class PBEnums
             }
         }
     }
-}
-public class PBRoomEffectType
-{
-    // I just threw this in here, it's used with the others.
-    public static RoomSettingsPage.DevEffectsCategories PitchBlackCatagory = new RoomSettingsPage.DevEffectsCategories("Pitch-Black", true);
-    // Actual effects
-    public static RoomSettings.RoomEffect.Type ElsehowView = new RoomSettings.RoomEffect.Type("ElsehowView", true);
-    public static RoomSettings.RoomEffect.Type RippleSpawn = new RoomSettings.RoomEffect.Type("RippleSpawn", true);
-    public static RoomSettings.RoomEffect.Type RippleMelt = new RoomSettings.RoomEffect.Type("RippleMelt", true);
-    public static RoomSettings.RoomEffect.Type RoseSky = new RoomSettings.RoomEffect.Type("RoseSky", true);
-    public static void UnregisterValues()
+    public class RoomEffectType
     {
-        if (PitchBlackCatagory != null)
+        // I just threw this in here, it's used with the others.
+        public static RoomSettingsPage.DevEffectsCategories PitchBlackCatagory = new RoomSettingsPage.DevEffectsCategories("Pitch-Black", true);
+        // Actual effects
+        public static RoomSettings.RoomEffect.Type ElsehowView = new RoomSettings.RoomEffect.Type("ElsehowView", true);
+        public static RoomSettings.RoomEffect.Type RippleSpawn = new RoomSettings.RoomEffect.Type("RippleSpawn", true);
+        public static RoomSettings.RoomEffect.Type RippleMelt = new RoomSettings.RoomEffect.Type("RippleMelt", true);
+        public static RoomSettings.RoomEffect.Type RoseSky = new RoomSettings.RoomEffect.Type("RoseSky", true);
+        public static void UnregisterValues()
         {
-            PitchBlackCatagory.Unregister();
-            PitchBlackCatagory = null;
-        }
-        if (ElsehowView != null)
-        {
-            ElsehowView.Unregister();
-            ElsehowView = null;
-        }
-        if (RippleSpawn != null)
-        {
-            RippleSpawn.Unregister();
-            RippleSpawn = null;
-        }
-        if (RippleMelt != null)
-        {
-            RippleMelt.Unregister();
-            RippleMelt = null;
-        }
-        if (RoseSky != null)
-        {
-            RoseSky.Unregister();
-            RoseSky = null;
+            if (PitchBlackCatagory != null)
+            {
+                PitchBlackCatagory.Unregister();
+                PitchBlackCatagory = null;
+            }
+            if (ElsehowView != null)
+            {
+                ElsehowView.Unregister();
+                ElsehowView = null;
+            }
+            if (RippleSpawn != null)
+            {
+                RippleSpawn.Unregister();
+                RippleSpawn = null;
+            }
+            if (RippleMelt != null)
+            {
+                RippleMelt.Unregister();
+                RippleMelt = null;
+            }
+            if (RoseSky != null)
+            {
+                RoseSky.Unregister();
+                RoseSky = null;
+            }
         }
     }
 }

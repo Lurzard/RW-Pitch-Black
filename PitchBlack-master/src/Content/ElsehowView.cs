@@ -42,7 +42,7 @@ public class ElsehowView : BackgroundScene
             startAltitude = (room.world.region.regionParams.cloudsStart ?? startAltitude);
             endAltitude = (room.world.region.regionParams.cloudsEnd ?? endAltitude);
         }
-        if (!room.game.IsArenaSession || effect.type != PBRoomEffectType.ElsehowView)
+        if (!room.game.IsArenaSession || effect.type != PBEnums.RoomEffectType.ElsehowView)
         {
             sceneOrigo = new Vector2(2514f, (startAltitude + endAltitude) / 2f);
         }
@@ -69,7 +69,7 @@ public class ElsehowView : BackgroundScene
         AddElement(generalFog);
         AddElement(centensSky);
         // Close clouds
-        if (effect.type == PBRoomEffectType.ElsehowView)
+        if (effect.type == PBEnums.RoomEffectType.ElsehowView)
         {
             int cloudCount = 7;
             for (int i = 0; i < cloudCount; i++)

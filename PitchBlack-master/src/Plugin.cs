@@ -299,7 +299,7 @@ class Plugin : BaseUnityPlugin
                 PBEnums.CreatureTemplateType.UnregisterValues();
                 PBEnums.SandboxUnlockID.UnregisterValues();
                 PBEnums.SoundID.UnregisterValues();
-                PBRoomEffectType.UnregisterValues();
+                PBEnums.RoomEffectType.UnregisterValues();
                 PBEnums.EndGameID.UnregisterValues();
                 PBEnums.SceneID.UnregisterValues();
                 PBEnums.AbstractObjectType.UnregisterValues();
