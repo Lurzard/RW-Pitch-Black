@@ -20,7 +20,7 @@ public class BeaconSaveDataDeathPersistent
     public bool hasSeenRot { get; set; } //Rot Tutorial
 
     // Thanatosis
-    public int fakeDeaths { get; set; } //Thanatosis usage #
+    public int fakeDeaths { get; set; } //Thanatosis usage amount tracking
     public List<WorldCoordinate> fakeDeathPositions { get; set; } //Thanatosis usage position, for spawning DreamSpawn in that room
 
     // Dream (Karma)

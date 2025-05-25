@@ -11,9 +11,8 @@ namespace PitchBlack;
 // WIP!!!
 public static class SaveDataHooks
 {
-    // NOTES: -Lur
-    // I don't understand SaveData too much so Hootis is helping me set it up, I'm following instructions
-    // Mostly everything "needed" is set up except for the crucial cyclecompleted hook... that's the todo
+    // I don't understand SaveData too much so I'm following instructions from Hootis, hopefully it works -Lur
+    // Changed some instances of miscWorld stuff to deathpersistent
 
     // To prevent typos
     public static string dataKey = "beacon_data";
@@ -60,7 +59,7 @@ public static class SaveDataHooks
     {
         if (game.IsStorySession && game.StoryCharacter == PBEnums.SlugcatStatsName.Beacon)
         {
-            //GetSlugBaseData().Set(dataKey, game.rainWorld.GetBeaconSaveData());
+            game.rainWorld.progression.miscProgressionData.GetSlugBaseData().Set(dataKey, game.rainWorld.GetBeaconSaveData());
         }
         orig(self, game);
     }
