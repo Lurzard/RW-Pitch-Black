@@ -20,7 +20,7 @@ using System.Drawing;
 
 namespace PitchBlack;
 
-// Everything to do with changes to certain void/karma/gold things in the game
+// Leaving as is for now, can be split between hooks classes tbh
 public class SpecialChanges
 {
 

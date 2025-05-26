@@ -116,9 +116,9 @@ public class SH_CABINETS1_IntroScript : UpdatableAndDeletable
 public class GW_PHOTO01_IntroScript : UpdatableAndDeletable
 {
     private bool alreadyRun = false;
-    private List<bool?> prevLavaImmune = new List<bool?>{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}; 
+    private List<bool?> prevLavaImmune = new List<bool?> { null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null };
     // Just in case any custom scugs have this true as default. (Make 16 because myriad exists)
-        // We need this because even with the RSS, the scugs still spawn in the acid before they can be moved.
+    // We need this because even with the RSS, the scugs still spawn in the acid before they can be moved.
     public GW_PHOTO01_IntroScript(Room room)
     {
         this.room = room;
@@ -126,19 +126,24 @@ public class GW_PHOTO01_IntroScript : UpdatableAndDeletable
     public override void Update(bool eu)
     {
         base.Update(eu);
-        if (!alreadyRun) {
-            for (int i = 0; i < room.game.Players.Count; i++) {
-                if (prevLavaImmune[i] == null) {
+        if (!alreadyRun)
+        {
+            for (int i = 0; i < room.game.Players.Count; i++)
+            {
+                if (prevLavaImmune[i] == null)
+                {
                     prevLavaImmune[i] = room.game.Players[i].lavaImmune;
                 }
                 room.game.Players[i].lavaImmune = true;
-                if (room.game.Players[i].realizedCreature is Player player) {
+                if (room.game.Players[i].realizedCreature is Player player)
+                {
                     alreadyRun = true;
                     // I had trouble with 4-player groups pushing eachother into the acid. 
-                        // This will spawn the first two players on the right, cannon spawning spot, and the other two on the platforms above the acid
-                    float xPos = i <= 1? (i * 40f) : (-(i-1) * 100f - 20f);
-                    float yPos = i <= 1? 665f : 610f;   // Lower the y pos, since if they can fall their x pos can deviate.
-                    if (i >= 4) {
+                    // This will spawn the first two players on the right, cannon spawning spot, and the other two on the platforms above the acid
+                    float xPos = i <= 1 ? i * 40f : -(i - 1) * 100f - 20f;
+                    float yPos = i <= 1 ? 665f : 610f;   // Lower the y pos, since if they can fall their x pos can deviate.
+                    if (i >= 4)
+                    {
                         xPos = 400f;
                         yPos = 750f;
                     }
@@ -150,7 +155,8 @@ public class GW_PHOTO01_IntroScript : UpdatableAndDeletable
                 }
             }
         }
-        else if (alreadyRun) {
+        else if (alreadyRun)
+        {
             Destroy();
         }
     }

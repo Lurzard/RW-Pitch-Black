@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace PitchBlack;
 
-public class DevHooks
+public class DevToolsHooks
 {
     public static bool RoseSky;
     public static void Apply()

@@ -8,12 +8,12 @@ using System.Linq;
 
 namespace PitchBlack;
 
-public class RiftWorldPrecence
+public class RiftWorldPresence
 {
     public string roomName;
     public List<AbstractCreature> abstractCreatures;
     public string id;
-    public RiftWorldPrecence(string roomName, string id, List<AbstractCreature> abstractCreatures) {
+    public RiftWorldPresence(string roomName, string id, List<AbstractCreature> abstractCreatures) {
         this.roomName = roomName;
         this.id = id;
         this.abstractCreatures = abstractCreatures;
@@ -43,9 +43,9 @@ public class TeleportWater
             this.room = room;
             closestPlayerPos = Vector2.positiveInfinity;
             // Debug.Log($"Pitch Black: {nameof(TeleportWaterObject)} room: {room}, game: {room?.game}");
-            if (Plugin.riftCWT.TryGetValue(room.game, out List<RiftWorldPrecence> riftWorldPrecences)) {
+            if (Plugin.riftCWT.TryGetValue(room.game, out List<RiftWorldPresence> riftWorldPrecences)) {
                 // Debug.Log("Pitch black: there is a riftCWT");
-                foreach (RiftWorldPrecence riftWorldPrecence in riftWorldPrecences) {
+                foreach (RiftWorldPresence riftWorldPrecence in riftWorldPrecences) {
                     foreach(AbstractCreature absCrit in riftWorldPrecence.abstractCreatures) {
                         Debug.Log($"Pitch Black: {absCrit.creatureTemplate.type}");
                     }
@@ -55,8 +55,8 @@ public class TeleportWater
                     }
                 }
                 // If it does not find a match, create a new Precence
-                Debug.Log($"Pitch Black: Created new {nameof(RiftWorldPrecence)}");
-                riftWorldPrecences.Add(new RiftWorldPrecence(room.abstractRoom.name, (pObj.data as ManagedData).GetValue<string>("id"), new List<AbstractCreature>()));
+                Debug.Log($"Pitch Black: Created new {nameof(RiftWorldPresence)}");
+                riftWorldPrecences.Add(new RiftWorldPresence(room.abstractRoom.name, (pObj.data as ManagedData).GetValue<string>("id"), new List<AbstractCreature>()));
             }
             else {
                 abstractCreatures = new List<AbstractCreature>();

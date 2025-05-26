@@ -14,10 +14,47 @@ public static class MenuHooks
     const string SINGAL_NAME = "PitchBlackCollection";
     public static void Apply() {
         On.Menu.MenuScene.BuildScene += MenuScene_BuildScene;
+
+        // Collections Menu
         IL.ProcessManager.PostSwitchMainProcess += IL_ProcessManager_PostSwitchMainProcess;
         On.MoreSlugcats.CollectionsMenu.ctor += MoreSlugcats_CollectionsMenu_ctor;
         On.MoreSlugcats.CollectionsMenu.Singal += MoreSlugcats_CollectionsMenu_Singal;
+
+        // Jolly menu in JollyMenuHooks (for now)
+
+        // Slugcat Select Menu
+        IL.Menu.SlugcatSelectMenu.SlugcatPageContinue.ctor += SlugcatSelectMenu_SlugcatPageContinue_ctor;
     }
+
+    private static void SlugcatSelectMenu_SlugcatPageContinue_ctor(ILContext il)
+    {
+        ILCursor cursor = new ILCursor(il);
+        if (!cursor.TryGotoNext(MoveType.After, i => i.MatchCallOrCallvirt<Int32>("ToString")))
+        {
+            Plugin.logger.LogError($"Pitch Black: Error in {nameof(SlugcatSelectMenu_SlugcatPageContinue_ctor)}");
+            return;
+        }
+        cursor.Emit(OpCodes.Ldarg, 4);
+        cursor.EmitDelegate((string cycleNum, SlugcatStats.Name slugcatNumber) =>
+        {
+            if (MiscUtils.IsBeaconOrPhoto(slugcatNumber))
+            {
+                int startingRange = 0;
+                try
+                {
+                    startingRange = Convert.ToInt32(cycleNum);
+                }
+                catch (Exception err)
+                {
+                    Debug.Log($"Pitch Black: cycle number was not, in fact, a number!\n{err}");
+                    startingRange = cycleNum.Length;
+                }
+                return MiscUtils.GenerateRandomString(startingRange, startingRange + 10);
+            }
+            return cycleNum;
+        });
+    }
+
     private static void MenuScene_BuildScene(On.Menu.MenuScene.orig_BuildScene orig, MenuScene self)
     {
         bool wasPBScene = false;

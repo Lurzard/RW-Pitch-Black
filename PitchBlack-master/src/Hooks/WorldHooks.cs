@@ -9,7 +9,7 @@ using Mono.Cecil.Cil;
 
 namespace PitchBlack;
 
-public static class WorldChanges
+public static class WorldHooks
 {
     public static void Apply()
     {
@@ -17,7 +17,6 @@ public static class WorldChanges
         On.Expedition.PearlDeliveryChallenge.ValidForThisSlugcat += PearlDeliveryChallenge_ValidForThisSlugcat;
         //On.Room.Update += Room_Update;
         //new Hook(typeof(ElectricDeath).GetMethod("get_Intensity", Public | NonPublic | Instance), ElecIntensity);
-        IL.Menu.SlugcatSelectMenu.SlugcatPageContinue.ctor += SlugcatSelectMenu_SlugcatPageContinue_ctor;
         On.Region.ctor_string_int_int_Timeline += Region_ctor_string_int_int_Timeline;
     }
 
@@ -32,35 +31,6 @@ public static class WorldChanges
             self.regionParams.corruptionEffectColor = color;
             self.regionParams.corruptionEyeColor = color;
         }
-    }
-
-    private static void SlugcatSelectMenu_SlugcatPageContinue_ctor(ILContext il)
-    {
-        ILCursor cursor = new ILCursor(il);
-        if (!cursor.TryGotoNext(MoveType.After, i => i.MatchCallOrCallvirt<Int32>("ToString")))
-        {
-            Plugin.logger.LogError($"Pitch Black: Error in {nameof(SlugcatSelectMenu_SlugcatPageContinue_ctor)}");
-            return;
-        }
-        cursor.Emit(OpCodes.Ldarg, 4);
-        cursor.EmitDelegate((string cycleNum, SlugcatStats.Name slugcatNumber) =>
-        {
-            if (MiscUtils.IsBeaconOrPhoto(slugcatNumber))
-            {
-                int startingRange = 0;
-                try
-                {
-                    startingRange = Convert.ToInt32(cycleNum);
-                }
-                catch (Exception err)
-                {
-                    Debug.Log($"Pitch Black: cycle number was not, in fact, a number!\n{err}");
-                    startingRange = cycleNum.Length;
-                }
-                return MiscUtils.GenerateRandomString(startingRange, startingRange + 10);
-            }
-            return cycleNum;
-        });
     }
     public static float ElecIntensity(Func<ElectricDeath, float> orig, ElectricDeath self)
     {

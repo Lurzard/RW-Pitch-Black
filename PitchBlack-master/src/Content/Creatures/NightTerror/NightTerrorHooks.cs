@@ -177,7 +177,7 @@ public static class NightTerrorHooks
         orig(self, world, creatureTemplate, realizedCreature, pos, ID);
         KILLIT.Add(self, new StrongBox<int>(0));
         if (creatureTemplate.IsNightTerror()) {
-            if (Plugin.NTTrackers.TryGetValue(world.game, out var trackers)) {
+            if (Plugin.pursuerTracker.TryGetValue(world.game, out var trackers)) {
                 trackers.Add(new NTTracker(world.game){pursuer = self});
             }
             self.lavaImmune = true;

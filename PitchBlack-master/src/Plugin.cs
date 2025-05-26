@@ -29,13 +29,15 @@ class Plugin : BaseUnityPlugin
     public static readonly string rootSavePath = Application.persistentDataPath + Path.DirectorySeparatorChar.ToString();
     public static readonly string collectionSaveDataPath = rootSavePath + COLLECTION_SAVE_FOLDER_NAME + Path.DirectorySeparatorChar.ToString() + "PBcollectionsSaveData.txt";
     public static readonly Dictionary<string, bool> collectionSaveData = new Dictionary<string, bool>();
-    public static ConditionalWeakTable<RainWorldGame, List<RiftWorldPrecence>> riftCWT = new();
 
     private bool init = false;
     public static ManualLogSource logger;
 
     public static ConditionalWeakTable<Player, ScugCWT> scugCWT = new();
-    public static ConditionalWeakTable<RainWorldGame, List<NTTracker>> NTTrackers = new ConditionalWeakTable<RainWorldGame, List<NTTracker>>();
+    public static ConditionalWeakTable<RainWorldGame, List<NTTracker>> pursuerTracker = new ConditionalWeakTable<RainWorldGame, List<NTTracker>>();
+    public static ConditionalWeakTable<RainWorldGame, List<RiftWorldPresence>> riftCWT = new();
+
+    public static readonly Color overseerColor = RWCustom.Custom.hexToColor("f02961");
 
     // #862e48
     public static readonly Color Rose = new Color(0.52549019607f, 0.18039215686f, 0.28235294117f);
@@ -108,7 +110,7 @@ class Plugin : BaseUnityPlugin
         On.DeathPersistentSaveData.ctor += DeathPersistentSaveData_ctor;
         On.AbstractPhysicalObject.Realize += AbstractPhysicalObject_Realize;
 
-        DevHooks.Apply();
+        DevToolsHooks.Apply();
         MenuHooks.Apply();
         SyncMenuRegion.Apply();
         CreatureEdits.Apply();
@@ -126,7 +128,7 @@ class Plugin : BaseUnityPlugin
         PassageHooks.Apply();
         SpecialChanges.Apply();
         RoomScripts.Apply();
-        WorldChanges.Apply();
+        WorldHooks.Apply();
         ScareEverything.Apply();
     }
 
@@ -332,14 +334,14 @@ class Plugin : BaseUnityPlugin
     private static void RainWorldGame_Update(On.RainWorldGame.orig_Update orig, RainWorldGame self)
     {
         orig(self);
-        if (NTTrackers.TryGetValue(self, out List<NTTracker> trackers)) foreach (NTTracker tracker in trackers) tracker.Update();
+        if (pursuerTracker.TryGetValue(self, out List<NTTracker> trackers)) foreach (NTTracker tracker in trackers) tracker.Update();
     }
     private static void RainWorldGame_ctor(On.RainWorldGame.orig_ctor orig, RainWorldGame self, ProcessManager manager)
     {
         orig(self, manager);
-        NTTrackers.Add(self, new List<NTTracker>());
+        pursuerTracker.Add(self, new List<NTTracker>());
         //riftCWT.Add(self, new List<RiftWorldPrecence>());
-        if ((IsBeacon(self.session) || PBRemixMenu.universalPursuer.Value) && NTTrackers.TryGetValue(self, out var trackers))
+        if ((IsBeacon(self.session) || PBRemixMenu.universalPursuer.Value) && pursuerTracker.TryGetValue(self, out var trackers))
         {
             trackers.Add(new NTTracker(self));
             Debug.Log("ADDING TRACKER");

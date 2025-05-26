@@ -36,7 +36,7 @@ public static class OverseerGraphics
         //if ((self.overseer.abstractCreature.abstractAI as OverseerAbstractAI).ownerIterator == 87)
         if (self.overseer.room?.world.game.session is StoryGameSession story && MiscUtils.IsBeaconOrPhoto(story.game.StoryCharacter) && self.overseer.PlayerGuide)
         {
-            return Custom.hexToColor("f02961");
+            return Plugin.overseerColor;
         }
         return val;
     }
