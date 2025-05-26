@@ -120,7 +120,7 @@ class Plugin : BaseUnityPlugin
         ScugGraphics.Apply();
         MoonDialogue.Apply();
         OverseerGraphics.Apply();
-        OverseerHooks.Apply();
+        //OverseerHooks.Apply();
         BeaconHooks.Apply();
         PhotoHooks.Apply();
         Crafting.Apply();

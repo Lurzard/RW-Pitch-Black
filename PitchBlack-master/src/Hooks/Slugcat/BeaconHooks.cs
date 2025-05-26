@@ -18,37 +18,6 @@ public static class BeaconHooks
 {
     //SHOW A FOOD BAR WARNING IF WE DON'T HAVE ENOUGH FOOD TO MAKE A FLASHBANG
     public static int foodWarning = 0;
-    public static void Apply()
-    {
-        IL.Player.GrabUpdate += Player_GrabUpdate_IL;
-        On.Player.Die += Player_Die;
-        On.Player.PermaDie += Player_PermaDie;
-        On.Player.Jump += Player_Jump;
-        On.Player.SwallowObject += BeaconTransmuteIntoFlashbang;
-        On.Player.GrabUpdate += Player_GrabUpdate;
-        On.Player.GraphicsModuleUpdated += BeaconStorageGrafUpdate;
-        On.Player.Update += Player_Update;
-        On.Player.ThrowObject += Player_ThrowObject;
-        On.Creature.Abstractize += Creature_Abstractize;
-        On.PlayerGraphics.Update += PlayerGraphics_Update;
-        On.SlugcatHand.EngageInMovement += SlugcatHand_EngageInMovement;
-        On.ShelterDoor.DoorClosed += ShelterDoor_DoorClosed;
-        On.PlayerGraphics.DrawSprites += PlayerGraphics_DrawSprites;
-        //qol storage stoppers for other hold-grab functions
-        On.Player.SwallowObject += Player_SwallowObject;
-        On.Player.Regurgitate += Player_Regurgitate;
-        On.Player.ObjectEaten += Player_ObjectEaten;
-        On.HUD.FoodMeter.MeterCircle.Update += MeterCircle_Update;
-        //On.PlayerGraphics.InitiateSprites += PlayerGraphics_InitiateSprites;
-        On.PlayerGraphics.ApplyPalette += PlayerGraphics_ApplyPalette;
-        On.SlugcatStats.SlugcatToTimeline += SlugcatStats_SlugcatToTimeline;
-        IL.Player.checkInput += IL_Player_checkInput;
-
-        // HUD Thanatosis hooks -Lur
-        //On.HUD.HUD.InitSinglePlayerHud += HUD_InitSinglePlayerHud;
-        //On.HUD.FoodMeter.MeterCircle.AddCircles += MeterCircle_AddCircles;
-        //On.HUD.HUD.AddPart += HUD_AddPart;
-    }
 
     public static void DropAllFlares(Player self)
     {
@@ -68,267 +37,6 @@ public static class BeaconHooks
         }
     }
 
-    #region ThanatosisMeter hooks
-    // NOTE: All of this references how CamoMeter is added
-    //public static ThanatosisMeter thanatosisMeter;
-    // Adding to hud the Thanatosis part
-    //private static void HUD_AddPart(On.HUD.HUD.orig_AddPart orig, HUD.HUD self, HudPart part)
-    //{
-    //    orig(self, part);
-    //    if (part is ThanatosisMeter)
-    //    {
-    //        thanatosisMeter = part as ThanatosisMeter;
-    //    }
-    //    self.parts.Add(part);
-    //}
-
-    // Black circles behind food pips, like Watcher
-    //private static void MeterCircle_AddCircles(On.HUD.FoodMeter.MeterCircle.orig_AddCircles orig, HUD.FoodMeter.MeterCircle self)
-    //{
-    //    orig(self);
-    //    if (thanatosisMeter != null)
-    //    {
-    //        self.backCircle = new HUDCircle(self.meter.hud, HUDCircle.SnapToGraphic.None, self.meter.fContainer, 5);
-    //    }
-    //}
-
-    // Adding ThanatosisMeter to the singleplayer hud
-    //private static void HUD_InitSinglePlayerHud(On.HUD.HUD.orig_InitSinglePlayerHud orig, HUD.HUD self, RoomCamera cam)
-    //{
-    //    orig(self, cam);
-    //    if ((self.owner as Player).SlugCatClass == PBEnums.SlugcatStatsName.Beacon)
-    //    {
-    //        self.AddPart(new ThanatosisMeter(self, self.fContainers[1]));
-    //    }
-    //}
-    #endregion
-
-    private static void IL_Player_checkInput(ILContext il)
-    {
-        ILCursor cursor = new ILCursor(il);
-        try
-        {
-            // This matches to line 104 (IL_00C8) in IL view, or in the middle of line 26 in C# view, and puts the cursor after the call instruction.
-            cursor.GotoNext(MoveType.After, i => i.MatchCall(typeof(RWInput), nameof(RWInput.PlayerInput)));
-            cursor.Emit(OpCodes.Ldarg_0);
-            cursor.Emit(OpCodes.Ldloc_0);
-
-            cursor.EmitDelegate((Player.InputPackage originalInputs, Player self, int num) =>
-            {
-                // This needs a proper check for if the player is in thanatosis
-                if (Plugin.scugCWT.TryGetValue(self, out ScugCWT c) && c is BeaconCWT beaconCWT &&
-                beaconCWT.isDead &&
-                Plugin.qualiaLevel <= 3f)
-                {
-                    // Create new inputs
-                    Player.InputPackage newInputs = new Player.InputPackage(self.room.game.rainWorld.options.controls[num].gamePad, self.room.game.rainWorld.options.controls[num].GetActivePreset(), 0, 0, false, false, false, false, false, originalInputs.spec);
-                    newInputs.downDiagonal = 0;
-                    newInputs.analogueDir = Vector2.zero;
-
-                    // Set animation and body mode
-                    self.animation = Player.AnimationIndex.Dead;
-                    self.bodyMode = Player.BodyModeIndex.Dead;
-
-                    // Put new values on the stack
-                    return newInputs;
-                }
-                // If the prior condition is not met, just return the original inputs to the stack.
-                return originalInputs;
-            });
-            Plugin.logger.LogDebug($"PB {nameof(IL_Player_checkInput)} applied successfully");
-        }
-        catch (Exception err)
-        {
-            Plugin.logger.LogDebug($"PB {nameof(IL_Player_checkInput)} could not match IL.\n{err}");
-        }
-    }
-
-    private static void PlayerGraphics_ApplyPalette(On.PlayerGraphics.orig_ApplyPalette orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
-    {
-        orig(self, sLeaser, rCam, palette);
-        Color color = PlayerGraphics.SlugcatColor(self.CharacterForColor);
-
-        Color color2 = new Color(color.r, color.g, color.b);
-        Color color3 = new Color(color.r, color.g, color.b);
-        if (Plugin.scugCWT.TryGetValue(self.player, out ScugCWT scugCWT) && scugCWT is BeaconCWT beaconCWT)
-        {
-            color2 = beaconCWT.currentSkinColor;
-            color3 = palette.blackColor;
-            Plugin.beaconDeadColor = color3;
-            for (int i = 0; i < sLeaser.sprites.Length; i++)
-            {
-                if (i != 9)
-                {
-                    sLeaser.sprites[i].color = color2;
-                }
-                else sLeaser.sprites[9].color = beaconCWT.currentEyeColor;
-            }
-            sLeaser.sprites[11].color = beaconCWT.currentSkinColor;
-            sLeaser.sprites[10].color = beaconCWT.currentSkinColor;
-        }
-    }
-
-    private static void PlayerGraphics_DrawSprites(On.PlayerGraphics.orig_DrawSprites orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
-    {
-        orig(self, sLeaser, rCam, timeStacker, camPos);
-
-        if (Plugin.scugCWT.TryGetValue(self.player, out ScugCWT scugCWT) && scugCWT is BeaconCWT beaconCWT)
-        {
-            //If Thanatosis lerp to RippleColor
-            if (beaconCWT.isDead || beaconCWT.thanatosisCounter > 0)
-            {
-                if (Plugin.qualiaLevel <= 3f)
-                {
-                    Color starveColor = Color.Lerp(Plugin.beaconDefaultColor, Color.gray, 0.4f);
-                    beaconCWT.currentSkinColor = Color.Lerp(Plugin.beaconDefaultColor, starveColor, beaconCWT.thanatosisLerp);
-                    beaconCWT.currentEyeColor = Plugin.beaconEyeColor;
-                }
-                if (Plugin.qualiaLevel >= 3f)
-                {
-                    beaconCWT.currentSkinColor = Color.Lerp(Plugin.beaconDefaultColor, Plugin.beaconDeadColor, beaconCWT.thanatosisLerp);
-                    beaconCWT.currentEyeColor = Color.Lerp(Plugin.beaconEyeColor, Plugin.NightmareColor, beaconCWT.thanatosisLerp);
-                }
-            }
-            // Otherwise use default colors.
-            else
-            {
-                int flares = beaconCWT.storage.storedFlares.Count;
-                beaconCWT.currentSkinColor = Color.Lerp(Plugin.beaconDefaultColor, Plugin.beaconFullColor, flares / (float)4);
-            }
-            // sprites
-            for (int sprites = 0; sprites < sLeaser.sprites.Length; sprites++)
-            {
-                if (sprites != 9) sLeaser.sprites[sprites].color = beaconCWT.currentSkinColor;
-                if (sprites == 9) sLeaser.sprites[sprites].color = beaconCWT.isDead ? beaconCWT.currentEyeColor : Plugin.beaconEyeColor;
-                if (beaconCWT.isDead)
-                {
-                    sLeaser.sprites[9].element = Futile.atlasManager.GetElementWithName("Face" + "Dead");
-                }
-                if (sprites == 10) sLeaser.sprites[sprites].color = beaconCWT.currentSkinColor;
-                if (sprites == 11) sLeaser.sprites[sprites].color = beaconCWT.currentSkinColor;
-            }
-            // brightsquint
-            if (beaconCWT.brightSquint > (40 * 3.5f))
-            {
-                sLeaser.sprites[9].element = Futile.atlasManager.GetElementWithName("Face" + "Stunned");
-            }
-            if (beaconCWT.brightSquint > 10)
-            {
-                sLeaser.sprites[9].x -= self.lookDirection.x * 2;
-                sLeaser.sprites[9].y -= self.lookDirection.y * 2;
-            }
-        }
-    }
-    private static void PlayerGraphics_Update(On.PlayerGraphics.orig_Update orig, PlayerGraphics self)
-    {
-        //Assuming this will be true most of the time for Beacon
-        if (Plugin.scugCWT.TryGetValue(self.player, out ScugCWT scugCWT) &&
-            scugCWT is BeaconCWT beaconCWT &&
-            self.player.room.Darkness(self.player.mainBodyChunk.pos) > 0f)
-        {
-            // This (the lightsource) is 100% causing issues. -Lur
-            //Adding lightsource if orig took it
-            if (self.lightSource == null)
-            {
-                Color lerpColor;
-                if (beaconCWT.isDead)
-                {
-                    lerpColor = Color.Lerp(Plugin.beaconDefaultColor, RainWorld.RippleColor, beaconCWT.thanatosisLerp);
-                }
-                // Otherwise use default colors.
-                else
-                {
-                    lerpColor = Color.Lerp(Plugin.beaconDefaultColor, Plugin.beaconFullColor, beaconCWT.storage.storedFlares.Count / (float)4);
-                }
-
-                self.lightSource = new LightSource(self.player.mainBodyChunk.pos, false, Color.Lerp(new Color(1f, 1f, 1f), lerpColor, 0.5f), self.player);
-                self.lightSource.requireUpKeep = true;
-                self.lightSource.setRad = new float?(300f);
-                self.lightSource.setAlpha = new float?(1f);
-                self.player.room.AddObject(self.lightSource);
-            }
-            int flares = beaconCWT.storage.storedFlares.Count;
-
-            //DEFAULT, NO FLASHBANGS
-            float rad = flares switch
-            {
-                0 => 200,
-                1 => 300,
-                2 => 400,
-                3 => 475,
-                4 => 550,
-                // +25
-                _ => (float)(550 + (25 * (flares - 4))),
-            };
-
-            float alpha = flares switch
-            {
-                0 => 0.5f,
-                1 => 0.55f,
-                2 => 0.6f,
-                3 => 0.65f,
-                4 => 0.7f,
-                _ => 0.7f
-            };
-
-            //ROTUND WORLD SHENANIGANS
-            float baseWeight = 0.7f * self.player.slugcatStats.bodyWeightFac / 2f;
-            rad *= self.player.bodyChunks[0].mass / baseWeight / 2f;
-            //AT +2 BONUS PIPS THIS IS ROUGHLY 125% RAD. CAPPING AT 150%
-
-            //IF WE HAVE THE_GLOW, DON'T LET OUR GLOW STRENGTH UNDERCUT THAT
-            if (self.player.glowing && rad < 300) rad = 300;
-            if (self.player.dead || beaconCWT.isDead) rad = 200;
-
-            self.lightSource.setRad = rad;
-            self.lightSource.setAlpha = alpha;
-            self.lightSource.stayAlive = true;
-            self.lightSource.setPos = new Vector2?(self.player.mainBodyChunk.pos);
-
-            if (beaconCWT.brightSquint > 10)
-            {
-                if (self.blink <= 0 && Random.value < 0.35f) self.player.Blink(Mathf.FloorToInt(Mathf.Lerp(3f, 8f, UnityEngine.Random.value)));
-                self.head.vel -= self.lookDirection * 3f;
-            }
-
-            // For petting Friend and Noir... I think -Moon
-            // Yeah that's probably it, but I have no idea when I wrote
-            //this.events.Add(new Conversation.TextEvent(this, 0, this.Translate("What are you? If I had my memories I would know..."), 0));
-            int initptm = beaconCWT.petTimer;
-            foreach (AbstractCreature crit in self.player.room.abstractRoom.creatures)
-            {
-                if (crit.realizedCreature is Player otherPlayer && otherPlayer != self.player && (otherPlayer.slugcatStats.name == new SlugcatStats.Name("Friend", false) || otherPlayer.slugcatStats.name == new SlugcatStats.Name("NoirCatto", false)) && Vector2.Distance(otherPlayer.mainBodyChunk.pos, self.player.mainBodyChunk.pos) <= 35 && self.player.bodyMode == Player.BodyModeIndex.Stand && otherPlayer.bodyMode == Player.BodyModeIndex.Crawl)
-                {
-                    if (otherPlayer.mainBodyChunk.pos.x < self.player.mainBodyChunk.pos.x)
-                    {
-                        self.hands[0].absoluteHuntPos = otherPlayer.mainBodyChunk.pos + new Vector2(15 + 5f * Mathf.Sin(beaconCWT.petTimer * (Mathf.PI / 10f)), 10f);
-                        self.hands[0].reachingForObject = true;
-                    }
-                    if (otherPlayer.mainBodyChunk.pos.x > self.player.mainBodyChunk.pos.x)
-                    {
-                        self.hands[1].absoluteHuntPos = otherPlayer.mainBodyChunk.pos + new Vector2(-15 + 5f * Mathf.Sin(beaconCWT.petTimer * (Mathf.PI / 10f)), 10f);
-                        self.hands[1].reachingForObject = true;
-                    }
-                    if (beaconCWT.petTimer % 640 == 0)
-                    {
-                        self.player.room.PlaySound(new SoundID("NoirCatto_PurrLoop", false), otherPlayer.mainBodyChunk.pos);
-                    }
-                    if (beaconCWT.petTimer == initptm)
-                    {
-                        beaconCWT.petTimer++;
-                    }
-                }
-            }
-        }
-        orig(self);
-    }
-
-    // NOTE: Moved this higher so it taks significantly less time to scroll down for -Lur
-    private static void Player_Update(On.Player.orig_Update orig, Player self, bool eu)
-    {
-        orig(self, eu);
-        BeaconUpdate(self);
-    }
     #region BeaconUpdate
     public static void BeaconUpdate(Player self)
     {
@@ -371,6 +79,7 @@ public static class BeaconHooks
         }
     }
     #endregion
+    
     #region ThanatosisUpdate
     public static void ThanatosisUpdate(Player self)
     {
@@ -472,6 +181,76 @@ public static class BeaconHooks
         }
     }
     #endregion
+
+    public static void Apply()
+    {
+        IL.Player.GrabUpdate += Player_GrabUpdate_IL;
+        On.Player.Die += Player_Die;
+        On.Player.PermaDie += Player_PermaDie;
+        On.Player.Jump += Player_Jump;
+        On.Player.SwallowObject += BeaconTransmuteIntoFlashbang;
+        On.Player.GrabUpdate += Player_GrabUpdate;
+        On.Player.GraphicsModuleUpdated += BeaconStorageGrafUpdate;
+        On.Player.Update += Player_Update;
+        On.Player.ThrowObject += Player_ThrowObject;
+        On.Creature.Abstractize += Creature_Abstractize;
+        On.SlugcatHand.EngageInMovement += SlugcatHand_EngageInMovement;
+        On.ShelterDoor.DoorClosed += ShelterDoor_DoorClosed;
+        //qol storage stoppers for other hold-grab functions
+        On.Player.SwallowObject += Player_SwallowObject;
+        On.Player.Regurgitate += Player_Regurgitate;
+        On.Player.ObjectEaten += Player_ObjectEaten;
+        On.HUD.FoodMeter.MeterCircle.Update += MeterCircle_Update;
+        On.SlugcatStats.SlugcatToTimeline += SlugcatStats_SlugcatToTimeline;
+        IL.Player.checkInput += IL_Player_checkInput;
+    }
+
+    private static void IL_Player_checkInput(ILContext il)
+    {
+        ILCursor cursor = new ILCursor(il);
+        try
+        {
+            // This matches to line 104 (IL_00C8) in IL view, or in the middle of line 26 in C# view, and puts the cursor after the call instruction.
+            cursor.GotoNext(MoveType.After, i => i.MatchCall(typeof(RWInput), nameof(RWInput.PlayerInput)));
+            cursor.Emit(OpCodes.Ldarg_0);
+            cursor.Emit(OpCodes.Ldloc_0);
+
+            cursor.EmitDelegate((Player.InputPackage originalInputs, Player self, int num) =>
+            {
+                // This needs a proper check for if the player is in thanatosis
+                if (Plugin.scugCWT.TryGetValue(self, out ScugCWT c) && c is BeaconCWT beaconCWT &&
+                beaconCWT.isDead &&
+                Plugin.qualiaLevel <= 3f)
+                {
+                    // Create new inputs
+                    Player.InputPackage newInputs = new Player.InputPackage(self.room.game.rainWorld.options.controls[num].gamePad, self.room.game.rainWorld.options.controls[num].GetActivePreset(), 0, 0, false, false, false, false, false, originalInputs.spec);
+                    newInputs.downDiagonal = 0;
+                    newInputs.analogueDir = Vector2.zero;
+
+                    // Set animation and body mode
+                    self.animation = Player.AnimationIndex.Dead;
+                    self.bodyMode = Player.BodyModeIndex.Dead;
+
+                    // Put new values on the stack
+                    return newInputs;
+                }
+                // If the prior condition is not met, just return the original inputs to the stack.
+                return originalInputs;
+            });
+            Plugin.logger.LogDebug($"PB {nameof(IL_Player_checkInput)} applied successfully");
+        }
+        catch (Exception err)
+        {
+            Plugin.logger.LogDebug($"PB {nameof(IL_Player_checkInput)} could not match IL.\n{err}");
+        }
+    }
+
+    // NOTE: Moved this higher so it taks significantly less time to scroll down for -Lur
+    private static void Player_Update(On.Player.orig_Update orig, Player self, bool eu)
+    {
+        BeaconUpdate(self);
+        orig(self, eu);
+    }
 
     private static SlugcatStats.Timeline SlugcatStats_SlugcatToTimeline(On.SlugcatStats.orig_SlugcatToTimeline orig, SlugcatStats.Name slugcat)
     {
