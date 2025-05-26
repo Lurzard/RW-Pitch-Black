@@ -11,7 +11,7 @@ sealed class NightTerrorCritob : Critob
 {
     internal NightTerrorCritob() : base(PBEnums.CreatureTemplateType.NightTerror)
     {
-        Icon = new SimpleIcon("Night_Terror", new Color(0.529f, 0.184f, 0.360f));
+        Icon = new SimpleIcon("Night_Terror", Plugin.NightmareColor);
         RegisterUnlock(KillScore.Configurable(25), PBEnums.SandboxUnlockID.NightTerror);
         SandboxPerformanceCost = new(3f, 1.5f);
         LoadedPerformanceCost = 200f;

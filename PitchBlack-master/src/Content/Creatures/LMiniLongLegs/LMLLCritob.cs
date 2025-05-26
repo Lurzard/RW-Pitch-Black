@@ -13,7 +13,7 @@ sealed class LMLLCritob : Critob
 {
     internal LMLLCritob() : base(PBEnums.CreatureTemplateType.LMiniLongLegs)
     {
-        Icon = new SimpleIcon("Kill_LMLL", Color.grey);
+        Icon = new SimpleIcon("Kill_LMLL", Plugin.NightmareColor);
         RegisterUnlock(KillScore.Configurable(5), PBEnums.SandboxUnlockID.LMiniLongLegs);
         SandboxPerformanceCost = new(1.5f, 1.25f);
         LoadedPerformanceCost = 100f;

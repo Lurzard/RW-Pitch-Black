@@ -38,6 +38,8 @@ class Plugin : BaseUnityPlugin
     public static ConditionalWeakTable<RainWorldGame, List<RiftWorldPresence>> riftCWT = new();
 
     public static readonly Color overseerColor = RWCustom.Custom.hexToColor("f02961");
+    // #d31c53
+    public static readonly Color NightmareColor = new Color(0.82745098039f, 0.10980392156f, 0.32549019607f);
 
     // #862e48
     public static readonly Color Rose = new Color(0.52549019607f, 0.18039215686f, 0.28235294117f);
@@ -55,7 +57,7 @@ class Plugin : BaseUnityPlugin
     // Save data 
     // NOTE: indev, mess with values for testing
     public static bool canIDoThanatosisYet = true;
-    public static float qualiaLevel = 1f;
+    public static float qualiaLevel = 10f;
 
     // Rotund World stuff
     internal static bool RotundWorldEnabled => _rotundWorldEnabled; //for a single check in BeaconHooks' Player.Update hook

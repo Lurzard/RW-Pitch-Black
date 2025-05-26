@@ -186,7 +186,7 @@ public static class BeaconHooks
                 if (Plugin.qualiaLevel >= 3f)
                 {
                     beaconCWT.currentSkinColor = Color.Lerp(Plugin.beaconDefaultColor, Plugin.beaconDeadColor, beaconCWT.thanatosisLerp);
-                    beaconCWT.currentEyeColor = Color.Lerp(Plugin.beaconEyeColor, RainWorld.RippleColor, beaconCWT.thanatosisLerp);
+                    beaconCWT.currentEyeColor = Color.Lerp(Plugin.beaconEyeColor, Plugin.NightmareColor, beaconCWT.thanatosisLerp);
                 }
             }
             // Otherwise use default colors.

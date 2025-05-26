@@ -10,7 +10,7 @@ public class RotRatCritob : Critob
 {
     public RotRatCritob() : base(PBEnums.CreatureTemplateType.Rotrat)
     {
-        Icon = new SimpleIcon("Kill_Mouse", new Color(1f, 0.4f, 0f));
+        Icon = new SimpleIcon("Kill_Mouse", Plugin.NightmareColor);
         LoadedPerformanceCost = 100f;
         SandboxPerformanceCost = new SandboxPerformanceCost(0.5f, 0.5f);
         RegisterUnlock(KillScore.Configurable(3), PBEnums.SandboxUnlockID.Rotrat);

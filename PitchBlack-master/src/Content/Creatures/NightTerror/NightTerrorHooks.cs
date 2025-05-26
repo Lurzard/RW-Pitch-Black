@@ -255,7 +255,7 @@ public static class NightTerrorHooks
         Color result = orig(self);
         if (self.abstractCreature.creatureTemplate.IsNightTerror())
         {
-            return Plugin.SaturatedRose;
+            return Plugin.NightmareColor;
         }
         return result;
     }
