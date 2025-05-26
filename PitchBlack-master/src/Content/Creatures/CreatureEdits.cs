@@ -620,12 +620,14 @@ internal class CreatureEdits
 private static void ScavengerGraphics_AddToContainer(On.ScavengerGraphics.orig_AddToContainer orig, ScavengerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, FContainer newContatiner)
     {
         int randomContainerInt = UnityEngine.Random.Range(0, 2);
+#pragma warning disable CS8509 // The switch expression does not handle all possible values of its input type (it is not exhaustive).
         string RandomContainerStr = randomContainerInt switch
         {
             0 => "Background",
             1 => "Midground",
             2 => "Foreground",
         };
+#pragma warning restore CS8509 // The switch expression does not handle all possible values of its input type (it is not exhaustive).
         if (self.scavenger.Template.type == PBEnums.CreatureTemplateType.Citizen)
         {
             sLeaser.RemoveAllSpritesFromContainer();

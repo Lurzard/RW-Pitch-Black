@@ -6,7 +6,15 @@ namespace PitchBlack;
 
 public class DevToolsHooks
 {
+    /// <summary>
+    /// Effects and such need to be added to the 3 hooks
+    /// - Room.Loaded to add the object
+    /// - Room.NowViewed for backgrounds to apply a fix
+    /// - RoomSettingsPage.DevEffectGetCategoryFromEffectType for adding effect to Pitch-Black page in Devtools Effects
+    /// </summary> -Lur
+
     public static bool RoseSky;
+
     public static void Apply()
     {
         // For dev effects
@@ -19,23 +27,9 @@ public class DevToolsHooks
         On.RainWorldGame.RawUpdate += RainWorldGame_RawUpdate;
         On.RoomCamera.DrawUpdate += RoomCamera_DrawUpdate;
         On.RoomCamera.MoveCamera_Room_int += RoomCamera_MoveCamera_Room_int;
-        //On.AboveCloudsView.ctor += AboveCloudsView_ctor;
     }
-    
-    // Gonna use a RK bg instead -Lur
-    //private static void AboveCloudsView_ctor(On.AboveCloudsView.orig_ctor orig, AboveCloudsView self, Room room, RoomSettings.RoomEffect effect)
-    //{
-    //    orig(self, room, effect);
-    //    RoseSky = (effect.type == PBRoomEffectType.RoseSky);
-    //    if (RoseSky)
-    //    {
-    //        self.atmosphereColor = new Color(0.219f, 0.098f, 0.137f);
-    //        self.daySky = new BackgroundScene.Simple2DBackgroundIllustration(self, "Rose_Sky", new Vector2(683f, 384f));
-    //        self.duskSky = new BackgroundScene.Simple2DBackgroundIllustration(self, "Rose_Sky", new Vector2(683f, 384f));
-    //        self.nightSky = new BackgroundScene.Simple2DBackgroundIllustration(self, "Rose_Sky", new Vector2(683f, 384f));
-    //    }
-    //}
 
+    #region Hooks for RippleMelt
     private static void RoomCamera_MoveCamera_Room_int(On.RoomCamera.orig_MoveCamera_Room_int orig, RoomCamera self, Room room, int camPos)
     {
         orig(self, room, camPos);
@@ -91,19 +85,6 @@ public class DevToolsHooks
             }
         }
     }
-    // NOTE: Taken from other Watcher backgrounds, seems related to the building shader from AnicentUrbanBuildings. Only for ElsehowView.
-    private static void Room_NowViewed(On.Room.orig_NowViewed orig, Room self)
-    {
-        orig(self);
-        for (int i = 0; i < self.roomSettings.effects.Count; i++)
-        {
-            if (self.roomSettings.effects[i].type == PBEnums.RoomEffectType.ElsehowView
-                || self.roomSettings.effects[i].type == PBEnums.RoomEffectType.RoseSky)
-            {
-                Shader.SetGlobalFloat(RainWorld.ShadPropRimFix, 1f);
-            }
-        }
-    }
     private static void EffectPanelSlider_NubDragged(On.DevInterface.EffectPanel.EffectPanelSlider.orig_NubDragged orig, EffectPanel.EffectPanelSlider self, float nubPos)
     {
         orig(self, nubPos);
@@ -116,6 +97,21 @@ public class DevToolsHooks
             }
         }
     }
+    #endregion
+
+    private static void Room_NowViewed(On.Room.orig_NowViewed orig, Room self)
+    {
+        orig(self);
+        for (int i = 0; i < self.roomSettings.effects.Count; i++)
+        {
+            if (self.roomSettings.effects[i].type == PBEnums.RoomEffectType.ElsehowView
+                || self.roomSettings.effects[i].type == PBEnums.RoomEffectType.RoseSky)
+            {
+                Shader.SetGlobalFloat(RainWorld.ShadPropRimFix, 1f);
+            }
+        }
+    }
+
     // Actually adds our effects' objects (because I didn't make them utilize POM yet) -Lur
     private static void Room_Loaded(On.Room.orig_Loaded orig, Room self)
     {

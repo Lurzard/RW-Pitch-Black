@@ -271,7 +271,7 @@ public static class MiscUtils
                 float endIntensity = 0.45f; //m
                 float windUpTime = 3 * 40f; //wc
                 float rampUpTime = 3 * 40f; //Wc
-                float maxIntensity = 0.9f; //u
+                //float maxIntensity = 0.9f; //u
                 float plateauDuration = (qualiaLevel - 1) * (maxKarmaSafeTime - (windUpTime + rampUpTime) * 2) / 4 + minKarmaSafeTime - windUpTime - rampUpTime; //c
                 // Starting plateau
                 if (timeCounter < windUpTime)

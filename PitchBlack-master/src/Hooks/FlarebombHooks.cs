@@ -31,6 +31,7 @@ public class FlarebombHooks
             ;
     }
     #endregion
+    
     public static void Apply()
     {
         On.ScavengerAI.CollectScore_PhysicalObject_bool += ScavengerAI_CollectScore_PhysicalObject_bool;

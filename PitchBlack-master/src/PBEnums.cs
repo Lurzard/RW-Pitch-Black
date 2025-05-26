@@ -12,7 +12,7 @@ public static class PBEnums
     }
     public static class Timeline
     {
-        public static readonly SlugcatStats.Timeline Beacon = new("Beacon", false);
+        public static readonly SlugcatStats.Timeline Beacon = new("Beacon", true);
     }
     public static class DreamSpawn
     {
