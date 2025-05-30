@@ -31,18 +31,18 @@ public class PBRemixMenu : OptionInterface
     public override void Initialize()
     {
         OpTab opTab = new OpTab(this, "Options");
-        Tabs = new[]
-        {
-            opTab
-        };
+        Tabs =
+        [
+	        opTab
+        ];
 
 		const int sliderBarLength = 135;
         const int rightSidePos = 360;
         const int leftSidePos = 60;
         #nullable enable
-        UIelement[]? uIelements = new UIelement[]
-        {
-            new OpLabel(200, 575, Translate("Pitch Black Options"), true) {alignment=FLabelAlignment.Center},
+        UIelement[]? uIelements =
+        [
+	        new OpLabel(200, 575, Translate("Pitch Black Options"), true) {alignment=FLabelAlignment.Center},
 
             // Make the options on the right side
             //new OpSlider(maxFlashStore, new Vector2(rightSidePos, 520), sliderBarLength) {description=Translate("Beacon's Max Stored Flashbangs")},
@@ -77,7 +77,7 @@ public class PBRemixMenu : OptionInterface
             new OpLabel(25, 100, "Photomaniac:"),
             new OpLabel(25, 80, Translate("Electric Spear creation: Costs 1 food pip per spear + SHIFT / Grab.")),
             new OpLabel(25, 60, Translate("Electric shockwave ability: SHIFT / Grab + Z / Jump."))
-        };
+        ];
         opTab.AddItems(uIelements);
 
         //Not exactly sure what to do with this so I will leave it here for now

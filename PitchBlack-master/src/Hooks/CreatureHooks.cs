@@ -9,7 +9,7 @@ using Unity.Mathematics;
 
 namespace PitchBlack;
 
-internal class CreatureEdits
+internal class CreatureHooks
 {
     class CicadaCWT
     {

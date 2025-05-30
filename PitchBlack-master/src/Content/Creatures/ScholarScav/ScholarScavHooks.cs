@@ -8,7 +8,7 @@ public class ScholarScavHooks
 
     public static void Apply()
     {
-        //On.ScavengerGraphics.DrawSprites += ScavengerGraphics_DrawSprites; < moved to CreatureEdits because of Citizens
+        //On.ScavengerGraphics.DrawSprites += ScavengerGraphics_DrawSprites; < moved to CreatureHooks because of Citizens
         On.ScavengerGraphics.InitiateSprites += ScavengerGraphics_InitiateSprites;
         On.ScavengerGraphics.ctor += ScavengerGraphics_ctor;
         On.MoreSlugcats.VultureMaskGraphics.GenerateColor += VultureMaskGraphics_GenerateColor;
@@ -17,7 +17,7 @@ public class ScholarScavHooks
         On.ScavengerGraphics.IndividualVariations.ctor += IndividualVariations_ctor;
         On.Scavenger.Throw += Scavenger_Throw;
         On.Scavenger.GrabbedObjectSnatched += Scavenger_GrabbedObjectSnatched;
-        //On.Scavenger.ctor += Scavenger_ctor; < moved to CreatureEdits because of Citizens
+        //On.Scavenger.ctor += Scavenger_ctor; < moved to CreatureHooks because of Citizens
     }
 
     //public static readonly VultureMask.MaskType UMBRA = new VultureMask.MaskType("UMBRA", true);

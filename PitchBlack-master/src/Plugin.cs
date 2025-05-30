@@ -86,7 +86,7 @@ class Plugin : BaseUnityPlugin
         DevToolsHooks.Apply();
         MenuHooks.Apply();
         SyncMenuRegion.Apply();
-        CreatureEdits.Apply();
+        CreatureHooks.Apply();
         JollyMenuHooks.Apply();
         ScugGraphics.Apply();
         MoonDialogue.Apply();
@@ -103,6 +103,7 @@ class Plugin : BaseUnityPlugin
         RoomScripts.Apply();
         WorldHooks.Apply();
         ScareEverything.Apply();
+        KarmaMeterHooks.Apply();
     }
 
     private void AbstractPhysicalObject_Realize(On.AbstractPhysicalObject.orig_Realize orig, AbstractPhysicalObject self)

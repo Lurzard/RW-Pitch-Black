@@ -52,66 +52,14 @@ public class SpecialChanges
         On.KarmaFlower.ApplyPalette += KarmaFlower_ApplyPalette;
         On.KarmaFlower.InitiateSprites += KarmaFlower_InitiateSprites;
         // KarmaMeter
-        On.HUD.KarmaMeter.UpdateGraphic += KarmaMeter_UpdateGraphic;
-        On.HUD.KarmaMeter.ctor += KarmaMeter_ctor;
-        On.HUD.KarmaMeter.Update += KarmaMeter_Update;
+        
 
         // Supposed to add a disembodied sound loop to RippleDeathEffect, like RedsIllness (Andrew gutted the soundLoop part when copying so this re-adds it for Beacon)
         //On.Watcher.RippleDeathEffect.Update += RippleDeathEffect_Update;
     }
 
     #region KarmaMeter
-    private static void KarmaMeter_Update(On.HUD.KarmaMeter.orig_Update orig, KarmaMeter self)
-    {
-        orig(self);
-        if (self.hud.owner is Player &&
-            (self.hud.owner as Player).SlugCatClass == PBEnums.SlugcatStatsName.Beacon &&
-            (self.hud.owner as Player).rippleLevel >= 1f)
-        {
-            self.karmaSprite.element = Futile.atlasManager.GetElementWithName(MiscUtils.QualiaSymbolSprite(true, (self.hud.owner as Player).rippleLevel));
-            self.baseColor = Plugin.SaturatedRose;
-            if (self.showAsReinforced)
-            {
-                self.karmaSprite.element = Futile.atlasManager.GetElementWithName(MiscUtils.SidewaysSymbolSprite(true, (self.hud.owner as Player).rippleLevel));
-                self.baseColor = RainWorld.RippleGold;
-            }
-            self.karmaSprite.color = self.baseColor;
-        }
-    }
-
-    private static void KarmaMeter_ctor(On.HUD.KarmaMeter.orig_ctor orig, KarmaMeter self, HUD.HUD hud, FContainer fContainer, IntVector2 displayKarma, bool showAsReinforced)
-    {
-        orig(self, hud, fContainer, displayKarma, showAsReinforced);
-        if (hud.owner is Player &&
-            (hud.owner as Player).SlugCatClass == PBEnums.SlugcatStatsName.Beacon &&
-            (hud.owner as Player).rippleLevel >= 1f)
-        {
-            self.karmaSprite.element = Futile.atlasManager.GetElementWithName(MiscUtils.QualiaSymbolSprite(true, (self.hud.owner as Player).rippleLevel));
-            self.baseColor = Plugin.SaturatedRose;
-            if (self.showAsReinforced)
-            {
-                self.karmaSprite.element = Futile.atlasManager.GetElementWithName(MiscUtils.SidewaysSymbolSprite(true, (self.hud.owner as Player).rippleLevel));
-                self.baseColor = RainWorld.SaturatedGold;
-            }
-            self.karmaSprite.color = self.baseColor;
-        }
-    }
-    private static void KarmaMeter_UpdateGraphic(On.HUD.KarmaMeter.orig_UpdateGraphic orig, KarmaMeter self)
-    {
-        orig(self);
-        if ((self.hud.owner as Player).SlugCatClass == PBEnums.SlugcatStatsName.Beacon &&
-            (self.hud.owner as Player).rippleLevel >= 1f)
-        {
-            self.karmaSprite.element = Futile.atlasManager.GetElementWithName(MiscUtils.QualiaSymbolSprite(true, (self.hud.owner as Player).rippleLevel));
-            self.baseColor = Plugin.SaturatedRose;
-            if (self.showAsReinforced)
-            {
-                self.karmaSprite.element = Futile.atlasManager.GetElementWithName(MiscUtils.SidewaysSymbolSprite(true, (self.hud.owner as Player).rippleLevel));
-                self.baseColor = RainWorld.SaturatedGold;
-            }
-            self.karmaSprite.color = self.baseColor;
-        }
-    }
+    
     #endregion
 
     #region RippleDeath
