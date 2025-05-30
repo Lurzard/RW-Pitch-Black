@@ -16,7 +16,6 @@ sealed class NightTerrorCritob : Critob
         SandboxPerformanceCost = new(3f, 1.5f);
         LoadedPerformanceCost = 200f;
         ShelterDanger = ShelterDanger.Hostile;
-        NightTerrorHooks.Apply();
     }
 
     public override void ConnectionIsAllowed(AImap map, MovementConnection connection, ref bool? allow)

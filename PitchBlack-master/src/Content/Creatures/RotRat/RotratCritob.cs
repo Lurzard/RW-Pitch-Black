@@ -14,7 +14,6 @@ public class RotRatCritob : Critob
         LoadedPerformanceCost = 100f;
         SandboxPerformanceCost = new SandboxPerformanceCost(0.5f, 0.5f);
         RegisterUnlock(KillScore.Configurable(3), PBEnums.SandboxUnlockID.Rotrat);
-        RotRatHooks.Apply();
     }
     public override ArtificialIntelligence CreateRealizedAI(AbstractCreature acrit)
     {

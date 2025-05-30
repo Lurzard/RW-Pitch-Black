@@ -18,7 +18,6 @@ using static PitchBlack.MiscUtils;
 
 namespace PitchBlack;
 [BepInPlugin(MOD_ID, MOD_NAME, MOD_VERSION)]
-
 class Plugin : BaseUnityPlugin
 {
     public const string MOD_ID = "lurzard.pitchblack";
@@ -64,39 +63,11 @@ class Plugin : BaseUnityPlugin
     private static bool _rotundWorldEnabled;
     public static bool individualFoodEnabled = false;
 
-    void FishobsNoWork()
-    {
-        // These caused problems on the update to 1.9.15, sanction them here
-        try
-        {
-            // NOTE: the POM objects need testing to confirm they work as intended, for now they are commented out to prevent issues -Lur
-            //PBPOMSunrays.RegisterLightrays();
-            //PBPOMDarkness.RegisterDarkness();
-            //ReliableCreatureSpawner.RegisterSpawner();
-            //CreatureSpawnerHooks.Apply();
-            //BreathableWater.Register();
-            //TeleportWater.Register();
-
-            // These error if any namespace uses PitchBlack.Content!!
-            Content.Register(new RotRatCritob());
-            Content.Register(new FireGrubCritob());
-            Content.Register(new LMLLCritob());
-            Content.Register(new NightTerrorCritob());
-            Content.Register(new ScholarScavCritob());
-            Content.Register(new UmbraMaskFisob());
-            Content.Register(new CitizenCritob());
-        }
-        catch (Exception err)
-        {
-            //Debug.LogError(err); Debug errors
-            Logger.LogError(err);
-        }
-    }
-
     public void OnEnable()
     {
         logger = base.Logger;
 
+        logger.LogDebug("Applying Pitch Black Hooks");
         On.RainWorld.OnModsInit += OnModsInit;
         On.RainWorld.OnModsDisabled += DisableMod;
         On.RainWorld.PostModsInit += RainWorld_PostModsInit;
@@ -190,7 +161,6 @@ class Plugin : BaseUnityPlugin
         MachineConnector.SetRegisteredOI("lurzard.pitchblack", PBRemixMenu.Instance);
         if (!init)
         {
-
             regionMenuDisplaySavePath = ModManager.ActiveMods.First(x => x.id == MOD_ID).path + Path.DirectorySeparatorChar + "RegionMenuDisplay.txt";
 
             #region Load Collection data into readonly list
@@ -225,7 +195,47 @@ class Plugin : BaseUnityPlugin
             #endregion
             try
             {
-                FishobsNoWork();
+                // NOTE: the POM objects need testing to confirm they work as intended, for now they are commented out to prevent issues -Lur
+                //PBPOMSunrays.RegisterLightrays();
+                //PBPOMDarkness.RegisterDarkness();
+                //ReliableCreatureSpawner.RegisterSpawner();
+                //CreatureSpawnerHooks.Apply();
+                //BreathableWater.Register();
+                //TeleportWater.Register();
+
+                // These error if any namespace uses PitchBlack.Content!!
+                Content.Register(new RotRatCritob());
+                Content.Register(new FireGrubCritob());
+                Content.Register(new LMLLCritob());
+                Content.Register(new NightTerrorCritob());
+                Content.Register(new ScholarScavCritob());
+                Content.Register(new UmbraMaskFisob());
+                Content.Register(new CitizenCritob());
+                RotRatHooks.Apply();
+                LMLLHooks.Apply();
+                NightTerrorHooks.Apply();
+                ScholarScavHooks.Apply();
+                CitizenHooks.Apply();
+                if (!MultiplayerUnlocks.CreatureUnlockList.Contains(PBEnums.SandboxUnlockID.Rotrat))
+                {
+                    MultiplayerUnlocks.CreatureUnlockList.Add(PBEnums.SandboxUnlockID.Rotrat);
+                }
+                if (!MultiplayerUnlocks.CreatureUnlockList.Contains(PBEnums.SandboxUnlockID.FireGrub))
+                {
+                    MultiplayerUnlocks.CreatureUnlockList.Add(PBEnums.SandboxUnlockID.FireGrub);
+                }
+                if (!MultiplayerUnlocks.CreatureUnlockList.Contains(PBEnums.SandboxUnlockID.LMiniLongLegs))
+                {
+                    MultiplayerUnlocks.CreatureUnlockList.Add(PBEnums.SandboxUnlockID.LMiniLongLegs);
+                }
+                if (!MultiplayerUnlocks.CreatureUnlockList.Contains(PBEnums.SandboxUnlockID.NightTerror))
+                {
+                    MultiplayerUnlocks.CreatureUnlockList.Add(PBEnums.SandboxUnlockID.NightTerror);
+                }
+                if (!MultiplayerUnlocks.CreatureUnlockList.Contains(PBEnums.SandboxUnlockID.UmbraScav))
+                {
+                    MultiplayerUnlocks.CreatureUnlockList.Add(PBEnums.SandboxUnlockID.UmbraScav);
+                }
             }
             catch (Exception err)
             {

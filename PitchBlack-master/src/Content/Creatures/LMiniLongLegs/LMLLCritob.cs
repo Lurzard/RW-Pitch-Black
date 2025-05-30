@@ -13,12 +13,12 @@ sealed class LMLLCritob : Critob
 {
     internal LMLLCritob() : base(PBEnums.CreatureTemplateType.LMiniLongLegs)
     {
+        Plugin.logger.LogDebug("Registering/loading LMLL from Pitch Black");
         Icon = new SimpleIcon("Kill_LMLL", Plugin.NightmareColor);
         RegisterUnlock(KillScore.Configurable(5), PBEnums.SandboxUnlockID.LMiniLongLegs);
         SandboxPerformanceCost = new(1.5f, 1.25f);
         LoadedPerformanceCost = 100f;
         ShelterDanger = ShelterDanger.Hostile;
-        LMLLHooks.Apply();
     }
 
     public override void ConnectionIsAllowed(AImap map, MovementConnection connection, ref bool? allow)

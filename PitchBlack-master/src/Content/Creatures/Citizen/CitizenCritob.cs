@@ -14,7 +14,6 @@ sealed class CitizenCritob : Critob
         Icon = new SimpleIcon("Kill_Scavenger", mapCitizen);
         LoadedPerformanceCost = 100f; //probably for loading a lot of creatures
         ShelterDanger = 0;
-        CitizenHooks.Apply();
     }
     public override int ExpeditionScore() => 0;
 

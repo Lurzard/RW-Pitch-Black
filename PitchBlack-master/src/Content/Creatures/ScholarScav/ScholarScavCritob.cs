@@ -17,7 +17,6 @@ namespace PitchBlack;
         LoadedPerformanceCost = 100f; //probably for loading a lot of creatures
         SandboxPerformanceCost = new SandboxPerformanceCost(0.5f, 0.5f);
         ShelterDanger = 0;
-        ScholarScavHooks.Apply();
     }
 
     public override int ExpeditionScore() => 25;
