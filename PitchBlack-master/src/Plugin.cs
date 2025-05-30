@@ -32,26 +32,19 @@ class Plugin : BaseUnityPlugin
     private bool init = false;
     public static ManualLogSource logger;
 
-    public static ConditionalWeakTable<Player, ScugCWT> scugCWT = new();
-    public static ConditionalWeakTable<RainWorldGame, List<NTTracker>> pursuerTracker = new ConditionalWeakTable<RainWorldGame, List<NTTracker>>();
-    public static ConditionalWeakTable<RainWorldGame, List<RiftWorldPresence>> riftCWT = new();
+    public static readonly ConditionalWeakTable<Player, ScugCWT> scugCWT = new();
+    public static readonly ConditionalWeakTable<RainWorldGame, List<NTTracker>> pursuerTracker = new ConditionalWeakTable<RainWorldGame, List<NTTracker>>();
+    public static readonly ConditionalWeakTable<RainWorldGame, List<RiftWorldPresence>> riftCWT = new();
 
     public static readonly Color overseerColor = RWCustom.Custom.hexToColor("f02961");
-    // #d31c53
-    public static readonly Color NightmareColor = new Color(0.82745098039f, 0.10980392156f, 0.32549019607f);
 
-    // #862e48
-    public static readonly Color Rose = new Color(0.52549019607f, 0.18039215686f, 0.28235294117f);
+    public static readonly Color NightmareColor = new Color(0.82745098039f, 0.10980392156f, 0.32549019607f);// #d31c53
+    public static readonly Color Rose = new Color(0.52549019607f, 0.18039215686f, 0.28235294117f);// #862e48
     public static readonly Color SaturatedRose = Rose * 2f;
-    // #1a1041
-    public static readonly Color beaconDefaultColor = new Color(0.10588235294f, 0.06666666666f, 0.25882352941f);
+    public static readonly Color beaconDefaultColor = new Color(0.10588235294f, 0.06666666666f, 0.25882352941f);// #1a1041
     public static readonly Color beaconFullColor = new Color(0.2f, 0f, 1f);
-    public static readonly Color beaconEyeColor = Color.white;
-    public static readonly Color flareColor = new Color(0.2f, 0f, 1f);
-
-    // This is actually assigned in BeaconHooks to the palette black color.
-    public static Color beaconDeadColor;
-    public static Color pitchBlack = new Color(0.003f, 0.003f, 0.003f);
+    public static Color beaconDeadColor;// Assigned in BeaconHooks to the palette black color.
+    public static readonly Color beaconEyeColor = Color.Lerp(beaconDeadColor, Color.white, 0.87f); // Dreamer shaders HLSL->C# code: lerp(tex2D(_PalTex, half2(2.5/32.0, 7.5/8.0)), half4(1,1,1,1), 0.87)
 
     // Save data 
     // NOTE: indev, mess with values for testing
@@ -217,6 +210,8 @@ class Plugin : BaseUnityPlugin
                 NightTerrorHooks.Apply();
                 ScholarScavHooks.Apply();
                 CitizenHooks.Apply();
+                
+                // Add creatures to CreatureUnlockList
                 if (!MultiplayerUnlocks.CreatureUnlockList.Contains(PBEnums.SandboxUnlockID.Rotrat))
                 {
                     MultiplayerUnlocks.CreatureUnlockList.Add(PBEnums.SandboxUnlockID.Rotrat);
@@ -243,7 +238,6 @@ class Plugin : BaseUnityPlugin
                 Debug.Log($"Pitch Black error\n{err}");
                 logger.LogDebug($"Pitch Black error\n{err}");
             }
-            // Register non-sanctioned PBEnums
             PBEnums.SoundID.RegisterValues();
             PBEnums.AbstractObjectType.RegisterValues();
             PBEnums.GhostID.RegisterValues();
@@ -259,8 +253,6 @@ class Plugin : BaseUnityPlugin
             Futile.atlasManager.LoadAtlas("atlases/UmbraScav");
             Futile.atlasManager.LoadAtlas("atlases/UmbraMask");
             Futile.atlasManager.LoadAtlas("atlases/icon_UmbraMask");
-            //Futile.atlasManager.LoadAtlas("atlases/smallKarma10-10");
-            //Futile.atlasManager.LoadAtlas("atlases/karma10-10");
             Futile.atlasManager.LoadAtlas("atlases/toriiEye");
             //Futile.atlasManager.LoadAtlas("atlases/FaceThanatosis");
             Futile.atlasManager.LoadAtlas("atlases/QualiaSymbols");
@@ -281,8 +273,9 @@ class Plugin : BaseUnityPlugin
             self.Shaders["DreamerSkin"] = FShader.CreateShader("dreamerskin", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/dreamerskin")).LoadAsset<Shader>("Assets/Shaders/DreamerSkin.shader"));
             self.Shaders["DreamerRag"] = FShader.CreateShader("dreamerrags", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/dreamerrags")).LoadAsset<Shader>("Assets/Shaders/DreamerRag.shader"));
             self.Shaders["DreamerDistortion"] = FShader.CreateShader("dreamerdistortion", AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assetbundles/dreamerdistortion")).LoadAsset<Shader>("Assets/Shaders/DreamerDistortion.shader"));
-            init = true;
+            
             //RiftCosmetic.Register(self);
+            init = true;
         }
     }
     private void Weapon_SetRandomSpin(On.Weapon.orig_SetRandomSpin orig, Weapon self)
@@ -305,6 +298,7 @@ class Plugin : BaseUnityPlugin
         {
             if (mod.id == MOD_ID)
             {
+                // Remove creatures from CreatureUnlockList
                 if (MultiplayerUnlocks.CreatureUnlockList.Contains(PBEnums.SandboxUnlockID.NightTerror))
                     MultiplayerUnlocks.CreatureUnlockList.Remove(PBEnums.SandboxUnlockID.NightTerror);
 

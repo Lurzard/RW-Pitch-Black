@@ -19,10 +19,10 @@ internal class CreatureHooks
         //public int lightBulbSprite;
     }
     //CWTs
-    static ConditionalWeakTable<CicadaGraphics, CicadaCWT> cicadaCWT = new ConditionalWeakTable<CicadaGraphics, CicadaCWT>();
+    static readonly ConditionalWeakTable<CicadaGraphics, CicadaCWT> cicadaCWT = new ConditionalWeakTable<CicadaGraphics, CicadaCWT>();
 
     // Used to make Dreamer albino, where it is applicable
-    public static Color white = new Color(1f, 0.98f, 0.98f);
+    public static Color white = Plugin.beaconEyeColor;
 
     public static void Apply()
     {
@@ -32,7 +32,7 @@ internal class CreatureHooks
         On.CicadaGraphics.AddToContainer += CicadaGraphics_AddToContainer;
         On.CicadaGraphics.ctor += CicadaGraphics_ctor;
 
-        //Guardians (Temp)
+        // Guardians (Temp)
         //On.TempleGuardGraphics.InitiateSprites += TempleGuardGraphics_InitiateSprites;
         //On.TempleGuardGraphics.DrawSprites += TempleGuardGraphics_DrawSprites;
         //On.TempleGuardGraphics.Arm.ApplyPalette += Arm_ApplyPalette;
@@ -48,7 +48,7 @@ internal class CreatureHooks
         On.VoidSpawnGraphics.Antenna.InitiateSprites += Antenna_InitiateSprites;
         On.VoidSpawnGraphics.Antenna.DrawSprites += Antenna_DrawSprites;
 
-        // Echoes (Dreamer ID)
+        // Echo (Dreamer ID)
         On.GhostWorldPresence.ctor_World_GhostID_int += GhostWorldPresence_ctor_World_GhostID_int;
         On.Ghost.ctor += Ghost_ctor;
         On.Ghost.InitiateSprites += Ghost_InitiateSprites;
