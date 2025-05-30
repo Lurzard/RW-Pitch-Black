@@ -19,5 +19,6 @@ Resuming mod dev after a long hiatus on 03/28/2025
 - You can put the curly brace containing contitional code on it's own line, or right after the if statement that triggers it. Either is fine, but the latter is prefered. Just be consistent in how you do it.
 - When naming variables, use camelCase. That is, the name starts with lower case, and then each new word is uppercase. soThisIsAnExampleOfThat.
 - Comments should get their own line, right above the thing they are refering to. So no trailing comments on the same line as code.
+- Comments for documentation should have a space between //+text, but for commented-out lines of code, do not include a space.
 - Use comments.
 - Try to make proper use of private/static/internal keywords.

@@ -403,3 +403,4 @@ FodyWeavers.xsd
 PitchBlack-master/src/PitchBlack.csproj
 PitchBlack-master/src/src.sln
 *.sln
+/PitchBlack-master/src/.idea
