@@ -192,9 +192,9 @@ class Plugin : BaseUnityPlugin
                 // NOTE: the POM objects need testing to confirm they work as intended, for now they are commented out to prevent issues -Lur
                 //PBPOMSunrays.RegisterLightrays();
                 //PBPOMDarkness.RegisterDarkness();
-                //ReliableCreatureSpawner.RegisterSpawner();
-                //CreatureSpawnerHooks.Apply();
-                //BreathableWater.Register();
+                ReliableCreatureSpawner.RegisterSpawner();
+                CreatureSpawnerHooks.Apply();
+                BreathableWater.Register();
                 //TeleportWater.Register();
 
                 // These error if any namespace uses PitchBlack.Content!!

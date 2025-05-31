@@ -27,8 +27,9 @@ public class CreatureSpawnerHooks
             }
             try {
                 cursor.Emit(OpCodes.Ldarg_0);
-                cursor.Emit(OpCodes.Ldloc, 43);
+                cursor.Emit(OpCodes.Ldloc, 91);
                 cursor.EmitDelegate((Room self, int i) => {
+                    Plugin.logger.LogDebug("In creation IL for Reliable Spawner");
                     if (self.roomSettings.placedObjects[i].active && self.roomSettings.placedObjects[i].type == ReliableCreatureSpawner) {
                         
                         if (self.game.session is SandboxGameSession session && !session.PlayMode) {
@@ -36,6 +37,7 @@ public class CreatureSpawnerHooks
                         }
 
                         string[] objectSettings = self.roomSettings.placedObjects[i].data.ToString().Split('~');
+                        Array.ForEach(objectSettings, Plugin.logger.LogDebug);
 
                         CreatureTemplate.Type creatureTemplateType = (CreatureTemplate.Type)ExtEnum<CreatureTemplate.Type>.Parse(typeof(CreatureTemplate.Type), objectSettings[2], true);
                         bool dead = Convert.ToBoolean(objectSettings[3]);
