@@ -5,7 +5,6 @@
         <LangVersion>Latest</LangVersion>
         <PathMap>$(MSBuildProjectDirectory)=/PitchBlackDevTeam</PathMap>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <OutDir>../mod/plugins</OutDir>
     </PropertyGroup>
     
     <ItemGroup>
@@ -13,5 +12,18 @@
             <Private>false</Private>
         </Reference>
     </ItemGroup>
+
+	<Target Name="GenerateMod" AfterTargets="PostBuildEvent">
+		<ItemGroup>
+			<RemovePlugins Include="../mod/plugins/*.dll" />
+		</ItemGroup>
+		<ItemGroup>
+			<CopyPlugins Include="$(TargetPath)" />
+		</ItemGroup>
+
+		<Delete Files="@(RemovePlugins)" />
+		<Copy SourceFiles="@(CopyPlugins)" DestinationFolder="../mod/plugins/" />
+		<Copy SourceFiles="$(TargetDir)$(TargetName).pdb" DestinationFolder="../mod/plugins/" />
+	</Target>
 	
 </Project>
