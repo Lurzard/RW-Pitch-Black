@@ -22,7 +22,7 @@ internal class CreatureHooks
     static readonly ConditionalWeakTable<CicadaGraphics, CicadaCWT> cicadaCWT = new ConditionalWeakTable<CicadaGraphics, CicadaCWT>();
 
     // Used to make Dreamer albino, where it is applicable
-    public static Color white = Plugin.beaconEyeColor;
+    public static Color white = Plugin.BeaconEyeColor;
 
     public static void Apply()
     {
@@ -521,8 +521,6 @@ internal class CreatureHooks
         }
     }
     #endregion
-
-    //used by umbrascavs and citizens sharedhooks
     #region Scavenger
 
     private static void ScavengerGraphics_GenerateColors(On.ScavengerGraphics.orig_GenerateColors orig, ScavengerGraphics self)

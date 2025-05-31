@@ -18,6 +18,7 @@ using static PitchBlack.MiscUtils;
 
 namespace PitchBlack;
 [BepInPlugin(MOD_ID, MOD_NAME, MOD_VERSION)]
+
 class Plugin : BaseUnityPlugin
 {
     public const string MOD_ID = "lurzard.pitchblack";
@@ -27,32 +28,32 @@ class Plugin : BaseUnityPlugin
     public static string regionMenuDisplaySavePath = "";
     public static readonly string rootSavePath = Application.persistentDataPath + Path.DirectorySeparatorChar.ToString();
     public static readonly string collectionSaveDataPath = rootSavePath + COLLECTION_SAVE_FOLDER_NAME + Path.DirectorySeparatorChar.ToString() + "PBcollectionsSaveData.txt";
-    public static readonly Dictionary<string, bool> collectionSaveData = new Dictionary<string, bool>();
+    public static readonly Dictionary<string, bool> collectionSaveData = new();
 
     private bool init = false;
     public static ManualLogSource logger;
 
     public static readonly ConditionalWeakTable<Player, ScugCWT> scugCWT = new();
-    public static readonly ConditionalWeakTable<RainWorldGame, List<NTTracker>> pursuerTracker = new ConditionalWeakTable<RainWorldGame, List<NTTracker>>();
+    public static readonly ConditionalWeakTable<RainWorldGame, List<NTTracker>> pursuerTracker = new();
     public static readonly ConditionalWeakTable<RainWorldGame, List<RiftWorldPresence>> riftCWT = new();
 
-    public static readonly Color overseerColor = RWCustom.Custom.hexToColor("f02961");
-
-    public static readonly Color NightmareColor = new Color(0.82745098039f, 0.10980392156f, 0.32549019607f);// #d31c53
-    public static readonly Color Rose = new Color(0.52549019607f, 0.18039215686f, 0.28235294117f);// #862e48
+    public static readonly Color OverseerColor = RWCustom.Custom.hexToColor("f02961");
+    public static readonly Color NightmareColor = new(0.82745098039f, 0.10980392156f, 0.32549019607f);
+    public static readonly Color Rose = new(0.52549019607f, 0.18039215686f, 0.28235294117f);
     public static readonly Color SaturatedRose = Rose * 2f;
-    public static readonly Color beaconDefaultColor = new Color(0.10588235294f, 0.06666666666f, 0.25882352941f);// #1a1041
-    public static readonly Color beaconFullColor = new Color(0.2f, 0f, 1f);
-    public static Color beaconDeadColor;// Assigned in BeaconHooks to the palette black color.
-    public static readonly Color beaconEyeColor = Color.Lerp(beaconDeadColor, Color.white, 0.87f); // Dreamer shaders HLSL->C# code: lerp(tex2D(_PalTex, half2(2.5/32.0, 7.5/8.0)), half4(1,1,1,1), 0.87)
+    public static readonly Color BeaconDefaultColor = new(0.10588235294f, 0.06666666666f, 0.25882352941f);
+    public static readonly Color BeaconFullColor = new(0.2f, 0f, 1f);
+    // Not readonly because it is assigned in BeaconHooks to the palette black color.
+    public static Color BeaconDeadColor;
+    public static readonly Color BeaconEyeColor = Color.Lerp(BeaconDeadColor, Color.white, 0.87f);
 
-    // Save data 
+    // Placeholder "Save data" fields 
     // NOTE: indev, mess with values for testing
     public static bool canIDoThanatosisYet = true;
     public static float qualiaLevel = 10f;
 
     // Rotund World stuff
-    internal static bool RotundWorldEnabled => _rotundWorldEnabled; //for a single check in BeaconHooks' Player.Update hook
+    internal static bool RotundWorldEnabled => _rotundWorldEnabled; // For a single check in BeaconHooks' Player.Update hook
     private static bool _rotundWorldEnabled;
     public static bool individualFoodEnabled = false;
 
@@ -197,7 +198,7 @@ class Plugin : BaseUnityPlugin
                 BreathableWater.Register();
                 //TeleportWater.Register();
 
-                // These error if any namespace uses PitchBlack.Content!!
+                // These error if any class namespace is PitchBlack.Content!!
                 Content.Register(new RotRatCritob());
                 Content.Register(new FireGrubCritob());
                 Content.Register(new LMLLCritob());
@@ -300,10 +301,14 @@ class Plugin : BaseUnityPlugin
             {
                 // Remove creatures from CreatureUnlockList
                 if (MultiplayerUnlocks.CreatureUnlockList.Contains(PBEnums.SandboxUnlockID.NightTerror))
+                {
                     MultiplayerUnlocks.CreatureUnlockList.Remove(PBEnums.SandboxUnlockID.NightTerror);
+                }
 
                 if (MultiplayerUnlocks.CreatureUnlockList.Contains(PBEnums.SandboxUnlockID.LMiniLongLegs))
+                {
                     MultiplayerUnlocks.CreatureUnlockList.Remove(PBEnums.SandboxUnlockID.LMiniLongLegs);
+                }
 
                 PBEnums.CreatureTemplateType.UnregisterValues();
                 PBEnums.SandboxUnlockID.UnregisterValues();

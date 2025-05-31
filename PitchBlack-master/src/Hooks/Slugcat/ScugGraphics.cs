@@ -28,7 +28,7 @@ public class ScugGraphics
     private static void PlayerGraphics_Update(On.PlayerGraphics.orig_Update orig, PlayerGraphics self)
     {
         orig(self);
-        bool GotCWTData = scugCWT.TryGetValue(self.player, out ScugCWT cwt);
+        var GotCWTData = scugCWT.TryGetValue(self.player, out ScugCWT cwt);
         if (GotCWTData)
         {
             if (cwt.whiskers != null)
@@ -47,12 +47,12 @@ public class ScugGraphics
                         Color lerpColor;
                         if (beaconCWT.isDead)
                         {
-                            lerpColor = Color.Lerp(Plugin.beaconDefaultColor, Plugin.NightmareColor, beaconCWT.thanatosisLerp);
+                            lerpColor = Color.Lerp(Plugin.BeaconDefaultColor, Plugin.NightmareColor, beaconCWT.thanatosisLerp);
                         }
                         // Otherwise use default colors.
                         else
                         {
-                            lerpColor = Color.Lerp(Plugin.beaconDefaultColor, Plugin.beaconFullColor, beaconCWT.storage.storedFlares.Count / (float)4);
+                            lerpColor = Color.Lerp(Plugin.BeaconDefaultColor, Plugin.BeaconFullColor, beaconCWT.storage.storedFlares.Count / (float)4);
                         }
 
                         self.lightSource = new LightSource(self.player.mainBodyChunk.pos, false, Color.Lerp(new Color(1f, 1f, 1f), lerpColor, 0.5f), self.player);
@@ -250,26 +250,26 @@ public class ScugGraphics
             if (cwt is BeaconCWT beaconCWT)
             {
                 //If Thanatosis lerp to RippleColor
-                beaconCWT.currentEyeColor = Plugin.beaconEyeColor;
+                beaconCWT.currentEyeColor = Plugin.BeaconEyeColor;
                 if (beaconCWT.isDead || beaconCWT.thanatosisCounter > 0)
                 {
                     if (Plugin.qualiaLevel <= 3f)
                     {
-                        Color starveColor = Color.Lerp(Plugin.beaconDefaultColor, Color.gray, 0.4f);
-                        beaconCWT.currentSkinColor = Color.Lerp(Plugin.beaconDefaultColor, starveColor, beaconCWT.thanatosisLerp);
-                        beaconCWT.currentEyeColor = Plugin.beaconEyeColor;
+                        Color starveColor = Color.Lerp(Plugin.BeaconDefaultColor, Color.gray, 0.4f);
+                        beaconCWT.currentSkinColor = Color.Lerp(Plugin.BeaconDefaultColor, starveColor, beaconCWT.thanatosisLerp);
+                        beaconCWT.currentEyeColor = Plugin.BeaconEyeColor;
                     }
                     if (Plugin.qualiaLevel >= 3f)
                     {
-                        beaconCWT.currentSkinColor = Color.Lerp(Plugin.beaconDefaultColor, Plugin.beaconDeadColor, beaconCWT.thanatosisLerp);
-                        beaconCWT.currentEyeColor = Color.Lerp(Plugin.beaconEyeColor, Plugin.NightmareColor, beaconCWT.thanatosisLerp);
+                        beaconCWT.currentSkinColor = Color.Lerp(Plugin.BeaconDefaultColor, Plugin.BeaconDeadColor, beaconCWT.thanatosisLerp);
+                        beaconCWT.currentEyeColor = Color.Lerp(Plugin.BeaconEyeColor, Plugin.NightmareColor, beaconCWT.thanatosisLerp);
                     }
                 }
                 // Otherwise use default colors.
                 else
                 {
                     int flares = beaconCWT.storage.storedFlares.Count;
-                    beaconCWT.currentSkinColor = Color.Lerp(Plugin.beaconDefaultColor, Plugin.beaconFullColor, flares / (float)4);
+                    beaconCWT.currentSkinColor = Color.Lerp(Plugin.BeaconDefaultColor, Plugin.BeaconFullColor, flares / (float)4);
                 }
                 // sprites
                 for (int sprites = 0; sprites < sLeaser.sprites.Length; sprites++)
@@ -313,7 +313,7 @@ public class ScugGraphics
             {
                 color2 = beaconCWT.currentSkinColor;
                 color3 = palette.blackColor;
-                Plugin.beaconDeadColor = color3;
+                Plugin.BeaconDeadColor = color3;
                 for (int i = 0; i < sLeaser.sprites.Length; i++)
                 {
                     if (i != 9)

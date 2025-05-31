@@ -5,12 +5,7 @@ using UnityEngine;
 using RWCustom;
 using Random = UnityEngine.Random;
 using System;
-using HUD;
-using JetBrains.Annotations;
-using System.Collections.Generic;
-using Watcher;
-using System.Data.Common;
-using System.ComponentModel;
+using static PitchBlack.Plugin;
 
 namespace PitchBlack;
 
@@ -18,10 +13,13 @@ public static class BeaconHooks
 {
     //SHOW A FOOD BAR WARNING IF WE DON'T HAVE ENOUGH FOOD TO MAKE A FLASHBANG
     public static int foodWarning = 0;
-
+    
+    #region Not Hooks
     public static void DropAllFlares(Player self)
     {
-        if (Plugin.scugCWT.TryGetValue(self, out ScugCWT scugCWT) && scugCWT is BeaconCWT beaconCWT && beaconCWT.storage != null)
+        if (Plugin.scugCWT.TryGetValue(self, out ScugCWT scugCWT)
+            && scugCWT is BeaconCWT beaconCWT
+            && beaconCWT.storage != null)
         {
             while (beaconCWT.storage.storedFlares.Count > 0)
             {
@@ -36,15 +34,14 @@ public static class BeaconHooks
             }
         }
     }
-
-    #region BeaconUpdate
+    
     public static void BeaconUpdate(Player self)
     {
         // Also runs ThanatosisUpdate.
         ThanatosisUpdate(self);
         if (self.SlugCatClass == PBEnums.SlugcatStatsName.Beacon)
         {
-            if (Plugin.scugCWT.TryGetValue(self, out ScugCWT c) && c is BeaconCWT beaconCWT)
+            if (scugCWT.TryGetValue(self, out ScugCWT c) && c is BeaconCWT beaconCWT)
             {
 
                 //Isolated bit of code for flashbang throwing from storage implementation
@@ -78,20 +75,64 @@ public static class BeaconHooks
             }
         }
     }
-    #endregion
     
-    #region ThanatosisUpdate
-    public static void ThanatosisUpdate(Player self)
+    public static void ThanatosisDeathIntensity(Player self)
     {
-        MiscUtils.ThanatosisDeathIntensity(self);
-        if (Plugin.scugCWT.TryGetValue(self, out ScugCWT c) && c is BeaconCWT beaconCWT)
+        if (scugCWT.TryGetValue(self, out ScugCWT c) && c is BeaconCWT beaconCWT)
+        {
+            if (beaconCWT.isDead)
+            {
+                // Calculation made by MaxDubstep <3
+                float timeCounter = beaconCWT.thanatosisCounter; //x
+                float minKarmaSafeTime = 12 * 40f; //tc
+                float maxKarmaSafeTime = 40 * 40f; // Tc
+                float beginningIntensity = 0.4f; //l
+                float endIntensity = 0.45f; //m
+                float windUpTime = 3 * 40f; //wc
+                float rampUpTime = 3 * 40f; //Wc
+                float plateauDuration = (qualiaLevel - 1) * (maxKarmaSafeTime - (windUpTime + rampUpTime) * 2) / 4 + minKarmaSafeTime - windUpTime - rampUpTime; //c
+                // Starting plateau
+                if (timeCounter < windUpTime)
+                {
+                    self.rippleDeathIntensity = Mathf.Sqrt(timeCounter) * beginningIntensity / Mathf.Sqrt(windUpTime);
+                }
+                // Middle of plateau
+                if ((timeCounter < windUpTime + plateauDuration) && timeCounter >= windUpTime)
+                {
+                    self.rippleDeathIntensity = (timeCounter - windUpTime) * (endIntensity - beginningIntensity) / plateauDuration + beginningIntensity;
+                }
+                // Ending DIE INTENSITY!!!!
+                if (timeCounter >= windUpTime + plateauDuration + (rampUpTime / 2))
+                {
+                    float increment = 0.008f;
+                    int mult = 4;
+                    self.rippleDeathIntensity += increment;
+                    increment += 0.008f * mult;
+                    mult += 4;
+                }
+            }
+            if ((beaconCWT.diedInThanatosis || self.dead) && self.rippleDeathIntensity < 0.12f)
+            {
+                self.rippleDeathIntensity += 0.004f;
+            }
+            if (self.rippleDeathIntensity > 0 && !beaconCWT.isDead)
+            {
+                self.rippleDeathIntensity -= 0.002f;
+            }
+        }
+    }
+    
+    private static void ThanatosisUpdate(Player self)
+    {
+        ThanatosisDeathIntensity(self);
+        if (scugCWT.TryGetValue(self, out ScugCWT c) && c is BeaconCWT beaconCWT)
         {
             if (!self.input[0].spec)
             {
                 beaconCWT.inputForThanatosisCounter = 0;
             }
             // Checks input
-            if (Plugin.canIDoThanatosisYet == true && self.input[0].spec)
+            if (canIDoThanatosisYet == true && self.input[0].spec)
             {
                 beaconCWT.inputForThanatosisCounter++;
                 // Flip isDead
@@ -171,17 +212,11 @@ public static class BeaconHooks
                 {
                     beaconCWT.thanatosisCounter = 0;
                 }
-                //if (self.rippleDeathIntensity > 0f)
-                //{
-                //    // Is this gonna work
-                //    self.rippleDeathIntensity -= 0.004f;
-                //    self.rippleDeathIntensity += 0.003f;
-                //}
             }
         }
     }
     #endregion
-
+    
     public static void Apply()
     {
         IL.Player.GrabUpdate += Player_GrabUpdate_IL;
@@ -196,7 +231,7 @@ public static class BeaconHooks
         On.Creature.Abstractize += Creature_Abstractize;
         On.SlugcatHand.EngageInMovement += SlugcatHand_EngageInMovement;
         On.ShelterDoor.DoorClosed += ShelterDoor_DoorClosed;
-        //qol storage stoppers for other hold-grab functions
+        // QOL storage stoppers for other hold-grab functions
         On.Player.SwallowObject += Player_SwallowObject;
         On.Player.Regurgitate += Player_Regurgitate;
         On.Player.ObjectEaten += Player_ObjectEaten;
@@ -335,7 +370,6 @@ public static class BeaconHooks
                 }
             }
         }
-
         orig(self);
     }
 
@@ -403,8 +437,8 @@ public static class BeaconHooks
                     }
                 }
             }
-
-        JustGoOverHere:
+            
+            JustGoOverHere:
 
             //DON'T UNSTORE A FLASHBANG RIGHT AFTER WE'VE CRAFTED ONE
             if (interactLockStorage || beaconCWT1.heldCraft)

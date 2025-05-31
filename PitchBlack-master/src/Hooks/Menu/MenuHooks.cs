@@ -20,8 +20,6 @@ public static class MenuHooks
         On.MoreSlugcats.CollectionsMenu.ctor += MoreSlugcats_CollectionsMenu_ctor;
         On.MoreSlugcats.CollectionsMenu.Singal += MoreSlugcats_CollectionsMenu_Singal;
 
-        // Jolly menu in JollyMenuHooks (for now)
-
         // Slugcat Select Menu
         IL.Menu.SlugcatSelectMenu.SlugcatPageContinue.ctor += SlugcatSelectMenu_SlugcatPageContinue_ctor;
     }

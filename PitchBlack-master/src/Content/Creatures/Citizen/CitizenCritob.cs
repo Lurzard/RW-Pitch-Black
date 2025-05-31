@@ -23,12 +23,12 @@ sealed class CitizenCritob : Critob
 
     public override IEnumerable<RoomAttractivenessPanel.Category> DevtoolsRoomAttraction()
     {
-        return new[] { RoomAttractivenessPanel.Category.LikesInside };
+        return [RoomAttractivenessPanel.Category.LikesInside];
     }
 
     public override IEnumerable<string> WorldFileAliases()
     {
-        return new string[] { "Citizen" };
+        return ["Citizen"];
     }
     public override CreatureTemplate CreateTemplate()
     {

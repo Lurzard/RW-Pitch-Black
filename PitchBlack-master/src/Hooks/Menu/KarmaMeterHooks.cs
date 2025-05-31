@@ -3,7 +3,7 @@ using RWCustom;
 
 namespace PitchBlack;
 
-public class KarmaMeterHooks
+public static class KarmaMeterHooks
 {
     public static void Apply()
     {
@@ -15,15 +15,15 @@ public class KarmaMeterHooks
     private static void KarmaMeter_Update(On.HUD.KarmaMeter.orig_Update orig, KarmaMeter self)
     {
         orig(self);
-        if (self.hud.owner is Player &&
-            (self.hud.owner as Player).SlugCatClass == PBEnums.SlugcatStatsName.Beacon &&
-            (self.hud.owner as Player).rippleLevel >= 1f)
+        if (self.hud.owner is Player p
+            && p.SlugCatClass == PBEnums.SlugcatStatsName.Beacon
+            && p.rippleLevel >= 1f)
         {
-            self.karmaSprite.element = Futile.atlasManager.GetElementWithName(MiscUtils.QualiaSymbolSprite(true, (self.hud.owner as Player).rippleLevel));
+            self.karmaSprite.element = Futile.atlasManager.GetElementWithName(MiscUtils.QualiaSymbolSprite(true, p.rippleLevel));
             self.baseColor = Plugin.SaturatedRose;
             if (self.showAsReinforced)
             {
-                self.karmaSprite.element = Futile.atlasManager.GetElementWithName(MiscUtils.SidewaysSymbolSprite(true, (self.hud.owner as Player).rippleLevel));
+                self.karmaSprite.element = Futile.atlasManager.GetElementWithName(MiscUtils.SidewaysSymbolSprite(true, p.rippleLevel));
                 self.baseColor = RainWorld.RippleGold;
             }
             self.karmaSprite.color = self.baseColor;

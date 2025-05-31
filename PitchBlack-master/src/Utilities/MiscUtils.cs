@@ -256,58 +256,7 @@ public static class MiscUtils
             secondOscillation = false;
         }
     }
-
-    public static void ThanatosisDeathIntensity(Player self)
-    {
-        if (scugCWT.TryGetValue(self, out ScugCWT c) && c is BeaconCWT beaconCWT)
-        {
-            if (beaconCWT.isDead)
-            {
-                //function made by MaxDubstep <3 -Lur
-                float timeCounter = beaconCWT.thanatosisCounter; //x
-                float minKarmaSafeTime = 12 * 40f; //tc
-                float maxKarmaSafeTime = 40 * 40f; // Tc
-                float beginningIntensity = 0.4f; //l
-                float endIntensity = 0.45f; //m
-                float windUpTime = 3 * 40f; //wc
-                float rampUpTime = 3 * 40f; //Wc
-                //float maxIntensity = 0.9f; //u
-                float plateauDuration = (qualiaLevel - 1) * (maxKarmaSafeTime - (windUpTime + rampUpTime) * 2) / 4 + minKarmaSafeTime - windUpTime - rampUpTime; //c
-                // Starting plateau
-                if (timeCounter < windUpTime)
-                {
-                    self.rippleDeathIntensity = Mathf.Sqrt(timeCounter) * beginningIntensity / Mathf.Sqrt(windUpTime);
-                }
-                // Middle of plateau
-                if ((timeCounter < windUpTime + plateauDuration) && timeCounter >= windUpTime)
-                {
-                    self.rippleDeathIntensity = (timeCounter - windUpTime) * (endIntensity - beginningIntensity) / plateauDuration + beginningIntensity;
-                }
-                // Ending ramp up
-                //if ((timeCounter >= windUpTime + plateauDuration) && (timeCounter <= rampUpTime + windUpTime + plateauDuration))
-                //{
-                // self.rippleDeathIntensity = Mathf.Pow(timeCounter - plateauDuration - windUpTime, 2) * (maxIntensity - endIntensity) / rampUpTime * rampUpTime + endIntensity;
-                //}
-                // This MIGHT work -Lur
-                if (timeCounter >= windUpTime + plateauDuration + (rampUpTime / 2))
-                {
-                    float increment = 0.008f;
-                    int mult = 4;
-                    self.rippleDeathIntensity += increment;
-                    increment += 0.008f * mult;
-                    mult += 4;
-                }
-            }
-            if ((beaconCWT.diedInThanatosis || self.dead) && self.rippleDeathIntensity < 0.12f)
-            {
-                self.rippleDeathIntensity += 0.004f;
-            }
-            if (self.rippleDeathIntensity > 0 && !beaconCWT.isDead)
-            {
-                self.rippleDeathIntensity -= 0.002f;
-            }
-        }
-    }
+    
     public static string QualiaSymbolSprite(bool small, float level)
     {
         double num = Math.Round((double)(level * 2f), MidpointRounding.AwayFromZero) / 2.0;
