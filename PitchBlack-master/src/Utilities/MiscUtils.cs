@@ -18,15 +18,17 @@ public static class MiscUtils
     {
         return room != null && !room.RoomIsAStartingCabinetsRoom() && !room.abstractRoom.shelter && !room.abstractRoom.gate;
     }
-    public static bool RoomIsAStartingCabinetsRoom(this Room room)
+    private static bool RoomIsAStartingCabinetsRoom(this Room room)
     {
         string roomName = room.roomSettings.name;
-        if (roomName == "SH_CABINETMERCHANT")
-            return true;
-        if (roomName == "SH_Long")
-            return true;
-        if (roomName == "SH_CabinetAlley")
-            return true;
+        switch (roomName)
+        {
+            case "SH_CABINETMERCHANT":
+            case "SH_Long":
+            case "SH_CabinetAlley":
+                return true;
+        }
+
         if (roomName.StartsWith("RM_")) //ALSO DON'T TRACK IN THE ROT
             return true;
 
@@ -40,6 +42,8 @@ public static class MiscUtils
         return false;
     }
     public static bool IsNightTerror(this CreatureTemplate creatureTemplate) => creatureTemplate.type == PBEnums.CreatureTemplateType.NightTerror;
+    //public static bool IsDreamer(Ghost ghost) => ghost.worldGhost.ghostID == PBEnums.GhostID.Dreamer;
+    
     public static void SaveCollectionData()
     {
         string data = "";
@@ -51,7 +55,7 @@ public static class MiscUtils
     }
     public static void TryReplaceCollectionMenuBackground(string data)
     {
-        if (data != null && data != "")
+        if (!string.IsNullOrEmpty(data))
         {
             File.WriteAllText(regionMenuDisplaySavePath, data);
         }
@@ -82,6 +86,7 @@ public static class MiscUtils
         //Debug.Log($"Pitch Black: {retString}"); Debug errors
         return retString;
     }
+    
     #region Bacon or Photo checks
     public static bool IsBeaconOrPhoto(GameSession session)
     {
@@ -96,6 +101,7 @@ public static class MiscUtils
         return null != slugName && (slugName == PBEnums.SlugcatStatsName.Beacon || slugName == PBEnums.SlugcatStatsName.Photomaniac);
     }
     #endregion
+    
     #region Bacon Checks
     public static bool IsBeacon(GameSession session)
     {
@@ -110,6 +116,7 @@ public static class MiscUtils
         return name != null && name == PBEnums.SlugcatStatsName.Beacon;
     }
     #endregion
+    
     #region Photo Checks
     public static bool IsPhoto(GameSession session)
     {
@@ -124,6 +131,7 @@ public static class MiscUtils
         return name != null && name == PBEnums.SlugcatStatsName.Photomaniac;
     }
     #endregion
+    
     // This makes Beacon guaranteed close their eyes if true
     public static bool RegionBlindsBeacon(Room room)
     {
@@ -170,6 +178,7 @@ public static class MiscUtils
         }
         return false;
     }
+    
     // Identifying DreamSpawn types
     public static bool IsDreamSpawn(VoidSpawn voidSpawn)
     {
@@ -187,8 +196,8 @@ public static class MiscUtils
     //Spawning DreamSpawn
     public static void MaterializeDreamSpawn(Room room, UnityEngine.Vector2 spawnPos, Room.RippleSpawnSource source)
     {
+        #region Determine Amount
         int amountToSpawn = 0;
-        //int amountOfOscillations = 0;
         if (source == PBEnums.DreamSpawn.SpawnSource.Death || source == PBEnums.DreamSpawn.SpawnSource.Oscillation)
         {
             amountToSpawn = 1;
@@ -197,19 +206,15 @@ public static class MiscUtils
         {
             amountToSpawn = 50;
         }
-
-        // NOTE: To be implemented later as part of Thanatosis, continuously spawning DeathSpawn each "oscillation tick" -Lur
-        //if (source == PBExtEnums.DreamSpawnSource.Oscillation)
-        //{
-        //    amountToSpawn = numberOfOscillations;
-        //}
-
+        #endregion
+        
         //Stopping spawning if the room has too many
         if (room.voidSpawns.Count >= room.voidSpawns.Count + amountToSpawn)
         {
             return;
         }
-        // Determining type
+        
+        #region Determine SpawnType
         VoidSpawn.SpawnType spawnType = PBEnums.DreamSpawn.SpawnType.DreamSpawn;
         if (Random.Range(0, 10) >= 7)
         {
@@ -223,40 +228,17 @@ public static class MiscUtils
         {
             spawnType = PBEnums.DreamSpawn.SpawnType.DreamAmoeba;
         }
-        // Spawning it
+        #endregion
+        
+        // Spawning DreamSpawn into the room
         VoidSpawn voidSpawn = new VoidSpawn(new AbstractPhysicalObject(room.world, PBEnums.AbstractObjectType.DreamSpawn, null, room.GetWorldCoordinate(spawnPos), room.game.GetNewID()), room.roomSettings.GetEffectAmount(RoomSettings.RoomEffect.Type.VoidMelt), VoidSpawnKeeper.DayLightMode(room), spawnType);
-        // BezierSwarm for now, but later I want them to chase and kill anything they can
         voidSpawn.behavior = new VoidSpawn.BezierSwarm(voidSpawn, room);
         voidSpawn.timeUntilFadeout = Random.Range(400, 1200);
         voidSpawn.PlaceInRoom(room);
+        // 0 Regular, 1 Ripple
         voidSpawn.ChangeRippleLayer(0, true);
     }
-    public static void SpawnOscillatingRipple(Player self, bool fromThanatosis)
-    {
-        float timer = 0;
-        float timerLimit = 2f;
-        bool secondOscillation = false;
-        timer += Time.deltaTime;
-        int life = Random.Range(80, 260);
-        float intensity = fromThanatosis ? 1f : 0.5f;
-        float speed = fromThanatosis ? Random.Range(0.7f, 1f) : Random.Range(0.35f, 0.5f);
-        float vol = fromThanatosis ? 1f : 0.25f;
-        float pitch = fromThanatosis ? Random.Range(0.6f, 0.9f) : Random.Range(0.3f, 0.45f);
-        if (timer >= timerLimit && !secondOscillation)
-        {
-            secondOscillation = true;
-            self.room.AddObject(new RippleRing(self.mainBodyChunk.pos, life, intensity, speed));
-            self.room.PlaySound(WatcherEnums.WatcherSoundID.Warp_Point_Ripple_Hint, self.mainBodyChunk.pos, vol, pitch);
-        }
-        if (timer >= timerLimit + 0.04f && secondOscillation)
-        {
-            timerLimit = Random.Range(2f, 6f);
-            timer = 0f;
-            self.room.AddObject(new RippleRing(self.mainBodyChunk.pos, life, intensity, speed));
-            secondOscillation = false;
-        }
-    }
-    
+
     public static string QualiaSymbolSprite(bool small, float level)
     {
         double num = Math.Round((double)(level * 2f), MidpointRounding.AwayFromZero) / 2.0;
@@ -267,10 +249,5 @@ public static class MiscUtils
     {
         double num = Math.Round((double)(level * 2f), MidpointRounding.AwayFromZero) / 2.0;
         return (small ? "smallSideways" : "sideways") + num.ToString("#.0", CultureInfo.InvariantCulture);
-    }
-
-    public static bool Dreamer(Ghost ghost)
-    {
-        return ghost.worldGhost.ghostID == PBEnums.GhostID.Dreamer;
     }
 }

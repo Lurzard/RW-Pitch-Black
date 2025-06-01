@@ -1,5 +1,4 @@
-﻿#if false
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,8 +8,6 @@ using UnityEngine;
 using RWCustom;
 using BepInEx.Logging;
 using System.IO;
-
-//obsolete hootis object
 
 namespace PitchBlack
 {
@@ -112,4 +109,3 @@ namespace PitchBlack
         }
     }
 }
-#endif

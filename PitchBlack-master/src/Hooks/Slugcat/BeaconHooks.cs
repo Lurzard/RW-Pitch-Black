@@ -15,6 +15,7 @@ public static class BeaconHooks
     public static int foodWarning = 0;
     
     #region Not Hooks
+    
     public static void DropAllFlares(Player self)
     {
         if (Plugin.scugCWT.TryGetValue(self, out ScugCWT scugCWT)
@@ -215,6 +216,7 @@ public static class BeaconHooks
             }
         }
     }
+    
     #endregion
     
     public static void Apply()
