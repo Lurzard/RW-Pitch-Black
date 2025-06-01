@@ -543,6 +543,7 @@ internal class CreatureHooks
             self.bellyColor = new HSLColor(0.67f, 0.9f, 0.95f);
         }
     }
+    
     private static void ScavengerGraphics_DrawSprites(On.ScavengerGraphics.orig_DrawSprites orig, ScavengerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPosV2)
     {
         orig(self, sLeaser, rCam, timeStacker, camPosV2);
@@ -558,9 +559,7 @@ internal class CreatureHooks
             }
         }
         // umbra scav stuff
-        float2 float2 = math.lerp(self.drawPositions[self.headDrawPos, 1], self.drawPositions[self.headDrawPos, 0], timeStacker); 
-        float2 float3 = math.lerp(self.drawPositions[self.chestDrawPos, 1], self.drawPositions[self.chestDrawPos, 0], timeStacker);
-        float2 float4 = math.lerp(self.drawPositions[self.hipsDrawPos, 1], self.drawPositions[self.hipsDrawPos, 0], timeStacker);
+        float2 float2 = math.lerp(self.drawPositions[self.headDrawPos, 1], self.drawPositions[self.headDrawPos, 0], timeStacker);
         float2 floatTheSequel = camPosV2.ToF2(); //@float in ScavengerGraphics.DrawSPrites
         for (int i = 0; i < sLeaser.sprites.Length; i++)
         {
@@ -613,7 +612,6 @@ internal class CreatureHooks
             self.abstractCreature.personality.sympathy = 0.7f;
         }
     }
-
     
 private static void ScavengerGraphics_AddToContainer(On.ScavengerGraphics.orig_AddToContainer orig, ScavengerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, FContainer newContatiner)
     {
@@ -648,5 +646,4 @@ private static void ScavengerGraphics_AddToContainer(On.ScavengerGraphics.orig_A
         orig(self, sLeaser,rCam,newContatiner);
     }
     #endregion
-    
 }

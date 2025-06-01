@@ -1,8 +1,8 @@
 using System;
 using RWCustom;
 using UnityEngine;
-using static PitchBlack.RotRatHooks;
 using Random = UnityEngine.Random;
+using static PitchBlack.Plugin;
 
 namespace PitchBlack;
 

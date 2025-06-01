@@ -5,31 +5,24 @@ using MoreSlugcats;
 using System.Collections.Generic;
 using UnityEngine;
 using Watcher;
+using static PitchBlack.Plugin;
 
 namespace PitchBlack;
 sealed class CitizenCritob : Critob
 {
     internal CitizenCritob() : base(PBEnums.CreatureTemplateType.Citizen)
     {
-        Icon = new SimpleIcon("Kill_Scavenger", mapCitizen);
-        LoadedPerformanceCost = 100f; //probably for loading a lot of creatures
+        Icon = new SimpleIcon("Kill_Scavenger", VisibleWhite);
+        LoadedPerformanceCost = 100f;
         ShelterDanger = 0;
     }
+    
     public override int ExpeditionScore() => 0;
-
-    public override Color DevtoolsMapColor(AbstractCreature acrit) => mapCitizen;
-
+    public override Color DevtoolsMapColor(AbstractCreature acrit) => VisibleWhite;
     public override string DevtoolsMapName(AbstractCreature acrit) => "ctzn";
-
-    public override IEnumerable<RoomAttractivenessPanel.Category> DevtoolsRoomAttraction()
-    {
-        return [RoomAttractivenessPanel.Category.LikesInside];
-    }
-
-    public override IEnumerable<string> WorldFileAliases()
-    {
-        return ["Citizen"];
-    }
+    public override IEnumerable<RoomAttractivenessPanel.Category> DevtoolsRoomAttraction() => [RoomAttractivenessPanel.Category.LikesInside];
+    public override IEnumerable<string> WorldFileAliases() => ["Citizen"];
+    
     public override CreatureTemplate CreateTemplate()
     {
         CreatureTemplate t = new CreatureFormula(CreatureTemplate.Type.Scavenger, PBEnums.CreatureTemplateType.Citizen, "Citizen")
@@ -39,9 +32,9 @@ sealed class CitizenCritob : Critob
         }.IntoTemplate();
         t.dangerousToPlayer = 0;
         t.stowFoodInDen = false;
-        t.shortcutColor = mapCitizen;
+        t.shortcutColor = VisibleWhite;
 
-        //got a lot of this from Umbrascav and edited, don't know what a lot of this does tbh
+        // Got a lot of this from Umbrascav and edited, don't know what a lot of this does tbh
         t.offScreenSpeed = 1f;
         t.grasps = 4;
         t.AI = true;
@@ -77,9 +70,10 @@ sealed class CitizenCritob : Critob
     public override void EstablishRelationships()
     {
         Relationships citzn = new Relationships(Type);
-        //to others
-        citzn.IsInPack(PBEnums.CreatureTemplateType.Citizen, 1f); //friend
-        //basegame
+        // To others
+        // Friends
+        citzn.IsInPack(PBEnums.CreatureTemplateType.Citizen, 1f);
+        // Basegame
         citzn.Ignores(CreatureTemplate.Type.Slugcat);
         citzn.Ignores(CreatureTemplate.Type.Vulture);
         citzn.Ignores(CreatureTemplate.Type.KingVulture);
@@ -101,47 +95,41 @@ sealed class CitizenCritob : Critob
         citzn.Ignores(CreatureTemplate.Type.SmallNeedleWorm);
         citzn.Ignores(CreatureTemplate.Type.DropBug);
         citzn.Ignores(CreatureTemplate.Type.Overseer);
-        //msc
+        // MSC
         citzn.Ignores(MoreSlugcatsEnums.CreatureTemplateType.HunterDaddy);
         citzn.Ignores(MoreSlugcatsEnums.CreatureTemplateType.FireBug);
         citzn.Ignores(MoreSlugcatsEnums.CreatureTemplateType.SlugNPC);
-        //dlcshared
+        // DLCShared
         citzn.Ignores(DLCSharedEnums.CreatureTemplateType.Yeek);
         citzn.Ignores(DLCSharedEnums.CreatureTemplateType.MirosVulture);
         citzn.Ignores(DLCSharedEnums.CreatureTemplateType.Inspector);
         citzn.Ignores(DLCSharedEnums.CreatureTemplateType.TerrorLongLegs);
-        //watcher
+        // Watcher
         citzn.Ignores(WatcherEnums.CreatureTemplateType.DrillCrab);
         citzn.Ignores(WatcherEnums.CreatureTemplateType.BigSandGrub);
         citzn.Ignores(WatcherEnums.CreatureTemplateType.FireSprite);
-        //mods go down here later?
 
-        //from others
-        //basegame
+        // From others
+        // Basegame
         citzn.IgnoredBy(CreatureTemplate.Type.LizardTemplate);
         citzn.IgnoredBy(CreatureTemplate.Type.Vulture);
         citzn.IgnoredBy(CreatureTemplate.Type.Scavenger);
         citzn.IgnoredBy(CreatureTemplate.Type.BigSpider);
-        //dlcshared
+        //DLCShared
         citzn.IgnoredBy(DLCSharedEnums.CreatureTemplateType.MirosVulture);
-        //watcher
+        // Watcher
         citzn.IgnoredBy(WatcherEnums.CreatureTemplateType.DrillCrab);
         citzn.IgnoredBy(WatcherEnums.CreatureTemplateType.Rattler);
         citzn.IgnoredBy(WatcherEnums.CreatureTemplateType.FireSprite);
         citzn.IgnoredBy(WatcherEnums.CreatureTemplateType.RotLoach);
         citzn.IgnoredBy(WatcherEnums.CreatureTemplateType.Frog);
-        //mods go down here later?
+        
+        // modded creatures later
     }
 
     public override ArtificialIntelligence CreateRealizedAI(AbstractCreature acrit) => new ScavengerAI(acrit, acrit.world);
-
     public override AbstractCreatureAI CreateAbstractAI(AbstractCreature acrit) => new ScavengerAbstractAI(acrit.world, acrit);
-
     public override Creature CreateRealizedCreature(AbstractCreature acrit) => new Scavenger(acrit, acrit.world);
-
     public override void LoadResources(RainWorld rainWorld) { }
-
     public override CreatureTemplate.Type ArenaFallback() => CreatureTemplate.Type.Scavenger;
-
-    Color mapCitizen = new(0.9f, 0.9f, 0.9f);
 }

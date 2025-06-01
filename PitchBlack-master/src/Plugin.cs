@@ -36,16 +36,21 @@ class Plugin : BaseUnityPlugin
     public static readonly ConditionalWeakTable<Player, ScugCWT> scugCWT = new();
     public static readonly ConditionalWeakTable<RainWorldGame, List<NTTracker>> pursuerTracker = new();
     public static readonly ConditionalWeakTable<RainWorldGame, List<RiftWorldPresence>> riftCWT = new();
+    public static readonly ConditionalWeakTable<AbstractCreature, NightTerror> NTAbstractCWT = new();
+    public static readonly ConditionalWeakTable<AbstractCreature, StrongBox<int>> KILLIT = new();
+    public static readonly ConditionalWeakTable<MouseGraphics, RotData> rotratdata = new();
 
-    public static readonly Color OverseerColor = RWCustom.Custom.hexToColor("f02961");
-    public static readonly Color NightmareColor = new(0.82745098039f, 0.10980392156f, 0.32549019607f);
-    public static readonly Color Rose = new(0.52549019607f, 0.18039215686f, 0.28235294117f);
+    public static readonly Color OverseerColor = new(240f/255f, 41f/255f, 97f/255f); // #f02961
+    public static readonly Color NightmareColor = new(211f/255, 28f/255, 83/255f); // #d31c53
+    public static readonly Color Rose = new(134f/255f, 46f/255f, 72f/255f); // #862e48
     public static readonly Color SaturatedRose = Rose * 2f;
-    public static readonly Color BeaconDefaultColor = new(0.10588235294f, 0.06666666666f, 0.25882352941f);
-    public static readonly Color BeaconFullColor = new(0.2f, 0f, 1f);
+    public static readonly Color BeaconDefaultColor = new(26f/255f, 16f/255f, 65f/255f); // #1a1041
+    public static readonly Color BeaconFullColor = new(.2f, 0f, 1f); // #3300ff
     // Not readonly because it is assigned in BeaconHooks to the palette black color.
     public static Color BeaconDeadColor;
-    public static readonly Color BeaconEyeColor = Color.Lerp(BeaconDeadColor, Color.white, 0.87f);
+    public static readonly Color BeaconEyeColor = Color.Lerp(BeaconDeadColor, Color.white, .87f);
+    public static readonly Color VisibleWhite = new(.9f, .9f, .9f);
+    //public static readonly Color VisibleBlack = new(.003f, .003f, .003f);
 
     // Placeholder "Save data" fields 
     // NOTE: indev, mess with values for testing
@@ -59,7 +64,7 @@ class Plugin : BaseUnityPlugin
 
     public void OnEnable()
     {
-        logger = base.Logger;
+        logger = Logger;
 
         logger.LogDebug("Applying Pitch Black Hooks");
         On.RainWorld.OnModsInit += OnModsInit;
@@ -83,7 +88,6 @@ class Plugin : BaseUnityPlugin
         CreatureHooks.Apply();
         JollyMenuHooks.Apply();
         ScugGraphics.Apply();
-        MoonDialogue.Apply();
         OverseerGraphics.Apply();
         //OverseerHooks.Apply();
         BeaconHooks.Apply();
@@ -206,11 +210,7 @@ class Plugin : BaseUnityPlugin
                 Content.Register(new ScholarScavCritob());
                 Content.Register(new UmbraMaskFisob());
                 Content.Register(new CitizenCritob());
-                RotRatHooks.Apply();
-                LMLLHooks.Apply();
-                NightTerrorHooks.Apply();
-                ScholarScavHooks.Apply();
-                CitizenHooks.Apply();
+                PBCreatureHooks.Apply();
                 
                 // Add creatures to CreatureUnlockList
                 if (!MultiplayerUnlocks.CreatureUnlockList.Contains(PBEnums.SandboxUnlockID.Rotrat))

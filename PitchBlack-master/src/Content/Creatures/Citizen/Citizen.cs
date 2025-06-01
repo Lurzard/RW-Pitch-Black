@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PitchBlack;
-//currently unused
-internal class Citizen
+﻿namespace PitchBlack;
+//currently unused -Ovidia
+public class Citizen
 {
+    
 }

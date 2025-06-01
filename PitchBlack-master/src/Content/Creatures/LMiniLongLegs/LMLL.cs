@@ -1,17 +1,14 @@
 namespace PitchBlack;
 
-public class LittleLongLegs : DaddyLongLegs, IPlayerEdible {
+public class LittleLongLegs(AbstractCreature abstractCreature, World world)
+    : DaddyLongLegs(abstractCreature, world), IPlayerEdible
+{
     internal const int TooMuchFoodToBeCarried = 8;
     const int SplitSizeChange = 6;
-    public LittleLongLegs(AbstractCreature abstractCreature, World world) : base(abstractCreature, world) {
-        BitesLeft = 3;
-        FoodPoints = 2;
-        splitCounter = 0;
-    }
-    public int splitCounter;
-    public int BitesLeft {get; set;}
+    public int splitCounter = 0;
+    public int BitesLeft {get; set;} = 3;
 
-    public int FoodPoints {get; set;}
+    public int FoodPoints {get; set;} = 2;
 
     public bool Edible => !State.dead || (State.dead && FoodPoints < TooMuchFoodToBeCarried);
 
@@ -19,14 +16,14 @@ public class LittleLongLegs : DaddyLongLegs, IPlayerEdible {
 
     public void BitByPlayer(Grasp grasp, bool eu)
     {
-        this.BitesLeft--;
-        this.room.PlaySound((this.BitesLeft == 0) ? SoundID.Slugcat_Eat_Centipede : SoundID.Slugcat_Bite_Centipede, base.mainBodyChunk.pos);
-        base.firstChunk.MoveFromOutsideMyUpdate(eu, grasp.grabber.mainBodyChunk.pos);
-        if (this.BitesLeft < 1)
+        BitesLeft--;
+        room.PlaySound(BitesLeft == 0 ? SoundID.Slugcat_Eat_Centipede : SoundID.Slugcat_Bite_Centipede, mainBodyChunk.pos);
+        firstChunk.MoveFromOutsideMyUpdate(eu, grasp.grabber.mainBodyChunk.pos);
+        if (BitesLeft < 1)
         {
             (grasp.grabber as Player).ObjectEaten(this);
             grasp.Release();
-            this.Destroy();
+            Destroy();
         }
     }
 
@@ -50,11 +47,11 @@ public class LittleLongLegs : DaddyLongLegs, IPlayerEdible {
         FoodPoints = diff;
         State.meatLeft = diff;
         LittleLongLegsSizeChange(-SplitSizeChange);
-        AbstractCreature abstractCreature = new AbstractCreature(world, StaticWorld.GetCreatureTemplate(PBEnums.CreatureTemplateType.LMiniLongLegs), null, room.GetWorldCoordinate(mainBodyChunk.pos), room.game.GetNewID());
-        room.abstractRoom.AddEntity(abstractCreature);
-        abstractCreature.RealizeInRoom();
-        (abstractCreature.realizedCreature as LittleLongLegs).FoodPoints = SplitSizeChange;
-        (abstractCreature.realizedCreature as LittleLongLegs).LittleLongLegsSizeChange(SplitSizeChange-2);
-        abstractCreature.realizedCreature.Stun(55);
+        AbstractCreature creature = new AbstractCreature(world, StaticWorld.GetCreatureTemplate(PBEnums.CreatureTemplateType.LMiniLongLegs), null, room.GetWorldCoordinate(mainBodyChunk.pos), room.game.GetNewID());
+        room.abstractRoom.AddEntity(creature);
+        creature.RealizeInRoom();
+        (creature.realizedCreature as LittleLongLegs).FoodPoints = SplitSizeChange;
+        (creature.realizedCreature as LittleLongLegs).LittleLongLegsSizeChange(SplitSizeChange-2);
+        creature.realizedCreature.Stun(55);
     }
 }
