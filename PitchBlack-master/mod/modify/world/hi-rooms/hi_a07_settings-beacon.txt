@@ -1,0 +1,6 @@
+[FIND]Spot<tA>event<tB>MusicEvent<eA>songName<eB>RW_43 - Bio Engineering<eA>vol<eB>0.2456519<eA>prio<eB>0.5<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>10<eA>rest<eB>5<eA>fadeIn<eB>130.4348<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>15<tA>delay<tB>0<tA>panPos<tB>757.9584<tB>510.9456<tA>fireChance<tB>0.5<tA>entrance<tB>-1<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>391.9584<tB>110.9456<tA>handlePos<tB>-140.3553<tB>-38.35535, 
+[REPLACE]
+[MERGE]
+Template: hi_settingstemplate_inside
+Triggers: Spot<tA>event<tB>MusicEvent<eA>songName<eB>pb_07 - requiemtotheloststar<eA>vol<eB>0.2456519<eA>prio<eB>0.5<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>10<eA>rest<eB>5<eA>fadeIn<eB>130.4348<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>15<tA>delay<tB>0<tA>panPos<tB>757.9584<tB>510.9456<tA>fireChance<tB>0.5<tA>entrance<tB>-1<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>391.9584<tB>110.9456<tA>handlePos<tB>-140.3553<tB>-38.35535, 
+[ENDMERGE]
