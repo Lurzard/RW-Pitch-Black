@@ -189,7 +189,7 @@ public class TeleportWater
                             }
                             // Load the new region, based on the first part of the room name
                             // NOTE: THIS WILL BREAK WITH GATES NOT IN THE CURRENT REGION
-                            game.overWorld.LoadWorld(Regex.Split(roomName, "_")[0], (game.session as StoryGameSession).saveStateNumber, false); //gona leave this one for ya Moon -Lur
+                            game.overWorld.LoadWorld(Regex.Split(roomName, "_")[0], (game.session as StoryGameSession).saveStateNumber, SlugcatStats.SlugcatToTimeline((game.session as StoryGameSession).saveStateNumber), false); //gona leave this one for ya Moon -Lur
                             // Set the current world to the new world that just got loaded.
                             currentWorld = game.overWorld.activeWorld;
                             Debug.Log($"Pitch Black: Loaded new world: {currentWorld}, {currentWorld.name}");

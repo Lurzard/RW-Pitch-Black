@@ -135,6 +135,7 @@ public static class BeaconHooks
             // Checks input
             if (canIDoThanatosisYet == true && self.input[0].spec)
             {
+                self.abstractCreature.rippleLayer = 1;
                 beaconCWT.inputForThanatosisCounter++;
                 // Flip isDead
                 if (beaconCWT.inputForThanatosisCounter == 25)
@@ -212,6 +213,7 @@ public static class BeaconHooks
                 if (beaconCWT.thanatosisLerp < 0.01f)
                 {
                     beaconCWT.thanatosisCounter = 0;
+                    self.abstractCreature.rippleLayer = 0;
                 }
             }
         }
