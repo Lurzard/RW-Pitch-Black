@@ -41,10 +41,11 @@ class Plugin : BaseUnityPlugin
     public static readonly ConditionalWeakTable<MouseGraphics, RotData> rotratdata = new();
 
     public static readonly Color OverseerColor = new(240f/255f, 41f/255f, 97f/255f); // #f02961
-    public static readonly Color NightmareColor = new(211f/255, 28f/255, 83/255f); // #d31c53
+    public static readonly Color NightmareColor = new(211f/255, 28f/255f, 83/255f); // #d31c53
     public static readonly Color Rose = new(134f/255f, 46f/255f, 72f/255f); // #862e48
     public static readonly Color SaturatedRose = Rose * 2f;
     public static readonly Color BeaconDefaultColor = new(26f/255f, 16f/255f, 65f/255f); // #1a1041
+    public static readonly Color BeaconStarveColor = Color.Lerp(BeaconDefaultColor, Color.gray, 0.4f);
     public static readonly Color BeaconFullColor = new(.2f, 0f, 1f); // #3300ff
     // Not readonly because it is assigned in BeaconHooks to the palette black color.
     public static Color BeaconDeadColor;
@@ -55,7 +56,7 @@ class Plugin : BaseUnityPlugin
     // Placeholder "Save data" fields 
     // NOTE: indev, mess with values for testing
     public static bool canIDoThanatosisYet = true;
-    public static float qualiaLevel = 10f;
+    public static float qualiaLevel = 5f;
 
     // Rotund World stuff
     internal static bool RotundWorldEnabled => _rotundWorldEnabled; // For a single check in BeaconHooks' Player.Update hook
@@ -89,13 +90,13 @@ class Plugin : BaseUnityPlugin
         JollyMenuHooks.Apply();
         ScugGraphics.Apply();
         OverseerGraphics.Apply();
+        // This is causing exceptions in Overseer Zipprog or somethin, which messes with the game quite a bit
         //OverseerHooks.Apply();
         BeaconHooks.Apply();
         PhotoHooks.Apply();
         Crafting.Apply();
         FlarebombHooks.Apply();
         ScugHooks.Apply();
-        DevCommOverride.Apply();
         PassageHooks.Apply();
         SpecialChanges.Apply();
         RoomScripts.Apply();
@@ -112,7 +113,7 @@ class Plugin : BaseUnityPlugin
             self.realizedObject = new VoidSpawn(self,
                 (self.Room.realizedRoom != null) ? self.Room.realizedRoom.roomSettings.GetEffectAmount(RoomSettings.RoomEffect.Type.VoidMelt) : 0f,
                 self.Room.realizedRoom != null && VoidSpawnKeeper.DayLightMode(self.Room.realizedRoom),
-                PBEnums.DreamSpawn.SpawnType.DreamSpawn);
+                PBEnums.VoidSpawn.SpawnType.DreamSpawn);
             return;
         }
     }

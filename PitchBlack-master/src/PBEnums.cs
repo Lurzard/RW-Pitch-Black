@@ -14,24 +14,24 @@ public static class PBEnums
     {
         public static readonly SlugcatStats.Timeline Beacon = new("Beacon", true);
     }
-    public static class DreamSpawn
+    public static class VoidSpawn
     {
         public static class SpawnSource
         {
-            public static Room.RippleSpawnSource Death = new Room.RippleSpawnSource("Death", true);
-            public static Room.RippleSpawnSource Oscillation = new Room.RippleSpawnSource("Oscillation", true);
-            public static Room.RippleSpawnSource Dreamer = new Room.RippleSpawnSource("Dreamer", true);
+            public static readonly Room.RippleSpawnSource Death = new("Death", true);
+            public static readonly Room.RippleSpawnSource Oscillation = new("Oscillation", true);
+            public static readonly  Room.RippleSpawnSource Dreamer = new("Dreamer", true);
         }
         public static class SpawnType
         {
-            public static VoidSpawn.SpawnType StarSpawn = new("StarSpawn", true);
-            public static VoidSpawn.SpawnType DreamSpawn = new("DreamSpawn", true);
-            public static VoidSpawn.SpawnType DreamJelly = new("DreamJelly", true);
-            public static VoidSpawn.SpawnType DreamAmoeba = new("DreamAmoeba", true);
-            public static VoidSpawn.SpawnType DreamNoodle = new("DreamNoodle", true);
-            public static VoidSpawn.SpawnType DreamBiter = new("DreamBiter", true);
+            public static readonly global::VoidSpawn.SpawnType StarSpawn = new("StarSpawn", true);
+            public static readonly global::VoidSpawn.SpawnType DreamSpawn = new("DreamSpawn", true);
+            public static readonly global::VoidSpawn.SpawnType DreamJelly = new("DreamJelly", true);
+            public static readonly global::VoidSpawn.SpawnType DreamAmoeba = new("DreamAmoeba", true);
+            public static readonly global::VoidSpawn.SpawnType DreamNoodle = new("DreamNoodle", true);
+            public static readonly global::VoidSpawn.SpawnType DreamBiter = new("DreamBiter", true);
             // Plan: ID is passed then it instead spawns the Night Terror creature.
-            public static VoidSpawn.SpawnType DreamChimera = new("DreamChimera", true);
+            public static readonly global::VoidSpawn.SpawnType DreamChimera = new("DreamChimera", true);
 
         }
     }
@@ -46,12 +46,12 @@ public static class PBEnums
     }
     public static class CreatureTemplateType
     {
-        [AllowNull] public static CreatureTemplate.Type NightTerror = new("NightTerror", true);
+        [AllowNull] public static CreatureTemplate.Type NightTerror = new(nameof(NightTerror), true);
         [AllowNull] public static CreatureTemplate.Type LMiniLongLegs = new(nameof(LMiniLongLegs), true);
         [AllowNull] public static CreatureTemplate.Type Rotrat = new(nameof(Rotrat), true);
         [AllowNull] public static CreatureTemplate.Type UmbraScav = new(nameof(UmbraScav), true);
         [AllowNull] public static CreatureTemplate.Type FireGrub = new(nameof(FireGrub), true);
-        [AllowNull] public static CreatureTemplate.Type Citizen = new("Citizen", true);
+        [AllowNull] public static CreatureTemplate.Type Citizen = new(nameof(Citizen), true);
         public static void UnregisterValues()
         {
             if (NightTerror != null)
@@ -122,7 +122,7 @@ public static class PBEnums
             }
         }
     }
-    public class PlacedObjectType
+    public static class PlacedObjectType
     {
         public static PlacedObject.Type DreamerSpot;
         public static void RegisterValues()
@@ -138,7 +138,7 @@ public static class PBEnums
             }
         }
     }
-    public class AbstractObjectType
+    public static class AbstractObjectType
     {
         public static AbstractPhysicalObject.AbstractObjectType DreamSpawn;
         public static void RegisterValues()
@@ -154,7 +154,7 @@ public static class PBEnums
             }
         }
     }
-    public class GhostID
+    public static class GhostID
     {
         public static GhostWorldPresence.GhostID Dreamer;
         public static void RegisterValues()
@@ -170,9 +170,9 @@ public static class PBEnums
             }
         }
     }
-    public class EndGameID
+    public static class EndGameID
     {
-        public static WinState.EndgameID Hunted = new WinState.EndgameID("Hunted", true);
+        public static WinState.EndgameID Hunted = new("Hunted", true);
         public static void UnregisterValues()
         {
             if (Hunted != null)
@@ -182,10 +182,9 @@ public static class PBEnums
             }
         }
     }
-
-    public class SceneID
+    public static class SceneID
     {
-        public static Menu.MenuScene.SceneID Endgame_Hunted = new Menu.MenuScene.SceneID("Engame_Hunted", true);
+        public static Menu.MenuScene.SceneID Endgame_Hunted = new("Engame_Hunted", true);
         public static void UnregisterValues()
         {
             if (Endgame_Hunted != null)
@@ -195,8 +194,8 @@ public static class PBEnums
             }
         }
     }
-    // NOTE: These apparently HAVE to be registered to play ingame. -Lur
-    public class SoundID
+    // These apparently HAVE to be registered to play ingame. -Lur
+    public static class SoundID
     {
         public static global::SoundID Player_Activated_Thanatosis;
         public static global::SoundID Player_Deactivated_Thanatosis;
@@ -241,15 +240,15 @@ public static class PBEnums
             }
         }
     }
-    public class RoomEffectType
+    public static class RoomEffectType
     {
         // I just threw this in here, it's used with the others.
         public static RoomSettingsPage.DevEffectsCategories PitchBlackCatagory = new RoomSettingsPage.DevEffectsCategories("Pitch-Black", true);
         // Actual effects
-        public static RoomSettings.RoomEffect.Type ElsehowView = new RoomSettings.RoomEffect.Type("ElsehowView", true);
-        public static RoomSettings.RoomEffect.Type RippleSpawn = new RoomSettings.RoomEffect.Type("RippleSpawn", true);
-        public static RoomSettings.RoomEffect.Type RippleMelt = new RoomSettings.RoomEffect.Type("RippleMelt", true);
-        public static RoomSettings.RoomEffect.Type RoseSky = new RoomSettings.RoomEffect.Type("RoseSky", true);
+        public static RoomSettings.RoomEffect.Type ElsehowView = new("ElsehowView", true);
+        public static RoomSettings.RoomEffect.Type RippleSpawn = new("RippleSpawn", true);
+        public static RoomSettings.RoomEffect.Type RippleMelt = new("RippleMelt", true);
+        public static RoomSettings.RoomEffect.Type RoseSky = new("RoseSky", true);
         public static void UnregisterValues()
         {
             if (PitchBlackCatagory != null)

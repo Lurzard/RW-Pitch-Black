@@ -21,10 +21,7 @@ public class RotData
     public int numOfSprites;
     public bulb[] bulbs;
 }
-public class bulb
+public class bulb(Vector2 vector2)
 {
-    public bulb (Vector2 vector2) {
-        position = vector2;
-    }
-    public Vector2 position;
+    public Vector2 position = vector2;
 }

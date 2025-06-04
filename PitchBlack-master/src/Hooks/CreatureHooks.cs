@@ -214,7 +214,7 @@ internal class CreatureHooks
         {
             sLeaser.sprites[self.firstSprite].shader = rCam.game.rainWorld.Shaders["DreamSpawnBody"];
         }
-        if (self.vsGraphics.spawn.variant == DreamSpawn.SpawnType.StarSpawn)
+        if (self.vsGraphics.spawn.variant == PBEnums.VoidSpawn.SpawnType.StarSpawn)
         {
             sLeaser.sprites[self.firstSprite].shader = rCam.game.rainWorld.Shaders["StarSpawnBody"];
         }
@@ -227,7 +227,7 @@ internal class CreatureHooks
         {
             sLeaser.sprites[self.firstSprite].shader = rCam.game.rainWorld.Shaders["DreamSpawnBody"];
         }
-        if (self.vsGraphics.spawn.variant == DreamSpawn.SpawnType.StarSpawn)
+        if (self.vsGraphics.spawn.variant == PBEnums.VoidSpawn.SpawnType.StarSpawn)
         {
             sLeaser.sprites[self.firstSprite].shader = rCam.game.rainWorld.Shaders["StarSpawnBody"];
         }
@@ -261,7 +261,7 @@ internal class CreatureHooks
                     sLeaser.sprites[self.EffectSprite].shader = rCam.game.rainWorld.Shaders["RoseGlow"];
                 }
             }
-            if (self.spawn.variant == DreamSpawn.SpawnType.StarSpawn)
+            if (self.spawn.variant == PBEnums.VoidSpawn.SpawnType.StarSpawn)
             {
                 sLeaser.sprites[self.BodyMeshSprite].shader = rCam.game.rainWorld.Shaders["StarSpawnBody"];
                 if (self.hasOwnGoldEffect)
@@ -284,7 +284,7 @@ internal class CreatureHooks
                 sLeaser.sprites[self.EffectSprite].shader = rCam.game.rainWorld.Shaders["RoseGlow"];
             }
         }
-        if (self.spawn.variant == DreamSpawn.SpawnType.StarSpawn)
+        if (self.spawn.variant == PBEnums.VoidSpawn.SpawnType.StarSpawn)
         {
             sLeaser.sprites[self.BodyMeshSprite].shader = rCam.game.rainWorld.Shaders["StarSpawnBody"];
             sLeaser.sprites[self.GlowSprite].shader = rCam.game.rainWorld.Shaders["FlatWaterLightBothSides"];
@@ -306,18 +306,18 @@ internal class CreatureHooks
         List<PhysicalObject.BodyChunkConnection> list2 = new List<PhysicalObject.BodyChunkConnection>();
         float sizeMult = 1f;
         if (self.variant == VoidSpawn.SpawnType.RippleAmoeba
-            || self.variant == DreamSpawn.SpawnType.DreamAmoeba)
+            || self.variant == PBEnums.VoidSpawn.SpawnType.DreamAmoeba)
         {
             sizeMult = 2f;
             segments = UnityEngine.Random.Range(5, 8);
         }
         else if (self.variant == VoidSpawn.SpawnType.RippleJelly
-            || self.variant == DreamSpawn.SpawnType.DreamJelly)
+            || self.variant == PBEnums.VoidSpawn.SpawnType.DreamJelly)
         {
             segments = UnityEngine.Random.Range(3, 4);
         }
         else if (self.variant == VoidSpawn.SpawnType.RippleNoodle
-            || self.variant == DreamSpawn.SpawnType.DreamNoodle)
+            || self.variant == PBEnums.VoidSpawn.SpawnType.DreamNoodle)
         {
             sizeMult = 0.5f;
             segments = UnityEngine.Random.Range(6, 10);
@@ -331,7 +331,7 @@ internal class CreatureHooks
         {
             length = Mathf.Lerp(1f, 6f, UnityEngine.Random.value);
         }
-        else if (self.variant == DreamSpawn.SpawnType.DreamBiter)
+        else if (self.variant == PBEnums.VoidSpawn.SpawnType.DreamBiter)
         {
             sizeMult = UnityEngine.Random.Range(0.25f, 0.75f);
             length = Mathf.Lerp(1f, 6f, UnityEngine.Random.value);
@@ -364,7 +364,7 @@ internal class CreatureHooks
         orig(self, owner);
         float thickness = Mathf.Lerp(self.spawn.sizeFac, 0.5f + 0.5f * UnityEngine.Random.value, UnityEngine.Random.value);
         int segments = UnityEngine.Random.Range(4, 8);
-        if (self.spawn.variant == DreamSpawn.SpawnType.DreamAmoeba)
+        if (self.spawn.variant == PBEnums.VoidSpawn.SpawnType.DreamAmoeba)
         {
             // Taken from RippleAmoeba
             self.antennae.Add(new VoidSpawnGraphics.TailAntenna(self, self.totalSprites, segments, 12f * thickness, self.spawn.mainBody[self.spawn.mainBody.Length - 1].rad, 0f, 0.1f * thickness, 2, 2.2f));

@@ -235,58 +235,70 @@ public class ScugGraphics
                 sLeaser.sprites[cwt.hatIndex].color = new Color(color.r*0.75f, color.g*0.75f, color.b*0.75f, color.a);
             }
             if (cwt is PhotoCWT photoCWT1 && photoCWT1.photoSpriteIndex < sLeaser.sprites.Length) {
-                //maths will actually make photo's splatter sprite follow the body more accurately
-                //trying to set it to another sprite's pos or rotation makes it lag behind
-                //its more noticeable the faster photo moves, ie slamming photo around using devtools
+                // Maths will actually make photo's splatter sprite follow the body more accurately
+                // Trying to set it to another sprite's pos or rotation makes it lag behind
+                // Its more noticeable the faster photo moves, ie slamming photo around using devtools
                 Vector2 vector = Vector2.Lerp(self.drawPositions[0, 1], self.drawPositions[0, 0], timeStacker);
                 Vector2 vector2 = Vector2.Lerp(self.drawPositions[1, 1], self.drawPositions[1, 0], timeStacker);
                 sLeaser.sprites[photoCWT1.photoSpriteIndex].x = (vector2.x * 2f + vector.x) / 3f - camPos.x;
                 sLeaser.sprites[photoCWT1.photoSpriteIndex].y = (vector2.y * 2f + vector.y) / 3f - camPos.y - self.player.sleepCurlUp * 3f;
-
                 sLeaser.sprites[photoCWT1.photoSpriteIndex].scaleX = photoCWT1.photoSpriteScale[0];
                 sLeaser.sprites[photoCWT1.photoSpriteIndex].scaleY = photoCWT1.photoSpriteScale[1];
             }
 
             if (cwt is BeaconCWT beaconCWT)
             {
-                //If Thanatosis lerp to RippleColor
-                beaconCWT.currentEyeColor = Plugin.BeaconEyeColor;
+                beaconCWT.currentEyeColor = BeaconEyeColor;
+                // Color sprites in Thanatosis, or if you're not but still colored funky
                 if (beaconCWT.isDead || beaconCWT.thanatosisCounter > 0)
                 {
-                    if (Plugin.qualiaLevel <= 3f)
+                    if (qualiaLevel >= 3f)
                     {
-                        Color starveColor = Color.Lerp(Plugin.BeaconDefaultColor, Color.gray, 0.4f);
-                        beaconCWT.currentSkinColor = Color.Lerp(Plugin.BeaconDefaultColor, starveColor, beaconCWT.thanatosisLerp);
-                        beaconCWT.currentEyeColor = Plugin.BeaconEyeColor;
+                        beaconCWT.currentSkinColor = Color.Lerp(BeaconDefaultColor, BeaconDeadColor, beaconCWT.thanatosisLerp);
+                        beaconCWT.currentEyeColor = Color.Lerp(BeaconEyeColor, NightmareColor, beaconCWT.thanatosisLerp);
                     }
-                    if (Plugin.qualiaLevel >= 3f)
+                    else
                     {
-                        beaconCWT.currentSkinColor = Color.Lerp(Plugin.BeaconDefaultColor, Plugin.BeaconDeadColor, beaconCWT.thanatosisLerp);
-                        beaconCWT.currentEyeColor = Color.Lerp(Plugin.BeaconEyeColor, Plugin.NightmareColor, beaconCWT.thanatosisLerp);
+                        beaconCWT.currentSkinColor = Color.Lerp(BeaconDefaultColor, BeaconStarveColor, beaconCWT.thanatosisLerp);
+                        beaconCWT.currentEyeColor = BeaconEyeColor;
                     }
                 }
                 // Otherwise use default colors.
                 else
                 {
                     int flares = beaconCWT.storage.storedFlares.Count;
-                    beaconCWT.currentSkinColor = Color.Lerp(Plugin.BeaconDefaultColor, Plugin.BeaconFullColor, flares / (float)4);
+                    beaconCWT.currentSkinColor = Color.Lerp(BeaconDefaultColor, BeaconFullColor, flares / (float)4);
                 }
-                // sprites
-                for (int sprites = 0; sprites < sLeaser.sprites.Length; sprites++)
+                // Sprites
+                for (int i = 0; i < sLeaser.sprites.Length; i++)
                 {
-                    if (sprites != 9) sLeaser.sprites[sprites].color = beaconCWT.currentSkinColor;
-                    if (sprites == 9) sLeaser.sprites[sprites].color = beaconCWT.currentEyeColor;
-                    if (beaconCWT.isDead)
+                    if (i != 9)
                     {
-                        sLeaser.sprites[9].element = Futile.atlasManager.GetElementWithName("Face" + "Dead");
+                        sLeaser.sprites[i].color = beaconCWT.currentSkinColor;
                     }
-                    if (sprites == 10) sLeaser.sprites[sprites].color = beaconCWT.currentSkinColor;
-                    if (sprites == 11) sLeaser.sprites[sprites].color = beaconCWT.currentSkinColor;
+                    switch (i)
+                    {
+                        // Face
+                        case 9:
+                        {
+                            if (beaconCWT.isDead)
+                            {
+                                sLeaser.sprites[i].element = Futile.atlasManager.GetElementWithName("FaceDead");
+                            }
+                            sLeaser.sprites[i].color = beaconCWT.currentEyeColor;
+                            break;
+                        }
+                        // Mark + Glow
+                        case 10:
+                        case 11:
+                            sLeaser.sprites[i].color = beaconCWT.currentSkinColor;
+                            break;
+                    }
                 }
-                // brightsquint
+                // Squinting stuff
                 if (beaconCWT.brightSquint > (40 * 3.5f))
                 {
-                    sLeaser.sprites[9].element = Futile.atlasManager.GetElementWithName("Face" + "Stunned");
+                    sLeaser.sprites[9].element = Futile.atlasManager.GetElementWithName("FaceStunned");
                 }
                 if (beaconCWT.brightSquint > 10)
                 {
@@ -299,35 +311,25 @@ public class ScugGraphics
     }
     private static void PlayerGraphics_ApplyPalette(On.PlayerGraphics.orig_ApplyPalette orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette) {
         orig(self, sLeaser, rCam, palette);
-        if (Plugin.scugCWT.TryGetValue(self.player, out ScugCWT cwt)) {
-            if (cwt is PhotoCWT PhotoCWT && PhotoCWT.photoSpriteIndex < sLeaser.sprites.Length) {
-                // Slugbase can now just handle this itself, wow amazing what a cool feature
-                sLeaser.sprites[PhotoCWT.photoSpriteIndex].color = SlugBase.DataTypes.PlayerColor.GetCustomColor(self, 2);
-            }
-
-            Color color = PlayerGraphics.SlugcatColor(self.CharacterForColor);
-
-            Color color2 = new Color(color.r, color.g, color.b);
-            Color color3 = new Color(color.r, color.g, color.b);
-            if (cwt is BeaconCWT beaconCWT)
-            {
-                color2 = beaconCWT.currentSkinColor;
-                color3 = palette.blackColor;
-                Plugin.BeaconDeadColor = color3;
-                for (int i = 0; i < sLeaser.sprites.Length; i++)
-                {
-                    if (i != 9)
-                    {
-                        sLeaser.sprites[i].color = color2;
-                    }
-                    else sLeaser.sprites[9].color = beaconCWT.currentEyeColor;
-                }
-                sLeaser.sprites[11].color = beaconCWT.currentSkinColor;
-                sLeaser.sprites[10].color = beaconCWT.currentSkinColor;
-            }
-
-            //apply whisker palette correctly
-            cwt.whiskers.ApplyPalette(self, sLeaser);
+        if (!scugCWT.TryGetValue(self.player, out ScugCWT cwt)) return;
+        // Color Photo's sprite
+        if (cwt is PhotoCWT PhotoCWT && PhotoCWT.photoSpriteIndex < sLeaser.sprites.Length) {
+            // Slugbase can now just handle this itself, wow amazing what a cool feature
+            sLeaser.sprites[PhotoCWT.photoSpriteIndex].color = SlugBase.DataTypes.PlayerColor.GetCustomColor(self, 2);
         }
+        // Color Beacon's sprites
+        if (cwt is BeaconCWT beaconCWT) {
+            BeaconDeadColor = palette.blackColor;
+            for (int i = 0; i < sLeaser.sprites.Length; i++) {
+                if (i != 9) {
+                    sLeaser.sprites[i].color = beaconCWT.currentSkinColor;
+                }
+                else sLeaser.sprites[9].color = beaconCWT.currentEyeColor;
+            }
+            sLeaser.sprites[11].color = beaconCWT.currentSkinColor;
+            sLeaser.sprites[10].color = beaconCWT.currentSkinColor;
+        }
+        // Apply whisker palette correctly
+        cwt.whiskers.ApplyPalette(self, sLeaser);
     }
 }

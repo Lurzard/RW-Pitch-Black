@@ -85,6 +85,8 @@ public static class PBCreatureHooks
         IL.DaddyLongLegs.Act += IL_DaddyLongLegs_Act;
         IL.Player.CanEatMeat += IL_Player_CaneatMeat;
         
+        // Some hooks in CreatureEdits are for UmbraScav and Citizen
+        
         // Scavenger (Citizen)
         On.Scavenger.Update += Scavenger_Update;
         On.Scavenger.Grab += Scavenger_Grab;
@@ -92,14 +94,14 @@ public static class PBCreatureHooks
         On.ScavengerAbstractAI.InitGearUp += ScavengerAbstractAI_InitGearUp;
         
         // Scavenger (UmbraScav)
-        // On.ScavengerGraphics.InitiateSprites += ScavengerGraphics_InitiateSprites;
-        // On.ScavengerGraphics.ctor += ScavengerGraphics_ctor;
-        // On.MoreSlugcats.VultureMaskGraphics.GenerateColor += VultureMaskGraphics_GenerateColor;
-        // On.ScavengerGraphics.AddToContainer += ScavengerGraphics_AddToContainer;
-        // On.Scavenger.SetUpCombatSkills += Scavenger_SetUpCombatSkills;
-        // On.ScavengerGraphics.IndividualVariations.ctor += IndividualVariations_ctor;
-        // On.Scavenger.Throw += Scavenger_Throw;
-        // On.Scavenger.GrabbedObjectSnatched += Scavenger_GrabbedObjectSnatched;
+        //On.ScavengerGraphics.InitiateSprites += ScavengerGraphics_InitiateSprites;
+        //On.ScavengerGraphics.ctor += ScavengerGraphics_ctor;
+        //On.MoreSlugcats.VultureMaskGraphics.GenerateColor += VultureMaskGraphics_GenerateColor;
+        //On.ScavengerGraphics.AddToContainer += ScavengerGraphics_AddToContainer;
+        //On.Scavenger.SetUpCombatSkills += Scavenger_SetUpCombatSkills;
+        //On.ScavengerGraphics.IndividualVariations.ctor += IndividualVariations_ctor;
+        //On.Scavenger.Throw += Scavenger_Throw;
+        //On.Scavenger.GrabbedObjectSnatched += Scavenger_GrabbedObjectSnatched;
     }
     
     #region Rot Rat

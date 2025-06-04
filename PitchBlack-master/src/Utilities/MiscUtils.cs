@@ -182,11 +182,11 @@ public static class MiscUtils
     // Identifying DreamSpawn types
     public static bool IsDreamSpawn(VoidSpawn voidSpawn)
     {
-        if (voidSpawn.variant == PBEnums.DreamSpawn.SpawnType.DreamSpawn ||
-            voidSpawn.variant == PBEnums.DreamSpawn.SpawnType.DreamBiter ||
-            voidSpawn.variant == PBEnums.DreamSpawn.SpawnType.DreamNoodle ||
-            voidSpawn.variant == PBEnums.DreamSpawn.SpawnType.DreamAmoeba ||
-            voidSpawn.variant == PBEnums.DreamSpawn.SpawnType.DreamJelly)
+        if (voidSpawn.variant == PBEnums.VoidSpawn.SpawnType.DreamSpawn ||
+            voidSpawn.variant == PBEnums.VoidSpawn.SpawnType.DreamBiter ||
+            voidSpawn.variant == PBEnums.VoidSpawn.SpawnType.DreamNoodle ||
+            voidSpawn.variant == PBEnums.VoidSpawn.SpawnType.DreamAmoeba ||
+            voidSpawn.variant == PBEnums.VoidSpawn.SpawnType.DreamJelly)
         {
             return true;
         }
@@ -198,11 +198,11 @@ public static class MiscUtils
     {
         #region Determine Amount
         int amountToSpawn = 0;
-        if (source == PBEnums.DreamSpawn.SpawnSource.Death || source == PBEnums.DreamSpawn.SpawnSource.Oscillation)
+        if (source == PBEnums.VoidSpawn.SpawnSource.Death || source == PBEnums.VoidSpawn.SpawnSource.Oscillation)
         {
             amountToSpawn = 1;
         }
-        if (source == PBEnums.DreamSpawn.SpawnSource.Dreamer)
+        if (source == PBEnums.VoidSpawn.SpawnSource.Dreamer)
         {
             amountToSpawn = 50;
         }
@@ -215,18 +215,18 @@ public static class MiscUtils
         }
         
         #region Determine SpawnType
-        VoidSpawn.SpawnType spawnType = PBEnums.DreamSpawn.SpawnType.DreamSpawn;
+        VoidSpawn.SpawnType spawnType = PBEnums.VoidSpawn.SpawnType.DreamSpawn;
         if (Random.Range(0, 10) >= 7)
         {
-            spawnType = PBEnums.DreamSpawn.SpawnType.DreamJelly;
+            spawnType = PBEnums.VoidSpawn.SpawnType.DreamJelly;
         }
         if (Random.Range(0, 10) >= 9)
         {
-            spawnType = PBEnums.DreamSpawn.SpawnType.DreamNoodle;
+            spawnType = PBEnums.VoidSpawn.SpawnType.DreamNoodle;
         }
         if (Random.value <= 0.02f)
         {
-            spawnType = PBEnums.DreamSpawn.SpawnType.DreamAmoeba;
+            spawnType = PBEnums.VoidSpawn.SpawnType.DreamAmoeba;
         }
         #endregion
         

@@ -1,3 +1,5 @@
+#if false
+using IL.MoreSlugcats;
 using Color = UnityEngine.Color;
 using StringSplitOptions = System.StringSplitOptions;
 using MonoMod.Cil;
@@ -21,11 +23,11 @@ namespace PitchBlack;
 public class DevCommOverride
 {
     public static void Apply() {
-        IL.MoreSlugcats.ChatlogData.getDevComm += MoreSlugcats_ChatlogData_getDevComm;
+        ChatlogData.getDevComm += MoreSlugcats_ChatlogData_getDevComm;
         On.Conversation.InitalizePrefixColor += Conversation_InitalizePrefixColor;
     }
     // The purpose of this IL hook is to have the getDevComm return a non-decrypted key, so that you can write the plain text 
-        // just in your file and not think about how to use the encryption.
+    // just in your file and not think about how to use the encryption.
     public static void MoreSlugcats_ChatlogData_getDevComm(ILContext il) {
         var cursor = new ILCursor(il);
 
@@ -75,3 +77,4 @@ public class DevCommOverride
         //Detrax
     }
 }
+#endif
