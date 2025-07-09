@@ -1,7 +1,0 @@
-Template: bdsr_settingstemplate_night
-Palette: 4
-EffectColorA: 21
-EffectColorB: 21
-PlacedObjects: DangleFruit><965.0966><484.3783><0~0~2~3, DangleFruit><939.6013><470.3275><0~0~2~3, DangleFruit><914.6003><504.6173><0~0~2~3, DangleFruit><383.4462><516.2891><-300~67~2~3, DangleFruit><512.5621><604.9314><0~0~2~3, DangleFruit><746.7886><601.0538><0~0~2~3, BubbleGrass><127.2494><293.45><-268~73~4~9, BubbleGrass><167.4493><293.1935><-304~-153~4~9, Filter><139.6846><306.1731><-7~82~-268~160~White|Red, BlueToken><184.1907><513.6896><-9~64~361~15~1~Leech~~0, DeadTokenStalk><148.9144><494.3639><-6~57, InsectGroup><816.612><469.8343><-45~-67~92.00006~-440~Ant~0.6521739, Corruption><139.398><153.3655><112~65, Corruption><154.5564><406.9497><84~110, Corruption><892.4252><443.6534><-94~133, Corruption><934.4446><164.546><-28~119, 
-AmbientSounds: OMNI><SO_WAT-OpenFlow.ogg><732.537><473.6965><0.3152174><0.9804348, SPOT><SO_WAT-RunningWater.ogg><879.4429><21.6973><0.3152176><1><835.4429><218.6973><-106.3553><55.64465><0><0.6326092, OMNI><RWTW_RotAmb_Goo.ogg><0><0><0.4><1, OMNI><RWTW_RotAmb_Med.ogg><0><0><0.5><1, 
-FadePalette: 8, 0.2391304

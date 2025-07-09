@@ -1,3 +1,0 @@
-Grime: 0.423913
-FadePalette: 8, 0.3152174
-MorePalette0: 10, 1

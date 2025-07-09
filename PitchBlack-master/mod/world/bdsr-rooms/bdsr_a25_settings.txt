@@ -1,2 +1,0 @@
-PlacedObjects: WarpPoint><559.5618><486.6902><0~0~Watcher~NULL~NULL~NULL~NULL~NULL~~WatcherOnly~0~6~8~4~8~4~4~4~7~150~150~-1~0~0~true~false~true~true~false~0~-1~-1, Corruption><252.8134><112.1829><-6~156, Corruption><994.275><538.8823><1~162, 
-FadePalette: 10, 0.1630435

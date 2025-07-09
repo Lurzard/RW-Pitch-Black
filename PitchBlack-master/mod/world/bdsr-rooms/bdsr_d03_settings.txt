@@ -1,5 +1,0 @@
-Template: NONE
-Palette: 4
-Effects: RockFlea-0.5652174-20-20, 
-PlacedObjects: InsectGroup><187.8901><250.3329><51~100~0~0~RockFlea~0.9456522, 
-FadePalette: 8, 0.5, 0.5, 0.5, 0.5

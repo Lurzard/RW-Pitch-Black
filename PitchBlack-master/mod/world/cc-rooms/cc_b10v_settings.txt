@@ -1,8 +1,0 @@
-Template: CC_SettingsTemplate_Inside
-Clouds: 0.3586957
-Grime: 0.3586957
-BkgDroneVolume: 0.2869565
-Palette: 6
-Effects: Fog-0.2282609-20-20, 
-PlacedObjects: DangleFruit><556.5568><1415.551><0~0~2~3, DangleFruit><511.5387><1359.196><0~0~2~3, DangleFruit><439.0904><1415.38><0~0~2~3, 
-FadePalette: 8, 0.3586957, 0.3586957

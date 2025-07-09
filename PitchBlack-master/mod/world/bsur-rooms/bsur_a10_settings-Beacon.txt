@@ -1,8 +1,0 @@
-Template: bsur_settingstemplate_night
-Clouds: 0.173913
-Grime: 0.3478261
-BkgDroneVolume: 0
-PlacedObjects: Corruption><108.3155><433.689><0~100, Corruption><483.598><364.3257><2~132, Corruption><726.6858><112.1894><-1~158, Corruption><982.6511><517.1309><-103~147, 
-AmbientSounds: OMNI><RWTW_RotAmb_Swarm.ogg><0><0><0.4><1, OMNI><RWTW_RotAmb_Swarm.ogg><0><0><0.4><1, OMNI><RWTW_RotAmb_Low.ogg><0><0><0.5><1, 
-FadePalette: 8, 0
-MorePalette0: 0, 0

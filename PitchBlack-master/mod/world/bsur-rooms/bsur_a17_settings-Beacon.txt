@@ -1,3 +1,0 @@
-BkgDroneVolume: 0.2769565
-PlacedObjects: PassiveCorruption><783.0104><15.91394><-65~247~109~-80~7~15~0.8~0.3~0.55~0.05~0.15~0.2~0.2~Default~Dot~Passive~2~0~1~0~1~0~1~0~1~0~1~0~1, NoSpearStickZone><5.314514><491.3214><14.93411~182, RottenSeedCob><79.77747><533.8254><0~0~2~3, KarmaFlowerPatch><456.2026><83.10147><2~118~0.5~76~4~0.25~0.5, 
-FadePalette: 10, 0

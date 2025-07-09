@@ -1,4 +1,0 @@
-Clouds: 0.8045389
-BkgDroneVolume: 0
-PlacedObjects: KarmaFlowerPatch><511.5907><161.371><3~330~0.8452547~30~66~0.25~0.4021739, 
-FadePalette: 10, 0.03246539

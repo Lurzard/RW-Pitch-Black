@@ -1,8 +1,0 @@
-Grime: 0.25
-BkgDroneVolume: 0.2569565
-PlacedObjects: Mushroom><480.698><312.3069><-559~204~2~3, Mushroom><491.9127><322.6338><-582~121~2~3, PuffBall><767.5736><322.064><0~0~2~3, PuffBall><728.2822><306.9474><0~0~2~3, PuffBall><588.2845><321.947><0~0~2~3, Corruption><131.8126><566.4305><84~115, Corruption><792.6807><527.0579><-2~107, Corruption><399.675><538.0034><0~100, 
-AmbientSounds: OMNI><AM_ENV-LightWind.ogg><824.597><647.3788><0.3152174><0.6673913, SPOT><AM_ENV-Outside.ogg><731.1926><471.9462><0.3152174><0.7847826><844.1927><175.9462><-78.35535><-32.35535><0><0.2847827, 
-FadePalette: 8, 0.3043478
-RoomSpecificScriptActive: ON
-MorePalette0: 10, 1
-MorePalette1: 14, 0.1086956

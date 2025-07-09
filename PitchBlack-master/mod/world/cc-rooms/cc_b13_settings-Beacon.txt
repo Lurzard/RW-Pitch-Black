@@ -1,7 +1,0 @@
-RainIntensity: 0.7065217
-RumbleIntensity: 0.7065217
-Effects: FireFlies-0.2717391-295-91, 
-PlacedObjects: InsectGroup><453.7271><1445.199><0~100~0~0~Wasp~0.3369565, 
-FadePalette: 33, 0.8152174, 0.8369565
-MorePalette0: 363, 0.05434782, 0
-MorePalette1: 367, 0.8043478, 0.8043478

@@ -1,4 +1,0 @@
-BkgDroneVolume: 0.2769565
-PlacedObjects: LightSource><445.5048><1205.057><0.1978965~Environment~0~100~50~86.60254~1~0~None~0~0, LightSource><321.1292><1300.909><0.3596032~Environment~0~100~50~86.60254~1~0~None~0~0, LightSource><317.7037><222.9391><0.2934783~Environment~-32~152~50~86.60254~1~0~None~0~0, RottenDangleFruit><228.912><1106.447><1~115~2~3, RottenDangleFruit><276.5161><1047.582><-39~172~2~3, RottenDangleFruit><335.6626><1103.696><24~112~2~3, 
-AmbientSounds: SPOT><AM_IND-50hz.ogg><483.9495><598.4855><0.3258959><0.2168754><315.9495><1159.486><-56.2587><-64.35535><0><0.1757527, 
-FadePalette: 10, 0.5324654, 0.4783564, 0.5

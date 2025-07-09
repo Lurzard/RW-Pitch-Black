@@ -1,9 +1,0 @@
-Template: bsur_settingstemplate_night
-Clouds: 0.1956522
-BkgDroneVolume: 0.2769565
-EffectColorB: 21
-Effects: Flies-0.311265-20-20, 
-PlacedObjects: CustomDecal><38.35614><250.3304><-14~406~152~352~71~-8~483~80~0.3152174~1~0~RustB1~0.4891304~0.2282609~0.3478261~0.2282609~0~0.2282609~0.3152174~0.2282609, CustomDecal><68.61096><50.1438><0~200~637~194~623~-6~0~231.9957~0.6521739~0.6956522~0~GreySnakes~0.2282609~1~0.1630435~0.6521739~0~0.8043478~0~0.8695652, NoSpearStickZone><918.743><558.3001><-138~111, NoSpearStickZone><68.7038><366.8054><123~99, Corruption><273.5932><342.5731><77~58, Corruption><154.6323><117.5883><90~93, Corruption><19.5603><442.4366><154~88, Corruption><703.0712><373.6604><91~62, Corruption><855.5166><488.9493><-4~127, Corruption><858.4497><317.5105><46~97, Corruption><708.3529><214.1355><29~103, 
-AmbientSounds: OMNI><RWTW_RotAmb_Swarm.ogg><0><0><0.4><0.7456522, SPOT><SO_IND-HeatDuct.ogg><764.4069><555.624><0.3695653><1><975.4069><425.624><-46.35535><-40.35535><0><0.2847827, SPOT><AM_IND-DeepHum.ogg><751.3984><308.634><0.326087><1><-22.60156><360.634><-34.35534><-35.35535><0><0.328261, OMNI><RWTW_RotAmb_Swarm.ogg><0><0><0.4><1, OMNI><RWTW_RotAmb_Swarm.ogg><0><0><0.4><1, OMNI><RWTW_RotAmb_Low.ogg><0><0><0.5><1, 
-FadePalette: 4, 0
-MorePalette0: 0, 0

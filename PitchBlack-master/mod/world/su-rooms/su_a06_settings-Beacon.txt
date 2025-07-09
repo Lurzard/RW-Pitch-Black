@@ -1,8 +1,0 @@
-Clouds: 0.5
-Grime: 0.3913043
-BkgDroneVolume: 0.2769565
-Palette: 373
-EffectColorB: 8
-Effects: ModifyEffectColorB-0,0.1086956,0.1086956-80-70, 
-AmbientSounds: OMNI><AM_ENV-LightWind.ogg><762.8881><557.5842><0.3369565><0.8434783, SPOT><SO_IND-Fridge.ogg><753.3087><369.3082><0.1956522><1><124.3087><354.3082><55.64465><-43.35535><0><0.3173914, 
-FadePalette: 8, 0
