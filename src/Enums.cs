@@ -7,13 +7,13 @@ public static class Enums
 {
     public static class SlugcatStatsName
     {
-        public static readonly SlugcatStats.Name Beacon = new(nameof(Beacon), true);
+        public static readonly SlugcatStats.Name Beacon = new("Beacon", false);
         // Most code for Photo has been gutted (for now.. idk) -Lur
-        public static readonly SlugcatStats.Name Photomaniac = new(nameof(Photomaniac), true);
+        public static readonly SlugcatStats.Name Photomaniac = new(nameof(Photomaniac), false);
     }
     public static class Timeline
     {
-        public static readonly SlugcatStats.Timeline Beacon = new(nameof(Beacon), true);
+        public static readonly SlugcatStats.Timeline Beacon = new("Beacon", false);
     }
 
     public static class CreatureTemplateType

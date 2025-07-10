@@ -10,7 +10,6 @@ public static class Crafting
     /// <summary>
     /// Function that deletes object in grasp
     /// </summary>
-    /// <param name="self"></param>
     /// <param name="index">The hand an object is grabbed in</param>
     public static void DeleteGrasp(this Player self, int index)
     {

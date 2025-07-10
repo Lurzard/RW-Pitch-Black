@@ -82,7 +82,7 @@ public static class FlareStorage
     }
 
     /// <summary>
-    /// Hooks for making heldcraft true and stopping recursive storage input stuff
+    /// Hooks for making heldCraft true and stopping recursive storage input stuff
     /// </summary>
     #region Hooks
     

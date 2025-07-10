@@ -16,8 +16,8 @@ public static class Colors
     public static Color playerPaletteBlack;
     public static readonly Color BeaconEyeColor = Color.Lerp(playerPaletteBlack, Color.white, .87f);
     
-    // #d31c53
-    public static readonly Color NightmareColor = new(211f/255, 28f/255f, 83/255f);
+    // #d31c4a
+    public static readonly Color NightmareColor = new (0.82745098039f, 0.10980392156f, 0.29019607843f);
     // #862e48
     public static readonly Color Rose = new(134f/255f, 46f/255f, 72f/255f);
     public static readonly Color SaturatedRose = Rose * 2f;

@@ -14,6 +14,9 @@
         <Reference Include="Fisobs">
           <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\workshop\content\312520\2920541687\newest\plugins\Fisobs.dll</HintPath>
         </Reference>
+        <Reference Include="HOOKS-Assembly-CSharp">
+          <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Rain World\BepInEx\plugins\HOOKS-Assembly-CSharp.dll</HintPath>
+        </Reference>
         <Reference Include="Unity.Mathematics">
           <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Rain World\RainWorld_Data\Managed\Unity.Mathematics.dll</HintPath>
         </Reference>

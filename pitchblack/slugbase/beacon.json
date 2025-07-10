@@ -32,7 +32,7 @@
 		"the_glow": true,
 		"auto_grab_batflies": true,
 
-		"start_room": [ "SH_A08" ],
+		"start_room": "SH_A08",
 		"world_state": [ "Beacon", "Watcher" ],
 
 		"select_menu_scene": "Slugcat_Beacon",

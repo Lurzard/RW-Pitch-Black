@@ -35,7 +35,7 @@ class  Plugin : BaseUnityPlugin
     public static readonly ConditionalWeakTable<MouseGraphics, RotData> rotRatData = new();
 
     
-    // Colors moved to Colors.cs after I saw Alduris set up his codespace that way -Lur
+    // Colors moved to Colors.cs after I saw Alduris set up his codespace that way -Lur 
     
     /// <summary>
     /// SlugBase Features for PB:
@@ -46,7 +46,7 @@ class  Plugin : BaseUnityPlugin
     /// </summary>
     public static readonly PlayerFeature<float> FlipBoost = PlayerFloat("pb/flip_boost");
     
-    // Rotund World stuff
+    // Rotund World stuff -WW
     internal static bool RotundWorldEnabled => _rotundWorldEnabled; // For a single check in BeaconHooks' Player.Update hook
     private static bool _rotundWorldEnabled;
     public static bool individualFoodEnabled;
@@ -71,15 +71,14 @@ class  Plugin : BaseUnityPlugin
                 Futile.atlasManager.UnloadAtlas("lmllspr");
         };
         
+        WorldHooks.Apply();
+        DevToolsHooks.Apply();
         PBSlugBaseFeatures.Apply();
         ScugHooks.Apply();
         ScugGraphics.Apply();
         FlareStorage.Apply();
         Crafting.Apply();
         FlareBombHooks.Apply();
-        WorldHooks.Apply();
-        ScareEverything.Apply();
-        DevToolsHooks.Apply();
         
         logger.LogDebug("PitchBlack's hooks successfully applied!");
     }
@@ -97,15 +96,14 @@ class  Plugin : BaseUnityPlugin
         {
             try
             {
-                // Creature registering
                 Content.Register(new LMLLCritob());
                 Content.Register(new NTCritob());
                 Content.Register(new RotRatCritob());
                 Content.Register(new CitizenCritob());
                 
-                // Creature hooks
                 LMLLHooks.Apply();
                 NTHooks.Apply();
+                ScareEverything.Apply();
                 RotRatHooks.Apply();
                 CitizenHooks.Apply();
                 
@@ -127,8 +125,7 @@ class  Plugin : BaseUnityPlugin
             {
                 logger.LogDebug($"PitchBlack error\n{err}");
             }
-
-            // Sprites loading
+            
             Futile.atlasManager.LoadAtlas("atlases/PBHat");
             if (!Futile.atlasManager.DoesContainAtlas("lmllspr"))
                 Futile.atlasManager.LoadAtlas("atlases/lmllspr");

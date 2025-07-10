@@ -15,7 +15,6 @@ public static class ScugHooks
         // Check here if it's Beacon
         if (scugCWT.TryGetValue(self, out ScugCWT c) && c is BeaconCWT cwt)
         {
-            // dontThrowTimer counts down and maintains a value >= 0.
             if (cwt.dontThrowTimer > 0)
             {
                 cwt.dontThrowTimer--;
@@ -100,8 +99,8 @@ public static class ScugHooks
     /// </summary>
     private static void Player_Update(On.Player.orig_Update orig, Player self, bool eu)
     {
-        /* Called without a slug check because Update doesn't like moving classes within cwt code
-        the slug check is inside the function -Lur */
+        /* Called without a scugcwt-beaconcwt check because Update doesn't like moving classes within cwt code
+        slug check is inside the function -Lur */
         BeaconUpdate(self);
         
         orig(self, eu);
@@ -124,12 +123,12 @@ public static class ScugHooks
             }
             
             if (self.room.abstractRoom.shelter 
-                && Plugin.scugCWT.TryGetValue(self, out ScugCWT c) && c is BeaconCWT cwt) {
+                && scugCWT.TryGetValue(self, out ScugCWT c) && c is BeaconCWT cwt) {
                 foreach (List<PhysicalObject> thingQuar in self.room.physicalObjects) {
                     foreach (PhysicalObject item in thingQuar) {
                         if (item is FlareBomb flare && cwt.storage.storedFlares.Count < cwt.storage.capacity) {
                             foreach (var player in self.room.PlayersInRoom) {
-                                if (player != null && Plugin.scugCWT.TryGetValue(player, out var op) && op is BeaconCWT otherPlayer && otherPlayer.storage.storedFlares.Contains(flare)) {
+                                if (player != null && scugCWT.TryGetValue(player, out var op) && op is BeaconCWT otherPlayer && otherPlayer.storage.storedFlares.Contains(flare)) {
                                     goto SkipAddingFlare;
                                 }
                             }

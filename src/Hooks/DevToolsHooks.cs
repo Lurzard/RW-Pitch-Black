@@ -10,7 +10,7 @@ public static class DevToolsHooks
     /// Effects and such need to be added to the 3 hooks
     /// - Room.Loaded to add the object
     /// - Room.NowViewed for backgrounds to apply a fix
-    /// - RoomSettingsPage.DevEffectGetCategoryFromEffectType for adding effect to Pitch-Black page in Devtools Effects
+    /// - RoomSettingsPage.DevEffectGetCategoryFromEffectType to add to correct catagory
     /// </summary> -Lur
     
     public static void Apply()
@@ -20,13 +20,12 @@ public static class DevToolsHooks
         On.DevInterface.RoomSettingsPage.DevEffectGetCategoryFromEffectType += RoomSettingsPage_DevEffectGetCategoryFromEffectType;
     }
     
-    // Actually adds our effects' objects (because I didn't make them utilize POM yet) -Lur
+    // Actually adds our effects' objects -Lur
     private static void Room_Loaded(On.Room.orig_Loaded orig, Room self)
     {
         orig(self);
         for (int num = 0; num < self.roomSettings.effects.Count; num++)
         {
-            // ElsehowView
             if (self.roomSettings.effects[num].type == Enums.RoomEffectType.ElsehowView)
             {
                 self.AddObject(new ElsehowView(self, self.roomSettings.effects[num]));
@@ -34,6 +33,7 @@ public static class DevToolsHooks
         }
     }
     
+    // Adding effect to Pitch-Black page in Devtools Effects
     private static RoomSettingsPage.DevEffectsCategories RoomSettingsPage_DevEffectGetCategoryFromEffectType(On.DevInterface.RoomSettingsPage.orig_DevEffectGetCategoryFromEffectType orig, RoomSettingsPage self, RoomSettings.RoomEffect.Type type)
     {
         RoomSettingsPage.DevEffectsCategories res = orig(self, type);
@@ -44,7 +44,7 @@ public static class DevToolsHooks
         return res;
     }
     
-    // Background shader fix, seems mandatory.
+    // Background shader fix, seems mandatory for some things.
     private static void Room_NowViewed(On.Room.orig_NowViewed orig, Room self)
     {
         orig(self);

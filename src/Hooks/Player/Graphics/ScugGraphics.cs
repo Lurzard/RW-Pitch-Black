@@ -19,6 +19,9 @@ public static class ScugGraphics
     ///
     /// - Hat sprite : Initiate, AddToContainer, Draw.
     /// - Whiskers sprites have their own functions from the Whiskers class that are injected into each of these hooks respectively.
+    ///
+    /// Beacon coloring is done in DrawSprites.
+    /// Squinting is done in Update + DrawSprites.
     /// [Lur]
     /// </summary>
     
@@ -138,7 +141,6 @@ public static class ScugGraphics
                 // Assign to an updating field
                 bCWT.currentSkinColor = skinColor;
                 bCWT.currentEyeColor = eyeColor;
-                
                 for (int i = 0; i < sLeaser.sprites.Length; i++)
                 {
                     // eyes
