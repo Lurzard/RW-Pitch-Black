@@ -1,0 +1,6 @@
+Effects: ElsehowView-1-30-30, 
+AmbientSounds: OMNI><so_sfx-blackwidow2.ogg><250.342><540.6227><0.2934785><0.4913043, OMNI><so_sfx-gutleut.ogg><434.6947><588.0457><0.05434782><1, OMNI><so_sfx-morse.ogg><612.054><588.5399><0.1195652><1, OMNI><am_win-howlingwnd.ogg><435.1968><509.5357><0.09782609><1, OMNI><am_win-medwind.ogg><790.679><588.8393><0.1521739><1, OMNI><am_win-wndtone.ogg><791.1506><509.9236><0.3043478><0.5304348, OMNI><so_sfx-datastream.ogg><613.3829><509.8994><0.282608><0.1782609, SPOT><AM_IND-SuperStructure.ogg><728.5507><487.7664><0.3043478><1.215217><725.5507><381.7664><-76.35535><-62.35535><0><0.404348, SPOT><MSC-ShadowGully.ogg><730.8219><222.159><0.3043478><0.726087><1504.822><383.159><-87.35535><-78.35535><0><0.404348, 
+Triggers: Spot<tA>event<tB>MusicEvent<eA>songName<eB>pb_01 - eden<eA>vol<eB>0.2021743<eA>prio<eB>0.5<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>-1<eA>rest<eB>5<eA>fadeIn<eB>104.3478<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>1<eA>stopAtGate<eB>1<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>679.7773<tB>336.0519<tA>fireChance<tB>1<tA>entrance<tB>-1<tA>karma<tB>0<tA>slugcats<tB>White|Yellow|Red<tA>pos<tB>1800.777<tB>155.0519<tA>handlePos<tB>-70.35535<tB>-53.35535, 
+FadePalette: 10, 0.05434782, 0.05434782
+WetTerrain: OFF
+BackgroundOffset: 30.00021,1196.087

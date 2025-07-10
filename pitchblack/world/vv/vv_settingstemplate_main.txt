@@ -1,0 +1,21 @@
+DangerType: None
+CeilingDrips: 0
+RainIntensity: 0
+RumbleIntensity: 0
+WaveSpeed: 0.5
+WaveLength: 0.75
+WaveAmplitude: 0.02847664
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Clouds: 0
+Grime: 0
+BkgDroneVolume: 0
+BkgDroneNoThreatVolume: 1
+RandomItemDensity: 0.5
+RandomItemSpearChance: 0.2
+WaterReflectionAlpha: 1
+Palette: 999
+EffectColorA: 0
+EffectColorB: 0
+Effects: LightBurn-0.05799932-20-20, 
+AmbientSounds: OMNI><so_sfx-blackwidow2.ogg><436.342><589.6227><0.2934785><0.4913043, OMNI><so_sfx-datastream.ogg><794.3829><588.8994><0.282608><0.1782609, OMNI><SO_SFX-DataStream.ogg><615.7164><589.8029><0.3586957><0.3152198, OMNI><AM_ENV-LightWind.ogg><729.3004><517.7373><0.2934783><1, OMNI><AM_WIN-HowlingWnd.ogg><737.6185><551.3493><0.1630435><0.9217392, 

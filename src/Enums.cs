@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using DevInterface;
 
 namespace PitchBlack;
 
@@ -69,6 +70,30 @@ public static class Enums
                 RotRat.Unregister();
                 RotRat = null;
             }
+        }
+    }
+    
+    public static class RoomEffectType
+    {
+        // I just threw this in here, it's used with the others.
+        public static RoomSettingsPage.DevEffectsCategories PitchBlackCatagory = new ("Pitch-Black", true);
+        // Actual effects
+        public static RoomSettings.RoomEffect.Type ElsehowView = new("ElsehowView", true);
+        public static RoomSettings.RoomEffect.Type RippleSpawn = new("RippleSpawn", true);
+        public static RoomSettings.RoomEffect.Type RippleMelt = new("RippleMelt", true);
+        public static RoomSettings.RoomEffect.Type RoseSky = new("RoseSky", true);
+        public static void UnregisterValues()
+        {
+            if (PitchBlackCatagory != null)
+            {
+                PitchBlackCatagory.Unregister();
+                PitchBlackCatagory = null;
+            }
+            if (ElsehowView != null)
+            {
+                ElsehowView.Unregister();
+                ElsehowView = null;
+            } 
         }
     }
 }

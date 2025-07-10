@@ -79,6 +79,7 @@ class  Plugin : BaseUnityPlugin
         FlareBombHooks.Apply();
         WorldHooks.Apply();
         ScareEverything.Apply();
+        DevToolsHooks.Apply();
         
         logger.LogDebug("PitchBlack's hooks successfully applied!");
     }
@@ -151,6 +152,7 @@ class  Plugin : BaseUnityPlugin
             {
                 Enums.CreatureTemplateType.UnregisterValues();
                 Enums.SandboxUnlockID.UnregisterValues();
+                Enums.RoomEffectType.UnregisterValues();
                 
                 // Remove creatures from CreatureUnlockList
                 if (MultiplayerUnlocks.CreatureUnlockList.Contains(Enums.SandboxUnlockID.LMiniLongLegs))
