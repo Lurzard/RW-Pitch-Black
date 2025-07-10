@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    
+    <PropertyGroup>
+        <TargetFramework>net48</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        <DebugType>portable</DebugType>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <Reference Include="../lib/*.dll">
+            <Private>false</Private>
+        </Reference>
+        <Reference Include="Fisobs">
+          <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\workshop\content\312520\2920541687\newest\plugins\Fisobs.dll</HintPath>
+        </Reference>
+        <Reference Include="Unity.Mathematics">
+          <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Rain World\RainWorld_Data\Managed\Unity.Mathematics.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Folder Include="Shaders\" />
+    </ItemGroup>
+    
+    <Target Name="GenerateMod" AfterTargets="PostBuildEvent">
+		<ItemGroup>
+			<RemovePlugins Include="../pitchblack/plugins/*.dll" />
+		</ItemGroup>
+		<ItemGroup>
+			<CopyPlugins Include="$(TargetPath)" />
+		</ItemGroup>
+		
+        <Delete Files="@(RemovePlugins)" />
+        <Copy SourceFiles="@(CopyPlugins)" DestinationFolder="../pitchblack/newest/plugins/" />
+    </Target>
+    
+</Project>

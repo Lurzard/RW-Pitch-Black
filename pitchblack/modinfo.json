@@ -1,0 +1,12 @@
+﻿{
+	"id": "lurzard.pitchblack",
+	"name": "[DEV] Pitch Black",
+	"version": "DEV 0.5.150",
+	"authors": "RAIN WORLD: PITCH BLACK\n\n\n\nPITCH BLACK DEV TEAM\n\nLurzard\nDevelopment Lead, Programmer, Menu Illustrations\n\nTryn\nMusic\n\n\"Tides of Twilight\" Opey\nCreature Spawns Design and Implementation\n\nMoon615\n Creature Design, Programmer\n\nOvidia\nLevel Design, Programmer\n\nstormthecat\nArt\n\nNikki\nCreature Programmer\n\nspinch\nProgrammer\n\nIzuna\nLevel Design\n\n\n\nSPECIAL THANKS\n\nMillisec \"Brooke\"\nIdeas and Design, Beta Thumbnail Art, Photomaniac\n\nMoon615\nideas and Design, Main Coder on the team and Creature Programmer, Original Warp Object\n\nOvidia\nIdeas and Design, Elsehow, Elsewhy\n\nspinch\nSlugcat Mechanics Programmer, Creature Programmer\n\nstormthecat\nMod Thumbnail Art\n\nURUFUDOGGO\nSlugcat Mechanics Programmer\n\n\n\nUNFINISHED!!!",
+	"description": "Placeholder Description",
+	"requirements": [ "slime-cubed.slugbase", "watcher", "fisobs", "regionkit", "crs", "lb-fgf-m4r-ik.modpack" ],
+	"requirements_names": [ "SlugBase", "The Watcher", "Fisobs", "(RK) RegionKit", "(CRS) Custom Regions Support", "The M4rbelous Entity Pack" ],
+	"priorities": [],
+	"checksumoverrideversion": false,
+	"tags": [ "Regions", "Campaigns", "Creatures", "Game Mechanics", "Items", "Translations", "Custom Slugcat" ]
+}

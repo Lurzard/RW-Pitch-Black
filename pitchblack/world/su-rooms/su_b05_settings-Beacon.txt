@@ -1,0 +1,8 @@
+Clouds: 0.7065217
+BkgDroneVolume: 0.2769565
+EffectColorB: 8
+Effects: ModifyEffectColorB-0,0.1086956,0.1086956-30-30, 
+PlacedObjects: FirecrackerPlant><274.4919><1188.05><-317~230~2~3, FirecrackerPlant><292.4433><1189.308><-333~144~2~3, DataPearl><591.9456><623.5419><22~-157~0~0~SU~1, CustomDecal><371.9081><220.8224><-20~350~283~340~245~-13~-489~107~0.3152174~0.5~0.1847826~GodOfEyes~0.08695652~0.173913~0.1521739~0.423913~0.0326087~0.2173913~0.02173913~0.4456522, FlareBomb><499.0347><366.947><0~0~2~3, FlareBomb><533.6925><299.0543><0~0~2~3, FlareBomb><440.6989><322.0209><0~0~2~3, 
+AmbientSounds: OMNI><AM_ENV-LightWind.ogg><881.4282><571.4091><0.369565><0.6478257, 
+FadePalette: 8, 0.0326087, 0
+MorePalette0: 373, 1, 1

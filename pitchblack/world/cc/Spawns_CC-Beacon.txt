@@ -1,0 +1,56 @@
+//OFFSCREEN
+OFFSCREEN : 0-Scavenger-15, 0-Elite-2, 0-Vulture-3, 0-KingVulture-2
+LINEAGE : OFFSCREEN : 0 : Scavenger-0.5, Templar-0
+LINEAGE : OFFSCREEN : 0 : NONE-0.1, MirosVulture-0
+
+//SURFACE
+
+CC_C08 : 3-Red, 6-BigSpider, 6-Mouse-3
+LINEAGE : CC_C08 : 4 : noodleeater-0.2, White-0.5, Cyan-0
+LINEAGE : CC_C08 : 5 : Black-0.5, White-0.5, Cyan-0
+
+CC_A07 : 2-SpitterSpider, 3-Caramel, 3-noodleeater-2, 4-Mouse-2
+LINEAGE : CC_A07 : 4 : Mimic-{12}-0.5, TentaclePlant-0
+
+CC_C11 : 3-EggBug, 3-SmallNeedle-4, 3-BigNeedle, 4-Cyan, 4-Black
+
+CC_B11 : 3-Dropwig, 3-Mouse-4
+
+CC_C03 : 5-SmallCentipede-3-{AlternateForm}, 5-SmallCentipede-2, 6-Centiwing, 7-Worm-2
+LINEAGE : CC_C03 : 6 : Centipede-0.5-{0.5}, Centipede-0.5-{0.7}, Centipede-0.5-{0.9}, RedCenti-0
+LINEAGE : CC_C03 : 6 : NONE-0.1, NONE-1, RedCenti-0
+
+CC_B01 : 2-Blue-2, 3-BigMoth-2, 3-SmallMoth-4, 3-Hoverfly-2, 4-SpitterSpider, 4-BigSpider		
+
+//TOWERS
+
+CC_B05 : 3-Centiwing-2, 3-noodleeater-2
+LINEAGE : CC_B05 : 2 : Cyan-0.5, NONE-0
+LINEAGE : CC_B05 : 4 : Pink-0.5, NONE-0
+LINEAGE : CC_B05 : 2 : NONE-0.5, Yellow-0
+LINEAGE : CC_B05 : 2 : NONE-0.5, Yellow-0
+LINEAGE : CC_B05 : 4 : NONE-0.5, Yellow-0
+
+CC_B08 : 2-Centiwing, 3-Dropwig, 4-White
+LINEAGE : CC_B08 : 2 : Centiwing-0.1, RedHorror-0
+
+CC_A15 : 3-BigMoth-2, 3-SmallMoth-3, 4-Blue
+
+CC_F01 : 3-Cyan
+LINEAGE : CC_F01 : 4 : White-0.5, HunterSeeker-0
+
+CC_B14 : 2-BigNeedle, 2-SmallNeedle-3, 2-Hoverfly, 3-TubeWorm-2, 4-Strawberry
+
+LINEAGE : CC_C05 : 3 : Blue-1, Cyan-0
+LINEAGE : CC_C05 : 3 : Blue-1, White-0
+
+CC_C04 : 3-Centiwing-2, 3-BigSpider, 3-SpitterSpider, 3-Hoverfly
+
+CC_B04 : 3-White, 4-EggBug, 4-Hoverfly
+
+CC_C07 : 2-SmallMoth-3, 3-CicadaB-3, 3-CicadaA-2, 3-Hoverfly-2
+LINEAGE : CC_C07 : 2 : LMiniLongLegs-1, Bro-0
+
+LINEAGE : CC_B10W : 3 : NONE-0.5, Bro-0
+LINEAGE : CC_B10W : 4 : NONE-0.5, Bro-0
+LINEAGE : CC_B10W : 5 : LMiniLongLegs-0.5, Bro-0

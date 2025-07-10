@@ -1,0 +1,16 @@
+Template: CC_SettingsTemplate_Gutter
+DangerType: Rain
+RainIntensity: 0.7065217
+RumbleIntensity: 0.7065217
+WaveSpeed: 0.4847645
+WaveLength: 0.919375
+WaveAmplitude: 0.03601725
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Palette: 33
+Effects: SilenceWater-1-267-70, FireFlies-0.2717391-281-197, 
+PlacedObjects: DevToken><428.9349><266.076><-40~-71~-477.0001~-172~0~~~0~0~0~1~0~0~0~1~0~0~0~1~0~0~0~1~0~0~0~1~0~0~0~1~0~0~0~1~0~0~0~1, 
+AmbientSounds: SPOT><SO_WAT-OpenFlow.ogg><840.3209><378.187><0.2391304><1><800.3209><138.187><-184.3553><20.64465><0><0.2739132, SPOT><SO_WAT-MoreDrips.ogg><846.3469><262.6287><0.4456522><0.823913><510.3469><710.6287><-30.35535><-367.3553><0><1, 
+FadePalette: 21, 0.2071671
+MorePalette0: 55, 0.06620988
+MorePalette1: 10, 0.8075661

@@ -1,0 +1,13 @@
+Template: NONE
+DangerType: Flood
+Clouds: 0.3043478
+BkgDroneVolume: 0.2769565
+EffectColorB: 21
+Effects: Flies-0.0326087-20-20, 
+PlacedObjects: ProjectedImagePosition><577.9059><432.9265><, FlareBomb><438.8522><339.0781><0~0~2~3, FlareBomb><477><302><0~0~2~3, FlareBomb><383><274><0~0~2~3, 
+AmbientSounds: OMNI><AM_ENV-Outside.ogg><752.1115><470.334><0.3913043><0.6869565, SPOT><SO_NAT-LilDrips.ogg><378.5799><134.1448><0.2391304><1><505.5799><280.1448><-192.3553><-57.35535><0><0.4152175, 
+Triggers: Spot<tA>event<tB>ShowProjectedImageEvent<eA>afterEncounter<eB>0<eA>fromCycle<eB>0<eA>onlyWhenShowingDirection<eB>0<tA>multiUse<tB>1<tA>toCycle<tB>-1<tA>fromCycle<tB>3<tA>delay<tB>0<tA>panPos<tB>91.96521<tB>409.197<tA>fireChance<tB>1<tA>entrance<tB>2<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>470.9652<tB>310.197<tA>handlePos<tB>256.6447<tB>176.6447, 
+FadePalette: 8, 0.3804348
+RoomSpecificScriptActive: ON
+MorePalette0: 10, 1
+MorePalette1: 0, 0.05434782
